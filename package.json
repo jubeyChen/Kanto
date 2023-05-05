@@ -1,0 +1,30 @@
+{
+  "name": "Kanto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "安裝套件": "npm i",
+    "開發": "gulp dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jubeyChen/Kanto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jubeyChen/Kanto/issues"
+  },
+  "homepage": "https://github.com/jubeyChen/Kanto#readme",
+  "devDependencies": {
+    "browser-sync": "^2.29.1",
+    "gulp": "^4.0.2",
+    "gulp-file-include": "^2.3.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "sass": "^1.62.1"
+  }
+}

@@ -1,0 +1,34 @@
+// @import url(); 不用 css import
+
+@import './base/var';
+@import './base/color';
+@import './base/font';
+
+@import './mixin/mixin';
+
+@import './component/body';
+@import './component/btn';
+@import './component/form';
+@import './component/title';
+
+@import './layout/footer';
+@import './layout/header';
+
+@import './page/about';
+@import './page/backBlog.scss';
+@import './page/backLogin.scss';
+@import './page/backMember.scss';
+@import './page/backOrder';
+@import './page/backProduct';
+@import './page/blog';
+@import './page/blogPage';
+@import './page/cart';
+@import './page/foodBlog';
+@import './page/fqa';
+@import './page/game';
+@import './page/index';
+@import './page/loginRegister';
+@import './page/member';
+@import './page/product';
+@import './page/productPage';
+@import './page/roomBlog';

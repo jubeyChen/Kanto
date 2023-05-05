@@ -1,0 +1,24 @@
+// textarea 和 input type="text" 的樣式
+.textStyle {
+    border: 1px solid $secondary;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.textareaStyle {
+    border: 1px solid $secondary;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+
+    &:focus {
+        outline: none;
+    }
+}

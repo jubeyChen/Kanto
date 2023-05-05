@@ -1,0 +1,116 @@
+/*footer start =======================*/
+footer {
+    background-color: #fff;
+    width: 100%;
+
+    .container {
+        @include flex-container($justify-content:space-around);
+        padding: 50px 0;
+
+        @include m() {
+            width: 80%;
+            position: relative;
+            padding-top: 70px;
+        }
+
+        a {
+            text-decoration: none;
+            color: $fontColor;
+            cursor: pointer;
+        }
+
+        //左半部--------------------------
+
+        .logo {
+            width: 150px;
+            margin: 20px;
+
+            @include m() {
+                width: 75px;
+                margin: 0;
+            }
+        }
+
+        .social {
+            text-align: center;
+            margin-top: 10px;
+
+            @include m() {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            i {
+                font-size: 40px;
+                margin: 0 10px;
+
+                @include m() {
+                    margin: 0 5px;
+                    font-size: 30px;
+                }
+            }
+
+        }
+
+        //右半部------------------------------
+
+        .links {
+            display: flex;
+
+            @include m() {
+                display: none;
+            }
+
+            li {
+                font-size: 20px;
+                margin: 30px;
+
+                .pay {
+                    width: 30px;
+                    margin: 0 2px;
+                }
+
+                input {
+                    border: none;
+                    border-bottom: 1px solid $fontColor;
+                }
+
+                button {
+                    background: transparent;
+                    color: $fontColor;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    p {
+        background-color: #fff;
+        text-align: center;
+        color: #ccc;
+
+        @include m() {
+            font-size: 12px;
+        }
+    }
+
+    .mobile {
+        display: none;
+
+        @include m() {
+            display: block;
+            font-size: $paragraph-s;
+            margin: 10px;
+        }
+
+        li {
+            @include m() {
+                line-height: 30px;
+            }
+        }
+    }
+}
+
+/*footer end =======================*/

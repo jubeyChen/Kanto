@@ -1,0 +1,117 @@
+//btn, 不會用到
+@mixin btn($style, $fontSize, $lineHeight) {
+    .btn-pri-#{$style} {
+        line-height: $lineHeight;
+        padding: 10px 40px;
+        text-align: center;
+        font-size: $fontSize;
+        letter-spacing: 1px;
+        background-color: $primary;
+        color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all .3s ease;
+
+        @content;
+
+        &:hover {
+            background-color: darken($primary, 8%);
+        }
+    }
+}
+
+@mixin sec-btn($style, $fontSize, $lineHeight) {
+    .btn-sec-#{$style} {
+        line-height: $lineHeight;
+        padding: 10px 40px;
+        text-align: center;
+        font-size: $fontSize;
+        letter-spacing: 1px;
+        background-color: #fff;
+        color: $primary;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all .3s ease;
+
+        @content;
+
+        &:hover {
+            background-color: $primary;
+            color: #fff;
+        }
+    }
+
+}
+
+@mixin cancel-btn($style, $fontSize, $lineHeight) {
+    .btn-cancel-#{$style} {
+        line-height: $lineHeight;
+        padding: 10px 40px;
+        text-align: center;
+        font-size: $fontSize;
+        letter-spacing: 1px;
+        background-color: $secondary;
+        color: $fontColor;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all .3s ease;
+
+        @content;
+
+        &:hover {
+            background-color: darken($secondary, 20%);
+            color: #fff;
+        }
+    }
+
+}
+
+//tag, 不會用到
+@mixin tag($style, $fontSize, $lineHeight) {
+    .tag-#{$style} {
+        display: block;
+        line-height: $lineHeight;
+        // box-sizing: border-box;
+        padding: 10px 40px;
+        text-align: center;
+        font-size: $fontSize;
+        letter-spacing: 1px;
+        background-color: $primary;
+        color: $secondary;
+        transition: all .3s ease;
+
+        @content;
+    }
+}
+
+//寫 flex 會用到
+@mixin flex-container($direction: row, $wrap: wrap, $justify-content: center, $align-items: center) {
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+//欄位尺寸, 不會用到
+$column-gap: 20px;
+
+@for $i from 1 through 12 {
+    .col-#{$i} {
+        width: calc((100% - #{$column-gap * 11}) / 12 * #{$i});
+        margin-right: $column-gap;
+        float: left;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+//RWD, 會用到
+@mixin m() {
+    @media all and (max-width: $m-breakpoint) {
+        //code
+        @content;
+    }
+}

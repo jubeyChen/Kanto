@@ -1,0 +1,50 @@
+// buttons 和 tag 的尺寸
+
+@include btn(l, 20px, 50px);
+@include btn(m, 16px, 40px);
+
+@include sec-btn(l, 20px, 50px);
+@include sec-btn(m, 16px, 40px);
+
+@include cancel-btn(l, 20px, 50px);
+@include cancel-btn(m, 16px, 40px);
+
+@include tag(l, 20px, 55px) {
+    @include m() {
+        line-height: 35px;
+        padding: 5px 20px;
+    }
+}
+
+;
+
+@include tag(m, 16px, 40px) {
+    @include m() {
+        line-height: 30px;
+        padding: 5px 20px;
+    }
+}
+
+;
+
+#topBtn {
+    display: none; //原先看不見
+    position: fixed;
+    bottom: 20px;
+    right: 80px;
+    z-index: 99;
+
+    border: 0;
+    line-height: 40px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background-color: #C73E3A;
+    color: #fff;
+    cursor: pointer;
+
+    @include m() {
+        right: 20px;
+    }
+}

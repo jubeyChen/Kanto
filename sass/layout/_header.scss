@@ -1,0 +1,163 @@
+/*header start =========================*/
+header {
+    width: 100%;
+    height: 80px;
+
+    .container {
+        @include m() {
+            width: 90%;
+            background-color: hsl(0, 0%, 100%, 80%);
+            border-radius: $borderRadius;
+            padding: 10px;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .member-center {
+            display: none;
+        }
+
+        #ham {
+            color: $primary;
+            font-size: 40px;
+            margin-left: auto;
+            display: none;
+
+            @include m() {
+                display: block;
+            }
+        }
+
+        #cross {
+            color: $primary;
+            font-size: 40px;
+            margin-left: auto;
+            /*========叉叉先隱藏===========*/
+            display: none;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: $fontColor;
+            cursor: pointer;
+        }
+
+        display: flex;
+        padding: 15px 0;
+
+
+        img {
+            height: 40px;
+
+            @include m() {
+                height: 35px;
+            }
+        }
+
+        /*索引+會員&購物車按扭*/
+        .nav-bar {
+            @include flex-container($justify-content:flex-end);
+            width: 80%;
+
+            @include m() {
+                background-color: hsl(0, 0%, 100%, 80%);
+                width: 95%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                border-radius: $borderRadius;
+                padding: 10px;
+                padding-bottom: 20px;
+
+                /*========選單先隱藏===========*/
+                display: none;
+            }
+
+            /*索引*/
+            .nav {
+                @include flex-container($wrap:nowrap, $justify-content:space-around);
+                width: 70%;
+                margin-top: 15px;
+
+                @include m() {
+                    flex-direction: column;
+                    margin: 0 auto;
+
+                }
+
+                li {
+                    width: 100%;
+                    line-height: 30px;
+                    text-align: center;
+                    font-size: $paragraph-s;
+
+                    @include m() {
+                        margin-top: 10px;
+                        line-height: 60px;
+                        border-bottom: 1px dashed $primary;
+
+                        &:last-child {
+                            border-bottom: none;
+                        }
+                    }
+
+                    a {
+
+                        &:hover {
+                            font-weight: bold;
+                            color: $primary;
+                        }
+                    }
+
+                    a.active {
+                        font-weight: bold;
+                        color: $primary;
+                    }
+                }
+            }
+
+            // +會員&購物車按扭
+            .nav-btn {
+                display: flex;
+                align-items: flex-end;
+
+                @include m() {
+                    order: -1;
+                    margin-right: auto;
+
+
+                }
+
+                li {
+                    // width: 100%;
+                    padding: 8px;
+                    margin: 10px 5px 0 5px;
+                    border: 1px solid $fontColor;
+                    font-size: $paragraph-s;
+
+                    &:hover {
+                        background-color: $primary;
+
+                        a {
+                            color: $secondary;
+                        }
+
+                    }
+                }
+
+                li.active {
+                    background-color: $primary;
+
+                    a {
+                        color: $secondary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/*header end =========================*/
