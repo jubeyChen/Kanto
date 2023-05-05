@@ -15,6 +15,15 @@ function styleSass() {
 
 exports.style = styleSass;
 
+// =====================  resetCSS搬到dist  =======================
+
+
+function resetCSS() {
+    return src('./resetCSS/*.css').pipe(dest('dist/css'))
+}
+
+exports.rCSS = resetCSS;
+
 // =====================  HTML  =======================
 
 const fileinclude = require('gulp-file-include');
@@ -90,6 +99,7 @@ function browser(done) {
     watch(["./image/*.*", "./image/**/*.*"], img_origin).on("change", reload);
     watch(["./js/*.js", "./js/**/*.js"], jsMove).on("change", reload);
     watch(["./php/*.php", "./php/**/*.php"], phpMove).on("change", reload);
+    watch("./resetCSS/*.css", resetCSS).on("change", reload);
     done();
 }
 
@@ -97,4 +107,4 @@ exports.default = browser;
 
 
 
-exports.dev = series(parallel(html, styleSass, img_origin, jsMove, phpMove), browser);
+exports.dev = series(parallel(html, styleSass, resetCSS, img_origin, jsMove, phpMove), browser);
