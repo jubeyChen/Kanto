@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "安裝套件": "npm i",
-    "開發": "gulp dev"
+    "安裝once": "npm i",
+    "開發每次": "gulp dev"
   },
   "repository": {
     "type": "git",
