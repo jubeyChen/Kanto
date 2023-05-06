@@ -73,14 +73,6 @@ function jsMove() {
 
 exports.jsM = jsMove;
 
-// ====================  搬php到dist  ======================
-
-// function phpMove() {
-//     return src(['php/*.php', 'php/**/*.php']).pipe(dest('dist/php'))
-// }
-
-// exports.phpM = phpMove;
-
 // =====================  瀏覽器同步  =======================
 
 const browserSync = require("browser-sync");
@@ -98,8 +90,7 @@ function browser(done) {
     watch(["./*.html", "./layout/*.html"], html).on("change", reload);
     watch(["./image/*.*", "./image/**/*.*"], img_origin).on("change", reload);
     watch(["./js/*.js", "./js/**/*.js"], jsMove).on("change", reload);
-    // watch(["./php/*.php", "./php/**/*.php"], phpMove).on("change", reload);
-    watch("./resetCSS/*.css", resetCSS).on("change", reload);
+   watch("./resetCSS/*.css", resetCSS).on("change", reload);
     done();
 }
 
