@@ -1,0 +1,252 @@
+/*登入與註冊區域======================*/
+
+.loginRegister {
+    background-image: url('../image/loginRegister/loginBG.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 100px 0;
+
+    .box {
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 60%;
+        margin: 0 auto;
+        padding: 30px 50px;
+        border-radius: $borderRadius;
+
+        .tab {
+            display: flex;
+            justify-content: space-between;
+            width: 60%;
+            margin: 0 auto 50px;
+
+            .tabBtn {
+                font-size: $paragraph;
+                border: 0;
+                background-color: transparent;
+                color: $fontColor;
+                font-weight: bold;
+                position: relative;
+                cursor: pointer;
+
+                &.active::after {
+                    content: "";
+                    display: block;
+                    width: 100px;
+                    height: 3px;
+                    background-color: $primary;
+                    position: absolute;
+                    bottom: -30%;
+                    left: -50%;
+                }
+            }
+        }
+
+        .login {
+            width: 60%;
+            margin: 0 auto;
+
+            form {
+                display: flex;
+                flex-direction: column;
+                color: $fontColor;
+
+                label {
+                    margin-bottom: 5px;
+                    font-size: $paragraph-s;
+                }
+
+                input {
+                    margin-bottom: 20px;
+                    font-size: $paragraph-s;
+                    background-color: white;
+                }
+
+                p {
+                    margin-top: -10px;
+                    font-size: 13px;
+                    color: $fontColor;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+
+                button {
+                    margin-top: 30px;
+                    font-size: $paragraph-s;
+                    border: 0;
+                    height: 40px;
+                    box-sizing: border-box;
+                    padding: 10px;
+                    border-radius: 5px;
+                    background-color: white;
+                    font-family: 'Noto Sans TC', '微軟正黑體';
+                    color: $fontColor;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: $primary;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+
+    .register {
+        width: 60%;
+        margin: 0 auto;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            color: $fontColor;
+
+            label {
+                margin-bottom: 5px;
+                font-size: $paragraph-s;
+            }
+
+            input {
+                margin-bottom: 20px;
+                font-size: $paragraph-s;
+                background-color: white;
+            }
+
+            a {
+                margin-top: -10px;
+                font-size: 13px;
+                color: $fontColor;
+            }
+
+            button {
+                margin-top: 30px;
+                font-size: $paragraph-s;
+                border: 0;
+                height: 40px;
+                box-sizing: border-box;
+                padding: 10px;
+                border-radius: 5px;
+                background-color: white;
+                font-family: 'Noto Sans TC', '微軟正黑體';
+                color: $fontColor;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $primary;
+                    color: white;
+                }
+            }
+        }
+
+    }
+}
+
+.forget {
+    background-color: rgba(0, 0, 0, 0.8);
+    height: calc(100vh - 300px);
+    position: absolute;
+    top: 80px;
+    left: 0;
+
+    .reset {
+        width: 30%;
+        margin-top: 100px;
+        background-color: white;
+        border-radius: $borderRadius;
+        padding: 50px 0;
+        position: relative;
+
+        span {
+            position: absolute;
+            top: 3%;
+            right: 2%;
+            cursor: pointer;
+            font-size: $paragraph;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            margin: 0 auto;
+            color: $fontColor;
+
+            h3 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            label {
+                margin-bottom: 30px;
+                font-size: $paragraph-s;
+                line-height: 1.5;
+            }
+
+            input {
+                margin-bottom: 20px;
+                font-size: $paragraph-s;
+                background-color: white;
+            }
+
+            button {
+                margin-top: 30px;
+                font-size: $paragraph-s;
+                border: 0;
+                height: 40px;
+                box-sizing: border-box;
+                padding: 10px;
+                border-radius: 5px;
+                background-color: $primary;
+                font-family: 'Noto Sans TC', '微軟正黑體';
+                color: white;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: darken($primary, 20%);
+                }
+            }
+        }
+    }
+
+    .done {
+        width: 30%;
+        margin-top: 100px;
+        background-color: white;
+        border-radius: $borderRadius;
+        padding: 50px 0;
+
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            margin: 0 auto;
+            color: $fontColor;
+
+            h3 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+
+
+            button {
+                margin-top: 30px;
+                font-size: $paragraph-s;
+                border: 0;
+                height: 40px;
+                box-sizing: border-box;
+                padding: 10px;
+                border-radius: 5px;
+                background-color: $primary;
+                font-family: 'Noto Sans TC', '微軟正黑體';
+                color: white;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: darken($primary, 20%);
+                }
+            }
+        }
+    }
+}
