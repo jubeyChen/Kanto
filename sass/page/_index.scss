@@ -1,0 +1,96 @@
+.wrapper{
+    height: 100vh;
+
+    // width: 100%;
+    // margin: 0 auto;
+    // overflow: hidden;
+    // resize:both;
+    
+
+    .banner{
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        object-fit: cover;
+        
+        position: absolute;
+        top:0;
+        left:0;
+        
+
+
+        video{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            // position: fixed;
+            // top:0;
+            // left:0;
+            // z-index: -1;
+        }
+    }
+    
+}
+
+a{
+    text-decoration: none;
+    color: $fontColor;
+}
+
+.index01_title{
+    @include flex-container($justify-content:space-between);
+
+    .topic{
+        line-height: 1.2;
+    }
+
+    .info{
+        line-height: 1.6;
+        text-align: center;
+        background-color: hsl(0, 0%, 100%,70%);
+        border-right: 15px solid $primary;
+        padding: 40px;
+    }
+}
+
+.index01_content{
+    @include flex-container($justify-content:space-between);
+
+    li{
+        position: relative;
+    
+
+        p{
+            background-color:$primary;
+            writing-mode: vertical-lr;  
+            /* 垂直直式排列，從右到左 */
+            text-orientation: upright;  
+            /* 文本方向正確 */
+            padding: 3px;
+            color: #fff;
+            text-align: center;
+            letter-spacing: 5px;
+            font-size: $paragraph;
+
+            position: absolute;
+            top: -10px;
+            left:-10px;
+        }
+
+        span{
+            width: 80px;
+            position: absolute;
+            right: 0;
+            bottom: 100px;
+        }
+
+        h4{
+            letter-spacing: 1px;
+            font-weight: 600;
+            padding: 10px 0 20px;
+        }
+
+    } //li
+
+}
