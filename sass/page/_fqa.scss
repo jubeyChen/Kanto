@@ -1,0 +1,118 @@
+.fqa{
+    @include flex-container(row, nowrap, space-between, flex-start);
+    color: $fontColor;
+    height: auto;
+    margin-top: 20px;
+
+    @include m(){
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+
+    aside{
+        text-align: center;
+        background-color: #fff;
+
+        @include m(){
+            background-color: $bgc;
+        }
+
+        p{
+            font-size: $paragraph-s;
+            line-height: 30px;
+            box-sizing: border-box;
+            padding: 10px;
+
+            @include m(){
+                display: none;
+            }
+    
+        }
+
+        ul{
+            @include m(){
+                display: none;
+            }
+            li{
+                line-height: 30px;
+                box-sizing: border-box;
+                padding: 10px;
+                cursor: pointer;
+
+                transition: .3s;
+                
+                &:hover{
+                    color: #fff;
+                    background-color: $primary;    
+                }
+            }
+            
+            li.active{
+                color: #fff;
+                background-color: $primary;
+            }
+        }
+
+        form{
+            display: none;
+            @include m(){
+                display: block;
+                margin-bottom: 20px;
+            }
+            select{
+                @include m(){
+                    border: 10px solid #fff;
+                    width: auto;
+                    box-sizing: border-box;
+                    padding: 0 5px;
+                }    
+            }
+        }
+    }
+
+    main{
+        background-color: #fff;
+        box-sizing: border-box;
+        padding: 20px;
+        margin-bottom: 100px;
+
+
+        @include m(){
+            width: 100%;
+        }
+
+        > h4{
+            margin-bottom: 20px;
+        }
+
+        .accordion-item{
+            border: 1px solid $primary;
+            border-radius: $borderRadius;
+            margin-bottom: 40px;
+            
+            h4{
+                background-color: $primary;
+                color: #fff;
+                box-sizing: border-box;
+                padding: 10px;
+                position: relative;
+                cursor: pointer;
+
+                &::after{
+                    content:'-';
+                    position: absolute;
+                    right: 15px;
+                }
+                
+            }
+
+            .accordion-content{
+                box-sizing: border-box;
+                padding: 10px;
+                display: none;
+
+            }
+        }
+    }
+}
