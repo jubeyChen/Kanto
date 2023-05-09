@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首頁</title>
     @@include('./layout/style.html')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
 
 <body>
@@ -19,7 +23,7 @@
  
     <!--影片banner=================================-->
 
-    <div class="wrapper">
+    <div class="video_case">
         <div class="banner">
             <video autoplay muted loop data-src="image/index/banner_F_nowords.mp4" style="width:100%" object-fit="cover">
                 <source src="image/index/banner_F_nowords.mp4" type="video/mp4">
@@ -42,33 +46,130 @@
             </h4>
         </div>
     </section>
+    <!-- 第二部分 行程 -->    
     <section class="index01 container">
         <ul class="index01_content">
             <li>
-                <p>2023年 全新開幕</p>
-                <img src="image/index/index01.jpg" alt="">
+                <p class="hashtag">2023年全新開幕</p>
+                <div class="mask">
+                    <img src="image/index/index01.jpg" alt="">
+                </div>
                 <span class='tag-m'>東京</span>
-                <a href="#"><h4>【華納兄弟哈利波特影城門票】</h4></a>
+                <a href="#"><h4>華納兄弟哈利波特影城門票</h4></a>
+                <p>踏入倫敦華納兄弟哈利波特影城，親身體驗電影幕後製作的神奇魔法!</p>
                 <a href="#" class="more">查看詳情</a>
             </li>
             <li>
-                <p>文化體驗 美照留紀念</p>
-                <img src="image/index/index02.jpg" alt="">
-                <span class='tag-m'>淺草/上野</span>
-                <a href="#" class="more"><h4>【東京江戶和裝工房雅和服體驗】</h4></a>
-                <a href="#">查看詳情</a>
+                <p  class="hashtag">文化體驗 美照留紀念</p>
+                <div class="mask">
+                    <img src="image/index/index02.jpg" alt="">
+                </div>
+                <span class='tag-m'>淺草</span>
+                <a href="#"><h4>和裝工房雅和服/浴衣體驗</h4></a>
+                <p>提供不同種類的日本傳統和服供您選擇，享受無憂體驗。</p>
+                <a href="#"  class="more">查看詳情</a>
             </li>
             <li>
-                <p>單日無限搭乘 美景饗宴</p>
-                <img src="image/index/index03.jpg" alt="">
+                <p  class="hashtag">單日無限搭乘 美景饗宴</p>
+                <div class="mask">
+                    <img src="image/index/index03.jpg" alt="">
+                </div>
                 <span class='tag-m'>埼玉</span>
-                <a href="#"><h4>【西武鐵道一日遊券 全線暢遊】</h4></a>
+                <a href="#"><h4>西武鐵道一日遊券 全線暢遊</h4></a>
+                <p>專為外籍旅客設計的優惠車票，搭乘西武線，體驗日本四季美景和文化！</p>
                 <a href="#" class="more">查看詳情</a>
             </li>
         </ul>
-        <a href="#" class="btn-pri-l"> View More
-        </a>
+        <a href="#" class="btn-pri-l"> View More</a>
     </section>
+
+    <!-- 第二部分 住宿 -->
+    <section class="index02 wrapper">
+        <div class="bgcblock"></div>
+        <div class="index02_swiper owl-carousel owl-theme" >
+            <a href="#"><img src="image/index/index04.jpg" alt=""></a>
+            <a href="#"><img src="image/index/index05.jpg" alt=""></a>
+            <a href="#"><img src="image/index/index06.jpg" alt=""></a>
+            <a href="#"><img src="image/index/index07.jpg" alt=""></a>
+            <a href="#"><img src="image/index/index08.jpg" alt=""></a>
+        </div>        
+        <!-- </section> -->
+        <div class="index02_title container">
+            <div class="topic">
+                <h1>Stay</h1>
+            </div>  
+            <div class="info">      
+                <h4>精選推薦<br>
+                    優惠的價格方案  優良的住宿體驗
+                </h4>
+            </div>
+            <a href="#" class="btn-pri-l"> View More</a>
+        </div>    
+    </section>
+    <!-- 第三部分 美食 -->
+    <section class="index03 container">
+        <div class="gallery">
+            <img src="image/index/index09.jpg" class="img09 big" alt="">
+            <img src="image/index/index10.jpg" class="img10" alt="">
+            <img src="image/index/index11.jpg" class="img11 width" alt="">
+            <img src="image/index/index12.jpg" class="img12 big" alt=""><br>
+            <img src="image/index/index13.jpg" class="img13" alt="">
+            <img src="image/index/index14.jpg" class="img14 big" alt="">
+            <div class="index03_title" class="extrawidth">
+                <h1>Gourmet</h1>
+                <a href="#" class="btn-pri-l">View More</a>
+            </div><br>
+            <img src="image/index/index15.jpg" class="img15 width" alt="">
+            <img src="image/index/index16.jpg" class="img16 width" alt="">
+            <img src="image/index/index17.jpg" class="img17 height" alt="">
+            <img src="image/index/index18.jpg" class="img18 big" alt="">
+        </div>
+    </section>
+    <!-- 第四部分 旅遊專欄 -->
+    <section class="index04 container">
+        <h1>Travel Articles</h1>
+        <ul>
+            <li>
+                <span class="tag-m">神奈川縣</span>
+                <a href="#"><img src="image/index/index19.jpg" alt=""></a>
+                <a href="#"><h4>橫濱 </h4></a>
+                <p>施放於山下公園前海上的「Sparkling 花火」，兩天內將以不同順序施放。還有港中船的遊行、公園內的橫濱老舖、集結世界美食的活動等，各式活動等您來體驗。</p>
+            </li>
+            <li>
+                <span class="tag-m">栃木縣</span>
+                <a href="#"><img src="image/index/index20.jpg" alt=""></a>
+                <a href="#"><h4>日光東照宮一日遊</h4></a>
+                <p>日本最華麗的世界遺產日光東照宮，欣賞輝煌的建築和雕塑，參觀伊呂波坂、中禪寺湖和華嚴瀑布等日光的其他熱門景點！</p>
+            </li>
+            <li>
+                <span class="tag-m">山梨縣</span>
+                <a href="#"><img src="image/index/index21.jpg" alt=""></a>
+                <a href="#"><h4>富士山一日遊</h4></a>
+                <p>參加富士山及周邊地區的經典一日遊，迎接日本的春季！前往東京最好的春季景點。</p>
+            </li>
+            <li>
+                <span class="tag-m">東京都</span>
+                <a href="#"><img src="image/index/index22.jpg" alt=""></a>
+                <a href="#"><h4>東京澀谷天空</h4></a>
+                <p>東京澀谷新地標｜Shibuya Sky展望台絕美白天夜景。</p>
+            </li>
+        </ul>
+        <a href="#" class="btn-pri-l">View More</a>
+    </section>
+        <!-- 第五部分 地圖天氣匯率 -->
+    <section class="index05 container">
+        <h1>Map &</h1>
+        <h1 class="line2">Information</h1>
+
+        <div class="index05_info">
+            <img src="image/index/" alt="">
+        </div>
+
+
+
+
+    </section>
+
 
 
 
@@ -107,6 +208,9 @@
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
