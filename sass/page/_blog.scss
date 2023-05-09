@@ -1,0 +1,217 @@
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    // background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 320px;
+    height: 455px;
+}
+
+.swiper-wrapper {
+    z-index: 1;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+}
+
+.prev-btn {
+    position: absolute;
+    cursor: pointer;
+    display: inline-block;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -20px;
+    z-index: 2;
+}
+
+.next-btn {
+    transform: translateY(-50%);
+    top: 50%;
+    right: -20px;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+}
+
+.swiper-container {
+    // width: 1200px;
+    width: 55%;
+    margin: 0 auto;
+    position: relative;
+
+}
+
+.travel_sec1 ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0;
+    border-top: 1px solid black;
+    // @include sec-btn(l, 20px, 50px);
+
+    li {
+
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+
+
+
+//熱門活動--------------------------
+
+section.travel_sec2 {
+    margin-bottom: 30px;
+
+    h2 {
+        
+        margin-bottom: 50px;
+    }
+
+    div.main_event {
+        display: flex;
+        justify-content: center;
+
+        div.event_inner {
+            width: 48%;
+            margin: 0 1%;
+            position: relative;
+            // @include tag(l, 20px, 55px);
+
+            div.title{
+                position: absolute;
+                padding: 5px 35px;
+                top: -20px;
+                left: -20px;
+            }
+
+            a {
+                // float: right;
+                margin: 20px 0;
+                text-decoration: none;
+                color: black;
+                font-weight: 600;
+                font-size: $paragraph;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+
+            }
+
+            div.pic {
+                width: 100%;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            div.content {
+                padding-bottom: 50px;
+
+                h3 {
+                    font-weight: 600;
+                    margin: 25px 0;
+                    margin-left: 35px;
+                }
+
+                div.text {
+                    margin: 0 60px;
+                }
+            }
+        }
+    }
+}
+
+section.travel-sec3 {
+    display: flex;
+    flex-wrap: wrap;
+
+    div.another_event {
+        width: 31.3333%;
+        margin: 0 1%;
+        margin-bottom: 70px;
+        cursor: pointer;
+        position: relative;
+        div.title{
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            padding: 5px 30px;
+        }
+        div.pic {
+            width: 100%;
+
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        div.content {
+            margin-bottom: 15px;
+
+            h3 {
+                font-weight: 600;
+                margin: 25px 0 15px 0;
+            }
+
+            div.text {
+                margin: 0 20px;
+            }
+        }
+
+        div.link {
+            position: relative;
+            overflow: hidden;
+
+            a {
+                text-decoration: none;
+                float: right;
+                font-size: $paragraph;
+                color: black;
+                font-weight: 600;
+            }
+        }
+
+    }
+}
+
+section.travel-sec4 {
+    padding: 35px 0;
+
+    div.btn {
+        text-align: center;
+
+        a {
+            // @include btn(l, 20px, 50px);
+            padding: 15px 25px;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    }
+}

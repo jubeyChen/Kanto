@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <title>旅遊專欄</title>
     @@include('./layout/style.html')
+
 </head>
 
 <body>
@@ -18,47 +20,319 @@
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
-    <div class="container">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor, unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore blanditiis assumenda, velit accusantium
-            doloremque repellat veniam consequatur voluptatum iste dolore tempora et nostrum expedita sequi eaque vero
-            quia vitae fugiat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates voluptatibus esse
-            delectus ducimus qui, voluptatum cumque quasi quos asperiores porro, expedita autem voluptas est veritatis
-            eaque tempore laboriosam facilis illo? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, culpa
-            voluptas. Sequi minima in suscipit, eveniet, eius fugiat at quas delectus veniam ad tempora molestias fuga
-            velit et iste non.</p>
-
-
-    </div>
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./image/blog/Mask group (4).png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./image/blog/Mask group (5).png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./image/blog/Mask group (6).png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./image/blog/Mask group (7).png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./image/blog/Mask group (8).png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./image/blog/Mask group (4).png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./image/blog/Mask group (5).png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./image/blog/Mask group (6).png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./image/blog/Mask group (7).png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./image/blog/Mask group (8).png" />
+                    </div>
+                </div>
+            </div>
+            <div class="prev-btn">
+                <img src="./image/blog/btn_left.png" alt="">
+            </div>
+            <div class="next-btn">
+                <img src="./image/blog/btn_right.png" alt="">
+            </div>
+    
+    
+        </div>
+    
+    
+        <!--搜尋button-->
+        <section class="container travel_sec1">
+            <ul>
+                <li><a href="./productPage.html" class="btn-sec-l">東京都</a></li>
+                <li><a href="#" class="btn-sec-l">神奈川縣</a></li>
+                <li><a href="#" class="btn-sec-l">千葉縣</a></li>
+                <li><a href="#" class="btn-sec-l">埼玉縣</a></li>
+                <li><a href="#" class="btn-sec-l">群馬縣</a></li>
+                <li><a href="#" class="btn-sec-l">栃木縣</a></li>
+                <li><a href="#" class="btn-sec-l">茨城縣</a></li>
+                <li><a href="#" class="btn-sec-l">山梨縣</a></li>
+            </ul>
+        </section>
+    
+    
+        <!--熱門活動-->
+        <section class="container travel_sec2">
+            <h2>熱門活動</h2>
+            <div class="main_event">
+                <div class="event_inner">
+                    <div class="title tag-l">
+                        神奈川
+                    </div>
+                    <div class="pic">
+                        <img src="./image/blog/mainevent1.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>橫濱 Sparkling Twilight </h3>
+                        <div class="text">
+                            <p>
+                                施放於山下公園前海上的「Sparkling 花火」，兩天內將以不同
+                                順序施放。此外，還有港中船的遊行、公園內的橫濱老舖、集結
+                                世界美食的活動等，各式活動等您來體驗。
+                            </p>
+                        </div>
+    
+                    </div>
+                    <a href="#">查看詳情</a>
+                </div>
+                <div class="event_inner">
+                    <div class="title tag-l">
+                        栃木縣
+                    </div>
+                    <div class="pic">
+                        <img src="./image/blog/mainevent2.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>日光東照宮一日遊</h3>
+                        <div class="text">
+                            <p>日本最華麗的世界遺產日光東照宮，欣賞輝煌的建築和雕塑，參觀
+                                伊呂波坂、中禪寺湖和華嚴瀑布等日光的其他熱門景點！</p>
+                        </div>
+    
+                    </div>
+                    <a href="#">查看詳情</a>
+                </div>
+            </div>
+        </section>
+    
+        <!--其他活動-->
+        <section class="container travel-sec3">
+            <!--1-->
+            <div class="another_event">
+                <div class="title tag-m">
+                    山梨縣
+                </div>
+                <div class="pic">
+                    <img src="./image/blog/travel_1.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>富士山一日遊</h3>
+                    <div class="text">
+                        <p>參加富士山及周邊地區的經典一日遊，迎接
+                            日本的春季！前往東京最好的春季景點。</p>
+                    </div>
+    
+                </div>
+                <div class="link">
+                    <a href="#">查看詳情</a>
+                </div>
+            </div>
+    
+    
+            <!--2-->
+            <div class="another_event">
+                <div class="title tag-m">
+                    東京都
+                </div>
+                <div class="pic">
+                    <img src="./image/blog/travel_2.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>東京澀谷天空</h3>
+                    <div class="text">
+                        <p>東京澀谷新地標｜Shibuya Sky展望台絕美
+                            白天夜景，來到澀谷必經行程。</p>
+                    </div>
+    
+                </div>
+                <div class="link">
+                    <a href="#">查看詳情</a>
+                    <div></div>
+                </div>
+            </div>
+    
+            <!--3-->
+            <div class="another_event">
+                <div class="title tag-m">
+                    東京都
+                </div>
+                <div class="pic">
+                    <img src="./image/blog/travel_3.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>明治神宮完整指南</h3>
+                    <div class="text">
+                        <p>明治神宮的人氣的參拜路線和沿途必看景點
+                            以及周邊推薦的景點、美食和購物資訊。</p>
+                    </div>
+    
+                </div>
+                <div class="link">
+                    <a href="#">查看詳情</a>
+                </div>
+            </div>
+    
+            <!--4-->
+            <div class="another_event">
+                <div class="title tag-m">
+                    群馬縣
+                </div>
+                <div class="pic">
+                    <img src="./image/blog/travel_4.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>群馬自然之旅</h3>
+                    <div class="text">
+                        <p> 前往東京近郊群馬縣
+                            沼田市，享受山林的靜謐氛圍，聆聽溪水
+                            傾瀉而下的清新樂音。</p>
+                    </div>
+    
+                </div>
+                <div class="link">
+                    <a href="#">查看詳情</a>
+                </div>
+            </div>
+    
+            <!--5-->
+            <div class="another_event">
+                <div class="title tag-m">
+                    東京都
+                </div>
+                <div class="pic">
+                    <img src="./image/blog/travel_5.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>竹下通</h3>
+                    <div class="text">
+                        <p> 「卡哇伊（カワイイ）」文化發源地，
+                            美妝、時尚品牌、雜貨、古著一網打盡! </p>
+                    </div>
+    
+                </div>
+                <div class="link">
+                    <a href="#">查看詳情</a>
+                </div>
+            </div>
+    
+            <!--6-->
+            <div class="another_event">
+                <div class="title tag-m">
+                    神奈川縣
+                </div>
+                <div class="pic">
+                    <img src="./image/blog/travel_6.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>鎌倉一日遊</h3>
+                    <div class="text">
+                        <p> 經典動漫場景「灌籃高手」平交道，
+                            江之島欣賞寧靜唯美的海景。</p>
+                    </div>
+    
+                </div>
+                <div class="link">
+                    <a href="#">查看詳情</a>
+                </div>
+            </div>
+    
+            <!--7-->
+            <div class="another_event">
+                <div class="title tag-m">
+                    埼玉縣
+                </div>
+                <div class="pic">
+                    <img src="./image/blog/travel_7.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>群馬自然之旅川越一日遊</h3>
+                    <div class="text">
+                        <p> 東京出發，穿越時空，來到小江戶川越
+                            欣賞古色古香的街道和建築。</p>
+                    </div>
+    
+                </div>
+                <div class="link">
+                    <a href="#">查看詳情</a>
+                </div>
+            </div>
+    
+            <!--8-->
+            <div class="another_event">
+                <div class="title tag-m">
+                    千葉縣
+                </div>
+                <div class="pic">
+                    <img src="./image/blog/travel_8.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>東京迪士尼樂園</h3>
+                    <div class="text">
+                        <p> 東京迪士尼樂園該怎麼玩？設施怎麼玩才順？
+                            行前必讀祕技，創造夢幻又歡樂的回憶。</p>
+                    </div>
+    
+                </div>
+                <div class="link">
+                    <a href="#">查看詳情</a>
+                </div>
+            </div>
+    
+            <!--9-->
+            <div class="another_event">
+                <div class="title tag-m">
+                    茨城縣
+                </div>
+                <div class="pic">
+                    <img src="./image/blog/travel_9.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>國營常陸海濱公園</h3>
+                    <div class="text">
+                        <p> 今生必去夢幻景點，四季都能來踏青的東京
+                            近郊好去處！</p>
+                    </div>
+    
+                </div>
+                <div class="link">
+                    <a href="#">查看詳情</a>
+                </div>
+            </div>
+        </section>
+    
+    
+        <!--分頁按鈕-->
+        <section class="container travel-sec4">
+            <div class="btn">
+                <a href="#" class="btn-pri-l">1</a>
+                <a href="#" class="btn-pri-l">2</a>
+                <a href="#" class="btn-pri-l">3</a>
+                <a href="#" class="btn-pri-l">4</a>
+                <a href="#" class="btn-pri-l">5</a>
+                <a href="#" class="btn-pri-l">></a>
+            </div>
+        </section>
 
 
     <!-- 以下Footer區域 -->
@@ -66,6 +340,32 @@
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2.5,
+                slideShadows: true,
+            },
+            loop: true,
+        });
+        var prevBtn = document.querySelector('.prev-btn');
+        console.log(prevBtn);
+        prevBtn.addEventListener('click', function () {
+            swiper.slidePrev(); // 滑动到前一个slide
+        });
+        var nextBtn = document.querySelector('.next-btn')
+        nextBtn.addEventListener('click', function () {
+            swiper.slideNext(); // 滑动到前一个slide
+        });
+    </script>
 </body>
 
 </html>

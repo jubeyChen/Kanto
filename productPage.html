@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>行程內頁</title>
     @@include('./layout/style.html')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -16,47 +19,716 @@
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
-    <div class="container">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor, unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
+    <div class="container product_inner">
+        <!--旅遊標題-->
+        <h2>富士山賞櫻一日遊</h2>
+        <!--星星和加入最愛-->
+        <div class="star_addheart">
+            <div class="star">
+                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                <p>4</p>
+            </div>
+            <div class="heart">
+                <i class="fa-solid fa-heart" style="color: #fe2a2a;"></i>
+                <p>加入我的最愛</p>
+            </div>
+        </div>
 
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
+        <!--banner -->
+        <div class="banner">
+            <div class="banner_left">
+                <img src="./image/productPage/main.png" alt="">
+            </div>
+            <div class="banner_right">
+                <div class="right_top">
+                    <img src="./image/productPage/main2.png" alt="">
+                </div>
+                <div class="right_bottom">
+                    <img src="./image/productPage/main3.png" alt="">
+                </div>
+            </div>
+        </div>
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore blanditiis assumenda, velit accusantium
-            doloremque repellat veniam consequatur voluptatum iste dolore tempora et nostrum expedita sequi eaque vero
-            quia vitae fugiat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates voluptatibus esse
-            delectus ducimus qui, voluptatum cumque quasi quos asperiores porro, expedita autem voluptas est veritatis
-            eaque tempore laboriosam facilis illo? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, culpa
-            voluptas. Sequi minima in suscipit, eveniet, eius fugiat at quas delectus veniam ad tempora molestias fuga
-            velit et iste non.</p>
+        <!--main-->
+        <div class="main">
+            <!--主要內容-->
+            <article>
+                <!--簡介-->
+                <section class="Introduction">
+                    <ul>
+                        <li>富士山五合目，近距離觀看美麗的富士山。</li>
+                        <li>音樂盒之森美術館，伴隨著富士山的夢幻美景，欣賞經典的古典樂。</li>
+                        <li>忍野八海，由八個湖泊組成，每一個湖泊都有其獨特的形態和特色。</li>
+                    </ul>
+                </section>
 
 
+
+                <!--方案選擇-->
+                <section class="plan_choose">
+                    <h3>方案選擇</h3>
+                    <div class="plan_choose_inner">
+                        <div class="block1">
+                            <h4>請選擇行程日期</h4>
+                            <button type="button">清除全部</button>
+                        </div>
+
+                        <div class="block2">
+                            <button type="button">查看可預訂的日期</button>
+                        </div>
+
+                        <div class="block3">
+                            <h4>人數</h4>
+                            <div class="count">
+                                <i class="fa-sharp fa-solid fa-minus"></i>
+                                <span>1</span>
+                                <i class="fa-sharp fa-solid fa-plus"></i>
+                            </div>
+                        </div>
+
+                        <div class="block4">
+                            <div class="total">
+                                <p>NT$<span>2200</span></p>
+                            </div>
+
+                            <div class="btn">
+                                <button class="add_shoppingcar btn-cancel-l">
+                                    加入購物車
+                                </button>
+                                <button class="paid btn-pri-l">
+                                    立即預定
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--評價-->
+                <section class="review">
+                    <h3>評價</h3>
+                    <div class="block1">
+                        <div class="block1_left">
+                            <div class="score">
+                                <h3>4</h3>
+                                <p>/5</p>
+                            </div>
+
+                            <!--星星之後怎麼動態做更改?-->
+                            <div class="star">
+                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                            </div>
+
+                            <div class="review_total">
+                                <p><span>200</span>則評價</p>
+                            </div>
+                        </div>
+                        <div class="block1_right ">
+                            <button type="button" class="btn-pri-l">查看所有評價</button>
+                        </div>
+                    </div>
+
+                    <!--這裡要用overflow-x hidden-->
+                    <div class="block2">
+
+                        <!--這個btn之後會來修改-->
+                        <div class="right_btn">
+                            <img src="./image/productPage/btn_right.png" alt="">
+                        </div>
+
+                        <!--這邊之後要輪播-->
+                        <div class="card_swiper_item">
+                            <div class="member1">
+                                <div class="member_information">
+                                    <div class="member_pic">
+                                        <img src="./image/productPage/head1.png" alt="">
+                                    </div>
+                                    <div class="member_wrapper">
+                                        <div class="member_name">
+                                            <p>阿偉</p>
+                                        </div>
+                                        <div class="member_time">
+                                            <p>兩天前</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member_content">
+                                    <p>行程規畫非常好玩且充實，下次還會再來!行程規畫非常好玩且充實，下次還會再來!</p>
+                                </div>
+                                <div class="pic">
+                                    <img src="./image/productPage/review1.png" alt="">
+                                    <img src="./image/productPage/review2.png" alt="">
+                                    <img src="./image/productPage/review3.png" alt="">
+                                    <img src="./image/productPage/review4.png" alt="">
+                                </div>
+                            </div>
+                            <div class="member2">
+                                <div class="member_information">
+                                    <div class="member_pic">
+                                        <img src="./image/productPage/head2.png" alt="">
+                                    </div>
+                                    <div class="member_wrapper">
+                                        <div class="member_name">
+                                            <p>Jeff</p>
+                                        </div>
+                                        <div class="member_time">
+                                            <p>兩天前</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member_content">
+                                    <p>行程規畫非常好玩且充實，下次還會再來!行程規畫非常好玩且充實，下次還會再來!</p>
+                                </div>
+                                <div class="pic">
+                                    <img src="./image/productPage/review5.png" alt="">
+                                    <img src="./image/productPage/review6.png" alt="">
+                                    <img src="./image/productPage/review7.png" alt="">
+                                    <img src="./image/productPage/review8.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </section>
+
+
+                <!--活動介紹-->
+
+                <section class="event">
+                    <h3>活動介紹</h3>
+                    <div class="event_content">
+                        <p>
+                            來日本旅遊，除了東京以外，富士山也是不可錯過的景點之一！欣賞富士山的美景，品嚐當地
+                            美食，探索日本的文化和藝術，讓您的旅程更加豐富多彩。別忘了準備好足夠的體力和裝備，
+                            並留意當地的天氣情況。
+                        </p>
+                    </div>
+
+                    <div class="event_pic">
+                        <img src="./image/productPage/event1.png" alt="">
+                        <img src="./image/productPage/event2.png" alt="">
+                        <img src="./image/productPage/event3.png" alt="">
+                        <img src="./image/productPage/event4.png" alt="">
+                    </div>
+                </section>
+
+
+
+                <!--行前提醒-->
+                <section class="remind">
+                    <h3>行前提醒</h3>
+                    <ul>
+                        <li>
+                            <p>確定旅行目的地、日期、預算、行程和住宿等，並盡可能提前預訂，以免在行程中出現任何不必要的問題。</p>
+                        </li>
+                        <li>
+                            <p>在旅行期間盡可能避免攜帶大量現金、貴重物品和重要文件，並將這些物品放在安全的地方。</p>
+                        </li>
+                        <li>
+                            <p>確保您的護照和簽證都是有效的，並且在旅行期間至少還有6個月的有效期。如果需要簽證，請確保您已經
+                                申請並獲得了簽證。</p>
+                        </li>
+                        <li>
+                            <p>在旅行期間，保持與家人和朋友的聯繫，並且隨時告知您的行蹤和下一步計劃。</p>
+                        </li>
+                    </ul>
+                </section>
+
+
+                <!--加碼推薦-->
+                <section class="recommend">
+                    <h3>加碼推薦</h3>
+                    <div class="event_block">
+                        <div class="event1">
+                            <img src="./image/productPage/recommend.png" alt="">
+                            <div class="content">
+                                <div class="title">
+                                    <h4>日本旅遊大禮包|東京・大阪・沖繩</h4>
+                                </div>
+                                <div class="price">
+                                    <p>NT$<span>250</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--如果有多個推薦的話-->
+                        <!-- <div class="event2">
+                            <img src="./image/productPage/recommend.png" alt="">
+                            <div class="content">
+                                <div class="title">
+                                    <h4>日本旅遊大禮包|東京・大阪・沖繩</h4>
+                                </div>
+                                <div class="price">
+                                    <p>NT$<span>250</span></p>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+                </section>
+
+
+
+                <!--全部評價-->
+                <section class="all_review">
+                    <h3>評價</h3>
+
+                    <!--評價分數 星星數量-->
+                    <div class="block1_left">
+                        <div class="score">
+                            <h3>4</h3>
+                            <p>/5</p>
+                        </div>
+
+                        <!--星星之後怎麼動態做更改?-->
+                        <div class="star">
+                            <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                            <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                            <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                            <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                        </div>
+
+                        <div class="review_total">
+                            <p><span>200</span>則評價</p>
+                        </div>
+                    </div>
+
+                    <!--照片庫-->
+                    <div class="total_pic">
+                        <div class="left">
+                            <div class="top">
+                                <h4>照片庫</h4>
+                                <p><span>20</span>張照片</p>
+                            </div>
+                            <p><a href="#">查看更多</a></p>
+                        </div>
+                        <div class="right">
+                            <div class="pic">
+                                <img src="./image/productPage/totalpic1.png" alt="">
+                            </div>
+                            <div class="pic">
+                                <img src="./image/productPage/totalpic2.png" alt="">
+                            </div>
+                            <div class="pic">
+                                <img src="./image/productPage/totalpic3.png" alt="">
+                            </div>
+                            <div class="pic">
+                                <img src="./image/productPage/totalpic4.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--評價篩選-->
+                    <div class="filter">
+                        <div class="filter_btn">
+                            <button type="button" class="btn-pri-l first">全部</button>
+                            <button type="button" class="btn-pri-l">只看附圖評價</button>
+                            <button type="button" class="btn-pri-l">評分:由高至低</button>
+                            <button type="button" class="btn-pri-l">評分:由低至高</button>
+                        </div>
+                    </div>
+
+
+                    <!--會員評價-->
+                    <div class="member_review">
+
+                        <!--會員資訊-->
+                        <div class="member">
+                            <div class="member_information">
+                                <div class="pic">
+                                    <img src="./image/productPage/head3.png" alt="">
+                                </div>
+
+                                <div class="member_name">
+                                    <p>小明</p>
+                                    <p><span>4</span>天前</p>
+                                </div>
+                            </div>
+
+                            <div class="member_star">
+                                <div class="star">
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                </div>
+                                <p>超讚</p>
+                            </div>
+
+                            <!--內容-->
+                            <div class="member_content">
+                                <p>第一次參加一日遊行程，該到的點都有到，富士山真的很美，拍的很開心❤️</p>
+                            </div>
+
+                            <!--會員提供照片-->
+                            <div class="member_pic">
+                                <div class="first">
+                                    <img src="./image/productPage/review9.png" alt="" class="first">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review10.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review11.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review12.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review13.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review14.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--會員資訊-->
+                        <div class="member">
+                            <div class="member_information">
+                                <div class="pic">
+                                    <img src="./image/productPage/head4.png" alt="">
+                                </div>
+
+                                <div class="member_name">
+                                    <p>阿豪</p>
+                                    <p><span>6</span>天前</p>
+                                </div>
+                            </div>
+
+                            <div class="member_star">
+                                <div class="star">
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                </div>
+                                <p>超讚</p>
+                            </div>
+
+                            <!--內容-->
+                            <div class="member_content">
+                                <p>Jacky 導遊人特別和善親切，幫我們團員拍照又講解重點，淺顯易懂，還會把集合時間跟聯絡方式一上車就讓我們知道，
+                                    相當安心。很幸運天氣很好，整天看得到富士山🗻</p>
+                            </div>
+
+                            <!--會員提供照片-->
+                            <div class="member_pic">
+                                <div class="first">
+                                    <img src="./image/productPage/review15.png" alt="" class="first">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review16.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review17.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review18.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review19.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review20.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--會員資訊 無照片-->
+                        <div class="member">
+                            <div class="member_information">
+                                <div class="pic">
+                                    <img src="./image/productPage/head1.png" alt="">
+                                </div>
+
+                                <div class="member_name">
+                                    <p>小明</p>
+                                    <p><span>4</span>天前</p>
+                                </div>
+                            </div>
+
+                            <div class="member_star">
+                                <div class="star">
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                </div>
+                                <p>超讚</p>
+                            </div>
+
+                            <!--內容-->
+                            <div class="member_content">
+                                <p>這次旅程非常幸運，全日都可以看到富士山，導遊小姐也很用心，會提供一些tips，令我們玩得更盡興。</p>
+                            </div>
+
+                            <!--會員提供照片-->
+                            <!-- <div class="member_pic">
+                                <div class="first">
+                                    <img src="./image/productPage/review9.png" alt="" class="first">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review10.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review11.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review12.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review13.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review14.png" alt="">
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <!--會員資訊 無照片-->
+                        <div class="member">
+                            <div class="member_information">
+                                <div class="pic">
+                                    <img src="./image/productPage/head2.png" alt="">
+                                </div>
+
+                                <div class="member_name">
+                                    <p>阿偉</p>
+                                    <p><span>6</span>天前</p>
+                                </div>
+                            </div>
+
+                            <div class="member_star">
+                                <div class="star">
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                </div>
+                                <p>超讚</p>
+                            </div>
+
+                            <!--內容-->
+                            <div class="member_content">
+                                <p>建議到日本自由行的人可以選擇這樣的行程，可以省很多時間，這次的導遊Zoey很親切，用中、英文導覽,
+                                    當天很幸運，因爲天氣很好，可以看到富士山的全貌，還有抹茶體驗哦，很值得推薦的行程</p>
+                            </div>
+
+                            <!--會員提供照片-->
+                            <!-- <div class="member_pic">
+                                <div class="first">
+                                    <img src="./image/productPage/review9.png" alt="" class="first">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review10.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review11.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review12.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review13.png" alt="">
+                                </div>
+                                <div>
+                                    <img src="./image/productPage/review14.png" alt="">
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+
+            <!--側邊攔-->
+            <aside>
+                <section class="choose">
+                    <div class="choose_inner">
+                        <div class="price">
+                            <p>NT$<span>2200</span></p>
+                        </div>
+                        <div class="choose_btn">
+                            <button type="button" class="">選擇方案</button>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <section class="plan_detail">
+
+                    <h3>方案詳情</h3>
+                    <div class="total_detail">
+                        <div class="line"></div>
+                        <div class="detail_1">
+                            <div class="title">
+                                <div class="circle"></div>
+                                <h4>08:10去程</h4>
+                            </div>
+    
+                            <div class="content">
+                                <div class="pic">
+                                    <img src="./image/productPage/detail_1.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <p>飯店集合</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="detail_2">
+                            <div class="title">
+                                <div class="circle"></div>
+                                <h4>10:20景點/體驗</h4>
+                            </div>
+    
+                            <div class="content">
+                                <div class="pic">
+                                    <img src="./image/productPage/detail_2.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <p>富士山五合目</p>
+                                    <p class="small">近距離觀看富士山。</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="detail_3">
+                            <div class="title">
+                                <div class="circle"></div>
+                                <h4>10:20景點/體驗</h4>
+                            </div>
+    
+                            <div class="content">
+                                <div class="pic">
+                                    <img src="./image/productPage/detail_3.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <p>音樂盒之森美術館<br> </p>
+                                    <p class="small">伴隨富士山的夢幻美景
+                                        聆聽經典的音樂。</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="detail_4">
+                            <div class="title">
+                                <div class="circle"></div>
+                                <h4>14:30景點/體驗</h4>
+                            </div>
+    
+                            <div class="content">
+                                <div class="pic">
+                                    <img src="./image/productPage/detail_4.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <p>忍野八海<br></p>
+                                    <p class="small">由八個湖泊組成，每一個湖泊都有其獨特的形態和特色。</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="detail_5">
+                            <div class="title">
+                                <div class="circle"></div>
+                                <h4>16:30回程</h4>
+                            </div>
+    
+                            <div class="content">
+                                <div class="pic">
+                                    <!-- <img src="./image/productPage/detail_1.png" alt=""> -->
+                                </div>
+                                <div class="text">
+                                    <!-- <p>王子飯店下車</p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </aside>
+        </div>
+
+
+        <!--頁碼的部分-->
+        <div class="page">
+            <a href="#" class="btn-pri-l">
+                <  </a>
+                    <a href="#" class="btn-pri-l">1</a>
+                    <a href="#" class="btn-pri-l">2</a>
+                    <a href="#" class="btn-pri-l">3</a>
+                    <a href="#" class="btn-pri-l">4</a>
+                    <a href="#" class="btn-pri-l">5</a>
+                    <a href="#" class="btn-pri-l">></a>
+        </div>
+
+
+        <!--你可能會喜歡-->
+        <div class="like">
+            <h3>你可能會喜歡...</h3>
+            <div class="event_block">
+                <div class="event">
+                    <img src="./image/productPage/other3.png" alt="">
+                    <div class="content">
+                        <div class="title">
+                            <h4>富士山經典路線一日遊</h4>
+                        </div>
+                        <div class="price">
+                            <p>NT$<span>2000</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <img src="./image/productPage/other4.png" alt="">
+                    <div class="content">
+                        <div class="title">
+                            <h4>富士山一日遊(東京出發)</h4>
+                        </div>
+                        <div class="price">
+                            <p>NT$<span>2500</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <img src="./image/productPage/other1.png" alt="">
+                    <div class="content">
+                        <div class="title">
+                            <h4>富士山&河口湖經典一日遊</h4>
+                        </div>
+                        <div class="price">
+                            <p>NT$<span>2200</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <img src="./image/productPage/other2.png" alt="">
+                    <div class="content">
+                        <div class="title">
+                            <h4>富士山景&忍野八海一日遊</h4>
+                        </div>
+                        <div class="price">
+                            <p>NT$<span>250</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 
 
     <!-- 以下Footer區域 -->
