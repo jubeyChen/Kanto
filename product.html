@@ -18,47 +18,246 @@
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
-    <div class="container">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor, unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
+    
+    <div class="product wrapper">
 
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
+        <div class="container">
+            <aside class="left">
+                    <form action="post">
+                        <div class="search">
+                            <div class="search-text">
+                                <input type="text" class="search-bar" name="search-bar" id="search" placeholder="輸入名稱">
+                                <button class="search-btn"><svg width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg></button>
+                            </div>
+        
+                            <div class="check-box">
+                                <h4>篩選目的地</h4>
+                                <input type="checkbox">東京<br>
+                                <input type="checkbox">神奈川<br>
+                                <input type="checkbox">埼玉<br>
+                                <input type="checkbox">茨城<br>
+                                <input type="checkbox">千葉<br>
+                                <input type="checkbox">群馬<br>
+                                <input type="checkbox">杤木
+                            </div>
+        
+                            <div class="check-box2">
+                                <h4>所有商品類別</h4>
+                                <input type="checkbox">一日遊<br>
+                                <input type="checkbox">景點門票<br>
+                                <input type="checkbox">主題樂園<br>
+                                <input type="checkbox">歷史景點
+                            </div>
+        
+                            <div class="search-day">
+                                <div class="p-calender"></div>
+                                <h4>篩選出發日期</h4>
+                                <div class="calendar">
+                                    <div class="calendar-header">
+                                      <div class="calendar-header-item prev-month">&lt;</div>
+                                      <div class="calendar-header-item current-month"></div>
+                                      <div class="calendar-header-item next-month">&gt;</div>
+                                    </div>
+                                    <div class="calendar-body">
+                                      <div class="calendar-weekdays">
+                                        <div class="calendar-weekday">日</div>
+                                        <div class="calendar-weekday">一</div>
+                                        <div class="calendar-weekday">二</div>
+                                        <div class="calendar-weekday">三</div>
+                                        <div class="calendar-weekday">四</div>
+                                        <div class="calendar-weekday">五</div>
+                                        <div class="calendar-weekday">六</div>
+                                      </div>
+                                      <div class="calendar-days"></div>
+                                    </div>
+                                  </div>
+                            </div>
+        
+                            <div class="search-price">
+                                <h4>價錢 (TWD)</h4>
+                                <input type="range" min="0" max="9999" value="0" class="slider" id="slider">
+                                <div id="value"></div>                                
+                            </div>
+                        </div>
+                    </form>
+                </aside>
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore blanditiis assumenda, velit accusantium
-            doloremque repellat veniam consequatur voluptatum iste dolore tempora et nostrum expedita sequi eaque vero
-            quia vitae fugiat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates voluptatibus esse
-            delectus ducimus qui, voluptatum cumque quasi quos asperiores porro, expedita autem voluptas est veritatis
-            eaque tempore laboriosam facilis illo? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, culpa
-            voluptas. Sequi minima in suscipit, eveniet, eius fugiat at quas delectus veniam ad tempora molestias fuga
-            velit et iste non.</p>
-
-
+                <article class="right">
+                    <div class="top-column">
+                        <p>50 項體驗行程</p>
+                    </div>
+                    <div class="big-area">
+                    <ul>
+                        <li>
+                            <div class="jpg">
+                                <img src="image/product/jp_a.png" alt="">
+                            </div>
+    
+                            <div class="word">
+                                    <div class="title-h">
+                                        <h3>富士山賞櫻一日遊（東京出發）</h3>
+                                        <button class="heart-btn"><svg class="s-heart" width="25px" height="25px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></button>
+                                    </div>
+                                <p>來日本旅遊，除了東京以外，富士山也是不可錯過的景點之一！欣賞富士山的美景，品嚐當地美食，探索日本的文化和藝術，讓您的旅程更加豐富多彩。別忘了準備好足夠的體力和裝備，並留意當地的天氣情況。</p>
+                                <div class="only-btn">
+                                        <p class="p-targ">即買即用</p>
+                                        <button class='btn-pri-m'>
+                                            <a href="dist/productPage.html">查看詳情</a>
+                                        </button>
+                                </div>
+                                    <div class="star-p">
+                                        <div class="star">
+                                            <img src="image/product/star.png" alt="">
+                                            15k已訂閱</div>
+                                        <div class="price">TWD 1,500</div>
+                                    </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="jpg">
+                                <img src="image/product/jp_b.png" alt="">
+                            </div>
+    
+                            <div class="word">
+                                    <div class="title-h">
+                                        <h3>東京澀谷天空（SHIBUYA SKY）觀景臺門票</h3>
+                                        <button class="heart-btn"><svg class="s-heart" width="25px" height="25px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></button>
+                                    </div>
+                                <p>御殿場購物一日遊帶您前往日本著名的Outlet商場，以優惠價格購買各大國際品牌的產品，包括服飾、鞋子、手錶等。同時，您還可以欣賞到美麗的富士山風光，並品嚐當地美食。這是一個絕佳的購物和旅遊體驗。</p>
+                                <div class="only-btn">
+                                    <p class="p-targ">即買即用</p>
+                                    <button class='btn-pri-m'>
+                                        <a href="dist/productPage.html">查看詳情</a>
+                                    </button>
+                                </div>
+                                    <div class="star-p">
+                                        <div class="star">
+                                            <img src="image/product/star.png" alt="">
+                                            15k已訂閱</div>
+                                        <div class="price">TWD 1,500</div>
+                                    </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="jpg">
+                                <img src="image/product/jp_c.png" alt="">
+                            </div>
+    
+                            <div class="word">
+                                    <div class="title-h">
+                                        <h3>鎌倉大佛&江之島&鎌倉高校前一日遊丨東京出發</h3>
+                                        <button class="heart-btn"><svg class="s-heart" width="25px" height="25px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></button>
+                                    </div>
+                                <p>鎌倉大佛&江之島&鎌倉高校前一日遊，探索古都鎌倉的文化與美景，欣賞大佛和海景，品嚐美食，感受日本的歷史與現代文化。</p>
+                                <div class="only-btn">
+                                    <p class="p-targ">即買即用</p>
+                                    <button class='btn-pri-m'>
+                                        <a href="dist/productPage.html">查看詳情</a>
+                                    </button>
+                                </div>
+                                    <div class="star-p">
+                                        <div class="star">
+                                            <img src="image/product/star.png" alt="">
+                                            15k已訂閱</div>
+                                        <div class="price">TWD 1,500</div>
+                                    </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="jpg">
+                                <img src="image/product/jp_d.png" alt="">
+                            </div>
+    
+                            <div class="word">
+                                    <div class="title-h">
+                                        <h3>東京迪士尼度假區門票</h3>
+                                        <button class="heart-btn"><svg class="s-heart" width="25px" height="25px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></button>
+                                    </div>
+                                <p>東京迪士尼度假區是東京必去的旅遊勝地，擁有東京迪士尼海洋樂園和東京迪士尼樂園兩大主題樂園。除了豐富的遊戲體驗和精彩的夜間煙火秀外，樂園中還有各種美食和紀念品可供選擇。</p>
+                                <div class="only-btn">
+                                    <p class="p-targ">即買即用</p>
+                                    <button class='btn-pri-m'>
+                                        <a href="dist/productPage.html">查看詳情</a>
+                                    </button>
+                                </div>
+                                    <div class="star-p">
+                                        <div class="star">
+                                            <img src="image/product/star.png" alt="">
+                                            15k已訂閱</div>
+                                        <div class="price">TWD 1,500</div>
+                                    </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="jpg">
+                                <img src="image/product/jp_e.png" alt="">
+                            </div>
+    
+                            <div class="word">
+                                    <div class="title-h">
+                                        <h3>日本飯能嚕嚕米樂園（Moominvalley Park）門票</h3>
+                                        <button class="heart-btn"><svg class="s-heart" width="25px" height="25px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></button>
+                                    </div>
+                                <p>飯能嚕嚕米樂園，讓你暫時逃離城市的喧囂，享受各種刺激的活動和美食。從東京輕鬆前往，適合全家大小一起遊玩。</p>
+                                <div class="only-btn">
+                                    <p class="p-targ">即買即用</p>
+                                    <button class='btn-pri-m'>
+                                        <a href="dist/productPage.html">查看詳情</a>
+                                    </button>
+                                </div>
+                                    <div class="star-p">
+                                        <div class="star">
+                                            <img src="image/product/star.png" alt="">
+                                            15k已訂閱</div>
+                                        <div class="price">TWD 1,500</div>
+                                    </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="jpg">
+                                <img src="image/product/jp_a.png" alt="">
+                            </div>
+    
+                            <div class="word">
+                                    <div class="title-h">
+                                        <h3>富士山賞櫻一日遊（東京出發）</h3>
+                                        <button class="heart-btn"><svg class="s-heart" width="25px" height="25px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></button>
+                                    </div>
+                                <p>來日本旅遊，除了東京以外，富士山也是不可錯過的景點之一！欣賞富士山的美景，品嚐當地美食，探索日本的文化和藝術，讓您的旅程更加豐富多彩。別忘了準備好足夠的體力和裝備，並留意當地的天氣情況。</p>
+                                <div class="only-btn">
+                                    <p class="p-targ">即買即用</p>
+                                    <button class='btn-pri-m'>
+                                        <a href="dist/productPage.html">查看詳情</a>
+                                    </button>
+                                </div>
+                                    <div class="star-p">
+                                        <div class="star">
+                                            <img src="image/product/star.png" alt="">
+                                            15k已訂閱</div>
+                                        <div class="price">TWD 1,500</div>
+                                    </div>
+                            </div>
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="page">
+                        <ul>
+                            <li><a href="">1</a></li>
+                            <li><a href="">2</a></li>
+                            <li><a href="">3</a></li>
+                            <li><a href="">4</a></li>
+                            <li><a href="">5</a></li>
+                            <li><a href="">6</a></li>
+                        </ul>
+                    </div>
+    
+                </article>
+        </div>
+        
     </div>
+
+
+    
 
 
     <!-- 以下Footer區域 -->
@@ -66,6 +265,150 @@
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+
+
+
+    <script>
+    // 操控日期
+
+    // 獲取元素
+    const currentMonth = document.querySelector('.current-month');
+    const prevMonth = document.querySelector('.prev-month');
+    const nextMonth = document.querySelector('.next-month');
+    const calendarDays = document.querySelector('.calendar-days');
+
+    // 設置當前日期
+    let currentDate = new Date();
+
+    // 顯示日曆
+    function showCalendar(year, month) {
+    // 設置月份標題
+    const months = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+    currentMonth.innerHTML = `${year} 年 ${months[month]}`;
+
+    // 設置日期
+    let firstDay = new Date(year, month, 1).getDay(); // 獲取當月第一天是星期幾
+    let lastDate = new Date(year, month + 1, 0).getDate(); // 獲取當月最後一天的日期
+
+    let daysHTML = '';
+
+    // 添加前面的空白
+    for (let i = 0; i < firstDay; i++) {
+        daysHTML += '<div class="calendar-day"></div>';
+    }
+
+    // 添加日期
+    for (let i = 1; i <= lastDate; i++) {
+        // 判斷當前日期是否為當前選中日期，如果是，則添加 .selected 類名
+        let className = '';
+        if (currentDate.getFullYear() === year && currentDate.getMonth() === month && currentDate.getDate() === i) {
+        className = 'selected';
+        }
+        daysHTML += `<div class="calendar-day ${className}">${i}</div>`;
+    }
+
+    calendarDays.innerHTML = daysHTML;
+    }
+
+    // 初始化日曆
+    showCalendar(currentDate.getFullYear(), currentDate.getMonth());
+
+    // 切換到上一個月
+    prevMonth.addEventListener('click', function() {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    showCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    });
+
+    // 切換到下一個月
+    nextMonth.addEventListener('click', function() {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    showCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    });
+
+    // 選擇日期
+    calendarDays.addEventListener('click', function(event) {
+    // 判斷點擊的是否為日期
+    if (event.target.classList.contains('calendar-day')) {
+        // 獲取選中的日期
+        let selectedDate = event.target.innerText;
+        // 設置選中的日期
+        currentDate.setDate(selectedDate);
+        // 重新顯示日曆
+        showCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    }
+    });
+
+
+    </script>
+
+    <script>
+        // 操控價錢搜尋的值
+
+        const slider = document.getElementById("slider");
+        const value = document.getElementById("value");
+
+        value.innerHTML = slider.value;
+
+        slider.oninput = function() {
+        value.innerHTML = this.value;
+        }
+
+    </script>
+
+
+    <!-- <script>
+
+        let sidebar = document.getElementsByClassName("out")[0];
+        let sidebar_content = document.getElementsByClassName("left")[0];
+
+        window.onscroll = () => {
+            let scrollTop = window.scrollY;
+            let viewportHeigh = window.innerHeight;
+            let contentHeight = sidebar_content.getBoundingClientRect().height;
+            let sidebarTop = sidebar.getBoundingClientRect().top + window.pageYOffset;
+
+            if(scrollTop >= contentHeight - viewportHeigh + sidebarTop){
+                sidebar_content.style.transform = `translateY(-${contentHeight - viewportHeigh + sidebarTop}px)`;
+                sidebar_content.style.position = "fixed";
+            }else{
+                sidebar_content.style.transform = "";
+                sidebar_content.style.position = "";
+            }
+        }
+
+    </script> -->
+
+
+    
+    <!-- <script>
+
+    // 獲取要固定高度的元素
+    var asideEl = document.querySelector('.left');
+
+    // 計算元素距離文檔頂部的距離
+    var asideTop = asideEl.offsetTop;
+    // console.log(asideTop);
+
+    // 監聽窗口滾動事件
+    window.addEventListener('scroll', function() {
+    // 如果窗口滾動的距離超過了元素距離頂部的距離
+    if (window.scrollY >= asideTop) {
+        // 設置元素固定的樣式
+        asideEl.style.position = 'fixed';
+        asideEl.style.top = '0';
+    } else {
+        // 移除元素固定的樣式
+        asideEl.style.position = '';
+        asideEl.style.top = '';
+    }
+    });
+
+
+    </script> -->
+        
+
+
+
 </body>
 
 </html>
