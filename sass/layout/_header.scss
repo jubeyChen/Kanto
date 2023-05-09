@@ -4,6 +4,7 @@ header {
     height: 80px;
 
     .container {
+        justify-content: space-between;
         @include m() {
             width: 90%;
             background-color: hsl(0, 0%, 100%, 80%);
