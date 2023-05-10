@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員管理</title>
+    @@include('./layout/style.html')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body{
+            background-color: #F4F1E8;
+        }
+    </style>
+</head>
+<body>
+    <section class="backMember">
+        <aside class="">
+            <div>
+                <img src="./image/footer/logosqure.svg" alt="logo">
+            </div>
+            <ul>
+                <li><a href="backMember.html" class="btn-pri-l">會員管理</a></li>
+                <li><a href="backOrder.html" class="btn-pri-l">訂單管理</a></li>
+                <li><a href="backProduct.html" class="btn-pri-l">行程管理</a></li>
+                <li><a href="backBlog.html" class="btn-pri-l">專欄管理</a></li>
+            </ul>
+        </aside>
+        <main class="">
+            <h2>會員管理</h2>
+            <section class="select-block">
+                <form action="post">
+                    <select name="title" id="title">
+                        <option value="">選擇項目</option>
+                        <option value="">會員編號</option>
+                        <option value="">會員姓名</option>
+                        <option value="">電子郵件</option>
+                    </select>
+                    <input type="text" class="textStyle" placeholder="">
+                    <input type="submit" value="搜尋" class="btn-pri-m">
+                </form>
+            </section>
+
+            <table class="table table-light table-hover table-bordered table-sm">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">排序</th>
+                        <th scope="col">會員編號<span class="material-symbols-outlined">
+                            unfold_more
+                            </span>
+                        </th>
+                        <th scope="col">會員姓名<span class="material-symbols-outlined">
+                            unfold_more
+                            </span>
+                        </th>
+                        <th scope="col">性別</th>
+                        <th scope="col">電子郵件（帳號）</th>
+                        <th scope="col">聯絡電話</th>
+                        <th scope="col">消費總額</th>
+                        <th scope="col">會員狀態</th>
+                    </tr>
+                </thead>
+                <tbody class="" id="app">
+                    <tr v-for="(item, index) in member" :key="index" :data-status="item.statusId">
+                        <th scope="row">{{ index + 1 }}</th>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.fullName }}</td>
+                        <td>{{ item.gender }}</td>
+                        <td>{{ item.account }}</td>
+                        <td>{{ item.phone }}</td>
+                        <td>$12500</td>
+                        <td>
+                            <div class="switch-btn" @click="switchBtn">
+                                <div class="switch-track">
+                                    <div class="off">OFF</div>
+                                    <div class="core"></div>
+                                    <div class="on">ON</div>    
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <section class="page-btn">
+                <button>上一頁</button>
+                <div>10/10</div>
+                <button>下一頁</button>
+            </section>
+
+        </main>
+    </section>
+
+    <script src="js/vendors/vue.global.prod.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    member: [
+                        {
+                            id: "TW00001",
+                            account: "redredred@gmail.com",
+                            fullName: "關東誒",
+                            gender: "女",
+                            phone: "0983-082-094",
+                            statusId: "1"
+                        },
+                        {
+                            id: "TW00001",
+                            account: "redredred@gmail.com",
+                            fullName: "關東誒",
+                            gender: "女",
+                            phone: "0983-082-094",
+                            statusId: "1"
+                        },
+                        {
+                            id: "TW00001",
+                            account: "redredred@gmail.com",
+                            fullName: "關東誒",
+                            gender: "女",
+                            phone: "0983-082-094",
+                            statusId: "1"
+                        },
+                        {
+                            id: "TW00001",
+                            account: "redredred@gmail.com",
+                            fullName: "關東誒",
+                            gender: "女",
+                            phone: "0983-082-094",
+                            statusId: "1"
+                        },
+                        {
+                            id: "TW00001",
+                            account: "redredred@gmail.com",
+                            fullName: "關東誒",
+                            gender: "女",
+                            phone: "0983-082-094",
+                            statusId: "1"
+                        },
+                        {
+                            id: "TW00001",
+                            account: "redredred@gmail.com",
+                            fullName: "關東誒",
+                            gender: "女",
+                            phone: "0983-082-094",
+                            statusId: "1"
+                        },
+                        {
+                            id: "TW00001",
+                            account: "redredred@gmail.com",
+                            fullName: "關東誒",
+                            gender: "女",
+                            phone: "0983-082-094",
+                            statusId: "1"
+                        },
+                        {
+                            id: "TW00001",
+                            account: "redredred@gmail.com",
+                            fullName: "關東誒",
+                            gender: "女",
+                            phone: "0983-082-094",
+                            statusId: "1"
+                        },
+                        {
+                            id: "TW00001",
+                            account: "redredred@gmail.com",
+                            fullName: "關東誒",
+                            gender: "女",
+                            phone: "0983-082-094",
+                            statusId: "1"
+                        },
+                        {
+                            id: "TW00001",
+                            account: "redredred@gmail.com",
+                            fullName: "關東誒",
+                            gender: "女",
+                            phone: "0983-082-094",
+                            statusId: "1"
+                        }
+
+                    ]
+                }
+            },
+            methods: {
+                switchBtn(e){
+                    $(e.target).closest('tr').find('.switch-track').toggleClass('-off');
+                }
+            }
+        });
+
+        app.mount('#app');
+
+    </script>
+</body>
+</html>

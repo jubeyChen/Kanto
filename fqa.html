@@ -37,10 +37,10 @@
         <main class="accordion col-11" id="app">
             <h4>訂單相關</h4>
 
-            <div class="accordion-item" v-for="(item, index) in orderQA" :key="index">
-                <h4 class="accordion-header">{{ item.q }}</h4>
+            <div class="accordion-item" v-for="(item, index) in accountQA" :key="index">
+                <h4 class="accordion-header">{{ item.q }} <span class="v"></span><span class="h"></span></h4>
                 <div class="accordion-content">
-                    <p>{{ item.a }}</p>
+                    <p style="white-space: pre-line;">{{ item.a }}</p>
                 </div>
             </div>
     
@@ -83,22 +83,22 @@
                     accountQA: [
                         {
                             q: "如何註冊Kanto帳戶？",
-                            a: "創建Kanto帳號完全免費，您點擊首頁右上角會員按鈕，並可透過 [社交平台帳戶登入] 以及 [免費email註冊]。"
+                            a: "創建Kanto帳號完全免費，您點擊首頁右上角會員按鈕，並可透過「社交平台帳戶登入」以及「免費email註冊」。"
                         },
                         {
                             q: "如何重置密碼？ ",
                             a: `忘記密碼
-                                如果您因忘記密碼無法登入Kanto，請於登入畫面點選『忘記密碼』，輸入您註冊Kanto帳號時所使用的電子郵件地址，您將收到一封含有重置密碼的信件，進行密碼修改。
+                                如果您因忘記密碼無法登入Kanto，請於登入畫面點選「忘記密碼」，輸入您註冊Kanto帳號時所使用的電子郵件地址，您將收到一封含有重置密碼的信件，進行密碼修改。
                                 修改密碼
                                 您可以登入會員後，在【帳號設定】中更改密碼。`
                         },
                         {
                             q: "如何更改個人資料？",
-                            a: "您可以登入會員後，在『帳號設定』中修改任何所需更改的資料，更改完成後，請點擊『儲存』。"
+                            a: "您可以登入會員後，在「帳號設定」中修改任何所需更改的資料，更改完成後，請點擊「儲存」。"
                         },
                         {
                             q: "如何使用我的收藏清單？",
-                            a: "每個行程都有個愛心符號，當點選成為實心紅色愛心時，將列入您的收藏清單，您隨時可進入『我的收藏』查看，若要取消收藏，請再次點選愛心符號，即可取消收藏。"
+                            a: "每個行程都有個愛心符號，當點選成為實心紅色愛心時，將列入您的收藏清單，您隨時可進入「我的收藏」查看，若要取消收藏，請再次點選愛心符號，即可取消收藏。"
                         }
                     ],
                     paymentQA: [
@@ -133,8 +133,10 @@
             $('.accordion-header').click(function(){
                 if($(this).next().is(':visible')){
                     $(this).next().slideUp();
+                    $(this).find('.v').css('transform', 'rotate(0deg)');
                 }else{
                     $(this).next().slideDown();
+                    $(this).find('.v').css('transform', 'rotate(90deg)');
                 }
             })
             $('.accordion-header').first().click();

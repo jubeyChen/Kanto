@@ -1,0 +1,173 @@
+.backProduct{
+    margin: 50px auto;
+    height: auto;
+    width: 90%;
+    @include flex-container(row, nowrap, space-between, flex-start);
+
+    aside{
+        margin-right: 0;
+        width: 20%;
+
+        div{
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        ul{
+            text-align: center;
+            padding-left: 0;
+
+            li{
+                margin-bottom: 5px;
+            }
+
+            a{
+                text-decoration: none;
+                &:hover{
+                    color: #fff;
+                }
+            }
+        }
+    
+    }
+
+    main{
+        width: 80%;
+
+        .select-block{
+            margin-top: 20px;
+            @include flex-container(row, nowrap, space-between);
+
+            form{
+                @include flex-container(row, nowrap, flex-start);
+                font-size: 16px;
+
+                select{
+                    border: 8px solid #fff;
+                    width: auto;
+                    box-sizing: border-box;
+                    padding: 0 5px;
+
+                }
+                input[type='text']{
+                    margin: 0 5px;
+                }
+                .btn-pri-m{
+                    border: none;
+                    line-height: 1.2;
+                }
+            }
+
+            .edit-block{
+                button{
+                    background-color: $secondary;
+                    color: $fontColor;
+                    font-size: $paragraph-s;
+                    border: none;
+                    border-radius: $borderRadius;
+                    box-sizing: border-box;
+                    padding: 5px 30px 5px 10px;
+                    width: 80px;
+                    
+                    span{
+                        position: absolute;
+                        margin: auto;
+                    }
+    
+                }
+            }
+        }
+
+        table{
+            margin-top: 20px;
+            font-size: 16px;
+            color: $fontColor;
+            text-align: center;
+
+            th{
+                vertical-align: middle;
+
+                span{
+                    position: absolute;
+                    margin: auto;
+                    cursor: pointer;
+                }
+            }
+            
+            td{
+                vertical-align: middle;
+
+                button{
+                    background-color: $secondary;
+                    color: $fontColor;
+                    font-size: $paragraph-s;
+                    border: none;
+                    border-radius: $borderRadius;
+                    box-sizing: border-box;
+                    padding: 0 10px;    
+                    height: 25px;
+                }
+
+                .switch-btn{
+                    margin: 0 auto;
+                    width: 80px;
+                    height: 25px;
+                    border-radius: 12px 12px 12px 12px;
+                    background-color: $secondary;
+                    color: $fontColor;
+                    cursor: pointer;
+                    position: relative;
+                    overflow: hidden;
+    
+                    .switch-track{
+                        position: absolute;
+                        @include flex-container(row, nowrap);
+                        right: 15px;
+    
+                        transition: .3s;
+            
+                        .core{
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 50%;
+                            background-color: $primary;
+                            padding: 0;
+                            margin: 0 11px;
+    
+                            transition: .3s;
+                        }
+                    }
+                    .switch-track.-off{                    
+                        transform: translateX(43%);
+    
+                        .core{
+                            background-color: $fontColor;
+                        }
+                    }
+    
+                }
+    
+            }
+        }
+
+        .page-btn{
+            @include flex-container(row, nowrap, flex-start);
+
+            button{
+                background-color: $secondary;
+                color: $fontColor;
+                font-size: $paragraph-s;
+                border: none;
+                border-radius: $borderRadius;
+                box-sizing: border-box;
+                padding: 5px 10px;
+            }
+
+            div{
+                margin: 0 10px;
+                font-size: $paragraph-s;
+            }
+        }
+    }
+
+}
