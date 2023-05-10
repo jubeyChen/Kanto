@@ -1,0 +1,507 @@
+/*會員中心 =======================*/
+
+.member {
+    padding: 100px 0;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+
+        aside {
+            //outline: 2px solid blue;
+            display: flex;
+            flex-direction: column;
+            flex-basis: 20%;
+
+
+            .avatar {
+                background-color: white;
+                margin-bottom: 30px;
+                border-radius: $borderRadius;
+                padding: 20px;
+
+                .img {
+                    width: 150px;
+                    height: 150px;
+                    margin: 0 auto;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    background-color: $secondary;
+                    margin-bottom: 20px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .imgOption {
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+
+                    label {
+                        background-color: $primary;
+                        line-height: 1.5;
+                        padding: 5px 10px;
+                        border-radius: $borderRadius;
+                        color: white;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: darken($primary, 8%);
+                        }
+                    }
+
+                    input {
+                        display: none;
+                    }
+
+                    .save {
+                        border: 0;
+                        background-color: $primary;
+                        line-height: 1.5;
+                        padding: 5px 10px;
+                        border-radius: $borderRadius;
+                        color: white;
+                        cursor: pointer;
+                        font-size: $paragraph-s;
+
+                        &:hover {
+                            background-color: darken($primary, 8%);
+                        }
+                    }
+                }
+            }
+
+            .tab {
+                margin-bottom: 30px;
+                background-color: white;
+                border-radius: $borderRadius;
+                overflow: hidden;
+
+                li {
+                    margin-bottom: 10px;
+                }
+
+                li:last-child {
+                    margin-bottom: 0;
+                }
+
+                .tabBtn {
+                    display: block;
+                    width: 100%;
+                    background-color: white;
+                    border: 0;
+                    font-size: $paragraph;
+                    line-height: 2;
+                    color: $fontColor;
+                    font-family: 'Noto Sans TC', '微軟正黑體';
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: $primary;
+                        color: white;
+                    }
+                }
+            }
+
+            .logout {
+                background-color: white;
+                border: 0;
+                font-size: $paragraph;
+                line-height: 1.8;
+                border-radius: $borderRadius;
+                color: $fontColor;
+                font-family: 'Noto Sans TC', '微軟正黑體';
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $primary;
+                    color: white;
+                }
+            }
+        }
+
+        .box {
+            background-color: white;
+            border-radius: $borderRadius;
+            padding: 30px 50px;
+            flex-basis: 65%;
+        }
+
+        .account {
+            display: none;
+
+            .info {
+                color: $fontColor;
+
+                h4 {
+                    font-weight: bold;
+                    margin-bottom: 30px;
+                }
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    width: 60%;
+                    margin: 0 auto;
+
+                    li {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 30px;
+
+                        label {
+                            margin-bottom: 5px;
+                        }
+
+                        #fullname,
+                        #gender,
+                        #phone {
+                            background-color: $bgc;
+                        }
+
+                        #gender {
+                            border: 1px solid $secondary;
+                            height: 40px;
+                            box-sizing: border-box;
+                            padding: 10px;
+                            border-radius: 5px;
+
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+                    }
+
+                    button {
+                        border: 0;
+                        background-color: $primary;
+                        line-height: 1.5;
+                        padding: 5px 10px;
+                        border-radius: $borderRadius;
+                        color: white;
+                        cursor: pointer;
+                        font-size: $paragraph-s;
+
+                        &:hover {
+                            background-color: darken($primary, 8%);
+                        }
+                    }
+                }
+            }
+
+
+            .pwChange {
+                color: $fontColor;
+                position: relative;
+                margin-top: 50px;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 2px;
+                    background-color: $secondary;
+
+                    position: absolute;
+                    top: -7%;
+                    left: 0;
+                }
+
+                h4 {
+                    font-weight: bold;
+                    margin-bottom: 30px;
+                }
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    width: 60%;
+                    margin: 0 auto;
+
+                    li {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 30px;
+
+                        label {
+                            margin-bottom: 5px;
+                        }
+
+                        #oldPW,
+                        #newPW,
+                        #confirmPW {
+                            background-color: $bgc;
+                        }
+                    }
+
+                    button {
+                        border: 0;
+                        background-color: $primary;
+                        line-height: 1.5;
+                        padding: 5px 10px;
+                        border-radius: $borderRadius;
+                        color: white;
+                        cursor: pointer;
+                        font-size: $paragraph-s;
+
+                        &:hover {
+                            background-color: darken($primary, 8%);
+                        }
+                    }
+                }
+            }
+        }
+
+        .order {
+            .block {
+                outline: 3px solid $secondary;
+                border-radius: $borderRadius;
+                padding: 20px;
+                margin-bottom: 30px;
+                position: relative;
+
+                .detail {
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    color: $fontColor;
+
+                    .pImg {
+
+                        font-size: 0;
+                        width: 220px;
+                        height: 220px;
+                        margin-right: 3%;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .pInfo {
+
+                        h4 {
+                            font-weight: bold;
+                            margin-bottom: 10%;
+                        }
+
+                    }
+
+                    .pPrice {
+                        align-self: self-end;
+                        margin-left: auto;
+                        flex-basis: 30%;
+
+                        h4 {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            color: $primary;
+                            font-weight: bold;
+                        }
+
+                        p {
+                            text-align: right;
+                        }
+
+                        .orderOption {
+                            display: flex;
+                            margin: 30px 0 0 auto;
+
+
+                            li {
+                                margin: 0 0 0 auto;
+
+                                button {
+                                    border: 0;
+                                    background-color: transparent;
+                                    line-height: 1.5;
+                                    font-size: $paragraph-s;
+                                    cursor: pointer;
+
+                                    &:hover {
+                                        color: $primary;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .reviewArea {
+                    box-sizing: border-box;
+                    margin-top: 20px;
+                    width: 100%;
+                    padding: 20px 0 10px;
+                    border-top: 3px solid $secondary;
+
+                    .reviewStar {
+                        display: flex;
+
+                        li {
+                            font-size: $paragraph;
+                            margin: 0 10px 20px 0;
+
+                            &:hover {
+                                color: $primary;
+                            }
+                        }
+                    }
+
+                    .textareaStyle {
+                        width: 100%;
+                        height: 100px;
+                        margin-bottom: 20px;
+                    }
+
+                    .area {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .box2 {
+                            display: flex;
+                            align-items: center;
+
+                            label {
+                                display: inline-block;
+                                width: 40px;
+                                line-height: 40px;
+                                background-color: $primary;
+                                text-align: center;
+                                border-radius: $borderRadius;
+                                color: white;
+                                font-size: $paragraph-s;
+                                cursor: pointer;
+
+                                &:hover {
+                                    background-color: darken($primary, 8%);
+                                }
+                            }
+
+                            input {
+                                display: none;
+                            }
+
+                            .reviewIMGBox {
+                                display: inline-block;
+                                width: 80px;
+                                height: 80px;
+                                margin-left: 20px;
+                                border-radius: $borderRadius;
+                                overflow: hidden;
+
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                }
+                            }
+                        }
+
+
+                        button {
+                            border: 0;
+                            background-color: $primary;
+                            line-height: 1.5;
+                            padding: 5px 10px;
+                            border-radius: $borderRadius;
+                            color: white;
+                            cursor: pointer;
+                            font-size: $paragraph-s;
+
+                            &:hover {
+                                background-color: darken($primary, 8%);
+                            }
+                        }
+                    }
+
+
+                }
+
+            }
+
+
+        }
+    }
+
+    .serviceBox {
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 80px;
+        left: 0;
+        padding: 100px 0;
+
+        .service {
+            width: 30%;
+            margin: 0 auto;
+            background-color: white;
+            position: relative;
+            border-radius: $borderRadius;
+            padding: 50px 0;
+
+            span {
+                position: absolute;
+                right: 1.5%;
+                top: 2%;
+                cursor: pointer;
+                font-size: $paragraph;
+            }
+
+            form {
+                width: 90%;
+                margin: 0 auto;
+
+                p {
+                    margin-bottom: 30px;
+                    font-size: $paragraph;
+                }
+
+                ul {
+
+                    li {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 30px;
+                        font-size: $paragraph;
+
+                        label {
+                            margin-bottom: 5px;
+                        }
+
+                        .textareaStyle {
+                            height: 200px;
+                        }
+                    }
+
+                }
+
+                button {
+                    display: block;
+                    width: 100%;
+                    border: 0;
+                    background-color: $primary;
+                    line-height: 1.5;
+                    padding: 5px 10px;
+                    border-radius: $borderRadius;
+                    color: white;
+                    cursor: pointer;
+                    font-size: $paragraph;
+
+                    &:hover {
+                        background-color: darken($primary, 8%);
+                    }
+                }
+            }
+        }
+    }
+}
