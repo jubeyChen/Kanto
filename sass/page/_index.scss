@@ -11,15 +11,11 @@
         position: absolute;
         top:0;
         left:0;
-        
+
         video{
             object-fit: cover;
             width: 100%;
             height: 100%;
-            // position: fixed;
-            // top:0;
-            // left:0;
-            // z-index: -1;
         }
     }
 }
@@ -38,23 +34,49 @@ a{
 
     .topic{
         line-height: 1.2;
+        color: $fontColor;
+        @include m(){
+            margin: 20px auto;
+            h1{
+                font-size: $h2;
+            }
+        }
     }
 
     .info{
+        width:420px ;
         line-height: 1.6;
         text-align: center;
         background-color: hsl(0, 0%, 100%,70%);
         border-right: 15px solid $primary;
         padding: 40px;
+        color: $fontColor;
+
+        @include m(){
+            margin: 10px auto 40px;
+            width: 310px;
+            padding: 20px;
+            border-right: 3px solid $primary;
+            h4{
+                font-size: $paragraph;
+            }
+        }
     }
 }
 
 //內容
 .index01{
     margin-bottom: 150px;
+    @include m(){
+        margin-bottom: 100px;
+        .btn-pri-l{
+            display: block;
+            margin: 10px 90px 10px;
+            line-height: 1.6;            
+        }
+    }
     .index01_content{
         @include flex-container($justify-content:space-between);
-
         li{
             width: 360px;
             // overflow: hidden;
@@ -62,9 +84,16 @@ a{
             position: relative;
             &:nth-child(2){
                 margin-top: 100px;
+                @include m(){
+                    margin-top:40px ;
+                }
             }
             &:last-child{
                 margin-top: 200px;
+                @include m(){
+                    margin-top:40px;
+                    margin-bottom: 40px;
+                }
             }
 
             .mask{
@@ -112,6 +141,10 @@ a{
                 position: absolute;
                 right: -20px;
                 bottom: 160px;
+
+                @include m(){
+                    bottom: 180px;
+                }
             }
 
             h4{
@@ -137,7 +170,7 @@ a{
 .index02{
     position: relative;
     .bgcblock{
-        background-color: #fff;
+        background-color: hsla(0, 0%, 100%,70%);
         width: 70%;
         height: 550px;
         z-index: -1;
@@ -151,20 +184,39 @@ a{
             height:350px;
         }
     }
+}    
 
-    .index02_title{
-        margin-top: 60px;
-        @include flex-container(
-            $justify-content:flex-start
-        );
+.index02_title{
+    margin-top: 60px;
+    color: $fontColor;
+    @include m(){
+        margin-top: 10px;
+    }
+     @include flex-container(
+        $justify-content:flex-start
+    );
 
-        .topic{
-            margin-left: 200px;
-
+    .topic{
+        margin-left: 200px;
+        color: $fontColor;
+            @include m(){
+                margin-left:30px;
+                h1{
+                    font-size: $h2;
+                }
+            }
         }
-        .info{
-            margin-left: 100px;
-            line-height: 1.6;
+
+    .info{
+        margin-left: 100px;
+        line-height: 1.6;
+        color: $fontColor;
+        @include m(){
+            margin-left: 30px;
+            margin-top: 10px;
+            h4{
+                font-size: $paragraph;
+            }
         }
 
     }
@@ -172,13 +224,21 @@ a{
     .btn-pri-l{
         margin-left:100px;
         line-height: 1.6;
+
+        @include m(){
+            display: block;
+            margin: 30px auto;
+        }
     }
 }
+
+
 
 /*第三部分 美食=================================*/
 
 .index03{
-    margin-top: 200px;
+    margin: 150px auto;
+
     .gallery{
         height: 760px;
         display: grid;
@@ -213,18 +273,16 @@ a{
     border: 5px solid $primary;
     // width: 618px;
     padding: 30px 0;
+    color: $fontColor;
     
     h1{
         margin-bottom: 20px ;
     }
 }
-
+/*第四部分--------旅遊專欄*/
 .index04{
-
-    margin-top: 100px;
-
     .btn-pri-l{
-        // padding-left: 10px;
+    // padding-left: 10px;
     display: block;
     width: 130px;
     margin: 0 auto;
@@ -241,7 +299,7 @@ a{
     
 
         li{
-            width: 45%;
+            width: 48%;
             margin-bottom: 50px;
             position: relative;
 
@@ -274,10 +332,83 @@ a{
     }
 }
 
+/*第五部分--------地圖*/
+.index05_wrapper{
+    width: 100%;
+    background-color:hsla(0, 0%, 100%,70%);    
+    height: 680px;
+}
+
 .index05{
     .line2{
         margin-left: 100px;
         margin-top: 30px;
     }
+
+    .mapinfo{
+        position: relative;
+
+        .index05_info{
+            margin-top: 50px;
+            width: 600px;
+            display: grid;
+            grid-template-rows: auto ;
+            grid-template-columns: 1fr 2fr;
+            gap:10px 10px;
+
+            img{
+                width: 300px;
+                // width: 100%;
+                display: block;
+                border-radius: 5px;
+                
+                &:nth-child(2){
+                    position:relative;
+                    top:40px;
+                }
+
+                &:nth-child(4){
+                    padding-top: 40px;
+                    
+                } 
+            }
+
+            h4{
+                position: absolute;
+                top: 300px;
+                left:320px;
+                line-height: 1.6;
+                color: $fontColor;
+
+                strong{
+                    font-size: $h3;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .mapsvg{
+        width: 60%;
+        position: absolute;
+        top: -285px;
+        right:-135px;
+        path{
+            stroke:#fff;
+            stroke-width:1px;
+            cursor:pointer;
+            fill:#F4F1E8;
+            &:hover,&.-active{
+                fill:#C73E3A;
+                stroke:#ECECEB;
+                transform:translate(-2px,-2px);
+                transition: .3s ease-out;
+            }
+        } 
+    }
 }
 
+
+.none{
+    display:none;
+}
