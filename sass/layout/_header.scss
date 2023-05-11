@@ -1,11 +1,18 @@
 /*header start =========================*/
-header {
+header{
     width: 100%;
     height: 80px;
 
+    @include m(){
+        position: fixed;
+        top:0;
+        z-index :999;
+
+    }
+
     .container {
         justify-content: space-between;
-        @include m() {
+        @include m(){
             width: 90%;
             background-color: hsl(0, 0%, 100%, 80%);
             border-radius: $borderRadius;
@@ -26,6 +33,9 @@ header {
 
             @include m() {
                 display: block;
+                // .-open{
+
+                // }
             }
         }
 
@@ -62,7 +72,7 @@ header {
             width: 80%;
 
             @include m() {
-                background-color: hsl(0, 0%, 100%, 80%);
+                background-color: hsl(0, 0%, 100%, 95%);
                 width: 95%;
                 position: absolute;
                 top: 60px;
