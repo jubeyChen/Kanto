@@ -11,52 +11,259 @@
 
 <body>
     <!-- 以下Header區域 -->
-    @@include('./layout/header.html')
+    <!-- @@include('./layout/header.html') -->
     <!-- 以下是top button -->
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
-    <div class="container">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor, unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
 
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore blanditiis assumenda, velit accusantium
-            doloremque repellat veniam consequatur voluptatum iste dolore tempora et nostrum expedita sequi eaque vero
-            quia vitae fugiat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates voluptatibus esse
-            delectus ducimus qui, voluptatum cumque quasi quos asperiores porro, expedita autem voluptas est veritatis
-            eaque tempore laboriosam facilis illo? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, culpa
-            voluptas. Sequi minima in suscipit, eveniet, eius fugiat at quas delectus veniam ad tempora molestias fuga
-            velit et iste non.</p>
-
-
+    <!--滿版-->
+    <div class="blogpage_banner">
+        @@include('./layout/header.html')
     </div>
+
+    <!--標題-->
+    <div class="blogpage_title container">
+        <!--上方左側圖-->
+        <div class="pic_left">
+            <img src="./image/blogPage/title.png" alt="">
+        </div>
+
+        <!--上方右側圖-->
+        <div class="pic_right">
+            <img src="./image/blogPage/title3.png" alt="">
+        </div>
+
+        <!--中間-->
+        <section class="title_wrapper">
+
+            <div class="title_main">
+                <div class="content">
+                    <h2>富士山<br>經典一日遊</h2>
+                    <ul>
+                        <li>東京出發，展開富士山朝聖之旅</li>
+                        <li>一次玩遍超人氣景點！</li>
+                        <li>富士山五合目近距離觀看富士山</li>
+                        <li>河口湖音樂盒之森美術館</li>
+                        <li>沉浸於跨越時代的音樂世界。</li>
+                        <li>走進富士山下的湧泉仙境──忍野八海</li>
+                        <li>盡覽秀麗景觀並感受聖泉能量。</li>
+                    </ul>
+                </div>
+
+                <div class="pic">
+                    <img src="./image/blogPage/title2.png" alt="">
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+
+
+
+    <!--行程 飛機應該要從這邊做-->
+    <div class="container blogevent">
+        <div class="title">
+            <h2>活動行程介紹</h2>
+        </div>
+        <section class="event_block">
+            <!--主要內容-->
+            <div class="event_block1">
+                <!--側邊點點-->
+                <div class="circle_line">
+                    <div class="circle"></div>
+                    <div class="line"></div>
+                    <ul>
+                        <li>08:10</li>
+                        <li>飯店出發</li>
+                    </ul>
+                </div>
+
+                <!--活動-->
+                <div class="event_content">
+                    <div class="pic">
+                        <img src="./image/blogPage/event1.png" alt="">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="event_block2">
+                <!--側邊點點-->
+                <div class="circle_line">
+                    <div class="circle"></div>
+                    <div class="line"></div>
+                    <ul>
+                        <li>10:20</li>
+                        <li>富士山五合目</li>
+                    </ul>
+                </div>
+
+                <!--活動-->
+                <div class="event_content">
+                    <div class="content">
+
+                        <p>
+                            五合目位於海拔 2305 公尺的山腰
+                            被周圍的原始森林環抱，白雲就在腳下漂浮，近距離觀看富士山！
+                        </p>
+                    </div>
+                    <div class="pic">
+                        <img src="./image/blogPage/event2.png" alt="">
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="event_block3">
+                <!--側邊點點-->
+                <div class="circle_line">
+                    <div class="circle"></div>
+                    <div class="line"></div>
+                    <ul>
+                        <li>12:30</li>
+                        <li>音樂盒之森美術館</li>
+                    </ul>
+                </div>
+
+                <!--活動-->
+                <div class="event_content">
+                    <div class="pic">
+                        <img src="./image/blogPage/event3.png" alt="">
+                    </div>
+                    <div class="content">
+                        <p>
+                            遠方的富士山的夢幻美景，
+                            與大型音樂盒演奏著經典的
+                            古典樂都很有看點。
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="event_block4">
+                <!--側邊點點-->
+                <div class="circle_line">
+                    <div class="circle"></div>
+                    <div class="line"></div>
+                    <ul>
+                        <li>14:30</li>
+                        <li>忍野八海</li>
+                    </ul>
+                </div>
+
+                <!--活動-->
+                <div class="event_content">
+                    <div class="pic">
+                        <img src="./image/blogPage/event4.png" alt="">
+                    </div>
+                    <div class="content">
+                        <p>
+                            由八個湖泊組成，每一個湖泊都有其獨特的形態和特色，並且湖水的顏色也因地形氣候、
+                            時間等因素而不斷變化。每一季的景色都是不同的，都值得讓人慢慢品味。
+                        </p>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="event_block5">
+                <!--側邊點點-->
+                <div class="circle_line">
+                    <div class="circle"></div>
+                    <ul>
+                        <li>16:30</li>
+                        <li>回程</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+
+    <!--旅行注意事項-->
+    <div class="container blogpage_remind">
+        <div class="remind_inner">
+            <h3>旅行注意事項</h3>
+            <ul>
+                <li>確定旅行目的地、日期、預算、行程和住宿等，並盡可能提前預訂，以免在行程中出現任何不必要的問題。</li>
+                <li>在旅行期間盡可能避免攜帶大量現金、貴重物品和重要文件，並將這些物品放在安全的地方。</li>
+                <li>確保您的護照和簽證都是有效的，並且在旅行期間至少還有6個月的有效期。如果需要簽證，請確保您已經
+                    申請並獲得了簽證。</li>
+                <li>在旅行期間，保持與家人和朋友的聯繫，並且隨時告知您的行蹤和下一步計劃。</li>
+                <li>如果您有特殊的飲食需求或醫療需求，請提前告知旅行社，以確保旅程的順利進行。</li>
+                <li>建議攜帶一份旅遊指南或地圖，以幫助您更好地了解目的地國家的景點和交通。</li>
+                <li>檢查您的手機和電腦是否可在目的地國家正常使用，並檢查是否需要開啟漫遊服務。</li>
+                <li>在旅途中注意保持良好的衛生習慣，避免飲用未煮沸的水和食用生的食物。</li>
+                <li>提前了解當地的安全情況，並遵守當地的法律法規和安全建議。</li>
+                <li>檢查和確認您的行李，避免攜帶禁止攜帶的物品，或漏帶必要的用品。</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <!--其他推薦景點-->
+
+    <div class="container another_event">
+        <h3>其他推薦景點</h3>
+        <div class="inner_block">
+            <div class="event">
+                <a href="#">
+                    <div class="pic">
+                        <div class="title tag-l">四季の宿</div>
+                        <img src="./image/blogPage/another.png" alt="">
+                    </div>
+                    <div class="content">
+                        <p>充滿日式風情的裝潢，是當地相當知名
+                            的傳統日式溫泉酒店。</p>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="event">
+                <a href="#">
+                    <div class="pic">
+                        <div class="title tag-l">天上山公園</div>
+                        <img src="./image/blogPage/another2.png" alt="">
+                    </div>
+                    <div class="content">
+                        <p>搭上天上山公園Kachi纜車，以360度
+                            全景欣賞富士山和河口湖全景。</p>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="event">
+                <a href="#">
+                    <div class="pic">
+                        <div class="title tag-l">淺間神社</div>
+                        <img src="./image/blogPage/another3.png" alt="">
+                    </div>
+                    <div class="content">
+                        <p>擁有著古色古香的神社以及鳥居想要一
+                            覽關東地區景緻的話非常推薦！</p>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+
 
 
     <!-- 以下Footer區域 -->
