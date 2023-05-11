@@ -11,52 +11,143 @@
 
 <body>
     <!-- 以下Header區域 -->
-    @@include('./layout/header.html',{
+    <!-- @@include('./layout/header.html',{
     room:'active'
-    })
+    }) -->
     <!-- 以下是top button -->
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
-    <div class="container">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor, unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
 
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
+    <div class="roomBlog-banner">
+        @@include('./layout/header.html',{
+            room:'active'
+            })
+            <div class="banner-text">
+                <h2>讓我們去旅行吧</h2>
+                <h3>撐過這艱辛的課程</h3>
+                <h3>各位該好好放鬆了!</h3>
+            </div>
+    </div>
+    <div class="roomBlog container">
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
+        <div class="section-tag">
+            <ul>
+                <li><button class="btn-sec-l">東京都</button></li>
+                <li><button class="btn-sec-l">神奈川縣</button></li>
+                <li><button class="btn-sec-l">千葉縣</button></li>
+                <li><button class="btn-sec-l">埼玉縣</button></li>
+                <li><button class="btn-sec-l">群馬縣</button></li>
+                <li><button class="btn-sec-l">栃木縣</button></li>
+                <li><button class="btn-sec-l">茨城縣</button></li>
+            </ul>
+        </div>
 
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
+        <div class="mid-pc1">
+            <img src="image/roomBlog/mid1.png" alt="">
+        </div>
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
 
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
+        <div class="both">
+            <div class="city">
+                <h1>東京都</h1>
+            </div>
+            <div class="mid-pc2">
+                <img src="image/roomBlog/mid2.png" alt="">
+            </div>
+        </div>
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
 
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore blanditiis assumenda, velit accusantium
-            doloremque repellat veniam consequatur voluptatum iste dolore tempora et nostrum expedita sequi eaque vero
-            quia vitae fugiat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates voluptatibus esse
-            delectus ducimus qui, voluptatum cumque quasi quos asperiores porro, expedita autem voluptas est veritatis
-            eaque tempore laboriosam facilis illo? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, culpa
-            voluptas. Sequi minima in suscipit, eveniet, eius fugiat at quas delectus veniam ad tempora molestias fuga
-            velit et iste non.</p>
+        <div class="main-room1">
 
+            <div class="box">
+                <div class="room">
+                    <img src="image//roomBlog/room1.png" alt="">
+                </div>
+                <div class="words">
+                    <p>藤本里香</p>
+                    <p>TEL:0123-000-010</p>
+                    <p>MAIL:info123@satoyama.com</p>
+                    <p>687 Karuizawa, Kitasaku District, Nagano 389-0102日本</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="room">
+                    <img src="image//roomBlog/room2.png" alt="">
+                </div>
+                <div class="words">
+                    <p>乙谷優太</p>
+                    <p>TEL:0456-001-010</p>
+                    <p>MAIL:info456@satoyama.com</p>
+                    <p>4 Chome-9-15 Ueno, Taito City, Tokyo 110-0005日本</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-room2">
+            <div class="box">
+                <div class="room">
+                    <img src="image//roomBlog/room3.png" alt="">
+                </div>
+                <div class="words">
+                    <p>釘崎野薔薇</p>
+                    <p>TEL:0789-000-010</p>
+                    <p>MAIL:info789@satoyama.com</p>
+                    <p>871 Nagatoro, Chichibu District, Saitama 369-1305日本</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="room">
+                    <img src="image//roomBlog/room2.png" alt="">
+                </div>
+                <div class="words">
+                    <p>乙谷優太</p>
+                    <p>TEL:0456-001-010</p>
+                    <p>MAIL:info456@satoyama.com</p>
+                    <p>4 Chome-9-15 Ueno, Taito City, Tokyo 110-0005日本</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-room3">
+            <div class="box">
+                <div class="room">
+                    <img src="image//roomBlog/room1.png" alt="">
+                </div>
+                <div class="words">
+                    <p>藤本里香</p>
+                    <p>TEL:0123-000-010</p>
+                    <p>MAIL:info123@satoyama.com</p>
+                    <p>687 Karuizawa, Kitasaku District, Nagano 389-0102日本</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="room">
+                    <img src="image//roomBlog/room2.png" alt="">
+                </div>
+                <div class="words">
+                    <p>乙谷優太</p>
+                    <p>TEL:0456-001-010</p>
+                    <p>MAIL:info456@satoyama.com</p>
+                    <p>4 Chome-9-15 Ueno, Taito City, Tokyo 110-0005日本</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="page">
+            <ul>
+                <li><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li><a href="">5</a></li>
+                <li><a href="">6</a></li>
+            </ul>
+        </div>
+            
+
+        
 
     </div>
 
