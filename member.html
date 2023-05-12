@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>會員中心</title>
     @@include('./layout/style.html')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body>
@@ -19,7 +20,7 @@
 
     <!-- 以下可以開始編輯 -->
     <main class="member wrapper">
-        <section class="container">
+        <section class="container" :class="{'-show':start === true}">
             <aside>
                 <div class="avatar">
                     <div class="img"><img src="image/loginRegister/loginBG.jpg"></div>
@@ -31,174 +32,29 @@
                 </div>
 
                 <ul class="tab">
-                    <li><button class="tabBtn">帳號設定</button></li>
-                    <li><button class="tabBtn">訂單管理</button></li>
-                    <li><button class="tabBtn">我的收藏</button></li>
-                    <li><button class="tabBtn">優惠券</button></li>
+                    <li><button class="tabBtn" @click="tab_change('account')" :class="{'tabOn': current_tab === 'account'}">帳號設定</button></li>
+                    <li><button class="tabBtn" @click="tab_change('order')" :class="{'tabOn': current_tab === 'order'}">訂單管理</button></li>
+                    <li><button class="tabBtn" @click="tab_change('collect')" :class="{'tabOn': current_tab === 'collect'}">我的收藏</button></li>
+                    <li><button class="tabBtn" @click="tab_change('coupon')" :class="{'tabOn': current_tab === 'coupon'}">優惠券</button></li>
                 </ul>
 
                 <button class="logout">登出</button>
             </aside>
 
-            <!-- =================== 帳號設定 =================== -->
-            <section class="box account">
-                <div class="info">
-                    <h4>會員資料</h4>
-                    <form action="">
-                        <ul>
-                            <li>
-                                <label>會員帳號</label>
-                                <input type="text" disabled value="會員帳號不可更動" class="textStyle">
-                            </li>
-
-                            <li>
-                                <label for="fullname">全名</label>
-                                <input type="text" id="fullname" placeholder="請輸入您的全名" class="textStyle" required>
-                            </li>
-
-                            <li>
-                                <label for="gender">性別</label>
-                                <select name="gender" id="gender" required>
-                                    <option value="male">男性</option>
-                                    <option value="female">女性</option>
-                                </select>
-                            </li>
-
-                            <li>
-                                <label for="phone">手機號碼</label>
-                                <input type="text" id="phone" placeholder="請輸入您的手機號碼" class="textStyle" required>
-                            </li>
-                        </ul>
-
-                        <button type="submit">儲存</button>
-                    </form>
-                </div>
-
-                <div class="pwChange">
-                    <h4>變更密碼</h4>
-                    <form action="">
-                        <ul>
-                            <li>
-                                <label for="oldPW">舊密碼</label>
-                                <input type="password" id="oldPW" class="textStyle" placeholder="請輸入您現在的密碼" required>
-                            </li>
-
-                            <li>
-                                <label for="newPW">新密碼</label>
-                                <input type="password" id="newPW" class="textStyle" placeholder="請輸入新的密碼" required>
-                            </li>
+            <!-- 以下是帳號設定 -->
+            @@include('./layout/memberAccount.html')
 
 
-                            <li>
-                                <label for="confirmPW">確認新密碼</label>
-                                <input type="password" id="confirmPW" class="textStyle" placeholder="請再次輸入新密碼" required>
-                            </li>
-                        </ul>
+            <!-- 以下是訂單管理 -->
+            @@include('./layout/memberOrder.html')
 
-                        <button type="submit">修改</button>
-                    </form>
-                </div>
+            <!-- 以下是我的收藏 -->
+            @@include('./layout/memberCollect.html')
 
-                <div class="pw"></div>
-            </section>
+            <!-- 以下是優惠券 -->
+            @@include('./layout/memberCoupon.html')
 
-            <!-- =================== 訂單管理 =================== -->
-            <section class="box order">
-                <div class="block">
-                    <div class="detail">
-                        <div class="pImg"><img src="image/member/p1.jpg"></div>
-                        <div class="pInfo">
-                            <h4>鎌倉一日遊</h4> <br>
-                            <p>訂單編號：111</p>
-                            <p>日期：2023-04-23</p>
-                        </div>
-                        <div class="pPrice">
-                            <h4>即將出發</h4>
-                            <p>NTD 390</p>
-                            <ul class="orderOption">
-                                <li><button class="cancel">取消訂單</button></li>
-                                <li style="display: none;"><button class="review">撰寫評論</button></li>
-                                <li><button class="contact" @click="showService = true">聯絡客服</button></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="block">
-                    <div class="detail">
-                        <div class="pImg"><img src="image/member/p2.jpg"></div>
-                        <div class="pInfo">
-                            <h4>富士山一日遊</h4> <br>
-                            <p>訂單編號：33</p>
-                            <p>日期：2023-04-25</p>
-                        </div>
-                        <div class="pPrice">
-                            <h4>已出發</h4>
-                            <p>NTD 390</p>
-                            <ul class="orderOption">
-                                <li style="display: none;"><button class="cancel">取消訂單</button></li>
-                                <li><button class="review" @click="toggleReview">撰寫評論</button></li>
-                                <li><button class="contact" @click="showService = true" >聯絡客服</button></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="reviewArea" v-if="showReview">
-                        <form action="">
-                            <ul class="reviewStar">
-                                <li><i class="ai-star"></i></li>
-                                <li><i class="ai-star"></i></li>
-                                <li><i class="ai-star"></i></li>
-                                <li><i class="ai-star"></i></li>
-                                <li><i class="ai-star"></i></li>
-                            </ul>
-
-                            <textarea name="" id="" class="textareaStyle" placeholder="請輸入您的評論"></textarea> <br>
-                            <div class="area">
-                                <div class="box2">
-                                    <label for="reviewIMG"><i class="ai-plus"></i></label>
-                                    <input type="file" id="reviewIMG" multiple accept="image/*">
-                                    <div class="reviewIMGBox"><img src="image/member/p1.jpg"></div>
-                                    <div class="reviewIMGBox"><img src="image/member/p2.jpg"></div>
-                                    <div class="reviewIMGBox"><img src="image/blog/travel_3.png"></div>
-                                </div>
-                                <button type="submit">送出</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        </section>
-
-        <!-- =================== 聯絡客服 =================== -->
-        <section class="serviceBox" v-if="showService">
-            <div class="service">
-                <span @click="showService = false"><i class="ai-cross"></i></span>
-                <form action="">
-                    <p>訂單編號：111</p> 
-                    <ul>
-                        <li>
-                            <label for="contactID">全名</label>
-                            <input type="text" id="contactID" class="textStyle" placeholder="請輸入您的全名" required>
-                        </li>
-
-                        <li>
-                            <label for="contactEmail">電子信箱</label>
-                            <input type="email" id="contactEmail" class="textStyle" placeholder="請輸入您的電子信箱" required>
-                        </li>
-
-                        <li>
-                            <label for="contactPhone">手機號碼</label>
-                            <input type="text" id="contactPhone" class="textStyle" placeholder="請輸入您的手機號碼" required>
-                        </li>
-
-                        <li>
-                            <textarea name="" id="contactText" class="textareaStyle" placeholder="請輸入您的訊息"></textarea>
-                        </li>
-                    </ul>
-                    <button type="submit">送出</button>
-                </form>
-            </div>
         </section>
     </main>
 

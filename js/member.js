@@ -2,8 +2,17 @@ Vue.createApp({
     data() {
         return {
             showReview: false,
-            showService: false
+            showService: false,
+            start: false,
+            current_tab: 'account'
         }
+    },
+    mounted() {
+        setTimeout(() => {
+            this.start = true;
+        }, 200);
+
+
     },
     methods: {
         toggleReview() {
@@ -12,6 +21,12 @@ Vue.createApp({
             } else {
                 this.showReview = true;
             }
+        },
+
+
+        tab_change(tab_name) {
+            this.current_tab = tab_name
         }
+
     }
 }).mount('.member')

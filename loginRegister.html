@@ -61,7 +61,7 @@
 
         <!-- 忘記密碼區域 -->
         <div class="forget wrapper" v-show="showForget">
-            <div class="reset container">
+            <div class="reset container" v-show="!showDone">
                 <span @click="showForget = false"><i class="ai-cross"></i></span>
                 <form action="">
                     <h3>重設密碼</h3>
@@ -75,7 +75,7 @@
                 <form action="">
                     <h3>已傳送重置密碼的電子郵件</h3>
                     <p>已將電子郵件傳送至您輸入的電子信箱帳號，請依照電子郵件中的指示重置密碼。</p>
-                    <button type="button" @click="showForget = false">完成</button>
+                    <button type="button" @click="showForget = false; showDone = false">完成</button>
                 </form>
             </div>
 
