@@ -36,7 +36,7 @@ let mapApp = Vue.createApp({
                         'image/index/index24.jpg'
                     ],
                     title:'群馬',
-                    content:'大自然樂園，擁有健行步道、滑雪場<br>以及溫泉，讓身心獲得療癒舒緩。'
+                    content:'大自然樂園，擁有健行步道、滑雪場以及溫泉，讓身心獲得療癒舒緩。'
 
                 },
                 'ibaraki':{
@@ -46,7 +46,7 @@ let mapApp = Vue.createApp({
                         'image/index/index28.jpg'
                     ],
                     title:'茨城',
-                    content:'大自然樂園，擁有健行步道、滑雪場<br>以及溫泉，讓身心獲得療癒舒緩。'
+                    content:'大自然樂園，擁有健行步道、滑雪場以及溫泉，讓身心獲得療癒舒緩。'
 
                 },
                 'saitama':{
@@ -56,7 +56,7 @@ let mapApp = Vue.createApp({
                         'image/index/index31.jpg'
                     ],
                     title:'埼玉',
-                    content:'擁有江戶時代的歷史風貌，各種獨特的<br>戶外探險活動等你來一探究竟!'
+                    content:'擁有江戶時代的歷史風貌，各種獨特的戶外探險活動等你來一探究竟!'
                 },
                 'tochigi':{
                     img:[
@@ -65,7 +65,7 @@ let mapApp = Vue.createApp({
                         'image/index/index34.jpg'
                     ],
                     title:'栃木',
-                    content:'壯觀的神社與佛寺景色如畫，<br>同時享受泡湯與河川之旅。'
+                    content:'壯觀的神社與佛寺景色如畫，同時享受泡湯與河川之旅。'
                 },
                 'chiba':{
                     img:[
@@ -74,7 +74,7 @@ let mapApp = Vue.createApp({
                         'image/index/index37.jpg'
                     ],
                     title:'千葉',
-                    content:' 海灘活動到山間步行的古村，<br>還有主題樂園及特惠商城，一應俱全。'
+                    content:' 海灘活動到山間步行的古村，還有主題樂園及特惠商城，一應俱全。'
                 },
                 'tokyo':{
                     img:[
@@ -83,7 +83,7 @@ let mapApp = Vue.createApp({
                         'image/index/index40.jpg'
                     ],
                     title:'東京',
-                    content:'融合了未來主義與歷史氣息的城市，<br>擁有多元的風貌並充滿可能性。。'
+                    content:'融合了未來主義與歷史氣息的城市，擁有多元的風貌並充滿可能性。'
                 },
                 'kanagawa':{
                     img:[
@@ -92,7 +92,7 @@ let mapApp = Vue.createApp({
                         'image/index/index43.jpg'
                     ],
                     title:'神奈川',
-                    content:'海灣風景、國際港市、禪寺、<br>自然美景...擁有國際化的魅力。'
+                    content:'海灣風景、國際港市、禪寺、自然美景...擁有國際化的魅力。'
                 },
             },
         }

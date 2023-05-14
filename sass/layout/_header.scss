@@ -13,11 +13,12 @@ header{
     .container {
         justify-content: space-between;
         @include m(){
+            justify-content: center;
             width: 90%;
-            background-color: hsl(0, 0%, 100%, 80%);
+            background-color: hsl(0, 0%, 100%, 90%);
             border-radius: $borderRadius;
             padding: 10px;
-            margin-top: 10px;
+            margin: 10px auto 0;
             position: relative;
         }
 
@@ -33,9 +34,10 @@ header{
 
             @include m() {
                 display: block;
-                // .-open{
-
-                // }
+                cursor: pointer;
+                 .-close{ 
+                    display: none;
+                 }
             }
         }
 
@@ -45,6 +47,12 @@ header{
             margin-left: auto;
             /*========叉叉先隱藏===========*/
             display: none;
+            cursor: pointer;
+            @include m(){
+                .-open{
+                    display: block;
+                }
+            }
         }
 
 
@@ -71,19 +79,28 @@ header{
             @include flex-container($justify-content:flex-end);
             width: 80%;
 
-            @include m() {
+            @include m(){
+                height: 580px;
                 background-color: hsl(0, 0%, 100%, 95%);
                 width: 95%;
                 position: absolute;
                 top: 60px;
                 left: 0;
                 border-radius: $borderRadius;
-                padding: 10px;
-                padding-bottom: 20px;
+                padding: 0 10px;
 
                 /*========選單先隱藏===========*/
-                display: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height .3s ease; //收合過程
+
+                .-openlist{
+                    max-height:600px;
+                    transition: max-height .3s ease; //展開過程
+                }
             }
+
+
 
             /*索引*/
             .nav {
@@ -94,7 +111,6 @@ header{
                 @include m() {
                     flex-direction: column;
                     margin: 0 auto;
-
                 }
 
                 li {
@@ -114,7 +130,7 @@ header{
                     }
 
                     a {
-
+                        display: block;
                         &:hover {
                             font-weight: bold;
                             color: $primary;

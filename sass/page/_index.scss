@@ -71,8 +71,8 @@ a{
         margin-bottom: 100px;
         .btn-pri-l{
             display: block;
-            margin: 10px 90px 10px;
-            line-height: 1.6;            
+            margin: 10px 75px 10px;
+            line-height: 1.2;           
         }
     }
     .index01_content{
@@ -82,6 +82,9 @@ a{
             // overflow: hidden;
             text-align: left;
             position: relative;
+            @include m(){
+                width: 100%;
+            }
             &:nth-child(2){
                 margin-top: 100px;
                 @include m(){
@@ -99,6 +102,9 @@ a{
             .mask{
                 overflow: hidden;
                 width: 360px;
+                @include m(){
+                    width: 100%;
+                }
 
                 img{
                     cursor: pointer;
@@ -144,6 +150,7 @@ a{
 
                 @include m(){
                     bottom: 180px;
+                    right: -10px;
                 }
             }
 
@@ -223,7 +230,7 @@ a{
 
     .btn-pri-l{
         margin-left:100px;
-        line-height: 1.6;
+        line-height: 1.2;
 
         @include m(){
             display: block;
@@ -238,27 +245,69 @@ a{
 
 .index03{
     margin: 150px auto;
+    position: relative;
+    @include m(){
+        margin: 80px auto;
+    }
 
     .gallery{
         height: 760px;
         display: grid;
+        margin: 0 auto;
         grid-template-columns: 2fr 1.5fr repeat(4, 1fr);
         grid-template-rows: repeat(10, 0.5fr);
         grid-column-gap: 8px;
         grid-row-gap: 8px;
         grid-auto-flow: dense;
+
+        @include m(){
+            // grid-template-columns: 2fr,2fr repeat(4, 1fr);
+        }
             
-            .img09 { grid-area: 1 / 1 / 7 / 2; }
-            .img10 { grid-area: 1 / 2 / 4 / 3; }
-            .img11 { grid-area: 1 / 3 / 4 / 5; }
-            .img12 { grid-area: 1 / 5 / 4 / 7; }
+            .img09 { grid-area: 1 / 1 / 7 / 2;
+                @include m(){
+                    grid-area: 1 / 1 / 7 / 3;
+                }}}
+            .img10 { grid-area: 1 / 2 / 4 / 3; 
+                @include m(){
+                    display: none;
+                    grid-area: 1 / 3 / 4 / 5;
+                }}
+            .img11 { grid-area: 1 / 3 / 4 / 5; 
+                @include m(){
+                    display: none;
+                }}
+            .img12 { grid-area: 1 / 5 / 4 / 7; 
+                @include m(){
+                    // display: none;
+                    grid-area: 1 / 3 / 4 / 7;
+                }}
             .img13 { grid-area: 4 / 5 / 7 / 7; }
-            .img14 { grid-area: 7 / 1 / 11 / 2; }
-            .index03_title { grid-area: 4 / 2 / 7 / 5; }
-            .img15 { grid-area: 7 / 2 / 9 / 4; }
-            .img16 { grid-area: 9 / 2 / 11 / 4; }
-            .img17 { grid-area: 7 / 4 / 11 / 5; }
-            .img18 { grid-area: 7 / 5 / 11 / 7; }
+            .img14 { grid-area: 7 / 1 / 11 / 2; 
+                @include m(){
+                    display: none;
+                    grid-area: 7 / 1 / 11 / 2;
+                }}
+            .index03_title { grid-area: 4 / 2 / 7 / 5;}
+            .img15 { grid-area: 7 / 2 / 9 / 4; 
+                @include m(){
+                    // display: none;
+                    grid-area: 7 / 1 / 9 / 4;
+                }}
+            .img16 { grid-area: 9 / 2 / 11 / 4; 
+                @include m(){
+                    // display: none;
+                    grid-area: 9 / 1 / 11 / 4;
+                }}
+            .img17 { grid-area: 7 / 4 / 11 / 5; 
+                @include m(){
+                    display: none;
+                }}
+            .img18 { grid-area: 7 / 5 / 11 / 7; 
+                @include m(){
+                    // display: none;
+                    grid-area: 7 / 4 / 11 / 7; 
+                }}
 
             img{
                 width: 100%;
@@ -266,7 +315,7 @@ a{
                 object-fit: cover;
             }
     }   
-}    
+
 
 .index03_title{
     text-align: center;
@@ -274,13 +323,42 @@ a{
     // width: 618px;
     padding: 30px 0;
     color: $fontColor;
+
+    @include m(){
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 200px;
+        height: 220px;
+        background-color: $bgc;
+        padding: 10px;
+        padding-top: 80px;
+
+      }
+
+
     
     h1{
         margin-bottom: 20px ;
+        @include m(){
+            margin-bottom: 40px;
+            font-size: $h2;
+        }
     }
 }
+
+
+
 /*第四部分--------旅遊專欄*/
 .index04{
+    color: $fontColor;
+    @include m(){
+        h1{
+            font-size: $h2;
+        }
+    }
     .btn-pri-l{
     // padding-left: 10px;
     display: block;
@@ -294,14 +372,21 @@ a{
         margin-top: 80px;
        @include flex-container(
         $justify-content:space-around,
-        $align-items:flex-start
+        $align-items:flex-start,
        );
+       @include m(){
+        flex-direction: column;
+       }
     
 
         li{
             width: 48%;
             margin-bottom: 50px;
             position: relative;
+
+            @include m(){
+                width: 100%;
+            }
 
 
             span{
@@ -336,77 +421,246 @@ a{
 .index05_wrapper{
     width: 100%;
     background-color:hsla(0, 0%, 100%,70%);    
-    height: 680px;
+    // height: 680px;
+    padding: 25px 0;
+    
+    @include m{
+        // padding-bottom: 320px;
+        // margin-bottom:100px ;
+        height:1200px;
+    }
 }
 
 .index05{
+    color:$fontColor;
+    @include m(){
+        h1{
+            font-size: $h2;
+        }
+    }
     .line2{
         margin-left: 100px;
         margin-top: 30px;
+        @include m{
+            margin-left: 80px;
+        }
     }
 
     .mapinfo{
+        height: 420px;
         position: relative;
 
         .index05_info{
             margin-top: 50px;
             width: 600px;
             display: grid;
+
             grid-template-rows: auto ;
             grid-template-columns: 1fr 2fr;
             gap:10px 10px;
 
+            @include m(){
+                padding-top: 350px;
+                width: 90%;
+                grid-template-columns: 1fr ;
+                margin:30px auto 0 ;
+            }
+
             img{
                 width: 300px;
-                // width: 100%;
                 display: block;
                 border-radius: 5px;
+                @include m(){
+                    margin: 0 auto;
+                }
                 
                 &:nth-child(2){
                     position:relative;
                     top:40px;
-                }
 
-                &:nth-child(4){
-                    padding-top: 40px;
-                    
-                } 
+                    @include m(){
+                        top:0;
+                    }
+                }
             }
 
             h4{
-                position: absolute;
-                top: 300px;
-                left:320px;
+                padding-top: 50px;
+                width: 500px;
                 line-height: 1.6;
                 color: $fontColor;
+
+                @include m(){
+                    display: block;
+                    margin: 0 auto;
+                    padding-top: 10px;
+                    font-size: $paragraph-s;
+                    width: 100%;
+                }
 
                 strong{
                     font-size: $h3;
                     font-weight: 600;
+                    @include m(){
+                        font-size: $paragraph;
+                    }
+                }
+            }
+        }
+
+        .mapsvg{
+            width: 60%;
+            position: absolute;
+            top: -320px;
+            right:-135px;
+            @include m(){
+            width: 100%;
+            top:-30px;
+            left: 0;
+            }
+            path{
+                stroke:#fff;
+                stroke-width:1px;
+                cursor:pointer;
+                fill:#F4F1E8;
+                &:hover,&.-active{
+                    fill:#C73E3A;
+                    stroke:#ECECEB;
+                    transform:translate(-2px,-2px);
+                    transition: .3s ease-out;
+                }
+            } 
+        }
+    }
+}
+
+/*第六部分--------天氣*/
+.index06{
+    color: $fontColor;
+    padding: 80px;
+    @include m(){
+        padding: 30px 0;
+    }
+
+    .c{
+        text-align: right;
+        padding-top: 20px;
+    }
+
+    .index06_title{
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        p{
+            margin-left: 10px;
+        }
+    }
+
+    .weather{
+        color: $fontColor;
+        border-top: 1px dashed $fontColor;
+        @include flex-container(
+            $justify-content:space-between
+        );
+        @include m(){
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+
+        .day{
+            margin-top: 30px;
+            text-align: center;
+
+            li{
+                padding: 10px 30px;
+                @include m(){
+                    padding: 10px 7px;
+                }
+
+                i{
+                    font-size: $h4;
+                }
+                .ai-sun{
+                    color: #fa0;
+                }
+                .ai-cloud{
+                    color: #49d;
+                }
+                .ai-air{
+                    color:#ccc;
+                }
+            }
+        }
+    }
+}   
+
+/*第七部分--------匯率*/
+.index07_wrapper{
+    background-color: $secondary;
+
+    .index07{
+        display: flex;
+        justify-content: center;
+        padding: 30px 0;
+
+        @include m(){
+            flex-direction: column;
+        }
+
+        .index07_title{
+            display: flex;
+            align-items: center;
+
+            i{
+                font-size: $h3;
+                color: $secondary;
+                background-color: $fontColor;
+                padding: 5px;
+                border-radius: 3px;
+                margin: 0 15px;
+                @include m(){
+                    font-size: $h4;
+                }
+            }
+
+            h2{
+                @include m(){
+                    font-size: $h3;
                 }
             }
         }
     }
 
-    .mapsvg{
-        width: 60%;
-        position: absolute;
-        top: -285px;
-        right:-135px;
-        path{
-            stroke:#fff;
-            stroke-width:1px;
-            cursor:pointer;
-            fill:#F4F1E8;
-            &:hover,&.-active{
-                fill:#C73E3A;
-                stroke:#ECECEB;
-                transform:translate(-2px,-2px);
-                transition: .3s ease-out;
+    table{
+        width: 50%;
+        margin-left: 50px;
+        background-color:$bgc;
+        font-size: $paragraph;
+        color: $fontColor;
+        table-layout: fixed;
+
+        @include m(){
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        tr{
+            &:first-child{
+                background-color: $fontColor;
+                color: #fff;
             }
-        } 
+        }
+        td{
+            border: 5px solid $secondary;
+            // border-collapse:collapse ;
+            text-align: center;
+            padding: 15px 0;
+        }
     }
 }
+
+
 
 
 .none{
