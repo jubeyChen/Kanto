@@ -4,7 +4,7 @@ Vue.createApp({
             showReview: false,
             showService: false,
             start: false,
-            current_tab: 'account'
+            current_tab: 'order'
         }
     },
     mounted() {

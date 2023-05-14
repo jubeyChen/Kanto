@@ -23,15 +23,15 @@
             <div class="box">
                 <ul class="tab">
                     <li><button type="button" class="tabBtn"
-                            @click="showLogin = true; showRegister = false; activeBtn = 'login'"
+                            @click="tabOn('login')"
                             :class="{ active: activeBtn === 'login'}">登入</button></li>
                     <li><button type="button" class="tabBtn"
-                            @click="showLogin = false; showRegister = true; activeBtn = 'register'"
+                            @click="tabOn('register')"
                             :class="{ active: activeBtn === 'register'}">註冊</button></li>
                 </ul>
 
                 <!-- Login區域 -->
-                <div class="login tabContent" v-show="showLogin">
+                <div class="login tabContent" v-if="current_tab === 'login'">
                     <form>
                         <label for="loginID">帳號</label>
                         <input type="email" id="loginID" class="textStyle" placeholder="請輸入電子信箱" required>
@@ -43,7 +43,7 @@
                 </div>
 
                 <!-- Register區域 -->
-                <div class="register tabContent" v-show="showRegister">
+                <div class="register tabContent" v-show="current_tab === 'register'">
                     <form>
                         <label for="registerID">註冊帳號</label>
                         <input type="email" id="registerID" class="textStyle" placeholder="請輸入電子信箱" required>
@@ -67,7 +67,7 @@
                     <h3>重設密碼</h3>
                     <label for="forgetID">請輸入您註冊Kanto的電子信箱，我們會發送重設密碼的信件至您的信箱。</label>
                     <input type="email" id="forgetID" class="textStyle" placeholder="請輸入您註冊的電子信箱" required>
-                    <button type="button" @click="showDone = true;">下一步</button>
+                    <button type="submit" @click="showDone = true;">下一步</button>
                 </form>
             </div>
 
