@@ -1,24 +1,27 @@
 // const ham = document.getElementById("ham");
 // const cross = document.getElementById("cross");
 // const menulist = document.querySelector("nav-bar");
-
-
+// let open = false;
 // ham.addEventListener("click", () => {
-// menulist.classList.toggle('-openlist');
+//     // console.log("aaa");
+// menulist.classList.toggle("-openlist");
 // ham.classList.toggle("-close");
-// console.log(menulist);
+// // console.log(menulist);
 // // console.log(ham);
 // cross.classList.toggle("-open");
 // });
 
+
+// 選單收合=============
 $(document).ready(function(){
-    let open = false;
     $("#ham").click(function(){
-        // console.log("aaa");
-        $(".nav-bar").toggleClass("-openlist");
-        $("#ham").toggleClass("-close");
-        $("#cross").toggleClass("-open");
-        // console.log(open);
-        open = !open;
+            $(".nav-bar").toggleClass("-openlist");
+            $("#ham").toggleClass("-close");
+            $("#cross").toggleClass("-open");
+        });
+        $("#cross").click(function(){
+            $(".nav-bar").toggleClass("-openlist");
+            $("#ham").removeClass("-close");
+            $("#cross").removeClass("-open");
+        })
     });
-});

@@ -35,7 +35,7 @@ header{
             @include m() {
                 display: block;
                 cursor: pointer;
-                 .-close{ 
+                 &.-close{ 
                     display: none;
                  }
             }
@@ -49,7 +49,7 @@ header{
             display: none;
             cursor: pointer;
             @include m(){
-                .-open{
+                &.-open{
                     display: block;
                 }
             }
@@ -94,7 +94,7 @@ header{
                 overflow: hidden;
                 transition: max-height .3s ease; //收合過程
 
-                .-openlist{
+                &.-openlist{
                     max-height:600px;
                     transition: max-height .3s ease; //展開過程
                 }
