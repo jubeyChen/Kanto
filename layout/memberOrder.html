@@ -1,44 +1,24 @@
 <!-- =================== 訂單管理 =================== -->
 <section class="box order" v-if="current_tab === 'order'">
-    <div class="block">
+    <div class="block" v-for="(list, index) in orderList" :key="index">
         <div class="detail">
-            <div class="pImg"><img src="image/member/p1.jpg"></div>
+            <div class="pImg"><img :src="orderIMGUrl+list.productIMG"></div>
             <div class="pInfo">
-                <h4>鎌倉一日遊</h4> <br>
-                <p>訂單編號：111</p>
-                <p>日期：2023-04-23</p>
+                <h4>{{list.title}}</h4> <br>
+                <p>訂單編號：{{list.orderNumber}}</p>
+                <p>日期：{{list.date}}</p>
             </div>
             <div class="pPrice">
-                <h4>即將出發</h4>
-                <p>NTD 390</p>
+                <h4>{{ departureStatus(list.date) }}</h4>
+                <p>NTD {{list.price}}</p>
                 <ul class="orderOption">
-                    <li><button class="cancel">取消訂單</button></li>
-                    <li style="display: none;"><button class="review">撰寫評論</button></li>
-                    <li><button class="contact" @click="showService = true">聯絡客服</button></li>
+                    <li v-if="departureStatus(list.date) === '即將出發'"><button class="cancel">取消訂單</button></li>
+                    <li v-if="departureStatus(list.date) === '已出發'"><button class="review" @click="toggleReview">撰寫評論</button></li>
+                    <li><button class="contact" @click="showService = true; currentOrderNumber = list.orderNumber">聯絡客服</button></li>
                 </ul>
             </div>
         </div>
-    </div>
-
-    <div class="block">
-        <div class="detail">
-            <div class="pImg"><img src="image/member/p2.jpg"></div>
-            <div class="pInfo">
-                <h4>富士山一日遊</h4> <br>
-                <p>訂單編號：33</p>
-                <p>日期：2023-04-25</p>
-            </div>
-            <div class="pPrice">
-                <h4>已出發</h4>
-                <p>NTD 390</p>
-                <ul class="orderOption">
-                    <li style="display: none;"><button class="cancel">取消訂單</button></li>
-                    <li><button class="review" @click="toggleReview">撰寫評論</button></li>
-                    <li><button class="contact" @click="showService = true">聯絡客服</button></li>
-                </ul>
-            </div>
-        </div>
-
+    
         <div class="reviewArea" v-if="showReview">
             <form action="">
                 <ul class="reviewStar">
@@ -48,7 +28,7 @@
                     <li><i class="ai-star"></i></li>
                     <li><i class="ai-star"></i></li>
                 </ul>
-
+    
                 <textarea name="" id="" class="textareaStyle" placeholder="請輸入您的評論"></textarea> <br>
                 <div class="area">
                     <div class="box2">
@@ -69,7 +49,7 @@
     <div class="service">
         <span @click="showService = false"><i class="ai-cross"></i></span>
         <form action="">
-            <p>訂單編號：111</p>
+            <p>訂單編號：{{currentOrderNumber}}</p>
             <ul>
                 <li>
                     <label for="contactID">全名</label>
