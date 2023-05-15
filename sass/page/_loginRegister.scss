@@ -7,6 +7,10 @@
     background-size: cover;
     padding: 100px 0;
 
+    @include m() {
+        padding: 120px 0 70px;
+    }
+
     .box {
         background-color: rgba(255, 255, 255, 0.8);
         width: 60%;
@@ -14,11 +18,20 @@
         padding: 30px 50px;
         border-radius: $borderRadius;
 
+        @include m() {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
         .tab {
             display: flex;
             justify-content: space-between;
             width: 60%;
             margin: 0 auto 50px;
+
+            @include m() {
+                width: 100%;
+            }
 
             .tabBtn {
                 font-size: $paragraph;
@@ -45,6 +58,10 @@
         .login {
             width: 60%;
             margin: 0 auto;
+
+            @include m() {
+                width: 100%;
+            }
 
             form {
                 display: flex;
@@ -96,6 +113,10 @@
         width: 60%;
         margin: 0 auto;
 
+        @include m() {
+            width: 100%;
+        }
+
         form {
             display: flex;
             flex-direction: column;
@@ -143,10 +164,15 @@
 
 .forget {
     background-color: rgba(0, 0, 0, 0.8);
-    height: calc(100vh - 300px);
+    height: 100vh;
     position: absolute;
     top: 80px;
     left: 0;
+
+    @include m() {
+        top: 0;
+        z-index: 1000;
+    }
 
     .reset {
         width: 30%;
@@ -155,6 +181,10 @@
         border-radius: $borderRadius;
         padding: 50px 0;
         position: relative;
+
+        @include m() {
+            width: 90%;
+        }
 
         span {
             position: absolute;
@@ -215,6 +245,10 @@
         border-radius: $borderRadius;
         padding: 50px 0;
 
+        @include m() {
+            width: 90%;
+        }
+
 
         form {
             display: flex;
@@ -226,6 +260,7 @@
             h3 {
                 text-align: center;
                 margin-bottom: 30px;
+                line-height: 1.2;
             }
 
 

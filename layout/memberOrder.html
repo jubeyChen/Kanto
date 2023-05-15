@@ -1,0 +1,76 @@
+<!-- =================== 訂單管理 =================== -->
+<section class="box order" v-if="current_tab === 'order'">
+    <div class="block" v-for="(list, index) in orderList" :key="index">
+        <div class="detail">
+            <div class="pImg"><img :src="orderIMGUrl+list.productIMG"></div>
+            <div class="pInfo">
+                <h4>{{list.title}}</h4> <br>
+                <p>訂單編號：{{list.orderNumber}}</p>
+                <p>日期：{{list.date}}</p>
+            </div>
+            <div class="pPrice">
+                <h4>{{ departureStatus(list.date) }}</h4>
+                <p>NTD {{list.price}}</p>
+                <ul class="orderOption">
+                    <li v-if="departureStatus(list.date) === '即將出發'"><button class="cancel">取消訂單</button></li>
+                    <li v-if="departureStatus(list.date) === '已出發'"><button class="review" @click="toggleReview">撰寫評論</button></li>
+                    <li><button class="contact" @click="showService = true; currentOrderNumber = list.orderNumber">聯絡客服</button></li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="reviewArea" v-if="showReview">
+            <form action="">
+                <ul class="reviewStar">
+                    <li><i class="ai-star"></i></li>
+                    <li><i class="ai-star"></i></li>
+                    <li><i class="ai-star"></i></li>
+                    <li><i class="ai-star"></i></li>
+                    <li><i class="ai-star"></i></li>
+                </ul>
+    
+                <textarea name="" id="" class="textareaStyle" placeholder="請輸入您的評論"></textarea> <br>
+                <div class="area">
+                    <div class="box2">
+                        <label for="reviewIMG"><i class="ai-plus"></i></label>
+                        <input type="file" id="reviewIMG" multiple accept="image/*">
+                        <div class="reviewIMGBox"><img src="image/member/p1.jpg"></div>
+                        <div class="reviewIMGBox"><img src="image/member/p2.jpg"></div>
+                    </div>
+                    <button type="submit">送出</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- =================== 聯絡客服 =================== -->
+<section class="serviceBox" v-if="showService">
+    <div class="service">
+        <span @click="showService = false"><i class="ai-cross"></i></span>
+        <form action="">
+            <p>訂單編號：{{currentOrderNumber}}</p>
+            <ul>
+                <li>
+                    <label for="contactID">全名</label>
+                    <input type="text" id="contactID" class="textStyle" placeholder="請輸入您的全名" required>
+                </li>
+
+                <li>
+                    <label for="contactEmail">電子信箱</label>
+                    <input type="email" id="contactEmail" class="textStyle" placeholder="請輸入您的電子信箱" required>
+                </li>
+
+                <li>
+                    <label for="contactPhone">手機號碼</label>
+                    <input type="text" id="contactPhone" class="textStyle" placeholder="請輸入您的手機號碼" required>
+                </li>
+
+                <li>
+                    <textarea name="" id="contactText" class="textareaStyle" placeholder="請輸入您的訊息"></textarea>
+                </li>
+            </ul>
+            <button type="submit">送出</button>
+        </form>
+    </div>
+</section>

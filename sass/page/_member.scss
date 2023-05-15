@@ -3,10 +3,21 @@
 .member {
     padding: 100px 0;
 
+
     .container {
         display: flex;
         justify-content: space-between;
         align-items: start;
+        transition: opacity .1s;
+        opacity: 0;
+
+        &.-show {
+            opacity: 1;
+        }
+
+        @include m() {
+            flex-direction: column;
+        }
 
         aside {
             //outline: 2px solid blue;
@@ -14,12 +25,23 @@
             flex-direction: column;
             flex-basis: 20%;
 
+            @include m() {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
 
             .avatar {
                 background-color: white;
                 margin-bottom: 30px;
                 border-radius: $borderRadius;
                 padding: 20px;
+
+                @include m() {
+                    display: none;
+                }
 
                 .img {
                     width: 150px;
@@ -82,8 +104,8 @@
                 border-radius: $borderRadius;
                 overflow: hidden;
 
-                li {
-                    margin-bottom: 10px;
+                @include m() {
+                    display: none;
                 }
 
                 li:last-child {
@@ -96,15 +118,44 @@
                     background-color: white;
                     border: 0;
                     font-size: $paragraph;
-                    line-height: 2;
+                    line-height: 2.3;
                     color: $fontColor;
                     font-family: 'Noto Sans TC', '微軟正黑體';
                     cursor: pointer;
+
 
                     &:hover {
                         background-color: $primary;
                         color: white;
                     }
+
+                    &.tabOn {
+                        background-color: $primary;
+                        color: white;
+                    }
+                }
+            }
+
+            #m-tab {
+                display: none;
+
+                @include m() {
+                    display: block;
+                    width: 150px;
+                    height: 40px;
+                    border-radius: $borderRadius;
+                    background-color: white;
+                    color: $fontColor;
+                    outline: none;
+                    border: 0;
+                    font-size: $paragraph;
+                    padding-left: 20px;
+                    appearance: none;
+                    background-image: url(../image/member/angle-down-solid.svg);
+                    background-repeat: no-repeat;
+                    background-size: 15%;
+                    background-position: 110px 8px;
+
                 }
             }
 
@@ -122,18 +173,27 @@
                     background-color: $primary;
                     color: white;
                 }
+
+                @include m() {
+                    width: 100px;
+                }
             }
         }
 
         .box {
             background-color: white;
             border-radius: $borderRadius;
-            padding: 30px 50px;
+            padding: 30px 50px 0;
             flex-basis: 65%;
+
+            @include m() {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 30px 20px 0;
+            }
         }
 
         .account {
-            display: none;
 
             .info {
                 color: $fontColor;
@@ -148,6 +208,10 @@
                     flex-direction: column;
                     width: 60%;
                     margin: 0 auto;
+
+                    @include m() {
+                        width: 100%;
+                    }
 
                     li {
                         display: flex;
@@ -198,7 +262,7 @@
             .pwChange {
                 color: $fontColor;
                 position: relative;
-                margin-top: 50px;
+                margin: 50px 0 30px;
 
                 &::before {
                     content: "";
@@ -222,6 +286,10 @@
                     flex-direction: column;
                     width: 60%;
                     margin: 0 auto;
+
+                    @include m() {
+                        width: 100%;
+                    }
 
                     li {
                         display: flex;
@@ -265,14 +333,21 @@
                 margin-bottom: 30px;
                 position: relative;
 
+                @include m() {
+                    padding: 10px;
+                }
+
                 .detail {
                     display: flex;
                     align-items: center;
                     position: relative;
                     color: $fontColor;
 
-                    .pImg {
+                    @include m() {
+                        flex-direction: column;
+                    }
 
+                    .pImg {
                         font-size: 0;
                         width: 220px;
                         height: 220px;
@@ -283,9 +358,21 @@
                             height: 100%;
                             object-fit: cover;
                         }
+
+                        @include m() {
+                            margin-bottom: 20px;
+                            width: 100%;
+                            margin-right: 0;
+
+                        }
                     }
 
                     .pInfo {
+
+                        @include m() {
+                            align-self: flex-start;
+                            margin-bottom: 10px;
+                        }
 
                         h4 {
                             font-weight: bold;
@@ -299,16 +386,33 @@
                         margin-left: auto;
                         flex-basis: 30%;
 
+                        @include m() {
+                            width: 100%;
+                            margin: 10px 0 0 0;
+                        }
+
                         h4 {
                             position: absolute;
                             top: 0;
                             right: 0;
                             color: $primary;
                             font-weight: bold;
+
+                            @include m() {
+                                display: inline-block;
+                                position: static;
+                                top: 20px;
+                                width: 110px;
+                            }
                         }
 
                         p {
                             text-align: right;
+
+                            @include m() {
+                                display: inline-block;
+                                margin-left: 30%;
+                            }
                         }
 
                         .orderOption {
@@ -366,9 +470,18 @@
                         align-items: center;
                         justify-content: space-between;
 
+                        @include m(){
+                            flex-direction: column;
+                            align-items: flex-start;
+                        }
+
                         .box2 {
                             display: flex;
                             align-items: center;
+
+                            @include m(){
+                                margin-bottom: 20px;
+                            }
 
                             label {
                                 display: inline-block;
@@ -420,6 +533,12 @@
                             &:hover {
                                 background-color: darken($primary, 8%);
                             }
+
+                            @include m(){
+                                align-self: flex-end;
+                                width: 30%;
+                                padding: 10px;
+                            }
                         }
                     }
 
@@ -429,6 +548,213 @@
             }
 
 
+        }
+
+        .collection {
+            .block {
+                outline: 3px solid $secondary;
+                border-radius: $borderRadius;
+                padding: 20px;
+                margin-bottom: 30px;
+                position: relative;
+
+                @include m() {
+                    padding: 10px;
+                }
+
+                .detail {
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    color: $fontColor;
+
+                    @include m() {
+                        flex-direction: column;
+                    }
+
+                    .pImg {
+                        display: block;
+                        font-size: 0;
+                        flex-basis: 220px;
+                        height: 220px;
+
+                        @include m() {
+                            margin-bottom: 20px;
+                            width: 100%;
+                            margin-right: 0;
+
+                        }
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .pInfo {
+                        flex-basis: 45%;
+                        margin-left: 3%;
+                        flex-grow: 0;
+
+                        @include m() {
+                            align-self: flex-start;
+                            flex-basis: 100%;
+                            margin: 0;
+                        }
+
+                        h4 {
+                            font-weight: bold;
+                            margin-bottom: 5%;
+                        }
+
+                        p {
+                            width: 100%;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 3;
+                            box-sizing: border-box;
+                        }
+
+                        ul {
+                            display: flex;
+                            margin-top: 10%;
+
+                            li {
+                                margin-right: 10px;
+                                font-size: $paragraph;
+                                color: $primary;
+
+                            }
+                        }
+
+                    }
+
+                    .pPrice {
+                        align-self: self-end;
+                        margin-left: auto;
+                        flex-basis: 20%;
+
+                        h4 {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            color: $primary;
+                            font-weight: bold;
+                            cursor: pointer;
+
+                            @include m() {
+                                font-size: 30px;
+                            }
+                        }
+
+                        p {
+                            text-align: right;
+                        }
+
+
+                    }
+                }
+
+
+
+            }
+        }
+
+        .coupon {
+            color: $fontColor;
+            font-size: $paragraph-s;
+            letter-spacing: 1.5px;
+
+            .searchCoupon {
+                display: flex;
+                margin-bottom: 50px;
+                align-items: center;
+
+                @include m() {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                form {
+                    margin: 0 3% 0 0;
+
+                    @include m(){
+                        width: 100%;
+                        margin: 0 0 10px;
+                    }
+
+                    .textStyle {
+                        border-radius: 5px 0 0 5px;
+                        height: auto;
+                        line-height: 1.5;
+                        letter-spacing: 1.5px;
+                        font-size: $paragraph-s;
+                        background-color: $bgc;
+
+                        @include m() {
+                            width: 75%;
+                        }
+                    }
+
+                    button {
+                        display: inline-block;
+                        height: auto;
+                        line-height: 1.5;
+                        box-sizing: border-box;
+                        padding: 10px;
+                        border-radius: 0 5px 5px 0;
+                        border: 1px solid $primary;
+                        background-color: $primary;
+                        color: white;
+                        letter-spacing: 1.5px;
+                        cursor: pointer;
+                        font-size: $paragraph-s;
+
+                        &:hover {
+                            background-color: darken($primary, 8%);
+                        }
+
+                        @include m() {
+                            width: 25%;
+                        }
+                    }
+                }
+
+                a {
+                    display: inline-block;
+                    background-color: $primary;
+                    color: white;
+                    line-height: 1.5;
+                    padding: 10px;
+                }
+
+            }
+
+            .couponList {
+                position: relative;
+
+                &:after {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 3px;
+                    background-color: $secondary;
+                    position: absolute;
+                    bottom: -30%;
+                    left: 0;
+                }
+            }
+
+            .couponUse {
+                display: block;
+                width: fit-content;
+                outline: 2px solid $secondary;
+                margin: 30px 0;
+                padding: 5px;
+            }
         }
     }
 
@@ -441,6 +767,13 @@
         left: 0;
         padding: 100px 0;
 
+        @include m(){
+            height: 100vh;
+            top: 0;
+            z-index: 1000;
+            padding: 50px 0 150px;
+        }
+
         .service {
             width: 30%;
             margin: 0 auto;
@@ -449,12 +782,21 @@
             border-radius: $borderRadius;
             padding: 50px 0;
 
+        @include m(){
+            width: 90%;
+            padding: 30px 0;
+        }
+
             span {
                 position: absolute;
                 right: 1.5%;
                 top: 2%;
                 cursor: pointer;
                 font-size: $paragraph;
+
+                @include m(){
+                    top: 1%;
+                }
             }
 
             form {
