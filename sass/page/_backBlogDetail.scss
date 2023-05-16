@@ -1,0 +1,155 @@
+.backBlogDetail{
+    margin: 50px auto;
+    padding-bottom: 100px;
+    height: auto;
+    width: 90%;
+    @include flex-container(row, nowrap, space-between, flex-start);
+
+    aside{
+        margin-right: 0;
+        width: 20%;
+
+        div{
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        ul{
+            text-align: center;
+            padding-left: 0;
+
+            li{
+                margin-bottom: 5px;
+            }
+
+            a{
+                text-decoration: none;
+                &:hover{
+                    color: #fff;
+                }
+            }
+        }
+    
+    }
+
+    main{
+        width: 80%;
+        min-height: 100vh;
+
+        .select-block{
+            margin: 20px auto;
+
+            @include flex-container(row, nowrap, space-between);
+
+
+            button{
+                background-color: $secondary;
+                color: $fontColor;
+                font-size: $paragraph-s;
+                border: none;
+                border-radius: $borderRadius;
+                box-sizing: border-box;
+                padding: 5px 30px 5px 10px;
+                width: 80px;
+                
+                span{
+                    position: absolute;
+                    margin: auto;
+                }
+
+            }
+
+            .edit-block{
+                button{
+                    margin-left: 10px;
+                }
+
+                #edit-btn{
+                    color: #fff;
+                    background-color: $primary;
+                }
+            }
+        }
+
+        p{
+            font-size: $paragraph;
+            background-color: #000;
+            color: #fff;
+            box-sizing: border-box;
+            padding: 15px 20px;
+            border-radius: $borderRadius $borderRadius 0 0;
+        }
+
+        form{
+            box-sizing: border-box;
+            padding: 10px 30px;
+
+        }
+
+        .content_block{
+            background-color: #fff;
+            border-radius: $borderRadius;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+
+            img{
+                width: auto;
+                max-height: 200px;
+                height: 200px;
+            }
+        }
+
+        .plan_block{
+            background-color: #fff;
+            border-radius: $borderRadius;
+            margin-bottom: 20px;
+
+            section{
+                @include flex-container(row, nowrap, space-between, flex-start);
+
+                .outer-img{
+                    box-sizing: border-box;
+                    margin-right: 20px;
+
+                    img{
+                        height: auto;
+                        width: 100%;
+    
+                    }
+                }
+
+                .content-block{
+                    @include flex-container(column, nowrap, space-between, center);
+
+                }
+    
+            }
+
+        }
+
+        .lower-btn-block{
+
+            margin: 20px auto;
+            @include flex-container(row, nowrap, flex-end);
+
+            button{
+                background-color: $secondary;
+                color: $fontColor;
+                font-size: $paragraph-s;
+                border: none;
+                border-radius: $borderRadius;
+                box-sizing: border-box;
+                padding: 5px 10px;
+                width: 80px;
+            }
+
+            #confirm-btn{
+                color: #fff;
+                background-color: $primary;
+                margin-left: 20px;
+            }
+        }
+
+    }
+
+}

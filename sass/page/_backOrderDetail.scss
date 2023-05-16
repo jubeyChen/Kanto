@@ -1,0 +1,94 @@
+.backOrderDetail{
+    margin: 50px auto;
+    padding-bottom: 100px;
+    height: auto;
+    width: 90%;
+    @include flex-container(row, nowrap, space-between, flex-start);
+
+    aside{
+        margin-right: 0;
+        width: 20%;
+
+        div{
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        ul{
+            text-align: center;
+            padding-left: 0;
+
+            li{
+                margin-bottom: 5px;
+            }
+
+            a{
+                text-decoration: none;
+                &:hover{
+                    color: #fff;
+                }
+            }
+        }
+    
+    }
+
+    main{
+        width: 80%;
+        min-height: 100vh;
+
+        .select-block{
+            margin: 20px auto;
+
+            @include flex-container(row, nowrap, flex-start);
+
+
+            button{
+                background-color: $secondary;
+                color: $fontColor;
+                font-size: $paragraph-s;
+                border: none;
+                border-radius: $borderRadius;
+                box-sizing: border-box;
+                padding: 5px 30px 5px 10px;
+                width: 80px;
+                
+                span{
+                    position: absolute;
+                    margin: auto;
+                }
+
+            }
+
+        }
+
+        p{
+            font-size: $paragraph;
+            background-color: #000;
+            color: #fff;
+            box-sizing: border-box;
+            padding: 15px 20px;
+            border-radius: $borderRadius $borderRadius 0 0;
+        }
+
+        form{
+            box-sizing: border-box;
+            padding: 10px 30px;
+
+        }
+
+        .content_block{
+            background-color: #fff;
+            border-radius: $borderRadius;
+            margin-bottom: 20px;
+
+            img{
+                width: auto;
+                max-height: 200px;
+                height: 200px;
+            }
+        }
+
+
+    }
+
+}

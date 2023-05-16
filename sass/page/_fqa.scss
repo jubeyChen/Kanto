@@ -19,7 +19,7 @@
         }
 
         p{
-            font-size: $paragraph-s;
+            font-size: $paragraph;
             line-height: 30px;
             box-sizing: border-box;
             padding: 10px;
@@ -35,6 +35,7 @@
                 display: none;
             }
             li{
+                font-size: $paragraph;
                 line-height: 30px;
                 box-sizing: border-box;
                 padding: 10px;
