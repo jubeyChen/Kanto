@@ -1,223 +1,158 @@
 .roomBlog-banner{
-    // outline: 2px solid blue;
-    background-image: url(../../image/roomBlog/top-banner.png);
-    max-width: 100%;
-    height: 50vh;
+    background-image: url(../../image/roomBlog/roomBN02.jpg);
+    width: 100%;
+    height:510px ;
+    // height: 50vh;
     background-size: cover;
-
+    position: relative;
     .banner-text{
-        // outline: 1px solid  red;
-        text-align: center;
-        margin-top: 70px;
-        color: white;
-
-        h3{
-            margin-left: 30px;
-            margin-top: 10px;
+        h2{
+            position: absolute;
+            top:390px;
+            right:605px;
         }
 
-        h3:last-child{
-            margin-left: 100px;
-            margin-top: 10px;
-
+        h4{
+            line-height: 1.6;
+            position: absolute;
+            top:300px;
+            right:750px;
+            &:last-child{
+                position: absolute;
+                top:335px;
+                right:610px;
+            }
         }
     }
 }
 
+.place{
+    ul{
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
 
-
-.roomBlog{
-      
-    
-    .section-tag{
-
-        ul{
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-
-            li{
-                margin-right: 20px;
-            }
+        li{
+            margin-right: 20px;
         }
-
     }
+}    
 
-    .mid-pc1{
-        width: 80%;
-        margin-top: 50px;
-        // outline: 1px solid red;
+
+
+.roomBlogTop{
+    position: relative;
+    .image_switch{
+        margin-top: 100px;
+        position: relative;
+        width: 900px;
+        height: 500px;
 
         img{
-            width: 80%;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top:0;
+            left: 0px;
+            opacity: 0;
+            // animation:blink 3s infinite;
+            transition: opacity 3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: 1;
+            
+            &.active{
+                opacity: 1;
+                z-index: 2;
+            }
         }
     }
-
-    .both{
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        // outline: 3px solid blue;
-
-
-        .city{
-            // outline: 5px solid yellow;
-            flex-grow: 1;
-
-            h1{
-                text-align: center;
-                line-height: 490px;
-                color: $primary;
-                font-weight:bold;
-            }
-
-        }
-
-        .mid-pc2{
-            // outline: 4px solid brown;
-
-            img{
-                width: 70%;
-            }
-
-        }
-
+    .top_right{
+        position: absolute;
+        top:0;
+        right: 50px;
+        margin-top: 100px;
+        width: 350px;
     }
+
+    h1{
+        text-align: center;
+        display: inline-block;
+        margin: 25px;
+        margin-left: 680px;
+        color: $primary;
+        font-weight: 600;
+    }
+}    
+
 
     // ------------------------main-room------------------------ //
-
-    .main-room1{
-        // outline: 3px solid blue;
-
+.roomBlog{
+    .main-room{
         display: flex;
-        margin-top: 50px;
+        flex-wrap: wrap;
+        margin-top: 80px;
         width: 100%;
 
-        .box{
-            // outline: 5px solid red;
+        li{
+            width: 50%;
+            margin: 20px 0;
 
-            display: flex;
-            align-items: flex-end;
-            // width: 100%;
+            .box{
+                display: flex;
+                align-items: flex-end;
 
-            .room{
-                width: 100%;
-
-                img{
-                    width: 100%;
-                    height: auto;
+                .room{
+                    width: 320px;
+                    position: relative;
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                        // height: auto;
+                    }
+                    .map{
+                        // display: block;
+                        width: 320px;
+                        height: 320px;
+                        position: absolute;
+                        top:0;
+                        right:100%;
+                        transition: .5s ease;
+                        &.-open{
+                        right: 0%;
+                        }
+                    }
                 }
-            }
-
-
-            .words{
-                // outline: 3px solid yellow;
-
-                padding: 10px;
-                width: 50%;
-                height: auto;
-
-                p{
-                    font-size: $paragraph;
-                }
-
-            }
-        }
-
-
-    }
-
-    .main-room2{
-        display: flex;
-        margin-top: 50px;
-
-        .box{
-            display: flex;
-            align-items: flex-end;
-
-            .room{
-
-                width: 100%;
-
-                img{
-                    width: 100%;
-                    height: auto;
-                }
-            }
-
-            .words{
-                padding: 10px;
-                width: 50%;
-                height: auto;
-
-                p{
-                    font-size: $paragraph;
-                }
-
-            }
-        }
-
-
-    }
-
-    .main-room3{
-        display: flex;
-        margin-top: 50px;
-
-        .box{
-            display: flex;
-            align-items: flex-end;
-
-            .room{
-                
-                width: 100%;
-
-                img{
-                    width: 100%;
-                    height: auto;
-                }
-            }
-
-            .words{
-                padding: 10px;
-                width: 50%;
-                height: auto;
-
-                p{
-                    font-size: $paragraph;
-                }
-
-            }
-        }
-
-
-    }
-
-
-    .page{
-        
-        margin-top: 50px;
-    
-        ul{
-            // outline: 1px solid yellow;
-            display: flex;
-            justify-content: center;
-    
-            li{
-                a{
-                    display: block;
-                    font-size: $paragraph;
-                    width: 50px;
-                    height: 50px;
-                    text-decoration: none;
-                    text-align: center;
-                    line-height: 50px;
-                    color: white;
-                    background-color: $primary;
-                    margin-right: 10px;
+                .words{
+                    padding: 0 20px;
+                    width: 50%;
+                    // height: auto;
+                    strong{
+                        font-weight: 600;
+                    }
+                    h4{
+                        font-weight: 600;
+                        line-height: 1.6;
+                        border-bottom: 2px solid $primary;
+                    }
+                    p{
+                        font-size: $paragraph-s;
+                        line-height: 1.8;
+                    }
+                    
+                    i{
+                        color: $primary;
+                        display:block;
+                        font-size: $h4;
+                        margin: 10px 0;
+                        cursor: pointer;
+                    }
                 }
             }
         }
     }
-    
 }
+
+
+
+    .none{
+        display: none;
+    }
