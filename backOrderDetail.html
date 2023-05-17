@@ -36,10 +36,10 @@
 
             <!-- ========== 上排按鈕 ========== -->
             <section class="select-block">
-                <button>返回<span class="material-symbols-outlined">
+                <button @click="backPage">返回<span class="material-symbols-outlined">
                     undo
                     </span>
-                </button>    
+                </button>
             </section>
 
             <!-- ========== 訂單詳情 ========== -->
@@ -48,17 +48,17 @@
                 <form action="#" class="row">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">顧客姓名</span>
-                        <input type="text" class="form-control" readonly v-model="order.name" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" readonly v-model="order.name">
                     </div>
 
                     <div class="input-group mb-3 col">
                         <span class="input-group-text" id="basic-addon1">成立時間</span>
-                        <input type="text" class="form-control" readonly v-model="order.time" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" readonly v-model="order.time">
                     </div>
 
                     <div class="input-group mb-3 col">
                         <span class="input-group-text" id="basic-addon1">訂單總額</span>
-                        <input type="text" class="form-control" readonly v-model="order.total" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" readonly v-model="order.total">
                     </div>
     
                 </form>
@@ -70,31 +70,31 @@
                 <p>訂單明細 {{ index + 1 }}</p>
                 <form action="#" class="row">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">購買行程</span>
-                        <input type="text" class="form-control" readonly v-model="item.name" aria-label="Username" aria-describedby="basic-addon1">
+                        <span class="input-group-text">購買行程</span>
+                        <input type="text" class="form-control" readonly v-model="item.name">
                     </div>
 
                     <div class="input-group mb-3 col">
-                        <span class="input-group-text" id="basic-addon1">購買數量</span>
-                        <input type="text" class="form-control" readonly v-model="item.count" aria-label="Username" aria-describedby="basic-addon1">
+                        <span class="input-group-text">購買數量</span>
+                        <input type="text" class="form-control" readonly v-model="item.count">
                     </div>
 
                     <div class="input-group mb-3 col">
-                        <span class="input-group-text" id="basic-addon1">商品價格</span>
-                        <input type="text" class="form-control" readonly v-model="item.price" aria-label="Username" aria-describedby="basic-addon1">
+                        <span class="input-group-text">商品價格</span>
+                        <input type="text" class="form-control" readonly v-model="item.price">
                     </div>
 
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputState">行程狀態</span>
-                        <select id="inputState" class="form-select" disabled>
+                        <span class="input-group-text">行程狀態</span>
+                        <select class="form-select" disabled>
                             <option selected>已出發</option>
                             <option>未出發</option>
                         </select>
                     </div>
 
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputState">明細狀態</span>
-                        <select id="inputState" class="form-select" :disabled="!editable">
+                        <span class="input-group-text">明細狀態</span>
+                        <select class="form-select" :disabled="!editable">
                             <option selected>未取消</option>
                             <option>已取消</option>
                         </select>
@@ -127,6 +127,9 @@
                 }
             },
             methods: {
+                backPage(){
+                    history.back();
+                }
             }
 
         });

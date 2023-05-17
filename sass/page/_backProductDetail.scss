@@ -1,0 +1,352 @@
+.backProductDetail{
+    margin: 50px auto;
+    padding-bottom: 100px;
+    height: auto;
+    width: 90%;
+    @include flex-container(row, nowrap, space-between, flex-start);
+
+    /* ========== 側邊欄 ========== */   
+    aside{
+        margin-right: 0;
+        width: 20%;
+
+        div{
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        ul{
+            text-align: center;
+            padding-left: 0;
+
+            li{
+                margin-bottom: 5px;
+            }
+
+            a{
+                text-decoration: none;
+                &:hover{
+                    color: #fff;
+                }
+            }
+        }
+    
+    }
+
+    /* ========== 主欄位 ========== */
+    main{
+        width: 80%;
+        min-height: 100vh;
+
+        /* ========== 上排按鈕 ========== */
+        .select-block{
+            margin: 20px auto;
+
+            @include flex-container(row, nowrap, space-between);
+
+            button{
+                background-color: $secondary;
+                color: $fontColor;
+                font-size: $paragraph-s;
+                border: none;
+                border-radius: $borderRadius;
+                box-sizing: border-box;
+                padding: 5px 30px 5px 10px;
+                width: 80px;
+                
+                span{
+                    position: absolute;
+                    margin: auto;
+                }
+
+            }
+
+            .edit-block{
+                button{
+                    margin-left: 10px;
+                }
+
+                #edit-btn{
+                    color: #fff;
+                    background-color: $primary;
+                }
+            }
+        }
+
+        /* ========== 通用 p & form ========== */
+        p{
+            font-size: $paragraph;
+            background-color: #000;
+            color: #fff;
+            box-sizing: border-box;
+            padding: 15px 20px;
+            border-radius: $borderRadius $borderRadius 0 0;
+        }
+
+        form{
+            box-sizing: border-box;
+            padding: 10px 30px;
+
+        }
+
+        /* ========== 行程內容 ========== */
+        .content_block{
+            background-color: #fff;
+            border-radius: $borderRadius;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+
+            .img_block{
+                @include flex-container(row, wrap, flex-start);
+
+                .inner_img_block{
+                    @include flex-container(column);
+                    width: 25%;
+                    max-height: 200px;
+                    height: auto;
+
+                    img{
+                        width: 100%;
+                        margin-bottom: 10px;
+                    }        
+
+                    button{
+                        background-color: $secondary;
+                        color: $fontColor;
+                        font-size: $paragraph-s;
+                        border: none;
+                        border-radius: $borderRadius;
+                        box-sizing: border-box;
+                        padding: 5px 30px 5px 10px;
+                        width: 80px;
+                        
+                        span{
+                            position: absolute;
+                            margin: auto;
+                        }
+        
+                    }    
+
+                }
+    
+            }
+
+        }
+
+        /* ========== 方案詳情 ========== */
+        .plan_block{
+            background-color: #fff;
+            border-radius: $borderRadius;
+            margin-bottom: 20px;
+        }
+
+        /* ========== 活動介紹 ========== */
+        .intro_block{
+            background-color: #fff;
+            border-radius: $borderRadius;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+
+            .img_block{
+                @include flex-container(row, wrap, flex-start);
+
+                .inner_img_block{
+                    @include flex-container(column);
+                    width: 25%;
+
+                    img{
+                        width: 100%;
+                        margin-bottom: 10px;
+                    }        
+
+                    button{
+                        background-color: $secondary;
+                        color: $fontColor;
+                        font-size: $paragraph-s;
+                        border: none;
+                        border-radius: $borderRadius;
+                        box-sizing: border-box;
+                        padding: 5px 30px 5px 10px;
+                        width: 80px;
+                        
+                        span{
+                            position: absolute;
+                            margin: auto;
+                        }
+        
+                    }    
+
+                }
+    
+            }
+
+        }
+
+        /* ========== 下排按鈕 ========== */
+        .lower_btn_block{
+
+            margin: 20px auto;
+            @include flex-container(row, nowrap, flex-end);
+
+            button{
+                background-color: $secondary;
+                color: $fontColor;
+                font-size: $paragraph-s;
+                border: none;
+                border-radius: $borderRadius;
+                box-sizing: border-box;
+                padding: 5px 10px;
+                width: 80px;
+            }
+
+            #confirm-btn{
+                color: #fff;
+                background-color: $primary;
+                margin-left: 20px;
+            }
+        }
+
+        /* ========== 顧客評論 ========== */
+        .comment_block{
+
+            table{
+                margin-top: 20px;
+                font-size: $paragraph;
+                color: $fontColor;
+                text-align: center;
+    
+                th{
+                    vertical-align: middle;
+    
+                    span{
+                        position: absolute;
+                        margin: auto;
+                        cursor: pointer;
+                    }
+                }
+                
+                td{
+                    vertical-align: middle;
+    
+                    button{
+                        background-color: $secondary;
+                        color: $fontColor;
+                        font-size: $paragraph-s;
+                        border: none;
+                        border-radius: $borderRadius;
+                        box-sizing: border-box;
+                        padding: 0 10px;    
+                        height: 30px;
+                    }
+    
+                    .switch-btn{
+                        margin: 0 auto;
+                        width: 80px;
+                        height: 30px;
+                        border-radius: 12px 12px 12px 12px;
+                        background-color: $secondary;
+                        color: $fontColor;
+                        cursor: pointer;
+                        position: relative;
+                        overflow: hidden;
+        
+                        .switch-track{
+                            position: absolute;
+                            @include flex-container(row, nowrap);
+                            right: 15px;
+        
+                            transition: .3s;
+                
+                            .core{
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                background-color: $primary;
+                                padding: 0;
+                                margin: 0 11px;
+        
+                                transition: .3s;
+                            }
+                        }
+                        .switch-track.-off{                    
+                            transform: translateX(43%);
+        
+                            .core{
+                                background-color: $fontColor;
+                            }
+                        }
+        
+                    }
+        
+                }
+            }
+
+            /* ========== 頁碼 ========== */
+            .page-btn{
+                @include flex-container(row, nowrap, flex-start);
+    
+                button{
+                    background-color: $secondary;
+                    color: $fontColor;
+                    font-size: $paragraph-s;
+                    border: none;
+                    border-radius: $borderRadius;
+                    box-sizing: border-box;
+                    padding: 5px 10px;
+                }
+    
+                div{
+                    margin: 0 10px;
+                    font-size: $paragraph-s;
+                }
+            }
+
+            /* ========== 評論查看細節 ========== */            
+            .comment_detail_block{
+                width: 100vw;
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 10;
+                background-color: rgba(0, 0, 0, .8);
+
+                .comment_detail{
+                    width: 800px;
+                    height: 500px;
+                    background-color: #fff;
+                    border-radius: $borderRadius;
+
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
+                    .cancel-btn{
+                        background-color: #000;
+                        color: #fff;
+
+                        box-sizing: border-box;
+                        padding: 10px;
+
+                        @include flex-container(row, nowrap, flex-end);
+
+                        span{
+                            font-size: 36px;
+                            cursor: pointer;
+                        }
+                    }
+
+                    form{
+                        box-sizing: border-box;
+                        padding: 30px;
+
+                    }
+                }
+            }
+    
+        }
+
+    }
+
+}

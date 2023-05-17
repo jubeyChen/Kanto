@@ -36,7 +36,7 @@
 
             <!-- ========== 上排按鈕 ========== -->
             <section class="select-block">
-                <button>返回<span class="material-symbols-outlined">
+                <button @click="backPage">返回<span class="material-symbols-outlined">
                     undo
                     </span>
                 </button>
@@ -59,21 +59,21 @@
                 <p>專欄內容</p>
                 <form action="#" class="row">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">專欄名稱</span>
-                        <input type="text" class="form-control" placeholder="Username" :readonly="!editable" v-model="name" aria-label="Username" aria-describedby="basic-addon1">
+                        <span class="input-group-text">專欄名稱</span>
+                        <input type="text" class="form-control" :readonly="!editable" v-model="name">
                     </div>
 
                     <div class="input-group mb-3 col">
-                        <span class="input-group-text" id="inputState">專欄狀態</span>
-                        <select id="inputState" class="form-select" :disabled="!editable">
+                        <span class="input-group-text">專欄狀態</span>
+                        <select class="form-select" :disabled="!editable">
                             <option selected>顯示</option>
                             <option>隱藏</option>
                         </select>
                     </div>
 
                     <div class="input-group mb-3 col">
-                        <span class="input-group-text" id="region">專欄地區</span>
-                        <select id="region" class="form-select" :disabled="!editable">
+                        <span class="input-group-text">專欄地區</span>
+                        <select class="form-select" :disabled="!editable">
                             <option>東京都</option>
                             <option selected>神奈川縣</option>
                             <option>千葉縣</option>
@@ -87,7 +87,7 @@
 
                     <div class="input-group mb-3">
                         <span class="input-group-text">專欄簡介</span>
-                        <textarea class="form-control" v-model="intro" :readonly="!editable" rows="7" aria-label="With textarea"></textarea>
+                        <textarea class="form-control" v-model="intro" :readonly="!editable" rows="7"></textarea>
                     </div>
 
                     <div class="input-group mb-3">
@@ -118,18 +118,18 @@
     
                             <section class="content-block col-8">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">行程名稱</span>
-                                    <input type="text" class="form-control" placeholder="" :readonly="!editable" v-model="item.title" aria-label="Username" aria-describedby="basic-addon1">
+                                    <span class="input-group-text">行程名稱</span>
+                                    <input type="text" class="form-control" :readonly="!editable" v-model="item.title">
                                 </div>
             
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">行程時間</span>
-                                    <input type="text" class="form-control" placeholder="" :readonly="!editable" v-model="item.time" aria-label="Username" aria-describedby="basic-addon1">
+                                    <span class="input-group-text">行程時間</span>
+                                    <input type="text" class="form-control" :readonly="!editable" v-model="item.time">
                                 </div>
             
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">行程簡介</span>
-                                    <textarea class="form-control" v-model="item.description" :readonly="!editable" rows="3" aria-label="With textarea"></textarea>
+                                    <textarea class="form-control" v-model="item.description" :readonly="!editable" rows="3"></textarea>
                                 </div>
                             </section>
     
@@ -183,6 +183,10 @@
                 }
             },
             methods: {
+                backPage(){
+                    history.back();
+                }
+
             }
 
         });

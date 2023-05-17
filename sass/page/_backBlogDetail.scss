@@ -5,6 +5,7 @@
     width: 90%;
     @include flex-container(row, nowrap, space-between, flex-start);
 
+    /* ========== 側邊欄 ========== */
     aside{
         margin-right: 0;
         width: 20%;
@@ -32,10 +33,12 @@
     
     }
 
+    /* ========== 主欄位 ========== */
     main{
         width: 80%;
         min-height: 100vh;
 
+        /* ========== 上排按鈕 ========== */
         .select-block{
             margin: 20px auto;
 
@@ -71,6 +74,7 @@
             }
         }
 
+        /* ========== 通用 p & form ========== */
         p{
             font-size: $paragraph;
             background-color: #000;
@@ -86,6 +90,7 @@
 
         }
 
+        /* ========== 專欄內容 ========== */
         .content_block{
             background-color: #fff;
             border-radius: $borderRadius;
@@ -99,6 +104,7 @@
             }
         }
 
+        /* ========== 方案詳情 ========== */
         .plan_block{
             background-color: #fff;
             border-radius: $borderRadius;
@@ -127,6 +133,7 @@
 
         }
 
+        /* ========== 下排按鈕 ========== */
         .lower-btn-block{
 
             margin: 20px auto;

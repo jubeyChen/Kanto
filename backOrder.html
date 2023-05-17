@@ -68,7 +68,7 @@
                         <td>{{ item.total }}</td>
                         <td>{{ item.quantity }}</td>
                         <td>
-                            <button>查看</button>
+                            <button @click="checkDetail">查看</button>
                         </td>
                     </tr>
                 </tbody>
@@ -162,6 +162,11 @@
                             quantity: "3"
                         }
                     ]
+                }
+            },
+            methods: {
+                checkDetail(){
+                    location.href='backOrderDetail.html'
                 }
             }
         });

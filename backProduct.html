@@ -90,7 +90,7 @@
                             </div>
                         </td>
                         <td>
-                            <button>查看</button>
+                            <button @click="checkDetail">查看</button>
                         </td>
                     </tr>
                 </tbody>
@@ -188,7 +188,11 @@
             methods: {
                 switchBtn(e){
                     $(e.target).closest('tr').find('.switch-track').toggleClass('-off');
+                },
+                checkDetail(){
+                    location.href='backProductDetail.html'
                 }
+
             }
 
         });
