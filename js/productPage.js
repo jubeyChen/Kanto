@@ -1,4 +1,49 @@
+//寫看看vue
 
+const app = Vue.createApp({
+    data() {
+        return {
+            count: 1,
+            price: 2200,
+            total:""
+        }
+    },
+    created(){
+        this.total = this.price;
+    },
+    methods: {
+        countAdd() {
+            if (this.count < 9) {
+                this.count += 1;
+                this.total = this.price * this.count;
+            }
+        },
+        countMinus() {
+            if (this.count > 1) {
+                this.count -= 1;
+                this.total = this.price * this.count;
+            }
+        },
+        clear(){
+            if(this.count != 1){
+                this.count = 1;
+                this.total = this.price;
+            }
+        },
+
+        scrollBtn(){
+            window.scrollTo({top:5250,behavior:'smooth'})
+        }
+    }
+})
+app.mount(".all");
+
+
+
+
+
+
+//右側方案詳情滑動-----------------------------------------------------------
 let choose = document.querySelector(".choose");
 let choose_inner = document.querySelector(".choose_inner");
 let choose_inner2 = document.querySelector(".choose_inner2");
@@ -12,9 +57,7 @@ window.addEventListener("scroll", function (e) {
 });
 
 
-
-
-//輪播
+//輪播------------------------------------------------
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
     spaceBetween: 30,
@@ -76,3 +119,17 @@ del_btn.addEventListener("click", function (e) {
     lightbox.style.display = "none";
 })
 
+
+
+//評價的滑動
+const slide_block = document.querySelector(".card_swiper_block1");
+const right_btn = document.querySelector(".slide_right_btn");
+const left_btn = document.querySelector(".slide_left_btn")
+
+right_btn.addEventListener("click",function(e){
+    slide_block.scrollLeft += 892.5;
+})
+
+left_btn.addEventListener("click",function(e){
+    slide_block.scrollLeft -= 892.5;
+})

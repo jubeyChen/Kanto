@@ -313,12 +313,21 @@ div.product_inner {
                     position: relative;
 
                     //這裡會再來修改
-                    div.right_btn {
+                    div.slide_right_btn {
                         position: absolute;
                         top: 50%;
                         right: -20px;
                         transform: translate(0, -50%);
                         cursor: pointer;
+                    }
+
+                    div.slide_left_btn {
+                        position: absolute;
+                        top: 50%;
+                        left: -30px;
+
+                        cursor: pointer;
+                        transform: translate(0, -50%) rotate(180deg) ;
                     }
 
                     div.card_swiper_item {
@@ -328,12 +337,16 @@ div.product_inner {
                         width: 100%;
 
                         div.card_swiper_block1 {
-                            display: flex;
-
-                            div.member1 {
+                            overflow-x: auto;
+                            white-space: nowrap;
+                            width: 100%;
+                            scroll-behavior: smooth;
+                            div.member {
+                                display: inline-block;
                                 border-radius: 15px;
-                                width: calc((100% - 20px)/2);
-                                margin-right: 20px;
+                                // width: calc((100% - 20px)/2);
+                                width: 48%;
+                                margin-right: 2%;
                                 box-sizing: border-box;
                                 padding: 20px 30px;
                                 background-color: white;
@@ -349,6 +362,7 @@ div.product_inner {
 
                                 div.member_content {
                                     margin-bottom: 15px;
+                                    white-space:normal;
                                 }
 
                                 div.pic {
@@ -363,39 +377,56 @@ div.product_inner {
                                 }
                             }
 
-                            div.member2 {
-                                border-radius: 15px;
-                                width: calc((100% - 20px)/2);
-                                // margin-right: 20px;
-                                box-sizing: border-box;
-                                padding: 20px 30px;
-                                background-color: white;
+                            // div.member{
+                            //     border-radius: 15px;
 
-                                div.member_information {
-                                    margin-bottom: 15px;
-                                    display: flex;
+                            //     width: 48%;
+                            //     display: inline-block;
+                            //     margin-right: 2%;
+                            //     box-sizing: border-box;
+                            //     padding: 20px 30px;
+                            //     background-color: white;
 
-                                    div.member_pic {
-                                        margin-right: 15px;
-                                    }
-                                }
+                            //     div.member_information {
+                            //         margin-bottom: 15px;
+                            //         display: flex;
 
-                                div.member_content {
-                                    margin-bottom: 15px;
-                                }
+                            //         div.member_pic {
+                            //             margin-right: 15px;
+                            //         }
+                            //     }
 
-                                div.pic {
-                                    display: flex;
-                                    // justify-content:center;
-                                    justify-content: space-between;
+                            //     div.member_content {
+                            //         margin-bottom: 15px;
+                            //         white-space:normal;
+                            //     }
 
-                                    img {
-                                        width: 22%;
-                                        // margin-right: 15px;
-                                    }
-                                }
-                            }
+                            //     div.pic {
+                            //         display: flex;
+                            //         // justify-content:center;
+                            //         justify-content: space-between;
+
+                            //         img {
+                            //             width: 22%;
+                            //             // margin-right: 15px;
+                            //         }
+                            //     }
+                            // }
                         }
+
+                        //這樣設置後，滑動軸將不會顯示在畫面上，使用者將無法看到它。請注意，這些設置涵蓋了 WebKit 和非 WebKit 引擎的瀏覽器，以確保一致性。
+                        .card_swiper_block1::-webkit-scrollbar {
+                            display: none;
+                          }
+                          
+                          /* 针对非 WebKit 引擎的浏览器 */
+                          .card_swiper_block1 {
+                            scrollbar-width: none;
+                          }
+                          
+                          .card_swiper_block1::-ms-scrollbar {
+                            display: none;
+                          }
 
                     }
 
@@ -1039,7 +1070,7 @@ div.product_inner_phone {
 }
 
 //手機版本--------------------------------------------------
-@media screen and (max-width:414px) {
+@media screen and (max-width:415px) {
     div.product_inner {
         display: none;
 
@@ -1670,7 +1701,7 @@ div.product_inner_phone {
 div.phone_all_review{
     display: none;
 }
-@media screen and (max-width:414px){
+@media screen and (max-width:415px){
     div.phone_all_review{
         overflow: scroll;
         display: block;
