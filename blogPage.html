@@ -16,26 +16,97 @@
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
-
+    @@include('./layout/header.html')
     <!--滿版-->
-    <div class="blogpage_banner">
-        @@include('./layout/header.html')
+    <div class="blogpage_banner container">
+
+    </div>
+
+
+
+
+    <!--手機板banner-->
+    <div class="phone_blogpage_banner">
+        <!-- @@include('./layout/header.html') -->
+        <div class="pic">
+            <img src="./image/blog/logo.png" alt="">
+        </div>
+    </div>
+
+    <!--手機板行程表-->
+    <div class="container blog_phone_event">
+        <h3>行程表</h3>
+        <div class="event block1">
+            <div class="event_text">
+                <div class="time">
+                    <div class="circle"></div>
+                    <p>08:10</p>
+                </div>
+                <h4>飯店出發</h4>
+            </div>
+            <div class="pic">
+                <img src="./image/blogPage/phone_event1.png" alt="">
+            </div>
+        </div>
+
+        <div class="event">
+            <div class="event_text">
+                <div class="time">
+                    <div class="circle"></div>
+                    <p>10:20</p>
+                </div>
+                <h4>富士山五合目</h4>
+            </div>
+            <div class="pic">
+                <img src="./image/blogPage/phone_event2.png" alt="">
+            </div>
+            <div class="content">
+                <p>五合目位於海拔 2305 公尺的山腰，被周圍
+                    的原始森林環抱，近距離觀看富士山！</p>
+            </div>
+        </div>
+
+        <div class="event">
+            <div class="event_text">
+                <div class="time">
+                    <div class="circle"></div>
+                    <p>12:20</p>
+                </div>
+                <h4>音樂盒之森美術館</h4>
+            </div>
+            <div class="pic">
+                <img src="./image/blogPage/phone_event3.png" alt="">
+            </div>
+            <div class="content">
+                <p>遠方的富士山的夢幻美景，與大型音樂盒
+                    演奏著經典的古典樂都很有看點。</p>
+            </div>
+        </div>
+
+        <div class="event">
+            <div class="event_text">
+                <div class="time">
+                    <div class="circle"></div>
+                    <p>14:30</p>
+                </div>
+                <h4>忍野八海</h4>
+            </div>
+            <div class="pic">
+                <img src="./image/blogPage/phone_event4.png" alt="">
+            </div>
+            <div class="content">
+                <p>由八個湖泊組成，每一個湖泊都有其獨特的形態
+                    和特色，並且湖水的顏色也因地形、氣候、時間
+                    等因素而不斷變化。</p>
+            </div>
+        </div>
     </div>
 
     <!--標題-->
     <div class="blogpage_title container">
-        <!--上方左側圖-->
-        <div class="pic_left">
-            <img src="./image/blogPage/title.png" alt="">
-        </div>
-
-        <!--上方右側圖-->
-        <div class="pic_right">
-            <img src="./image/blogPage/title3.png" alt="">
-        </div>
 
         <!--中間-->
-        <section class="title_wrapper">
+        <div class="title_wrapper">
 
             <div class="title_main">
                 <div class="content">
@@ -56,7 +127,9 @@
                 </div>
             </div>
 
-        </section>
+        </div>
+        
+        <div class=""></div>
     </div>
 
 
@@ -194,20 +267,35 @@
     <!--旅行注意事項-->
     <div class="container blogpage_remind">
         <div class="remind_inner">
-            <h3>旅行注意事項</h3>
-            <ul>
-                <li>確定旅行目的地、日期、預算、行程和住宿等，並盡可能提前預訂，以免在行程中出現任何不必要的問題。</li>
-                <li>在旅行期間盡可能避免攜帶大量現金、貴重物品和重要文件，並將這些物品放在安全的地方。</li>
-                <li>確保您的護照和簽證都是有效的，並且在旅行期間至少還有6個月的有效期。如果需要簽證，請確保您已經
-                    申請並獲得了簽證。</li>
-                <li>在旅行期間，保持與家人和朋友的聯繫，並且隨時告知您的行蹤和下一步計劃。</li>
-                <li>如果您有特殊的飲食需求或醫療需求，請提前告知旅行社，以確保旅程的順利進行。</li>
-                <li>建議攜帶一份旅遊指南或地圖，以幫助您更好地了解目的地國家的景點和交通。</li>
-                <li>檢查您的手機和電腦是否可在目的地國家正常使用，並檢查是否需要開啟漫遊服務。</li>
-                <li>在旅途中注意保持良好的衛生習慣，避免飲用未煮沸的水和食用生的食物。</li>
-                <li>提前了解當地的安全情況，並遵守當地的法律法規和安全建議。</li>
-                <li>檢查和確認您的行李，避免攜帶禁止攜帶的物品，或漏帶必要的用品。</li>
-            </ul>
+            <div class="title">
+                <h4>旅行注意事項</h4>
+            </div>
+            <div class="table">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>旅行費用:</th>
+                            <td>每人NT$3500 兒童NT$2600</td>
+                        </tr>
+                        <tr>
+                            <th>人數限制:</th>
+                            <td>10人(最少6人)</td>
+                        </tr>
+                        <tr>
+                            <th>截止日:</th>
+                            <td>出發日前三天</td>
+                        </tr>
+                        <tr>
+                            <th>飲食提供:</th>
+                            <td>早餐x0 午餐x1 晚餐x0</td>
+                        </tr>
+                        <tr class="final">
+                            <th>建議服飾:</th>
+                            <td>輕便衣著 可帶薄外套</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -215,7 +303,7 @@
 
     <!--其他推薦景點-->
 
-    <div class="container another_event">
+    <div class="container blogpage_another_event">
         <h3>其他推薦景點</h3>
         <div class="inner_block">
             <div class="event">
