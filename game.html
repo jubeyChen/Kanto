@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>找靈感</title>
     @@include('./layout/style.html')
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
@@ -18,47 +20,130 @@
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
-    <div class="container">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor, unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
 
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad rem eum velit modi incidunt veritatis quaerat sit
-            dolor,
-            unde distinctio dolores, eaque saepe debitis at corporis molestiae commodi maxime omnis.</p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam ex modi quidem. Molestiae unde quia
-            aperiam
-            voluptatum vero, ab ipsam voluptate maxime aspernatur vel nam, tempore eveniet mollitia explicabo sint!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore blanditiis assumenda, velit accusantium
-            doloremque repellat veniam consequatur voluptatum iste dolore tempora et nostrum expedita sequi eaque vero
-            quia vitae fugiat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates voluptatibus esse
-            delectus ducimus qui, voluptatum cumque quasi quos asperiores porro, expedita autem voluptas est veritatis
-            eaque tempore laboriosam facilis illo? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, culpa
-            voluptas. Sequi minima in suscipit, eveniet, eius fugiat at quas delectus veniam ad tempora molestias fuga
-            velit et iste non.</p>
-
-
+    <!-- banner -->
+    <div class="game_container">
+        <div class="game_title">
+            <div class="title_box">
+                <h2>想不到去哪旅行嗎?</h2>
+                <div class="text">
+                    <span>說走就走的好處</span>
+                    <span>1</span>
+                </div>
+            </div>
+        </div>
+        <!-- 遊戲按鈕 -->
+        <div class="game_btn">
+            <div class="btn" id="game_btn">用拉霸機來決定旅程
+                <!-- <a href="" id="game_btn">用拉霸機來決定旅程</a> -->
+                <!-- <p id="game_btn">用拉霸機來決定旅程</p> -->
+            </div>
+        </div>
+        <div class="game_banner">
+            <img src="./image/game/game_banner1.jpg" alt="">
+            <!-- <img src="./image/game/game_banner2.jpg" alt=""> -->
+        </div>
     </div>
+    <!-- 拉霸機 -->
+    <div class="game_container_slider">
+        <div class="game_wapper">
+            <span class="lightbox-close">&times;</span>
+            <div class="title">
+                <h2>讓拉霸機決定你的行程</h2>
+                <p>現在轉動送COUPON!!!</p>
+            </div>
+            <div class="game">
+                <img src="./image/game/game.png" alt="">
+                <div class="results">
+                    
+                    <div class="result">
+                      <div class="result-txt " id="result">
+                        <div class="result-item">富士山一日遊</div>
+                        <div class="result-item">2</div>
+                        <div class="result-item">3</div>
+                        <div class="result-item">4</div>
+                        <div class="result-item">5</div>
+                        <div class="result-item">6</div>
+                        <div class="result-item">7</div>
+                        <div class="result-item">8</div>
+                        <div class="result-item">9</div>
+                        <div class="result-item">10</div>
+                      </div>
+                    </div>
+                    <div class="btn-start" onclick="startAnimation()">START</div>
+                    <div class="btn-stop" onclick="stopAnimation()">STOP</div>
+            
+                    <div class="cont_principal">
+                        <div class="cont_central">
+                            <div class="cont_modal cont_modal_active">
+                                <div class="cont_photo">
+                                    <div class="cont_img_back">
+                                        <img src="./image/game/game_card1.jpg"
+                                            alt="" />
+                                    </div>
+                                </div>
+                                <div class="cont_text_ingredients">
+                                    <div class="cont_over_hidden">
+                
+                                        <div class="cont_tabs">
+                                            
+                                            <p>富士山一日遊</p>
+                                        </div>
+                
+                                        <div class="cont_text_det_preparation">
+                                            
+                                            <div class="cont_text_det_preparation">
+            
+                                                <div class="cont_info_preparation">
+                                                    <p>參加富士山及周邊地區的經典一日遊，迎接
+                                                        日本的春季！前往東京最好的春季景點。
+                                                    </p>
+                                                </div>
+                                                <!-- <a href="#">
+                                                    <button class="btn">查看詳情</button>
+                                                </a> -->
+                                                <a href="#">查看詳情</a>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="cont_btn_mas_dets">
+                                            <!-- <a href="#"><i class="material-icons">&#xE313;</i></a> -->
+                                            
+                                            <span></span>
+                                        </div>
+                
+                                    </div>
+                                    <div class="cont_btn_open_dets">
+                                        <a href="#e" onclick="open_close()"><i class="material-icons">&#xE314;</i></a>
+                                    </div>
+                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="coupon">
+                        
+                        <div class="coupon_box">
+                            <p>COUPON</p>
+                            <input type="text" value="12345">
+                            <p>請至會員中心兌換</p>
+                            <div class="obj">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+
+
+    
 
 
     <!-- 以下Footer區域 -->
@@ -66,6 +151,20 @@
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+    <script src="./js/game.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $("#game_btn").click(function(){
+                $(".game_container_slider").toggleClass('open');
+            });
+            
+            $(".lightbox-close").click(function(){
+                $(".game_container_slider").toggleClass('open');
+            })
+        })
+     
+    </script>
 </body>
 
 </html>

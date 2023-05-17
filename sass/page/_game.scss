@@ -1,0 +1,535 @@
+// header .container a{
+//     color: white;
+// }
+// header .container .nav-bar .nav-btn li{
+//     border: 1px solid white;
+// }
+
+//banner
+.game_container{
+    // height: 100%;
+    height: 1272px;
+    width: 100%;
+    position: relative;
+    display: block;
+    // border: 1px solid red;
+    .game_title{
+        // background-color: #c73f3aa8;
+        background-color: rgba( 199, 62, 58, 0.7);
+        width: 554px;
+        height: 554px;
+        border-radius: 50%;
+        position: absolute;
+        top: 25%;
+        left: 35%;
+        .title_box{
+            position: absolute;
+            top: 30%;
+            left: 28%;
+            width: 265px;
+            h2{
+                color: white;
+            }
+            h2:before{
+                content: "";
+                display: block;
+                width: 81px;
+                height: 7px;
+                background-color: white;
+                margin-bottom: 30px;
+            }
+            .text{
+                width: 271px;
+                height: 50px;
+                background-color: white;
+                border-radius: 15px 5px 5px 5px;
+                margin-top: 30px;
+                text-align: center;
+                
+                span{
+                    font-size: 20px;
+                    line-height: 50px;
+                    font-weight: bold;   
+                }
+                span:nth-child(2){
+                    display: inline-block;
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 50%;
+                    background-color: $primary;
+                    line-height: 28px;
+                    color: white;
+                    font-weight: lighter;
+                }
+            }
+        }
+    }
+    //遊戲按鈕
+    .game_btn{
+        position: absolute;
+        bottom: 20%;
+        left: 10%;
+        .btn{
+            width: 385px;
+            height: 87px;
+            background-color: $primary;
+            border-radius: 5px;
+
+            display: block;
+            color: white;
+            line-height: 87px;
+            font-size: $h3;
+            text-align: center;
+            cursor: pointer;
+            a{
+                // display: block;
+                // color: white;
+                // line-height: 87px;
+                // font-size: $h3;
+                // text-align: center;
+            }
+        }
+    }
+    .game_banner{
+        // overflow: hidden;
+        // height: 100vh;
+        // width: 100%;
+        // height: 100%;
+        img{
+            display: block;
+            // height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0;
+            z-index: -1;
+        }
+    }
+}
+//拉霸機
+.game_container_slider{
+    width: 100%;
+    height: 100%;
+    // border: 1px solid red;
+    position: absolute;
+    top: -1500px;
+    left: 0;
+    // display: none;
+    transition: .7s;
+    
+    .game_wapper{
+        width: 1228px;
+        height: 1006px;
+        position: absolute;
+        top: 20%;
+        left: 17%;
+        background-color: rgba(244, 241, 232, 0.8);
+        border-radius: 25px;
+        .lightbox-close{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
+            width: 50px;
+            height: 50px;
+            background-color: #3D3D3D;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            cursor: pointer;
+        }
+        .title{
+            width: 588px;
+            height: 137px;
+            background-color: $primary;
+            border-radius: 70px;
+            padding-top: 30px;
+            box-sizing: border-box;
+            position: absolute;
+            top: -70px;
+            left: 320px;
+            h2{
+                text-align: center;
+                color: white;
+            }
+            h2:after{
+                content: "";
+                display: block;
+                position: absolute;
+                top: 90px;
+                left: 40px;
+                width: 273px;
+                height: 4px;
+                background-color: white;
+                // margin-top: 10px;
+                // border: 1px solid red;
+            }
+            p{
+                color: white;
+                margin-left: 330px;
+                font-size: $paragraph;
+            }
+        }
+        .game{
+            position: absolute;
+            top: 150px;
+            left: 350px;
+            img{}
+            .results{
+                width: 605px;
+                // height: 397px;
+                color: $primary;
+                margin:0 auto;
+                position: absolute;
+                top: 95px;
+                left: -38px;
+                .result{
+                    height: 140px;
+                    width: 352px;
+                    margin: 0 auto;
+                    border-radius: 14px;
+                    border: 2px solid gray;
+                    overflow: hidden;
+                    .result-txt{
+                        // background: linear-gradient(LightCoral, Gold, LightSkyBlue, LightCoral);
+                        background-color: #F4F1E8;
+                        .result-item{
+                            font-size: 24px;
+                            display: flex;
+                            justify-content: center;
+                            line-height: 140px;
+                        }
+                    }
+                    .is-play.result-txt {
+                        animation: resultPlay 1s infinite linear;
+                    }
+                }
+                .btn-start{
+                    width:130px;
+                    text-align: center;
+                    margin: 20px auto;
+                    line-height: 36px;
+                    border-radius: 15px;
+                    border: 4px solid #3D3D3D;
+                    background: #F4F1E8;
+                    font-weight: bold;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 165px;
+                    left: 125px;
+                }
+                .btn-stop{
+                    width:130px;
+                    text-align: center;
+                    margin: 20px auto;
+                    line-height: 36px;
+                    border-radius: 15px;
+                    border: 4px solid #3D3D3D;
+                    background: #F4F1E8;
+                    font-weight: bold;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 165px;
+                    right: 125px;
+                }
+                .btn-start:hover,
+                .btn-stop:hover {
+                    transform: scale(1.05);
+                }
+                
+                @keyframes resultPlay {
+                    100% {
+                      transform: translateY(-90%)
+                    }
+                }
+                //卡片
+                .cont_principal{
+                    position: absolute;
+                    width: 467px;
+                    height: 478px;
+                    top: 350px;
+                    left: -140px;
+                    display: none;
+                    .cont_central{
+                        position: absolute;
+                        width: 100%;
+                        top: 50%;
+                        left: 0;
+                        margin-top: -200px;
+                        .cont_modal{
+                            position: relative;
+                            width: 300px;
+                            height: 400px;
+                            -webkit-transition: all 0.5s;
+                            -o-transition: all 0.5s;
+                            transition: all 0.5s; 
+                            transition-delay: 0.7s;
+                            -webkit-transition-delay: 0.7s;
+                            -o-transition-delay: 0.7s;
+                            transition-delay: 0.7s;
+                            .cont_photo{
+                                position: relative;
+                                width: 220px;
+                                height: 309px;
+                                overflow: hidden;
+                                background-color: #eee;
+                                border-radius:5px;
+                                top: -20px;
+                                float: left;
+                                z-index: 2;
+                                -webkit-transition: all 0.5s;
+                                -o-transition: all 0.5s;
+                                transition: all 0.5s;
+                                transition: all 0.5s; 
+                                box-shadow: 1px 1px 20px -5px rgba(0,0,0,0.5);  
+                                .cont_img_back{
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                    overflow: hidden;
+                                    border-radius:5px ;
+                                    img{
+                                        width: 100%;
+                                        opacity: 0.7;
+                                        -webkit-transition: all 0.5s;
+                                        -o-transition: all 0.5s;
+                                        transition: all 0.5s;
+                                        transition: all 1s;
+                                    }
+                                    
+                                }
+                                //
+                                .cont_img_back:hover > img {
+                                    transform: scale(1.5);
+                                    opacity: 1;
+                                }
+                            }
+                            .cont_text_ingredients{
+                                position: absolute;
+                                width: 0px;
+                                top: 0px;
+                                left: 220px;
+                                /* margin-left: 10px; */
+                                height: 276px;
+                                float: left; 
+                                border-radius:5px ;
+                                z-index: 3;
+                                box-shadow: 1px 1px  20px  -5px  rgba(0,0,0,0.2);
+                        
+                                background: rgb(251,249,249); /* Old browsers */
+                                background: -moz-linear-gradient(-45deg,  rgba(251,249,249,1) 28%, rgba(232,234,237,1) 100%); /* FF3.6-15 */
+                                background: -webkit-linear-gradient(-45deg,  rgba(251,249,249,1) 28%,rgba(232,234,237,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                                background: linear-gradient(135deg,  rgba(251,249,249,1) 28%,rgba(232,234,237,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                                
+                                -webkit-transition: all 0.5s;
+                                -o-transition: all 0.5s;
+                                transition: all 0.5s; 
+                                transition-delay: 0.7s;
+                                -webkit-transition-delay: 0.7s;
+                                -o-transition-delay: 0.7s;
+                                transition-delay: 0.7s;
+
+                                .cont_over_hidden{
+                                    position: relative;
+                                    float: left;
+                                    width: 100%;
+                                    height: 276px;
+                                    overflow: hidden;
+                                    .cont_tabs{
+                                        position: relative;
+                                        float: left;
+                                        width: 247px;
+                                        height: 60px;
+                                        border-bottom: 3px solid #EDEDEC;
+                                        text-align: center;
+                                        p{
+                                            font-size: 20px;
+                                            margin-top: 15px;
+                                            font-weight: bold;
+                                            color: black;
+                                        }
+                                    }
+                                    .cont_tabs::after{
+                                        content: "";
+                                        display: block;
+                                        /* border: 1px solid red; */
+                                        background-color: #C73E3A;
+                                        width: 27px;
+                                        height: 52px;
+                                        position: absolute;
+                                        top: 0;
+                                        right: 18px;
+                                        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+                                    }
+                                    .cont_text_det_preparation{
+                                        position: relative;
+                                        width: 247px;
+                                        text-align: center;
+                                        .cont_info_preparation{
+                                            position: relative;
+                                            float: left;
+                                            p{
+                                                margin: 5px 0px;
+                                                font-size: 16px;
+                                                padding: 20px 0px;
+                                                padding-left: 40px;
+                                                text-align: left;
+                                                padding-right: 30px;
+                                                color: #5F5F5F;
+                                            }
+                                        }
+                                        a{
+                                            display: inline-block;
+                                            cursor: pointer;
+                                            width: 93px;
+                                            height: 30px;
+                                            background-color: #C73E3A;
+                                            border-radius: 5px;
+                                            color: white;
+                                            // margin-top: 20px;
+                                            text-decoration: none;
+                                            line-height: 30px;
+                                            text-align: center;
+                    
+                                        }
+                                    }
+                                    .cont_btn_mas_dets{
+                                        position: absolute;
+                                        bottom:10px;
+                                        left: 10%;
+                                        z-index: -1;
+                                        span{}
+                                        span:before{
+                                            content: "";
+                                            display: block;
+                                            width: 4px;
+                                            height: 31px;
+                                            background-color: #C73E3A;
+                                        }
+                                        span:after{
+                                            content: "";
+                                            display: block;
+                                            width: 139px;
+                                            height: 3px;
+                                            background-color: #C73E3A;
+                                        }
+                                    }
+                                }
+                                .cont_btn_open_dets{
+                                    position: absolute;
+                                    right: -15px;
+                                    top:50%;
+                                    text-align: center;
+                                    a{
+                                        display: block;
+                                        padding-top: -5px;
+                                        width: 30px;
+                                        height: 30px;
+                                        background-color: #C73E3A;
+                                        border-radius:50% ;
+                                        color: #fff;
+                                        box-shadow: 0px 0px 20px -2px rgba(237, 36, 96, 1);
+                                        -webkit-transition: all 0.5s;
+                                        -o-transition: all 0.5s;
+                                        transition: all 0.5s;
+                                        transition: all 0.5s;
+                                        transform: rotate(180deg);
+
+                                        .material-icons{
+                                            margin-top: 4px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .cont_modal_active {
+                            width: 700px;
+                            .cont_photo{
+                                box-shadow: 25px 10px 70px -5px rgba(0,0,0,0.3); 
+                                // .cont_mins{
+                                //     .sub_mins{
+                                //         opacity: 1;
+                                //     }
+                                // }
+                                // .sub_mins{
+                                //     opacity: 1;
+                                // } 
+                            }
+                            .cont_text_ingredients{
+                                width: 247px;
+                                left: 210px;
+                                z-index: 1;
+                                box-shadow: 15px 20px  70px  -5px  rgba(0,0,0,0.2);
+                                .cont_btn_open_dets{
+                                    a{
+                                        transform: rotate(0deg);
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+                //coupon
+                .coupon{
+                    width: 322px;
+                    height: 198px;
+                    background-color: #F4F1E8;
+                    border-radius: 10px;
+                    position: absolute;
+                    top: 450px;
+                    right: -150px;
+                    display: none;
+                    
+                    .coupon_box{
+                        width: 247px;
+                        height: 198px;
+                        background-color: $primary;
+                        margin-left: 80px;
+                        border-radius: 0 10px 10px 0;
+                        
+                        p{
+                            color: white;
+                            text-align: center;
+                            font-size: 32px;
+                            padding-top: 20px;
+                        }
+                        input{
+                            margin-top: 30px;
+                            margin-left: 55px;
+                            width: 131px;
+                            height: 46px;
+                            border-radius: 5px;
+                            border: 2px dashed white;
+                            color: white;
+                            background-color: $primary;
+                            font-size: 20px;
+                        }
+                        p:nth-child(3){
+                            font-size: 16px;
+                            padding-top: 5px;
+                        }
+                        .obj{
+                            position: absolute;
+                            top: 0;
+                            left: 75px;
+                            span{
+                                display: block;
+                                width: 12px;
+                                height: 12px;
+                                border-radius: 50%;
+                                background-color: #3D3D3D;
+                                margin: 30px 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.open{
+    display: block;
+    top: 0;
+}
