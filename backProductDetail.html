@@ -86,20 +86,12 @@
                         </select>
                     </div>
 
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputState">行程狀態</span>
-                        <select id="inputState" class="form-select" :disabled="!editable">
-                            <option selected>上架中</option>
-                            <option>下架中</option>
-                        </select>
-                    </div>
-
                     <div class="input-group mb-3 col">
                         <span class="input-group-text" id="basic-addon1">行程價格</span>
                         <input type="text" class="form-control" :readonly="!editable" v-model="price" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
 
-                    <div class="input-group mb-3 col">
+                    <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">行程日期</span>
                         <input type="text" class="form-control" :readonly="!editable" v-model="date" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
