@@ -111,21 +111,25 @@
             }
     
         }
-
-
 }
 
 .about_form{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
     padding: 10vh 0 10vh 0;
     margin: 0 auto;
     width: 60%;
 
-    @include m{
+    @include m(){
+        padding: 0;
+        margin: 0;
+        width: 100%;
 
+        
+    }
+        // background-color: black;
         h1{
             font-size: 40px;
 
@@ -133,7 +137,7 @@
 
         ul{
             li{
-                
+                width: 100%;
             }
         }
     }
@@ -160,7 +164,6 @@
                 margin: 10px 0;
                   text-align: center;
 
-  
         }
         label {
             font-size: 20px;
@@ -199,6 +202,12 @@
     color: #fff;
     cursor: pointer;
     border-radius: 5px;
+
+    @include m (){
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
 }
 
 #about_first_name, #about_last_name, #about_email, #about_tel{
@@ -207,13 +216,23 @@
     margin: 1vh 0 1vh 0;
     border: none;
     border-radius: 5px;
+
+    @include m (){
+        margin: none;
+        width: 100%;
+    }
+    
 }
 
 #about_textarea{
     width: 1050px;
     height: 200px;
-    margin: 1vh 0 3vh 0;
+    margin: 1vh 0 1vh 0;
     border: none;
     border-radius: 5px;
+
+    @include m (){
+        width: 100%;
+    }
     
 }
