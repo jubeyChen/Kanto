@@ -5,36 +5,72 @@ const app = Vue.createApp({
         return {
             count: 1,
             price: 2200,
-            total:""
+            total: "",
+            date: flatpickr.formatDate(new Date(), "Y-m-d"),
+            selectedDate: flatpickr.formatDate(new Date(), "Y-m-d"),
         }
     },
-    created(){
+    created() {
         this.total = this.price;
     },
     methods: {
+        //+按鈕
         countAdd() {
             if (this.count < 9) {
                 this.count += 1;
                 this.total = this.price * this.count;
             }
         },
+        //-按鈕
         countMinus() {
             if (this.count > 1) {
                 this.count -= 1;
                 this.total = this.price * this.count;
             }
         },
-        clear(){
-            if(this.count != 1){
-                this.count = 1;
-                this.total = this.price;
-            }
+        //清空按鈕
+        clear() {
+            this.count = 1;
+            this.total = this.price;
+            this.content = "查看可預訂的日期";
         },
 
-        scrollBtn(){
-            window.scrollTo({top:5250,behavior:'smooth'})
+        //左右滑動按鈕
+        scrollBtn() {
+            window.scrollTo({ top: 5250, behavior: 'smooth' })
+        },
+
+        //日曆
+        initializeFlatpickr() {
+            flatpickr(this.$refs.dateButton, {
+                dateFormat: "Y-m-d",
+                defaultDate: "today",
+                minDate: "today",
+                disableMobile: true,
+                onClose: (selectedDates, dateStr, instance) => {
+                    console.log(dateStr);
+                    this.selectedDate = dateStr; // 更新selectedDate的值
+                    this.$refs.dateButton.textContent = dateStr; // 更新按钮上的显示日期
+                }
+            });
+            flatpickr(this.$refs.phone_dateButton, {
+                dateFormat: "Y-m-d",
+                defaultDate: "today",
+                minDate: "today",
+                disableMobile: true,
+                onClose: (selectedDates, dateStr, instance) => {
+                    console.log(dateStr);
+                    this.selectedDate = dateStr; // 更新selectedDate的值
+                    this.$refs.dateButton.textContent = dateStr; // 更新按钮上的显示日期
+                }
+            });
         }
-    }
+    },
+    //日曆 掛載時先執行一次 初始化用
+    mounted() {
+        this.initializeFlatpickr();
+    },
+
 })
 app.mount(".all");
 
@@ -126,10 +162,45 @@ const slide_block = document.querySelector(".card_swiper_block1");
 const right_btn = document.querySelector(".slide_right_btn");
 const left_btn = document.querySelector(".slide_left_btn")
 
-right_btn.addEventListener("click",function(e){
+right_btn.addEventListener("click", function (e) {
     slide_block.scrollLeft += 892.5;
 })
 
-left_btn.addEventListener("click",function(e){
+left_btn.addEventListener("click", function (e) {
     slide_block.scrollLeft -= 892.5;
+});
+
+
+//日期----------------------------------------------------------------
+
+// const dateButton = document.getElementById('dateButton');
+const clearBtn = document.querySelector(".clearBtn");
+const date = document.querySelector(".date");
+
+clearBtn.addEventListener("click", function (e) {
+    dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
+    date.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
+    console.log(flatpickr.formatDate(new Date(), "Y-m-d"));
 })
+
+
+
+
+
+
+
+
+
+// flatpickr(dateButton, {
+//     dateFormat: "Y-m-d",
+//     defaultDate: "today",
+//     minDate: "today", // 設定最小日期為當天
+//     onClose: function (selectedDates, dateStr, instance) {
+//         dateButton.textContent = dateStr; // 將日期顯示在按鈕上
+//     }
+// });
+
+// 將初始按鈕內容設定為當天日期
+// dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
+
+
