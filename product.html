@@ -22,7 +22,11 @@
     <div class="product wrapper">
 
         <div class="container">
+
+            <!-- 側邊欄位 -->
             <aside class="left">
+
+                <!-- 關鍵字搜尋 -->
                     <form action="post">
                         <div class="search">
                             <div class="search-text">
@@ -40,6 +44,8 @@
                                 <input type="checkbox">群馬<br>
                                 <input type="checkbox">栃木
                             </div>
+
+                <!-- 活動類別搜尋 -->
         
                             <div class="check-box2">
                                 <h4>所有商品類別</h4>
@@ -48,6 +54,8 @@
                                 <input type="checkbox">主題樂園<br>
                                 <input type="checkbox">歷史景點
                             </div>
+
+                <!-- 日期搜尋 -->
         
                             <div class="search-day">
                                 <div class="p-calender"></div>
@@ -72,6 +80,9 @@
                                     </div>
                                   </div>
                             </div>
+                            
+
+                <!-- 價錢搜尋 -->
         
                             <div class="search-price">
                                 <h4>價錢 (TWD)</h4>
@@ -82,6 +93,7 @@
                     </form>
                 </aside>
 
+                <!-- 行程簡介區塊 -->
                 <article class="right">
                     <div class="top-column">
                         <p>50 項體驗行程</p>
@@ -240,6 +252,7 @@
                         </li>
                     </ul>
                     </div>
+                    <!-- 頁數 -->
                     <div class="page">
                         <ul>
                             <li><a href="">1</a></li>
@@ -252,6 +265,145 @@
                     </div>
     
                 </article>
+                
+        </div>
+        
+    </div>
+
+    <!------------ RWD區域 ------------>
+
+
+    <div class="product-rwd container">
+
+        <div id="accordion" class="accordion">
+            
+            <h3>篩選目的地</h3>
+            <div>
+              <form action="post">
+                <div class="search">
+                    <div class="search-text">
+                        <button class="search-btn"><svg width="20px" height="20px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg></button>
+                        <input type="text" class="search-bar" name="search-bar" id="search" placeholder="篩選目的地">
+                    </div>
+                    <div class="check-box">
+                        <input type="checkbox">東京<br>
+                        <input type="checkbox">神奈川<br>
+                        <input type="checkbox">埼玉<br>
+                        <input type="checkbox">茨城<br>
+                        <input type="checkbox">千葉<br>
+                        <input type="checkbox">群馬<br>
+                        <input type="checkbox">栃木
+                    </div>
+                
+
+                </div>
+              </form>
+            </div>
+
+            <h3>商品類別</h3>
+            <div class="section2">
+              <div class="check-box2">
+                <input type="checkbox">一日遊<br>
+                <input type="checkbox">景點門票<br>
+                <input type="checkbox">主題樂園<br>
+                <input type="checkbox">歷史景點<br>
+              </div>
+            </div>
+            <h3>篩選出發日期</h3>
+            <div>
+                <div class="search-day">
+                    <div class="p-calender"></div>
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <div class="calendar-header-item prev-month">&lt;</div>
+                            <div class="calendar-header-item current-month"></div>
+                            <div class="calendar-header-item next-month">&gt;</div>
+                        </div>
+                        <div class="calendar-body">
+                            <div class="calendar-weekdays">
+                                <div class="calendar-weekday">日</div>
+                                <div class="calendar-weekday">一</div>
+                                <div class="calendar-weekday">二</div>
+                                <div class="calendar-weekday">三</div>
+                                <div class="calendar-weekday">四</div>
+                                <div class="calendar-weekday">五</div>
+                                <div class="calendar-weekday">六</div>
+                            </div>
+                            <div class="calendar-days"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3>價錢(TWD)</h3>
+            <div>
+                <div class="search-price">
+                    <input type="range" min="0" max="9999" value="0" class="slider" id="slider">
+                    <div id="value"></div>
+                </div>
+              
+            </div>
+          </div>
+
+        <!-- 行程簡介 -->
+
+        <div class="rwd-section">
+            <div class="all">
+                <div class="pic"><img src="image/product/rwd-jp-a.png" alt=""></div>
+                <div class="ind">
+                    <h1>鎌倉大佛&江之島&鎌倉高校前一日遊丨東京出發</h1>
+                    <p>鎌倉大佛&江之島&鎌倉高校前一日遊，探索古都鎌倉的文化與美景，欣賞大佛和海景，品嚐美食，感受日本的歷史與現代文化。</p>
+                    <div class="rwd-star">
+                        <img src="image/product/star.png" alt="">
+                    </div>
+                    <div class="rwd-both">
+                        <div class="follow">(2961)|99已訂閱</div>
+                        <div class="rwd-price">TWD 1,728</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="all">
+                <div class="pic"><img src="image/product/rwd-jp-b.png" alt=""></div>
+                <div class="ind">
+                    <h1>東京澀谷天空（SHIBUYA SKY）觀景臺門票</h1>
+                    <p>御殿場購物一日遊帶您前往日本著名的Outlet商場，以優惠價格購買各大國際品牌的產品，包括服飾、鞋子、手錶等...</p>
+                    <div class="rwd-star">
+                        <img src="image/product/star.png" alt="">
+                    </div>
+                    <div class="rwd-both">
+                        <div class="follow">(2961)|99已訂閱</div>
+                        <div class="rwd-price">TWD 6,728</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="all">
+                <div class="pic"><img src="image/product/rwd-jp-c.png" alt=""></div>
+                <div class="ind">
+                    <h1>日本飯能嚕嚕米樂園（Moominvalley Park）門票</h1>
+                    <p>飯能嚕嚕米樂園，讓你暫時逃離城市的喧囂，享受各種刺激的活動和美食。從東京輕鬆前往，適合全家大小一起遊玩。</p>
+                    <div class="rwd-star">
+                        <img src="image/product/star.png" alt="">
+                    </div>
+                    <div class="rwd-both">
+                        <div class="follow">(2961)|99已訂閱</div>
+                        <div class="rwd-price">TWD 6,728</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 頁數 -->
+            <div class="rwd-page">
+                <ul>
+                    <li><a href="">1</a></li>
+                    <li><a href="">2</a></li>
+                    <li><a href="">3</a></li>
+                    <li><a href="">4</a></li>
+                    <li><a href="">5</a></li>
+                    <li><a href="">6</a></li>
+                </ul>
+            </div>
         </div>
         
     </div>
@@ -265,147 +417,13 @@
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+    <script src="./js/product.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-
-
-    <script>
-    // 操控日期
-
-    // 獲取元素
-    const currentMonth = document.querySelector('.current-month');
-    const prevMonth = document.querySelector('.prev-month');
-    const nextMonth = document.querySelector('.next-month');
-    const calendarDays = document.querySelector('.calendar-days');
-
-    // 設置當前日期
-    let currentDate = new Date();
-
-    // 顯示日曆
-    function showCalendar(year, month) {
-    // 設置月份標題
-    const months = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-    currentMonth.innerHTML = `${year} 年 ${months[month]}`;
-
-    // 設置日期
-    let firstDay = new Date(year, month, 1).getDay(); // 獲取當月第一天是星期幾
-    let lastDate = new Date(year, month + 1, 0).getDate(); // 獲取當月最後一天的日期
-
-    let daysHTML = '';
-
-    // 添加前面的空白
-    for (let i = 0; i < firstDay; i++) {
-        daysHTML += '<div class="calendar-day"></div>';
-    }
-
-    // 添加日期
-    for (let i = 1; i <= lastDate; i++) {
-        // 判斷當前日期是否為當前選中日期，如果是，則添加 .selected 類名
-        let className = '';
-        if (currentDate.getFullYear() === year && currentDate.getMonth() === month && currentDate.getDate() === i) {
-        className = 'selected';
-        }
-        daysHTML += `<div class="calendar-day ${className}">${i}</div>`;
-    }
-
-    calendarDays.innerHTML = daysHTML;
-    }
-
-    // 初始化日曆
-    showCalendar(currentDate.getFullYear(), currentDate.getMonth());
-
-    // 切換到上一個月
-    prevMonth.addEventListener('click', function() {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    showCalendar(currentDate.getFullYear(), currentDate.getMonth());
-    });
-
-    // 切換到下一個月
-    nextMonth.addEventListener('click', function() {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    showCalendar(currentDate.getFullYear(), currentDate.getMonth());
-    });
-
-    // 選擇日期
-    calendarDays.addEventListener('click', function(event) {
-    // 判斷點擊的是否為日期
-    if (event.target.classList.contains('calendar-day')) {
-        // 獲取選中的日期
-        let selectedDate = event.target.innerText;
-        // 設置選中的日期
-        currentDate.setDate(selectedDate);
-        // 重新顯示日曆
-        showCalendar(currentDate.getFullYear(), currentDate.getMonth());
-    }
-    });
-
-
-    </script>
-
-    <script>
-        // 操控價錢搜尋的值
-
-        const slider = document.getElementById("slider");
-        const value = document.getElementById("value");
-
-        value.innerHTML = slider.value;
-
-        slider.oninput = function() {
-        value.innerHTML = this.value;
-        }
-
-    </script>
-
-
-    <!-- <script>
-
-        let sidebar = document.getElementsByClassName("out")[0];
-        let sidebar_content = document.getElementsByClassName("left")[0];
-
-        window.onscroll = () => {
-            let scrollTop = window.scrollY;
-            let viewportHeigh = window.innerHeight;
-            let contentHeight = sidebar_content.getBoundingClientRect().height;
-            let sidebarTop = sidebar.getBoundingClientRect().top + window.pageYOffset;
-
-            if(scrollTop >= contentHeight - viewportHeigh + sidebarTop){
-                sidebar_content.style.transform = `translateY(-${contentHeight - viewportHeigh + sidebarTop}px)`;
-                sidebar_content.style.position = "fixed";
-            }else{
-                sidebar_content.style.transform = "";
-                sidebar_content.style.position = "";
-            }
-        }
-
-    </script> -->
 
 
     
-    <!-- <script>
-
-    // 獲取要固定高度的元素
-    var asideEl = document.querySelector('.left');
-
-    // 計算元素距離文檔頂部的距離
-    var asideTop = asideEl.offsetTop;
-    // console.log(asideTop);
-
-    // 監聽窗口滾動事件
-    window.addEventListener('scroll', function() {
-    // 如果窗口滾動的距離超過了元素距離頂部的距離
-    if (window.scrollY >= asideTop) {
-        // 設置元素固定的樣式
-        asideEl.style.position = 'fixed';
-        asideEl.style.top = '0';
-    } else {
-        // 移除元素固定的樣式
-        asideEl.style.position = '';
-        asideEl.style.top = '';
-    }
-    });
-
-
-    </script> -->
-        
 
 
 
