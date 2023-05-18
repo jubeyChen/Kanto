@@ -29,8 +29,8 @@
                 <li 
                 v-for="tab in tabs" 
                 :key="tab.id" 
-                :class="{active: (currentTab == tab.id)} " 
-                @click="currentTab = tab.id"
+                :class="{active: (current_tab == tab.id)} " 
+                @click="current_tab = tab.id"
                 >{{ tab.name }}</li>
             </ul>
 

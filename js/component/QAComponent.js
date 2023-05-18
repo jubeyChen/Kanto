@@ -56,7 +56,7 @@ export default{
                         若為信用卡付款問題，請您確認您的信用卡服務是否正常，您可先與您的發卡行確認卡片使用狀態。`
                 },
                 {
-                    q: "為什麼必須透過Kanto進行交流和交易？",
+                    q: "為什麼必須透過Kanto進行交易？",
                     a: `Kanto為您創造一個信任和安全的旅遊行程購物平台，為了您的消費安全， 店家與旅客之間的訊息，消費過程記錄，都有Kanto為您把關，於Kanto進行交流與交易，可獲得以下好處：
                         ＊行程結束後，進行評價的機會
                         ＊若店家取消訂單，旅客的資金可獲得我們的保障
@@ -68,14 +68,15 @@ export default{
 
     computed: {
         current_tab_component(){
-            return this.$props.currentTab + "QA";
+            return this.currentTab + "QA"
+            // console.log(this.$props.currentTab)
         }
     },
 
     template: `
         <h4 v-text="current_tab_component"></h4>
 
-        <div class="accordion-item" v-for="(item, index) in currentTabComponent" :key="index">
+        <div class="accordion-item" v-for="(item, index) in this[current_tab_component]" :key="index">
             <h4 class="accordion-header">{{ item.q }} <span class="v"></span><span class="h"></span></h4>
             <div class="accordion-content">
                 <p style="white-space: pre-line;">{{ item.a }}</p>

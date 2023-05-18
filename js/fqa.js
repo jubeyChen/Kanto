@@ -3,7 +3,8 @@ import QAComponent from "./component/QAComponent.js";
 const app = Vue.createApp({
     data(){
         return{
-            currentTab: 'order',
+            current_tab: 'order',
+            current_tab_name: '訂單相關',
             tabs: [
                 {
                     id: "order",
@@ -17,7 +18,15 @@ const app = Vue.createApp({
                     id: "payment",
                     name: "付款相關"
                 }
-                ]
+            ]
+        }
+    }, 
+    computed: {
+        changeTabName(){
+            if(this.current_tab == 'order'){
+                current_tab_name = '訂單相關';
+            }
+    
         }
     }
 
