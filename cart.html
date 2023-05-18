@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
 </head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+</head>
+
 
 <body>
     <!-- 以下Header區域 -->
@@ -21,15 +27,129 @@
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
-    <div class="container">
-    </div>
 
+
+    <div class="cart_container">
+
+        <!-- 麵包屑 -->
+        <div class="cart_bread">
+            <ul>
+                <li>
+                    <!-- <img src="./image/cart/cart.jpg" alt="">
+                    <img src="./image/cart/form.jpg" alt="">
+                    <img src="./image/cart/done.jpg" alt=""> -->
+                    <i class="cart_icons_cart">shopping_cart</i>
+                </li>
+                <li>
+                    <i class="cart_icons_description">assignment</i>
+                </li>
+                <li>
+                    <i class="cart_icons_credit_card">credit_card</i>
+                </li>
+            </ul>
+        </div>
+
+        <div class="cart_section1">
+            <h4>購物車</h4>
+            <span class="cart_line"></span>
+
+            <div class="cart_inner_section">
+
+                <div class="cart_item_list">
+
+                    <ul>
+                        <li>
+                            <i class="cart_icons_checkbox_small">check_box_outline_blank</i>
+                        </li>
+                        <li>
+                            <img src="./image/cart/item1.jpg" alt="">
+                        </li>
+                        <li>
+                            <p>富士山賞櫻一日遊（東京出發）</p>
+                            <p>2023-06-24</p>
+                        </li>
+    
+                        <li>
+                            <p>成人 X 1</p>
+                        </li>
+                        <li>
+                            <p>TWD $1500</p>
+                        </li>
+                        <li>
+                            <i id="cartFavoriteIcon" class="cart_icons_favorite_small">favorite_border</i>
+                            <i id="cartDeleteIcon" class="cart_icons_trash_small">delete_outline</i>
+                        </li>
+    
+                    </ul>
+
+                </div>    
+                <span class="cart_line"></span>
+
+                <ul class="cart_list">
+
+                    <li>
+                        <i class="cart_icons_checkbox_small">check_box_outline_blank</i>
+                    </li>
+                    <li>
+                        <p>全選</p> <span></span>
+                    </li>
+                    <li class="cart_pay_btn_wrapper">
+                        <a href="payment.html">
+                            <button class="cart_pay_btn">前往付款</button>
+                        </a>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+
+        <div class="cart_section2">
+            <ul>
+                <li>
+                    <img src="./image/cart/rec1.jpg" alt="">
+                    <p>日本飯能嚕嚕米樂園</p>
+                    <button cart_btn>查看詳情</button>
+                </li>
+                <li>
+                    <img src="./image/cart/rec2.jpg" alt="">
+                    <p>鎌倉大佛&江之島&鎌倉高校前</p>
+                    <button cart_btn>查看詳情</button>
+                </li>
+                <li>
+                    <img src="./image/cart/rec3.jpg" alt="">
+                    <p>東京澀谷天空</p>
+                    <button cart_btn>查看詳情</button>
+                </li>
+                <li>
+                    <img src="./image/cart/rec4.jpg" alt="">
+                    <p>東京迪士尼度假區門票</p>
+                    <button cart_btn>查看詳情</button>
+                </li>
+            </ul>
+        </div>
+
+    </div><!-- cart_container -->
 
     <!-- 以下Footer區域 -->
     @@include('./layout/footer.html')
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+
+
+    <script>
+
+        $(document).ready(function () {
+            // Add a click event handler to the delete icon
+            $('#cartDeleteIcon').on('click', function () {
+                // Remove the cart_inner_section element
+                $('.cart_item_list').remove();
+            });
+        });
+
+
+    </script>
 </body>
 
 </html>

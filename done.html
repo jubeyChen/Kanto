@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>付款資訊</title>
+    @@include('./layout/style.html')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    </head>
+
+
+<body>
+    <!-- 以下Header區域 -->
+    @@include('./layout/header.html',{
+    cart:'active'
+    })
+    <!-- 以下是top button -->
+    @@include('./layout/topBtn.html')
+
+    <!-- 以下可以開始編輯 -->
+
+<div class="done_container">
+
+    <div class="cart_bread">
+        <ul>
+            <li>
+                <!-- <img src="./image/cart/cart.jpg" alt="">
+                <img src="./image/cart/form.jpg" alt="">
+                <img src="./image/cart/done.jpg" alt=""> -->
+                <i class="cart_icons_cart">shopping_cart</i>
+            </li>
+            <li>
+                <i class="cart_icons_description">assignment</i>
+            </li>
+            <li>
+                <i class="cart_icons_credit_card">credit_card</i>
+            </li>
+        </ul>
+
+    <div class="done_section1">
+        <ul>
+            <li>
+                <img src="./image/done/icon _tick circle_.png" alt="">
+            </li>
+            <li>
+                <h3>購買成功</h3>
+            </li>
+            <li>
+                <h2>感謝您的購買</h2>
+            </li>
+            <li>
+                <h3>已收到您的訂單，請檢視訂單</h3>
+            </li>
+            <li>
+                <a href="loginRegister.html">
+                    <button>查看訂單</button>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    
+    
+</div>
+
+</div>   
+    
+
+
+
+    <!-- 以下Footer區域 -->
+    @@include('./layout/footer.html')
+
+    <!-- 以下共用外接js區域 -->
+    @@include('./layout/js.html')
+
+<script>
+
+</script>
+      
+</body>
+
+</html>
