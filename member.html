@@ -33,7 +33,7 @@
 
                 <ul class="tab">
                     <li><button class="tabBtn" @click="tab_change('account')" :class="{'tabOn': current_tab === 'account'}">帳號設定</button></li>
-                    <li><button class="tabBtn" @click="tab_change('order'); getOrder()" :class="{'tabOn': current_tab === 'order'}">訂單管理</button></li>
+                    <li><button class="tabBtn" @click="tab_change('order')" :class="{'tabOn': current_tab === 'order'}">訂單管理</button></li>
                     <li><button class="tabBtn" @click="tab_change('collect')" :class="{'tabOn': current_tab === 'collect'}">我的收藏</button></li>
                     <li><button class="tabBtn" @click="tab_change('coupon')" :class="{'tabOn': current_tab === 'coupon'}">優惠券</button></li>
                 </ul>

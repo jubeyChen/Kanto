@@ -7,8 +7,19 @@
     background-size: cover;
     padding: 100px 0;
 
+
+
+
     @include m() {
         padding: 120px 0 70px;
+    }
+
+    .container {
+        opacity: 0;
+
+        &.-show {
+            opacity: 1;
+        }
     }
 
     .box {
@@ -79,6 +90,12 @@
                     background-color: white;
                 }
 
+                .errorMsg {
+                    margin: -10px 0 20px 0;
+                    color: $primary;
+                    font-weight: bold;
+                }
+
                 p {
                     margin-top: -10px;
                     font-size: 13px;
@@ -131,6 +148,12 @@
                 margin-bottom: 20px;
                 font-size: $paragraph-s;
                 background-color: white;
+            }
+
+            .errorMsg {
+                margin: -10px 0 20px 0;
+                color: $primary;
+                font-weight: bold;
             }
 
             a {

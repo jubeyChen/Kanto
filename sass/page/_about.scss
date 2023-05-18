@@ -1,0 +1,219 @@
+.about_top_img{
+    position: cover;
+    width: 100%;
+
+}
+
+.about_section1{
+    background-color: #ECECEB;
+    padding-bottom: 8vh;
+
+    @include m() {
+        width: 100%;
+        h1{
+            font-size: 40px;
+        }
+        p{
+            font-size: 12px;
+            width: 90%;
+            border:  none;
+        }
+    }
+    h1{
+        padding-top: 5vh;
+        text-align: center;
+        color: $primary;
+
+    }
+    p{  padding-top: 5vh;
+        font-size: 30px;
+        width: 60%;
+        margin: 0 auto;
+        text-align: center;
+
+    }
+}
+
+.about_section2{
+        background-color: #F4F1E8;
+        padding-bottom: 8vh;
+
+        @include m() {
+            width: 100%;
+            h1{
+                font-size: 40px;
+            }
+            p{
+                font-size: 10px;
+                width: 90%;
+                border:  none;
+            }
+        }
+        h1{
+            padding-top: 5vh;
+            margin: 0 auto;
+            text-align: center;
+            color: $primary;
+
+        }
+        p{  padding-top: 5vh;
+            font-size: 30px;
+            width: 60%;
+            margin: 0 auto;
+        }
+}
+.about_section3{
+    background-color: #ECECEB;
+    padding: 10vh 0 10vh 0;
+    text-align: center;
+    h1{
+        text-align: center;
+        padding-bottom: 5vh;
+        color: $primary;
+        @include m(){
+            font-size: 40px;
+        }
+
+    }
+        ul{
+
+            margin: 0 auto;
+            li{
+                display: inline-block;
+                width: 20%;
+                margin: 0 auto;
+                padding: 0 2vw;
+
+                @include m(){
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    width: 90%;
+                    margin-bottom: 3vh;
+                    h3{
+                        padding: 3vh;
+                    }
+                    p{
+                        padding: 2vh;
+                    }
+                }
+                img {
+                    display: block;
+                    margin: 0 auto;
+                }
+                h3 {
+                    margin-top: 10px;
+                }
+                p{  
+                    font-size: 20px;
+                }
+    
+            }
+    
+        }
+
+
+}
+
+.about_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10vh 0 10vh 0;
+    margin: 0 auto;
+    width: 60%;
+
+    @include m{
+
+        h1{
+            font-size: 40px;
+
+        }
+
+        ul{
+            li{
+                
+            }
+        }
+    }
+
+    h1{
+        text-align: center;
+        padding-bottom: 5vh;
+        color: $primary;
+
+    }
+    ul{
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+
+            li{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin: 10px 0;
+                  text-align: center;
+
+  
+        }
+        label {
+            font-size: 20px;
+        }
+        input {
+            font-size: 20px;
+            
+        }
+
+        
+        textarea {
+            font-size: 20px;
+            
+        }
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            color: $primary;
+        }
+
+    }
+
+}
+
+.about_submit{
+    border: 0;
+    line-height: 40px;
+    padding: 0 4vh;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background-color: #C73E3A;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#about_first_name, #about_last_name, #about_email, #about_tel{
+    width: 500px;
+    height: 50px;
+    margin: 1vh 0 1vh 0;
+    border: none;
+    border-radius: 5px;
+}
+
+#about_textarea{
+    width: 1050px;
+    height: 200px;
+    margin: 1vh 0 3vh 0;
+    border: none;
+    border-radius: 5px;
+    
+}

@@ -8,7 +8,12 @@
     <title>行程內頁</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
     @@include('./layout/style.html')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css"
+        integrity="sha512-MQXduO8IQnJVq1qmySpN87QQkiR1bZHtorbJBD0tzy7/0U9+YIC93QWHeGTEoojMVHWWNkoCp8V6OzVSYrX0oQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_red.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -83,11 +88,11 @@
                         <div class="plan_choose_inner">
                             <div class="block1">
                                 <h4>請選擇行程日期</h4>
-                                <button type="button" @click="clear">清除全部</button>
+                                <button type="button" @click="clear" class="clearBtn">清除全部</button>
                             </div>
 
                             <div class="block2">
-                                <button type="button">查看可預訂的日期</button>
+                                <button type="button" id="dateButton" ref="dateButton">{{date}}</button>
                             </div>
 
                             <div class="block3">
@@ -781,7 +786,7 @@
 
                         <div class="choose_inner2">
                             <h3>富士山賞櫻一日遊</h3>
-                            <p class="date">2023年5月5日</p>
+                            <p class="date" >{{selectedDate}}</p>
                             <div class="num">
                                 <p>數量</p>
                                 <p>NT$2200X<span>{{count}}</span></p>
@@ -927,7 +932,8 @@
                     <h3>方案選擇</h3>
                     <div class="phone_plan_choose_inner">
                         <div class="block1">
-                            <button type="button">查看可預定的日期</button>
+
+                            <button type="button" ref="phone_dateButton">{{selectedDate}}</button>
                         </div>
 
 
@@ -1445,6 +1451,9 @@
     </div>
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"
+        integrity="sha512-K/oyQtMXpxI4+K0W7H25UopjM8pzq0yrVdFdG21Fh5dBe91I40pDd9A4lzNlHPHBIP2cwZuoxaUSX0GJSObvGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="./js/vendors/vue.global.js"></script>
     <script src="./js/productPage.js"></script>

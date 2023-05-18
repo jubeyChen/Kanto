@@ -4,14 +4,21 @@ Vue.createApp({
             showReview: false,
             showService: false,
             start: false,
-            current_tab: 'order',
+            current_tab: 'account',
             avatar: '',
             orderList: [],
             orderIMGUrl: 'image/member/',
             cancelOrder: false,
             writeReview: false,
-            currentOrderNumber: '',
+            currentOrderNumber: '', // for聯絡客服連結的
         }
+    },
+    created() {
+        fetch('image/order.json')
+                .then(response => response.json())
+                .then(data => {
+                    this.orderList = data;
+                });
     },
     mounted() {
         setTimeout(() => {
@@ -49,15 +56,6 @@ Vue.createApp({
             this.avatar = e.target.result;
         },
 
-        //取得訂單內容
-        getOrder() {
-            fetch('image/order.json')
-                .then(response => response.json())
-                .then(data => {
-                    this.orderList = data;
-                });
-        },
-        // 判斷商品時間大於或小於現在時間來顯示狀態
         departureStatus(date) {
             const currentDate = new Date();
             const departureDate = new Date(date);
