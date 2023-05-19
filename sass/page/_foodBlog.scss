@@ -279,6 +279,9 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        @include m(){
+            justify-content: center;
+        }
         li{
             display: flex;
             position: relative;
@@ -289,6 +292,7 @@
             @include m(){
                 margin-top: 64px;
                 margin-right: -1px;
+                width: 393px;
             }
             img{
                 width: 317px;
@@ -341,7 +345,7 @@
                     overflow-y:scroll;
                     
                     @include m(){
-                        width: 157px;
+                        width: 131px;
                         height: 150px;
                         overflow: hidden;
                         overflow-y: auto;
