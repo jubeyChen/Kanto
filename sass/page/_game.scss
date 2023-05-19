@@ -116,15 +116,18 @@
     left: 0;
     // display: none;
     transition: .7s;
+
     
     .game_wapper{
         width: 1228px;
-        height: 1006px;
+        height: 1000px;
+        // height: auto;
         position: absolute;
-        top: 20%;
-        left: 17%;
+        top: 50%;
+        left: 50%;
         background-color: rgba(244, 241, 232, 0.8);
         border-radius: 25px;
+        transform: translate(-50%, -30%) translateY(40px);
         .lightbox-close{
             position: absolute;
             top: 20px;
@@ -146,35 +149,56 @@
             border-radius: 70px;
             padding-top: 30px;
             box-sizing: border-box;
-            position: absolute;
-            top: -70px;
-            left: 320px;
+            // position: absolute;
+            // top: -70px;
+            // left: 320px;
+            margin: -70px auto 70px;;
             h2{
                 text-align: center;
                 color: white;
+                padding: 0 30px;
             }
-            h2:after{
+            // h2:after{
+            //     content: "";
+            //     display: block;
+            //     position: absolute;
+            //     top: 90px;
+            //     left: 40px;
+            //     width: 273px;
+            //     height: 4px;
+            //     background-color: white;
+            
+            // }
+            p{
+                color: white;
+                // margin-left: 330px;
+                font-size: $paragraph;
+                display: flex;
+                align-items: center;
+                padding: 0 30px;
+                margin-right: 10px;
+            }
+            p::before{
                 content: "";
                 display: block;
-                position: absolute;
-                top: 90px;
-                left: 40px;
-                width: 273px;
+                // position: absolute;
+                // top: 90px;
+                // left: 40px;
+                // width: 273px;
                 height: 4px;
                 background-color: white;
+                flex: 1 0 auto;
+                margin-left: 10px;
+                margin-right: 30px;
                 // margin-top: 10px;
                 // border: 1px solid red;
             }
-            p{
-                color: white;
-                margin-left: 330px;
-                font-size: $paragraph;
-            }
         }
         .game{
-            position: absolute;
-            top: 150px;
-            left: 350px;
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: auto;
             img{}
             .results{
                 width: 605px;
@@ -218,6 +242,7 @@
                     position: absolute;
                     top: 165px;
                     left: 125px;
+                    
                 }
                 .btn-stop{
                     width:130px;
@@ -251,6 +276,8 @@
                     top: 350px;
                     left: -140px;
                     display: none;
+
+                    
                     .cont_central{
                         position: absolute;
                         width: 100%;
@@ -495,18 +522,47 @@
                             font-size: 32px;
                             padding-top: 20px;
                         }
-                        input{
+                        // input{
+                        //     margin-top: 30px;
+                        //     margin-left: 55px;
+                        //     width: 131px;
+                        //     height: 46px;
+                        //     border-radius: 5px;
+                        //     border: 2px dashed white;
+                        //     color: white;
+                        //     background-color: $primary;
+                        //     font-size: 20px;
+                        // }
+                        .text{
+                            display: inline-block;
                             margin-top: 30px;
                             margin-left: 55px;
-                            width: 131px;
+                            width: 70px;
                             height: 46px;
                             border-radius: 5px;
                             border: 2px dashed white;
                             color: white;
                             background-color: $primary;
                             font-size: 20px;
+                            line-height: 46px;
+                            padding-left: 10px;
+                            
                         }
-                        p:nth-child(3){
+                        #coupon_btn{
+                            height: 50px;
+                            width: 50px;
+                            border-radius: 5px;
+                            border: 1px solid white;
+                            color: $primary;
+                            cursor: pointer;
+                            line-height: 50px;
+                            background-color: rgba(244, 241, 232, 0.8);
+                        }
+                        #coupon_btn:hover{
+                            color: $primary;
+                            background-color: white;
+                        }
+                        p:nth-child(4){
                             font-size: 16px;
                             padding-top: 5px;
                         }
