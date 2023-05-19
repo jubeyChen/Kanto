@@ -667,6 +667,10 @@ a{
                 border-bottom: 1px solid $fontColor;
                 font-size: $paragraph-s;
                 text-align: center;
+                
+                @include m(){
+                    width: 60%;
+                }
             }
         }
     }
