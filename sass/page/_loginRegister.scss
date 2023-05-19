@@ -6,20 +6,16 @@
     background-position: center;
     background-size: cover;
     padding: 100px 0;
+    opacity: 0;
+    background-attachment: fixed;
 
-
-
+    &.-show {
+        opacity: 1;
+    }
 
     @include m() {
         padding: 120px 0 70px;
-    }
-
-    .container {
-        opacity: 0;
-
-        &.-show {
-            opacity: 1;
-        }
+        background-color: pink;
     }
 
     .box {
@@ -241,6 +237,11 @@
                 background-color: white;
             }
 
+            input.submitBtn:disabled{
+                cursor: not-allowed;
+            }
+            
+            input.submitBtn,
             button {
                 margin-top: 30px;
                 font-size: $paragraph-s;
