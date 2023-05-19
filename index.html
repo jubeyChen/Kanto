@@ -635,31 +635,34 @@
                 <li>|</li>
                 <li>25</li>
             </ul>
+            <p class="c">°C</p>
         </div>
-        <p class="c">°C</p>
+        
     </div>
 </section>
 <!-- 匯率================ -->
-<section class="index07_wrapper">
-    <div class="index07 container">
-        <div class="index07_title">
-            <i class="ai-arrow-cycle"></i>
-            <h2>Exchange Rate</h2>
-        </div>
-        <table>
-            <tr>
-                <td>USD</td>
-                <td>TWD</td>
-                <td>JPY</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>30.758</td>
-                <td>135.700</td>
-            </tr>
-        </table>
-    </div>    
-</section>
+<div id="exchangeApp">
+    <section class="index07_wrapper">
+        <div class="index07 container">
+            <div class="index07_title">
+                <i class="ai-arrow-cycle"></i>
+                <h2>Exchange Rate</h2>
+            </div>
+            <table>
+                <tr>
+                    <!-- <td>USD</td> -->
+                    <td>TWD</td>
+                    <td>JPY</td>
+                </tr>
+                <tr>
+                    <!-- <td>1</td> -->
+                    <td><input type="text" placeholder="NT$"  v-model="twd"></td>
+                    <td><input type="text" v-model="jpy"></td>
+                </tr>
+            </table>
+        </div>    
+    </section>
+</div>
 
     <!-- 以下Footer區域 -->
     @@include('./layout/footer.html')
@@ -669,7 +672,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/vendors/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/exchange_rate.js"></script>
 </body>
 
 </html>

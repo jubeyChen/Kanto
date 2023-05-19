@@ -149,16 +149,20 @@ header{
                 display: flex;
                 align-items: flex-end;
 
+                a{
+                    display: block;
+                    line-height:2;
+                    margin: 0 8px;
+                }
+
                 @include m() {
                     order: -1;
                     margin-right: auto;
-
-
                 }
 
                 li {
                     // width: 100%;
-                    padding: 8px;
+                    // padding: 8px;
                     margin: 10px 5px 0 5px;
                     border: 1px solid $fontColor;
                     font-size: $paragraph-s;
