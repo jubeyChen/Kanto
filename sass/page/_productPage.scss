@@ -327,7 +327,7 @@ div.product_inner {
                         left: -30px;
 
                         cursor: pointer;
-                        transform: translate(0, -50%) rotate(180deg) ;
+                        transform: translate(0, -50%) rotate(180deg);
                     }
 
                     div.card_swiper_item {
@@ -341,6 +341,7 @@ div.product_inner {
                             white-space: nowrap;
                             width: 100%;
                             scroll-behavior: smooth;
+
                             div.member {
                                 display: inline-block;
                                 border-radius: 15px;
@@ -362,7 +363,7 @@ div.product_inner {
 
                                 div.member_content {
                                     margin-bottom: 15px;
-                                    white-space:normal;
+                                    white-space: normal;
                                 }
 
                                 div.pic {
@@ -417,16 +418,16 @@ div.product_inner {
                         //這樣設置後，滑動軸將不會顯示在畫面上，使用者將無法看到它。請注意，這些設置涵蓋了 WebKit 和非 WebKit 引擎的瀏覽器，以確保一致性。
                         .card_swiper_block1::-webkit-scrollbar {
                             display: none;
-                          }
-                          
-                          /* 针对非 WebKit 引擎的浏览器 */
-                          .card_swiper_block1 {
+                        }
+
+                        /* 针对非 WebKit 引擎的浏览器 */
+                        .card_swiper_block1 {
                             scrollbar-width: none;
-                          }
-                          
-                          .card_swiper_block1::-ms-scrollbar {
+                        }
+
+                        .card_swiper_block1::-ms-scrollbar {
                             display: none;
-                          }
+                        }
 
                     }
 
@@ -677,10 +678,11 @@ div.product_inner {
                 padding: 30px 30px;
 
                 div.left {
+
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-
+                    width: 20%;
                     div.top {
                         h4 {
                             font-weight: 600;
@@ -704,7 +706,7 @@ div.product_inner {
 
                 div.right {
                     display: flex;
-
+                    width: 80%;
                     div.pic {
                         width: 23%;
                         margin-left: 1%;
@@ -719,6 +721,94 @@ div.product_inner {
             }
 
 
+            //照片庫輪播
+
+            div.lightbox {
+                display: none;
+                width: 40%;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 2000;
+
+                i {
+                    font-size: 50px;
+
+                    position: absolute;
+                    top: -30px;
+                    right: -60px;
+                    cursor: pointer;
+                }
+
+                .lightbox_mySwiper2 {
+                    height: 80%;
+                    width: 100%;
+                    position: relative;
+
+                    div.lightbox_left_btn {
+                        position: absolute;
+                        z-index: 2000;
+                        top: 50%;
+                        right: 10px;
+                        transform: translate(0, -50%);
+                        cursor: pointer;
+                    }
+
+                    div.light_right_btn {
+                        position: absolute;
+                        z-index: 2000;
+                        top: 50%;
+                        left: 10px;
+                        transform: translate(0, -50%) rotate(180deg);
+                        cursor: pointer;
+                    }
+
+                    .swiper-slide {
+                        text-align: center;
+                        font-size: 18px;
+                        background: #fff;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .swiper-slide img {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+
+                .lightbox_mySwiper {
+                    height: 20%;
+                    box-sizing: border-box;
+                    padding: 10px 0;
+                }
+
+                .lightbox_mySwiper .swiper-slide {
+                    width: 25%;
+                    height: 100%;
+                    opacity: 0.4;
+                }
+
+                .lightbox_mySwiper .swiper-slide-thumb-active {
+                    opacity: 1;
+                }
+
+                .swiper-slide img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .swiper-slide {
+                    background-size: cover;
+                    background-position: center;
+                }
+            }
 
             //評價篩選
             div.filter {
@@ -1353,6 +1443,7 @@ div.product_inner_phone {
             div.phone_review {
                 // margin-bottom: 10px;
                 margin-top: 40px;
+
                 h3 {
                     position: relative;
                     // margin-left: 10px;
@@ -1374,33 +1465,39 @@ div.product_inner_phone {
                 }
 
 
-                div.phone_score{
+                div.phone_score {
                     display: flex;
                     align-items: center;
                     margin-bottom: 10px;
-                    div.score_inner{
-                        h4{
+
+                    div.score_inner {
+                        h4 {
                             font-size: $h2;
                         }
-                        p{
+
+                        p {
                             font-size: 20px;
                         }
+
                         display: flex;
                         align-items: baseline;
                     }
-                    div.star{
+
+                    div.star {
                         margin-left: 10px;
                         font-size: 20px;
                     }
                 }
 
-                div.all_member{
+                div.all_member {
 
                     overflow-x: scroll;
 
                     //這是關鍵
                     white-space: nowrap;
-                    div.phone_member1,div.phone_member2{
+
+                    div.phone_member1,
+                    div.phone_member2 {
                         margin-right: 5px;
                         width: 95%;
 
@@ -1410,22 +1507,25 @@ div.product_inner_phone {
                         padding: 10px 20px;
                         border-radius: 8px;
                         background-color: white;
+
                         div.phone_member_inner {
                             display: flex;
                             align-items: center;
                             margin-bottom: 5px;
-                            div.member_wrapper{
+
+                            div.member_wrapper {
                                 margin-left: 10px;
                             }
                         }
-                        div.member_content{
+
+                        div.member_content {
                             white-space: normal;
                         }
-                    }   
+                    }
 
                 }
 
-                button{
+                button {
                     border-radius: 8px;
                     margin-top: 12px;
                     width: 100%;
@@ -1440,8 +1540,9 @@ div.product_inner_phone {
 
 
             //活動介紹
-            div.phone_event{
+            div.phone_event {
                 margin-top: 40px;
+
                 h3 {
                     position: relative;
                     // margin-left: 10px;
@@ -1462,13 +1563,15 @@ div.product_inner_phone {
                     }
                 }
 
-                p{
+                p {
                     margin-top: 10px;
                 }
-                div.pic{
+
+                div.pic {
                     margin: 15px 0;
                     width: 100%;
-                    img{
+
+                    img {
                         width: 100%;
                     }
                 }
@@ -1476,8 +1579,9 @@ div.product_inner_phone {
 
 
             //行前提醒
-            div.phone_remind{
+            div.phone_remind {
                 margin-top: 40px;
+
                 h3 {
                     position: relative;
                     // margin-left: 10px;
@@ -1498,9 +1602,10 @@ div.product_inner_phone {
                     }
                 }
 
-                ul{
+                ul {
                     padding: 10px 20px;
-                    li{
+
+                    li {
                         list-style: decimal;
                         font-size: $paragraph-s;
                         line-height: 1.5;
@@ -1512,8 +1617,9 @@ div.product_inner_phone {
 
 
             //加碼推薦
-            div.phone_recommend{
+            div.phone_recommend {
                 margin-top: 30px;
+
                 h3 {
                     position: relative;
                     // margin-left: 10px;
@@ -1534,11 +1640,13 @@ div.product_inner_phone {
                     }
                 }
 
-                div.event_block{
+                div.event_block {
 
                     display: flex;
                     justify-content: start;
-                    div.event1,div.event2 {
+
+                    div.event1,
+                    div.event2 {
                         border-radius: 8px;
                         overflow: hidden;
                         background-color: white;
@@ -1582,6 +1690,7 @@ div.product_inner_phone {
                     margin: 30px 0 30px 15px;
                     font-size: 24px;
                     font-weight: 600;
+
                     &::before {
                         content: "";
                         width: 5px;
@@ -1593,7 +1702,7 @@ div.product_inner_phone {
                         left: -15px;
                     }
                 }
-        
+
                 div.event_block {
                     // display: flex;
                     // justify-content: start;
@@ -1601,7 +1710,8 @@ div.product_inner_phone {
 
                     margin-bottom: 30px;
                     overflow-x: scroll;
-                    white-space:nowrap;
+                    white-space: nowrap;
+
                     div.event {
                         border-radius: 8px;
                         overflow: hidden;
@@ -1613,14 +1723,15 @@ div.product_inner_phone {
                         margin: 0 1%;
                         border: 1px solid rgb(163, 163, 163);
                         cursor: pointer;
-                        
-                        img{
+
+                        img {
                             width: 100%;
                         }
+
                         div.content {
                             white-space: normal;
                             padding: 15px;
-        
+
                             div.title {
                                 h4 {
                                     font-size: $paragraph;
@@ -1629,7 +1740,7 @@ div.product_inner_phone {
                                     font-weight: 600;
                                 }
                             }
-        
+
                             div.price {
                                 p {
                                     font-size: $paragraph;
@@ -1698,11 +1809,12 @@ div.product_inner_phone {
 
 
 //全部評價
-div.phone_all_review{
+div.phone_all_review {
     display: none;
 }
-@media screen and (max-width:415px){
-    div.phone_all_review{
+
+@media screen and (max-width:415px) {
+    div.phone_all_review {
         overflow: scroll;
         display: block;
         background-color: white;
@@ -1713,8 +1825,8 @@ div.phone_all_review{
         left: 0;
         z-index: 1100;
         transition: .5s;
-    
-        div.review_inner{
+
+        div.review_inner {
             position: relative;
             width: 100%;
             margin: 0 auto;
@@ -1724,20 +1836,22 @@ div.phone_all_review{
 
 
             //左上叉叉
-            div.xmark{
+            div.xmark {
                 position: absolute;
                 top: 32px;
                 left: 15px;
-                i{
+
+                i {
                     font-size: 30px;
                 }
             }
 
 
             //標題-----------------------
-            div.title{
+            div.title {
                 margin-top: 20px;
-                h4{
+
+                h4 {
                     text-align: center;
                     font-weight: 600;
                 }
@@ -1745,24 +1859,28 @@ div.phone_all_review{
 
 
             //評價分數---------------------
-            div.phone_score{
+            div.phone_score {
                 margin-top: 30px;
                 display: flex;
                 align-items: baseline;
-                div.score_inner{
+
+                div.score_inner {
                     display: flex;
                     align-items: baseline;
-                    h4{
+
+                    h4 {
                         font-size: 36px;
                     }
-                    p{
+
+                    p {
                         font-size: 16px;
                     }
                 }
 
-                div.star{
+                div.star {
                     margin-left: 10px;
-                    i{
+
+                    i {
                         font-size: 20px;
 
                     }
@@ -1771,15 +1889,16 @@ div.phone_all_review{
 
 
             //篩選按鈕----------------------
-            div.filter_btn{
+            div.filter_btn {
                 padding: 20px 0;
                 overflow-x: scroll;
-                white-space:nowrap;
+                white-space: nowrap;
                 position: sticky;
                 top: -1px;
                 background-color: white;
                 display: block;
-                button{
+
+                button {
                     padding: 0 10px;
                     font-size: 16px;
                     line-height: 30px;
@@ -1835,6 +1954,7 @@ div.phone_all_review{
                             width: calc((100%)/3);
                             margin-left: 1%;
                             margin-right: 1%;
+
                             img {
                                 width: 100%;
                                 display: block;
@@ -1849,18 +1969,20 @@ div.phone_all_review{
 
                     }
                 }
-                div.first_block{
+
+                div.first_block {
                     margin-top: 20px;
                 }
             }
         }
     }
-    .add{
+
+    .add {
         height: 85vh !important;
         // transition: .5s !important;
     }
-    
-    div.productpage_lightbox{
+
+    div.productpage_lightbox {
         display: none;
         background-color: rgba(0, 0, 0, 0.199);
         width: 100%;
@@ -1871,8 +1993,19 @@ div.phone_all_review{
         z-index: 1000;
     }
 
-    footer{
+
+    footer {
         // padding-bottom: 123px;
     }
 }
 
+div.des_lightbox {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.884);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}

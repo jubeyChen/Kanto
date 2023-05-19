@@ -127,8 +127,23 @@ var swiper = new Swiper(".myPhoneSwiper", {
 });
 
 
-
-
+//--------------照片庫輪播
+var swiper = new Swiper(".lightbox_mySwiper", {
+    spaceBetween: 10,
+    slidesPerView: 8,
+    freeMode: true,
+    watchSlidesProgress: true,
+});
+var swiper2 = new Swiper(".lightbox_mySwiper2", {
+    spaceBetween: 10,
+    navigation: {
+        nextEl: ".lightbox_left_btn",
+        prevEl: ".light_right_btn",
+    },
+    thumbs: {
+        swiper: swiper,
+    },
+});
 
 
 
@@ -203,4 +218,19 @@ clearBtn.addEventListener("click", function (e) {
 // 將初始按鈕內容設定為當天日期
 // dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
 
+
+//照片庫開啟
+
+let total_pic = document.querySelector(".total_pic");
+let light_box = document.querySelector(".lightbox");
+let des_lightbox = document.querySelector(".des_lightbox");
+let lightbox_btn = document.querySelector(".ligntbox_btn");
+total_pic.addEventListener("click", function (e) {
+    light_box.style.display = "block";
+    des_lightbox.style.display = "block";
+});
+lightbox_btn.addEventListener("click", function (e) {
+    light_box.style.display = "none";
+    des_lightbox.style.display = "none";
+})
 
