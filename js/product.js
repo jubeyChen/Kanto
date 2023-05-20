@@ -91,25 +91,25 @@ $(document).ready(function() {
         }
 
 
-        // 獲取要固定高度的元素
-    var asideEl = document.querySelector('.left');
+        // // 獲取要固定高度的元素
+        // var asideEl = document.querySelector('.left');
 
-    // 設置元素的上限高度
-    var asideTop = 100;
+        // // 設置元素的上限高度
+        // var asideTop = 100;
 
-    // 監聽窗口滾動事件
-    window.addEventListener('scroll', function() {
-    // 如果窗口滾動的距離超過了元素的上限高度
-    if (window.scrollY >= asideTop) {
-        // 設置元素固定的樣式
-        asideEl.style.position = 'fixed';
-        asideEl.style.top = '0';
-    } else {
-        // 移除元素固定的樣式
-        asideEl.style.position = '';
-        asideEl.style.top = '';
-    }
-    });
+        // // 監聽窗口滾動事件
+        // window.addEventListener('scroll', function() {
+        // // 如果窗口滾動的距離超過了元素的上限高度
+        // if (window.scrollY >= asideTop) {
+        //     // 設置元素固定的樣式
+        //     asideEl.style.position = 'fixed';
+        //     asideEl.style.top = '0';
+        // } else {
+        //     // 移除元素固定的樣式
+        //     asideEl.style.position = '';
+        //     asideEl.style.top = '';
+        // }
+        // });
 
 
 });
