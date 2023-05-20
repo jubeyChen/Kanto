@@ -30,23 +30,23 @@
                 v-for="tab in tabs" 
                 :key="tab.id" 
                 :class="{active: (current_tab == tab.id)} " 
-                @click="current_tab = tab.id"
+                @click="current_tab = tab.id, clearOpen($event), changeTabName()"
                 >{{ tab.name }}</li>
             </ul>
 
             <!-- ====== 手機 tab ====== -->
             <form action="#">
-                <select name="fqa" id="fqa">
-                    <option value="orderQA">訂單相關</option>
-                    <option value="accountQA">帳號相關</option>
-                    <option value="paymentQA">付款相關</option>
+                <select @change="changeValue($event), clearOpen($event), changeTabName()">
+                    <option value="order">訂單相關</option>
+                    <option value="account">帳號相關</option>
+                    <option value="payment">付款相關</option>
                 </select>
             </form>
         </aside>
 
         <!-- ====== 主欄位 ====== -->
         <main class="accordion col-11">
-            <qa-component :current-tab="current_tab"></qa-component>
+            <qa-component :current-tab="current_tab" :current-tab-name="current_tab_name" @accordion="accordion"></qa-component>
         </main>
 
     </section>

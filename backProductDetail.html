@@ -88,28 +88,42 @@
 
                     <div class="input-group mb-3 col">
                         <span class="input-group-text" id="basic-addon1">行程價格</span>
-                        <input type="text" class="form-control" :readonly="!editable" v-model="price" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" :readonly="!editable" v-model="price">
                     </div>
 
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">行程日期</span>
-                        <input type="text" class="form-control" :readonly="!editable" v-model="date" aria-label="Username" aria-describedby="basic-addon1">
+                        <span class="input-group-text">行程日期</span>
+                        <input type="text" class="form-control" :readonly="!editable" v-model="date">
                     </div>
 
 
                     <div class="input-group mb-3" v-for="(item, index) in introList" :key="index">
-                        <span class="input-group-text" id="basic-addon1">行程簡介 {{ index + 1 }}</span>
-                        <input type="text" class="form-control" :readonly="!editable" v-model="item" aria-label="Username" aria-describedby="basic-addon1">
+                        <span class="input-group-text">行程簡介 {{ index + 1 }}</span>
+                        <input type="text" class="form-control" :readonly="!editable" v-model="item">
                     </div>
 
-
                     <div class="input-group mb-3">
-                        <label class="input-group-text" for="photo">封面照片</label>
-                        <input type="file" class="form-control" id="photo" :disabled="!editable">
+                        <span class="input-group-text">封面照片</span>
+                        <input type="text" class="form-control" disabled>
                     </div>
 
                     <section class="img_block">
                         <div class="inner_img_block" v-for="(item, index) in coverImg" :key="index" >
+                            <img :src="item" class="img-thumbnail" alt="">
+                            <button v-show="editable">新增<span class="material-symbols-outlined">
+                                add_circle
+                                </span>
+                            </button>    
+                        </div>
+                    </section>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">手機版封面照片</span>
+                        <input type="text" class="form-control" disabled>
+                    </div>
+
+                    <section class="img_block">
+                        <div class="inner_img_block m_photo" v-for="(item, index) in coverImgRwd" :key="index" >
                             <img :src="item" class="img-thumbnail" alt="">
                             <button v-show="editable">新增<span class="material-symbols-outlined">
                                 add_circle
@@ -130,22 +144,34 @@
 
                     <!-- ========== 方案詳情 v-for ========== -->
                     <template v-for="(item, index) in plan" :key="index">
+                        <section class="mb-3">
+
+                            <div class="outer-img">
+                                <img :src="item.img" class="img-thumbnail" alt="">
+                                <button v-show="editable">新增<span class="material-symbols-outlined">
+                                    add_circle
+                                    </span>
+                                </button>    
     
-                        <section class="content-block row">
-                            <div class="input-group mb-3 col">
-                                <span class="input-group-text" id="basic-addon1">行程名稱</span>
-                                <input type="text" class="form-control" :readonly="!editable" v-model="item.title" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
         
-                            <div class="input-group mb-3 col">
-                                <span class="input-group-text" id="basic-addon1">行程時間</span>
-                                <input type="text" class="form-control" :readonly="!editable" v-model="item.time" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-        
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">行程簡介</span>
-                                <textarea class="form-control" v-model="item.description" :readonly="!editable" rows="3" aria-label="With textarea"></textarea>
-                            </div>
+                            <section class="content_block col-7">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">行程名稱</span>
+                                    <input type="text" class="form-control" :readonly="!editable" v-model="item.title" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+            
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">行程時間</span>
+                                    <input type="text" class="form-control" :readonly="!editable" v-model="item.time" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+            
+                                <div class="input-group">
+                                    <span class="input-group-text">行程簡介</span>
+                                    <textarea class="form-control" v-model="item.description" :readonly="!editable" rows="3" aria-label="With textarea"></textarea>
+                                </div>
+                            </section>
+    
                         </section>
     
                     </template>
@@ -161,11 +187,6 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text">行程簡介</span>
                         <textarea class="form-control" v-model="intro" :readonly="!editable" rows="3" aria-label="With textarea"></textarea>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="photo">內文照片</label>
-                        <input type="file" class="form-control" id="photo" :disabled="!editable">
                     </div>
 
                     <section class="img_block">
@@ -283,9 +304,12 @@
                         '忍野八海，由八個湖泊組成，每一個湖泊都有其獨特的形態和特色。'
                     ],
                     coverImg: ['image/productPage/banner1.png', 'image/productPage/banner2.png', 'image/productPage/banner3.png'],
+                    coverImgRwd: ['image/productPage/phone_banner1.png', 'image/productPage/phone_banner2.png', 'image/productPage/phone_banner3.png'],
                     plan: [
                         {time: '08:10', title: '出發', description: '新宿中心大廈', img: 'image/blogPage/event1.png'},
                         {time: '10:20', title: '富士山五合目', description: `五合目位於海拔 2305 公尺的山腰被周圍的原始森林環抱，朵朵白雲就在腳下漂浮，近距離觀看富士山！`, img: 'image/blogPage/event2.png'},
+                        {time: '12:30', title: '河口湖音樂盒之森美術館', description: '遠方的富士山的夢幻美景，與大型音樂盒演奏著經典的古典樂都很有看點。', img: 'image/blogPage/event3.png'},
+                        {time: '14:30', title: '忍野八海', description: '由八個湖泊組成，每一個湖泊都有其獨特的形態和特色，並且湖水的顏色也因地形、氣候、時間等因素而不斷變化。春天湖泊周邊開滿了櫻花，夏季水清如鏡，秋季紅葉遍布，冬季則會因雪而變得尤為神秘。每一季的景色都是不同的，都值得讓人慢慢品味。', img: 'image/blogPage/event4.png'}
                     ],
                     intro: `來日本旅遊，除了東京以外，富士山也是不可錯過的景點之一！欣賞富士山的美景，品嚐當地 美食，探索日本的文化和藝術，讓您的旅程更加豐富多彩。別忘了準備好足夠的體力和裝備， 並留意當地的天氣情況。`,
                     contentImg: ['image/productPage/event1.png', 'image/productPage/event2.png', 'image/productPage/event3.png', 'image/productPage/event4.png'],

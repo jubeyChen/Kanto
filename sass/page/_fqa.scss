@@ -59,7 +59,7 @@
             display: none;
             @include m(){
                 display: block;
-                margin: 100px 0 20px;
+                margin: 70px 0 20px;
             }
             select{
                 @include m(){
@@ -77,10 +77,13 @@
         box-sizing: border-box;
         padding: 20px;
         margin-bottom: 100px;
+        min-height: 80vh;
 
 
         @include m(){
             width: 100%;
+            min-height: 70vh;
+
         }
 
         > h4{
@@ -100,6 +103,10 @@
                 position: relative;
                 cursor: pointer;
 
+                @include m(){
+                    font-size: 16px;
+                }
+
                 span.v{
                     display: block;
                     width: 2px;
@@ -113,6 +120,9 @@
                     right: 24px;
 
                     transition: .3s;
+                }
+                span.v.-rotate{
+                    transform: rotate(90deg);
                 }
 
                 span.h{
@@ -135,9 +145,21 @@
             .accordion-content{
                 box-sizing: border-box;
                 padding: 10px;
+
+                // opacity: 0;
                 display: none;
+                overflow: hidden;
+                transform: translate(0, 100px);
+
+                transition: .3s;
+            }
+            .accordion-content.-open{
+                opacity: 1;
+                display: block;
+                transform: translate(0, 0);
 
             }
+
         }
     }
 }

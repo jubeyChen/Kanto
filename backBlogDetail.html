@@ -96,7 +96,13 @@
                     </div>
 
                     <section class="img_block">
-                        <img :src="item" v-for="(item, index) in coverImg" :key="index" class="img-thumbnail" alt="">
+                        <div class="inner_img_block" v-for="(item, index) in coverImg" :key="index" >
+                            <img :src="item" class="img-thumbnail" alt="">
+                            <button v-show="editable">新增<span class="material-symbols-outlined">
+                                add_circle
+                                </span>
+                            </button>    
+                        </div>
                     </section>
     
                 </form>
@@ -114,9 +120,13 @@
                         <section class="mb-4">
                             <div class="outer-img">
                                 <img :src="item.img" class="img-thumbnail" alt="">
+                                <button v-show="editable">新增<span class="material-symbols-outlined">
+                                    add_circle
+                                    </span>
+                                </button>        
                             </div>
     
-                            <section class="content-block col-8">
+                            <section class="content-block col-7">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">行程名稱</span>
                                     <input type="text" class="form-control" :readonly="!editable" v-model="item.title">
@@ -171,7 +181,7 @@
 沉浸於跨越時代的音樂世界。
 走進富士山下的湧泉仙境──忍野八海
 盡覽秀麗景觀並感受聖泉能量。`,
-                    coverImg: ['image/blogPage/banner.png', 'image/blogPage/title.png', 'image/blogPage/title2.png', 'image/blogPage/title3.png'],
+                    coverImg: ['image/blogPage/banner.png', 'image/blogPage/title.png'],
                     plan: [
                         {time: '08:10', title: '出發', description: '新宿中心大廈', img: 'image/blogPage/event1.png'},
                         {time: '10:20', title: '富士山五合目', description: `五合目位於海拔 2305 公尺的山腰被周圍的原始森林環抱，朵朵白雲就在腳下漂浮，近距離觀看富士山！`, img: 'image/blogPage/event2.png'},

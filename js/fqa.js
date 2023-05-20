@@ -22,29 +22,39 @@ const app = Vue.createApp({
         }
     }, 
     computed: {
+    },
+    methods: {
+        accordion(e){
+            e.target.nextElementSibling.classList.toggle('-open')
+            e.target.firstElementChild.classList.toggle('-rotate')
+        },
+        clearOpen(e){
+            // console.log(e.target.closest('#app').querySelector('.accordion-content'));
+            e.target.closest('#app').querySelectorAll('.accordion-content').forEach(function(item){
+                //console.log(item.previousElementSibling.querySelector('.v'));
+                item.classList.remove('-open');
+                item.previousElementSibling.querySelector('.v').classList.remove('-rotate');
+            });
+        },
         changeTabName(){
+            // console.log('aaa');
             if(this.current_tab == 'order'){
-                current_tab_name = '訂單相關';
+                this.current_tab_name = '訂單相關';
+            }else if(this.current_tab == 'account'){
+                this.current_tab_name = '帳號相關';
+            }else{
+                this.current_tab_name = '付款相關';
             }
-    
+        },
+        changeValue(e){
+            console.log(e);
+            this.current_tab = e.target.value;
         }
+
     }
 
 });
 
 app.component('qaComponent', QAComponent);
 app.mount('#app');
-
-$(function(){
-    $('.accordion-header').click(function(){
-        if($(this).next().is(':visible')){
-            $(this).next().slideUp();
-            $(this).find('.v').css('transform', 'rotate(0deg)');
-        }else{
-            $(this).next().slideDown();
-            $(this).find('.v').css('transform', 'rotate(90deg)');
-        }
-    })
-    $('.accordion-header').first().click();
-});
 

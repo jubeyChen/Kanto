@@ -101,13 +101,15 @@
 
                 .inner_img_block{
                     @include flex-container(column);
-                    width: 25%;
-                    max-height: 200px;
-                    height: auto;
+                    max-width: 25%;
 
                     img{
+                        display: block;
                         width: 100%;
-                        margin-bottom: 10px;
+                        height: 200px;
+                        object-fit: cover;
+
+                        margin-bottom: 20px;
                     }        
 
                     button{
@@ -118,6 +120,8 @@
                         border-radius: $borderRadius;
                         box-sizing: border-box;
                         padding: 5px 30px 5px 10px;
+                        margin-bottom: 20px;
+
                         width: 80px;
                         
                         span{
@@ -127,6 +131,12 @@
         
                     }    
 
+                }
+
+                .inner_img_block.m_photo{
+                    button{
+                        margin-bottom: 0;
+                    }
                 }
     
             }
@@ -138,6 +148,48 @@
             background-color: #fff;
             border-radius: $borderRadius;
             margin-bottom: 20px;
+
+            section{
+                @include flex-container(row, nowrap, space-between, flex-start);
+
+                .outer-img{
+                    box-sizing: border-box;
+                    margin-right: 20px;
+                    @include flex-container(column, nowrap, space-between, center);
+
+                    img{
+                        height: auto;
+                        width: 100%;
+    
+                    }
+
+                    button{
+                        background-color: $secondary;
+                        color: $fontColor;
+                        font-size: $paragraph-s;
+                        border: none;
+                        border-radius: $borderRadius;
+                        box-sizing: border-box;
+                        padding: 5px 30px 5px 10px;
+                        width: 80px;
+                        margin-top: 20px;
+                        
+                        span{
+                            position: absolute;
+                            margin: auto;
+                        }
+        
+                    }    
+
+                }
+
+                .content_block{
+                    @include flex-container(column, nowrap, space-between, center);
+
+                }
+    
+            }
+
         }
 
         /* ========== 活動介紹 ========== */
@@ -157,7 +209,7 @@
                     img{
                         width: 100%;
                         margin-bottom: 10px;
-                    }        
+                    }
 
                     button{
                         background-color: $secondary;

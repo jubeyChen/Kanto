@@ -1,5 +1,7 @@
 export default{
-    props: ['currentTab'],
+    props: ['currentTab', 'currentTabName'],
+    emits: ['accordion'],
+    expose: [''],
 
     data(){
         return{
@@ -17,8 +19,8 @@ export default{
                     a: "目前Kanto提供多方帳號登入，因您所選擇不同登入方式會視為個別帳號管理無法合併，需請您確認是否透過不同登入方式成立不同會員帳號。若您還是無法搜尋您的已付款訂單，請您與Kanto客服中心聯繫。",
                 },
                 {
-                    q: "為什麼查詢不到訂單?",
-                    a: "目前Kanto提供多方帳號登入，因您所選擇不同登入方式會視為個別帳號管理無法合併，需請您確認是否透過不同登入方式成立不同會員帳號。若您還是無法搜尋您的已付款訂單，請您與Kanto客服中心聯繫。",
+                    q: "為什麼商品頁日期無法點選訂購?",
+                    a: "若商品網頁無法點選之日期，表示無法提供此日期訂購，可能因作業時間不足、該日期已售罄，或該日期尚未提供販售，請您見諒。",
                 }
             ],
             accountQA: [
@@ -69,15 +71,13 @@ export default{
     computed: {
         current_tab_component(){
             return this.currentTab + "QA"
-            // console.log(this.$props.currentTab)
         }
     },
-
     template: `
-        <h4 v-text="current_tab_component"></h4>
+        <h4>{{ this.currentTabName }}</h4>
 
         <div class="accordion-item" v-for="(item, index) in this[current_tab_component]" :key="index">
-            <h4 class="accordion-header">{{ item.q }} <span class="v"></span><span class="h"></span></h4>
+            <h4 class="accordion-header" @click="$emit('accordion', $event)">{{ item.q }} <span class="v"></span><span class="h"></span></h4>
             <div class="accordion-content">
                 <p style="white-space: pre-line;">{{ item.a }}</p>
             </div>
