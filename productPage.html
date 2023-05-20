@@ -558,10 +558,10 @@
                         <!--評價篩選-->
                         <div class="filter">
                             <div class="filter_btn">
-                                <button type="button" class="btn-pri-l first">全部</button>
-                                <button type="button" class="btn-pri-l">只看附圖評價</button>
-                                <button type="button" class="btn-pri-l">評分:由高至低</button>
-                                <button type="button" class="btn-pri-l">評分:由低至高</button>
+                                <button type="button" class="btn-sec-l first des_filter_btn">全部</button>
+                                <button type="button" class="btn-sec-l des_filter_btn">只看附圖評價</button>
+                                <button type="button" class="btn-sec-l des_filter_btn">評分:由高至低</button>
+                                <button type="button" class="btn-sec-l des_filter_btn">評分:由低至高</button>
                             </div>
                         </div>
 
@@ -898,8 +898,8 @@
                             <p class="total">總價</p>
                             <h4>NT$<span>{{total}}</span> </h4>
                             <div class="btn">
-                                <button type="button" class="">加入購物車</button>
-                                <button type="button" class="red">立即預定</button>
+                                <button type="button" class="btn-cancel-l">加入購物車</button>
+                                <button type="button" class="btn-pri-l">立即預定</button>
                             </div>
                         </div>
                     </section>
@@ -1035,9 +1035,14 @@
                 <div class="phone_plan_choose">
                     <h3>方案選擇</h3>
                     <div class="phone_plan_choose_inner">
-                        <div class="block1">
-
-                            <button type="button" ref="phone_dateButton">{{selectedDate}}</button>
+                        <div class="block_top">
+                            <div class="block1">
+                                <button type="button" ref="phone_dateButton" class="phone_dateButton">{{selectedDate}}</button>
+                            </div>
+    
+                            <div class="phone_clearbtn">
+                                <button type="button" @click="clear" class="">清除全部</button>
+                            </div>
                         </div>
 
 
@@ -1357,7 +1362,149 @@
 
 
         <!-- 以下Footer區域 -->
-        @@include('./layout/footer.html')
+        <!-- @@include('./layout/footer.html') -->
+
+        <footer class="des_footer">
+            <div class="container">
+                <div>
+                    <a href="index.html"><img class="logo" src="image/footer/logosqure.svg"></a>
+                    <div class="social">
+                        <a class="icon fb" href="#"><i class="ai-facebook-fill"></i></a>
+                        <a class="icon ig" href="#"><i class="ai-instagram-fill"></i></a>
+                    </div>
+                </div>
+        
+                <ul class="links">
+                    <li class="link-left">
+                        <ol>
+                            <a href="about.html">
+                                <li>-- 關於我們</li>
+                            </a>
+                            <a href="blog.html">
+                                <li>-- 旅遊專欄</li>
+                            </a>
+                            <a href="foodBlog.html">
+                                <li>-- 美食介紹</li>
+                            </a>
+                            <a href="roomBlog.html">
+                                <li>-- 訂房推薦</li>
+                            </a>
+                            <a href="#">
+                                <li>-- 付款方式</li>
+                            </a>
+                            <li><img class="pay" src="image/footer/visa.png" alt="">
+                                <img class="pay" src="image/footer/imastercard.png" alt="">
+                                <img class="pay" src="image/footer/jcb.png" alt="">
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="linl-right">
+                        <ol>
+                            <a href="blog.html">
+                                <li>-- 想去關東的哪?</li>
+                            </a>
+                            <a href="product.html">
+                                <li>-- 想排什麼行程&活動?</li>
+                            </a>
+                            <a href="game.html">
+                                <li>-- 最適合你的旅行</li>
+                            </a>
+                            <a href="fqa.html">
+                                <li>-- 常見問題</li>
+                            </a>
+                            <a href="#">
+                                <li>-- 訂閱最新消息</li>
+                            </a>
+                            <li>
+                                <form action="">
+                                    <input type="email" placeholder="email">
+                                    <button type="submit"><i class="ai-arrow-right"></i></button>
+                                </form>
+                            </li>
+                        </ol>
+                    </li>
+                </ul>
+                <ul class="mobile">
+                    <li>-- 聯絡我們</li>
+                    <li>台北市中正區濟南路一段</li>
+                    <li>(02) 2256-8888</li>
+                    <li>service@kanto.com</li>
+                </ul>
+            </div>
+            <!-- container -->
+            <p>COPYRIGHT © 2023 Kanto へ.</p>
+        </footer>
+        <footer class="phone_footer">
+            <div class="container">
+                <div>
+                    <a href="index.html"><img class="logo" src="image/footer/logosqure.svg"></a>
+                    <div class="social">
+                        <a class="icon fb" href="#"><i class="ai-facebook-fill"></i></a>
+                        <a class="icon ig" href="#"><i class="ai-instagram-fill"></i></a>
+                    </div>
+                </div>
+        
+                <ul class="links">
+                    <li class="link-left">
+                        <ol>
+                            <a href="about.html">
+                                <li>-- 關於我們</li>
+                            </a>
+                            <a href="blog.html">
+                                <li>-- 旅遊專欄</li>
+                            </a>
+                            <a href="foodBlog.html">
+                                <li>-- 美食介紹</li>
+                            </a>
+                            <a href="roomBlog.html">
+                                <li>-- 訂房推薦</li>
+                            </a>
+                            <a href="#">
+                                <li>-- 付款方式</li>
+                            </a>
+                            <li><img class="pay" src="image/footer/visa.png" alt="">
+                                <img class="pay" src="image/footer/imastercard.png" alt="">
+                                <img class="pay" src="image/footer/jcb.png" alt="">
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="linl-right">
+                        <ol>
+                            <a href="blog.html">
+                                <li>-- 想去關東的哪?</li>
+                            </a>
+                            <a href="product.html">
+                                <li>-- 想排什麼行程&活動?</li>
+                            </a>
+                            <a href="game.html">
+                                <li>-- 最適合你的旅行</li>
+                            </a>
+                            <a href="fqa.html">
+                                <li>-- 常見問題</li>
+                            </a>
+                            <a href="#">
+                                <li>-- 訂閱最新消息</li>
+                            </a>
+                            <li>
+                                <form action="">
+                                    <input type="email" placeholder="email">
+                                    <button type="submit"><i class="ai-arrow-right"></i></button>
+                                </form>
+                            </li>
+                        </ol>
+                    </li>
+                </ul>
+                <ul class="mobile">
+                    <li>-- 聯絡我們</li>
+                    <li>台北市中正區濟南路一段</li>
+                    <li>(02) 2256-8888</li>
+                    <li>service@kanto.com</li>
+                </ul>
+            </div>
+            <!-- container -->
+            <p>COPYRIGHT © 2023 Kanto へ.</p>
+        </footer>
+
 
         <!--所有評價-->
         <div class="phone_all_review">
@@ -1387,10 +1534,10 @@
 
                 <!--篩選-->
                 <div class="filter_btn">
-                    <button type="button" class="btn-pri-l first">全部</button>
-                    <button type="button" class="btn-pri-l">只看附圖評價</button>
-                    <button type="button" class="btn-pri-l">評分:由高至低</button>
-                    <button type="button" class="btn-pri-l">評分:由低至高</button>
+                    <button type="button" class="btn-sec-l first ">全部</button>
+                    <button type="button" class="btn-sec-l">只看附圖評價</button>
+                    <button type="button" class="btn-sec-l">評分:由高至低</button>
+                    <button type="button" class="btn-sec-l">評分:由低至高</button>
                 </div>
 
                 <!--會員評價-->

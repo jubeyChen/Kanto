@@ -220,9 +220,12 @@ div.product_inner {
 
                         div.btn {
                             display: flex;
-
+                            button{
+                                border: none;
+                            }
                             button.add_shoppingcar {
                                 margin-right: 20px;
+                                
                             }
 
 
@@ -301,6 +304,7 @@ div.product_inner {
                     div.block1_right {
                         button {
                             padding: 0px 30px;
+                            border: none;
                         }
                     }
                 }
@@ -683,6 +687,7 @@ div.product_inner {
                     flex-direction: column;
                     justify-content: space-between;
                     width: 20%;
+
                     div.top {
                         h4 {
                             font-weight: 600;
@@ -707,6 +712,7 @@ div.product_inner {
                 div.right {
                     display: flex;
                     width: 80%;
+
                     div.pic {
                         width: 23%;
                         margin-left: 1%;
@@ -820,9 +826,10 @@ div.product_inner {
 
                     button {
                         line-height: 20px;
-                        padding: 10px 15px;
+                        padding: 15px 15px;
                         font-size: 20px;
                         margin-left: 15px;
+                        border:none;
                     }
 
                     button.first {
@@ -991,8 +998,10 @@ div.product_inner {
                             width: 50%;
                             margin: 0 10px;
                             font-size: 20px;
-                            padding: 10px 15px;
+                            padding: 5px 15px;
                             box-sizing: border-box;
+                            border: none;
+                            cursor: pointer;
                         }
 
                         button.red {
@@ -1297,15 +1306,32 @@ div.product_inner_phone {
                 }
 
                 div.phone_plan_choose_inner {
-                    div.block1 {
-                        button {
-                            padding: 15px 20px;
-                            font-size: 16px;
-                            border: 1px solid black;
-                            background-color: white;
-                            cursor: pointer;
+                    div.block_top{
+                        display: flex;
+                        align-items: center;
+                        // justify-content: space-between;
+                        div.block1 {
+                            margin-right: 10px;
+                            button {
+                                padding: 15px 20px;
+                                font-size: 16px;
+                                border: 1px solid black;
+                                background-color: white;
+                                cursor: pointer;
+                            }
+                        }
+                        div.phone_clearbtn{
+                            button{
+                                padding: 13.5px 20px;
+                                font-size: 16px;
+                                border: 1px solid black;
+                                background-color: white;
+                                cursor: pointer;
+                            }
+
                         }
                     }
+
 
                     div.block2 {
                         margin-top: 10px;
@@ -1899,9 +1925,10 @@ div.phone_all_review {
                 display: block;
 
                 button {
-                    padding: 0 10px;
+                    padding: 5px 15px;
                     font-size: 16px;
                     line-height: 30px;
+                    margin-right: 10px;
                 }
             }
 
@@ -1994,9 +2021,7 @@ div.phone_all_review {
     }
 
 
-    footer {
-        // padding-bottom: 123px;
-    }
+
 }
 
 div.des_lightbox {
@@ -2008,4 +2033,21 @@ div.des_lightbox {
     bottom: 0;
     left: 0;
     z-index: 1000;
+}
+
+
+
+//調整footer
+@media screen and (max-width:415px){
+    footer.des_footer{
+        display: none;
+    }
+}
+footer.phone_footer {
+    // padding-bottom: 123px;
+    display: none;
+    @include m(){
+        display: block;
+        padding-bottom: 123px;
+    }
 }
