@@ -31,7 +31,8 @@
                     <h1>關於 Kanto へ</h1>
                 </li>
                 <li>
-                    <p>我們是一家致力於為日本關東旅行者提供最好的旅遊體驗的公司，成立於2023年。我們總部位於在台灣台北，我們的團隊由一群熱情的旅遊愛好者組成，我們提供日本關東的旅遊服務，包括、酒店、旅遊活動、租車等。
+                    <p>
+                        我們是一家致力於為日本關東旅行者提供最好的旅遊體驗的公司，成立於2023年。我們總部位於在台灣台北，我們的團隊由一群熱情的旅遊愛好者組成，我們提供日本關東的旅遊服務，包括、酒店、旅遊活動、租車等。
                     </p>
 
                 </li>
@@ -85,33 +86,28 @@
             <h1>聯絡我們</h1>
             <ul>
                 <li>
-                    <!-- <label for="username">名字：</label> -->
-                    <input type="text" placeholder="請輸入名字" id="about_first_name">
+                    <input type="text" placeholder="請輸入主題" id="aboutSubject">
                 </li>
 
                 <li>
-                    <!-- <label for="username">名字：</label> -->
-                    <input type="text" placeholder="請輸入名字" id="about_last_name">
+                    <input type="text" placeholder="請輸入名字" id="aboutName">
                 </li>
 
                 <li>
-                    <!-- <label for="username">郵箱：</label> -->
-                    <input type="text" placeholder="請輸入電子郵箱" id="about_email">
+                    <input type="text" placeholder="請輸入電子郵箱" id="aboutEmail">
                 </li>
 
                 <li>
-                    <!-- <label for="username">電話：</label> -->
-                    <input type="text" placeholder="請輸入電話" id="about_tel">
+                    <input type="text" placeholder="請輸入手機號碼" id="aboutTel">
                 </li>
 
                 <li>
-                    <!-- <label for="username">留言：</label> -->
-                    <textarea rows="10" cols="25" placeholder="請填留言" id="about_textarea"></textarea>
+                    <textarea rows="10" cols="25" placeholder="請填留言" id="aboutTextarea"></textarea>
                 </li>
 
                 <li>
-                    <form method="post" class="button">
-                        <input type="button" class="about_submit" value="Send Email" onclick="sendEmail()">
+                    <form method="post" class="about_button">
+                        <input type="button" id="aboutSubmit" value="發送留言" onclick="sendEmail()">
                         </input>
                     </form>
                 </li>
@@ -120,9 +116,7 @@
 
         </div>
 
-
     </div>
-
 
 
     <!-- 以下Footer區域 -->
@@ -130,6 +124,90 @@
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+
+
+
+    <script src=
+    "https://smtpjs.com/v3/smtp.js">
+   </script>
+   
+   
+   <script type="text/javascript">
+   
+   function sendEmail() {
+    let subject = document.getElementById("aboutSubject").value;
+    let isName = document.getElementById("aboutName").value;
+    let phone = document.getElementById("aboutTel").value;
+    let email = document.getElementById("aboutEmail").value;
+    let body = document.getElementById("aboutTextarea").value;
+
+    if (subject === "" || isName === "") {
+        alert("主題和名字不能為空");
+        return;
+    }
+
+    if (!validateEmail(email)) {
+        alert("電子郵箱格式不正確");
+        return;
+    }
+
+    if (!validateTaiwanMobile(phone)) {
+        alert("手機號碼格式不正確");
+        return;
+    }
+
+    // All validations passed, proceed with sending the email
+    Email.send({
+        SecureToken: "d8f8fcac-762b-4858-956c-cc3abc40e0cc",
+        To: 'kantoasuka1@gmail.com',
+        From: "kantoasuka1@gmail.com",
+        Subject: subject,
+        Body: "Name: " + isName + "<br>Email: " + email + "<br>Phone: " + phone + "<br><br>" + body
+    }).then(function (message) {
+        alert("您的留言已送出");
+    });
+}
+
+function validateEmail(email) {
+    // Email validation regular expression
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function validateTaiwanMobile(phone) {
+    // Taiwan mobile number validation regular expression
+    let mobileRegex = /^09\d{8}$/;
+    return mobileRegex.test(phone);
+}
+
+   
+    function sendEmail() {
+    let subject = document.getElementById("aboutSubject").value;
+    let isName = document.getElementById("aboutName").value;
+    let phone = document.getElementById("aboutTel").value;
+    let email = document.getElementById("aboutEmail").value;
+    let body = document.getElementById("aboutTextarea").value;
+   
+   
+     Email.send({
+      SecureToken : "d8f8fcac-762b-4858-956c-cc3abc40e0cc",
+      To: 'kantoasuka1@gmail.com',
+      From: "kantoasuka1@gmail.com",
+      Subject: subject,
+      Body: "Name: " + isName + "<br>Email: " + email + "<br>Phone: " + phone + "<br><br>" + body,
+   
+   
+    })
+    .then(function (message) {
+      alert("您的留言已送出");
+    });
+   }
+
+   
+   
+   
+   </script>
+   
 
 
 </body>
