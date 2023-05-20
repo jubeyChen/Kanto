@@ -188,7 +188,7 @@ a{
 
     .index02_swiper{
         img{
-            height:350px;
+            height:320px;
         }
     }
 }    
@@ -468,6 +468,8 @@ a{
 
             img{
                 width: 300px;
+                height: 200px;
+                object-fit: cover;
                 display: block;
                 border-radius: 5px;
                 @include m(){
@@ -545,6 +547,7 @@ a{
     .c{
         text-align: right;
         padding-top: 20px;
+        align-self: flex-end;
     }
 
     .index06_title{
@@ -656,6 +659,19 @@ a{
             // border-collapse:collapse ;
             text-align: center;
             padding: 15px 0;
+
+            input{
+                background-color: transparent;
+                outline: none;
+                border: none;
+                border-bottom: 1px solid $fontColor;
+                font-size: $paragraph-s;
+                text-align: center;
+                
+                @include m(){
+                    width: 60%;
+                }
+            }
         }
     }
 }

@@ -12,68 +12,77 @@
     width: 100%;
     position: relative;
     display: block;
-    // border: 1px solid red;
-    .game_title{
-        // background-color: #c73f3aa8;
-        background-color: rgba( 199, 62, 58, 0.7);
-        width: 554px;
-        height: 554px;
-        border-radius: 50%;
-        position: absolute;
-        top: 25%;
-        left: 35%;
-        .title_box{
-            position: absolute;
-            top: 30%;
-            left: 28%;
-            width: 265px;
-            h2{
-                color: white;
-            }
-            h2:before{
-                content: "";
-                display: block;
-                width: 81px;
-                height: 7px;
-                background-color: white;
-                margin-bottom: 30px;
-            }
-            .text{
-                width: 271px;
-                height: 50px;
-                background-color: white;
-                border-radius: 15px 5px 5px 5px;
-                margin-top: 30px;
-                text-align: center;
-                
-                span{
-                    font-size: 20px;
-                    line-height: 50px;
-                    font-weight: bold;   
-                }
-                span:nth-child(2){
-                    display: inline-block;
-                    width: 28px;
-                    height: 28px;
-                    border-radius: 50%;
-                    background-color: $primary;
-                    line-height: 28px;
-                    color: white;
-                    font-weight: lighter;
-                }
-            }
-        }
+    @include m(){
+        height: 100%;
     }
+
+    // .game_title{
+    //     // background-color: #c73f3aa8;
+    //     background-color: rgba( 199, 62, 58, 0.7);
+    //     width: 554px;
+    //     height: 554px;
+    //     border-radius: 50%;
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -70%);
+    //     .title_box{
+    //         position: absolute;
+    //         top: 30%;
+    //         left: 28%;
+    //         width: 265px;
+    //         h2{
+    //             color: white;
+    //         }
+    //         h2:before{
+    //             content: "";
+    //             display: block;
+    //             width: 81px;
+    //             height: 7px;
+    //             background-color: white;
+    //             margin-bottom: 30px;
+    //         }
+    //         .text{
+    //             width: 271px;
+    //             height: 50px;
+    //             background-color: white;
+    //             border-radius: 15px 5px 5px 5px;
+    //             margin-top: 30px;
+    //             text-align: center;
+                
+    //             span{
+    //                 font-size: 20px;
+    //                 line-height: 50px;
+    //                 font-weight: bold;   
+    //             }
+    //             span:nth-child(2){
+    //                 display: inline-block;
+    //                 width: 28px;
+    //                 height: 28px;
+    //                 border-radius: 50%;
+    //                 background-color: $primary;
+    //                 line-height: 28px;
+    //                 color: white;
+    //                 font-weight: lighter;
+    //             }
+    //         }
+    //     }
+    // }
     //遊戲按鈕
     .game_btn{
         position: absolute;
         bottom: 20%;
         left: 10%;
+        z-index: 10;
+        @include m(){
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
         .btn{
             width: 385px;
             height: 87px;
             background-color: $primary;
-            border-radius: 5px;
+            border-radius: 10px;
 
             display: block;
             color: white;
@@ -81,6 +90,12 @@
             font-size: $h3;
             text-align: center;
             cursor: pointer;
+            @include m(){
+                width: 229px;
+                height: 52px;
+                line-height: 52px;
+                font-size: $paragraph;
+            }
             a{
                 // display: block;
                 // color: white;
@@ -91,10 +106,7 @@
         }
     }
     .game_banner{
-        // overflow: hidden;
-        // height: 100vh;
-        // width: 100%;
-        // height: 100%;
+        
         img{
             display: block;
             // height: 100%;
@@ -105,26 +117,151 @@
             z-index: -1;
         }
     }
+    .swiper{
+        width: 100%;
+        height: 100%;
+
+        .swiper-wrapper{
+            .swiper-slide{
+                // text-align: center;
+                font-size: 18px;
+                // background: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    display: block;
+                    // height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    top: 0px;
+                    left: 0;
+                    z-index: -1;
+                    @include m(){
+                        height: 898px;
+                        object-fit: cover;
+                    }
+                }
+                .game_title{
+                    // background-color: #c73f3aa8;
+                    background-color: rgba( 199, 62, 58, 0.7);
+                    width: 554px;
+                    height: 554px;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -70%);
+                    @include m(){
+                        width: 347px;
+                        height: 347px;
+                    }
+                    .title_box{
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 265px;
+                        @include m(){
+                            width: 177px;
+                        }
+                        h2{
+                            color: white;
+                            @include m(){
+                                font-size: $h3;
+                            }
+                        }
+                        h2:before{
+                            content: "";
+                            display: block;
+                            width: 81px;
+                            height: 7px;
+                            background-color: white;
+                            margin-bottom: 30px;
+                            @include m(){
+                                width: 50px;
+                                height: 4px;
+                                margin-bottom: 25px;
+                            }
+                        }
+                        .text{
+                            width: 271px;
+                            height: 50px;
+                            background-color: white;
+                            border-radius: 15px 5px 5px 5px;
+                            margin-top: 30px;
+                            text-align: center;
+                            @include m(){
+                                width: 167px;
+                                height: 31px;
+                                margin-top: 25px;
+                            }
+                            span{
+                                font-size: 20px;
+                                line-height: 50px;
+                                font-weight: bold;
+                                @include m(){
+                                    font-size: 16px;
+                                    line-height: 31px;
+                                }   
+                            }
+                            span:nth-child(2){
+                                display: inline-block;
+                                width: 28px;
+                                height: 28px;
+                                border-radius: 50%;
+                                background-color: $primary;
+                                line-height: 28px;
+                                color: white;
+                                font-weight: lighter;
+                                @include m(){
+                                    width: 17px;
+                                    height: 17px;
+                                    line-height: 17px;
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+              
+            }
+            .swiper-pagination{
+                
+            }
+        }
+    }
 }
 //拉霸機
 .game_container_slider{
     width: 100%;
-    height: 100%;
-    // border: 1px solid red;
+    // height: 100%;
+    height: 1351px;
     position: absolute;
     top: -1500px;
     left: 0;
     // display: none;
     transition: .7s;
-    
+    z-index: 10;
+    background-color: rgba(16, 16, 16, 0.7);
+    @include m(){
+        height: 100%;
+    }
     .game_wapper{
         width: 1228px;
-        height: 1006px;
+        height: 1000px;
+        // height: auto;
         position: absolute;
-        top: 20%;
-        left: 17%;
+        top: 50%;
+        left: 50%;
         background-color: rgba(244, 241, 232, 0.8);
         border-radius: 25px;
+        transform: translate(-50%, -30%) translateY(-151px);
+        @include m(){
+            width: 379px;
+            height: 696px;
+            transform: translate(-50%, -30%) translateY(-93px);
+        }
         .lightbox-close{
             position: absolute;
             top: 20px;
@@ -138,6 +275,13 @@
             line-height: 50px;
             color: white;
             cursor: pointer;
+            @include m(){
+                top: 35px;
+                right: 16px;
+                width: 34px;
+                height: 34px;
+                line-height: 34px;
+            }
         }
         .title{
             width: 588px;
@@ -146,36 +290,68 @@
             border-radius: 70px;
             padding-top: 30px;
             box-sizing: border-box;
-            position: absolute;
-            top: -70px;
-            left: 320px;
+            margin: -70px auto 70px;
+            @include m(){
+                width: 302px;
+                height: 70px;
+                padding-top: 20px;
+                margin: -32px auto 41px;
+            }
             h2{
                 text-align: center;
                 color: white;
+                padding: 0 30px;
+                @include m(){
+                    font-size: 24px;
+                    padding: 0 14px;
+                }
             }
-            h2:after{
-                content: "";
-                display: block;
-                position: absolute;
-                top: 90px;
-                left: 40px;
-                width: 273px;
-                height: 4px;
-                background-color: white;
-                // margin-top: 10px;
-                // border: 1px solid red;
-            }
+            
             p{
                 color: white;
-                margin-left: 330px;
+                // margin-left: 330px;
                 font-size: $paragraph;
+                display: flex;
+                align-items: center;
+                padding: 0 30px;
+                margin-right: 10px;
+                @include m(){
+                    font-size: 14px;
+                    margin-right: -10px;
+                }
+            }
+            p::before{
+                content: "";
+                display: block;
+                height: 4px;
+                background-color: white;
+                flex: 1 0 auto;
+                margin-left: 10px;
+                margin-right: 30px;
+                @include m(){
+                    height: 2px;
+                    margin-left: -13px;
+                    margin-right: 12px;
+                }
             }
         }
         .game{
-            position: absolute;
-            top: 150px;
-            left: 350px;
-            img{}
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: auto;
+            transform: translateX(40px);
+            @include m(){
+                width: 317px;
+                height: 210px;
+                margin-right: 10px;
+                transform: translateX(0);
+            }
+            img{
+                @include m(){
+                    width: 100%;
+                }
+            }
             .results{
                 width: 605px;
                 // height: 397px;
@@ -184,6 +360,11 @@
                 position: absolute;
                 top: 95px;
                 left: -38px;
+                @include m(){
+                    width: 317px;
+                    top: 49px;
+                    left: -21px;
+                }
                 .result{
                     height: 140px;
                     width: 352px;
@@ -191,14 +372,23 @@
                     border-radius: 14px;
                     border: 2px solid gray;
                     overflow: hidden;
+                    @include m(){
+                        height: 71px;
+                        width: 181px;
+                        border-radius: 9px;
+                    }
                     .result-txt{
                         // background: linear-gradient(LightCoral, Gold, LightSkyBlue, LightCoral);
                         background-color: #F4F1E8;
+         
                         .result-item{
                             font-size: 24px;
                             display: flex;
                             justify-content: center;
                             line-height: 140px;
+                            @include m(){
+                                line-height: 75px;
+                            }
                         }
                     }
                     .is-play.result-txt {
@@ -218,6 +408,16 @@
                     position: absolute;
                     top: 165px;
                     left: 125px;
+                    @include m(){
+                        width: 70px;
+                        margin: 0;
+                        line-height: 18px;
+                        border-radius: 9px;
+                        border: 2px solid #3D3D3D;
+                        top: 97px;
+                        left: 65px;
+                        font-size: 12px;
+                    }
                 }
                 .btn-stop{
                     width:130px;
@@ -232,6 +432,16 @@
                     position: absolute;
                     top: 165px;
                     right: 125px;
+                    @include m(){
+                        width: 70px;
+                        margin: 0;
+                        line-height: 18px;
+                        border-radius: 9px;
+                        border: 2px solid #3D3D3D;
+                        top: 97px;
+                        right: 65px;
+                        font-size: 12px;
+                    }
                 }
                 .btn-start:hover,
                 .btn-stop:hover {
@@ -251,6 +461,13 @@
                     top: 350px;
                     left: -140px;
                     display: none;
+                    @include m(){
+                        width: 323px;
+                        top: 397px;
+                        left: -14px;
+                        height: 0;
+                    }
+                    
                     .cont_central{
                         position: absolute;
                         width: 100%;
@@ -268,6 +485,10 @@
                             -webkit-transition-delay: 0.7s;
                             -o-transition-delay: 0.7s;
                             transition-delay: 0.7s;
+                            @include m(){
+                                width: 337px;
+                                height: 282px;
+                            }
                             .cont_photo{
                                 position: relative;
                                 width: 220px;
@@ -282,13 +503,17 @@
                                 -o-transition: all 0.5s;
                                 transition: all 0.5s;
                                 transition: all 0.5s; 
-                                box-shadow: 1px 1px 20px -5px rgba(0,0,0,0.5);  
+                                box-shadow: 1px 1px 20px -5px rgba(0,0,0,0.5);
+                                @include m(){
+                                    width: 156px;
+                                    height: 219px;
+                                }  
                                 .cont_img_back{
                                     position: absolute;
                                     width: 100%;
                                     height: 100%;
                                     overflow: hidden;
-                                    border-radius:5px ;
+                                    border-radius: 5px;
                                     img{
                                         width: 100%;
                                         opacity: 0.7;
@@ -329,13 +554,20 @@
                                 -webkit-transition-delay: 0.7s;
                                 -o-transition-delay: 0.7s;
                                 transition-delay: 0.7s;
-
+                                @include m(){
+                                    left: 156px;
+                                    top: -10px;
+                                    height: 203px;
+                                }
                                 .cont_over_hidden{
                                     position: relative;
                                     float: left;
                                     width: 100%;
                                     height: 276px;
                                     overflow: hidden;
+                                    @include m(){
+                                        height: 208px;
+                                    }
                                     .cont_tabs{
                                         position: relative;
                                         float: left;
@@ -343,11 +575,18 @@
                                         height: 60px;
                                         border-bottom: 3px solid #EDEDEC;
                                         text-align: center;
+                                        @include m(){
+                                            width: 175px;
+                                            height: 45px;
+                                        }
                                         p{
                                             font-size: 20px;
                                             margin-top: 15px;
                                             font-weight: bold;
                                             color: black;
+                                            @include m(){
+                                                font-size: 14px;
+                                            }
                                         }
                                     }
                                     .cont_tabs::after{
@@ -361,14 +600,27 @@
                                         top: 0;
                                         right: 18px;
                                         box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+                                        @include m(){
+                                            width: 19px;
+                                            height: 38px;
+                                            right: 13px;
+                                        }
                                     }
                                     .cont_text_det_preparation{
                                         position: relative;
                                         width: 247px;
                                         text-align: center;
+                                        @include m(){
+                                            width: 176px;
+                                        }
                                         .cont_info_preparation{
                                             position: relative;
                                             float: left;
+                                            @include m(){
+                                                height: 100px;
+                                                overflow: hidden;
+                                                overflow-y: scroll;
+                                            }
                                             p{
                                                 margin: 5px 0px;
                                                 font-size: 16px;
@@ -377,6 +629,12 @@
                                                 text-align: left;
                                                 padding-right: 30px;
                                                 color: #5F5F5F;
+                                                @include m(){
+                                                    font-size: 14px;
+                                                    padding: 5px 0;
+                                                    padding-left: 25px;
+                                                    padding-right: 25px;
+                                                }
                                             }
                                         }
                                         a{
@@ -391,7 +649,13 @@
                                             text-decoration: none;
                                             line-height: 30px;
                                             text-align: center;
-                    
+                                            @include m(){
+                                                width: 66px;
+                                                height: 23px;
+                                                line-height: 23px;
+                                                font-size: 12px;
+                                                margin-top: 10px;
+                                            }
                                         }
                                     }
                                     .cont_btn_mas_dets{
@@ -399,6 +663,10 @@
                                         bottom:10px;
                                         left: 10%;
                                         z-index: -1;
+                                        @include m(){
+                                            bottom: 13px;
+                                            left: 5%;
+                                        }
                                         span{}
                                         span:before{
                                             content: "";
@@ -406,6 +674,9 @@
                                             width: 4px;
                                             height: 31px;
                                             background-color: #C73E3A;
+                                            @include m(){
+                                                height: 21px;
+                                            }
                                         }
                                         span:after{
                                             content: "";
@@ -413,6 +684,9 @@
                                             width: 139px;
                                             height: 3px;
                                             background-color: #C73E3A;
+                                            @include m(){
+                                                width: 98px;
+                                            }
                                         }
                                     }
                                 }
@@ -421,6 +695,9 @@
                                     right: -15px;
                                     top:50%;
                                     text-align: center;
+                                    @include m(){
+                                        top: 45%;
+                                    }
                                     a{
                                         display: block;
                                         padding-top: -5px;
@@ -445,6 +722,9 @@
                         }
                         .cont_modal_active {
                             width: 700px;
+                            @include m(){
+                                width: 337px;
+                            }
                             .cont_photo{
                                 box-shadow: 25px 10px 70px -5px rgba(0,0,0,0.3); 
                                 // .cont_mins{
@@ -461,6 +741,11 @@
                                 left: 210px;
                                 z-index: 1;
                                 box-shadow: 15px 20px  70px  -5px  rgba(0,0,0,0.2);
+                                @include m(){
+                                    width: 175px;
+                                    left: 156px;
+                                    height: 203px;
+                                }
                                 .cont_btn_open_dets{
                                     a{
                                         transform: rotate(0deg);
@@ -481,39 +766,90 @@
                     top: 450px;
                     right: -150px;
                     display: none;
-                    
+                    @include m(){
+                        width: 204px;
+                        height: 125px;
+                        top: 415px;
+                        right: 51px;
+                    }
                     .coupon_box{
                         width: 247px;
                         height: 198px;
                         background-color: $primary;
                         margin-left: 80px;
                         border-radius: 0 10px 10px 0;
-                        
+                        @include m(){
+                            width: 154px;
+                            height: 125px;
+                            margin-left: 51px;
+                        }
                         p{
                             color: white;
                             text-align: center;
                             font-size: 32px;
                             padding-top: 20px;
+                            @include m(){
+                                font-size: $paragraph;
+                                padding-top: 10px;
+                            }
+               
                         }
-                        input{
+                   
+                        .text{
+                            display: inline-block;
                             margin-top: 30px;
                             margin-left: 55px;
-                            width: 131px;
+                            width: 70px;
                             height: 46px;
                             border-radius: 5px;
                             border: 2px dashed white;
                             color: white;
                             background-color: $primary;
                             font-size: 20px;
+                            line-height: 46px;
+                            padding-left: 10px;
+                            @include m(){
+                                margin-top: 18px;
+                                margin-left: 25px;
+                                width: 53px;
+                                height: 31px;
+                                font-size: 14px;
+                                line-height: 31px;
+                            }
                         }
-                        p:nth-child(3){
+                        #coupon_btn{
+                            height: 50px;
+                            width: 50px;
+                            border-radius: 5px;
+                            border: 1px solid white;
+                            color: $primary;
+                            cursor: pointer;
+                            line-height: 50px;
+                            background-color: rgba(244, 241, 232, 0.8);
+                            @include m(){
+                                height: 35px;
+                                width: 41px;
+                                line-height: 33px;
+                            }
+                        }
+                        #coupon_btn:hover{
+                            color: $primary;
+                            background-color: white;
+                        }
+                        p:nth-child(4){
                             font-size: 16px;
                             padding-top: 5px;
+                            @include m(){
+                                font-size: 12px;
+                            }
                         }
                         .obj{
                             position: absolute;
                             top: 0;
                             left: 75px;
+                            @include m(){
+                                left: 46px;
+                            }
                             span{
                                 display: block;
                                 width: 12px;
@@ -521,6 +857,9 @@
                                 border-radius: 50%;
                                 background-color: #3D3D3D;
                                 margin: 30px 0;
+                                @include m(){
+                                    margin: 15px 0;
+                                }
                             }
                         }
                     }
@@ -533,3 +872,14 @@
     display: block;
     top: 0;
 }
+span.swiper-pagination-bullet{
+    width: 20px;
+    height: 20px;
+    background-color: $primary;
+    margin-bottom: 20px;
+    @include m(){
+        width: 10px;
+        height: 10px;
+    }
+}
+

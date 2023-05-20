@@ -11,6 +11,7 @@ Vue.createApp({
             pw: '',
             pwCheck: '',
             isPasswordMatch: true,
+            forgetEmail: ''
         };
     },
     computed: {
@@ -39,6 +40,18 @@ Vue.createApp({
             const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             this.isValidEmail = regex.test(this.email);
         }
+        ,
+        sendEmail() {
+            let subject = document.getElementById("forgetID").value;
+            
+            Email.send({
+                SecureToken: "d8f8fcac-762b-4858-956c-cc3abc40e0cc",
+                To: subject,
+                From: "kantoasuka1@gmail.com",
+                Subject: 'Kanto帳號重設密碼',
+                Body: "您好，請您重新設定密碼唷!"
+            })
+        }
     },
 
     watch: {
@@ -61,4 +74,4 @@ Vue.createApp({
 
     },
 
-}).mount('.loginRegister');
+}).mount('body');

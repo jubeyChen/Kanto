@@ -9,6 +9,7 @@
     @@include('./layout/style.html')
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
 </head>
 
 <body>
@@ -23,7 +24,7 @@
 
     <!-- banner -->
     <div class="game_container">
-        <div class="game_title">
+        <!-- <div class="game_title">
             <div class="title_box">
                 <h2>想不到去哪旅行嗎?</h2>
                 <div class="text">
@@ -31,22 +32,58 @@
                     <span>1</span>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- 遊戲按鈕 -->
         <div class="game_btn">
-            <div class="btn" id="game_btn">用拉霸機來決定旅程
-                <!-- <a href="" id="game_btn">用拉霸機來決定旅程</a> -->
-                <!-- <p id="game_btn">用拉霸機來決定旅程</p> -->
-            </div>
+            <div class="btn" id="game_btn">用拉霸機來決定旅程</div>
         </div>
-        <div class="game_banner">
-            <img src="./image/game/game_banner1.jpg" alt="">
-            <!-- <img src="./image/game/game_banner2.jpg" alt=""> -->
+        <div class="game_banner swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="./image/game/game_banner1.jpg" alt="">
+                    <div class="game_title">
+                        <div class="title_box">
+                            <h2>想不到去哪旅行嗎?</h2>
+                            <div class="text">
+                                <span>說走就走的好處</span>
+                                <span>1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="./image/game/game_banner2.jpg" alt="">
+                    <div class="game_title">
+                        <div class="title_box">
+                            <h2>我們提供了最豐富的旅遊套餐！</h2>
+                            <div class="text">
+                                <span>說走就走的好處</span>
+                                <span>2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="./image/game/game_banner3.jpg" alt="">
+                    <div class="game_title">
+                        <div class="title_box">
+                            <h2>旅遊拉霸機幫您實現這些夢想！</h2>
+                            <div class="text">
+                                <span>說走就走的好處</span>
+                                <span>3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+            
         </div>
     </div>
     <!-- 拉霸機 -->
     <div class="game_container_slider">
-        <div class="game_wapper">
+        <div class="game_wapper" id="game_wapper">
             <span class="lightbox-close">&times;</span>
             <div class="title">
                 <h2>讓拉霸機決定你的行程</h2>
@@ -72,7 +109,7 @@
                     </div>
                     <div class="btn-start" onclick="startAnimation()">START</div>
                     <div class="btn-stop" onclick="stopAnimation()">STOP</div>
-            
+                    <!-- 卡片 -->
                     <div class="cont_principal">
                         <div class="cont_central">
                             <div class="cont_modal cont_modal_active">
@@ -99,16 +136,14 @@
                                                         日本的春季！前往東京最好的春季景點。
                                                     </p>
                                                 </div>
-                                                <!-- <a href="#">
-                                                    <button class="btn">查看詳情</button>
-                                                </a> -->
+                                                
                                                 <a href="#">查看詳情</a>
                                                 
                                             </div>
                                             
                                         </div>
                                         <div class="cont_btn_mas_dets">
-                                            <!-- <a href="#"><i class="material-icons">&#xE313;</i></a> -->
+                                            
                                             
                                             <span></span>
                                         </div>
@@ -126,7 +161,8 @@
                         
                         <div class="coupon_box">
                             <p>COUPON</p>
-                            <input type="text" value="12345">
+                            <div class="text" id="text">22345</div>
+                            <button id="coupon_btn">複製</button>
                             <p>請至會員中心兌換</p>
                             <div class="obj">
                                 <span></span>
@@ -153,6 +189,7 @@
     @@include('./layout/js.html')
     <script src="./js/game.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
         $(function(){
             $("#game_btn").click(function(){
@@ -163,8 +200,26 @@
                 $(".game_container_slider").toggleClass('open');
             })
         })
-     
+        
+
+        var swiper = new Swiper(".mySwiper", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
     </script>
+    
 </body>
 
 </html>

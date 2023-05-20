@@ -18,15 +18,13 @@
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
-    <section class="loginRegister wrapper" >
-        <div class="container" :class="{'-show':start === true}">
+    <section class="wrapper loginRegister" :class="{'-show':start === true}">
+        <div class="container">
             <div class="box">
                 <ul class="tab">
-                    <li><button type="button" class="tabBtn"
-                            @click="tabOn('login')"
+                    <li><button type="button" class="tabBtn" @click="tabOn('login')"
                             :class="{ active: activeBtn === 'login'}">登入</button></li>
-                    <li><button type="button" class="tabBtn"
-                            @click="tabOn('register')"
+                    <li><button type="button" class="tabBtn" @click="tabOn('register')"
                             :class="{ active: activeBtn === 'register'}">註冊</button></li>
                 </ul>
 
@@ -34,7 +32,8 @@
                 <div class="login tabContent" v-if="current_tab === 'login'">
                     <form @submit="submitForm" action="#">
                         <label for="loginID">帳號</label>
-                        <input type="email" id="loginID" class="textStyle" placeholder="請輸入電子信箱" v-model="email" required>
+                        <input type="email" id="loginID" class="textStyle" placeholder="請輸入電子信箱" v-model="email"
+                            required>
                         <div v-if="!isValidEmail" class="errorMsg">請輸入有效的電子郵件地址。</div>
                         <label for="loginPW">密碼</label>
                         <input type="password" id="loginPW" class="textStyle" placeholder="請輸入密碼" required>
@@ -47,13 +46,16 @@
                 <div class="register tabContent" v-if="current_tab === 'register'">
                     <form @submit="submitForm" action="#">
                         <label for="registerID">註冊帳號</label>
-                        <input type="email" id="registerID" class="textStyle" placeholder="請輸入電子信箱" v-model="email" required>
+                        <input type="email" id="registerID" class="textStyle" placeholder="請輸入電子信箱" v-model="email"
+                            required>
                         <div v-if="!isValidEmail" class="errorMsg">請輸入有效的電子郵件地址。</div>
                         <label for="registerPW">密碼</label>
-                        <input type="password" id="registerPW" class="textStyle" placeholder="請輸入密碼" v-model="pw" required>
+                        <input type="password" id="registerPW" class="textStyle" placeholder="請輸入密碼" v-model="pw"
+                            required>
                         <div v-if="!isValidPwLength" class="errorMsg">密碼至少需要4個字元。</div>
                         <label for="confirmPW">再次確認密碼</label>
-                        <input type="password" id="confirmPW" class="textStyle" placeholder="請再次輸入密碼" v-model.lazy="pwCheck" required>
+                        <input type="password" id="confirmPW" class="textStyle" placeholder="請再次輸入密碼"
+                            v-model.lazy="pwCheck" required>
                         <div v-if="!isPasswordMatch" class="errorMsg">您再次輸入的密碼有誤</div>
                         <button type="submit" :disabled="!isValidEmail || !isPasswordMatch">註冊</button>
                     </form>
@@ -64,14 +66,14 @@
         </div>
 
         <!-- 忘記密碼區域 -->
-        <div class="forget wrapper" v-show="showForget">
+        <div class="forget wrapper" v-if="showForget">
             <div class="reset container" v-show="!showDone">
                 <span @click="showForget = false"><i class="ai-cross"></i></span>
-                <form action="">
+                <form method="post">
                     <h3>重設密碼</h3>
                     <label for="forgetID">請輸入您註冊Kanto的電子信箱，我們會發送重設密碼的信件至您的信箱。</label>
-                    <input type="email" id="forgetID" class="textStyle" placeholder="請輸入您註冊的電子信箱" required>
-                    <button type="submit" @click="showDone = true;">下一步</button>
+                    <input type="email" id="forgetID" class="textStyle" placeholder="請輸入您註冊的電子信箱" v-model="forgetEmail">
+                    <input type="button" class="submitBtn" value="送出" :disabled="forgetEmail === ''" @click="showDone = true; sendEmail()">
                 </form>
             </div>
 
@@ -96,9 +98,8 @@
     @@include('./layout/js.html')
     <script src="js/vendors/vue.global.js"></script>
     <script src="js/loginRegister.js"></script>
-    <script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 
-    </script>
 </body>
 
 </html>

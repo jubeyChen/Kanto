@@ -28,7 +28,6 @@
 
     <!-- 以下可以開始編輯 -->
 
-
     <div class="cart_container">
 
         <!-- 麵包屑 -->
@@ -59,7 +58,7 @@
 
                     <ul>
                         <li>
-                            <i class="cart_icons_checkbox_small">check_box_outline_blank</i>
+                            <i class="cart_icons_checkbox_small checkbox1">check_box_outline_blank</i>
                         </li>
                         <li>
                             <img src="./image/cart/item1.jpg" alt="">
@@ -68,7 +67,7 @@
                             <p>富士山賞櫻一日遊（東京出發）</p>
                             <p>2023-06-24</p>
                         </li>
-    
+
                         <li>
                             <p>成人 X 1</p>
                         </li>
@@ -79,19 +78,19 @@
                             <i id="cartFavoriteIcon" class="cart_icons_favorite_small">favorite_border</i>
                             <i id="cartDeleteIcon" class="cart_icons_trash_small">delete_outline</i>
                         </li>
-    
+
                     </ul>
 
-                </div>    
+                </div>
                 <span class="cart_line"></span>
 
                 <ul class="cart_list">
 
                     <li>
-                        <i class="cart_icons_checkbox_small">check_box_outline_blank</i>
+                        <i class="cart_icons_checkbox_small checkbox2">check_box_outline_blank</i>
                     </li>
                     <li>
-                        <p>全選</p> <span></span>
+                        <p id="selectAll">全選</p> <span></span>
                     </li>
                     <li class="cart_pay_btn_wrapper">
                         <a href="payment.html">
@@ -147,6 +146,15 @@
                 $('.cart_item_list').remove();
             });
         });
+
+        let checkbox = document.querySelector('.cart_list .checkbox');
+
+        checkbox.addEventListener('click', function () {
+            let isChecked = checkbox.innerText === 'check_box';
+            checkbox.innerText = isChecked ? 'check_box_outline_blank' : 'check_box';
+        });
+
+
 
 
     </script>

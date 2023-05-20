@@ -11,6 +11,11 @@ Vue.createApp({
             cancelOrder: false,
             writeReview: false,
             currentOrderNumber: '', // for聯絡客服連結的
+            contactID: '',
+            contactEmail: '',
+            contactPhone: '',
+            contactText: '',
+            isValidEmail: true,
         }
     },
     created() {
@@ -24,11 +29,6 @@ Vue.createApp({
         setTimeout(() => {
             this.start = true;
         }, 200);
-
-
-    },
-    computed: {
-        
     },
     methods: {
         toggleReview() {
@@ -64,7 +64,56 @@ Vue.createApp({
             } else {
                 return "即將出發";
             }
+        },
+
+        submitForm() {
+            // 如果電子郵件地址無效，則顯示錯誤消息
+            if (!this.isValidEmail) {
+                return;
+            }
+        },
+
+        checkEmailValidity() {
+            // 使用正則表達式檢查email地址的有效性
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            this.isValidEmail = regex.test(this.contactEmail);
+        },
+
+        sendEmail() {
+            let orderNumber = this.currentOrderNumber;
+            let contactID = this.contactID;
+            let contactEmail = this.contactEmail;
+            let contactPhone = this.contactPhone;
+            let contactText = this.contactText;
+
+            Email.send({
+                SecureToken: "d8f8fcac-762b-4858-956c-cc3abc40e0cc",
+                To: contactEmail,
+                From: "kantoasuka1@gmail.com",
+                Subject: '訂單詢問-訂單編號:' + orderNumber,
+                Body: `全名: ${contactID} <br><br>
+                電子信箱: ${contactEmail} <br><br>
+                連絡電話: ${contactPhone} <br><br>
+                訊息: ${contactText}`
+            })
+                .then(function () {
+                    alert('Kanto已收到您的來信');
+                });
+        },
+        
+        deleteContactInfo() {
+            this.contactID = '';
+            this.contactEmail = '';
+            this.contactPhone = '';
+            this.contactText = '';
         }
 
-    }
+    },
+    watch: {
+        contactEmail() {
+            // 監聽email變化，並在每次變化時檢查其有效性
+            this.checkEmailValidity();
+        }
+
+    },
 }).mount('.member');
