@@ -130,6 +130,8 @@ div.phone_filter_btn {
 
             li {
                 display: inline-block;
+                margin-right: 10px;
+
             }
         }
     }
@@ -411,7 +413,7 @@ section.travel-sec3 {
     }
 }
 
-section.travel-sec4 {
+section.blog_travel-sec4 {
     @include m() {
         display: none;
     }
@@ -431,12 +433,12 @@ section.travel-sec4 {
 }
 
 
-section.phone_travel-sec4 {
+section.phone_blog_travel-sec4 {
     display: none;
 }
 
 @media screen and (max-width:415px) {
-    section.phone_travel-sec4 {
+    section.phone_blog_travel-sec4 {
         display: block;
 
         div.btn {

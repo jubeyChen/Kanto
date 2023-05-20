@@ -12,6 +12,7 @@ const app = Vue.createApp({
     },
     created() {
         this.total = this.price;
+        this.total = this.total.toLocaleString();
     },
     methods: {
         //+按鈕
@@ -19,6 +20,7 @@ const app = Vue.createApp({
             if (this.count < 9) {
                 this.count += 1;
                 this.total = this.price * this.count;
+                this.total = this.total.toLocaleString();
             }
         },
         //-按鈕
@@ -26,12 +28,14 @@ const app = Vue.createApp({
             if (this.count > 1) {
                 this.count -= 1;
                 this.total = this.price * this.count;
+                this.total = this.total.toLocaleString();
             }
         },
         //清空按鈕
         clear() {
             this.count = 1;
             this.total = this.price;
+            this.total = this.total.toLocaleString();
             this.content = "查看可預訂的日期";
         },
 
@@ -189,12 +193,26 @@ left_btn.addEventListener("click", function (e) {
 //日期----------------------------------------------------------------
 
 // const dateButton = document.getElementById('dateButton');
+//桌機
 const clearBtn = document.querySelector(".clearBtn");
 const date = document.querySelector(".date");
 
 clearBtn.addEventListener("click", function (e) {
+    phone_dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
     dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
     date.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
+    console.log(flatpickr.formatDate(new Date(), "Y-m-d"));
+})
+
+
+//手機
+const phone_clearbtn = document.querySelector('.phone_clearbtn');
+const phone_dateButton = document.querySelector('.phone_dateButton');
+
+phone_clearbtn.addEventListener("click", function (e) {
+    phone_dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
+    date.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
+    dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
     console.log(flatpickr.formatDate(new Date(), "Y-m-d"));
 })
 
@@ -232,5 +250,22 @@ total_pic.addEventListener("click", function (e) {
 lightbox_btn.addEventListener("click", function (e) {
     light_box.style.display = "none";
     des_lightbox.style.display = "none";
-})
+});
+
+
+
+let des_filter_btn = document.querySelectorAll('.des_filter_btn');
+
+for (let i = 0; i < des_filter_btn.length; i++) {
+
+    des_filter_btn[i].addEventListener("click", function (e) {
+        for (let i = 0; i < des_filter_btn.length; i++) {
+            des_filter_btn[i].classList.remove('-active');
+        }
+        des_filter_btn[i].classList.add('-active');
+    })
+};
+
+
+
 
