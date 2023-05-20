@@ -9,6 +9,11 @@
 @include cancel-btn(l, 20px, 50px);
 @include cancel-btn(m, 16px, 40px);
 
+.-active{
+    background-color: $primary;
+    color: #fff;
+}
+
 @include tag(l, 20px, 55px) {
     @include m() {
         line-height: 35px;
