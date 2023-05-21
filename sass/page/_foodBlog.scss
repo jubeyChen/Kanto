@@ -12,6 +12,8 @@
     }
     img{
         width: 100%;
+        height: 100%;
+        object-fit: cover;
         @include m(){
             height: 100%;
             object-fit: cover
@@ -31,7 +33,7 @@
     }
     ul{
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         padding: 50px 0;
 
         @include m(){
@@ -41,7 +43,10 @@
             white-space:nowrap;
         };
         li{
-            margin-right: 20px;
+            
+            @include m(){
+                margin-right: 10px;
+            }
         }
     }
 }    
@@ -434,11 +439,15 @@
         
     }
 }
-.travel-sec4{
+.food-sec4{
     margin:60px auto;
+    text-align: center;
+    @include m(){
+        display: none;
+    }
 }
 
-.phone_travel-sec4 {
+.phone_food-sec4 {
     display: none;
     @include m(){
         display: block;
