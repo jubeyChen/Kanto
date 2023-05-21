@@ -1,0 +1,38 @@
+.backLogin{
+    .login_block{
+        margin: 150px auto;
+        box-sizing: border-box;
+        padding: 50px;
+
+        background-color: #fff;
+        width: 500px;
+        height: 600px;
+        border-radius: $borderRadius;
+
+        p{
+            text-align: center;
+            color: $fontColor;
+            font-size: $paragraph;
+        }
+
+        img{
+            display: block;
+            margin: 0 auto 50px;
+        }
+
+        input[type="button"]{
+            background-color: $primary;
+            color: #fff;
+            display: block;
+            margin: 0 auto;
+            width: 50%;
+            // height: 60px;
+
+            transition: .2s;
+
+            &:hover{
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px;
+            }
+        }
+    }
+}
