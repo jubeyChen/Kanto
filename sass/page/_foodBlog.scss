@@ -440,12 +440,9 @@
 
 .phone_travel-sec4 {
     display: none;
-}
-
-@include m(){
-    .phone_travel-sec4 {
+    @include m(){
         display: block;
-
+    
         div.btn {
             text-align: center;
             margin-bottom: 50px;
@@ -457,3 +454,4 @@
         }
     }
 }
+

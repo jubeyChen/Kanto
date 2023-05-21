@@ -37,6 +37,11 @@
         <div class="game_btn">
             <div class="btn" id="game_btn">用拉霸機來決定旅程</div>
         </div>
+
+        <div class="game_btn_rwd">
+            <div class="btn" id="game_btn_rwd">用拉霸機來決定旅程</div>
+        </div>
+
         <div class="game_banner swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -75,12 +80,12 @@
                         </div>
                     </div>
                 </div>
-              </div>
-              <div class="swiper-pagination"></div>
             </div>
-            
+            <div class="swiper-pagination"></div>
         </div>
+
     </div>
+    
     <!-- 拉霸機 -->
     <div class="game_container_slider">
         <div class="game_wapper" id="game_wapper">
@@ -92,73 +97,213 @@
             <div class="game">
                 <img src="./image/game/game.png" alt="">
                 <div class="results">
-                    
+
                     <div class="result">
-                      <div class="result-txt " id="result">
-                        <div class="result-item">富士山一日遊</div>
-                        <div class="result-item">2</div>
-                        <div class="result-item">3</div>
-                        <div class="result-item">4</div>
-                        <div class="result-item">5</div>
-                        <div class="result-item">6</div>
-                        <div class="result-item">7</div>
-                        <div class="result-item">8</div>
-                        <div class="result-item">9</div>
-                        <div class="result-item">10</div>
-                      </div>
+                        <div class="result-txt " id="result">
+                            <div class="result-item">富士山一日遊</div>
+                            <div class="result-item">東京澀谷天空</div>
+                            <div class="result-item">東京迪士尼度假區門票</div>
+                            <div class="result-item">日本飯能嚕嚕米樂園</div>
+                            <!-- <div class="result-item">富士山一日遊5</div>
+                            <div class="result-item">富士山一日遊6</div>
+                            <div class="result-item">富士山一日遊7</div>
+                            <div class="result-item">富士山一日遊8</div>
+                            <div class="result-item">富士山一日遊9</div>
+                            <div class="result-item">富士山一日遊10</div> -->
+                        </div>
                     </div>
-                    <div class="btn-start" onclick="startAnimation()">START</div>
-                    <div class="btn-stop" onclick="stopAnimation()">STOP</div>
+                    <!-- game-gtn -->
+                    <div class="btn-start" id="btn-start" onclick="startAnimation()">START</div>
+                    <div class="btn-stop" id="btn-stop" onclick="stopAnimation()">STOP</div>
+                    <!-- rwd-gamebtn -->
+                    <div class="btn-start-rwd" id="btn-start" onclick="startAnimation()">START</div>
+                    <div class="btn-stop-rwd" id="btn-stop" onclick="stopAnimation()">STOP</div>
                     <!-- 卡片 -->
                     <div class="cont_principal">
                         <div class="cont_central">
                             <div class="cont_modal cont_modal_active">
                                 <div class="cont_photo">
                                     <div class="cont_img_back">
-                                        <img src="./image/game/game_card1.jpg"
-                                            alt="" />
+                                        <img src="./image/game/game_card1.jpg" alt="" />
                                     </div>
                                 </div>
                                 <div class="cont_text_ingredients">
                                     <div class="cont_over_hidden">
-                
+
                                         <div class="cont_tabs">
-                                            
+
                                             <p>富士山一日遊</p>
                                         </div>
-                
+
                                         <div class="cont_text_det_preparation">
-                                            
+
                                             <div class="cont_text_det_preparation">
-            
+
                                                 <div class="cont_info_preparation">
-                                                    <p>參加富士山及周邊地區的經典一日遊，迎接
-                                                        日本的春季！前往東京最好的春季景點。
+                                                    <p>參加富士山及周邊地區的經典一日遊，迎接日本的春季！前往東京最好的春季景點。
                                                     </p>
                                                 </div>
-                                                
+
                                                 <a href="#">查看詳情</a>
-                                                
+
                                             </div>
-                                            
+
                                         </div>
                                         <div class="cont_btn_mas_dets">
-                                            
-                                            
+
+
                                             <span></span>
                                         </div>
-                
+
                                     </div>
                                     <div class="cont_btn_open_dets">
                                         <a href="#e" onclick="open_close()"><i class="material-icons">&#xE314;</i></a>
                                     </div>
-                
+
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="cont_principal">
+                        <div class="cont_central">
+                            <div class="cont_modal cont_modal_active">
+                                <div class="cont_photo">
+                                    <div class="cont_img_back">
+                                        <img src="./image/game/game_card2.png" alt="" />
+                                    </div>
+                                </div>
+                                <div class="cont_text_ingredients">
+                                    <div class="cont_over_hidden">
+
+                                        <div class="cont_tabs">
+
+                                            <p>東京澀谷天空</p>
+                                        </div>
+
+                                        <div class="cont_text_det_preparation">
+
+                                            <div class="cont_text_det_preparation">
+
+                                                <div class="cont_info_preparation">
+                                                    <p>
+                                                        價格購買各大國際品牌的產品，包括服飾、鞋子、手錶等。同時，您還可以欣賞到美麗的富士山風光，並品嚐當地美食。這是一個絕佳的購物和旅遊體驗。
+                                                    </p>
+                                                </div>
+
+                                                <a href="#">查看詳情</a>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="cont_btn_mas_dets">
+
+
+                                            <span></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="cont_btn_open_dets">
+                                        <a href="#e" onclick="open_close()"><i class="material-icons">&#xE314;</i></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cont_principal">
+                        <div class="cont_central">
+                            <div class="cont_modal cont_modal_active">
+                                <div class="cont_photo">
+                                    <div class="cont_img_back">
+                                        <img src="./image/game/game_card3.png" alt="" />
+                                    </div>
+                                </div>
+                                <div class="cont_text_ingredients">
+                                    <div class="cont_over_hidden">
+
+                                        <div class="cont_tabs">
+
+                                            <p>東京迪士尼度假區門票</p>
+                                        </div>
+
+                                        <div class="cont_text_det_preparation">
+
+                                            <div class="cont_text_det_preparation">
+
+                                                <div class="cont_info_preparation">
+                                                    <p>
+                                                        東京迪士尼度假區是東京必去的旅遊勝地，擁有東京迪士尼海洋樂園和東京迪士尼樂園兩大主題樂園。除了豐富的遊戲體驗和精彩的夜間煙火秀外，樂園中還有各種美食和紀念品可供選擇。
+                                                    </p>
+                                                </div>
+
+                                                <a href="#">查看詳情</a>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="cont_btn_mas_dets">
+
+
+                                            <span></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="cont_btn_open_dets">
+                                        <a href="#e" onclick="open_close()"><i class="material-icons">&#xE314;</i></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cont_principal">
+                        <div class="cont_central">
+                            <div class="cont_modal cont_modal_active">
+                                <div class="cont_photo">
+                                    <div class="cont_img_back">
+                                        <img src="./image/game/game_card4.png" alt="" />
+                                    </div>
+                                </div>
+                                <div class="cont_text_ingredients">
+                                    <div class="cont_over_hidden">
+
+                                        <div class="cont_tabs">
+
+                                            <p>日本飯能嚕嚕米樂園</p>
+                                        </div>
+
+                                        <div class="cont_text_det_preparation">
+
+                                            <div class="cont_text_det_preparation">
+
+                                                <div class="cont_info_preparation">
+                                                    <p>
+                                                        飯能嚕嚕米樂園，讓你暫時逃離城市的喧囂，享受各種刺激的活動和美食。從東京輕鬆前往，適合全家大小一起遊玩。
+                                                    </p>
+                                                </div>
+
+                                                <a href="#">查看詳情</a>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="cont_btn_mas_dets">
+
+
+                                            <span></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="cont_btn_open_dets">
+                                        <a href="#e" onclick="open_close()"><i class="material-icons">&#xE314;</i></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 優惠捲 -->
                     <div class="coupon">
-                        
                         <div class="coupon_box">
                             <p>COUPON</p>
                             <div class="text" id="text">22345</div>
@@ -172,14 +317,15 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
     </div>
-        
 
 
-    
+
+
 
 
     <!-- 以下Footer區域 -->
@@ -191,16 +337,37 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
-        $(function(){
-            $("#game_btn").click(function(){
+        $(function () {
+            $("#game_btn").click(function () {
                 $(".game_container_slider").toggleClass('open');
             });
-            
-            $(".lightbox-close").click(function(){
+            $("#game_btn_rwd").click(function () {
                 $(".game_container_slider").toggleClass('open');
-            })
+            });
+            // $('.btn-stop').click(function () {
+            //     $('html,.game_wapper').animate({ height: '1000px' }, 1000);
+            // });
+            // $('.btn-start').click(function () {
+            //     $('html,.game_wapper').animate({ height: '600px' }, 1000);
+            // });
+
+            $(".lightbox-close").click(function () {
+                $(".game_container_slider").toggleClass('open');
+            });
+            $('#game_btn').click(function () {
+                $('html,body').animate({ scrollTop: '250px' }, 1000);
+                return false;
+            });
+            $('#btn-stop').click(function () {
+                $('html,body').animate({ scrollTop: '460px' }, 1000);
+                return false;
+            });
+            $('#btn-start').click(function () {
+                $('html,body').animate({ scrollTop: '250px' }, 1000);
+                return false;
+            });
         })
-        
+
 
         var swiper = new Swiper(".mySwiper", {
             spaceBetween: 30,
@@ -219,7 +386,7 @@
             },
         });
     </script>
-    
+
 </body>
 
 </html>
