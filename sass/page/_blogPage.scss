@@ -201,6 +201,10 @@ div.blogevent {
             position: absolute; 
             z-index: -100;
 
+            @include m(){
+                display: none;
+            }
+
             #scrollArea{
                 width: 1200px;
                 height: 0;

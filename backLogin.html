@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>後台登入</title>
+    @@include('./layout/style.html')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            background-color: #F4F1E8;
+        }
+    </style>
+
+</head>
+<body>
+    <section class="backLogin container">
+        <div class="login_block">
+            <img src="./image/header/logo.svg" alt="" srcset="">
+
+            <p class="mb-4">後台登入</p>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="account" placeholder="account">
+                <label for="account">帳號</label>
+            </div>
+            <div class="form-floating mb-5">
+                <input type="password" class="form-control" id="password" placeholder="password">
+                <label for="password">密碼</label>
+            </div>
+
+            <input type="button" value="登入" class="btn" onclick="doSubmit()">
+
+        </div>
+
+    </section>
+    <script src="js/vendors/vue.global.prod.js"></script>
+    <script>
+        function doSubmit(){
+            window.location = 'backMember.html';
+        }
+    </script>
+
+</body>
+</html>
