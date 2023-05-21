@@ -1,10 +1,22 @@
-const accordion = document.getElementsByClassName("contentBx");
+// const accordion = document.getElementsByClassName("contentBx");
 
-for(i = 0; i < accordion.length; i++){
-    accordion[i].addEventListener("click", function(){
-        this.classList.toggle("active")
-    })
+// for(i = 0; i < accordion.length; i++){
+//     accordion[i].addEventListener("click", function(){
+//         this.classList.toggle("active")
+//     })
+// }
+
+const labels = document.getElementsByClassName("label");
+
+for (let i = 0; i < labels.length; i++) {
+    const label = labels[i];
+    const content = label.nextElementSibling;
+
+    label.addEventListener("click", function() {
+        content.classList.toggle("active");
+    });
 }
+
 
 
 $(document).ready(function() {
@@ -91,6 +103,28 @@ $(document).ready(function() {
         slider.oninput = function() {
         value.innerHTML = this.value;
         }
+
+
+        // //控制sidebar Scrollable 效果
+
+        // let sidebar = document.getElementsByClassName("sidebar")[0];
+        // let sidebar_content = document.getElementsByClassName("content-wrapper")[0];
+
+        // window.onscroll = () => {
+        //     let scrollTop = window.scrollY;
+        //     let viewportHeigh = window.innerHeight;
+        //     let contentHeight = sidebar_content.getBoundingClientRect().height;
+        //     let sidebarTop = sidebar.getBoundingClientRect().top + window.pageYOffset;
+
+        //     if(scrollTop >= contentHeight - viewportHeigh + sidebarTop){
+        //         sidebar_content.style.transform = `translateY(-${contentHeight - viewportHeigh + sidebarTop}px)`;
+        //         sidebar_content.style.position = "fixed";
+        //     }
+        //     else{
+        //         sidebar_content.style.transform = "";
+        //         sidebar_content.style.position = "";
+        //     }
+        // }
 
 
         // // 獲取要固定高度的元素

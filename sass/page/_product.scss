@@ -15,6 +15,16 @@
         .left{
             // outline: 1px solid yellow;
 
+            .sidebar{
+                // outline: 3px solid red;
+                position: sticky;
+                top:100px
+
+
+            }
+
+
+
         }
 
         .right{
@@ -36,6 +46,10 @@
     
             display: flex;
             margin-bottom: 30px;
+
+                @include m(){
+                    display: none;
+                }
     
             .search-bar{
                 height: 30px;
@@ -60,6 +74,7 @@
 
             @include m(){
                 width: 100%;
+                margin-top: 50px;
             }
 
              .check-box{
@@ -398,11 +413,84 @@
      // -------------------RWD的accordion效果，需要家的一些項目 -----------------------
 
 
-     .accordion{
-        .contentBx.active{
-            .content{
+    //  .accordion{
+    //     .contentBx.active{
+    //         .content{
+    //             @include m(){
+    //                 height: 150px;
+    //                 padding: 10px;
+    //             }
+    //         }
+    //     }
+    //  }
+
+
+    //  .accordion{
+
+    //     .search-day{
+
+    //         .contentBx.active{
+
+    //             .content{
+
+    //                 @include m(){
+    //                     height: 230px;
+    //                     padding: 10px;
+    //                 }
+    //             }
+
+
+    //         } 
+    //     }
+        
+
+
+    //  } 
+
+
+    //  .accordion{
+
+    //     .check-box2{
+
+    //         .contentBx.active{
+
+    //             .content{
+
+    //                 @include m(){
+    //                     height: 80px;
+    //                     padding: 10px;
+    //                 }
+    //             }
+    //         } 
+    //     }
+    //  } 
+
+    //  .accordion{
+
+    //     .search-price{
+
+    //         .contentBx.active{
+
+    //             .content{
+
+    //                 @include m(){
+    //                     height: 30px;
+    //                     padding: 10px;
+    //                 }
+    //             }
+    //         } 
+    //     }
+    //  }
+
+    //  =============================test=================================
+
+
+    //勾勾1
+    .accordion{
+        .contentBx{
+            .content.active{
                 @include m(){
-                    height: auto;
+                    height: 150px;
                     padding: 10px;
                 }
             }
@@ -410,18 +498,106 @@
      }
 
 
+    //勾勾2
+    .accordion{
+
+        .check-box2{
+
+            .contentBx{
+
+                .content.active{
+
+                    @include m(){
+                        height: 80px;
+                        padding: 10px;
+                    }
+                }
+            } 
+        }
+     } 
+
+
+    //  日期
+     .accordion{
+
+        .search-day{
+
+            .contentBx{
+
+                .content.active{
+
+                    @include m(){
+                        height: 230px;
+                        padding: 10px;
+                    }
+                }
+
+
+            } 
+        }
+        
+
+
+     } 
+
+
+     //  價錢
+    .accordion{
+
+        .search-price{
+
+            .contentBx{
+
+                .content.active{
+
+                    @include m(){
+                        height: 30px;
+                        padding: 10px;
+                    }
+                }
+            } 
+        }
+     }
+
+
     }
+
+
+
 
     .accordion{
         .contentBx.active{
             .label{
                 &::before{
                     @include m(){
-                        content: "-";
+                         content: "-";
+
                     }
                 }
             }
         }
+    }
+
+    .search{
+
+        .accordion{
+
+            .check-box{
+
+                .contentBx.active{
+                    .label{
+                        &::before{
+                            @include m(){
+                                 content: "-";
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        }
+
     }
     
     
