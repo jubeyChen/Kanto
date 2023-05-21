@@ -22,6 +22,8 @@
         width: 60%;
         margin: 0 auto;
         text-align: center;
+        color: $fontColor;
+
 
     }
 
@@ -41,6 +43,8 @@
                     font-size: 18px;
                     width: 90%;
                     border: none;
+                    color: $fontColor;
+
                 }
 
             }
@@ -68,6 +72,8 @@
         font-size: 30px;
         width: 60%;
         margin: 0 auto;
+        color: $fontColor;
+
     }
 
     @include m() {
@@ -122,14 +128,19 @@
                 align-items: center;
                 width: 90%;
                 margin: auto;
-                margin-bottom: 3vh;
+                padding: 30px 0 30px 0;
 
                 h3 {
-                    padding: 3vh;
+                    margin: 1vh;
+                    color: $fontColor;
+
                 }
 
                 p {
-                    padding: 5vw;
+                    margin: 1vh;
+                }
+                img{
+
                 }
 
             }
@@ -138,14 +149,22 @@
                 display: block;
                 margin: 0 auto;
                 width: 50%;
+                margin-bottom: 3vh;
+
             }
 
             h3 {
                 margin-top: 10px;
+                margin-bottom: 3vh;
+                color: $fontColor;
+
+
             }
 
             p {
                 font-size: 20px;
+                color: $fontColor;
+
             }
 
         }

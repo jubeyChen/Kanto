@@ -11,9 +11,9 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
 </head>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
 </head>
 
@@ -50,26 +50,27 @@
 
         <div class="cart_section1">
             <h4>購物車</h4>
-            <span class="cart_line"></span>
 
             <div class="cart_inner_section">
 
                 <div class="cart_item_list">
 
-                    <ul>
+                    <span class="cart_line"></span>
+
+                    <ul class="cart_pc_section1">
                         <li>
-                            <i class="cart_icons_checkbox_small checkbox1">check_box_outline_blank</i>
+                            <input type="checkbox" id="aboutSelectOne">
                         </li>
                         <li>
                             <img src="./image/cart/item1.jpg" alt="">
                         </li>
                         <li>
                             <p>富士山賞櫻一日遊（東京出發）</p>
-                            <p>2023-06-24</p>
+                            <p class="cart_text_mobile_off">2023-06-24</p>
                         </li>
 
                         <li>
-                            <p>成人 X 1</p>
+                            <p>人數 X 1</p>
                         </li>
                         <li>
                             <p>TWD $1500</p>
@@ -78,19 +79,62 @@
                             <i id="cartFavoriteIcon" class="cart_icons_favorite_small">favorite_border</i>
                             <i id="cartDeleteIcon" class="cart_icons_trash_small">delete_outline</i>
                         </li>
-
                     </ul>
 
+                    <div class="cart_mobile_section1">
+
+                        <div class="cart_mobile_article1">
+
+                            <ul>
+
+                                <li>
+                                    <input type="checkbox" id="aboutSelectOne">
+                                </li>
+                                <li>
+                                    <img src="./image/cart/mobile_item1.jpg" alt="">
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="cart_mobile_article2">
+                            <ul>
+                                <li>
+                                    <p>富士山賞櫻一日遊</p>
+                                </li>
+
+                                <li>
+                                    <p>TWD $1500</p>
+                                </li>
+
+                                <li>
+                                    <p>人數 X 1</p>
+                                </li>
+                                <li>
+                                    <i id="cartFavoriteIcon" class="cart_icons_favorite_small">favorite_border</i>
+                                    <i id="cartDeleteIcon" class="cart_icons_trash_small">delete_outline</i>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <li class="cart_pc_section1">
+                            <i id="cartFavoriteIcon" class="cart_icons_favorite_small">favorite_border</i>
+                            <i id="cartDeleteIcon" class="cart_icons_trash_small">delete_outline</i>
+                        </li>
+
+                    </div>
+                    <span class="cart_line"></span>
+
                 </div>
-                <span class="cart_line"></span>
 
                 <ul class="cart_list">
 
                     <li>
-                        <i class="cart_icons_checkbox_small checkbox2">check_box_outline_blank</i>
+                        <input type="checkbox" id="aboutSelectAll">
                     </li>
                     <li>
-                        <p id="selectAll">全選</p> <span></span>
+                        <p>全選</p>
                     </li>
                     <li class="cart_pay_btn_wrapper">
                         <a href="payment.html">
@@ -99,29 +143,42 @@
                     </li>
                 </ul>
 
-
             </div>
+            <img id="emptyCartImage" class="empty-cart-message" src="./image/about/Empty_Slate__Shopping_Cart.gif"
+                alt="">
+            <p id="emptyCartText1" class="empty-cart-message">購物車是空的，目前正被喵喵霸佔中？</p>
+            <p id="emptyCartText2" class="empty-cart-message">馬上去逛逛，挑幾個你喜歡的玩樂吧！</p>
         </div>
 
+
+        <!-- 推薦的地方 -->
         <div class="cart_section2">
             <ul>
                 <li>
-                    <img src="./image/cart/rec1.jpg" alt="">
-                    <p>日本飯能嚕嚕米樂園</p>
+                    <div class="cart_pic_div">
+                        <img src="./image/cart/rec1.jpg" alt="">
+                    </div>
+                    <p>日本飯能嚕嚕米樂園門票</p>
                     <button cart_btn>查看詳情</button>
                 </li>
                 <li>
-                    <img src="./image/cart/rec2.jpg" alt="">
-                    <p>鎌倉大佛&江之島&鎌倉高校前</p>
+                    <div class="cart_pic_div">
+                        <img src="./image/cart/rec2.jpg" alt="">
+                    </div>
+                    <p>鎌倉大佛&鎌倉高校前</p>
                     <button cart_btn>查看詳情</button>
                 </li>
                 <li>
-                    <img src="./image/cart/rec3.jpg" alt="">
-                    <p>東京澀谷天空</p>
+                    <div class="cart_pic_div">
+                        <img src="./image/cart/rec3.jpg" alt="">
+                    </div>
+                    <p>東京澀谷天空觀景臺門票</p>
                     <button cart_btn>查看詳情</button>
                 </li>
                 <li>
-                    <img src="./image/cart/rec4.jpg" alt="">
+                    <div class="cart_pic_div">
+                        <img src="./image/cart/rec4.jpg" alt="">
+                    </div>
                     <p>東京迪士尼度假區門票</p>
                     <button cart_btn>查看詳情</button>
                 </li>
@@ -143,19 +200,58 @@
             // Add a click event handler to the delete icon
             $('#cartDeleteIcon').on('click', function () {
                 // Remove the cart_inner_section element
-                $('.cart_item_list').remove();
+                $('.cart_inner_section').remove();
+
+                // Check if the cart is empty
+                if ($('.cart_inner_section .cart_item_list').length === 0) {
+                    // Show the empty cart message
+                    $('#emptyCartImage, #emptyCartText1, #emptyCartText2').show();
+                }
             });
         });
 
-        let checkbox = document.querySelector('.cart_list .checkbox');
 
-        checkbox.addEventListener('click', function () {
-            let isChecked = checkbox.innerText === 'check_box';
-            checkbox.innerText = isChecked ? 'check_box_outline_blank' : 'check_box';
+        $(document).ready(function () {
+            // Add a click event handler to the delete icon
+            $('#cartDeleteIcon').on('click', function () {
+                // Remove the cart_inner_section element
+                $('.cart_item_list').remove();
+
+                // Check if the cart is empty
+                if ($('.cart_inner_section').length === 0) {
+                    // Show the "Your cart is empty" message
+                    $('.cart_list').after('<p>Your cart is empty</p>');
+                }
+            });
         });
 
 
+        $(document).ready(function () {
+            // When aboutSelectAll is clicked
+            $('#aboutSelectAll').click(function () {
+                // Get the checked state of aboutSelectAll
+                var isCheckedAll = $(this).prop('checked');
 
+                // Set the checked state of aboutSelectOne to match aboutSelectAll
+                $('#aboutSelectOne').prop('checked', isCheckedAll);
+
+                // If aboutSelectAll is unchecked, uncheck itself
+                if (!isCheckedAll) {
+                    $(this).prop('checked', false);
+                }
+            });
+
+            // When aboutSelectOne is clicked
+            $('#aboutSelectOne').click(function () {
+                // Get the checked state of aboutSelectOne
+                var isCheckedOne = $(this).prop('checked');
+
+                // If aboutSelectOne is unchecked, uncheck aboutSelectAll
+                if (!isCheckedOne) {
+                    $('#aboutSelectAll').prop('checked', false);
+                }
+            });
+        });
 
     </script>
 </body>
