@@ -55,155 +55,372 @@
             
             }
         }
-    
-        .check-box{
-            margin-bottom: 30px;
-            
-    
-            h4{
-                margin-bottom: 10px;
+
+        .accordion{
+
+            @include m(){
+                width: 100%;
             }
 
-            label{
-                font-size: $paragraph;
+             .check-box{
+                margin-bottom: 30px;
+
+                @include m(){
+                    background-color: white;
+                }
+
+                .contentBx{
+                        
+                        @include m(){
+                        position: relative;
+                    }
+                
+                    .label{
+                        
+                        @include m(){
+                            background-color: $primary;
+                            padding: 5px;
+                            border-radius: 5px;
+                            // margin-bottom: 10px;
+                            // cursor: pointer;
+                            position: relative;
+
+                            &:before{
+                                content: "+";
+                                position: absolute;
+                                top: 20%;
+                                right: 20px;
+                                font-size: 1.5em;
+                                color: white;
+                            }
+                        }
+
+                        h4{
+                            margin-bottom: 10px;
+
+                            @include m(){
+                                margin-bottom: 0;
+                                color: white;
+                            }
+                        }
+                    }
+
+                    label{
+                        font-size: $paragraph;
+                    }
+
+                    .content{
+
+                        @include m(){
+                            // padding: 10px;
+                            position: relative;
+                            height: 0;
+                            overflow: hidden;
+                            transition: 0.5s;
+                            overflow-y: auto;
+
+                        }
+                    }
+
+                }
+                
             }
             
-        }
         
-    
-        .check-box2{
-    
-            margin-bottom: 30px;
-            
-            h4{
-                margin-bottom: 10px;
+            .check-box2{
+        
+                margin-bottom: 30px;
+
+                    @include m(){
+                        background-color: white;
+                    }
+
+                .label{
+                        
+                    @include m(){
+                        background-color: $primary;
+                        padding: 5px;
+                        border-radius: 5px;
+                        // margin-bottom: 10px;
+                        // cursor: pointer;
+                        position: relative;
+
+                        &:before{
+                            content: "+";
+                            position: absolute;
+                            top: 20%;
+                            right: 20px;
+                            font-size: 1.5em;
+                            color: white;
+                        }
+                    }
+
+                    h4{
+                        margin-bottom: 10px;
+
+                        @include m(){
+                            margin-bottom: 0;
+                            color: white;
+                        }
+                    }
+                }
+                
+
+                label{
+                    font-size: $paragraph;
+                }
+
+                .content{
+
+                    @include m(){
+                        // padding: 10px;
+                        position: relative;
+                        height: 0;
+                        overflow: hidden;
+                        transition: 0.5s;
+                        overflow-y: auto;
+
+                    }
+                }
+
             }
 
-            label{
-                font-size: $paragraph;
+        
+            .search-day{
+                margin-bottom: 30px;
+
+                    @include m(){
+                        background-color: white;
+                    }
+                
+                    .label{
+                        
+                        @include m(){
+                            background-color: $primary;
+                            padding: 5px;
+                            border-radius: 5px;
+                            // margin-bottom: 10px;
+                            // cursor: pointer;
+                            position: relative;
+
+                            &:before{
+                                content: "+";
+                                position: absolute;
+                                top: 20%;
+                                right: 20px;
+                                font-size: 1.5em;
+                                color: white;
+                            }
+                        }
+
+                        h4{
+                            margin-bottom: 10px;
+
+                            @include m(){
+                                margin-bottom: 0;
+                                color: white;
+                            }
+                        }
+                    }
+
+            // RWD的accordion效果，需要家的一些項目~
+                    .content{
+
+                        @include m(){
+                            // padding: 10px;
+                            position: relative;
+                            height: 0;
+                            overflow: hidden;
+                            transition: 0.5s;
+                            overflow-y: auto;
+    
+                        }
+                    }
+        
+                
+                .calendar {
+                    width: 200px;
+                    font-size: 14px;
+                    font-family: Arial, sans-serif;
+                }
+                
+                .calendar-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    background-color: #eee;
+                    padding: 10px;
+                }
+                
+                .calendar-header-item {
+                    cursor: pointer;
+                }
+                
+                .calendar-body {
+                    border: 1px solid #ccc;
+                    padding: 10px;
+                }
+                
+                .calendar-weekdays {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 10px;
+                }
+                
+                .calendar-weekday {
+                    width: calc(100% / 7);
+                    text-align: center;
+                }
+                
+                .calendar-days {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                
+                .calendar-day {
+                    width: calc(100% / 7);
+                    height: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                }
+                
+                .calendar-day:hover {
+                    background-color: #eee;
+                }
+                
+                .calendar-day.today {
+                    background-color: #ccc;
+                }
+                
+                .calendar-day.selected {
+                    background-color: #007bff;
+                    color: #fff;
+                }
+                
+            }
+        
+            .search-price{
+
+                @include m(){
+                    background-color: white;
+                }
+
+                .label{
+                        
+                    @include m(){
+                        background-color: $primary;
+                        padding: 5px;
+                        border-radius: 5px;
+                        // margin-bottom: 10px;
+                        // cursor: pointer;
+                        position: relative;
+                        color: white;
+
+                        &:before{
+                            content: "+";
+                            position: absolute;
+                            top: 20%;
+                            right: 20px;
+                            font-size: 1.5em;
+                            color: white;
+                        }
+                    }
+
+                }
+
+            // RWD的accordion效果，需要家的一些項目~
+
+                .content{
+
+                    @include m(){
+                        // padding: 10px;
+                        position: relative;
+                        height: 0;
+                        overflow: hidden;
+                        transition: 0.5s;
+                        overflow-y: auto;
+
+                    }
+                }
+        
+                .slider {
+                    // -webkit-appearance: none;
+                    appearance: none;
+                    width: 100%;
+                    height: 10px;
+                    background: #ddd;
+                    outline: none;
+                    opacity: 0.7;
+                    // -webkit-transition: .2s;
+                    transition: opacity .2s;
+                }
+                
+                .slider:hover {
+                    opacity: 1;
+                }
+                
+                .slider::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 20px;
+                    height: 20px;
+                    background: #C73E3A;
+                    cursor: pointer;
+                    border-radius: 50%;
+                    position: relative;
+                }
+                
+                .slider::-moz-range-thumb {
+                    width: 20px;
+                    height: 20px;
+                    background: #C73E3A;
+                    cursor: pointer;
+                    border-radius: 50%;
+                    position: relative;
+                }
+                
+                #value {
+                    width: 100%;
+                    margin-top: 10px;
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+                
+                
             }
 
         }
 
-    
-        .search-day{
-            margin-bottom: 30px;
-            
-            h4{
-                margin-bottom: 10px;
+
+     // -------------------RWD的accordion效果，需要家的一些項目 -----------------------
+
+
+     .accordion{
+        .contentBx.active{
+            .content{
+                @include m(){
+                    height: auto;
+                    padding: 10px;
+                }
             }
-    
-            
-            .calendar {
-                width: 200px;
-                font-size: 14px;
-                font-family: Arial, sans-serif;
-              }
-              
-              .calendar-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background-color: #eee;
-                padding: 10px;
-              }
-              
-              .calendar-header-item {
-                cursor: pointer;
-              }
-              
-              .calendar-body {
-                border: 1px solid #ccc;
-                padding: 10px;
-              }
-              
-              .calendar-weekdays {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 10px;
-              }
-              
-              .calendar-weekday {
-                width: calc(100% / 7);
-                text-align: center;
-              }
-              
-              .calendar-days {
-                display: flex;
-                flex-wrap: wrap;
-              }
-              
-              .calendar-day {
-                width: calc(100% / 7);
-                height: 30px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-              }
-              
-              .calendar-day:hover {
-                background-color: #eee;
-              }
-              
-              .calendar-day.today {
-                background-color: #ccc;
-              }
-              
-              .calendar-day.selected {
-                background-color: #007bff;
-                color: #fff;
-              }
-              
         }
-    
-        .search-price{
-       
-            .slider {
-                // -webkit-appearance: none;
-                appearance: none;
-                width: 100%;
-                height: 10px;
-                background: #ddd;
-                outline: none;
-                opacity: 0.7;
-                // -webkit-transition: .2s;
-                transition: opacity .2s;
-              }
-              
-              .slider:hover {
-                opacity: 1;
-              }
-              
-              .slider::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 20px;
-                height: 20px;
-                background: #C73E3A;
-                cursor: pointer;
-                border-radius: 50%;
-                position: relative;
-              }
-              
-              .slider::-moz-range-thumb {
-                width: 20px;
-                height: 20px;
-                background: #C73E3A;
-                cursor: pointer;
-                border-radius: 50%;
-                position: relative;
-              }
-              
-              #value {
-                width: 100%;
-                margin-top: 10px;
-                text-align: center;
-                font-size: 14px;
-                font-weight: bold;
-              }
-              
-              
+     }
+
+
+    }
+
+    .accordion{
+        .contentBx.active{
+            .label{
+                &::before{
+                    @include m(){
+                        content: "-";
+                    }
+                }
+            }
         }
     }
     

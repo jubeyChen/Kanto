@@ -142,7 +142,7 @@
     let body = document.getElementById("aboutTextarea").value;
 
     if (subject === "" || isName === "") {
-        alert("主題和名字不能為空");
+        alert("主題或名字不能為空白");
         return;
     }
 
@@ -181,34 +181,28 @@ function validateTaiwanMobile(phone) {
 }
 
    
-    function sendEmail() {
-    let subject = document.getElementById("aboutSubject").value;
-    let isName = document.getElementById("aboutName").value;
-    let phone = document.getElementById("aboutTel").value;
-    let email = document.getElementById("aboutEmail").value;
-    let body = document.getElementById("aboutTextarea").value;
+//     function sendEmail() {
+//     let subject = document.getElementById("aboutSubject").value;
+//     let isName = document.getElementById("aboutName").value;
+//     let phone = document.getElementById("aboutTel").value;
+//     let email = document.getElementById("aboutEmail").value;
+//     let body = document.getElementById("aboutTextarea").value;
    
    
-     Email.send({
-      SecureToken : "d8f8fcac-762b-4858-956c-cc3abc40e0cc",
-      To: 'kantoasuka1@gmail.com',
-      From: "kantoasuka1@gmail.com",
-      Subject: subject,
-      Body: "Name: " + isName + "<br>Email: " + email + "<br>Phone: " + phone + "<br><br>" + body,
+//      Email.send({
+//       SecureToken : "d8f8fcac-762b-4858-956c-cc3abc40e0cc",
+//       To: 'kantoasuka1@gmail.com',
+//       From: "kantoasuka1@gmail.com",
+//       Subject: subject,
+//       Body: "Name: " + isName + "<br>Email: " + email + "<br>Phone: " + phone + "<br><br>" + body,
    
    
-    })
-    .then(function (message) {
-      alert("您的留言已送出");
-    });
-   }
-
-   
-   
-   
+//     })
+//     .then(function (message) {
+//       alert("您的留言已送出");
+//     });
+//    }
    </script>
-   
-
 
 </body>
 

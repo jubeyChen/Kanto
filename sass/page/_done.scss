@@ -6,8 +6,44 @@
 .done_container{
     width: 80%;
     margin: 0 auto;
+
+    @include m(){
+        background-color: black;
+        width: 100%;
+    }
+
 }
 .done_section1{
+
+    @include m(){
+        width: 100%;
+        background-color: black;
+
+        ul{
+            display: flex;
+            flex-direction: column;
+            li{
+                margin: 1.5vh;
+                h2{
+                    color: $primary;
+                }
+    
+                button{
+                    background-color: #C73E3A;
+                    border: none;
+                    width:  225px;
+                    height: 55px;
+                    border-radius: 5px;
+                    color:white;
+                    border: none;
+                    cursor: pointer;
+                    margin: 15px 0;
+                    font-size: 20px;
+                }
+    
+            }
+        }
+    }
 
     ul{
         display: flex;
