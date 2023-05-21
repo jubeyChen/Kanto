@@ -39,7 +39,7 @@
         <div class="event block1">
             <div class="event_text">
                 <div class="time">
-                    <div class="circle"></div>
+                    <div class="phone_circle"></div>
                     <p>08:10</p>
                 </div>
                 <h4>飯店出發</h4>
@@ -52,7 +52,7 @@
         <div class="event">
             <div class="event_text">
                 <div class="time">
-                    <div class="circle"></div>
+                    <div class="phone_circle"></div>
                     <p>10:20</p>
                 </div>
                 <h4>富士山五合目</h4>
@@ -69,7 +69,7 @@
         <div class="event">
             <div class="event_text">
                 <div class="time">
-                    <div class="circle"></div>
+                    <div class="phone_circle"></div>
                     <p>12:20</p>
                 </div>
                 <h4>音樂盒之森美術館</h4>
@@ -86,7 +86,7 @@
         <div class="event">
             <div class="event_text">
                 <div class="time">
-                    <div class="circle"></div>
+                    <div class="phone_circle"></div>
                     <p>14:30</p>
                 </div>
                 <h4>忍野八海</h4>
@@ -128,7 +128,7 @@
             </div>
 
         </div>
-        
+
         <div class=""></div>
     </div>
 
@@ -146,13 +146,16 @@
             <!--飛機-->
             <div id="plane-set">
                 <section id="scrollArea">
-                    <svg width="1176" height="1535" viewBox="0 0 1176 1535" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M700.502 107.5C898.001 165 1004.3 285 991 479.5C975.854 701 475 643.5 475 962.5C475 1149.5 1153 1140.5 1018 1534.5" stroke="#414143" stroke-width="2" stroke-dasharray="10 10"/>
+                    <svg width="1176" height="1535" viewBox="0 0 1176 1535" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M700.502 107.5C898.001 165 1004.3 285 991 479.5C975.854 701 475 643.5 475 962.5C475 1149.5 1153 1140.5 1018 1534.5"
+                            stroke="#414143" stroke-width="2" stroke-dasharray="10 10" />
                     </svg>
                 </section>
                 <div id="airplane">
                     <img src="https://www.jal.com/ja/sustainability/soraiku/steamschool/assets/img/airplane.svg" alt="">
-                </div>    
+                </div>
             </div>
 
             <!--主要內容-->
@@ -161,7 +164,7 @@
                 <div class="circle_line">
                     <div class="circle"></div>
                     <div class="line"></div>
-                    <ul>
+                    <ul class="aside_content">
                         <li>08:10</li>
                         <li>飯店出發</li>
                     </ul>
@@ -181,7 +184,7 @@
                 <div class="circle_line">
                     <div class="circle"></div>
                     <div class="line"></div>
-                    <ul>
+                    <ul class="aside_content">
                         <li>10:20</li>
                         <li>富士山五合目</li>
                     </ul>
@@ -209,7 +212,7 @@
                 <div class="circle_line">
                     <div class="circle"></div>
                     <div class="line"></div>
-                    <ul>
+                    <ul class="aside_content">
                         <li>12:30</li>
                         <li>音樂盒之森美術館</li>
                     </ul>
@@ -238,7 +241,7 @@
                 <div class="circle_line">
                     <div class="circle"></div>
                     <div class="line"></div>
-                    <ul>
+                    <ul class="aside_content">
                         <li>14:30</li>
                         <li>忍野八海</li>
                     </ul>
@@ -266,7 +269,7 @@
                 <!--側邊點點-->
                 <div class="circle_line">
                     <div class="circle"></div>
-                    <ul>
+                    <ul class="aside_content">
                         <li>16:30</li>
                         <li>回程</li>
                     </ul>
@@ -374,7 +377,7 @@
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
     <script>
-        window.addEventListener('scroll', function(e){
+        window.addEventListener('scroll', function (e) {
 
             const path = document.querySelector('path');
             const length = path.getTotalLength();
@@ -386,7 +389,7 @@
             let rangeY = Math.abs(top - windowH);
 
             let progress = rangeY / 1481;
-            console.log(progress)
+            // console.log(progress)
 
             let myPoint = path.getPointAtLength(progress * length);
             let prePoint = path.getPointAtLength(progress * length - 1);
@@ -396,18 +399,73 @@
             let y = Math.abs(myPoint.y - prePoint.y);
             let rotateDeg = Math.atan(y / x) * (180 / Math.PI);
 
-            if(rotateDeg < 0){
+            if (rotateDeg < 0) {
                 rotateDeg += 180;
             }
 
             const airplane = document.getElementById('airplane');
 
-            if(top < windowH && progress <= 1){                
+            if (top < windowH && progress <= 1) {
                 airplane.setAttribute('style', `opacity: 1; transform: translate(${pathX}px, ${pathY}px) rotate(${rotateDeg}deg)`);
                 scrollArea.setAttribute('style', `opacity: 1; height: ${pathY + 32}px`);
             }
 
+
+
+
+
+
+            //側邊 線跟點點
+            let circle = document.querySelectorAll('.circle');
+            let aside_content = document.querySelectorAll('.aside_content');
+            let circle_line = document.querySelectorAll('.line');
+
+
+            if (window.pageYOffset > 1000) {
+                circle[0].style.transform = 'scale(1)';
+                circle[0].style.opacity = 1;
+
+                setTimeout(function () {
+                    aside_content[0].style.opacity = 1;
+                    circle_line[0].style.height = 100 + '%';
+                }, 500)
+            }
+            if (window.pageYOffset > 1500) {
+                circle[1].style.transform = 'scale(1)';
+                circle[1].style.opacity = 1;
+                setTimeout(function () {
+                    aside_content[1].style.opacity = 1;
+                    circle_line[1].style.height = 100 + '%';
+                }, 500)
+            }
+            if (window.pageYOffset > 2000) {
+                circle[2].style.transform = 'scale(1)';
+                circle[2].style.opacity = 1;
+                setTimeout(function () {
+                    aside_content[2].style.opacity = 1;
+                    circle_line[2].style.height = 100 + '%';
+                }, 500)
+            }
+            if (window.pageYOffset > 2500) {
+                circle[3].style.transform = 'scale(1)';
+                circle[3].style.opacity = 1;
+                setTimeout(function () {
+                    aside_content[3].style.opacity = 1;
+                    circle_line[3].style.height = 100 + '%';
+                }, 500)
+            }
+            if (window.pageYOffset > 3000) {
+                circle[4].style.transform = 'scale(1)';
+                circle[4].style.opacity = 1;
+                setTimeout(function(){
+                    aside_content[4].style.opacity = 1;
+                },500)
+
+            }
         });
+
+
+
 
     </script>
 </body>

@@ -245,11 +245,27 @@ let des_lightbox = document.querySelector(".des_lightbox");
 let lightbox_btn = document.querySelector(".ligntbox_btn");
 total_pic.addEventListener("click", function (e) {
     light_box.style.display = "block";
+    setTimeout(function () {
+        light_box.style.opacity = 1;
+    }, 0); 
+
     des_lightbox.style.display = "block";
+    setTimeout(function () {
+        des_lightbox.style.opacity = 1;
+    }, 0); 
+
 });
 lightbox_btn.addEventListener("click", function (e) {
     light_box.style.display = "none";
+    setTimeout(function () {
+        light_box.style.opacity = 0;
+    }, 0); 
+
+
     des_lightbox.style.display = "none";
+    setTimeout(function () {
+        des_lightbox.style.opacity = 0;
+    }, 0); 
 });
 
 

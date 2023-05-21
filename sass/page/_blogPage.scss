@@ -66,7 +66,7 @@ div.blog_phone_event{
                         font-size: 16px;
                         margin-left: 5px;
                     }
-                    div.circle{
+                    div.phone_circle{
                         width: 15px;
                         height: 15px;
                         background-color: #C73E3A;
@@ -249,12 +249,13 @@ div.blogevent {
 
                 div.line {
                     width: 2px;
-                    height: 100%;
+                    height: 0%;
                     background-color: black;
                     position: absolute;
                     z-index: -1;
                     left: 9px;
                     top: 1px;
+                    transition: .7s;
                 }
 
                 div.circle {
@@ -262,11 +263,15 @@ div.blogevent {
                     height: 20px;
                     background-color: #C73E3A;
                     border-radius: 50%;
+                    opacity: 0;
+                    transition: .5s;
+                    transform: scale(0);
                 }
 
-                ul {
+                ul.aside_content {
                     margin-top: 20px;
-
+                    opacity: 0;
+                    transition: .5s;
                     li {
 
                         font-size: 20px;
@@ -307,12 +312,13 @@ div.blogevent {
 
                 div.line {
                     width: 2px;
-                    height: 100%;
+                    height: 0%;
                     background-color: black;
                     position: absolute;
                     z-index: -1;
                     left: 9px;
                     top: 1px;
+                    transition: .7s;
                 }
 
                 div.circle {
@@ -320,11 +326,14 @@ div.blogevent {
                     height: 20px;
                     background-color: #C73E3A;
                     border-radius: 50%;
+                    opacity: 0;
+                    transition: .5s;
+                    transform: scale(0);
                 }
-
-                ul {
+                ul.aside_content{
                     margin-top: 20px;
-
+                    opacity: 0;
+                    transition: .5s;
                     li {
                         font-size: 20px;
                         margin-left: 10px;
@@ -374,15 +383,15 @@ div.blogevent {
                 width: 25%;
                 display: flex;
                 position: relative;
-
                 div.line {
                     width: 2px;
-                    height: 100%;
+                    height: 0%;
                     background-color: black;
                     position: absolute;
                     z-index: -1;
                     left: 9px;
                     top: 1px;
+                    transition: .7s;
                 }
 
                 div.circle {
@@ -390,11 +399,15 @@ div.blogevent {
                     height: 20px;
                     background-color: #C73E3A;
                     border-radius: 50%;
+                    opacity: 0;
+                    transition: .5s;
+                    transform: scale(0);
                 }
 
-                ul {
+                ul.aside_content{
                     margin-top: 20px;
-
+                    transition: .5s;
+                    opacity: 0;
                     li {
                         font-size: 20px;
                         margin-left: 10px;
@@ -447,12 +460,13 @@ div.blogevent {
 
                 div.line {
                     width: 2px;
-                    height: 100%;
+                    height: 0%;
                     background-color: black;
                     position: absolute;
                     z-index: -1;
                     left: 9px;
                     top: 1px;
+                    transition: .7s;
                 }
 
                 div.circle {
@@ -460,11 +474,15 @@ div.blogevent {
                     height: 20px;
                     background-color: #C73E3A;
                     border-radius: 50%;
+                    opacity: 0;
+                    transition: .5s;
+                    transform: scale(0);
                 }
 
-                ul {
+                ul.aside_content{
                     margin-top: 20px;
-
+                    transition: .5s;
+                    opacity: 0;
                     li {
                         font-size: 20px;
                         margin-left: 10px;
@@ -517,26 +535,31 @@ div.blogevent {
                 display: flex;
                 position: relative;
 
-                div.line {
-                    width: 2px;
-                    height: 100%;
-                    background-color: black;
-                    position: absolute;
-                    z-index: -1;
-                    left: 8px;
-                    top: 1px;
-                }
+                // div.line {
+                //     width: 2px;
+                //     height: 0%;
+                //     background-color: black;
+                //     position: absolute;
+                //     z-index: -1;
+                //     left: 9px;
+                //     top: 1px;
+                //     transition: .7s;
+                // }
 
                 div.circle {
                     width: 20px;
                     height: 20px;
                     background-color: #C73E3A;
                     border-radius: 50%;
+                    opacity: 0;
+                    transition: .5s;
+                    transform: scale(0);
                 }
 
-                ul {
+                ul.aside_content{
                     // margin-top: 20px;
-
+                    opacity: 0;
+                    transition: .5s;
                     li {
                         font-size: 20px;
                         margin-left: 10px;
