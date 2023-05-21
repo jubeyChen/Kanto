@@ -75,6 +75,46 @@ a{
             line-height: 1.2;           
         }
     }
+
+    //飛機
+    #plane-set{
+        position: absolute; 
+        z-index: -100;
+
+        #scrollArea{
+            width: 1200px;
+            height: 0;
+            position: relative;
+            opacity: 0;
+            overflow: hidden;
+
+            svg{
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+    
+        }
+
+        #airplane{
+            transform-origin: 50% 50%;
+            position: absolute;
+            width: 46px;
+            height: 64px;
+            top: 0;
+            left: 0;
+
+            opacity: 0;
+
+            img{
+                width: 100%;
+                display: block;
+            }
+    
+        }
+
+    }
+    
     .index01_content{
         @include flex-container($justify-content:space-between);
         li{

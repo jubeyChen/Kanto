@@ -26,7 +26,7 @@
         <div class="banner">
             <video autoplay muted loop data-src="image/index/small.mp4" style="width:100%" object-fit="cover">
                 <source src="image/index/small.mp4" type="video/mp4"> 
-                 <!-- <source src="movie.ogg" type="video/ogg"> -->
+                <!-- <source src="movie.ogg" type="video/ogg"> -->
             </video>
         </div> 
     </div>
@@ -46,6 +46,20 @@
     </section>
     <!-- 第二部分 行程 -->    
     <section class="index01 container ">
+
+        <!--飛機-->
+        <div id="plane-set">
+            <section id="scrollArea">
+                <svg width="1165" height="2862" viewBox="0 0 1165 2862" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M109.001 334C-4.4977 777.5 1072.5 808 1097.5 1194.5C1097.5 1635 109.001 1690 109.001 2009C109.001 2196 991.501 2467.5 856.501 2861.5" stroke="#414143" stroke-width="2" stroke-dasharray="10 10"/>
+                </svg>
+            </section>
+            <div id="airplane">
+                <img src="https://www.jal.com/ja/sustainability/soraiku/steamschool/assets/img/airplane.svg" alt="">
+            </div>    
+        </div>
+
+
         <ul class="index01_content">
             <li>
                 <p class="hashtag">2023年全新開幕</p>
@@ -675,6 +689,44 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/index.js"></script>
     <script src="js/exchange_rate.js"></script>
+    <script>
+        window.addEventListener('scroll', function(e){
+
+            const path = document.querySelector('path');
+            const length = path.getTotalLength();
+
+            const scrollArea = document.getElementById('scrollArea');
+            let top = scrollArea.getBoundingClientRect().top;
+
+            const windowH = window.innerHeight * 0.5;
+            let rangeY = Math.abs(top - windowH);
+
+            let progress = rangeY / 2527;
+            console.log(progress)
+
+            let myPoint = path.getPointAtLength(progress * length);
+            let prePoint = path.getPointAtLength(progress * length - 1);
+            let pathX = myPoint.x - 23;
+            let pathY = myPoint.y - 32;
+            let x = myPoint.x - prePoint.x;
+            let y = Math.abs(myPoint.y - prePoint.y);
+            let rotateDeg = Math.atan(y / x) * (180 / Math.PI);
+
+            if(rotateDeg < 0){
+                rotateDeg += 180;
+            }
+
+            const airplane = document.getElementById('airplane');
+
+            if(top < windowH && progress <= 1){                
+                airplane.setAttribute('style', `opacity: 1; transform: translate(${pathX}px, ${pathY}px) rotate(${rotateDeg}deg)`);
+                scrollArea.setAttribute('style', `opacity: 1; height: ${pathY + 32}px`);
+            }
+
+        });
+
+    </script>
+
 </body>
 
 </html>

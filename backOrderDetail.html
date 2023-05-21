@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="input-group mb-3 col">
-                        <span class="input-group-text" id="basic-addon1">訂單總額</span>
+                        <span class="input-group-text" id="basic-addon1">商品總額</span>
                         <input type="text" class="form-control" readonly v-model="order.total">
                     </div>
     
@@ -84,12 +84,9 @@
                         <input type="text" class="form-control" readonly v-model="item.price">
                     </div>
 
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">行程狀態</span>
-                        <select class="form-select" disabled>
-                            <option selected>已出發</option>
-                            <option>未出發</option>
-                        </select>
+                    <div class="input-group mb-3 col">
+                        <span class="input-group-text">訂購日期</span>
+                        <input type="text" class="form-control" readonly v-model="item.date">
                     </div>
 
                     <div class="input-group mb-3">
@@ -121,8 +118,8 @@
                         total: '$' + 9000
                     },
                     orderDetail: [
-                        {id: 'OD00001', name: '富士山賞櫻一日遊', count: 1, price: '$' + 2475, productStatus: 'done', orderStatus: 'uncancelled'},
-                        {id: 'OD00002', name: '國營常陸海濱公園＆足利花卉公園', count: 2, price: '$' + 2475, productStatus: 'comimg', orderStatus: 'uncancelled'}
+                        {id: 'OD00001', name: '富士山賞櫻一日遊', count: 1, price: '$' + 2475, date: '2023/6/21', orderStatus: 'uncancelled'},
+                        {id: 'OD00002', name: '國營常陸海濱公園＆足利花卉公園', count: 2, price: '$' + 2475, date: '2023/6/21', orderStatus: 'uncancelled'}
                     ]
                 }
             },

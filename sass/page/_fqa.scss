@@ -18,9 +18,9 @@
             background-color: $bgc;
         }
 
-        p{
-            font-size: $paragraph;
-            line-height: 30px;
+        h4{
+            // font-size: $paragraph;
+            line-height: 40px;
             box-sizing: border-box;
             padding: 10px;
 
@@ -95,7 +95,8 @@
             border-radius: $borderRadius;
             margin-bottom: 40px;
             
-            h4{
+            > p{
+                font-size: $paragraph;
                 background-color: $primary;
                 color: #fff;
                 box-sizing: border-box;
@@ -104,7 +105,7 @@
                 cursor: pointer;
 
                 @include m(){
-                    font-size: 16px;
+                    font-size: $paragraph-s;
                 }
 
                 span.v{
@@ -145,18 +146,18 @@
             .accordion-content{
                 box-sizing: border-box;
                 padding: 10px;
-
-                // opacity: 0;
                 display: none;
-                overflow: hidden;
-                transform: translate(0, 100px);
 
-                transition: .3s;
+                p{
+                    font-size: $paragraph;
+                    @include m(){
+                        font-size: $paragraph-s;
+                    }
+    
+                }
             }
             .accordion-content.-open{
-                opacity: 1;
                 display: block;
-                transform: translate(0, 0);
 
             }
 

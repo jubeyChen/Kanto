@@ -140,7 +140,21 @@
         <div class="title">
             <h2>活動行程介紹</h2>
         </div>
+
         <section class="event_block">
+
+            <!--飛機-->
+            <div id="plane-set">
+                <section id="scrollArea">
+                    <svg width="1176" height="1535" viewBox="0 0 1176 1535" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M700.502 107.5C898.001 165 1004.3 285 991 479.5C975.854 701 475 643.5 475 962.5C475 1149.5 1153 1140.5 1018 1534.5" stroke="#414143" stroke-width="2" stroke-dasharray="10 10"/>
+                    </svg>
+                </section>
+                <div id="airplane">
+                    <img src="https://www.jal.com/ja/sustainability/soraiku/steamschool/assets/img/airplane.svg" alt="">
+                </div>    
+            </div>
+
             <!--主要內容-->
             <div class="event_block1">
                 <!--側邊點點-->
@@ -359,6 +373,43 @@
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+    <script>
+        window.addEventListener('scroll', function(e){
+
+            const path = document.querySelector('path');
+            const length = path.getTotalLength();
+
+            const scrollArea = document.getElementById('scrollArea');
+            let top = scrollArea.getBoundingClientRect().top;
+
+            const windowH = window.innerHeight * 0.5;
+            let rangeY = Math.abs(top - windowH);
+
+            let progress = rangeY / 1481;
+            console.log(progress)
+
+            let myPoint = path.getPointAtLength(progress * length);
+            let prePoint = path.getPointAtLength(progress * length - 1);
+            let pathX = myPoint.x - 23;
+            let pathY = myPoint.y - 32;
+            let x = myPoint.x - prePoint.x;
+            let y = Math.abs(myPoint.y - prePoint.y);
+            let rotateDeg = Math.atan(y / x) * (180 / Math.PI);
+
+            if(rotateDeg < 0){
+                rotateDeg += 180;
+            }
+
+            const airplane = document.getElementById('airplane');
+
+            if(top < windowH && progress <= 1){                
+                airplane.setAttribute('style', `opacity: 1; transform: translate(${pathX}px, ${pathY}px) rotate(${rotateDeg}deg)`);
+                scrollArea.setAttribute('style', `opacity: 1; height: ${pathY + 32}px`);
+            }
+
+        });
+
+    </script>
 </body>
 
 </html>
