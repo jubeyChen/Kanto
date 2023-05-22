@@ -555,13 +555,9 @@
                     left: -140px;
                     display: none;
                     &.down2{
-                        animation-name: down2;
-                        animation-duration: 1s;
-                        animation-fill-mode: forwards;
+                        animation: down2 1s forwards;
                         @include m(){
-                            animation-name: rwdDown2;
-                            animation-duration: 1s;
-                            animation-fill-mode: forwards;
+                            animation: rwdDown2 1s forwards;
                         }
                     }
                     @include m(){
@@ -883,13 +879,9 @@
                     right: -150px;
                     display: none;
                     &.down{
-                        animation-name: down;
-                        animation-duration: 1s;
-                        animation-fill-mode: forwards;
+                        animation: down 1s forwards;
                         @include m(){
-                            animation-name: rwdDown;
-                            animation-duration: 1s;
-                            animation-fill-mode: forwards;
+                            animation: rwdDown 1s forwards;
                         }
                     }
                     @include m(){
