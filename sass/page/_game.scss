@@ -554,6 +554,16 @@
                     top: 350px;
                     left: -140px;
                     display: none;
+                    &.down2{
+                        animation-name: down2;
+                        animation-duration: 1s;
+                        animation-fill-mode: forwards;
+                        @include m(){
+                            animation-name: rwdDown2;
+                            animation-duration: 1s;
+                            animation-fill-mode: forwards;
+                        }
+                    }
                     @include m(){
                         width: 323px;
                         top: 397px;
@@ -869,9 +879,19 @@
                     background-color: #F4F1E8;
                     border-radius: 10px;
                     position: absolute;
-                    top: 450px;
+                    top: 0;
                     right: -150px;
                     display: none;
+                    &.down{
+                        animation-name: down;
+                        animation-duration: 1s;
+                        animation-fill-mode: forwards;
+                        @include m(){
+                            animation-name: rwdDown;
+                            animation-duration: 1s;
+                            animation-fill-mode: forwards;
+                        }
+                    }
                     @include m(){
                         width: 204px;
                         height: 125px;
@@ -987,4 +1007,38 @@ span.swiper-pagination-bullet{
 }
 
 
+@keyframes down{
+    0%{
+        top: 0;
+    }
+    100%{
+        top: 450px;
+    }
+}
 
+@keyframes rwdDown{
+    0%{
+        top: 0;
+    }
+    100%{
+        top: 420px;
+    }
+}
+
+@keyframes down2{
+    0%{
+        top: 0;
+    }
+    100%{
+        top: 350px;
+    }
+}
+
+@keyframes rwdDown2{
+    0%{
+        top: 0;
+    }
+    100%{
+        top: 400px;
+    }
+}
