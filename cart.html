@@ -144,14 +144,17 @@
                 <li>
                     <div class="payment_item_price">
                         <span>$1500</span>
+                    </div>
                 </li>
                 </li>
             </ul>
-
         </div>
         <img id="emptyCartImage" class="empty-cart-message" src="./image/about/Empty_Slate__Shopping_Cart.gif" alt="">
         <p id="emptyCartText1" class="empty-cart-message">購物車是空的，目前正被喵喵霸佔中？</p>
         <p id="emptyCartText2" class="empty-cart-message">馬上去逛逛，挑幾個你喜歡的玩樂吧！</p>
+        <a href="product.html">
+            <button id="emptyCartBtn" class="cart_pay_btn2">前往查看</button>
+        </a>
     </div>
 
 
@@ -209,7 +212,7 @@
                 // Check if the cart is empty
                 if ($('.cart_inner_section .cart_item_list').length === 0) {
                     // Show the empty cart message
-                    $('#emptyCartImage, #emptyCartText1, #emptyCartText2').show();
+                    $('#emptyCartImage, #emptyCartText1, #emptyCartText2, #emptyCartBtn' ).show();
                 }
             });
         });
