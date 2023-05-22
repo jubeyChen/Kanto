@@ -3,7 +3,7 @@
     margin: 0 auto;
 
     @include m() {
-        width: 90%;
+        width: 100%;
     }
 }
 
@@ -90,7 +90,7 @@
     @include m() {
         width: 100%;
         padding: 0;
-
+        margin-bottom: 5vh;
         h4 {
             padding: 20px;
         }
