@@ -1,9 +1,4 @@
-// header .container a{
-//     color: white;
-// }
-// header .container .nav-bar .nav-btn li{
-//     border: 1px solid white;
-// }
+
 
 //banner
 .game_container{
@@ -15,7 +10,10 @@
     @include m(){
         height: 100%;
     }
-
+    &.open{
+        display: block;
+        top: 0;
+    }
     // .game_title{
     //     // background-color: #c73f3aa8;
     //     background-color: rgba( 199, 62, 58, 0.7);
@@ -75,6 +73,7 @@
         left: 10%;
         z-index: 10;
         @include m(){
+            display: none;
             left: 50%;
             transform: translate(-50%, 0);
         }
@@ -96,12 +95,35 @@
                 line-height: 52px;
                 font-size: $paragraph;
             }
-            a{
-                // display: block;
-                // color: white;
-                // line-height: 87px;
-                // font-size: $h3;
-                // text-align: center;
+        }
+    }
+    .game_btn_rwd{
+        display: none;
+        @include m(){
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            z-index: 10;
+            display: block;
+            transform: translate(-50%, 0);
+        }
+        .btn{
+            width: 385px;
+            height: 87px;
+            background-color: $primary;
+            border-radius: 10px;
+
+            display: block;
+            color: white;
+            line-height: 87px;
+            font-size: $h3;
+            text-align: center;
+            cursor: pointer;
+            @include m(){
+                width: 229px;
+                height: 52px;
+                line-height: 52px;
+                font-size: $paragraph;
             }
         }
     }
@@ -131,8 +153,9 @@
                 align-items: center;
                 img{
                     display: block;
-                    // height: 100%;
+                    height: 100%;
                     width: 100%;
+                    object-fit: cover;
                     position: absolute;
                     top: 0px;
                     left: 0;
@@ -247,9 +270,13 @@
     @include m(){
         height: 100%;
     }
+    &.open{
+        display: block;
+        top: 0;
+    }
     .game_wapper{
         width: 1228px;
-        height: 1000px;
+        height: 600px;
         // height: auto;
         position: absolute;
         top: 50%;
@@ -257,10 +284,18 @@
         background-color: rgba(244, 241, 232, 0.8);
         border-radius: 25px;
         transform: translate(-50%, -30%) translateY(-151px);
+        transition: 1s;
+        &.on{
+            height: 1000px;
+            transition: 1s;
+            @include m(){
+                height: 700px;
+            }
+        }
         @include m(){
             width: 379px;
-            height: 696px;
-            transform: translate(-50%, -30%) translateY(-93px);
+            height: 396px;
+            transform: translate(-50%, -30%) translateY(-100px);
         }
         .lightbox-close{
             position: absolute;
@@ -387,12 +422,13 @@
                             justify-content: center;
                             line-height: 140px;
                             @include m(){
+                                font-size: 18px;
                                 line-height: 75px;
                             }
                         }
                     }
                     .is-play.result-txt {
-                        animation: resultPlay 1s infinite linear;
+                        animation: resultPlay 0.5s infinite linear;
                     }
                 }
                 .btn-start{
@@ -409,6 +445,33 @@
                     top: 165px;
                     left: 125px;
                     @include m(){
+                        display: none;
+                        width: 70px;
+                        margin: 0;
+                        line-height: 18px;
+                        border-radius: 9px;
+                        border: 2px solid #3D3D3D;
+                        top: 97px;
+                        left: 65px;
+                        font-size: 12px;
+                    }
+                }
+                .btn-start-rwd{
+                    width:130px;
+                    text-align: center;
+                    margin: 20px auto;
+                    line-height: 36px;
+                    border-radius: 15px;
+                    border: 4px solid #3D3D3D;
+                    background: #F4F1E8;
+                    font-weight: bold;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 165px;
+                    left: 125px;
+                    display: none;
+                    @include m(){
+                        display: block;
                         width: 70px;
                         margin: 0;
                         line-height: 18px;
@@ -443,14 +506,44 @@
                         font-size: 12px;
                     }
                 }
+                .btn-stop-rwd{
+                    width:130px;
+                    text-align: center;
+                    margin: 20px auto;
+                    line-height: 36px;
+                    border-radius: 15px;
+                    border: 4px solid #3D3D3D;
+                    background: #F4F1E8;
+                    font-weight: bold;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 165px;
+                    right: 125px;
+                    display: none;
+                    @include m(){
+                        display: block;
+                        width: 70px;
+                        margin: 0;
+                        line-height: 18px;
+                        border-radius: 9px;
+                        border: 2px solid #3D3D3D;
+                        top: 97px;
+                        right: 65px;
+                        font-size: 12px;
+                    }
+                }
                 .btn-start:hover,
                 .btn-stop:hover {
+                    transform: scale(1.05);
+                }
+                .btn-start-rwd:hover,
+                .btn-stop-rwd:hover {
                     transform: scale(1.05);
                 }
                 
                 @keyframes resultPlay {
                     100% {
-                      transform: translateY(-90%)
+                      transform: translateY(-75%)
                     }
                 }
                 //卡片
@@ -516,6 +609,8 @@
                                     border-radius: 5px;
                                     img{
                                         width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
                                         opacity: 0.7;
                                         -webkit-transition: all 0.5s;
                                         -o-transition: all 0.5s;
@@ -571,21 +666,28 @@
                                     .cont_tabs{
                                         position: relative;
                                         float: left;
-                                        width: 247px;
+                                        width: 230px;
                                         height: 60px;
                                         border-bottom: 3px solid #EDEDEC;
-                                        text-align: center;
+                                
                                         @include m(){
                                             width: 175px;
                                             height: 45px;
                                         }
                                         p{
                                             font-size: 20px;
-                                            margin-top: 15px;
+                                            // margin-top: 15px;
                                             font-weight: bold;
                                             color: black;
+                                            width: 161px;
+                                            margin: 18px auto;
+                                            padding: 0 25px;
+                                            line-height: 1;
                                             @include m(){
                                                 font-size: 14px;
+                                                width: 116px;
+                                                padding: 0 11px;
+                                                margin: 13px auto;
                                             }
                                         }
                                     }
@@ -616,6 +718,9 @@
                                         .cont_info_preparation{
                                             position: relative;
                                             float: left;
+                                            height: 141px;
+                                            overflow: hidden;
+                                            overflow-y: scroll;
                                             @include m(){
                                                 height: 100px;
                                                 overflow: hidden;
@@ -624,8 +729,8 @@
                                             p{
                                                 margin: 5px 0px;
                                                 font-size: 16px;
-                                                padding: 20px 0px;
-                                                padding-left: 40px;
+                                                padding: 8px 0px;
+                                                padding-left: 30px;
                                                 text-align: left;
                                                 padding-right: 30px;
                                                 color: #5F5F5F;
@@ -649,6 +754,7 @@
                                             text-decoration: none;
                                             line-height: 30px;
                                             text-align: center;
+                                            margin-top: 15px;
                                             @include m(){
                                                 width: 66px;
                                                 height: 23px;
@@ -737,8 +843,8 @@
                                 // } 
                             }
                             .cont_text_ingredients{
-                                width: 247px;
-                                left: 210px;
+                                width: 230px;
+                                left: 220px;
                                 z-index: 1;
                                 box-shadow: 15px 20px  70px  -5px  rgba(0,0,0,0.2);
                                 @include m(){
@@ -868,10 +974,7 @@
         }
     }
 }
-.open{
-    display: block;
-    top: 0;
-}
+
 span.swiper-pagination-bullet{
     width: 20px;
     height: 20px;
@@ -882,4 +985,6 @@ span.swiper-pagination-bullet{
         height: 10px;
     }
 }
+
+
 

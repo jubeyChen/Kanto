@@ -731,13 +731,14 @@ div.product_inner {
 
             div.lightbox {
                 display: none;
+                opacity: 0;
                 width: 40%;
                 position: fixed;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 z-index: 2000;
-
+                transition: .3s;
                 i {
                     font-size: 50px;
 
@@ -2026,6 +2027,7 @@ div.phone_all_review {
 
 div.des_lightbox {
     display: none;
+    opacity: 0;
     background-color: rgba(0, 0, 0, 0.884);
     width: 100%;
     height: 100vh;
@@ -2033,6 +2035,7 @@ div.des_lightbox {
     bottom: 0;
     left: 0;
     z-index: 1000;
+    transition: .5s;
 }
 
 
