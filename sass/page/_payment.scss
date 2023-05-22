@@ -117,11 +117,9 @@
         /* Center the <li> elements horizontally */
         align-items: center;
         /* Center the <li> elements vertically */
-
-
         li {
-            padding: 0.5vh;
-            width: 99%;
+            padding: 0.5vw 0;
+            width:100%;
 
             input {
                 font-size: 18px;
@@ -192,10 +190,7 @@
             align-self: flex-end;
         }
 
-        // .payment_item_price1{
-        //     display: flex;
-        //     align-self: baseline;
-        // }
+
     }
 
 }
