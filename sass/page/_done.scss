@@ -3,64 +3,97 @@
 //   color: #888888;
 // }
 
-.done_container{
+
+.done_container {
     width: 80%;
     margin: 0 auto;
 
-    @include m(){
-        background-color: black;
-        width: 100%;
+    @include m() {
+        width: 80%;
     }
 
 }
-.done_section1{
 
-    @include m(){
+
+
+//麵包屑
+.done_icons_cart,
+.done_icons_description,
+.done_icons_credit_card {
+    font-family: 'Material Icons Outlined';
+    font-weight: 400;
+    font-size: 40px;
+    opacity: 1;
+}
+
+.done_icons_cart,
+.done_icons_description {
+    color: #888888;
+}
+
+.done_section1 {
+    margin-bottom: 5vh;
+
+    @include m() {
         width: 100%;
-        background-color: black;
 
-        ul{
+        ul {
             display: flex;
             flex-direction: column;
-            li{
-                margin: 1.5vh;
-                h2{
+
+            li {
+
+                h2 {
+                    font-size: 36px;
                     color: $primary;
                 }
-    
-                button{
+
+                h3 {
+                    font-size: 30px;
+                    line-height: 40px;
+                }
+
+                h4 {
+                    line-height: 40px;
+                }
+
+                button {
                     background-color: #C73E3A;
                     border: none;
-                    width:  225px;
+                    width: 225px;
                     height: 55px;
                     border-radius: 5px;
-                    color:white;
+                    color: white;
                     border: none;
                     cursor: pointer;
                     margin: 15px 0;
                     font-size: 20px;
+                    margin-bottom: 10px;
                 }
-    
             }
         }
     }
 
-    ul{
+    ul {
         display: flex;
         flex-direction: column;
-        li{
+        text-align: center;
+
+        li {
             margin: 1.5vh;
-            h2{
+            margin-bottom: 20px;
+
+            h2 {
                 color: $primary;
             }
 
-            button{
+            button {
                 background-color: #C73E3A;
                 border: none;
-                width:  225px;
+                width: 225px;
                 height: 55px;
                 border-radius: 5px;
-                color:white;
+                color: white;
                 border: none;
                 cursor: pointer;
                 margin: 15px 0;

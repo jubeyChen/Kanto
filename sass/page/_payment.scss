@@ -1,33 +1,18 @@
-// 麵包屑
-.cart_bread{
-    width: 80%;
-    margin: 3vh auto;
-
-    ul{
-        display: flex;
-        align-items: center;
-        li{
-            position: relative;
-            padding-left: 20px;
-
-            ::before {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 100%;
-                transform: translateY(-50%);
-                height: 2px;
-                width: 20px; /* Adjust the width as needed */
-                background-color: #000; /* Adjust the line color as needed */
-              }   
-              :last-child::before {
-                display: none; /* Hide the ::before pseudo-element on the last li */
-              }  
-            
-            }
-
-    }
+//麵包屑
+.payment_icons_cart,
+.payment_icons_description,
+.payment_icons_credit_card {
+    font-family: 'Material Icons Outlined';
+    font-weight: 400;
+    font-size: 40px;
+    opacity: 1;
 }
+
+.payment_icons_cart,
+.payment_icons_credit_card {
+    color: #888888;
+}
+
 
 .payment_container {
     width: 80%;
@@ -37,21 +22,21 @@
     justify-content: center;
     align-items: flex-start;
 
-    @include m(){
+    @include m() {
         width: 100%;
         flex-direction: column;
         align-items: center;
     }
-  }
+}
 
-.payment_left{
+.payment_left {
     width: 50%;
     margin: 2vh 1vw;
-    margin-top: 10vh;
-    @include m{
-        width:90%;
+
+    @include m {
+        width: 90%;
     }
-  }
+}
 
 .payment_right {
     width: 35%;
@@ -83,7 +68,7 @@
     width: 100%;
     border-bottom: 1px solid black;
     margin: 10px 0;
-  }
+}
 
 .payment_section1 {
     background-color: #DFDEDE;
@@ -91,23 +76,27 @@
     margin: 3vh auto;
     padding: 1vh;
     border-radius: 10px;
-    
-    ul{
+
+    ul {
         display: flex;
         flex-direction: column;
-        justify-content: center; /* Center the <li> elements horizontally */
-        align-items: center; /* Center the <li> elements vertically */
+        justify-content: center;
+        /* Center the <li> elements horizontally */
+        align-items: center;
+        /* Center the <li> elements vertically */
 
-        li{
+        li {
             padding: 0.5vh;
             width: 99%;
-            input{
+
+            input {
                 font-size: 18px;
                 width: 100%;
                 border: none;
                 border-radius: 5px;
                 height: 40px;
-
+                padding: 0 10px;
+                box-sizing: border-box;
             }
 
         }
@@ -121,27 +110,31 @@
     padding: 1vh;
     border-radius: 10px;
 
-    ul{
+    ul {
         display: flex;
         flex-direction: column;
-        justify-content: center; /* Center the <li> elements horizontally */
-        align-items: center; /* Center the <li> elements vertically */
+        justify-content: center;
+        /* Center the <li> elements horizontally */
+        align-items: center;
+        /* Center the <li> elements vertically */
 
 
-        li{
+        li {
             padding: 0.5vh;
             width: 99%;
-            input{
+
+            input {
                 font-size: 18px;
                 border: none;
                 border-radius: 5px;
             }
+
             #payment_email {
                 height: 40px;
                 width: 99%;
             }
-            
-            textarea{
+
+            textarea {
                 width: 99%;
                 border: none;
                 border-radius: 5px;
@@ -154,7 +147,7 @@
 
 }
 
-.payment_side{
+.payment_side {
 
     background-color: #ECECEB;
     width: 90%;
@@ -162,76 +155,89 @@
     padding: 1vh;
     border-radius: 10px;
 
-    @include m (){
+    @include m () {
         background-color: #DFDEDE;
     }
 
 }
 
-.payment_item_info{
-    ul{
+.payment_item_info {
+    ul {
         width: 90%;
         display: flex;
         padding: 1vh;
         justify-content: space-between;
-        align-items: center;
-        li{
-            h5{
-                font-size: 18px;
-                margin-top: 1vh;
+        align-items: flex-start;
 
+        li {
+            display: flex;
+
+            h5 {
+                font-size: 18px;
             }
-            button{
+
+            button {
                 font-size: 12px;
                 margin-top: 1vh;
-
             }
         }
+
+        :last-child {
+            display: flex;
+            align-self: flex-end;
+        }
+
+        // .payment_item_price1{
+        //     display: flex;
+        //     align-self: baseline;
+        // }
     }
 
 }
 
 .payment_price_selection {
-        width: 90%;
-        display: flex;
-        padding: 0.5vh;
-        justify-content: space-between;
-        align-items: center;
+    width: 90%;
+    display: flex;
+    padding: 0.5vh;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.payment_side{
+.payment_side {
     ul {
-        
-        li{
 
-            select{
+        li {
+
+            select {
                 background-color: #C73E3A;
                 border: none;
-                width:  90%;
+                width: 90%;
                 height: 40px;
                 border-radius: 5px;
-                color:white;
+                color: white;
                 cursor: pointer;
 
             }
-            button{
+
+            button {
                 border: none;
                 cursor: pointer;
 
             }
-            label{
+
+            label {
                 font-size: 18px;
                 margin: 10px 0;
 
             }
 
-            input{
+            input {
                 background-color: #C73E3A;
                 border: none;
-                width:  50%;
+                width: 50%;
                 height: 40px;
                 border-radius: 5px;
-                color:white;
+                color: white;
                 border: none;
                 cursor: pointer;
                 margin: 15px 0;
@@ -241,20 +247,22 @@
                 margin-left: auto;
                 margin-right: auto;
                 display: block;
-              
+
                 /* Center vertically */
-                text-align: center; 
+                text-align: center;
             }
         }
     }
 
 }
-.payment_select{
+
+.payment_select {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 10px;
-    option{
+
+    option {
         font-size: 30px;
     }
 }
