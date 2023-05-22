@@ -23,6 +23,7 @@ Vue.createApp({
         tabOn(show) {
             this.current_tab = show;
             this.activeBtn = show;
+            this.email = '';
         },
 
         submitForm() {
@@ -74,4 +75,4 @@ Vue.createApp({
 
     },
 
-}).mount('body');
+}).mount('#app');

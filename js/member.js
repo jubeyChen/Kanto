@@ -1,7 +1,7 @@
-Vue.createApp({
+const app = Vue.createApp({
     data() {
         return {
-            showReview: false,
+            //showReview: false,
             showService: false,
             start: false,
             current_tab: 'account',
@@ -16,27 +16,45 @@ Vue.createApp({
             contactPhone: '',
             contactText: '',
             isValidEmail: true,
+            //isSessionValid: false,
+            user: '',
         }
     },
     created() {
         fetch('image/order.json')
-                .then(response => response.json())
-                .then(data => {
-                    this.orderList = data;
-                });
+            .then(response => response.json())
+            .then(data => {
+                this.orderList = data.map(item => ({
+                    ...item,
+                    showReview: false
+                }));
+            });
+        
     },
     mounted() {
+        //this.checkSession();
         setTimeout(() => {
             this.start = true;
         }, 200);
     },
     methods: {
-        toggleReview() {
-            if (this.showReview === true) {
-                this.showReview = false;
-            } else {
-                this.showReview = true;
-            }
+        checkSession() {
+            axios.post('../php/CheckSession.php')
+                .then(response => {
+                    this.isSessionValid = response.data.isSessionValid;
+                    this.user = response.data.user;
+                })
+                .catch(error => {
+                    window.location.href = "loginRegister.html";
+                });
+        },
+        toggleReview(list) {
+            // if (this.showReview === false) {
+            //     this.showReview = true;
+            // } else {
+            //     this.showReview = false;
+            // }
+            list.showReview = !list.showReview;
         },
 
         //點選tab鍵，右欄換相關內容
@@ -116,4 +134,5 @@ Vue.createApp({
         }
 
     },
-}).mount('.member');
+});
+app.mount('#app');
