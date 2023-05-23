@@ -1,3 +1,5 @@
+
+
 div.product_inner {
 
     margin-top: 50px;
@@ -221,7 +223,10 @@ div.product_inner {
                         div.btn {
                             display: flex;
                             button{
+                                padding: 0;
                                 a{
+                                    padding: 10px 40px;
+                                    display: block;
                                     color: white;
                                     text-decoration: none;
                                 }
@@ -229,7 +234,7 @@ div.product_inner {
                             }
                             button.add_shoppingcar {
                                 margin-right: 20px;
-                                
+                                padding: 10px 40px;
                             }
 
 
@@ -1000,14 +1005,16 @@ div.product_inner {
                         justify-content: center;
 
                         button {
+                            padding: 0;
                             a{
                                 text-decoration: none;
                                 color: white;
+                                display: block;
+                                padding: 5px 15px;
                             }
                             width: 50%;
                             margin: 0 10px;
                             font-size: 20px;
-                            padding: 5px 15px;
                             box-sizing: border-box;
                             border: none;
                             cursor: pointer;
@@ -1824,6 +1831,7 @@ div.product_inner_phone {
                     button {
                         width: 100%;
                         padding: 0;
+                        border: 1px solid black;
                     }
                 }
 
@@ -1832,7 +1840,9 @@ div.product_inner_phone {
                     width: 45%;
 
                     button {
+                        border: 1px solid black;
                         a{
+                            display: block;
                             text-decoration: none;
                             color: white;
                         }
@@ -2066,3 +2076,4 @@ footer.phone_footer {
         padding-bottom: 123px;
     }
 }
+
