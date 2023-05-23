@@ -71,7 +71,7 @@ body {
 
 //PICKUP 手機才有
 div.pickup {
-    border-top: 1px solid black;
+    // border-top: 1px solid black;
     border-bottom: 1px solid black;
     padding: 20px 0;
     display: none;
@@ -288,6 +288,9 @@ section.travel_sec2 {
             div.pic {
                 width: 100%;
                 height: 430px;
+                @include m(){
+                    height: 250px;
+                }
                 img {
                     width: 100%;
                     display: block;
@@ -368,6 +371,9 @@ section.travel-sec3 {
         div.pic {
             width: 100%;
             height: 280px;
+            @include m(){
+                height: 250px;
+            }
             img {
                 display: block;
                 width: 100%;
