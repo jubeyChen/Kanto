@@ -81,6 +81,10 @@ a{
         position: absolute; 
         z-index: -100;
 
+        @include m(){
+            display: none;
+        }
+
         #scrollArea{
             width: 1200px;
             height: 0;
@@ -616,6 +620,7 @@ a{
             text-align: center;
 
             li{
+                font-size: 18px;
                 padding: 10px 30px;
                 @include m(){
                     padding: 10px 7px;
