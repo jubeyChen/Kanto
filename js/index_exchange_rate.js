@@ -18,10 +18,10 @@ Vue.createApp({
         }
     },
     mounted(){
-        //發出請求
-        const apikey = "9ae79f44f125054717ba39ea";
+        // 發出請求
+        // const apikey = "9ae79f44f125054717ba39ea";
         // const url = `https://v6.exchangerate-api.com/v6/${apikey}/pair/JPY/TWD"`;
-        axios.get(url)
+        axios.get("https://v6.exchangerate-api.com/v6/9ae79f44f125054717ba39ea/pair/JPY/TWD")
         .then((response)=>{
             console.log(response);  
             //匯率的字串轉成浮點數 0.2228
