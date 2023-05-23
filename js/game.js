@@ -96,7 +96,7 @@ window.onload = function () {
   const elements = document.getElementsByClassName('cont_modal');
 
   for (let i = 0; i < elements.length; i++) {
-    elements[i].className = "cont_modal";
+    elements[i].className = "cont_modal cont_modal_active";
   }
 }
 
@@ -106,7 +106,7 @@ function open_close() {
   const elements = document.getElementsByClassName('cont_modal');
 
   for (let i = 0; i < elements.length; i++) {
-    elements[i].className = c % 2 === 0 ? "cont_modal cont_modal_active" : "cont_modal";
+    elements[i].className = c % 2 === 0 ? "cont_modal " : "cont_modal cont_modal_active";
   }
 
   c++;
