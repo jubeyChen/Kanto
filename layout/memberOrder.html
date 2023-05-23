@@ -13,14 +13,14 @@
                 <p>NTD {{list.price}}</p>
                 <ul class="orderOption">
                     <li v-if="departureStatus(list.date) === '即將出發'"><button class="cancel">取消訂單</button></li>
-                    <li v-if="departureStatus(list.date) === '已出發'"><button class="review" @click="toggleReview">撰寫評論</button></li>
-                    <li><button class="contact" @click="showService = true; currentOrderNumber = list.orderNumber">聯絡客服</button></li>
+                    <li v-if="departureStatus(list.date) === '已出發'"><button class="review"
+                            @click="toggleReview(list)">撰寫評論</button></li>
+                    <li><button class="contact"
+                            @click="showService = true; currentOrderNumber = list.orderNumber">聯絡客服</button></li>
                 </ul>
             </div>
         </div>
-    
-        <div class="reviewArea" v-if="showReview">
-            <form action="">
+        <div class="reviewArea" v-if="list.showReview">
                 <ul class="reviewStar">
                     <li><i class="ai-star"></i></li>
                     <li><i class="ai-star"></i></li>
@@ -39,7 +39,6 @@
                     </div>
                     <button type="submit">送出</button>
                 </div>
-            </form>
         </div>
     </div>
 </section>
@@ -58,20 +57,25 @@
 
                 <li>
                     <label for="contactEmail">電子信箱</label>
-                    <input type="email" id="contactEmail" class="textStyle" placeholder="請輸入您的電子信箱" v-model="contactEmail">
+                    <input type="email" id="contactEmail" class="textStyle" placeholder="請輸入您的電子信箱"
+                        v-model="contactEmail">
                     <div v-if="!isValidEmail" class="errorMsg">請輸入有效的電子郵件地址。</div>
                 </li>
 
                 <li>
                     <label for="contactPhone">手機號碼</label>
-                    <input type="text" id="contactPhone" class="textStyle" placeholder="請輸入您的手機號碼" v-model="contactPhone">
+                    <input type="text" id="contactPhone" class="textStyle" placeholder="請輸入您的手機號碼"
+                        v-model="contactPhone">
                 </li>
 
                 <li>
-                    <textarea name="" id="contactText" class="textareaStyle" placeholder="請輸入您的訊息" v-model="contactText"></textarea>
+                    <textarea name="" id="contactText" class="textareaStyle" placeholder="請輸入您的訊息"
+                        v-model="contactText"></textarea>
                 </li>
             </ul>
-            <input type="button" class="submitBtn" value="送出" @click="showService = false; sendEmail(); deleteContactInfo()" :disabled="contactID == '' || contactEmail == '' || contactPhone == '' || contactText == ''">
+            <input type="button" class="submitBtn" value="送出"
+                @click="showService = false; sendEmail(); deleteContactInfo()"
+                :disabled="contactID == '' || contactEmail == '' || contactPhone == '' || contactText == ''">
         </form>
     </div>
 </section>

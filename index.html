@@ -593,23 +593,24 @@
 </div> <!--vue-->
 
 <!-- -天氣========== -->
+<div id="weatherApp">
 <section class="index06_wrapper">
     <div class="index06 container">
         <div class="index06_title">
             <h2>2023</h2>
-            <p>26th April</p>
+            <!-- <p>26th April</p> -->
         </div>
         <div class="weather">
-            <ul class="day">
-                <li><p>SUN</p></li>
-                <li><i class="ai-sun"></i></li>
-                <li>22</li>
+            <ul class="day" v-for="(day,key) in days">
+                <li><p>{{ day.date }}</p></li>
+                <li><i class="ai-sun Wicon"></i></li>
+                <li>{{ day.min_temp }}&#176C</li>
                 <li>|</li>
-                <li>25</li>
+                <li>{{ day.max_temp }}&#176C</li>
             </ul>
-            <ul class="day">
-                <li><p>MON</p></li>
-                <li><i class="ai-cloud"></i></li>
+            <!-- <ul class="day">
+                <li><p>{{ data }}</p></li>
+                <li><i class="ai-cloud Wicon"></i></li>
                 <li>22</li>
                 <li>|</li>
                 <li>25</li>
@@ -623,37 +624,38 @@
             </ul>
             <ul class="day">
                 <li><p>WED</p></li>
-                <li><i class="ai-sun"></i></li>
+                <li><i class="ai-sun Wicon"></i></li>
                 <li>22</li>
                 <li>|</li>
                 <li>25</li>
             </ul>
             <ul class="day">
                 <li><p>THU</p></li>
-                <li><i class="ai-air"></i></li>
+                <li><i class="ai-air Wicon"></i></li>
                 <li>22</li>
                 <li>|</li>
                 <li>25</li>
-            </ul>
-            <ul class="day">
+            </ul> -->
+            <!-- <ul class="day">
                 <li><p>FRI</p></li>
-                <li><i class="ai-sun"></i></li>
+                <li><i class="ai-sun Wicon"></i></li>
                 <li>22</li>
                 <li>|</li>
                 <li>25</li>
             </ul>
             <ul class="day">
                 <li><p>SAT</p></li>
-                <li><i class="ai-sun"></i></li>
+                <li><i class="ai-sun Wicon"></i></li>
                 <li>22</li>
                 <li>|</li>
                 <li>25</li>
-            </ul>
-            <p class="c">°C</p>
+            </ul> -->
+            <!-- <p class="c">°C</p> -->
         </div>
         
     </div>
 </section>
+</div> <!--vue-->
 <!-- 匯率================ -->
 <div id="exchangeApp">
     <section class="index07_wrapper">
@@ -685,10 +687,9 @@
     @@include('./layout/js.html')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/vendors/vue.global.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/index.js"></script>
     <script src="js/exchange_rate.js"></script>
+    <script src="js/index_weather.js"></script>
     <script>
         window.addEventListener('scroll', function(e){
 

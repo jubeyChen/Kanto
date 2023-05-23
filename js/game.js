@@ -4,13 +4,16 @@ function startAnimation() {
       document.getElementById(`result`).style.transform = 'none';
       
       gameWrapper.classList.remove('on');
+      
     }
     
     if (prevCartTop){
       prevCartTop.style.display = 'none';
+      coupon.classList.remove('down2');
     }
     if(coupon){
-      coupon.style.display = 'none'
+      coupon.style.display = 'none';
+      coupon.classList.remove('down');
     }
     // prevCartTop = document.getElementsByClassName('cont_principal')[num];
     // prevCartTop.style.display = 'block';
@@ -38,13 +41,15 @@ function startAnimation() {
       }
     if (coupon) {
       coupon.style.display = 'none';
+      
     }
       prevCartTop = document.getElementsByClassName('cont_principal')[num];
       prevCartTop.style.display = 'block';
+      prevCartTop.classList.add('down2');
       coupon = document.getElementsByClassName('coupon')[0];
       coupon.style.display = 'block';
-     
-    
+      coupon.classList.add('down');
+
   }
 
 

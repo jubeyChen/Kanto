@@ -295,53 +295,72 @@
             margin-top: 70px;
             overflow: hidden;
             @include m(){
-                margin-top: 64px;
-                margin-right: -1px;
+                margin-top: 30px;
+                margin-right: 0;
                 width: 393px;
             }
-            img{
+            .img_back{
                 width: 317px;
                 height: 353px;
+                overflow: hidden;
                 margin-right: 10px;
                 @include m(){
                     width: 198px;
                     height: 216px;
+                    margin-left: 10px;
                     margin-top: 0;
-                    margin-left: 10px;
+                }
+                img{
+                    width: 317px;
+                    height: 353px;
+                    // margin-right: 10px;
+                    transition: 1s;
+                    @include m(){
+                        width: 198px;
+                        height: 216px;
+                        margin-top: 0;
+                        // margin-left: 10px;
+                    }
+                }
+                img:hover{
+                    transform: scale(1.2);
+                }
+                iframe{
+                    width: 308px;
+                    height: 353px;
+                    position: absolute;
+                    top: 0;
+                    left: -1000px;
+                    // display: none;
+                    transition: 1s;
+                    display: block;
+                    transition: 1s;
+                    @include m(){
+                        width: 198px;
+                        height: 216px;
+                        margin-left: 10px;
+                    }
+                }
+              
+                .open{
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0; 
                 }
             }
-            iframe{
-                width: 317px;
-                height: 353px;
-                position: absolute;
-                top: 0;
-                left: -1000px;
-                // display: none;
-                transition: 1s;
-                display: block;
-                @include m(){
-                    width: 198px;
-                    height: 216px;
-                    margin-left: 10px;
-                }
-            }
-            .open{
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0; 
-            }
+            
             .food_text{
                 display: block;
                 width: 287px;
                 height: 343px;
-                padding: 20px 20px 0 20px;
+                padding: 20px 30px 0 30px;
                 margin-top: 10px;
                 box-sizing: border-box;
                 @include m(){
-                    width: 207px;
-                    height: 221px;
-                    padding: 5px 24px 0 18px;
+                    width: 176px;
+                    height: 218px;
+                    padding: 5px 20px 0 17px;
                 }
                 .text_box{
                     width: 237px;

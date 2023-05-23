@@ -1,30 +1,32 @@
 <?php
 
+// 確保 Content-Type 是 application/json
+header('Content-Type: application/json');
+
+// 解析 JSON 資料
+$data = json_decode(file_get_contents('php://input'), true);
+
 include('Mysql.php');
 
-        $id = htmlspecialchars($_POST['registerID']);
-        $pw = htmlentities($_POST['registerPW']);
+$id = htmlspecialchars($data['registerID']);
+$pw = htmlentities($data['registerPW']);
 
 
-       //建立SQL
-       $sql = "INSERT INTO members(AccountID, PWD) VALUES (:id, :pw)";
+//建立SQL
+$sql = "INSERT INTO members(AccountID, PWD) VALUES (:id, :pw)";
+     
 
-       
-
-       //執行
-       $statement = $pdo->prepare($sql);
-       $statement->bindValue(':id', $id);
-       $statement->bindValue(':pw', $pw);
-       $affectedRow = $statement->execute();
+//執行
+$statement = $pdo->prepare($sql);
+$statement->bindValue(':id', $id);
+$statement->bindValue(':pw', $pw);
+$affectedRow = $statement->execute();
 
 
-       if($affectedRow > 0){
-              echo "<script>alert('註冊成功! 請您登入')</script>";
-              header("Location: ../dist/loginRegister.html");
-       }else{
-              echo "新增失敗!";
-       }
-
-      
+if($affectedRow > 0){
+       echo "註冊成功";
+}else{
+       echo "新增失敗!";
+}
 
 ?>
