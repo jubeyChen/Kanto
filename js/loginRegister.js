@@ -11,7 +11,8 @@ Vue.createApp({
             pw: '',
             pwCheck: '',
             isPasswordMatch: true,
-            forgetEmail: ''
+            forgetEmail: '',
+            errorMessage: ''
         };
     },
     computed: {
@@ -44,7 +45,7 @@ Vue.createApp({
         ,
         sendEmail() {
             let subject = document.getElementById("forgetID").value;
-            
+            console.log('submit')
             Email.send({
                 SecureToken: "d8f8fcac-762b-4858-956c-cc3abc40e0cc",
                 To: subject,
@@ -52,6 +53,75 @@ Vue.createApp({
                 Subject: 'Kanto帳號重設密碼',
                 Body: "您好，請您重新設定密碼唷!"
             })
+        },
+        doLogin() {
+            const userData = {
+                loginID: document.getElementById('loginID').value,
+                loginPW: document.getElementById('loginPW').value,
+            };
+
+            axios.post('../php/Login.php', userData)
+                .then(response => {
+                    if (response.data === '登入成功') {
+                        alert('登入成功');
+                        window.location.href = '../dist/product.html';
+                    } else {
+                        alert('帳號或密碼有誤，請重新輸入');
+                        this.email = '';
+                        this.pw = '';
+                    }
+                })
+                .catch(error => {
+                    alert(error);
+                });
+        },
+        doRegister() {
+            const registerData = {
+                registerID: document.getElementById('registerID').value,
+                registerPW: document.getElementById('registerPW').value,
+            };
+
+            axios.post('../php/Register.php', registerData)
+                .then(response => {
+                    if (response.data === '註冊成功') {
+                        alert('註冊成功! 請您登入');
+                        window.location.href = '../dist/loginRegister.html';
+                    } else {
+                        alert('註冊會員失敗');
+                        this.email = '';
+                        this.pw = '';
+                        this.pwCheck = ''; 
+                    }
+                })
+                .catch(error => {
+                    alert(error);
+                });
+        },
+        doForget() {
+            const forgetID = document.getElementById('forgetID').value;
+            const forgetData = {
+                forgetID: forgetID
+            }
+            axios.post('../php/Forget.php', forgetData)
+                .then(response => {
+                    if (response.data === 'yes') {
+                        alert('有這個帳號');
+                        console.log(forgetID);
+                        this.showDone = true;
+                        Email.send({
+                            SecureToken: "d8f8fcac-762b-4858-956c-cc3abc40e0cc",
+                            To: forgetID,
+                            From: "kantoasuka1@gmail.com",
+                            Subject: 'Kanto帳號重設密碼',
+                            Body: "您好，請您重新設定密碼唷!"
+                        })
+                    } else {
+                        alert('系統查無此帳號Email，請您重新輸入');
+                    }
+                })
+                .catch(error => {
+                    alert(error);
+                });
         }
     },
 
