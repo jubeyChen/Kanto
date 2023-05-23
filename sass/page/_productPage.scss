@@ -221,6 +221,10 @@ div.product_inner {
                         div.btn {
                             display: flex;
                             button{
+                                a{
+                                    color: white;
+                                    text-decoration: none;
+                                }
                                 border: none;
                             }
                             button.add_shoppingcar {
@@ -996,6 +1000,10 @@ div.product_inner {
                         justify-content: center;
 
                         button {
+                            a{
+                                text-decoration: none;
+                                color: white;
+                            }
                             width: 50%;
                             margin: 0 10px;
                             font-size: 20px;
@@ -1824,6 +1832,10 @@ div.product_inner_phone {
                     width: 45%;
 
                     button {
+                        a{
+                            text-decoration: none;
+                            color: white;
+                        }
                         width: 100%;
                         padding: 0;
                     }
