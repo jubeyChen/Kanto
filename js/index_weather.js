@@ -54,7 +54,7 @@ Vue.createApp({
     },
     mounted: function(){
         const self = this
-        axios.get("https://api.openweathermap.org/data/2.5/forecast?lat=35.68&lon=139.69&units=metric&cnt=40&appid=6e5575f4cdda3fe4367a81edf66e2bf7")
+        // axios.get("https://api.openweathermap.org/data/2.5/forecast?lat=35.68&lon=139.69&units=metric&cnt=40&appid=6e5575f4cdda3fe4367a81edf66e2bf7")
         .then(function(response){
             console.log(response);
             // console.log(data);
