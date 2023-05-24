@@ -18,20 +18,20 @@ Vue.createApp({
         }
     },
     mounted(){
-        //發出請求
-        const apikey = "9ae79f44f125054717ba39ea";
+        // 發出請求
+        // const apikey = "9ae79f44f125054717ba39ea";
         // const url = `https://v6.exchangerate-api.com/v6/${apikey}/pair/JPY/TWD"`;
-        axios.get(url)
-        .then((response)=>{
-            console.log(response);  
-            //匯率的字串轉成浮點數 0.2228
-            this.jpyRate = Number.parseFloat(response.data.conversion_rate);
-            //因為jpyRate在mounted定義 computed無法讀取 因此需要再定義
-            //this.$set(設定屬性的對象, 屬性名稱, 屬性值)
-            this.$set(this, "jpyRate" , Number.parseFloat(response.data.conversion_rate));
-        })
-        .catch(err =>{
-            console.log(err.response);
-        })
+        // axios.get("https://v6.exchangerate-api.com/v6/9ae79f44f125054717ba39ea/pair/JPY/TWD")
+        // .then((response)=>{
+        //     console.log(response);  
+        //     //匯率的字串轉成浮點數 0.2228
+        //     this.jpyRate = Number.parseFloat(response.data.conversion_rate);
+        //     //因為jpyRate在mounted定義 computed無法讀取 因此需要再定義
+        //     //this.$set(設定屬性的對象, 屬性名稱, 屬性值)
+        //     this.$set(this, "jpyRate" , Number.parseFloat(response.data.conversion_rate));
+        // })
+        // .catch(err =>{
+        //     console.log(err.response);
+        // })
     }
 }).mount("#exchangeApp");

@@ -65,75 +65,13 @@
         .login {
             width: 60%;
             margin: 0 auto;
+            color: $fontColor;
+            display: flex;
+            flex-direction: column;
 
             @include m() {
                 width: 100%;
             }
-
-            form {
-                display: flex;
-                flex-direction: column;
-                color: $fontColor;
-
-                label {
-                    margin-bottom: 5px;
-                    font-size: $paragraph-s;
-                }
-
-                input {
-                    margin-bottom: 20px;
-                    font-size: $paragraph-s;
-                    background-color: white;
-                }
-
-                .errorMsg {
-                    margin: -10px 0 20px 0;
-                    color: $primary;
-                    font-weight: bold;
-                }
-
-                p {
-                    margin-top: -10px;
-                    font-size: 13px;
-                    color: $fontColor;
-                    text-decoration: underline;
-                    cursor: pointer;
-                }
-
-                button {
-                    margin-top: 30px;
-                    font-size: $paragraph-s;
-                    border: 0;
-                    height: 40px;
-                    box-sizing: border-box;
-                    padding: 10px;
-                    border-radius: 5px;
-                    background-color: white;
-                    font-family: 'Noto Sans TC', '微軟正黑體';
-                    color: $fontColor;
-                    cursor: pointer;
-
-                    &:hover {
-                        background-color: $primary;
-                        color: white;
-                    }
-                }
-            }
-        }
-    }
-
-    .register {
-        width: 60%;
-        margin: 0 auto;
-
-        @include m() {
-            width: 100%;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            color: $fontColor;
 
             label {
                 margin-bottom: 5px;
@@ -152,14 +90,16 @@
                 font-weight: bold;
             }
 
-            a {
+            p {
                 margin-top: -10px;
                 font-size: 13px;
                 color: $fontColor;
+                text-decoration: underline;
+                cursor: pointer;
             }
 
-            button {
-                margin-top: 30px;
+            .loginBtn {
+                margin: 30px 0 0;
                 font-size: $paragraph-s;
                 border: 0;
                 height: 40px;
@@ -175,6 +115,60 @@
                     background-color: $primary;
                     color: white;
                 }
+            }
+        }
+    }
+
+    .register {
+        width: 60%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        color: $fontColor;
+
+        @include m() {
+            width: 100%;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-size: $paragraph-s;
+        }
+
+        input {
+            margin-bottom: 20px;
+            font-size: $paragraph-s;
+            background-color: white;
+        }
+
+        .errorMsg {
+            margin: -10px 0 20px 0;
+            color: $primary;
+            font-weight: bold;
+        }
+
+        a {
+            margin-top: -10px;
+            font-size: 13px;
+            color: $fontColor;
+        }
+
+        .registerBtn {
+            margin: 30px 0 0;
+            font-size: $paragraph-s;
+            border: 0;
+            height: 40px;
+            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: white;
+            font-family: 'Noto Sans TC', '微軟正黑體';
+            color: $fontColor;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $primary;
+                color: white;
             }
         }
 
@@ -213,7 +207,7 @@
             font-size: $paragraph;
         }
 
-        form {
+        .formDiv {
             display: flex;
             flex-direction: column;
             width: 80%;
@@ -237,13 +231,12 @@
                 background-color: white;
             }
 
-            input.submitBtn:disabled{
+            input.submitBtn:disabled {
                 cursor: not-allowed;
             }
-            
-            input.submitBtn,
-            button {
-                margin-top: 30px;
+
+            .forgetBtn {
+                margin: 30px 0 0;
                 font-size: $paragraph-s;
                 border: 0;
                 height: 40px;
