@@ -1,23 +1,41 @@
 const ham = document.getElementById("ham");
 const cross = document.getElementById("cross");
 const menulist = document.querySelector(".nav-bar");
-// let open = false;
+
 ham.addEventListener("click", () => {
-    // console.log("aaa");
     menulist.classList.toggle("-openlist");
     ham.classList.add("-close");
-    // console.log(menulist);
-    // console.log(ham);
     cross.classList.add("-open");
 });
 cross.addEventListener("click",()=>{
     menulist.classList.toggle("-openlist");
     ham.classList.remove("-close");
-    // console.log(menulist);
-    // console.log(ham);
     cross.classList.remove("-open");
 });
 
+Vue.createApp({
+    data() {
+        return {
+            isSessionValid: false,
+        }
+    },
+    created() {
+        this.checkSession();
+    },
+    methods: {
+        checkSession() {
+            axios.post('../php/CheckSession.php')
+                .then(response => {
+                    if (response.data.isSessionValid) {
+                        this.isSessionValid = response.data.isSessionValid;
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    }
+}).mount('#navStatus');
 
 
 // 選單收合=============

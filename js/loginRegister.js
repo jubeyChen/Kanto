@@ -8,6 +8,7 @@ Vue.createApp({
             start: false,
             email: '',
             isValidEmail: true,
+            isUniqueEmail: true,
             pw: '',
             pwCheck: '',
             isPasswordMatch: true,
@@ -27,33 +28,13 @@ Vue.createApp({
             this.email = '';
         },
 
-        submitForm() {
-            // 如果電子郵件地址無效，則顯示錯誤消息
-            if (!this.isValidEmail || !this.isValidPwLength) {
-                return;
-            }
-
-            if (!this.isPasswordMatch) {
-                return;
-            }
-        },
         checkEmailValidity() {
             // 使用正則表達式檢查email地址的有效性
             const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             this.isValidEmail = regex.test(this.email);
-        }
-        ,
-        sendEmail() {
-            let subject = document.getElementById("forgetID").value;
-            console.log('submit')
-            Email.send({
-                SecureToken: "d8f8fcac-762b-4858-956c-cc3abc40e0cc",
-                To: subject,
-                From: "kantoasuka1@gmail.com",
-                Subject: 'Kanto帳號重設密碼',
-                Body: "您好，請您重新設定密碼唷!"
-            })
         },
+
+        //完成↓
         doLogin() {
             const userData = {
                 loginID: document.getElementById('loginID').value,
@@ -75,28 +56,53 @@ Vue.createApp({
                     alert(error);
                 });
         },
-        doRegister() {
-            const registerData = {
-                registerID: document.getElementById('registerID').value,
-                registerPW: document.getElementById('registerPW').value,
-            };
 
-            axios.post('../php/Register.php', registerData)
+        //完成↓
+        checkUnique() {
+            const registerID = (this.email).trim();
+
+            axios.post('../php/CheckEmail.php', { registerID: registerID })
                 .then(response => {
-                    if (response.data === '註冊成功') {
-                        alert('註冊成功! 請您登入');
-                        window.location.href = '../dist/loginRegister.html';
+                    if (response.data === 'isUsed' && this.email !== '') {
+                        this.isUniqueEmail = false;
                     } else {
-                        alert('註冊會員失敗');
-                        this.email = '';
-                        this.pw = '';
-                        this.pwCheck = ''; 
+                        this.isUniqueEmail = true;
                     }
                 })
                 .catch(error => {
                     alert(error);
                 });
         },
+
+        //完成↓
+        doRegister() {
+            const registerData = {
+                registerID: (this.email).trim(),
+                registerPW: (this.pw),
+            };
+
+            if (this.isValidEmail && this.isPasswordMatch && this.email !== '' && this.pw !== '' & this.pwCheck !== '' && this.isUniqueEmail) {
+                axios.post('../php/Register.php', registerData)
+                    .then(response => {
+                        if (response.data === '註冊成功') {
+                            alert('註冊成功! 請您登入');
+                            window.location.href = '../dist/loginRegister.html';
+                        } else {
+                            alert('註冊會員失敗，請重新註冊帳號密碼');
+                            this.email = '';
+                            this.pw = '';
+                            this.pwCheck = '';
+                        }
+                    })
+                    .catch(error => {
+                        alert(error);
+                    });
+            } else {
+                alert('請確認您輸入的Email與密碼');
+            }
+        },
+
+        //完成↓
         doForget() {
             const forgetID = document.getElementById('forgetID').value;
             const forgetData = {
@@ -106,10 +112,9 @@ Vue.createApp({
                 .then(response => {
                     if (response.data === 'yes') {
                         alert('有這個帳號');
-                        console.log(forgetID);
                         this.showDone = true;
                         Email.send({
-                            SecureToken: "d8f8fcac-762b-4858-956c-cc3abc40e0cc",
+                            SecureToken: "adf84833-cc46-45a2-850a-092ac2f86858",
                             To: forgetID,
                             From: "kantoasuka1@gmail.com",
                             Subject: 'Kanto帳號重設密碼',
@@ -122,6 +127,21 @@ Vue.createApp({
                 .catch(error => {
                     alert(error);
                 });
+        },
+
+        checkLoginStatus() {
+            axios.post('../php/CheckSession.php')
+                .then(response => {
+                    if (response.data.isSessionValid) {
+                        this.isSessionValid = response.data.isSessionValid;
+                        this.user = response.data.user;
+                        window.location.href = "member.html";
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    window.location.href = "index.html";
+                });
         }
     },
 
@@ -132,7 +152,7 @@ Vue.createApp({
         },
 
         pwCheck() {
-            this.isPasswordMatch = this.pwCheck === this.pw;
+            this.isPasswordMatch = (this.pwCheck === this.pw);
         }
 
     },
@@ -144,5 +164,8 @@ Vue.createApp({
 
 
     },
+    mounted() {
+        this.checkLoginStatus();
+    }
 
 }).mount('#app');

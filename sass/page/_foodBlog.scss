@@ -311,6 +311,7 @@
                 height: 353px;
                 overflow: hidden;
                 margin-right: 10px;
+                position: relative;
                 @include m(){
                     width: 198px;
                     height: 216px;
@@ -345,7 +346,7 @@
                     @include m(){
                         width: 198px;
                         height: 216px;
-                        margin-left: 10px;
+                        // margin-left: 10px;
                     }
                 }
               
