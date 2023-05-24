@@ -14,7 +14,6 @@ if (isset($_SESSION['memberID'])) {
         'isSessionValid' => false,
         'user' => ''
     ];
-    header("Location: ../dist/loginRegister.html");
 }
 
 // 返回 JSON 格式的响应数据

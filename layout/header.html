@@ -1,4 +1,4 @@
-<header>
+<header id="navStatus">
     <div class="container">
             <a href="index.html">
                 <img src="image/header/logo.svg">
@@ -8,8 +8,7 @@
             <!-- 叉叉 -->
             <i id="cross" class="ai-cross"></i>
 
-
-            <div class="nav-bar">
+            <div class="nav-bar" >
                 <ul class="nav">
                     <li><a href="about.html" class="@@about">關於我們</a></li>
                     <li><a href="product.html" class="@@product">行程總覽</a></li>
@@ -20,8 +19,8 @@
                     <li><a href="fqa.html" class="@@fqa">常見問題</a></li>
                 </ul>
                 <ul class="nav-btn">
-                    <li class="member-login @@login"><a href="loginRegister.html">會員登入</a></li>
-                    <li class="member-center @@member"><a href="member.html">會員中心</a></li>
+                    <li class="member-login @@login" v-if="!isSessionValid"><a href="loginRegister.html">會員登入</a></li>
+                    <li class="member-center @@member" v-if="isSessionValid"><a href="member.html">會員中心</a></li>
                     <li class="@@cart"><a href="cart.html">購物車(0)</a></li>
                 </ul>
             </div>

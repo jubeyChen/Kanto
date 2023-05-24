@@ -16,7 +16,7 @@ const app = Vue.createApp({
             contactPhone: '',
             contactText: '',
             isValidEmail: true,
-            //isSessionValid: false,
+            isSessionValid: false,
             user: '',
         }
     },
@@ -32,7 +32,7 @@ const app = Vue.createApp({
         
     },
     mounted() {
-        //this.checkSession();
+        this.checkSession();
         setTimeout(() => {
             this.start = true;
         }, 200);
@@ -41,19 +41,19 @@ const app = Vue.createApp({
         checkSession() {
             axios.post('../php/CheckSession.php')
                 .then(response => {
-                    this.isSessionValid = response.data.isSessionValid;
-                    this.user = response.data.user;
+                    if (response.data.isSessionValid) {
+                        this.isSessionValid = response.data.isSessionValid;
+                        this.user = response.data.user;
+                    } else {
+                        window.location.href = "loginRegister.html";
+                    }
                 })
                 .catch(error => {
+                    console.log(error);
                     window.location.href = "loginRegister.html";
                 });
         },
         toggleReview(list) {
-            // if (this.showReview === false) {
-            //     this.showReview = true;
-            // } else {
-            //     this.showReview = false;
-            // }
             list.showReview = !list.showReview;
         },
 
@@ -136,3 +136,4 @@ const app = Vue.createApp({
     },
 });
 app.mount('#app');
+
