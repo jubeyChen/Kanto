@@ -9,7 +9,7 @@
     padding-bottom: 8vh;
 
 
-    h1 {
+    h3 {
         padding-top: 5vh;
         text-align: center;
         color: $primary;
@@ -18,7 +18,7 @@
 
     p {
         padding-top: 5vh;
-        font-size: 30px;
+        font-size: 20px;
         width: 60%;
         margin: 0 auto;
         text-align: center;
@@ -35,12 +35,12 @@
                 width: 85%;
                 margin: auto;
 
-                h1 {
-                    font-size: 35px;
+                h3 {
+                    font-size: 32px;
                 }
 
                 p {
-                    font-size: 18px;
+                    font-size: 20px;
                     width: 90%;
                     border: none;
                     color: $fontColor;
@@ -59,7 +59,7 @@
     padding-bottom: 8vh;
 
 
-    h1 {
+    h3 {
         padding-top: 5vh;
         margin: 0 auto;
         text-align: center;
@@ -69,7 +69,7 @@
 
     p {
         padding-top: 5vh;
-        font-size: 30px;
+        font-size: 20px;
         width: 60%;
         margin: 0 auto;
         color: $fontColor;
@@ -84,7 +84,7 @@
                 width: 85%;
                 margin: auto;
 
-                h1 {
+                h3 {
                     font-size: 35px;
                 }
 
@@ -104,7 +104,7 @@
     padding: 10vh 0 10vh 0;
     text-align: center;
 
-    h1 {
+    h3 {
         text-align: center;
         padding-bottom: 5vh;
         color: $primary;
@@ -174,8 +174,8 @@
     @include m() {
         width: 100%;
 
-        h1 {
-            font-size: 35px;
+        h3 {
+            // font-size: 35px;
         }
 
         p {
@@ -195,7 +195,7 @@
     margin: 0 auto;
     width: 60%;
 
-    h1 {
+    h3 {
         color: $primary;
         margin-bottom: 3vh;
     }
@@ -253,7 +253,7 @@
     @include m() {
         width: 100%;
 
-        h1 {
+        h3 {
             font-size: 35px;
         }
 
