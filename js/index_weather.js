@@ -69,7 +69,8 @@ Vue.createApp({
 
                             // 只要保留日期 用slice(5, 10) 從索引 5 到 10 之間截取字串去除年份和時間 長度依樣才能用
                             const date_str = current.dt_txt
-                            const monthDay = date_str.slice(5,10);
+                            const dateOnly = date_str.slice(6,10);
+                            const monthDay = dateOnly.replace("-", "/");
 
                             // 把溫度變整數 四捨五入
                             const min_temp = Math.round(current.main.temp_min)
@@ -78,13 +79,16 @@ Vue.createApp({
 
 
                             // icon待判斷=======================
+                            // let iconId = current.weather[0].icon;
+                            let iconId = ["01d","02d","04d"]
+                            let icon =  "https://openweathermap.org/img/wn/" + iconId + "@2x.png"
                             
 
                             // 把這串資料push進days的空陣列
                             self.days.push(
                                 {
                                     date:monthDay,
-                                    icon:current.weather[0].icon,
+                                    icon:icon,
                                     min_temp:min_temp,
                                     max_temp:max_temp
                                 }
