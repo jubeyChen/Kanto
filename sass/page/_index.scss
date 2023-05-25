@@ -628,18 +628,11 @@ a{
                 @include m(){
                     padding: 10px 7px;
                 }
-
-                i{
-                    font-size: $h4;
+                img{
+                    width: 80px;
                 }
-                .ai-sun{
-                    color: #fa0;
-                }
-                .ai-cloud{
-                    color: #49d;
-                }
-                .ai-air{
-                    color:#ccc;
+                p{
+                    font-size: 18px;
                 }
             }
         }

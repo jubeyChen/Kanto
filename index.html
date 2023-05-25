@@ -603,7 +603,7 @@
         <div class="weather">
             <ul class="day" v-for="(day,key) in days">
                 <li><p>{{ day.date }}</p></li>
-                <li><i class="ai-sun Wicon"></i></li>
+                <li><img :src="day.icon" alt="weatherIcon" ></li>
                 <li>{{ day.min_temp }}&#176C</li>
                 <li>|</li>
                 <li>{{ day.max_temp }}&#176C</li>
