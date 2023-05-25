@@ -18,6 +18,23 @@ const app = Vue.createApp({
             isValidEmail: true,
             isSessionValid: false,
             user: '',
+            accountInfo: {
+                AccountID: '',
+                Avatar: '',
+                FullName: '',
+                Gender: '',
+                Phone: ''
+            },
+            pwChange: {
+                newPW: '',
+                newPWCheck: '',
+                isPasswordMatch: true
+            }
+        }
+    },
+    computed: {
+        isValidPwLength() {
+            return this.pwChange.newPW.length >= 4;
         }
     },
     created() {
@@ -29,17 +46,18 @@ const app = Vue.createApp({
                     showReview: false
                 }));
             });
-        
+
     },
-    mounted() {
-        this.checkSession();
+    async mounted() {
+        await this.checkSession();
+        await this.getAccountInfo();
         setTimeout(() => {
             this.start = true;
         }, 200);
     },
     methods: {
-        checkSession() {
-            axios.post('../php/CheckSession.php')
+        async checkSession() {
+            await axios.post('../php/CheckSession.php')
                 .then(response => {
                     if (response.data.isSessionValid) {
                         this.isSessionValid = response.data.isSessionValid;
@@ -118,19 +136,76 @@ const app = Vue.createApp({
                     alert('Kanto已收到您的來信');
                 });
         },
-        
+
         deleteContactInfo() {
             this.contactID = '';
             this.contactEmail = '';
             this.contactPhone = '';
             this.contactText = '';
-        }
+        },
+
+        updateGender(e) {
+            this.accountInfo.Gender = e.target.value;
+        },
+
+        doAccountSave() {
+            const accountData = {
+                AccountID: this.accountInfo.AccountID,
+                FullName: this.accountInfo.FullName,
+                Gender: this.accountInfo.Gender,
+                Phone: this.accountInfo.Phone
+            }
+            if (this.accountInfo.Gender !== 'none') {
+                axios.post('../php/UpdateAccountInfo.php', accountData)
+                    .then(response => {
+                        if (response.data === 'done') {
+                            alert('已更新帳戶資料');
+                        } else {
+                            alert('您輸入的資料有誤，請您重試。')
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        alert('儲存失敗，請重試。');
+                    });
+            } else {
+                alert('請選擇性別');
+            }
+        },
+
+        async getAccountInfo() {
+            await axios.post('../php/GetAccountInfo.php', { user: this.user })
+                .then(response => {
+                    this.accountInfo.AccountID = response.data[0].AccountID;
+                    this.accountInfo.Avatar = response.data[0].Avatar;
+                    if (response.data[0].FullName === null || response.data[0].FullName === undefined) {
+                        this.accountInfo.FullName = null;
+                    }
+                    this.accountInfo.FullName = response.data[0].FullName;
+                    if (response.data[0].Gender === null || response.data[0].Gender === undefined) {
+                        this.accountInfo.Gender = 'none';
+                    } else {
+                        this.accountInfo.Gender = response.data[0].Gender;
+                    }
+                    
+                    this.accountInfo.Phone = response.data[0].Phone;
+                })
+                .catch(error => {
+                    console.log(error);
+                    window.location.href = "loginRegister.html";
+                });
+        },
+
 
     },
     watch: {
         contactEmail() {
             // 監聽email變化，並在每次變化時檢查其有效性
             this.checkEmailValidity();
+        },
+
+        newPWCheck() {
+            this.pwChange.isPasswordMatch = (this.pwChange.newPWCheck === this.pwChange.newPW);
         }
 
     },
