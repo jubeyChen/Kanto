@@ -18,7 +18,8 @@
             .sidebar{
                 // outline: 3px solid red;
                 position: sticky;
-                top:100px
+                top:100px;                
+                
 
 
             }
@@ -41,6 +42,9 @@
 
     .search{
         margin-top: 30px;
+        height: 490px;
+        overflow-y: scroll;
+        overflow-x: hidden;
     
         .search-text{
     
@@ -121,7 +125,8 @@
                     }
 
                     label{
-                        font-size: $paragraph;
+                        font-size: $paragraph-s;
+                        line-height: 1.5em
                     }
 
                     .content{
@@ -182,7 +187,8 @@
                 
 
                 label{
-                    font-size: $paragraph;
+                        font-size: $paragraph-s;
+                        line-height: 1.5em
                 }
 
                 .content{
