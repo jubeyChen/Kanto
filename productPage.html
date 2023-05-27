@@ -29,7 +29,7 @@
     <div class="all">
         <div class="container product_inner">
             <!--旅遊標題-->
-            <h2>富士山賞櫻一日遊</h2>
+            <h2>{{title}}</h2>
             <!--星星和加入最愛-->
             <div class="star_addheart">
                 <div class="star">
@@ -47,13 +47,13 @@
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="./image/productPage/banner1.jpg" alt="">
+                            <img :src="banner1" alt="">
                         </div>
                         <div class="swiper-slide">
-                            <img src="./image/productPage/banner2.jpg" alt="">
+                            <img :src="banner2" alt="">
                         </div>
                         <div class="swiper-slide">
-                            <img src="./image/productPage/banner3.jpg" alt="">
+                            <img :src="banner3" alt="">
                         </div>
                     </div>
                     <div class="left_btn">
@@ -74,9 +74,9 @@
                     <!--簡介-->
                     <section class="Introduction">
                         <ul>
-                            <li>富士山五合目，近距離觀看美麗的富士山。</li>
-                            <li>音樂盒之森美術館，伴隨著富士山的夢幻美景，欣賞經典的古典樂。</li>
-                            <li>忍野八海，由八個湖泊組成，每一個湖泊都有其獨特的形態和特色。</li>
+                            <li>{{Introduction1}}</li>
+                            <li>{{Introduction2}}</li>
+                            <li>{{Introduction3}}</li>
                         </ul>
                     </section>
 
@@ -332,17 +332,15 @@
                         <h3>活動介紹</h3>
                         <div class="event_content">
                             <p>
-                                來日本旅遊，除了東京以外，富士山也是不可錯過的景點之一！欣賞富士山的美景，品嚐當地
-                                美食，探索日本的文化和藝術，讓您的旅程更加豐富多彩。別忘了準備好足夠的體力和裝備，
-                                並留意當地的天氣情況。
+                                {{eventContent}}
                             </p>
                         </div>
 
                         <div class="event_pic">
-                            <img src="./image/productPage/event1.png" alt="">
-                            <img src="./image/productPage/event2.png" alt="">
-                            <img src="./image/productPage/event3.png" alt="">
-                            <img src="./image/productPage/event4.png" alt="">
+                            <img :src="event_pic1" alt="">
+                            <img :src="event_pic2" alt="">
+                            <img :src="event_pic3" alt="">
+                            <img :src="event_pic4" alt="">
                         </div>
                     </section>
 
@@ -890,11 +888,11 @@
                     </div> -->
 
                         <div class="choose_inner2">
-                            <h3>富士山賞櫻一日遊</h3>
+                            <h3>{{title}}</h3>
                             <p class="date">{{selectedDate}}</p>
                             <div class="num">
                                 <p>數量</p>
-                                <p>NT$2200X<span>{{count}}</span></p>
+                                <p>NT${{price}}X<span>{{count}}</span></p>
                             </div>
                             <p class="total">總價</p>
                             <h4>NT$<span>{{total}}</span> </h4>
@@ -987,13 +985,13 @@
                 <div class="swiper myPhoneSwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="./image/productPage/phone_banner3.png" alt="">
+                            <img :src="phone_banner1" alt="">
                         </div>
                         <div class="swiper-slide">
-                            <img src="./image/productPage/phone_banner2.png" alt="">
+                            <img :src="phone_banner2" alt="">
                         </div>
                         <div class="swiper-slide">
-                            <img src="./image/productPage/phone_banner1.png" alt="">
+                            <img :src="phone_banner3" alt="">
                         </div>
                     </div>
                     <!-- <div class="left_btn">
@@ -1011,7 +1009,7 @@
             <!--主要內容-->
             <div class="main">
                 <!--手機title-->
-                <h2>富士山賞櫻一日遊</h2>
+                <h2>{{title}}</h2>
                 <!--星星和愛心-->
                 <div class="star_addheart">
                     <div class="star">
@@ -1027,9 +1025,9 @@
                 <!--簡介-->
                 <div class="phone_Introduction">
                     <ul>
-                        <li>富士山五合目，近距離觀看美麗的富士山。</li>
-                        <li>音樂盒之森美術館，伴隨著富士山的夢幻美景，欣賞經典的古典樂。</li>
-                        <li class="final">忍野八海，由八個湖泊組成，每一個湖泊都有其獨特的形態和特色。</li>
+                        <li>{{Introduction1}}</li>
+                        <li>{{Introduction2}}</li>
+                        <li class="final">{{Introduction3}}</li>
                     </ul>
                 </div>
 
@@ -1216,25 +1214,23 @@
                 <!--活動介紹-->
                 <div class="phone_event">
                     <h3>活動介紹</h3>
-                    <p> 來日本旅遊，除了東京以外，富士山也是不可錯過的景點之一！欣賞富士山的美景，品嚐當地
-                        美食，探索日本的文化和藝術。別忘了準備好足夠的體力和裝備，
-                        並留意當地的天氣情況。
+                    <p> {{eventContent}}
                     </p>
 
                     <div class="pic">
-                        <img src="./image/productPage/event1.png" alt="">
+                        <img :src="event_pic1" alt="">
                     </div>
 
                     <div class="pic">
-                        <img src="./image/productPage/event2.png" alt="">
+                        <img :src="event_pic2" alt="">
                     </div>
 
                     <div class="pic">
-                        <img src="./image/productPage/event3.png" alt="">
+                        <img :src="event_pic3" alt="">
                     </div>
 
                     <div class="pic">
-                        <img src="./image/productPage/event4.png" alt="">
+                        <img :src="event_pic4" alt="">
                     </div>
 
                 </div>
@@ -1712,12 +1708,30 @@
     </div>
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+        integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"
         integrity="sha512-K/oyQtMXpxI4+K0W7H25UopjM8pzq0yrVdFdG21Fh5dBe91I40pDd9A4lzNlHPHBIP2cwZuoxaUSX0GJSObvGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="./js/vendors/vue.global.js"></script>
     <script src="./js/productPage.js"></script>
+
+
+    <script>
+        // .html?id=1
+        // let d = location.search
+
+
+        // fetch("path.....a.php?id=" + d).then(() => {
+
+        // })
+
+
+
+        // $_GET["id"]
+    </script>
 
 </body>
 

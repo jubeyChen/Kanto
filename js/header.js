@@ -7,13 +7,13 @@ ham.addEventListener("click", () => {
     ham.classList.add("-close");
     cross.classList.add("-open");
 });
-cross.addEventListener("click",()=>{
+cross.addEventListener("click", () => {
     menulist.classList.toggle("-openlist");
     ham.classList.remove("-close");
     cross.classList.remove("-open");
 });
 
-Vue.createApp({
+let globalCheck = Vue.createApp({
     data() {
         return {
             isSessionValid: false,
@@ -33,9 +33,20 @@ Vue.createApp({
                 .catch(error => {
                     console.log(error);
                 });
+        },
+
+        async PageCheckSession() {
+            let r = await fetch("../php/CheckSession.php", {
+                 method: "POST"
+            });
+            let r2 = await r.json();
+
+            return r2.isSessionValid;
         }
     }
 }).mount('#navStatus');
+
+
 
 
 // 選單收合=============
