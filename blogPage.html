@@ -18,15 +18,12 @@
     <!-- 以下可以開始編輯 -->
     @@include('./layout/header.html')
     <!--滿版-->
-    <div class="blogpage_banner container">
+    <div id="banner1" class="blogpage_banner container">
 
     </div>
 
-
-
-
     <!--手機板banner-->
-    <div class="phone_blogpage_banner">
+    <div id="banner1_m" class="phone_blogpage_banner">
         <!-- @@include('./layout/header.html') -->
         <div class="pic">
             <img src="./image/blog/logo.png" alt="">
@@ -40,12 +37,12 @@
             <div class="event_text">
                 <div class="time">
                     <div class="phone_circle"></div>
-                    <p>08:10</p>
+                    <p >08:10</p>
                 </div>
                 <h4>飯店出發</h4>
             </div>
             <div class="pic">
-                <img src="./image/blogPage/event1.png" alt="">
+                <img id="content1_m" src="./image/blogPage/event1.png" alt="">
             </div>
         </div>
 
@@ -58,7 +55,7 @@
                 <h4>富士山五合目</h4>
             </div>
             <div class="pic">
-                <img src="./image/blogPage/event2.png" alt="">
+                <img id="content2_m" src="./image/blogPage/event2.png" alt="">
             </div>
             <div class="content">
                 <p>五合目位於海拔 2305 公尺的山腰，被周圍
@@ -75,7 +72,7 @@
                 <h4>音樂盒之森美術館</h4>
             </div>
             <div class="pic">
-                <img src="./image/blogPage/event3.png" alt="">
+                <img id="content3_m" src="./image/blogPage/event3.png" alt="">
             </div>
             <div class="content">
                 <p>遠方的富士山的夢幻美景，與大型音樂盒
@@ -92,7 +89,7 @@
                 <h4>忍野八海</h4>
             </div>
             <div class="pic">
-                <img src="./image/blogPage/event4.png" alt="">
+                <img id="content4_m" src="./image/blogPage/event4.png" alt="">
             </div>
             <div class="content">
                 <p>由八個湖泊組成，每一個湖泊都有其獨特的形態
@@ -100,6 +97,17 @@
                     等因素而不斷變化。</p>
             </div>
         </div>
+
+        <div class="event">
+            <div class="event_text">
+                <div class="time">
+                    <div class="phone_circle"></div>
+                    <p>18:00</p>
+                </div>
+                <h4>回程</h4>
+            </div>
+        </div>
+
     </div>
 
     <!--標題-->
@@ -110,8 +118,9 @@
 
             <div class="title_main">
                 <div class="content">
-                    <h2>富士山<br>經典一日遊</h2>
-                    <ul>
+                    <h2>富士山
+                        經典一日遊</h2>
+                    <!-- <ul>
                         <li>東京出發，展開富士山朝聖之旅</li>
                         <li>一次玩遍超人氣景點！</li>
                         <li>富士山五合目近距離觀看富士山</li>
@@ -119,11 +128,18 @@
                         <li>沉浸於跨越時代的音樂世界。</li>
                         <li>走進富士山下的湧泉仙境──忍野八海</li>
                         <li>盡覽秀麗景觀並感受聖泉能量。</li>
-                    </ul>
+                    </ul> -->
+                    <h4>東京出發，展開富士山朝聖之旅
+                        一次玩遍超人氣景點！
+                        富士山五合目近距離觀看富士山
+                        河口湖音樂盒之森美術館
+                        沉浸於跨越時代的音樂世界。
+                        走進富士山下的湧泉仙境──忍野八海
+                        盡覽秀麗景觀並感受聖泉能量。</h4>
                 </div>
 
                 <div class="pic">
-                    <img src="./image/blogPage/title2.png" alt="">
+                    <img id="img1" src="./image/blogPage/title2.png" alt="">
                 </div>
             </div>
 
@@ -146,14 +162,9 @@
             <!--飛機-->
             <div id="plane-set">
                 <section id="scrollArea">
-                    <svg width="1176" height="1535" viewBox="0 0 1176 1535" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M700.502 107.5C898.001 165 1004.3 285 991 479.5C975.854 701 475 643.5 475 962.5C475 1149.5 1153 1140.5 1018 1534.5" stroke="#B0B0B0" stroke-width="2" stroke-dasharray="10 10"/></svg>
-                    <!-- <svg width="1176" height="1535" viewBox="0 0 1176 1535" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M700.502 107.5C898.001 165 1004.3 285 991 479.5C975.854 701 475 643.5 475 962.5C475 1149.5 1153 1140.5 1018 1534.5"
-                            stroke="#414143" stroke-width="2" stroke-dasharray="10 10" />
-                    </svg> -->
+                    <svg width="1176" height="1694" viewBox="0 0 1176 1694" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M700.502 107.5C898.001 165 1004.3 285 991 479.5C975.854 701 475 643.5 475 962.5C475 1149.5 1359.5 1137 911 1692.5" stroke="#B0B0B0" stroke-width="2" stroke-dasharray="10 10"/>
+                    </svg>
                 </section>
                 <div id="airplane">
                     <img src="https://www.jal.com/ja/sustainability/soraiku/steamschool/assets/img/airplane.svg" alt="">
@@ -175,7 +186,7 @@
                 <!--活動-->
                 <div class="event_content">
                     <div class="pic">
-                        <img src="./image/blogPage/event1.png" alt="">
+                        <img id="content1" src="./image/blogPage/event1.png" alt="">
                     </div>
 
                 </div>
@@ -202,7 +213,7 @@
                         </p>
                     </div>
                     <div class="pic">
-                        <img src="./image/blogPage/event2.png" alt="">
+                        <img id="content2" src="./image/blogPage/event2.png" alt="">
                     </div>
                 </div>
 
@@ -223,7 +234,7 @@
                 <!--活動-->
                 <div class="event_content">
                     <div class="pic">
-                        <img src="./image/blogPage/event3.png" alt="">
+                        <img id="content3" src="./image/blogPage/event3.png" alt="">
                     </div>
                     <div class="content">
                         <p>
@@ -252,7 +263,7 @@
                 <!--活動-->
                 <div class="event_content">
                     <div class="pic">
-                        <img src="./image/blogPage/event4.png" alt="">
+                        <img id="content4" src="./image/blogPage/event4.png" alt="">
                     </div>
                     <div class="content">
                         <p>
@@ -370,106 +381,12 @@
         </div>
     </div>
 
-
-
-
     <!-- 以下Footer區域 -->
     @@include('./layout/footer.html')
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
-    <script>
-        window.addEventListener('scroll', function (e) {
-
-            const path = document.querySelector('path');
-            const length = path.getTotalLength();
-
-            const scrollArea = document.getElementById('scrollArea');
-            let top = scrollArea.getBoundingClientRect().top;
-
-            const windowH = window.innerHeight * 0.5;
-            let rangeY = Math.abs(top - windowH);
-
-            let progress = rangeY / 1481;
-            // console.log(progress)
-
-            let myPoint = path.getPointAtLength(progress * length);
-            let prePoint = path.getPointAtLength(progress * length - 1);
-            let pathX = myPoint.x - 23;
-            let pathY = myPoint.y - 32;
-            let x = myPoint.x - prePoint.x;
-            let y = Math.abs(myPoint.y - prePoint.y);
-            let rotateDeg = Math.atan(y / x) * (180 / Math.PI);
-
-            if (rotateDeg < 0) {
-                rotateDeg += 180;
-            }
-
-            const airplane = document.getElementById('airplane');
-
-            if (top < windowH && progress <= 1) {
-                airplane.setAttribute('style', `opacity: 1; transform: translate(${pathX}px, ${pathY}px) rotate(${rotateDeg}deg)`);
-                scrollArea.setAttribute('style', `opacity: 1; height: ${pathY + 32}px`);
-            }
-
-
-
-
-
-
-            //側邊 線跟點點
-            let circle = document.querySelectorAll('.circle');
-            let aside_content = document.querySelectorAll('.aside_content');
-            let circle_line = document.querySelectorAll('.line');
-
-
-            if (window.pageYOffset > 1000) {
-                circle[0].style.transform = 'scale(1)';
-                circle[0].style.opacity = 1;
-
-                setTimeout(function () {
-                    aside_content[0].style.opacity = 1;
-                    circle_line[0].style.height = 100 + '%';
-                }, 500)
-            }
-            if (window.pageYOffset > 1500) {
-                circle[1].style.transform = 'scale(1)';
-                circle[1].style.opacity = 1;
-                setTimeout(function () {
-                    aside_content[1].style.opacity = 1;
-                    circle_line[1].style.height = 100 + '%';
-                }, 500)
-            }
-            if (window.pageYOffset > 2000) {
-                circle[2].style.transform = 'scale(1)';
-                circle[2].style.opacity = 1;
-                setTimeout(function () {
-                    aside_content[2].style.opacity = 1;
-                    circle_line[2].style.height = 100 + '%';
-                }, 500)
-            }
-            if (window.pageYOffset > 2500) {
-                circle[3].style.transform = 'scale(1)';
-                circle[3].style.opacity = 1;
-                setTimeout(function () {
-                    aside_content[3].style.opacity = 1;
-                    circle_line[3].style.height = 100 + '%';
-                }, 500)
-            }
-            if (window.pageYOffset > 3000) {
-                circle[4].style.transform = 'scale(1)';
-                circle[4].style.opacity = 1;
-                setTimeout(function(){
-                    aside_content[4].style.opacity = 1;
-                },500)
-
-            }
-        });
-
-
-
-
-    </script>
+    <script src="./js/blogPage.js"></script>
 </body>
 
 </html>

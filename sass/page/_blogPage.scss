@@ -130,6 +130,8 @@ div.blogpage_title {
                     font-weight: 600;
                     font-size: 64px;
                     position: relative;
+                    white-space: pre-line;
+
                     &::before{
                         content:"";
                         width: 300px;
@@ -154,13 +156,21 @@ div.blogpage_title {
                     }
                 }
 
-                ul {
-                    margin-top: 50px;
+                // ul {
+                //     margin-top: 50px;
 
-                    li {
-                        font-size: 24px;
-                        line-height: 1.5;
-                    }
+                //     li {
+                //         font-size: 24px;
+                //         line-height: 1.5;
+                //     }
+                // }
+
+                h4{
+                    display: block;
+                    width: 450px;
+                    margin-top: 50px;
+                    line-height: 1.5;
+                    white-space: pre-line;
                 }
             }
 
