@@ -67,17 +67,18 @@
                     label {
                         background-color: $primary;
                         line-height: 1.5;
-                        padding: 5px 10px;
+                        padding: 6px 10px;
                         border-radius: $borderRadius;
                         color: white;
                         cursor: pointer;
+                        font-size: $paragraph-s;
 
                         &:hover {
                             background-color: darken($primary, 8%);
                         }
                     }
 
-                    input {
+                    input#upload {
                         display: none;
                     }
 
@@ -240,6 +241,14 @@
                                 outline: none;
                             }
                         }
+
+                        .errorMsg {
+                            margin: 10px 0 0 0;
+                            color: $primary;
+                            font-weight: bold;
+                            font-size: $paragraph-s;
+                            line-height: 1.3;
+                        }
                     }
 
                     #accountSave {
@@ -315,7 +324,7 @@
                         }
                     }
 
-                    button {
+                    .pwChangeBtn {
                         border: 0;
                         background-color: $primary;
                         line-height: 1.5;

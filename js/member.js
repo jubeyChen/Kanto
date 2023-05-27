@@ -5,7 +5,6 @@ const app = Vue.createApp({
             showService: false,
             start: false,
             current_tab: 'account',
-            avatar: '',
             orderList: [],
             orderIMGUrl: 'image/member/',
             cancelOrder: false,
@@ -16,20 +15,25 @@ const app = Vue.createApp({
             contactPhone: '',
             contactText: '',
             isValidEmail: true,
+            isValidPhone: true,
             isSessionValid: false,
+            preview: false,
             user: '',
+            avatarURL: 'image/member/',
             accountInfo: {
+                ID: '',
                 AccountID: '',
                 Avatar: '',
                 FullName: '',
                 Gender: '',
-                Phone: ''
+                Phone: '',
             },
             pwChange: {
+                currentPW: '',
                 newPW: '',
-                newPWCheck: '',
-                isPasswordMatch: true
-            }
+                newPWCheck: ''
+            },
+            isPasswordMatch: true
         }
     },
     computed: {
@@ -89,7 +93,8 @@ const app = Vue.createApp({
         },
 
         avatarLoaded(e) {
-            this.avatar = e.target.result;
+            this.accountInfo.Avatar = e.target.result;
+            this.preview = true;
         },
 
         departureStatus(date) {
@@ -144,8 +149,37 @@ const app = Vue.createApp({
             this.contactText = '';
         },
 
+        saveAvatar() {
+            const avatarData = new FormData();
+            avatarData.append('Avatar', document.getElementById('upload').files[0]);
+            avatarData.append('ID', this.accountInfo.ID);
+
+            axios.post('../php/Avatar.php', avatarData)
+                .then(response => {
+                    if (response.data === 'done') {
+                        alert('已儲存您的大頭照');
+                    } else {
+                        alert('您輸入的資料有誤，請您重試。')
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('儲存失敗，請重試。');
+                });
+        },
+
+        updateFullName(e) {
+            this.accountInfo.FullName = e.target.value;
+        },
+
         updateGender(e) {
             this.accountInfo.Gender = e.target.value;
+        },
+
+        updatePhone(e) {
+            this.accountInfo.Phone = e.target.value;
+            const regexPhone = /^09\d{8}$/;
+            this.isValidPhone = regexPhone.test(e.target.value);
         },
 
         doAccountSave() {
@@ -156,18 +190,22 @@ const app = Vue.createApp({
                 Phone: this.accountInfo.Phone
             }
             if (this.accountInfo.Gender !== 'none') {
-                axios.post('../php/UpdateAccountInfo.php', accountData)
-                    .then(response => {
-                        if (response.data === 'done') {
-                            alert('已更新帳戶資料');
-                        } else {
-                            alert('您輸入的資料有誤，請您重試。')
-                        }
-                    })
-                    .catch(error => {
-                        console.log(error);
-                        alert('儲存失敗，請重試。');
-                    });
+                if (this.isValidPhone || this.accountInfo.Phone ==='') {
+                    axios.post('../php/UpdateAccountInfo.php', accountData)
+                        .then(response => {
+                            if (response.data === 'done') {
+                                alert('已更新帳戶資料');
+                            } else {
+                                alert('您輸入的資料有誤，請您重試。')
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                            alert('儲存失敗，請重試。');
+                        });
+                } else {
+                alert('請輸入正確的手機號碼')
+                }
             } else {
                 alert('請選擇性別');
             }
@@ -176,6 +214,7 @@ const app = Vue.createApp({
         async getAccountInfo() {
             await axios.post('../php/GetAccountInfo.php', { user: this.user })
                 .then(response => {
+                    this.accountInfo.ID = response.data[0].ID;
                     this.accountInfo.AccountID = response.data[0].AccountID;
                     this.accountInfo.Avatar = response.data[0].Avatar;
                     if (response.data[0].FullName === null || response.data[0].FullName === undefined) {
@@ -196,18 +235,42 @@ const app = Vue.createApp({
                 });
         },
 
+        newPWCheck() {
+            this.isPasswordMatch = (this.pwChange.newPWCheck === this.pwChange.newPW);
+        },
+
+        changePW() {
+            const PWData = {
+                AccountID: this.accountInfo.AccountID,
+                currentPW: this.pwChange.currentPW,
+                newPW: this.pwChange.newPW,
+            }
+            if (this.pwChange.currentPW !== '' && this.isPasswordMatch && this.isValidPwLength) {
+                axios.post('../php/PWChange.php', PWData)
+                    .then(response => {
+                        if (response.data === 'done') {
+                            alert('已變更您的密碼，請您重新登入');
+                            window.location.href = "../php/Logout.php";
+                        } else {
+                            alert('您輸入的密碼有誤，請您重試。')
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        alert('變更失敗，請稍後重試。');
+                    });
+            } else {
+                alert('請輸入完整密碼資訊');
+            }
+        }
+
 
     },
     watch: {
         contactEmail() {
             // 監聽email變化，並在每次變化時檢查其有效性
             this.checkEmailValidity();
-        },
-
-        newPWCheck() {
-            this.pwChange.isPasswordMatch = (this.pwChange.newPWCheck === this.pwChange.newPW);
         }
-
     },
 });
 app.mount('#app');

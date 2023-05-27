@@ -11,7 +11,6 @@ $data = json_decode(file_get_contents('php://input'), true);
 $id = htmlspecialchars($data['loginID']);
 $pw = htmlentities($data['loginPW']);
 
-//$sql = "SELECT * FROM member WHERE Account = :id and PWD = :pw"; //自訂義
 $sql = "SELECT * FROM members WHERE AccountID = ? and PWD = ?"; //用問號
 
 //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
