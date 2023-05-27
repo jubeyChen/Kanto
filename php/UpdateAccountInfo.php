@@ -14,7 +14,7 @@ $Gender = htmlspecialchars($data['Gender']);
 $Phone = htmlspecialchars($data['Phone']);
 
 // $sql = "SELECT AccountID, FullName, Gender, Phone, Avatar FROM members WHERE AccountID = ?";
-$sql = "UPDATE members SET FullName = ?, Gender = ?, Phone = ? WHERE AccountID = ?";;
+$sql = "UPDATE members SET FullName = ?, Gender = ?, Phone = ? WHERE AccountID = ?";
 
 //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
 

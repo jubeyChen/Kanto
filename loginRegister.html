@@ -84,7 +84,7 @@
                         <input type="password" id="registerPW" class="textStyle" placeholder="請輸入密碼" v-model="pw">
                         <div v-if="!isValidPwLength" class="errorMsg">密碼至少需要4個字元。</div>
                         <label for="confirmPW">再次確認密碼</label>
-                        <input type="password" id="confirmPW" class="textStyle" placeholder="請再次輸入密碼" v-model.lazy="pwCheck">
+                        <input type="password" id="confirmPW" class="textStyle" placeholder="請再次輸入密碼" v-model.lazy="pwCheck" @change="PWCheck()">
                         <div v-if="!isPasswordMatch" class="errorMsg">您再次輸入的密碼有誤</div>
                         <input type="button" class="registerBtn" value="註冊" :disabled="!isPasswordMatch || !isValidEmail || email ==='' || pw ==='' || pwCheck === '' || !isUniqueEmail" @click="doRegister()">
                     </div>

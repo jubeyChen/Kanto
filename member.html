@@ -24,11 +24,14 @@
             <section class="container" :class="{'-show':start === true}">
                 <aside>
                     <div class="avatar">
-                        <div class="img"><img v-if="avatar" :src="avatar"></div>
+                        <div class="img" v-if="!preview"><img v-if="accountInfo.Avatar" :src="avatarURL+accountInfo.ID+'/avatar/'+accountInfo.Avatar"></div>
+                        <div class="img" v-if="preview"><img :src="accountInfo.Avatar"></div>
                         <ul class="imgOption">
-                            <label for="upload">選擇圖片</label>
-                            <li><input @change="uploadAvatar" type="file" id="upload" accept="image/*"></li>
-                            <li><button class="save">儲存</button></li>
+                            <li>
+                                <label for="upload">選擇圖片</label>
+                                <input @change="uploadAvatar" type="file" id="upload" accept="image/*">
+                            </li>
+                            <li><input type="button" class="save" value="儲存" @click="saveAvatar"></li>
                         </ul>
                     </div>
 

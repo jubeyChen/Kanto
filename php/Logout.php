@@ -4,7 +4,7 @@ session_start();
 session_unset();
 session_destroy();
 
-header("Location: ../dist/index.html");
+header("Location: ../dist/loginRegister.html");
 
 
 ?>

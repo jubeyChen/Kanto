@@ -1,8 +1,8 @@
 import QAComponent from "./component/QAComponent.js";
 
 const app = Vue.createApp({
-    data(){
-        return{
+    data() {
+        return {
             current_tab: 'order',
             current_tab_name: '訂單相關',
             tabs: [
@@ -23,33 +23,37 @@ const app = Vue.createApp({
             accountQA: [],
             paymentQA: [],
         }
-    }, 
+    },
     computed: {
     },
+    async mounted() {
+        let a = await globalCheck.PageCheckSession();// 測試連線
+        console.log(a);
+    },
     methods: {
-        accordion(e){
+        accordion(e) {
             e.target.nextElementSibling.classList.toggle('-open')
             e.target.firstElementChild.classList.toggle('-rotate')
         },
-        clearOpen(e){
+        clearOpen(e) {
             // console.log(e.target.closest('#app').querySelector('.accordion-content'));
-            e.target.closest('#app').querySelectorAll('.accordion-content').forEach(function(item){
+            e.target.closest('#app').querySelectorAll('.accordion-content').forEach(function (item) {
                 //console.log(item.previousElementSibling.querySelector('.v'));
                 item.classList.remove('-open');
                 item.previousElementSibling.querySelector('.v').classList.remove('-rotate');
             });
         },
-        changeTabName(){
+        changeTabName() {
             // console.log('aaa');
-            if(this.current_tab == 'order'){
+            if (this.current_tab == 'order') {
                 this.current_tab_name = '訂單相關';
-            }else if(this.current_tab == 'account'){
+            } else if (this.current_tab == 'account') {
                 this.current_tab_name = '帳號相關';
-            }else{
+            } else {
                 this.current_tab_name = '付款相關';
             }
         },
-        changeValue(e){
+        changeValue(e) {
             console.log(e);
             this.current_tab = e.target.value;
         }
