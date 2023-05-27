@@ -56,7 +56,7 @@
     width: 100%;
     height: 1300px;
     @include m(){
-        height: 1430px;
+        height: 1470px;
         overflow: hidden;
     }
     .event_inner{
@@ -101,6 +101,7 @@
     .main-event{
         display: flex;
         position: relative;
+        flex-wrap: wrap;
         .main-pic{
             @include m(){
                 width: 100%;
@@ -125,15 +126,18 @@
             box-shadow: 11px 12px 13px rgba(0, 0, 0, .25);
             padding: 30px;
             box-sizing: border-box;
-            position: absolute;
-            top: 180px;
-            right: 150px;
+            position: relative;
+            margin: 180px 0 111px -131px;
+            // position: absolute;
+            // top: 180px;
+            // right: 150px;
             @include m(){
                 width: 303px;
                 height: 355px;
                 padding: 20px;
-                top: 252px;
-                left: 52px;
+                margin: 70px auto 0;
+                // top: 252px;
+                // left: 52px;
             }
             p{
                 font-size: $paragraph;
@@ -176,12 +180,17 @@
         }
     }
     .main-event2{
-        margin-top: 220px;
+        // margin-top: 220px;
+        margin-top: 25px;
+        margin-left: 10px;
         display: flex;
+        flex-wrap: wrap;
         position: relative;
         width: 100%;
         @include m(){
-            margin-top: 236px auto 0;
+            // margin-top: 236px auto 0;
+            margin-top: 0;
+            margin-left: 0;
         }
         .main-text{
             display: block;
@@ -192,16 +201,19 @@
             box-shadow: 11px 12px 13px rgba(0, 0, 0, .25);
             padding: 30px;
             box-sizing: border-box;
-            position: absolute;
-            bottom: -500px;
-            left: 40px;
+            position: relative;
+            margin: 225px -141px 0 23px;
+            // position: absolute;
+            // bottom: -500px;
+            // left: 40px;
             z-index: 1;
             @include m(){
                 width: 303px;
                 height: 375px;
                 padding: 20px;
-                bottom: -870px;
-                left: 52px;
+                margin: 327px auto 30px;
+                // bottom: -870px;
+                // left: 52px;
             }
             p{
                 font-size: $paragraph;
@@ -244,13 +256,19 @@
             }
         }
         .main-pic{
-            position: absolute;
-            top: 0;
-            right: 100px;
+            width: 628px;
+            height: 371px;
+            position: relative;
+            margin-left: 20px;
+            // position: absolute;
+            // top: 0;
+            // right: 100px;
             @include m(){
                 width: 100%;
-                top: 250px;
-                right: 0;
+                height: 100%;
+                margin: -657px auto 0;
+                // top: 250px;
+                // right: 0;
             }
             img{
                 border-radius: 10px;
@@ -270,7 +288,7 @@
             z-index: -1;
             position: absolute;
             bottom: -110px;
-            right: -40px;
+            right: -89px;
             @include m(){
                 width: 47px;
                 height: 196px;

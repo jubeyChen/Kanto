@@ -2,21 +2,23 @@
 <section class="box account" v-if="current_tab === 'account'">
     <div class="info">
         <h4>會員資料</h4>
-        <form action="">
+        <div class="accountForm">
             <ul>
                 <li>
                     <label>會員帳號</label>
-                    <input type="text" disabled value="會員帳號不可更動" class="textStyle">
+                    <p class="textStyle">{{user}}</p>
                 </li>
 
                 <li>
                     <label for="fullname">全名</label>
-                    <input type="text" id="fullname" placeholder="請輸入您的全名" class="textStyle" required>
+                    <input type="text" id="fullname" placeholder="請輸入您的全名" class="textStyle"
+                        :value="accountInfo.FullName">
                 </li>
 
                 <li>
                     <label for="gender">性別</label>
-                    <select name="gender" id="gender" required>
+                    <select name="gender" id="gender" :value="accountInfo.Gender" @change="updateGender">
+                        <option value="none">請選擇</option>
                         <option value="male">男性</option>
                         <option value="female">女性</option>
                     </select>
@@ -24,37 +26,39 @@
 
                 <li>
                     <label for="phone">手機號碼</label>
-                    <input type="text" id="phone" placeholder="請輸入您的手機號碼" class="textStyle" required>
+                    <input type="text" id="phone" placeholder="請輸入您的手機號碼" class="textStyle" :value="accountInfo.Phone">
                 </li>
             </ul>
 
-            <button type="submit">儲存</button>
-        </form>
+            <input type="button" value="儲存" @click="doAccountSave()" id="accountSave">
+        </div>
     </div>
 
     <div class="pwChange">
         <h4>變更密碼</h4>
-        <form action="">
+        <div class="pwChangeForm">
             <ul>
                 <li>
                     <label for="oldPW">舊密碼</label>
-                    <input type="password" id="oldPW" class="textStyle" placeholder="請輸入您現在的密碼" required>
+                    <input type="password" id="oldPW" class="textStyle" placeholder="請輸入您現在的密碼">
                 </li>
 
                 <li>
                     <label for="newPW">新密碼</label>
-                    <input type="password" id="newPW" class="textStyle" placeholder="請輸入新的密碼" required>
+                    <input type="password" id="newPW" class="textStyle" placeholder="請輸入新的密碼" v-model="pwChange.newPW">
+                    <div v-if="!isValidPwLength" class="errorMsg">密碼至少需要4個字元。</div>
                 </li>
 
 
                 <li>
                     <label for="confirmPW">確認新密碼</label>
-                    <input type="password" id="confirmPW" class="textStyle" placeholder="請再次輸入新密碼" required>
+                    <input type="password" id="confirmPW" class="textStyle" placeholder="請再次輸入新密碼" v-model.lazy="pwChange.newPWCheck">
+                    <div v-if="!pwChange.isPasswordMatch" class="errorMsg">您再次輸入的密碼有誤</div>
                 </li>
             </ul>
 
             <button type="submit">修改</button>
-        </form>
+        </div>
     </div>
 
     <div class="pw"></div>

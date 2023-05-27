@@ -167,6 +167,7 @@
                 border-radius: $borderRadius;
                 color: $fontColor;
                 font-family: 'Noto Sans TC', '微軟正黑體';
+                text-align: center;
                 cursor: pointer;
 
                 &:hover {
@@ -203,7 +204,7 @@
                     margin-bottom: 30px;
                 }
 
-                form {
+                .accountForm {
                     display: flex;
                     flex-direction: column;
                     width: 60%;
@@ -241,7 +242,7 @@
                         }
                     }
 
-                    button {
+                    #accountSave {
                         border: 0;
                         background-color: $primary;
                         line-height: 1.5;
@@ -281,7 +282,7 @@
                     margin-bottom: 30px;
                 }
 
-                form {
+                .pwChangeForm {
                     display: flex;
                     flex-direction: column;
                     width: 60%;
@@ -304,6 +305,13 @@
                         #newPW,
                         #confirmPW {
                             background-color: $bgc;
+                        }
+
+                        .errorMsg {
+                            margin: 10px 0 0 0;
+                            color: $primary;
+                            font-weight: bold;
+                            font-size: $paragraph-s;
                         }
                     }
 
@@ -851,7 +859,7 @@
                     }
                 }
 
-                .submitBtn:disabled{
+                .submitBtn:disabled {
                     cursor: not-allowed;
                 }
             }
