@@ -27,7 +27,7 @@ const app = Vue.createApp({
     computed: {
     },
     async mounted() {
-        let a = await globalCheck.PageCheckSession();
+        let a = await globalCheck.PageCheckSession();// 測試連線
         console.log(a);
     },
     methods: {

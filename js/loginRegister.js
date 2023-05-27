@@ -34,6 +34,10 @@ Vue.createApp({
             this.isValidEmail = regex.test(this.email);
         },
 
+        PWCheck() {
+            this.isPasswordMatch = (this.pwCheck === this.pw);
+        },
+
         //完成↓
         doLogin() {
             const userData = {
@@ -149,12 +153,7 @@ Vue.createApp({
         email() {
             // 監聽email變化，並在每次變化時檢查其有效性
             this.checkEmailValidity();
-        },
-
-        pwCheck() {
-            this.isPasswordMatch = (this.pwCheck === this.pw);
         }
-
     },
 
     created() {
