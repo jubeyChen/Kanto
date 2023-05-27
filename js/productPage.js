@@ -4,13 +4,58 @@ const app = Vue.createApp({
     data() {
         return {
             count: 1,
-            price: 2200,
+            price: "",
             total: "",
             date: flatpickr.formatDate(new Date(), "Y-m-d"),
             selectedDate: flatpickr.formatDate(new Date(), "Y-m-d"),
+
+            //axios的部分
+            title: '',
+            banner1: '',
+            banner2: '',
+            banner3: '',
+            phone_banner1: '',
+            phone_banner2: '',
+            phone_banner3: '',
+            eventContent: '',
+            event_pic1: '',
+            event_pic2: '',
+            event_pic3: '',
+            event_pic4: '',
+            Introduction1: '',
+            Introduction2: '',
+            Introduction3: '',
         }
     },
     created() {
+
+        //撈取資料 丟到data
+        axios.get('../php/productPage.php')
+            .then((response) => {
+                //被包裝成二維陣列
+                console.log(response.data[0]['Price']);
+                this.title = response.data[0]['Name'];
+                this.banner1 = `./image/productPage/${response.data[0]['ProductID']}/${response.data[0]['Banner1']}`;
+                this.banner2 = `./image/productPage/${response.data[0]['ProductID']}/${response.data[0]['Banner2']}`;
+                this.banner3 = `./image/productPage/${response.data[0]['ProductID']}/${response.data[0]['Banner3']}`;
+                this.phone_banner1 = `./image/productPage/${response.data[0]['ProductID']}/${response.data[0]['Banner1_m']}`;
+                this.phone_banner2 = `./image/productPage/${response.data[0]['ProductID']}/${response.data[0]['Banner2_m']}`;
+                this.phone_banner3 = `./image/productPage/${response.data[0]['ProductID']}/${response.data[0]['Banner3_m']}`;
+                this.eventContent = response.data[0]['Content'];
+                this.event_pic1 = `./image/productPage/${response.data[0]['ProductID']}/${response.data[0]['Image1']}`;
+                this.event_pic2 = `./image/productPage/${response.data[0]['ProductID']}/${response.data[0]['Image2']}`;
+                this.event_pic3 = `./image/productPage/${response.data[0]['ProductID']}/${response.data[0]['Image3']}`;
+                this.event_pic4 = `./image/productPage/${response.data[0]['ProductID']}/${response.data[0]['Image4']}`;
+                this.Introduction1 = response.data[0]['Content1'];
+                this.Introduction2 = response.data[0]['Content2'];
+                this.Introduction3 = response.data[0]['Content3'];
+                this.total = response.data[0]['Price'];
+                this.price = response.data[0]['Price'];
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
         this.total = this.price;
         this.total = this.total.toLocaleString();
     },
@@ -20,6 +65,7 @@ const app = Vue.createApp({
             if (this.count < 9) {
                 this.count += 1;
                 this.total = this.price * this.count;
+                //轉成千分味
                 this.total = this.total.toLocaleString();
             }
         },
@@ -247,25 +293,25 @@ total_pic.addEventListener("click", function (e) {
     light_box.style.display = "block";
     setTimeout(function () {
         light_box.style.opacity = 1;
-    }, 0); 
+    }, 0);
 
     des_lightbox.style.display = "block";
     setTimeout(function () {
         des_lightbox.style.opacity = 1;
-    }, 0); 
+    }, 0);
 
 });
 lightbox_btn.addEventListener("click", function (e) {
     light_box.style.display = "none";
     setTimeout(function () {
         light_box.style.opacity = 0;
-    }, 0); 
+    }, 0);
 
 
     des_lightbox.style.display = "none";
     setTimeout(function () {
         des_lightbox.style.opacity = 0;
-    }, 0); 
+    }, 0);
 });
 
 

@@ -174,7 +174,7 @@ div.phone_title {
     justify-content: space-around;
     padding: 50px 0;
     border-top: 1px solid black;
-
+    flex-wrap: wrap;
 
     @include m() {
         display: none;

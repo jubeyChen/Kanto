@@ -18,7 +18,10 @@ const app = Vue.createApp({
                     id: "payment",
                     name: "付款相關"
                 }
-            ]
+            ],
+            orderQA: [],
+            accountQA: [],
+            paymentQA: [],
         }
     },
     computed: {
@@ -55,6 +58,28 @@ const app = Vue.createApp({
             this.current_tab = e.target.value;
         }
 
+    },
+    mounted(){
+        axios.get('../php/fqa.php')
+        .then(response => {
+            // console.log(response.data[0]);
+            for(let i = 0; i < response.data.length; i++){
+                if(response.data[i].Category == 'order'){
+                    this.orderQA.push({q: response.data[i][1], a: response.data[i][5]})
+                }
+                if(response.data[i].Category == 'account'){
+                    this.accountQA.push({q: response.data[i][1], a: response.data[i][5]})
+                }
+                if(response.data[i].Category == 'payment'){
+                    this.paymentQA.push({q: response.data[i][1], a: response.data[i][5]})
+                }
+
+            }
+            // console.log(this.orderQA, this.accountQA, this.paymentQA)
+        })
+        .catch(error => {
+            console.log(error);
+        });
     }
 
 });
