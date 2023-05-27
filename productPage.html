@@ -791,15 +791,15 @@
                             <div class="detail_1">
                                 <div class="title">
                                     <div class="circle"></div>
-                                    <h4>08:10去程</h4>
+                                    <h4>{{detail1_Time}}{{detail1_ScheduleTitle}}</h4>
                                 </div>
 
                                 <div class="content">
                                     <div class="pic">
-                                        <img src="./image/productPage/detail_1.png" alt="">
+                                        <img :src="detail1_Pic" alt="">
                                     </div>
                                     <div class="text">
-                                        <p>飯店集合</p>
+                                        <p>{{detail1_Content}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -807,16 +807,17 @@
                             <div class="detail_2">
                                 <div class="title">
                                     <div class="circle"></div>
-                                    <h4>10:20景點/體驗</h4>
+                                    <h4>{{detail2_Time}}{{detail2_ScheduleTitle}}</h4>
                                 </div>
 
                                 <div class="content">
                                     <div class="pic">
-                                        <img src="./image/productPage/detail_2.png" alt="">
+                                        <img :src="detail2_Pic" alt="">
                                     </div>
                                     <div class="text">
-                                        <p>富士山五合目</p>
-                                        <p class="small">近距離觀看富士山。</p>
+                                        <p>{{detail2_ContentTitle}}</p>
+                                        <p class="small"> {{detail2_Content}}</p>
+
                                     </div>
                                 </div>
                             </div>
@@ -824,17 +825,16 @@
                             <div class="detail_3">
                                 <div class="title">
                                     <div class="circle"></div>
-                                    <h4>12:40景點/體驗</h4>
+                                    <h4>{{detail3_Time}}{{detail3_ScheduleTitle}}</h4>
                                 </div>
 
                                 <div class="content">
                                     <div class="pic">
-                                        <img src="./image/productPage/detail_3.png" alt="">
+                                        <img :src="detail3_Pic" alt="">
                                     </div>
                                     <div class="text">
-                                        <p>音樂盒之森美術館<br> </p>
-                                        <p class="small">伴隨富士山的夢幻美景
-                                            聆聽經典的音樂。</p>
+                                        <p>{{detail3_ContentTitle}}<br> </p>
+                                        <p class="small">{{detail3_Content}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -842,16 +842,16 @@
                             <div class="detail_4">
                                 <div class="title">
                                     <div class="circle"></div>
-                                    <h4>14:30景點/體驗</h4>
+                                    <h4>{{detail4_Time}}{{detail4_ScheduleTitle}}</h4>
                                 </div>
 
                                 <div class="content">
                                     <div class="pic">
-                                        <img src="./image/productPage/detail_4.png" alt="">
+                                        <img :src="detail4_Pic" alt="">
                                     </div>
                                     <div class="text">
-                                        <p>忍野八海<br></p>
-                                        <p class="small">由八個湖泊組成，每一個湖泊都有其獨特的形態和特色。</p>
+                                        <p>{{detail4_ContentTitle}}<br></p>
+                                        <p class="small">{{detail4_Content}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -859,7 +859,7 @@
                             <div class="detail_5">
                                 <div class="title">
                                     <div class="circle"></div>
-                                    <h4>16:30回程</h4>
+                                    <h4>{{detail5_Time}}{{detail5_ScheduleTitle}}</h4>
                                 </div>
 
                                 <div class="content">
@@ -1070,15 +1070,15 @@
                             <div class="detail_1">
                                 <div class="title">
                                     <div class="circle"></div>
-                                    <h4>08:10去程</h4>
+                                    <h4>{{detail1_Time}}{{detail1_ScheduleTitle}}</h4>
                                 </div>
 
                                 <div class="content">
                                     <div class="pic">
-                                        <img src="./image/productPage/detail_1.png" alt="">
+                                        <img :src="detail1_Pic" alt="">
                                     </div>
                                     <div class="text">
-                                        <p>飯店集合</p>
+                                        <p>{{detail1_Content}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -1086,16 +1086,16 @@
                             <div class="detail_2">
                                 <div class="title">
                                     <div class="circle"></div>
-                                    <h4>10:20景點/體驗</h4>
+                                    <h4>{{detail2_Time}}{{detail2_ScheduleTitle}}</h4>
                                 </div>
 
                                 <div class="content">
                                     <div class="pic">
-                                        <img src="./image/productPage/detail_2.png" alt="">
+                                        <img :src="detail2_Pic" alt="">
                                     </div>
                                     <div class="text">
-                                        <p>富士山五合目</p>
-                                        <p class="small">近距離觀看富士山。</p>
+                                        <p>{{detail2_ContentTitle}}</p>
+                                        <p class="small">{{detail2_Content}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -1103,17 +1103,16 @@
                             <div class="detail_3">
                                 <div class="title">
                                     <div class="circle"></div>
-                                    <h4>12:40景點/體驗</h4>
+                                    <h4>{{detail3_Time}}{{detail3_ScheduleTitle}}</h4>
                                 </div>
 
                                 <div class="content">
                                     <div class="pic">
-                                        <img src="./image/productPage/detail_3.png" alt="">
+                                        <img :src="detail3_Pic" alt="">
                                     </div>
                                     <div class="text">
-                                        <p>音樂盒之森美術館<br> </p>
-                                        <p class="small">伴隨富士山的夢幻美景
-                                            聆聽經典的音樂。</p>
+                                        <p>{{detail3_ContentTitle}}</p>
+                                        <p class="small">{{detail3_Content}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -1121,16 +1120,16 @@
                             <div class="detail_4">
                                 <div class="title">
                                     <div class="circle"></div>
-                                    <h4>14:30景點/體驗</h4>
+                                    <h4>{{detail4_Time}}{{detail4_ScheduleTitle}}</h4>
                                 </div>
 
                                 <div class="content">
                                     <div class="pic">
-                                        <img src="./image/productPage/detail_4.png" alt="">
+                                        <img :src="detail4_Pic" alt="">
                                     </div>
                                     <div class="text">
-                                        <p>忍野八海<br></p>
-                                        <p class="small">八個湖泊組成，每一個湖泊都有其獨特的形態和特色。</p>
+                                        <p>{{detail4_ContentTitle}}</p>
+                                        <p class="small">{{detail4_Content}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -1138,7 +1137,7 @@
                             <div class="detail_5">
                                 <div class="title">
                                     <div class="circle"></div>
-                                    <h4>16:30回程</h4>
+                                    <h4>{{detail5_Time}}{{detail5_ScheduleTitle}}</h4>
                                 </div>
 
                                 <div class="content">
