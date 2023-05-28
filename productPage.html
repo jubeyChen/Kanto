@@ -421,7 +421,7 @@
                             </div>
 
                             <div class="review_total">
-                                <p><span>200</span>則評價</p>
+                                <p><span>{{memberReview.length}}</span>則評價</p>
                             </div>
                         </div>
 
@@ -430,26 +430,16 @@
                             <div class="left">
                                 <div class="top">
                                     <h4>照片庫</h4>
-                                    <p><span>12</span>張照片</p>
+                                    <p><span>{{photosPath.length}}</span>張照片</p>
                                 </div>
                                 <p><a href="#">查看更多</a></p>
                             </div>
                             <div class="right">
-                                <div class="pic">
-                                    <img src="./image/productPage/review1.jpg" alt="">
-                                </div>
-                                <div class="pic">
-                                    <img src="./image/productPage/review2.jpg" alt="">
-                                </div>
-                                <div class="pic">
-                                    <img src="./image/productPage/review3.jpg" alt="">
-                                </div>
-                                <div class="pic">
-                                    <img src="./image/productPage/review4.jpg" alt="">
+                                <div class="pic" v-for="(item,index) in limitedPhotos">
+                                    <img :src="item" alt="">
                                 </div>
                             </div>
                         </div>
-
 
                         <!--點開照片庫之後-->
                         <!-- Swiper -->
@@ -459,41 +449,8 @@
                             <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                                 class="swiper lightbox_mySwiper2">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review1.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review2.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review3.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review4.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review5.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review6.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review7.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review8.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review9.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review10.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review11.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review12.jpg" />
+                                    <div class="swiper-slide top" v-for="(item,index) in photosPath" :key="index">
+                                        <img :src="item" />
                                     </div>
                                 </div>
                                 <div class="lightbox_left_btn">
@@ -508,42 +465,10 @@
 
                             <div thumbsSlider="" class="swiper lightbox_mySwiper">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review1.jpg" />
+                                    <div class="swiper-slide" v-for="(item,index) in photosPath" :key="index">
+                                        <img :src="item" />
                                     </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review2.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review3.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review4.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review5.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review6.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review7.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review8.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review9.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review10.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review11.jpg" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./image/productPage/review12.jpg" />
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -569,15 +494,15 @@
                         <div class="member_review">
 
                             <!--會員資訊-->
-                            <div class="member_block">
+                            <div class="member_block" v-for="(item,index) in memberReview" :key="index">
                                 <div class="member_information">
                                     <div class="pic">
                                         <img src="./image/productPage/head3.png" alt="">
                                     </div>
 
                                     <div class="member_name">
-                                        <p>小明</p>
-                                        <p><span>4</span>天前</p>
+                                        <p>{{item.FullName}}</p>
+                                        <p>{{item.ReviewTime}}</p>
                                     </div>
                                 </div>
 
@@ -593,34 +518,39 @@
 
                                 <!--內容-->
                                 <div class="member_content">
-                                    <p>第一次參加一日遊行程，該到的點都有到，富士山真的很美，拍的很開心❤️</p>
+                                    <p>{{item.Text}}</p>
                                 </div>
 
                                 <!--會員提供照片-->
                                 <div class="member_pic">
-                                    <div class="first">
-                                        <img src="./image/productPage/review1.jpg" alt="" class="first">
+                                    <div class="first" v-if="item.Image1">
+                                        <img :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image1}`"
+                                            alt="" class="first">
                                     </div>
-                                    <div>
-                                        <img src="./image/productPage/review2.jpg" alt="">
+                                    <div v-if="item.Image2">
+                                        <img :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image2}`"
+                                            alt="">
                                     </div>
-                                    <div>
-                                        <img src="./image/productPage/review3.jpg" alt="">
+                                    <div v-if="item.Image3">
+                                        <img :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image3}`"
+                                            alt="">
                                     </div>
-                                    <div>
-                                        <img src="./image/productPage/review4.jpg" alt="">
+                                    <div v-if="item.Image4">
+                                        <img :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image4}`"
+                                            alt="">
                                     </div>
-                                    <div>
-                                        <img src="./image/productPage/review5.jpg" alt="">
+                                    <div v-if="item.Image5">
+                                        <img :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image5}`"
+                                            alt="">
                                     </div>
-                                    <div>
-                                        <img src="./image/productPage/review6.jpg" alt="">
+                                    <div v-if="item.Image6">
+                                        <img :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image6}`"
+                                            alt="">
                                     </div>
                                 </div>
-                            </div>
 
-                            <!--會員資訊-->
-                            <div class="member_block">
+                                <!--會員資訊-->
+                                <!-- <div class="member_block">
                                 <div class="member_information">
                                     <div class="pic">
                                         <img src="./image/productPage/head4.png" alt="">
@@ -643,13 +573,13 @@
                                     <p>超讚</p>
                                 </div>
 
-                                <!--內容-->
+
                                 <div class="member_content">
                                     <p>Jacky 導遊人特別和善親切，幫我們團員拍照又講解重點，淺顯易懂，還會把集合時間跟聯絡方式一上車就讓我們知道，
                                         相當安心。很幸運天氣很好，整天看得到富士山🗻</p>
                                 </div>
 
-                                <!--會員提供照片-->
+
                                 <div class="member_pic">
                                     <div class="first">
                                         <img src="./image/productPage/review7.jpg" alt="" class="first">
@@ -670,10 +600,10 @@
                                         <img src="./image/productPage/review12.jpg" alt="">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <!--會員資訊 無照片-->
-                            <div class="member_block">
+                                <!--會員資訊 無照片-->
+                                <!-- <div class="member_block">
                                 <div class="member_information">
                                     <div class="pic">
                                         <img src="./image/productPage/head1.png" alt="">
@@ -695,36 +625,15 @@
                                     <p>超讚</p>
                                 </div>
 
-                                <!--內容-->
                                 <div class="member_content">
                                     <p>這次旅程非常幸運，全日都可以看到富士山，導遊小姐也很用心，會提供一些tips，令我們玩得更盡興。</p>
                                 </div>
 
-                                <!--會員提供照片-->
-                                <!-- <div class="member_pic">
-                                <div class="first">
-                                    <img src="./image/productPage/review9.png" alt="" class="first">
-                                </div>
-                                <div>
-                                    <img src="./image/productPage/review10.png" alt="">
-                                </div>
-                                <div>
-                                    <img src="./image/productPage/review11.png" alt="">
-                                </div>
-                                <div>
-                                    <img src="./image/productPage/review12.png" alt="">
-                                </div>
-                                <div>
-                                    <img src="./image/productPage/review13.png" alt="">
-                                </div>
-                                <div>
-                                    <img src="./image/productPage/review14.png" alt="">
-                                </div>
-                            </div> -->
-                            </div>
 
-                            <!--會員資訊 無照片-->
-                            <div class="member_block">
+                            </div> -->
+
+                                <!--會員資訊 無照片-->
+                                <!-- <div class="member_block">
                                 <div class="member_information">
                                     <div class="pic">
                                         <img src="./image/productPage/head2.png" alt="">
@@ -747,35 +656,13 @@
                                     <p>超讚</p>
                                 </div>
 
-                                <!--內容-->
                                 <div class="member_content">
                                     <p>建議到日本自由行的人可以選擇這樣的行程，可以省很多時間，這次的導遊Zoey很親切，用中、英文導覽,
                                         當天很幸運，因爲天氣很好，可以看到富士山的全貌，還有抹茶體驗哦，很值得推薦的行程</p>
                                 </div>
 
-                                <!--會員提供照片-->
-                                <!-- <div class="member_pic">
-                                <div class="first">
-                                    <img src="./image/productPage/review9.png" alt="" class="first">
-                                </div>
-                                <div>
-                                    <img src="./image/productPage/review10.png" alt="">
-                                </div>
-                                <div>
-                                    <img src="./image/productPage/review11.png" alt="">
-                                </div>
-                                <div>
-                                    <img src="./image/productPage/review12.png" alt="">
-                                </div>
-                                <div>
-                                    <img src="./image/productPage/review13.png" alt="">
-                                </div>
-                                <div>
-                                    <img src="./image/productPage/review14.png" alt="">
-                                </div>
                             </div> -->
                             </div>
-                        </div>
                     </section>
                 </article>
 

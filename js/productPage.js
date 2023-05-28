@@ -52,27 +52,22 @@ const app = Vue.createApp({
 
             detail5_Time: '',
             detail5_ScheduleTitle: '',
+
+
+            //照片庫的部分----------------------
+            photos: [],
+            photosPath: [],
+            //限定只顯示前面四張
+            limitedPhotos: [],
+
+
+
+            //會員評論
+            memberReview: []
         }
     },
     created() {
-
-
         //傳遞id的值到php
-
-        // 這段程式碼定義了一個名為 getParameterByName 的函式，用於從 URL 中獲取指定名稱的參數值。
-
-        // 程式碼中的 getParameterByName 函式使用正則表達式來解析 URL，並通過指定的參數名稱返回相應的參數值。
-        
-        // 使用方法如下：
-        
-        // 呼叫 getParameterByName 函式並傳入參數名稱，例如 'id'。
-        // 如果沒有指定第二個參數 url，則預設使用 window.location.href 獲取當前頁面的 URL。
-        // getParameterByName 函式會使用正則表達式解析 URL，找到名稱為參數名稱的參數並返回其值。
-        // 如果找不到指定名稱的參數，則返回 null。
-        // 如果找到指定名稱的參數但值為空，則返回空字串 ""。
-        // 如果找到指定名稱的參數並存在值，則返回解碼後的參數值。
-        // 在提供的程式碼中，我們使用 getParameterByName 函式來獲取 URL 中的 id 參數值，並將其存儲在 productId 變數中。
-        // 然後你可以根據需要使用 productId 變數進行後續處理和使用，例如將其印出到控制台。
         function getParameterByName(name, url) {
             if (!url) url = window.location.href;
             name = name.replace(/[\[\]]/g, "\\$&");
@@ -99,17 +94,17 @@ const app = Vue.createApp({
                 console.log(response.data.data1);
 
                 this.title = response.data.data1[0]['Name'];
-                this.banner1 = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data1[0]['Banner1']}`;
-                this.banner2 = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data1[0]['Banner2']}`;
-                this.banner3 = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data1[0]['Banner3']}`;
-                this.phone_banner1 = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data1[0]['Banner1_m']}`;
-                this.phone_banner2 = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data1[0]['Banner2_m']}`;
-                this.phone_banner3 = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data1[0]['Banner3_m']}`;
+                this.banner1 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner1']}`;
+                this.banner2 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner2']}`;
+                this.banner3 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner3']}`;
+                this.phone_banner1 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner1_m']}`;
+                this.phone_banner2 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner2_m']}`;
+                this.phone_banner3 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner3_m']}`;
                 this.eventContent = response.data.data1[0]['Content'];
-                this.event_pic1 = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data1[0]['Image1']}`;
-                this.event_pic2 = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data1[0]['Image2']}`;
-                this.event_pic3 = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data1[0]['Image3']}`;
-                this.event_pic4 = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data1[0]['Image4']}`;
+                this.event_pic1 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image1']}`;
+                this.event_pic2 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image2']}`;
+                this.event_pic3 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image3']}`;
+                this.event_pic4 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image4']}`;
                 this.Introduction1 = response.data.data1[0]['Content1'];
                 this.Introduction2 = response.data.data1[0]['Content2'];
                 this.Introduction3 = response.data.data1[0]['Content3'];
@@ -117,33 +112,59 @@ const app = Vue.createApp({
                 this.price = response.data.data1[0]['Price'];
 
 
-                //data2 是方案詳情
+                //data2 是方案詳情---------------------------------------
                 console.log(response.data.data2);
                 this.detail1_Time = response.data.data2[0]['Times'];
                 this.detail1_ScheduleTitle = response.data.data2[0]['ScheduleTitle'];
-                this.detail1_Pic = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data2[0]['Image']}`;
+                this.detail1_Pic = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data2[0]['Image']}`;
                 this.detail1_Content = response.data.data2[0]['Content'];
 
                 this.detail2_Time = response.data.data2[1]['Times'];
                 this.detail2_ScheduleTitle = response.data.data2[1]['ScheduleTitle'];
-                this.detail2_Pic = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data2[1]['Image']}`;
+                this.detail2_Pic = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data2[1]['Image']}`;
                 this.detail2_Content = response.data.data2[1]['Content'];
                 this.detail2_ContentTitle = response.data.data2[1]['ContentTitle'];
 
                 this.detail3_Time = response.data.data2[2]['Times'];
                 this.detail3_ScheduleTitle = response.data.data2[2]['ScheduleTitle'];
-                this.detail3_Pic = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data2[2]['Image']}`;
+                this.detail3_Pic = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data2[2]['Image']}`;
                 this.detail3_Content = response.data.data2[2]['Content'];
                 this.detail3_ContentTitle = response.data.data2[2]['ContentTitle'];
 
                 this.detail4_Time = response.data.data2[3]['Times'];
                 this.detail4_ScheduleTitle = response.data.data2[3]['ScheduleTitle'];
-                this.detail4_Pic = `./image/productPage/${response.data.data1[0]['ProductID']}/${response.data.data2[3]['Image']}`;
+                this.detail4_Pic = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data2[3]['Image']}`;
                 this.detail4_Content = response.data.data2[3]['Content'];
                 this.detail4_ContentTitle = response.data.data2[3]['ContentTitle'];
 
                 this.detail5_Time = response.data.data2[4]['Times'];
                 this.detail5_ScheduleTitle = response.data.data2[4]['ScheduleTitle'];
+
+
+
+
+
+                //照片庫----------------------------------------
+                console.log(response.data.photos);
+                this.photos.push(...response.data.photos);
+
+                //篩選掉資料庫中是""或是null的
+                this.photosPath = this.photos
+                    .filter(function (item) {
+                        return item !== null && item !== "";
+                    })
+                    .map(function (item) {
+                        return `./image/productPage/${response.data.data1[0]['ID']}/reviewPhoto/${item}`
+                    });
+
+
+                //將photosPath的前4筆資料賦予到limitedPhotos
+                this.limitedPhotos = this.photosPath.slice(0, 4);
+
+                //MEMBER
+                // console.log(response.data.member);
+                this.memberReview = response.data.member;
+                console.log(this.memberReview);
             })
             .catch((error) => {
                 console.log(error);
@@ -151,14 +172,16 @@ const app = Vue.createApp({
 
         this.total = this.price;
         this.total = this.total.toLocaleString();
+
     },
+
     methods: {
         //+按鈕
         countAdd() {
             if (this.count < 9) {
                 this.count += 1;
                 this.total = this.price * this.count;
-                //轉成千分味
+                //轉成千分
                 this.total = this.total.toLocaleString();
             }
         },
@@ -209,6 +232,7 @@ const app = Vue.createApp({
             });
         }
     },
+
     //日曆 掛載時先執行一次 初始化用
     mounted() {
         this.initializeFlatpickr();
