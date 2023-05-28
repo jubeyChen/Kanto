@@ -568,6 +568,13 @@
         }
 
         .collection {
+            min-height: 100px;
+
+            .noCollection{
+                font-size: $paragraph;
+                color: $fontColor;
+            } 
+
             .block {
                 outline: 3px solid $secondary;
                 border-radius: $borderRadius;

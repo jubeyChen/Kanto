@@ -20,6 +20,7 @@ const app = Vue.createApp({
             preview: false,
             user: '',
             avatarURL: 'image/member/',
+            collectProductURL: 'image/productPage/',
             accountInfo: {
                 ID: '',
                 AccountID: '',
@@ -36,7 +37,9 @@ const app = Vue.createApp({
             isPasswordMatch: true,
             couponExist: false,
             couponNum: '',
-            memberCoupon: []
+            memberCoupon: [],
+            collectionExist: false,
+            myCollection: []
         }
     },
     computed: {
@@ -58,6 +61,7 @@ const app = Vue.createApp({
     async mounted() {
         await this.checkSession();
         await this.getAccountInfo();
+        await this.getCollection();
         await this.getMemberCoupon();
         setTimeout(() => {
             this.start = true;
@@ -247,6 +251,42 @@ const app = Vue.createApp({
                         this.couponExist = true;
                     } else {
                         console.log('no coupon');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+
+        async getCollection() {
+            await axios.post('../php/GetCollection.php', { memberID: this.accountInfo.ID })
+                .then(response => {
+                    if (response.data !== '沒有收藏') {
+                        this.myCollection = response.data;
+                        this.collectionExist = true;
+                    } else {
+                        this.collectionExist = false;
+                        console.log('no collection');
+                    }
+                    
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+
+        async removeCollect(ProductID) {
+            const collectionData = {
+                memberID: this.accountInfo.ID,
+                productID: ProductID,
+            }
+                
+            await axios.post('../php/RemoveCollection.php', collectionData)
+                .then(response => {
+                    if (response.data === 'done') {
+                        this.getCollection();
+                    } else {
+                        alert('請稍後再試');
                     }
                 })
                 .catch(error => {
