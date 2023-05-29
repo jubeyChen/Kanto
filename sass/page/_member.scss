@@ -343,6 +343,13 @@
         }
 
         .order {
+            min-height: 100px;
+
+            .noOrder {
+                font-size: $paragraph;
+                color: $fontColor;
+            }
+
             .block {
                 outline: 3px solid $secondary;
                 border-radius: $borderRadius;
@@ -570,10 +577,10 @@
         .collection {
             min-height: 100px;
 
-            .noCollection{
+            .noCollection {
                 font-size: $paragraph;
                 color: $fontColor;
-            } 
+            }
 
             .block {
                 outline: 3px solid $secondary;

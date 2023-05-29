@@ -5,8 +5,8 @@ const app = Vue.createApp({
             showService: false,
             start: false,
             current_tab: 'account',
-            orderList: [],
-            orderIMGUrl: 'image/member/',
+            // orderList: [],
+            orderIMGUrl: 'image/productPage/',
             cancelOrder: false,
             writeReview: false,
             currentOrderNumber: '', // for聯絡客服連結的
@@ -39,7 +39,9 @@ const app = Vue.createApp({
             couponNum: '',
             memberCoupon: [],
             collectionExist: false,
-            myCollection: []
+            orderExist: false,
+            myCollection: [],
+            myOrder: []
         }
     },
     computed: {
@@ -48,19 +50,20 @@ const app = Vue.createApp({
         }
     },
     created() {
-        fetch('image/order.json')
-            .then(response => response.json())
-            .then(data => {
-                this.orderList = data.map(item => ({
-                    ...item,
-                    showReview: false
-                }));
-            });
+        // fetch('image/order.json')
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         this.orderList = data.map(item => ({
+        //             ...item,
+        //             showReview: false
+        //         }));
+        //     });
 
     },
     async mounted() {
         await this.checkSession();
         await this.getAccountInfo();
+        await this.getAccountOrder();
         await this.getCollection();
         await this.getMemberCoupon();
         setTimeout(() => {
@@ -136,7 +139,7 @@ const app = Vue.createApp({
             let contactText = this.contactText;
 
             Email.send({
-                SecureToken: "d8f8fcac-762b-4858-956c-cc3abc40e0cc",
+                SecureToken: "adf84833-cc46-45a2-850a-092ac2f86858",
                 To: contactEmail,
                 From: "kantoasuka1@gmail.com",
                 Subject: '訂單詢問-訂單編號:' + orderNumber,
@@ -157,12 +160,12 @@ const app = Vue.createApp({
             this.contactText = '';
         },
 
-        saveAvatar() {
+        async saveAvatar() {
             const avatarData = new FormData();
             avatarData.append('Avatar', document.getElementById('upload').files[0]);
             avatarData.append('ID', this.accountInfo.ID);
 
-            axios.post('../php/Avatar.php', avatarData)
+            await axios.post('../php/Avatar.php', avatarData)
                 .then(response => {
                     if (response.data === 'done') {
                         alert('已儲存您的大頭照');
@@ -243,10 +246,30 @@ const app = Vue.createApp({
                 });
         },
 
+        async getAccountOrder() {
+            await axios.post('../php/GetOrder.php', { user: this.user })
+                .then(response => {
+                    if (response.data !== 'no order') {
+                        this.myOrder = response.data.map(item => ({
+                            ...item,
+                            showReview: false
+                        }));
+                        this.orderExist = true;
+                    } else {
+                        this.orderExist = false;
+                        console.log('no order');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+
         async getMemberCoupon() {
             await axios.post('../php/GetMemberCoupon.php', { memberID: this.accountInfo.ID })
                 .then(response => {
                     if (response.data !== '沒有coupon') {
+                        
                         this.memberCoupon = response.data;
                         this.couponExist = true;
                     } else {
@@ -350,6 +373,27 @@ const app = Vue.createApp({
                     console.log(error);
                     alert('兌換失敗，請您稍後重試');
                 });
+        },
+
+        async doCancel(orderDetailID) {
+            confirm('確定要取消訂單嗎?');
+            if (confirm) {
+                const cancelData = {
+                    orderDetailID: orderDetailID
+                }
+
+                await axios.post('../php/CancelOrder.php', cancelData)
+                    .then(response => {
+                        if (response.data === 'done') {
+                            alert('已取消該筆訂單');
+                            this.getAccountOrder();
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        alert('取消訂單失敗，請稍後再試');
+                    });
+            }
         }
 
 
