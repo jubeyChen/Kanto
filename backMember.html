@@ -38,14 +38,14 @@
                         <option value="">電子郵件</option>
                     </select>
                     <input type="text" class="textStyle" placeholder="">
-                    <input type="submit" value="搜尋" class="btn-pri-m">
+                    <input type="submit" value="搜尋" class="btn-pri-m" onclick="dosearch()">
                 </form>
             </section>
 
             <table class="table table-light table-hover table-bordered table-sm">
                 <thead>
                     <tr class="table-dark">
-                        <th scope="col">排序</th>
+                        <!-- <th scope="col">排序</th> -->
                         <th scope="col">會員編號<span class="material-symbols-outlined">
                             unfold_more
                             </span>
@@ -62,8 +62,8 @@
                     </tr>
                 </thead>
                 <tbody class="" id="app">
-                    <tr v-for="(item, index) in member" :key="index" :data-status="item.statusId">
-                        <th scope="row">{{ index + 1 }}</th>
+                    <tr v-for="(item, index) in members" :key="index" :data-status="item.statusId">
+                        <!-- <th scope="row">{{ index + 1 }}</th> -->
                         <td>{{ item.id }}</td>
                         <td>{{ item.fullName }}</td>
                         <td>{{ item.gender }}</td>
@@ -94,105 +94,9 @@
 
     <script src="js/vendors/vue.global.prod.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/backmembers.js"></script>
 
-    <script>
-        const app = Vue.createApp({
-            data(){
-                return{
-                    member: [
-                        {
-                            id: "TW00001",
-                            account: "redredred@gmail.com",
-                            fullName: "關東誒",
-                            gender: "女",
-                            phone: "0983-082-094",
-                            statusId: "1"
-                        },
-                        {
-                            id: "TW00001",
-                            account: "redredred@gmail.com",
-                            fullName: "關東誒",
-                            gender: "女",
-                            phone: "0983-082-094",
-                            statusId: "1"
-                        },
-                        {
-                            id: "TW00001",
-                            account: "redredred@gmail.com",
-                            fullName: "關東誒",
-                            gender: "女",
-                            phone: "0983-082-094",
-                            statusId: "1"
-                        },
-                        {
-                            id: "TW00001",
-                            account: "redredred@gmail.com",
-                            fullName: "關東誒",
-                            gender: "女",
-                            phone: "0983-082-094",
-                            statusId: "1"
-                        },
-                        {
-                            id: "TW00001",
-                            account: "redredred@gmail.com",
-                            fullName: "關東誒",
-                            gender: "女",
-                            phone: "0983-082-094",
-                            statusId: "1"
-                        },
-                        {
-                            id: "TW00001",
-                            account: "redredred@gmail.com",
-                            fullName: "關東誒",
-                            gender: "女",
-                            phone: "0983-082-094",
-                            statusId: "1"
-                        },
-                        {
-                            id: "TW00001",
-                            account: "redredred@gmail.com",
-                            fullName: "關東誒",
-                            gender: "女",
-                            phone: "0983-082-094",
-                            statusId: "1"
-                        },
-                        {
-                            id: "TW00001",
-                            account: "redredred@gmail.com",
-                            fullName: "關東誒",
-                            gender: "女",
-                            phone: "0983-082-094",
-                            statusId: "1"
-                        },
-                        {
-                            id: "TW00001",
-                            account: "redredred@gmail.com",
-                            fullName: "關東誒",
-                            gender: "女",
-                            phone: "0983-082-094",
-                            statusId: "1"
-                        },
-                        {
-                            id: "TW00001",
-                            account: "redredred@gmail.com",
-                            fullName: "關東誒",
-                            gender: "女",
-                            phone: "0983-082-094",
-                            statusId: "1"
-                        }
 
-                    ]
-                }
-            },
-            methods: {
-                switchBtn(e){
-                    $(e.target).closest('tr').find('.switch-track').toggleClass('-off');
-                }
-            }
-        });
-
-        app.mount('#app');
-
-    </script>
 </body>
 </html>
