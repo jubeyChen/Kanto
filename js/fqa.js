@@ -26,10 +26,6 @@ const app = Vue.createApp({
     },
     computed: {
     },
-    async mounted() {
-        let a = await globalCheck.PageCheckSession();// 測試連線
-        console.log(a);
-    },
     methods: {
         accordion(e) {
             e.target.nextElementSibling.classList.toggle('-open')
@@ -59,7 +55,10 @@ const app = Vue.createApp({
         }
 
     },
-    mounted(){
+    async mounted() {
+        let a = await globalCheck.PageCheckSession();// 測試連線
+        console.log(a);
+
         axios.get('../php/fqa.php')
         .then(response => {
             // console.log(response.data[0]);
