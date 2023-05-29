@@ -568,6 +568,13 @@
         }
 
         .collection {
+            min-height: 100px;
+
+            .noCollection{
+                font-size: $paragraph;
+                color: $fontColor;
+            } 
+
             .block {
                 outline: 3px solid $secondary;
                 border-radius: $borderRadius;
@@ -684,6 +691,7 @@
             color: $fontColor;
             font-size: $paragraph-s;
             letter-spacing: 1.5px;
+            padding-bottom: 30px;
 
             .searchCoupon {
                 display: flex;
@@ -695,7 +703,7 @@
                     align-items: flex-start;
                 }
 
-                form {
+                .couponForm {
                     margin: 0 3% 0 0;
 
                     @include m() {
@@ -716,7 +724,7 @@
                         }
                     }
 
-                    button {
+                    .couponBtn {
                         display: inline-block;
                         height: auto;
                         line-height: 1.5;
@@ -746,6 +754,10 @@
                     color: white;
                     line-height: 1.5;
                     padding: 10px;
+
+                    &:hover {
+                        background-color: darken($primary, 8%);
+                    }
                 }
 
             }

@@ -1,22 +1,23 @@
 <!-- =================== 我的收藏 =================== -->
 <section class="box collection" v-if="current_tab === 'collect'">
-    <div class="block">
+    <p class="noCollection" v-if="!collectionExist">無收藏項目</p>
+    <div class="block" v-if="collectionExist" v-for="(item, index) in myCollection" :key="index">
         <div class="detail">
-            <a href="#" class="pImg"><img src="image/member/p1.jpg"></a>
+            <a :href="'productPage.html?id='+item.ProductID" target="_blank" class="pImg"><img :src="collectProductURL+item.ProductID+'/'+item.Banner1"></a>
             <div class="pInfo">
-                <h4>鎌倉一日遊</h4> <br>
-                <p>從東京出發搭乘巴士輕鬆一日遊，無需換乘從東京出發搭乘巴士輕鬆一日遊，無需換乘，一天打卡多個網紅地點，景點多多，重溫動漫經典，聖地巡禮。重溫動漫經典，聖地巡禮。重溫動漫經典，聖地巡禮。</p>
+                <h4>{{item.Name}}</h4> <br>
+                <p>{{item.Content}}</p>
                 <ul>
-                    <li><i class="ai-star"></i></li>
-                    <li><i class="ai-star"></i></li>
-                    <li><i class="ai-star"></i></li>
-                    <li><i class="ai-star"></i></li>
-                    <li><i class="ai-star"></i></li>
+                    <li v-if="item.AverageStar >= 1 || item.AverageStar == 0"><i class="fa-solid fa-star"></i></li>
+                    <li v-if="item.AverageStar >= 2"><i class="fa-solid fa-star"></i></li>
+                    <li v-if="item.AverageStar >= 3"><i class="fa-solid fa-star"></i></li>
+                    <li v-if="item.AverageStar >= 4"><i class="fa-solid fa-star"></i></li>
+                    <li v-if="item.AverageStar >= 5"><i class="fa-solid fa-star"></i></li>
                 </ul>
             </div>
             <div class="pPrice">
-                <h4><i class="fa-solid fa-heart"></i></h4>
-                <p>NTD 390</p>
+                <h4 @click="removeCollect(item.ProductID)"><i class="fa-solid fa-heart"></i></h4>
+                <p>NTD {{item.Price}}</p>
             </div>
         </div>
     </div>

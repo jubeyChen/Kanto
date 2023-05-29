@@ -1,55 +1,9 @@
-// $(function(){
-//     $.ajax({
-//         url:"https://api.openweathermap.org/data/2.5/forecast?lat=35.68&lon=139.69&appid=6e5575f4cdda3fe4367a81edf66e2bf7",
-//         type:"GET",
-//         dataType:"json",
-
-        
-
-
-//     })
-// })
-
-//五天
-
 Vue.createApp({
     data(){
         return{
             days:[
               
             ],
-            // days:{
-            //     "day1":{
-            //         date:"5/22",
-            //         icon:"",
-            //         min_temp:20,
-            //         max_temp:22
-            //     },
-            //     "day2":{
-            //         date:"",
-            //         icon:"",
-            //         min_temp:"",
-            //         max_temp:""
-            //     },
-            //     "day3":{
-            //         date:"",
-            //         icon:"",
-            //         min_temp:"",
-            //         max_temp:""
-            //     },
-            //     "day4":{
-            //         date:"",
-            //         icon:"",
-            //         min_temp:"",
-            //         max_temp:""
-            //     },
-            //     "day5":{
-            //         date:"",
-            //         icon:"",
-            //         min_temp:"",
-            //         max_temp:""
-            //     }
-            // }
         }
     },
     mounted: function(){

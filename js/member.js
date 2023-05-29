@@ -20,6 +20,7 @@ const app = Vue.createApp({
             preview: false,
             user: '',
             avatarURL: 'image/member/',
+            collectProductURL: 'image/productPage/',
             accountInfo: {
                 ID: '',
                 AccountID: '',
@@ -33,7 +34,12 @@ const app = Vue.createApp({
                 newPW: '',
                 newPWCheck: ''
             },
-            isPasswordMatch: true
+            isPasswordMatch: true,
+            couponExist: false,
+            couponNum: '',
+            memberCoupon: [],
+            collectionExist: false,
+            myCollection: []
         }
     },
     computed: {
@@ -55,6 +61,8 @@ const app = Vue.createApp({
     async mounted() {
         await this.checkSession();
         await this.getAccountInfo();
+        await this.getCollection();
+        await this.getMemberCoupon();
         setTimeout(() => {
             this.start = true;
         }, 200);
@@ -235,6 +243,57 @@ const app = Vue.createApp({
                 });
         },
 
+        async getMemberCoupon() {
+            await axios.post('../php/GetMemberCoupon.php', { memberID: this.accountInfo.ID })
+                .then(response => {
+                    if (response.data !== '沒有coupon') {
+                        this.memberCoupon = response.data;
+                        this.couponExist = true;
+                    } else {
+                        console.log('no coupon');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+
+        async getCollection() {
+            await axios.post('../php/GetCollection.php', { memberID: this.accountInfo.ID })
+                .then(response => {
+                    if (response.data !== '沒有收藏') {
+                        this.myCollection = response.data;
+                        this.collectionExist = true;
+                    } else {
+                        this.collectionExist = false;
+                        console.log('no collection');
+                    }
+                    
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+
+        async removeCollect(ProductID) {
+            const collectionData = {
+                memberID: this.accountInfo.ID,
+                productID: ProductID,
+            }
+                
+            await axios.post('../php/RemoveCollection.php', collectionData)
+                .then(response => {
+                    if (response.data === 'done') {
+                        this.getCollection();
+                    } else {
+                        alert('請稍後再試');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+
         newPWCheck() {
             this.isPasswordMatch = (this.pwChange.newPWCheck === this.pwChange.newPW);
         },
@@ -262,6 +321,35 @@ const app = Vue.createApp({
             } else {
                 alert('請輸入完整密碼資訊');
             }
+        },
+
+        doCoupon() {
+            const couponData = {
+                memberID: this.accountInfo.ID,
+                couponNum: this.couponNum
+            }
+
+            axios.post('../php/SearchCoupon.php', couponData)
+                .then(response => {
+                    if (response.data === 'alreadyhad') {
+                        alert('您已領過此優惠券');
+                        this.couponNum = '';
+                    } else if (response.data === 'add') {
+                        alert('兌換優惠券成功，請於結帳時選擇優惠券即可使用');
+                        this.getMemberCoupon();
+                        this.couponNum = '';
+                    } else if (response.data === 'NONO'){
+                        alert('查無此優惠券，請您重新輸入');
+                        this.couponNum = '';
+                    } else {
+                        alert('兌換失敗，請您稍後重試');
+                        this.couponNum = '';
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('兌換失敗，請您稍後重試');
+                });
         }
 
 

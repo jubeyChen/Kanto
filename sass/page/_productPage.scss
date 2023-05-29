@@ -1,5 +1,3 @@
-
-
 div.product_inner {
 
     margin-top: 50px;
@@ -72,6 +70,16 @@ div.product_inner {
                 transform: translate(0, -50%) rotate(180deg);
                 cursor: pointer;
 
+            }
+
+            div.swiper-wrapper {
+                div.swiper-slide {
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 700px;
+                    }
+                }
             }
         }
 
@@ -222,16 +230,20 @@ div.product_inner {
 
                         div.btn {
                             display: flex;
-                            button{
+
+                            button {
                                 padding: 0;
-                                a{
+
+                                a {
                                     padding: 10px 40px;
                                     display: block;
                                     color: white;
                                     text-decoration: none;
                                 }
+
                                 border: none;
                             }
+
                             button.add_shoppingcar {
                                 margin-right: 20px;
                                 padding: 10px 40px;
@@ -386,6 +398,8 @@ div.product_inner {
 
                                     img {
                                         width: 22%;
+                                        object-fit: cover;
+                                        height: 81px;
                                         // margin-right: 15px;
                                     }
                                 }
@@ -482,6 +496,8 @@ div.product_inner {
                         width: 100%;
                         display: block;
                         margin-bottom: 40px;
+                        object-fit: cover;
+                        height: 510px;
                     }
                 }
 
@@ -748,6 +764,7 @@ div.product_inner {
                 transform: translate(-50%, -50%);
                 z-index: 2000;
                 transition: .3s;
+
                 i {
                     font-size: 50px;
 
@@ -839,7 +856,7 @@ div.product_inner {
                         padding: 15px 15px;
                         font-size: 20px;
                         margin-left: 15px;
-                        border:none;
+                        border: none;
                     }
 
                     button.first {
@@ -897,18 +914,27 @@ div.product_inner {
 
                         div {
                             width: calc((100%)/6);
+                            // width: 15.6667%;
                             margin-left: 1%;
 
                             img {
                                 width: 100%;
                                 display: block;
-
+                                object-fit: cover;
+                                height: 141px;
                             }
 
                         }
 
                         div.first {
                             margin-left: 0;
+
+                            img {
+                                width: 100%;
+                                display: block;
+                                object-fit: cover;
+                                height: 141px;
+                            }
                         }
 
                     }
@@ -1006,12 +1032,14 @@ div.product_inner {
 
                         button {
                             padding: 0;
-                            a{
+
+                            a {
                                 text-decoration: none;
                                 color: white;
                                 display: block;
                                 padding: 5px 15px;
                             }
+
                             width: 50%;
                             margin: 0 10px;
                             font-size: 20px;
@@ -1085,6 +1113,13 @@ div.product_inner {
                             margin-top: 20px;
                             display: flex;
 
+                            div.pic {
+                                img {
+                                    object-fit: cover;
+                                    height: 80px;
+                                    width: 80px;
+                                }
+                            }
 
                             div.text {
                                 p {
@@ -1209,7 +1244,8 @@ div.product_inner_phone {
                     height: 100%;
 
                     img {
-                        height: 100%;
+                        // height: 100%;
+                        width: 100%;
                     }
                 }
             }
@@ -1322,12 +1358,14 @@ div.product_inner_phone {
                 }
 
                 div.phone_plan_choose_inner {
-                    div.block_top{
+                    div.block_top {
                         display: flex;
                         align-items: center;
+
                         // justify-content: space-between;
                         div.block1 {
                             margin-right: 10px;
+
                             button {
                                 padding: 15px 20px;
                                 font-size: 16px;
@@ -1336,8 +1374,9 @@ div.product_inner_phone {
                                 cursor: pointer;
                             }
                         }
-                        div.phone_clearbtn{
-                            button{
+
+                        div.phone_clearbtn {
+                            button {
                                 padding: 13.5px 20px;
                                 font-size: 16px;
                                 border: 1px solid black;
@@ -1460,6 +1499,13 @@ div.product_inner_phone {
                                 margin-top: 20px;
                                 display: flex;
 
+                                div.pic {
+                                    img {
+                                        object-fit: cover;
+                                        width: 80px;
+                                        height: 80px;
+                                    }
+                                }
 
                                 div.text {
                                     p {
@@ -1841,11 +1887,13 @@ div.product_inner_phone {
 
                     button {
                         border: 1px solid black;
-                        a{
+
+                        a {
                             display: block;
                             text-decoration: none;
                             color: white;
                         }
+
                         width: 100%;
                         padding: 0;
                     }
@@ -2063,17 +2111,18 @@ div.des_lightbox {
 
 
 //調整footer
-@media screen and (max-width:415px){
-    footer.des_footer{
+@media screen and (max-width:415px) {
+    footer.des_footer {
         display: none;
     }
 }
+
 footer.phone_footer {
     // padding-bottom: 123px;
     display: none;
-    @include m(){
+
+    @include m() {
         display: block;
         padding-bottom: 123px;
     }
 }
-
