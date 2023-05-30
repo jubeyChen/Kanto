@@ -421,6 +421,14 @@
                             display: flex;
                             justify-content: center;
                             line-height: 140px;
+                            width: 80%;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 1;
+                            text-align: center;
+                            margin: 0 auto;
                             @include m(){
                                 font-size: 18px;
                                 line-height: 75px;
@@ -689,6 +697,12 @@
                                             margin: 18px auto;
                                             padding: 0 25px;
                                             line-height: 1;
+
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                            display: -webkit-box;
+                                            -webkit-box-orient: vertical;
+                                            -webkit-line-clamp: 2;
                                             @include m(){
                                                 font-size: 14px;
                                                 width: 116px;

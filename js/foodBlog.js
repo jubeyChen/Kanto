@@ -1,15 +1,37 @@
-  //按鈕
-  let btns = document.getElementsByClassName("btn-sec-l");
-  // let currentbtn = 0;
-  for(let i =0; i<btns.length; i++){
-    btns[i].addEventListener("click", function(e){
-      e.preventDefault();
-      // console.log("aaa");
-      //先移除全部的這樣才能切換
-      for(let i = 0;i<btns.length; i++){
-      btns[i].classList.remove("-active");
-      };
-      // console.log(this);
-      this.classList.toggle("-active");
-    })
-  }
+
+
+
+  Vue.createApp({
+    data(){
+      return{
+        intro:[],
+        selectCity:"東京都",
+        img:"image/foodBlog/"
+      }
+    },
+    methods:{
+
+    },
+    computed:{
+      filterCity(){
+        if(this.selectCity === '東京都'){
+          return this.intro.filter(
+            (city) => city.title === '東京都'
+          );
+        }else{
+          return this.intro.filter(
+            (city) => city.title === '神奈川縣'
+          );
+        }
+      }
+    },
+    mounted(){
+      fetch("../image/foodBlog.json")
+      .then(response => response.json())
+      .then(data1 => {
+        this.intro = data1;
+        console.log(this.intro);
+
+      })
+    }
+  }).mount("#app");
