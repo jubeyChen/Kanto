@@ -23,52 +23,52 @@
             <div class="swiper my_des_Swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <a href="./blogPage.html">
+                        <a href="./blogPage.html?id=5">
                             <img src="./image/blog/Mask group (4).png" />
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="./blogPage.html">
+                        <a href="./blogPage.html?id=1">
                             <img src="./image/blog/Mask group (5).png" />
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="./blogPage.html">
+                        <a href="./blogPage.html?id=2">
                             <img src="./image/blog/Mask group (6).png" />
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="./blogPage.html">
+                        <a href="./blogPage.html?id=9">
                             <img src="./image/blog/Mask group (7).png" />
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="./blogPage.html">
+                        <a href="./blogPage.html?id=6">
                             <img src="./image/blog/Mask group (8).png" />
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="./blogPage.html">
+                        <a href="./blogPage.html?id=5">
                             <img src="./image/blog/Mask group (4).png" />
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="./blogPage.html">
+                        <a href="./blogPage.html?id=1">
                             <img src="./image/blog/Mask group (5).png" />
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="./blogPage.html">
+                        <a href="./blogPage.html?id=2">
                             <img src="./image/blog/Mask group (6).png" />
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="./blogPage.html">
+                        <a href="./blogPage.html?id=9">
                             <img src="./image/blog/Mask group (7).png" />
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="./blogPage.html">
+                        <a href="./blogPage.html?id=6">
                             <img src="./image/blog/Mask group (8).png" />
                         </a>
                     </div>
@@ -87,14 +87,9 @@
         <!--手機板篩選按鈕-->
         <div class="phone_filter_btn">
             <ul>
-                <li><a href="#" class="btn-sec-l">東京都</a></li>
-                <li><a href="#" class="btn-sec-l">神奈川縣</a></li>
-                <li><a href="#" class="btn-sec-l">千葉縣</a></li>
-                <li><a href="#" class="btn-sec-l">埼玉縣</a></li>
-                <li><a href="#" class="btn-sec-l">群馬縣</a></li>
-                <li><a href="#" class="btn-sec-l">栃木縣</a></li>
-                <li><a href="#" class="btn-sec-l">茨城縣</a></li>
-                <!-- <li><a href="#" class="btn-pri-l">山梨縣</a></li> -->
+                <li v-for="(item,index) in Region" :key="index"><a href="#" class="btn-sec-l blog_btn"
+                        :class="{ '-active': activeIndex === index }" @click.prevent="handleClick(index)">{{item}}</a>
+                </li>
             </ul>
         </div>
 
@@ -117,27 +112,27 @@
             <!-- <h3>PICK UP</h3> -->
             <div class="pick_inner">
                 <div class="pic first">
-                    <a href="./blogPage.html">
+                    <a href="./blogPage.html?id=5">
                         <img src="./image/blog/Mask group (4).png" alt="">
                     </a>
                 </div>
                 <div class="pic">
-                    <a href="./blogPage.html">
+                    <a href="./blogPage.html?id=1">
                         <img src="./image/blog/Mask group (5).png" alt="">
                     </a>
                 </div>
                 <div class="pic">
-                    <a href="./blogPage.html">
+                    <a href="./blogPage.html?id=2">
                         <img src="./image/blog/Mask group (6).png" alt="">
                     </a>
                 </div>
                 <div class="pic">
-                    <a href="./blogPage.html">
+                    <a href="./blogPage.html?id=9">
                         <img src="./image/blog/Mask group (7).png" alt="">
                     </a>
                 </div>
                 <div class="pic">
-                    <a href="./blogPage.html">
+                    <a href="./blogPage.html?id=6">
                         <img src="./image/blog/Mask group (8).png" alt="">
                     </a>
                 </div>
@@ -161,7 +156,7 @@
         <section class="container travel-sec3">
             <!--1-->
 
-            <div class="another_event" v-for="item in data">
+            <div class="another_event" v-for="item in paginatedActivities">
                 <div class="title tag-m">
                     {{item.RegionName}}
                 </div>
@@ -187,12 +182,19 @@
         <!--分頁按鈕-->
         <section class="container blog_travel-sec4">
             <div class="btn">
+                <a href="#" class="btn-pri-l" v-for="page in totalPages" :key="page" @click.prevent="goToPage(page)">
+                    {{page}}</a>
+            </div>
+        </section>
+
+
+        <!-- <section class="container blog_travel-sec4">
+            <div class="btn">
                 <a href="#" class="btn-pri-l">1</a>
                 <a href="#" class="btn-pri-l">2</a>
                 <a href="#" class="btn-pri-l">3</a>
             </div>
-        </section>
-
+        </section> -->
 
 
 
@@ -201,10 +203,11 @@
         <!--手機分頁按鈕-->
         <section class="container phone_blog_travel-sec4">
             <div class="btn">
-                <a href="#" class="btn-pri-l">1</a>
-                <a href="#" class="btn-pri-l">2</a>
+                <a href="#" class="btn-pri-l" v-for="page in totalPages" :key="page" @click.prevent="goToPage(page)">
+                    {{page}}</a>
+                <!-- <a href="#" class="btn-pri-l">2</a>
                 <a href="#" class="btn-pri-l">3</a>
-                <a href="#" class="btn-pri-l">></a>
+                <a href="#" class="btn-pri-l">></a> -->
             </div>
         </section>
     </div>

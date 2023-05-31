@@ -22,12 +22,16 @@ const app = {
     data() {
         return {
             BannerPC: '',
-            mainData: '',
-            data: '',
+            //活動資料
+            data: [],
 
             //按鈕加上active
             Region: ['全部', '東京', '神奈川', '埼玉', '茨城', '千葉', '群馬', '栃木'],
-            activeIndex: null
+            activeIndex: null,
+
+            //分頁寫法
+            currentPage: 1, //當前頁數
+            itemsPerPage: 6 //每頁顯示的資料量
         }
     },
     created() {
@@ -35,6 +39,7 @@ const app = {
         this.handleClick(0)
     },
     methods: {
+        //撈取資料
         getData() {
             let vm = this;
             axios.get('../php/blog.php')
@@ -45,6 +50,7 @@ const app = {
                     //活動
                     vm.data = response.data;
 
+                    console.log(vm.data);
                     // 篩選資料放這裡
                     //需要點擊地區篩選按鈕之後，activeIndex才會有值，再往下看handleClick(index)的函式
                     if (vm.activeIndex !== null) {
@@ -71,6 +77,24 @@ const app = {
             this.activeIndex = index;
             console.log(this.Region[index]);
             this.getData();
+            this.currentPage = 1; // 重置當前頁數
+        },
+        goToPage(page) {
+            this.currentPage = page;
+        }
+    },
+    computed: {
+        //html迴圈的部分 原先是跑data現在要跑這個函式
+        paginatedActivities() {
+            const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+            const endIndex = startIndex + this.itemsPerPage;
+
+            //data.slice() 是 JavaScript 中陣列的方法，用於從原陣列中取出指定範圍的元素，並返回一個新的陣列。
+            return this.data.slice(startIndex, endIndex);
+        },
+        //計算會有幾個分頁按鈕會被渲染出來
+        totalPages() {
+            return Math.ceil(this.data.length / this.itemsPerPage);
         }
     }
 }
