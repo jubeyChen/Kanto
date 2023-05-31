@@ -6,8 +6,8 @@ const app = Vue.createApp({
             count: 1,
             price: "",
             total: "",
-            date: flatpickr.formatDate(new Date(), "Y-m-d"),
-            selectedDate: flatpickr.formatDate(new Date(), "Y-m-d"),
+            // date: flatpickr.formatDate(new Date(), "Y-m-d"),
+            // selectedDate: flatpickr.formatDate(new Date(), "Y-m-d"),
 
             //axios的部分
             title: '',
@@ -62,122 +62,218 @@ const app = Vue.createApp({
 
 
 
-            //會員評論
+            //會員評論--------------------------------------
             memberReview: [],
-            memberStar: []
+            memberStar: [],
+
+
+            //活動日期---------------------------------------
+            eventDate: [],
+            //撈出日期
+            selectedDate: '',
+
+
+
+            //分頁寫法
+            currentPage: 1, //當前頁數
+            itemsPerPage: 3 //每頁顯示的資料量
         }
     },
     created() {
-        //傳遞id的值到php
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return "";
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
-
-        // 使用 getParameterByName 函式來獲取 URL 中的 id 參數值
-        var productId = getParameterByName('id');
-
-        // 現在你可以使用 productId 變數來進一步處理和使用該值
-        // 例如：
-        console.log(productId); // 印出 id 參數的值
-
-
-
-        //撈取資料 丟到data
-        axios.get('../php/productPage.php?id=' + productId)
-            .then((response) => {
-                //被包裝成二維陣列
-                console.log(response.data.data1);
-
-                this.title = response.data.data1[0]['Name'];
-                this.banner1 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner1']}`;
-                this.banner2 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner2']}`;
-                this.banner3 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner3']}`;
-                this.phone_banner1 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner1_m']}`;
-                this.phone_banner2 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner2_m']}`;
-                this.phone_banner3 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner3_m']}`;
-                this.eventContent = response.data.data1[0]['Content'];
-                this.event_pic1 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image1']}`;
-                this.event_pic2 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image2']}`;
-                this.event_pic3 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image3']}`;
-                this.event_pic4 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image4']}`;
-                this.Introduction1 = response.data.data1[0]['Content1'];
-                this.Introduction2 = response.data.data1[0]['Content2'];
-                this.Introduction3 = response.data.data1[0]['Content3'];
-                this.total = response.data.data1[0]['Price'];
-                this.price = response.data.data1[0]['Price'];
-
-
-                //data2 是方案詳情---------------------------------------
-                console.log(response.data.data2);
-                this.detail1_Time = response.data.data2[0]['Times'];
-                this.detail1_ScheduleTitle = response.data.data2[0]['ScheduleTitle'];
-                this.detail1_Pic = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data2[0]['Image']}`;
-                this.detail1_Content = response.data.data2[0]['Content'];
-
-                this.detail2_Time = response.data.data2[1]['Times'];
-                this.detail2_ScheduleTitle = response.data.data2[1]['ScheduleTitle'];
-                this.detail2_Pic = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data2[1]['Image']}`;
-                this.detail2_Content = response.data.data2[1]['Content'];
-                this.detail2_ContentTitle = response.data.data2[1]['ContentTitle'];
-
-                this.detail3_Time = response.data.data2[2]['Times'];
-                this.detail3_ScheduleTitle = response.data.data2[2]['ScheduleTitle'];
-                this.detail3_Pic = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data2[2]['Image']}`;
-                this.detail3_Content = response.data.data2[2]['Content'];
-                this.detail3_ContentTitle = response.data.data2[2]['ContentTitle'];
-
-                this.detail4_Time = response.data.data2[3]['Times'];
-                this.detail4_ScheduleTitle = response.data.data2[3]['ScheduleTitle'];
-                this.detail4_Pic = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data2[3]['Image']}`;
-                this.detail4_Content = response.data.data2[3]['Content'];
-                this.detail4_ContentTitle = response.data.data2[3]['ContentTitle'];
-
-                this.detail5_Time = response.data.data2[4]['Times'];
-                this.detail5_ScheduleTitle = response.data.data2[4]['ScheduleTitle'];
-
-
-
-
-
-                //照片庫----------------------------------------
-                console.log(response.data.photos);
-                this.photos.push(...response.data.photos);
-
-                //篩選掉資料庫中是""或是null的
-                this.photosPath = this.photos
-                    .filter(function (item) {
-                        return item !== null && item !== "";
-                    })
-                    .map(function (item) {
-                        return `./image/productPage/${response.data.data1[0]['ID']}/reviewPhoto/${item}`
-                    });
-
-                console.log(this.photosPath);
-                //將photosPath的前4筆資料賦予到limitedPhotos
-                this.limitedPhotos = this.photosPath.slice(0, 4);
-
-                //MEMBER
-                // console.log(response.data.member);
-                this.memberReview = response.data.member;
-                console.log(this.memberReview);
-
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        this.getData();
 
         this.total = this.price;
         this.total = this.total.toLocaleString();
 
     },
+    computed: {
+        //html迴圈的部分 原先是跑data現在要跑這個函式
+        paginatedActivities() {
+            const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+            const endIndex = startIndex + this.itemsPerPage;
+
+            //data.slice() 是 JavaScript 中陣列的方法，用於從原陣列中取出指定範圍的元素，並返回一個新的陣列。
+            return this.memberReview.slice(startIndex, endIndex);
+        },
+        //計算會有幾個分頁按鈕會被渲染出來
+        totalPages() {
+            //無條件進入
+            return Math.ceil(this.memberReview.length / this.itemsPerPage);
+        }
+    },
 
     methods: {
+        //撈取資料
+        getData() {
+            //傳遞id的值到php
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return "";
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+
+            // 使用 getParameterByName 函式來獲取 URL 中的 id 參數值
+            var productId = getParameterByName('id');
+
+            // 現在你可以使用 productId 變數來進一步處理和使用該值
+            // 例如：
+            console.log(productId); // 印出 id 參數的值
+
+
+
+            //撈取資料 丟到data
+            //因為由低至高需要加入return
+            return axios.get('../php/productPage.php?id=' + productId)
+                .then((response) => {
+                    //被包裝成二維陣列
+                    console.log(response.data.data1);
+
+                    this.title = response.data.data1[0]['Name'];
+                    this.banner1 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner1']}`;
+                    this.banner2 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner2']}`;
+                    this.banner3 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner3']}`;
+                    this.phone_banner1 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner1_m']}`;
+                    this.phone_banner2 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner2_m']}`;
+                    this.phone_banner3 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner3_m']}`;
+                    this.eventContent = response.data.data1[0]['Content'];
+                    this.event_pic1 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image1']}`;
+                    this.event_pic2 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image2']}`;
+                    this.event_pic3 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image3']}`;
+                    this.event_pic4 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image4']}`;
+                    this.Introduction1 = response.data.data1[0]['Content1'];
+                    this.Introduction2 = response.data.data1[0]['Content2'];
+                    this.Introduction3 = response.data.data1[0]['Content3'];
+                    this.total = response.data.data1[0]['Price'];
+                    this.price = response.data.data1[0]['Price'];
+
+
+                    //data2 是方案詳情---------------------------------------
+                    console.log(response.data.data2);
+                    this.detail1_Time = response.data.data2[0]['Times'];
+                    this.detail1_ScheduleTitle = response.data.data2[0]['ScheduleTitle'];
+                    this.detail1_Pic = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data2[0]['Image']}`;
+                    this.detail1_Content = response.data.data2[0]['Content'];
+
+                    this.detail2_Time = response.data.data2[1]['Times'];
+                    this.detail2_ScheduleTitle = response.data.data2[1]['ScheduleTitle'];
+                    this.detail2_Pic = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data2[1]['Image']}`;
+                    this.detail2_Content = response.data.data2[1]['Content'];
+                    this.detail2_ContentTitle = response.data.data2[1]['ContentTitle'];
+
+                    this.detail3_Time = response.data.data2[2]['Times'];
+                    this.detail3_ScheduleTitle = response.data.data2[2]['ScheduleTitle'];
+                    this.detail3_Pic = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data2[2]['Image']}`;
+                    this.detail3_Content = response.data.data2[2]['Content'];
+                    this.detail3_ContentTitle = response.data.data2[2]['ContentTitle'];
+
+                    this.detail4_Time = response.data.data2[3]['Times'];
+                    this.detail4_ScheduleTitle = response.data.data2[3]['ScheduleTitle'];
+                    this.detail4_Pic = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data2[3]['Image']}`;
+                    this.detail4_Content = response.data.data2[3]['Content'];
+                    this.detail4_ContentTitle = response.data.data2[3]['ContentTitle'];
+
+                    this.detail5_Time = response.data.data2[4]['Times'];
+                    this.detail5_ScheduleTitle = response.data.data2[4]['ScheduleTitle'];
+
+
+
+
+
+                    //照片庫----------------------------------------
+                    console.log(response.data.photos);
+                    this.photos.push(...response.data.photos);
+
+                    //篩選掉資料庫中是""或是null的
+                    this.photosPath = this.photos
+                        .filter(function (item) {
+                            return item !== null && item !== "";
+                        })
+                        .map(function (item) {
+                            return `./image/productPage/${response.data.data1[0]['IntroductionID']}/reviewPhoto/${item}`
+                        });
+
+                    console.log(this.photosPath);
+                    //將photosPath的前4筆資料賦予到limitedPhotos
+                    this.limitedPhotos = this.photosPath.slice(0, 4);
+
+                    //MEMBER
+                    // console.log(response.data.member);
+                    this.memberReview = response.data.member;
+                    console.log(this.memberReview);
+
+
+
+
+
+                    //查詢日期
+                    console.log(response.data.date);
+                    this.eventDate = response.data.date;
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        },
+
+
+        goToPage(page) {
+            this.currentPage = page;
+        },
+
+        //只看附圖評價
+        haveImage() {
+            this.memberReview = this.memberReview.filter((item) => {
+                return item.Image1 != null || item.Imgae2 != null || item.Imgae3 != null || item.Image4 != null || item.Imgae5 != null || item.Imgae6 != null
+            })
+            this.currentPage = 1;
+            console.log(this.memberReview);
+        },
+        //全部評價
+        allImage() {
+            //要將photos還原成空陣列，不然照片庫的數字會不斷增加
+            this.photos = [];
+            this.getData();
+
+        },
+
+
+        //由低至高
+        lowToHigh() {
+            this.photos = [];
+            this.getData().then(() => {
+                // 在这里可以添加任何需要在获取数据后执行的代码
+                // ...
+
+                // 根据星星数从低到高排序
+                this.memberReview.sort((a, b) => {
+                    return a.Star - b.Star;
+                });
+                this.currentPage = 1;
+                console.log(this.memberReview);
+            });
+        },
+
+
+        //由高至低
+        highToLow() {
+            this.photos = [];
+            this.getData().then(() => {
+                // 在这里可以添加任何需要在获取数据后执行的代码
+                // ...
+
+                // 根据星星数从高到低排序
+                this.memberReview.sort((a, b) => {
+                    return b.Star - a.Star;
+                });
+                this.currentPage = 1;
+                console.log(this.memberReview);
+            });
+        },
+
         //+按鈕
         countAdd() {
             if (this.count < 9) {
@@ -200,6 +296,7 @@ const app = Vue.createApp({
             this.count = 1;
             this.total = this.price;
             this.total = this.total.toLocaleString();
+            this.selectedDate = ""
             this.content = "查看可預訂的日期";
         },
 
@@ -208,36 +305,11 @@ const app = Vue.createApp({
             window.scrollTo({ top: 5250, behavior: 'smooth' })
         },
 
-        //日曆
-        initializeFlatpickr() {
-            flatpickr(this.$refs.dateButton, {
-                dateFormat: "Y-m-d",
-                defaultDate: "today",
-                minDate: "today",
-                disableMobile: true,
-                onClose: (selectedDates, dateStr, instance) => {
-                    console.log(dateStr);
-                    this.selectedDate = dateStr; // 更新selectedDate的值
-                    this.$refs.dateButton.textContent = dateStr; // 更新按钮上的显示日期
-                }
-            });
-            flatpickr(this.$refs.phone_dateButton, {
-                dateFormat: "Y-m-d",
-                defaultDate: "today",
-                minDate: "today",
-                disableMobile: true,
-                onClose: (selectedDates, dateStr, instance) => {
-                    console.log(dateStr);
-                    this.selectedDate = dateStr; // 更新selectedDate的值
-                    this.$refs.dateButton.textContent = dateStr; // 更新按钮上的显示日期
-                }
-            });
-        }
     },
 
-    //日曆 掛載時先執行一次 初始化用
+
     mounted() {
-        this.initializeFlatpickr();
+
     },
 
 })
@@ -359,27 +431,27 @@ left_btn.addEventListener("click", function (e) {
 
 // const dateButton = document.getElementById('dateButton');
 //桌機
-const clearBtn = document.querySelector(".clearBtn");
-const date = document.querySelector(".date");
+// const clearBtn = document.querySelector(".clearBtn");
+// const date = document.querySelector(".date");
 
-clearBtn.addEventListener("click", function (e) {
-    phone_dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
-    dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
-    date.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
-    console.log(flatpickr.formatDate(new Date(), "Y-m-d"));
-})
+// clearBtn.addEventListener("click", function (e) {
+//     phone_dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
+//     dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
+//     date.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
+//     console.log(flatpickr.formatDate(new Date(), "Y-m-d"));
+// })
 
 
 //手機
-const phone_clearbtn = document.querySelector('.phone_clearbtn');
-const phone_dateButton = document.querySelector('.phone_dateButton');
+// const phone_clearbtn = document.querySelector('.phone_clearbtn');
+// const phone_dateButton = document.querySelector('.phone_dateButton');
 
-phone_clearbtn.addEventListener("click", function (e) {
-    phone_dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
-    date.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
-    dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
-    console.log(flatpickr.formatDate(new Date(), "Y-m-d"));
-})
+// phone_clearbtn.addEventListener("click", function (e) {
+//     phone_dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
+//     date.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
+//     dateButton.textContent = flatpickr.formatDate(new Date(), "Y-m-d");
+//     console.log(flatpickr.formatDate(new Date(), "Y-m-d"));
+// })
 
 
 

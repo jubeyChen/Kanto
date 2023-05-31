@@ -92,7 +92,11 @@
                             </div>
 
                             <div class="block2">
-                                <button type="button" id="dateButton" ref="dateButton">{{date}}</button>
+                                <select name="" id="eventDate" v-model="selectedDate">
+                                    <option value="">請選擇日期</option>
+                                    <option :value="item.OfferDate" v-for="item in eventDate">{{item.OfferDate}}
+                                    </option>
+                                </select>
                             </div>
 
                             <div class="block3">
@@ -127,18 +131,6 @@
                         <h3>評價</h3>
                         <div class="block1">
                             <div class="block1_left">
-                                <!-- <div class="score">
-                                    <h3>4</h3>
-                                    <p>/5</p>
-                                </div> -->
-
-                                <!--星星之後怎麼動態做更改?-->
-                                <!-- <div class="star">
-                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                </div> -->
 
                                 <div class="review_total">
                                     <p><span>{{memberReview.length}}</span>則評價</p>
@@ -190,13 +182,13 @@
                                                     :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image1}`"
                                                     alt="">
                                                 <img v-if="item.Image2"
-                                                    :src="`./image/productPage/${item.MemberID}/reviewPhoto/${item.Image2}`"
+                                                    :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image2}`"
                                                     alt="">
                                                 <img v-if="item.Image3"
-                                                    :src="`./image/productPage/${item.MemberID}/reviewPhoto/${item.Image3}`"
+                                                    :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image3}`"
                                                     alt="">
                                                 <img v-if="item.Image4"
-                                                    :src="`./image/productPage/${item.MemberID}/reviewPhoto/${item.Image4}`"
+                                                    :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image4}`"
                                                     alt="">
                                             </div>
                                         </div>
@@ -354,10 +346,14 @@
                         <!--評價篩選-->
                         <div class="filter">
                             <div class="filter_btn">
-                                <button type="button" class="btn-sec-l first des_filter_btn">全部</button>
-                                <button type="button" class="btn-sec-l des_filter_btn">只看附圖評價</button>
-                                <button type="button" class="btn-sec-l des_filter_btn">評分:由高至低</button>
-                                <button type="button" class="btn-sec-l des_filter_btn">評分:由低至高</button>
+                                <button type="button" class="btn-sec-l first des_filter_btn"
+                                    @click="allImage">全部</button>
+                                <button type="button" class="btn-sec-l des_filter_btn"
+                                    @click="haveImage">只看附圖評價</button>
+                                <button type="button" class="btn-sec-l des_filter_btn"
+                                    @click="highToLow">評分:由高至低</button>
+                                <button type="button" class="btn-sec-l des_filter_btn"
+                                    @click="lowToHigh">評分:由低至高</button>
                             </div>
                         </div>
 
@@ -366,7 +362,7 @@
                         <div class="member_review">
 
                             <!--會員資訊-->
-                            <div class="member_block" v-for="(item,index) in memberReview" :key="index">
+                            <div class="member_block" v-for="(item,index) in paginatedActivities" :key="index">
                                 <div class="member_information">
                                     <div class="pic">
                                         <img :src="`./image/member/${item.ID}/avatar/${item.Avatar}`" alt="">
@@ -557,14 +553,12 @@
 
             <!--頁碼的部分-->
             <div class="page">
-                <a href="#" class="btn-pri-l">
-                    < </a>
-                        <a href="#" class="btn-pri-l">1</a>
-                        <a href="#" class="btn-pri-l">2</a>
-                        <a href="#" class="btn-pri-l">3</a>
-                        <a href="#" class="btn-pri-l">4</a>
-                        <a href="#" class="btn-pri-l">5</a>
-                        <a href="#" class="btn-pri-l">></a>
+                <a href="#" class="btn-pri-l" v-for="page in totalPages" :key="page"
+                    @click.prevent="goToPage(page)">{{page}}</a>
+                <!-- <a href="#" class="btn-pri-l">2</a>
+                <a href="#" class="btn-pri-l">3</a>
+                <a href="#" class="btn-pri-l">4</a>
+                <a href="#" class="btn-pri-l">5</a> -->
             </div>
 
 
@@ -685,8 +679,12 @@
                     <div class="phone_plan_choose_inner">
                         <div class="block_top">
                             <div class="block1">
-                                <button type="button" ref="phone_dateButton"
-                                    class="phone_dateButton">{{selectedDate}}</button>
+                                <select name="" id="eventDate" v-model="selectedDate">
+                                    <option value="">請選擇日期</option>
+                                    <option :value="item.OfferDate" v-for="item in eventDate">{{item.OfferDate}}
+                                    </option>
+                                </select>
+                                <!-- <button type="button" ref="phone_dateButton" class="phone_dateButton">要寫日期</button> -->
                             </div>
 
                             <div class="phone_clearbtn">
