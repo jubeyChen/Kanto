@@ -63,7 +63,8 @@ const app = Vue.createApp({
 
 
             //會員評論
-            memberReview: []
+            memberReview: [],
+            memberStar: []
         }
     },
     created() {
@@ -157,7 +158,7 @@ const app = Vue.createApp({
                         return `./image/productPage/${response.data.data1[0]['ID']}/reviewPhoto/${item}`
                     });
 
-
+                console.log(this.photosPath);
                 //將photosPath的前4筆資料賦予到limitedPhotos
                 this.limitedPhotos = this.photosPath.slice(0, 4);
 
@@ -165,6 +166,7 @@ const app = Vue.createApp({
                 // console.log(response.data.member);
                 this.memberReview = response.data.member;
                 console.log(this.memberReview);
+
             })
             .catch((error) => {
                 console.log(error);

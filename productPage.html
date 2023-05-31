@@ -32,10 +32,10 @@
             <h2>{{title}}</h2>
             <!--星星和加入最愛-->
             <div class="star_addheart">
-                <div class="star">
+                <!-- <div class="star">
                     <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
                     <p>4</p>
-                </div>
+                </div> -->
                 <div class="heart">
                     <i class="fa-solid fa-heart" style="color: #fe2a2a;"></i>
                     <p>加入我的最愛</p>
@@ -127,21 +127,21 @@
                         <h3>評價</h3>
                         <div class="block1">
                             <div class="block1_left">
-                                <div class="score">
+                                <!-- <div class="score">
                                     <h3>4</h3>
                                     <p>/5</p>
-                                </div>
+                                </div> -->
 
                                 <!--星星之後怎麼動態做更改?-->
-                                <div class="star">
+                                <!-- <div class="star">
                                     <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
                                     <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
                                     <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
                                     <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                </div>
+                                </div> -->
 
                                 <div class="review_total">
-                                    <p><span>200</span>則評價</p>
+                                    <p><span>{{memberReview.length}}</span>則評價</p>
                                 </div>
                             </div>
                             <div class="block1_right ">
@@ -164,161 +164,45 @@
                             <!--這邊之後要輪播-->
                             <div class="card_swiper_item">
                                 <div class="card_swiper_block1">
-                                    <div class="member">
-                                        <div class="member_information">
-                                            <div class="member_pic">
-                                                <img src="./image/productPage/head1.png" alt="">
-                                            </div>
-                                            <div class="member_wrapper">
-                                                <div class="member_name">
-                                                    <p>阿偉</p>
+                                    <!--這裡只渲染有圖片的-->
+                                    <template v-for="(item,index) in memberReview" :key="index">
+                                        <div class="member"
+                                            v-if="item.Image1 || item.Image2 || item.Image3 || item.Image4 || item.Image5 || item.Image6">
+                                            <div class="member_information">
+                                                <div class="member_pic">
+                                                    <img :src="`./image/member/${item.ID}/avatar/${item.Avatar}`"
+                                                        alt="">
                                                 </div>
-                                                <div class="member_time">
-                                                    <p>兩天前</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="member_content">
-                                            <p>行程規畫非常好玩且充實，下次還會再來!行程規畫非常好玩且充實，下次還會再來!</p>
-                                        </div>
-                                        <div class="pic">
-                                            <img src="./image/productPage/review1.jpg" alt="">
-                                            <img src="./image/productPage/review2.jpg" alt="">
-                                            <img src="./image/productPage/review3.jpg" alt="">
-                                            <img src="./image/productPage/review4.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="member">
-                                        <div class="member_information">
-                                            <div class="member_pic">
-                                                <img src="./image/productPage/head2.png" alt="">
-                                            </div>
-                                            <div class="member_wrapper">
-                                                <div class="member_name">
-                                                    <p>Jeff</p>
-                                                </div>
-                                                <div class="member_time">
-                                                    <p>兩天前</p>
+                                                <div class="member_wrapper">
+                                                    <div class="member_name">
+                                                        <p>{{item.FullName}}</p>
+                                                    </div>
+                                                    <div class="member_time">
+                                                        <p>{{item.ReviewTime}}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="member_content">
-                                            <p>行程規畫非常好玩且充實，下次還會再來!行程規畫非常好玩且充實，下次還會再來!</p>
-                                        </div>
-                                        <div class="pic">
-                                            <img src="./image/productPage/review5.jpg" alt="">
-                                            <img src="./image/productPage/review6.jpg" alt="">
-                                            <img src="./image/productPage/review7.jpg" alt="">
-                                            <img src="./image/productPage/review8.jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="member">
-                                        <div class="member_information">
-                                            <div class="member_pic">
-                                                <img src="./image/productPage/head2.png" alt="">
+                                            <div class="member_content">
+                                                <p>{{item.Text}}</p>
                                             </div>
-                                            <div class="member_wrapper">
-                                                <div class="member_name">
-                                                    <p>Jeff</p>
-                                                </div>
-                                                <div class="member_time">
-                                                    <p>兩天前</p>
-                                                </div>
+                                            <div class="pic">
+                                                <img v-if="item.Image1"
+                                                    :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image1}`"
+                                                    alt="">
+                                                <img v-if="item.Image2"
+                                                    :src="`./image/productPage/${item.MemberID}/reviewPhoto/${item.Image2}`"
+                                                    alt="">
+                                                <img v-if="item.Image3"
+                                                    :src="`./image/productPage/${item.MemberID}/reviewPhoto/${item.Image3}`"
+                                                    alt="">
+                                                <img v-if="item.Image4"
+                                                    :src="`./image/productPage/${item.MemberID}/reviewPhoto/${item.Image4}`"
+                                                    alt="">
                                             </div>
                                         </div>
-                                        <div class="member_content">
-                                            <p>行程規畫非常好玩且充實，下次還會再來!行程規畫非常好玩且充實，下次還會再來!</p>
-                                        </div>
-                                        <div class="pic">
-                                            <img src="./image/productPage/review5.jpg" alt="">
-                                            <img src="./image/productPage/review6.jpg" alt="">
-                                            <img src="./image/productPage/review7.jpg" alt="">
-                                            <img src="./image/productPage/review8.jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="member">
-                                        <div class="member_information">
-                                            <div class="member_pic">
-                                                <img src="./image/productPage/head1.png" alt="">
-                                            </div>
-                                            <div class="member_wrapper">
-                                                <div class="member_name">
-                                                    <p>阿偉</p>
-                                                </div>
-                                                <div class="member_time">
-                                                    <p>兩天前</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="member_content">
-                                            <p>行程規畫非常好玩且充實，下次還會再來!行程規畫非常好玩且充實，下次還會再來!</p>
-                                        </div>
-                                        <div class="pic">
-                                            <img src="./image/productPage/review1.jpg" alt="">
-                                            <img src="./image/productPage/review2.jpg" alt="">
-                                            <img src="./image/productPage/review3.jpg" alt="">
-                                            <img src="./image/productPage/review4.jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="member">
-                                        <div class="member_information">
-                                            <div class="member_pic">
-                                                <img src="./image/productPage/head2.png" alt="">
-                                            </div>
-                                            <div class="member_wrapper">
-                                                <div class="member_name">
-                                                    <p>Jeff</p>
-                                                </div>
-                                                <div class="member_time">
-                                                    <p>兩天前</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="member_content">
-                                            <p>行程規畫非常好玩且充實，下次還會再來!行程規畫非常好玩且充實，下次還會再來!</p>
-                                        </div>
-                                        <div class="pic">
-                                            <img src="./image/productPage/review5.jpg" alt="">
-                                            <img src="./image/productPage/review6.jpg" alt="">
-                                            <img src="./image/productPage/review7.jpg" alt="">
-                                            <img src="./image/productPage/review8.jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="member">
-                                        <div class="member_information">
-                                            <div class="member_pic">
-                                                <img src="./image/productPage/head1.png" alt="">
-                                            </div>
-                                            <div class="member_wrapper">
-                                                <div class="member_name">
-                                                    <p>阿偉</p>
-                                                </div>
-                                                <div class="member_time">
-                                                    <p>兩天前</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="member_content">
-                                            <p>行程規畫非常好玩且充實，下次還會再來!行程規畫非常好玩且充實，下次還會再來!</p>
-                                        </div>
-                                        <div class="pic">
-                                            <img src="./image/productPage/review1.jpg" alt="">
-                                            <img src="./image/productPage/review2.jpg" alt="">
-                                            <img src="./image/productPage/review3.jpg" alt="">
-                                            <img src="./image/productPage/review4.jpg" alt="">
-                                        </div>
-                                    </div>
-
+                                    </template>
                                 </div>
                             </div>
-
-
-
-
                         </div>
 
 
@@ -383,18 +267,6 @@
                                 </div>
                             </div>
 
-                            <!--如果有多個推薦的話-->
-                            <!-- <div class="event2">
-                            <img src="./image/productPage/recommend.png" alt="">
-                            <div class="content">
-                                <div class="title">
-                                    <h4>日本旅遊大禮包|東京・大阪・沖繩</h4>
-                                </div>
-                                <div class="price">
-                                    <p>NT$<span>250</span></p>
-                                </div>
-                            </div>
-                        </div> -->
                         </div>
 
                     </section>
@@ -407,18 +279,18 @@
 
                         <!--評價分數 星星數量-->
                         <div class="block1_left">
-                            <div class="score">
+                            <!-- <div class="score">
                                 <h3>4</h3>
                                 <p>/5</p>
-                            </div>
+                            </div> -->
 
                             <!--星星之後怎麼動態做更改?-->
-                            <div class="star">
+                            <!-- <div class="star">
                                 <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
                                 <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
                                 <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
                                 <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                            </div>
+                            </div> -->
 
                             <div class="review_total">
                                 <p><span>{{memberReview.length}}</span>則評價</p>
@@ -497,7 +369,7 @@
                             <div class="member_block" v-for="(item,index) in memberReview" :key="index">
                                 <div class="member_information">
                                     <div class="pic">
-                                        <img src="./image/productPage/head3.png" alt="">
+                                        <img :src="`./image/member/${item.ID}/avatar/${item.Avatar}`" alt="">
                                     </div>
 
                                     <div class="member_name">
@@ -508,12 +380,11 @@
 
                                 <div class="member_star">
                                     <div class="star">
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                        <!--用item裡面的star數量進行渲染-->
+                                        <i v-for="index in item.Star" class="fa-solid fa-star"
+                                            style="color: #FF9C00;"></i>
                                     </div>
-                                    <p>超讚</p>
+                                    <!-- <p>超讚</p> -->
                                 </div>
 
                                 <!--內容-->
@@ -522,7 +393,8 @@
                                 </div>
 
                                 <!--會員提供照片-->
-                                <div class="member_pic">
+                                <div class="member_pic"
+                                    v-if="item.Image1 || item.Image2 || item.Image3 || item.Image4 || item.Image5 || item.Image6">
                                     <div class="first" v-if="item.Image1">
                                         <img :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image1}`"
                                             alt="" class="first">
@@ -549,119 +421,7 @@
                                     </div>
                                 </div>
 
-                                <!--會員資訊-->
-                                <!-- <div class="member_block">
-                                <div class="member_information">
-                                    <div class="pic">
-                                        <img src="./image/productPage/head4.png" alt="">
-                                    </div>
 
-                                    <div class="member_name">
-                                        <p>阿豪</p>
-                                        <p><span>6</span>天前</p>
-                                    </div>
-                                </div>
-
-                                <div class="member_star">
-                                    <div class="star">
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                    </div>
-                                    <p>超讚</p>
-                                </div>
-
-
-                                <div class="member_content">
-                                    <p>Jacky 導遊人特別和善親切，幫我們團員拍照又講解重點，淺顯易懂，還會把集合時間跟聯絡方式一上車就讓我們知道，
-                                        相當安心。很幸運天氣很好，整天看得到富士山🗻</p>
-                                </div>
-
-
-                                <div class="member_pic">
-                                    <div class="first">
-                                        <img src="./image/productPage/review7.jpg" alt="" class="first">
-                                    </div>
-                                    <div>
-                                        <img src="./image/productPage/review8.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <img src="./image/productPage/review9.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <img src="./image/productPage/review10.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <img src="./image/productPage/review11.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <img src="./image/productPage/review12.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div> -->
-
-                                <!--會員資訊 無照片-->
-                                <!-- <div class="member_block">
-                                <div class="member_information">
-                                    <div class="pic">
-                                        <img src="./image/productPage/head1.png" alt="">
-                                    </div>
-
-                                    <div class="member_name">
-                                        <p>小明</p>
-                                        <p><span>4</span>天前</p>
-                                    </div>
-                                </div>
-
-                                <div class="member_star">
-                                    <div class="star">
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                    </div>
-                                    <p>超讚</p>
-                                </div>
-
-                                <div class="member_content">
-                                    <p>這次旅程非常幸運，全日都可以看到富士山，導遊小姐也很用心，會提供一些tips，令我們玩得更盡興。</p>
-                                </div>
-
-
-                            </div> -->
-
-                                <!--會員資訊 無照片-->
-                                <!-- <div class="member_block">
-                                <div class="member_information">
-                                    <div class="pic">
-                                        <img src="./image/productPage/head2.png" alt="">
-                                    </div>
-
-                                    <div class="member_name">
-                                        <p>阿偉</p>
-                                        <p><span>6</span>天前</p>
-                                    </div>
-                                </div>
-
-                                <div class="member_star">
-                                    <div class="star">
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                        <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                    </div>
-                                    <p>超讚</p>
-                                </div>
-
-                                <div class="member_content">
-                                    <p>建議到日本自由行的人可以選擇這樣的行程，可以省很多時間，這次的導遊Zoey很親切，用中、英文導覽,
-                                        當天很幸運，因爲天氣很好，可以看到富士山的全貌，還有抹茶體驗哦，很值得推薦的行程</p>
-                                </div>
-
-                            </div> -->
                             </div>
                     </section>
                 </article>
@@ -1045,7 +805,7 @@
                 <div class="phone_review">
                     <h3>評價</h3>
                     <div class="phone_score">
-                        <div class="score_inner">
+                        <!-- <div class="score_inner">
                             <h4>4</h4>
                             <p>/5</p>
                         </div>
@@ -1054,45 +814,31 @@
                             <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
                             <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
                             <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="all_member">
-                        <div class="phone_member1">
-                            <div class="phone_member_inner">
-                                <div class="member_pic">
-                                    <img src="./image/productPage/head1.png" alt="">
-                                </div>
-                                <div class="member_wrapper">
-                                    <div class="member_name">
-                                        <p>阿偉</p>
+                        <template v-for="item in memberReview">
+                            <div class="phone_member1"
+                                v-if="!item.Image1 && !item.Image2 && !item.Image3 && !item.Image4 && !item.Image5 && !item.Image6">
+                                <div class="phone_member_inner">
+                                    <div class="member_pic">
+                                        <img :src="`./image/member/${item.ID}/avatar/${item.Avatar}`" alt="">
                                     </div>
-                                    <div class="date">
-                                        <p>兩天前</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="member_content">
-                                <p>行程規畫非常好玩且充實，下次還會再來!讚啦~~</p>
-                            </div>
-                        </div>
-                        <div class="phone_member2">
-                            <div class="phone_member_inner">
-                                <div class="member_pic">
-                                    <img src="./image/productPage/head2.png" alt="">
-                                </div>
-                                <div class="member_wrapper">
-                                    <div class="member_name">
-                                        <p>阿豪</p>
-                                    </div>
-                                    <div class="date">
-                                        <p>兩天前</p>
+                                    <div class="member_wrapper">
+                                        <div class="member_name">
+                                            <p>{{item.FullName}}</p>
+                                        </div>
+                                        <div class="date">
+                                            <p>{{item.ReviewTime}}</p>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="member_content">
+                                    <p>{{item.Text}}</p>
+                                </div>
                             </div>
-                            <div class="member_content">
-                                <p>行程規畫非常好玩且充實，下次還會再來!推薦給大家。</p>
-                            </div>
-                        </div>
+                        </template>
+
                     </div>
                     <button type="button" class="all_review_btn">查看全部評價</button>
                 </div>
@@ -1408,7 +1154,7 @@
 
                 <!--分數 星星-->
                 <div class="phone_score">
-                    <div class="score_inner">
+                    <!-- <div class="score_inner">
                         <h4>4</h4>
                         <p>/5</p>
                     </div>
@@ -1417,7 +1163,7 @@
                         <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
                         <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
                         <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!--篩選-->
@@ -1432,155 +1178,50 @@
                 <div class="phone_member_review">
 
                     <!--會員資訊-->
-                    <div class="member_block first_block">
-                        <div class="member_information">
-                            <div class="pic">
-                                <img src="./image/productPage/head3.png" alt="">
+                    <template v-for="item in memberReview">
+                        <div class="member_block first_block">
+                            <div class="member_information">
+                                <div class="pic">
+                                    <img :src="`./image/member/${item.ID}/avatar/${item.Avatar}`" alt="">
+                                </div>
+
+                                <div class="member_name">
+                                    <p>{{item.FullName}}</p>
+                                    <p><span>4</span>天前</p>
+                                </div>
                             </div>
 
-                            <div class="member_name">
-                                <p>小明</p>
-                                <p><span>4</span>天前</p>
-                            </div>
-                        </div>
-
-                        <div class="member_star">
-                            <div class="star">
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                            </div>
-                            <p>超讚</p>
-                        </div>
-
-                        <!--內容-->
-                        <div class="member_content">
-                            <p>第一次參加一日遊行程，該到的點都有到，富士山真的很美，拍的很開心❤️</p>
-                        </div>
-
-                        <!--會員提供照片-->
-                        <div class="member_pic">
-                            <div class="first">
-                                <img src="./image/productPage/review1.jpg" alt="" class="first">
-                            </div>
-                            <div>
-                                <img src="./image/productPage/review2.jpg" alt="">
-                            </div>
-                            <div>
-                                <img src="./image/productPage/review3.jpg" alt="">
+                            <div class="member_star">
+                                <div class="star">
+                                    <i v-for="item in item.Star" class="fa-solid fa-star" style="color: #FF9C00;"></i>
+                                </div>
                             </div>
 
-                        </div>
-                    </div>
-
-                    <!--會員資訊-->
-                    <div class="member_block">
-                        <div class="member_information">
-                            <div class="pic">
-                                <img src="./image/productPage/head4.png" alt="">
+                            <!--內容-->
+                            <div class="member_content">
+                                <p>{{item.Text}}</p>
                             </div>
 
-                            <div class="member_name">
-                                <p>阿豪</p>
-                                <p><span>6</span>天前</p>
+                            <!--會員提供照片-->
+                            <div class="member_pic">
+                                <div class="first" v-if="item.Image1 !== null">
+                                    <img :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image1}`"
+                                        alt="" class="first">
+                                </div>
+                                <div v-if="item.Image2 !== null">
+                                    <img :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image2}`"
+                                        alt="">
+                                </div>
+                                <div v-if="item.Image3 !== null">
+                                    <img :src="`./image/productPage/${item.ProductID}/reviewPhoto/${item.Image3}`"
+                                        alt="">
+                                </div>
+
                             </div>
                         </div>
-
-                        <div class="member_star">
-                            <div class="star">
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                            </div>
-                            <p>超讚</p>
-                        </div>
-
-                        <!--內容-->
-                        <div class="member_content">
-                            <p>Jacky 導遊人特別和善親切，幫我們團員拍照又講解重點，淺顯易懂，還會把集合時間跟聯絡方式一上車就讓我們知道，
-                                相當安心。很幸運天氣很好，整天看得到富士山🗻</p>
-                        </div>
-
-                        <!--會員提供照片-->
-                        <div class="member_pic">
-                            <div class="first">
-                                <img src="./image/productPage/review7.jpg" alt="" class="first">
-                            </div>
-                            <div>
-                                <img src="./image/productPage/review8.jpg" alt="">
-                            </div>
-                            <div>
-                                <img src="./image/productPage/review9.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--會員資訊 無照片-->
-                    <div class="member_block">
-                        <div class="member_information">
-                            <div class="pic">
-                                <img src="./image/productPage/head1.png" alt="">
-                            </div>
-
-                            <div class="member_name">
-                                <p>小明</p>
-                                <p><span>4</span>天前</p>
-                            </div>
-                        </div>
-
-                        <div class="member_star">
-                            <div class="star">
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                            </div>
-                            <p>超讚</p>
-                        </div>
-
-                        <!--內容-->
-                        <div class="member_content">
-                            <p>這次旅程非常幸運，全日都可以看到富士山，導遊小姐也很用心，會提供一些tips，令我們玩得更盡興。</p>
-                        </div>
+                    </template>
 
 
-                    </div>
-
-                    <!--會員資訊 無照片-->
-                    <div class="member_block">
-                        <div class="member_information">
-                            <div class="pic">
-                                <img src="./image/productPage/head2.png" alt="">
-                            </div>
-
-                            <div class="member_name">
-                                <p>阿偉</p>
-                                <p><span>6</span>天前</p>
-                            </div>
-                        </div>
-
-                        <div class="member_star">
-                            <div class="star">
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                                <i class="fa-solid fa-star" style="color: #FF9C00;"></i>
-                            </div>
-                            <p>超讚</p>
-                        </div>
-
-                        <!--內容-->
-                        <div class="member_content">
-                            <p>建議到日本自由行的人可以選擇這樣的行程，可以省很多時間，這次的導遊Zoey很親切，用中、英文導覽,
-                                當天很幸運，因爲天氣很好，可以看到富士山的全貌，還有抹茶體驗哦，很值得推薦的行程。</p>
-                        </div>
-
-                        <!--會員提供照片-->
-                    </div>
                 </div>
             </div>
 

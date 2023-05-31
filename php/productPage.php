@@ -59,7 +59,7 @@ while ($row = $statement4->fetch(PDO::FETCH_ASSOC)) {
     $photos[] = $row["image6"];
 }
 
-//度五個查詢 查詢member資料
+//第五個查詢 查詢member資料
 $sql5 = "SELECT * FROM review
 JOIN members on members.ID = review.MemberID
 WHERE review.ProductID= :productId";
