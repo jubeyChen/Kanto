@@ -13,34 +13,62 @@
                 <h4>{{ departureStatus(order.OfferDate) }}</h4>
                 <p>NTD {{order.Price}}</p>
                 <ul class="orderOption">
-                    <li v-if="departureStatus(order.OfferDate) === '即將出發'"><button class="cancel" @click="doCancel(order.OrderNumber)">取消訂單</button></li>
-                    <li v-if="departureStatus(order.OfferDate) === '已出發'"><button class="review"
+                    <li v-if="departureStatus(order.OfferDate) === '即將出發'"><button class="cancel"
+                            @click="doCancel(order.OrderNumber)">取消訂單</button></li>
+                    <li v-if="departureStatus(order.OfferDate) === '已出發' && order.Reviewed !== 1"><button class="review"
                             @click="toggleReview(order)">撰寫評論</button></li>
+                    <li v-if="order.Reviewed === 1"><button @click="toggleReviewDetail(order)" ref="reviewButton" :id="order.OrderNumber">查看評論</button></li>
                     <li><button class="contact"
                             @click="showService = true; currentOrderNumber = order.OrderNumber">聯絡客服</button></li>
                 </ul>
             </div>
         </div>
         <div class="reviewArea" v-if="order.showReview">
-                <ul class="reviewStar">
-                    <li><i class="ai-star"></i></li>
-                    <li><i class="ai-star"></i></li>
-                    <li><i class="ai-star"></i></li>
-                    <li><i class="ai-star"></i></li>
-                    <li><i class="ai-star"></i></li>
-                </ul>
-    
-                <textarea name="" id="" class="textareaStyle" placeholder="請輸入您的評論"></textarea> <br>
-                <div class="area">
-                    <div class="box2">
-                        <label for="reviewIMG"><i class="ai-plus"></i></label>
-                        <input type="file" id="reviewIMG" multiple accept="image/*">
-                        <div class="reviewIMGBox"><img src="image/member/p1.jpg"></div>
-                        <div class="reviewIMGBox"><img src="image/member/p2.jpg"></div>
+            <ul class="reviewStar">
+                <li :class="{'starOn': review.star >= 1}" @click="reviewStar(1)"><i class="fa-solid fa-star"></i></li>
+                <li :class="{'starOn': review.star >= 2}" @click="reviewStar(2)"><i class="fa-solid fa-star"></i></li>
+                <li :class="{'starOn': review.star >= 3}" @click="reviewStar(3)"><i class="fa-solid fa-star"></i></li>
+                <li :class="{'starOn': review.star >= 4}" @click="reviewStar(4)"><i class="fa-solid fa-star"></i></li>
+                <li :class="{'starOn': review.star >= 5}" @click="reviewStar(5)"><i class="fa-solid fa-star"></i></li>
+            </ul>
+
+            <textarea v-model="review.reviewText" class="textareaStyle" placeholder="請輸入您的評論(最多200字)"
+                maxlength="200"></textarea> <br>
+            <div class="area">
+                <div class="box2">
+                    <label for="reviewIMG"><i class="ai-plus"></i></label>
+                    <input type="file" id="reviewIMG" multiple accept="image/*" @change="previewImages">
+                    <div class="reviewIMGBox" v-for="image in previewImagesList" :key="image.id">
+                        <img :src="image.previewUrl" :alt="image.name" />
                     </div>
-                    <button type="submit">送出</button>
                 </div>
+
+            </div>
+            <button @click="doReview(order)">送出</button>
         </div>
+    </div>
+</section>
+
+<!-- =================== 查看評論內容 =================== -->
+<section class="reviewDetailBox" v-if="showReviewDetail">
+    <div class="reviewDetail" v-for="(item, index) in reviewDetail" :key="index">
+        <span @click="closeReviewDetail(item.OrderDetailID)" :id="'close'+item.OrderDetailID"><i class="ai-cross"></i></span>
+        <p class="orderNUM">訂單編號：{{currentOrderNumber}}</p>
+        <ul class="reviewStar">
+            <li :class="{'starOn': item.Star >= 1}"><i class="fa-solid fa-star"></i></li>
+            <li :class="{'starOn': item.Star >= 2}"><i class="fa-solid fa-star"></i></li>
+            <li :class="{'starOn': item.Star >= 3}"><i class="fa-solid fa-star"></i></li>
+            <li :class="{'starOn': item.Star >= 4}"><i class="fa-solid fa-star"></i></li>
+            <li :class="{'starOn': item.Star >= 5}"><i class="fa-solid fa-star"></i></li>
+        </ul>
+        <p>我的評論：</p>
+        <p class="reviewText">{{ item.Text }}</p>
+        <div class="reviewIMGBox" v-if="item.Image1 !== null"><img :src="'image/productPage/'+item.ProductID+'/reviewPhoto/'+item.Image1"></div>
+        <div class="reviewIMGBox" v-if="item.Image2 !== null"><img :src="'image/productPage/'+item.ProductID+'/reviewPhoto/'+item.Image2"></div>
+        <div class="reviewIMGBox" v-if="item.Image3 !== null"><img :src="'image/productPage/'+item.ProductID+'/reviewPhoto/'+item.Image3"></div>
+        <div class="reviewIMGBox" v-if="item.Image4 !== null"><img :src="'image/productPage/'+item.ProductID+'/reviewPhoto/'+item.Image4"></div>
+        <div class="reviewIMGBox" v-if="item.Image5 !== null"><img :src="'image/productPage/'+item.ProductID+'/reviewPhoto/'+item.Image5"></div>
+        <div class="reviewIMGBox" v-if="item.Image6 !== null"><img :src="'image/productPage/'+item.ProductID+'/reviewPhoto/'+item.Image6"></div>
     </div>
 </section>
 
@@ -48,7 +76,7 @@
 <section class="serviceBox" v-if="showService">
     <div class="service">
         <span @click="showService = false"><i class="ai-cross"></i></span>
-        <form method="post" @submit="submitForm">
+        <div class="serviceForm">
             <p>訂單編號：{{currentOrderNumber}}</p>
             <ul>
                 <li>
@@ -74,9 +102,8 @@
                         v-model="contactText"></textarea>
                 </li>
             </ul>
-            <input type="button" class="submitBtn" value="送出"
-                @click="showService = false; sendEmail; deleteContactInfo"
+            <input type="button" class="submitBtn" value="送出" @click="showService = false; sendEmail(); deleteContactInfo()"
                 :disabled="contactID == '' || contactEmail == '' || contactPhone == '' || contactText == ''">
-        </form>
+        </div>
     </div>
 </section>
