@@ -88,50 +88,58 @@ window.addEventListener('scroll', function (e) {
 
 /* ========== 前後端串接 ========== */
 
-axios.get('../php/blogPage.php')
+//傳遞id的值到php
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return "";
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+// 使用 getParameterByName 函式來獲取 URL 中的 id 參數值
+var blogId = getParameterByName('id');
+
+// 現在你可以使用 productId 變數來進一步處理和使用該值
+console.log(blogId); // 印出 id 參數的值
+
+axios.get('../php/blogPage.php?id=' + blogId)
 .then(response => {
-    let new_arr = [];
-    let pageID = 11;
 
-    for(i = 0; i < response.data.length; i++){
-        // console.log(response.data[i]);
-        if(response.data[i].blogID == pageID){
-            new_arr.push(response.data[i]); 
-        }
-    }
-
-    // console.log(new_arr)
+    //console.log(response.data);
 
     /* ========== 串接標題 ========== */
-    document.querySelector('.content h2').innerHTML = new_arr[0].title;
-    document.querySelector('.content h4').innerHTML = new_arr[0][2];
+    document.querySelector('.content h2').innerHTML = response.data[0].title;
+    document.querySelector('.content h4').innerHTML = response.data[0][2];
 
     /* ========== 串接 banner 照片 ========== */
-    const bannerURL = `./image/blog/${new_arr[0].blogID}/${new_arr[0][3]}`;
+    const bannerURL = `./image/blog/${response.data[0].blogID}/${response.data[0][3]}`;
     document.getElementById('banner1').style.backgroundImage = `url(${bannerURL})`;
     document.getElementById('banner1_m').style.backgroundImage = `url(${bannerURL})`;
-    document.getElementById('img1').setAttribute('src', `./image/blog/` + `${new_arr[0].blogID}` + `/` + `${new_arr[0][4]}`);
+    document.getElementById('img1').setAttribute('src', `./image/blog/` + `${response.data[0].blogID}` + `/` + `${response.data[0][4]}`);
 
     /* ========== 串接 content 照片 ========== */
     for (let m = 1; m <= 4; m++) {
-        const imageURL = `./image/blog/${new_arr[0].blogID}/content${m}.jpg`;
+        const imageURL = `./image/blog/${response.data[0].blogID}/content${m}.jpg`;
         document.getElementById(`content${m}`).setAttribute('src', imageURL);
         document.getElementById(`content${m}_m`).setAttribute('src', imageURL);
     }
 
     /* ========== 串接時間和行程標題 ========== */
-    for(j = 0; j < new_arr.length; j++){
-        document.querySelectorAll('.aside_content')[j].firstElementChild.innerHTML = new_arr[j][8];
-        document.querySelectorAll('.time > p')[j].innerHTML = new_arr[j][8];
+    for(j = 0; j < response.data.length; j++){
+        document.querySelectorAll('.aside_content')[j].firstElementChild.innerHTML = response.data[j][8];
+        document.querySelectorAll('.time > p')[j].innerHTML = response.data[j][8];
 
-        document.querySelectorAll('.aside_content')[j].lastElementChild.innerHTML = new_arr[j][9];
-        document.querySelectorAll('.time')[j].nextElementSibling.innerHTML = new_arr[j][9];
+        document.querySelectorAll('.aside_content')[j].lastElementChild.innerHTML = response.data[j][9];
+        document.querySelectorAll('.time')[j].nextElementSibling.innerHTML = response.data[j][9];
     }
 
     /* ========== 串接內文 ========== */
     for(k = 0; k < 3; k++){
-        document.querySelectorAll('.event_content .content p')[k].innerHTML = new_arr[k + 1][5];
-        document.querySelectorAll('.event .content p')[k].innerHTML = new_arr[k + 1][5];
+        document.querySelectorAll('.event_content .content p')[k].innerHTML = response.data[k + 1][5];
+        document.querySelectorAll('.event .content p')[k].innerHTML = response.data[k + 1][5];
     }
     
 })

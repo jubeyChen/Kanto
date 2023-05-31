@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-    <section class="backOrder">
+    <section id="app" class="backOrder">
         <aside class="">
             <div>
                 <img src="./image/footer/logosqure.svg" alt="logo">
@@ -31,13 +31,13 @@
             <h2>訂單管理</h2>
             <section class="select-block">
                 <form action="post">
-                    <select name="title" id="title">
-                        <option value="">選擇項目</option>
-                        <option value="">訂單編號</option>
-                        <option value="">顧客姓名</option>
+                    <select name="title" id="title" v-model="searchType">
+                        <option value="" selected>選擇項目</option>
+                        <option value="id">訂單編號</option>
+                        <option value="fullname">顧客姓名</option>
                     </select>
-                    <input type="text" class="textStyle" placeholder="">
-                    <input type="submit" value="搜尋" class="btn-pri-m">
+                    <input type="text" class="textStyle" placeholder="輸入關鍵字" v-model="searchText" @keyup.enter="doResearch">
+                    <input type="button" value="搜尋" class="btn-pri-m" @click="doResearch">
                 </form>
             </section>
 
@@ -45,11 +45,11 @@
                 <thead>
                     <tr class="table-dark">
                         <th scope="col">排序</th>
-                        <th scope="col">訂單編號<span class="material-symbols-outlined">
+                        <th scope="col">訂單編號<span class="material-symbols-outlined" @click="reverseArray">
                             unfold_more
                             </span>
                         </th>
-                        <th scope="col">顧客姓名<span class="material-symbols-outlined">
+                        <th scope="col">顧客姓名<span class="material-symbols-outlined" @click="reverseArray">
                             unfold_more
                             </span>
                         </th>
@@ -59,25 +59,25 @@
                         <th scope="col">查看細節</th>
                     </tr>
                 </thead>
-                <tbody class="" id="app">
-                    <tr v-for="(item, index) in orders" :key="index">
+                <tbody class="">
+                    <tr v-for="(item, index) in slicedOrders" :key="index">
                         <th scope="row">{{ index + 1 }}</th>
                         <td>{{ item.id }}</td>
-                        <td>{{ item.fullName }}</td>
+                        <td>{{ item.fullname }}</td>
                         <td>{{ item.timestamp }}</td>
-                        <td>{{ item.total }}</td>
+                        <td>${{ item.total }}</td>
                         <td>{{ item.quantity }}</td>
                         <td>
-                            <button @click="checkDetail">查看</button>
+                            <button @click="checkDetail" :data-id="item.id">查看</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
             <section class="page-btn">
-                <button>上一頁</button>
-                <div>10/10</div>
-                <button>下一頁</button>
+                <button @click="reduceStartNum">上一頁</button>
+                <div>{{ currentNum }} / {{ sortedOrders.length }}</div>
+                <button @click="addStartNum">下一頁</button>
             </section>
 
         </main>
@@ -85,94 +85,7 @@
 
     <script src="js/vendors/vue.global.prod.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-        const app = Vue.createApp({
-            data(){
-                return{
-                    orders: [
-                        {
-                            id: "OD00001",
-                            fullName: "關東誒",
-                            timestamp: "21-09-2021",
-                            total: "$4900",
-                            quantity: "3"
-                        },
-                        {
-                            id: "OD00001",
-                            fullName: "關東誒",
-                            timestamp: "21-09-2021",
-                            total: "$4900",
-                            quantity: "3"
-                        },
-                        {
-                            id: "OD00001",
-                            fullName: "關東誒",
-                            timestamp: "21-09-2021",
-                            total: "$4900",
-                            quantity: "3"
-                        },
-                        {
-                            id: "OD00001",
-                            fullName: "關東誒",
-                            timestamp: "21-09-2021",
-                            total: "$4900",
-                            quantity: "3"
-                        },
-                        {
-                            id: "OD00001",
-                            fullName: "關東誒",
-                            timestamp: "21-09-2021",
-                            total: "$4900",
-                            quantity: "3"
-                        },
-                        {
-                            id: "OD00001",
-                            fullName: "關東誒",
-                            timestamp: "21-09-2021",
-                            total: "$4900",
-                            quantity: "3"
-                        },
-                        {
-                            id: "OD00001",
-                            fullName: "關東誒",
-                            timestamp: "21-09-2021",
-                            total: "$4900",
-                            quantity: "3"
-                        },
-                        {
-                            id: "OD00001",
-                            fullName: "關東誒",
-                            timestamp: "21-09-2021",
-                            total: "$4900",
-                            quantity: "3"
-                        },
-                        {
-                            id: "OD00001",
-                            fullName: "關東誒",
-                            timestamp: "21-09-2021",
-                            total: "$4900",
-                            quantity: "3"
-                        },
-                        {
-                            id: "OD00001",
-                            fullName: "關東誒",
-                            timestamp: "21-09-2021",
-                            total: "$4900",
-                            quantity: "3"
-                        }
-                    ]
-                }
-            },
-            methods: {
-                checkDetail(){
-                    location.href='backOrderDetail.html'
-                }
-            }
-        });
-
-        app.mount('#app');
-
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+    <script src="./js/backOrder.js"></script>
 </body>
 </html>
