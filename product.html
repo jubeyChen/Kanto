@@ -22,7 +22,7 @@
 
     <div class="product wrapper">
 
-        <div class="container">
+        <div class="container" id="pdt">
 
             <!-- 側邊欄位 -->
 
@@ -36,7 +36,7 @@
                         <form action="post">
                             <div class="search">
                                 <div class="search-text">
-                                    <input type="text" class="search-bar" name="search-bar" id="search"
+                                    <input @keyup="" type="text" class="search-bar" name="search-bar" id="search"
                                         placeholder="輸入名稱">
                                     <button class="search-btn" value="seach"><svg width="20px" height="20px"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -54,25 +54,25 @@
                                             </div>
                                             <div class="content">
                                                 <label for="checkbox1">
-                                                    <input type="checkbox" id="checkbox1" value="">東京
+                                                    <input type="checkbox" id="checkbox1" value="1" name="region">東京
                                                 </label><br>
                                                 <label for="checkbox2">
-                                                    <input type="checkbox" id="checkbox2" value="">神奈川
+                                                    <input type="checkbox" id="checkbox2" value="2" name="region">神奈川
                                                 </label><br>
                                                 <label for="checkbox3">
-                                                    <input type="checkbox" id="checkbox3" value="">埼玉
+                                                    <input type="checkbox" id="checkbox3" value="3" name="region">埼玉
                                                 </label><br>
                                                 <label for="checkbox4">
-                                                    <input type="checkbox" id="checkbox4" value="">茨城
+                                                    <input type="checkbox" id="checkbox4" value="4" name="region">茨城
                                                 </label><br>
                                                 <label for="checkbox5">
-                                                    <input type="checkbox" id="checkbox5" value="">千葉
+                                                    <input type="checkbox" id="checkbox5" value="5" name="region">千葉
                                                 </label><br>
                                                 <label for="checkbox6">
-                                                    <input type="checkbox" id="checkbox6" value="">群馬
+                                                    <input type="checkbox" id="checkbox6" value="6" name="region">群馬
                                                 </label><br>
                                                 <label for="checkbox7">
-                                                    <input type="checkbox" id="checkbox7" value="">栃木
+                                                    <input type="checkbox" id="checkbox7" value="7" name="region">栃木
                                                 </label>
                                             </div>
                                         </div>
@@ -144,7 +144,7 @@
                                                 <h4>價錢 (TWD)</h4>
                                             </div>
                                             <div class="content">
-                                                <input type="range" min="0" max="9999" value="0" class="slider"
+                                                <input type="range" min="0" max="9999" value="9999" class="slider"
                                                     id="slider">
                                                 <div id="value"></div>
                                             </div>
@@ -158,28 +158,27 @@
                 </div>
             </aside>
 
-            <!-- 行程簡介區塊 -->
             <article class="right">
                 <div class="top-column">
-                    <p>50 項體驗行程</p>
+                    <p>{{productCount}} 項體驗行程</p>
                 </div>
                 <div class="big-area">
                     <ul>
-                        <li>
+                        <li v-for="item in displayItems">
                             <div class="jpg">
-                                <img src="image/product/jp_1.png" alt="">
+                                <img :src="'./image/productPage/' + item.IntroductionID + '/' + item.Image4" alt="">
                             </div>
 
                             <div class="word">
                                 <div class="title-h">
-                                    <h3>富士山賞櫻一日遊（東京出發）</h3>
+                                    <h3>{{item.Name}}</h3>
                                     <button class="heart-btn"><i class="fa-regular fa-heart"
                                             style="color: #000000; font-size: 2em;"></i></button>
                                 </div>
-                                <p>來日本旅遊，除了東京以外，富士山也是不可錯過的景點之一！欣賞富士山的美景，品嚐當地美食，探索日本的文化和藝術，讓您的旅程更加豐富多彩。別忘了準備好足夠的體力和裝備，並留意當地的天氣情況。
-                                </p>
+                                <p class="p-content">{{item.Content}}</p>
                                 <div class="only-btn">
-                                    <p class="p-targ">即買即用</p>
+                                    <p class="p-targ" v-if="item.UseNow">即買即用</p>
+                                    <p class="p-targ1" v-else></p>
                                     <button class='btn-pri-m' class="btn-n">
                                         <a href="./productPage.html?id=1">查看詳情</a>
                                     </button>
@@ -189,195 +188,7 @@
                                         <img src="image/product/star.png" alt="">
                                         15k已訂閱
                                     </div>
-                                    <div class="price">TWD 1,500</div>
-                                </div>
-                                <div class="rwd-star">
-                                    <img src="image/product/star.png" alt="">
-                                    <button class='btn-pri-m' class="btn-n">
-                                        <a href="./productPage.html">查看詳情</a>
-                                    </button>
-                                </div>
-                                <div class="rwd-both">
-                                    <div class="follow">(2961)|99已訂閱</div>
-                                    <div class="rwd-price">TWD 1,500</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="jpg">
-                                <img src="image/product/jp_2.png" alt="">
-                            </div>
-
-                            <div class="word">
-                                <div class="title-h">
-                                    <h3>東京澀谷天空（SHIBUYA SKY）觀景臺門票</h3>
-                                    <button class="heart-btn"><i class="fa-regular fa-heart"
-                                            style="color: #000000; font-size: 2em;"></i></button>
-                                </div>
-                                <p>御殿場購物一日遊帶您前往日本著名的Outlet商場，以優惠價格購買各大國際品牌的產品，包括服飾、鞋子、手錶等。同時，您還可以欣賞到美麗的富士山風光，並品嚐當地美食。這是一個絕佳的購物和旅遊體驗。
-                                </p>
-                                <div class="only-btn">
-                                    <p class="p-targ">即買即用</p>
-                                    <button class='btn-pri-m'>
-                                        <a href="./productPage.html?id=4">查看詳情</a>
-                                    </button>
-                                </div>
-                                <div class="star-p">
-                                    <div class="star">
-                                        <img src="image/product/star.png" alt="">
-                                        15k已訂閱
-                                    </div>
-                                    <div class="price">TWD 1,500</div>
-                                </div>
-                                <div class="rwd-star">
-                                    <img src="image/product/star.png" alt="">
-                                    <button class='btn-pri-m' class="btn-n">
-                                        <a href="./productPage.html">查看詳情</a>
-                                    </button>
-                                </div>
-                                <div class="rwd-both">
-                                    <div class="follow">(2961)|99已訂閱</div>
-                                    <div class="rwd-price">TWD 1,500</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="jpg">
-                                <img src="image/product/jp_3.png" alt="">
-                            </div>
-
-                            <div class="word">
-                                <div class="title-h">
-                                    <h3>鎌倉大佛&江之島&鎌倉高校前一日遊丨東京出發</h3>
-                                    <button class="heart-btn"><i class="fa-regular fa-heart"
-                                            style="color: #000000; font-size: 2em;"></i></button>
-                                </div>
-                                <p>鎌倉大佛&江之島&鎌倉高校前一日遊，探索古都鎌倉的文化與美景，欣賞大佛和海景，品嚐美食，感受日本的歷史與現代文化。</p>
-                                <div class="only-btn">
-                                    <p class="p-targ">即買即用</p>
-                                    <button class='btn-pri-m'>
-                                        <a href="./productPage.html?id=2">查看詳情</a>
-                                    </button>
-                                </div>
-                                <div class="star-p">
-                                    <div class="star">
-                                        <img src="image/product/star.png" alt="">
-                                        15k已訂閱
-                                    </div>
-                                    <div class="price">TWD 1,500</div>
-                                </div>
-                                <div class="rwd-star">
-                                    <img src="image/product/star.png" alt="">
-                                    <button class='btn-pri-m' class="btn-n">
-                                        <a href="./productPage.html">查看詳情</a>
-                                    </button>
-                                </div>
-                                <div class="rwd-both">
-                                    <div class="follow">(2961)|99已訂閱</div>
-                                    <div class="rwd-price">TWD 1,500</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="jpg">
-                                <img src="image/product/jp_4.png" alt="">
-                            </div>
-
-                            <div class="word">
-                                <div class="title-h">
-                                    <h3>東京迪士尼度假區門票</h3>
-                                    <button class="heart-btn"><i class="fa-regular fa-heart"
-                                            style="color: #000000; font-size: 2em;"></i></button>
-                                </div>
-                                <p>東京迪士尼度假區是東京必去的旅遊勝地，擁有東京迪士尼海洋樂園和東京迪士尼樂園兩大主題樂園。除了豐富的遊戲體驗和精彩的夜間煙火秀外，樂園中還有各種美食和紀念品可供選擇。
-                                </p>
-                                <div class="only-btn">
-                                    <p class="p-targ">即買即用</p>
-                                    <button class='btn-pri-m'>
-                                        <a href="./productPage.html?id=3">查看詳情</a>
-                                    </button>
-                                </div>
-                                <div class="star-p">
-                                    <div class="star">
-                                        <img src="image/product/star.png" alt="">
-                                        15k已訂閱
-                                    </div>
-                                    <div class="price">TWD 1,500</div>
-                                </div>
-                                <div class="rwd-star">
-                                    <img src="image/product/star.png" alt="">
-                                    <button class='btn-pri-m' class="btn-n">
-                                        <a href="./productPage.html">查看詳情</a>
-                                    </button>
-                                </div>
-                                <div class="rwd-both">
-                                    <div class="follow">(2961)|99已訂閱</div>
-                                    <div class="rwd-price">TWD 1,500</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="jpg">
-                                <img src="image/product/jp_5.png" alt="">
-                            </div>
-
-                            <div class="word">
-                                <div class="title-h">
-                                    <h3>日本飯能嚕嚕米樂園（Moominvalley Park）門票</h3>
-                                    <button class="heart-btn"><i class="fa-regular fa-heart"
-                                            style="color: #000000; font-size: 2em;"></i></button>
-                                </div>
-                                <p>飯能嚕嚕米樂園，讓你暫時逃離城市的喧囂，享受各種刺激的活動和美食。從東京輕鬆前往，適合全家大小一起遊玩。</p>
-                                <div class="only-btn">
-                                    <p class="p-targ">即買即用</p>
-                                    <button class='btn-pri-m'>
-                                        <a href="./productPage.html?id=5">查看詳情</a>
-                                    </button>
-                                </div>
-                                <div class="star-p">
-                                    <div class="star">
-                                        <img src="image/product/star.png" alt="">
-                                        15k已訂閱
-                                    </div>
-                                    <div class="price">TWD 1,500</div>
-                                </div>
-                                <div class="rwd-star">
-                                    <img src="image/product/star.png" alt="">
-                                    <button class='btn-pri-m' class="btn-n">
-                                        <a href="./productPage.html">查看詳情</a>
-                                    </button>
-                                </div>
-                                <div class="rwd-both">
-                                    <div class="follow">(2961)|99已訂閱</div>
-                                    <div class="rwd-price">TWD 1,500</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="jpg">
-                                <img src="image/product/jp_1.png" alt="">
-                            </div>
-
-                            <div class="word">
-                                <div class="title-h">
-                                    <h3>富士山賞櫻一日遊（東京出發）</h3>
-                                    <button class="heart-btn"><i class="fa-regular fa-heart"
-                                            style="color: #000000; font-size: 2em;"></i></button>
-                                </div>
-                                <p>來日本旅遊，除了東京以外，富士山也是不可錯過的景點之一！欣賞富士山的美景，品嚐當地美食，探索日本的文化和藝術，讓您的旅程更加豐富多彩。別忘了準備好足夠的體力和裝備，並留意當地的天氣情況。
-                                </p>
-                                <div class="only-btn">
-                                    <p class="p-targ">即買即用</p>
-                                    <button class='btn-pri-m'>
-                                        <a href="./productPage.html?id=1">查看詳情</a>
-                                    </button>
-                                </div>
-                                <div class="star-p">
-                                    <div class="star">
-                                        <img src="image/product/star.png" alt="">
-                                        15k已訂閱
-                                    </div>
-                                    <div class="price">TWD 1,500</div>
+                                    <div class="price">TWD {{numberWithCommas(item.Price)}}</div>
                                 </div>
                                 <div class="rwd-star">
                                     <img src="image/product/star.png" alt="">
@@ -392,8 +203,9 @@
                             </div>
                         </li>
                     </ul>
+
                 </div>
-                <!-- 頁數 -->
+
                 <div class="page">
                     <ul>
                         <li><a href="">1</a></li>

@@ -1,26 +1,25 @@
-.product{
+.product {
     padding: 30px 0;
 
-    .container{
+    .container {
         // outline: 3px solid gray;
         display: flex;
         justify-content: space-between;
-            @include m(){
-                flex-direction: column;
-            }
+
+        @include m() {
+            flex-direction: column;
+        }
 
 
 
 
-        .left{
+        .left {
             // outline: 1px solid yellow;
 
-            .sidebar{
+            .sidebar {
                 // outline: 3px solid red;
                 position: sticky;
-                top:100px;                
-                
-
+                top: 100px;
 
             }
 
@@ -28,75 +27,75 @@
 
         }
 
-        .right{
+        .right {
             // outline: 1px solid brown;
             width: 75%;
             margin-left: auto;
 
-                @include m (){
-                    margin-left: 0;
-                    width: 100%;
-                }
+            @include m () {
+                margin-left: 0;
+                width: 100%;
+            }
         }
     }
 
-    .search{
+    .search {
         margin-top: 30px;
         height: 490px;
         overflow-y: scroll;
         overflow-x: hidden;
-    
-        .search-text{
-    
+
+        .search-text {
+
             display: flex;
             margin-bottom: 30px;
 
-                @include m(){
-                    display: none;
-                }
-    
-            .search-bar{
+            @include m() {
+                display: none;
+            }
+
+            .search-bar {
                 height: 30px;
                 border: none;
                 // background-image: url('/image/product/search-btn.png');
                 // background-repeat: no-repeat;
                 // background-position: right;
                 // background-size: auto;
-                
+
             }
-    
-            .search-btn{
+
+            .search-btn {
                 height: 32px;
                 border: none;
                 background-color: white;
                 cursor: pointer;
-            
+
             }
         }
 
-        .accordion{
+        .accordion {
 
-            @include m(){
+            @include m() {
                 width: 100%;
                 margin-top: 50px;
             }
 
-             .check-box{
+            .check-box {
                 margin-bottom: 30px;
 
-                @include m(){
+                @include m() {
                     background-color: white;
                 }
 
-                .contentBx{
-                        
-                        @include m(){
+                .contentBx {
+
+                    @include m() {
                         position: relative;
                     }
-                
-                    .label{
-                        
-                        @include m(){
+
+                    .label {
+
+                        @include m() {
                             background-color: $primary;
                             padding: 5px;
                             border-radius: 5px;
@@ -104,7 +103,7 @@
                             // cursor: pointer;
                             position: relative;
 
-                            &:before{
+                            &:before {
                                 content: "+";
                                 position: absolute;
                                 top: 20%;
@@ -114,24 +113,24 @@
                             }
                         }
 
-                        h4{
+                        h4 {
                             margin-bottom: 10px;
 
-                            @include m(){
+                            @include m() {
                                 margin-bottom: 0;
                                 color: white;
                             }
                         }
                     }
 
-                    label{
+                    label {
                         font-size: $paragraph-s;
                         line-height: 1.5em
                     }
 
-                    .content{
+                    .content {
 
-                        @include m(){
+                        @include m() {
                             // padding: 10px;
                             position: relative;
                             height: 0;
@@ -143,21 +142,21 @@
                     }
 
                 }
-                
+
             }
-            
-        
-            .check-box2{
-        
+
+
+            .check-box2 {
+
                 margin-bottom: 30px;
 
-                    @include m(){
-                        background-color: white;
-                    }
+                @include m() {
+                    background-color: white;
+                }
 
-                .label{
-                        
-                    @include m(){
+                .label {
+
+                    @include m() {
                         background-color: $primary;
                         padding: 5px;
                         border-radius: 5px;
@@ -165,7 +164,7 @@
                         // cursor: pointer;
                         position: relative;
 
-                        &:before{
+                        &:before {
                             content: "+";
                             position: absolute;
                             top: 20%;
@@ -175,25 +174,25 @@
                         }
                     }
 
-                    h4{
+                    h4 {
                         margin-bottom: 10px;
 
-                        @include m(){
+                        @include m() {
                             margin-bottom: 0;
                             color: white;
                         }
                     }
                 }
-                
 
-                label{
-                        font-size: $paragraph-s;
-                        line-height: 1.5em
+
+                label {
+                    font-size: $paragraph-s;
+                    line-height: 1.5em
                 }
 
-                .content{
+                .content {
 
-                    @include m(){
+                    @include m() {
                         // padding: 10px;
                         position: relative;
                         height: 0;
@@ -206,65 +205,65 @@
 
             }
 
-        
-            .search-day{
+
+            .search-day {
                 margin-bottom: 30px;
 
-                    @include m(){
-                        background-color: white;
-                    }
-                
-                    .label{
-                        
-                        @include m(){
-                            background-color: $primary;
-                            padding: 5px;
-                            border-radius: 5px;
-                            // margin-bottom: 10px;
-                            // cursor: pointer;
-                            position: relative;
+                @include m() {
+                    background-color: white;
+                }
 
-                            &:before{
-                                content: "+";
-                                position: absolute;
-                                top: 20%;
-                                right: 20px;
-                                font-size: 1.5em;
-                                color: white;
-                            }
-                        }
+                .label {
 
-                        h4{
-                            margin-bottom: 10px;
+                    @include m() {
+                        background-color: $primary;
+                        padding: 5px;
+                        border-radius: 5px;
+                        // margin-bottom: 10px;
+                        // cursor: pointer;
+                        position: relative;
 
-                            @include m(){
-                                margin-bottom: 0;
-                                color: white;
-                            }
+                        &:before {
+                            content: "+";
+                            position: absolute;
+                            top: 20%;
+                            right: 20px;
+                            font-size: 1.5em;
+                            color: white;
                         }
                     }
 
-            // RWD的accordion效果，需要家的一些項目~
-                    .content{
+                    h4 {
+                        margin-bottom: 10px;
 
-                        @include m(){
-                            // padding: 10px;
-                            position: relative;
-                            height: 0;
-                            overflow: hidden;
-                            transition: 0.5s;
-                            overflow-y: auto;
-    
+                        @include m() {
+                            margin-bottom: 0;
+                            color: white;
                         }
                     }
-        
-                
+                }
+
+                // RWD的accordion效果，需要家的一些項目~
+                .content {
+
+                    @include m() {
+                        // padding: 10px;
+                        position: relative;
+                        height: 0;
+                        overflow: hidden;
+                        transition: 0.5s;
+                        overflow-y: auto;
+
+                    }
+                }
+
+
                 .calendar {
                     width: 200px;
                     font-size: 14px;
                     font-family: Arial, sans-serif;
                 }
-                
+
                 .calendar-header {
                     display: flex;
                     justify-content: space-between;
@@ -272,32 +271,32 @@
                     background-color: #eee;
                     padding: 10px;
                 }
-                
+
                 .calendar-header-item {
                     cursor: pointer;
                 }
-                
+
                 .calendar-body {
                     border: 1px solid #ccc;
                     padding: 10px;
                 }
-                
+
                 .calendar-weekdays {
                     display: flex;
                     justify-content: space-between;
                     margin-bottom: 10px;
                 }
-                
+
                 .calendar-weekday {
                     width: calc(100% / 7);
                     text-align: center;
                 }
-                
+
                 .calendar-days {
                     display: flex;
                     flex-wrap: wrap;
                 }
-                
+
                 .calendar-day {
                     width: calc(100% / 7);
                     height: 30px;
@@ -306,31 +305,31 @@
                     align-items: center;
                     cursor: pointer;
                 }
-                
+
                 .calendar-day:hover {
                     background-color: #eee;
                 }
-                
+
                 .calendar-day.today {
                     background-color: #ccc;
                 }
-                
+
                 .calendar-day.selected {
                     background-color: #007bff;
                     color: #fff;
                 }
-                
-            }
-        
-            .search-price{
 
-                @include m(){
+            }
+
+            .search-price {
+
+                @include m() {
                     background-color: white;
                 }
 
-                .label{
-                        
-                    @include m(){
+                .label {
+
+                    @include m() {
                         background-color: $primary;
                         padding: 5px;
                         border-radius: 5px;
@@ -339,7 +338,7 @@
                         position: relative;
                         color: white;
 
-                        &:before{
+                        &:before {
                             content: "+";
                             position: absolute;
                             top: 20%;
@@ -351,11 +350,11 @@
 
                 }
 
-            // RWD的accordion效果，需要家的一些項目~
+                // RWD的accordion效果，需要家的一些項目~
 
-                .content{
+                .content {
 
-                    @include m(){
+                    @include m() {
                         // padding: 10px;
                         position: relative;
                         height: 0;
@@ -365,7 +364,7 @@
 
                     }
                 }
-        
+
                 .slider {
                     // -webkit-appearance: none;
                     appearance: none;
@@ -377,11 +376,11 @@
                     // -webkit-transition: .2s;
                     transition: opacity .2s;
                 }
-                
+
                 .slider:hover {
                     opacity: 1;
                 }
-                
+
                 .slider::-webkit-slider-thumb {
                     -webkit-appearance: none;
                     appearance: none;
@@ -392,7 +391,7 @@
                     border-radius: 50%;
                     position: relative;
                 }
-                
+
                 .slider::-moz-range-thumb {
                     width: 20px;
                     height: 20px;
@@ -401,7 +400,7 @@
                     border-radius: 50%;
                     position: relative;
                 }
-                
+
                 #value {
                     width: 100%;
                     margin-top: 10px;
@@ -409,161 +408,161 @@
                     font-size: 14px;
                     font-weight: bold;
                 }
-                
-                
+
+
             }
 
         }
 
 
-     // -------------------RWD的accordion效果，需要家的一些項目 -----------------------
+        // -------------------RWD的accordion效果，需要家的一些項目 -----------------------
 
 
-    //  .accordion{
-    //     .contentBx.active{
-    //         .content{
-    //             @include m(){
-    //                 height: 150px;
-    //                 padding: 10px;
-    //             }
-    //         }
-    //     }
-    //  }
+        //  .accordion{
+        //     .contentBx.active{
+        //         .content{
+        //             @include m(){
+        //                 height: 150px;
+        //                 padding: 10px;
+        //             }
+        //         }
+        //     }
+        //  }
 
 
-    //  .accordion{
+        //  .accordion{
 
-    //     .search-day{
+        //     .search-day{
 
-    //         .contentBx.active{
+        //         .contentBx.active{
 
-    //             .content{
+        //             .content{
 
-    //                 @include m(){
-    //                     height: 230px;
-    //                     padding: 10px;
-    //                 }
-    //             }
-
-
-    //         } 
-    //     }
-        
+        //                 @include m(){
+        //                     height: 230px;
+        //                     padding: 10px;
+        //                 }
+        //             }
 
 
-    //  } 
+        //         } 
+        //     }
 
 
-    //  .accordion{
 
-    //     .check-box2{
-
-    //         .contentBx.active{
-
-    //             .content{
-
-    //                 @include m(){
-    //                     height: 80px;
-    //                     padding: 10px;
-    //                 }
-    //             }
-    //         } 
-    //     }
-    //  } 
-
-    //  .accordion{
-
-    //     .search-price{
-
-    //         .contentBx.active{
-
-    //             .content{
-
-    //                 @include m(){
-    //                     height: 30px;
-    //                     padding: 10px;
-    //                 }
-    //             }
-    //         } 
-    //     }
-    //  }
-
-    //  =============================test=================================
+        //  } 
 
 
-    //勾勾1
-    .accordion{
-        .contentBx{
-            .content.active{
-                @include m(){
-                    height: 150px;
-                    padding: 10px;
+        //  .accordion{
+
+        //     .check-box2{
+
+        //         .contentBx.active{
+
+        //             .content{
+
+        //                 @include m(){
+        //                     height: 80px;
+        //                     padding: 10px;
+        //                 }
+        //             }
+        //         } 
+        //     }
+        //  } 
+
+        //  .accordion{
+
+        //     .search-price{
+
+        //         .contentBx.active{
+
+        //             .content{
+
+        //                 @include m(){
+        //                     height: 30px;
+        //                     padding: 10px;
+        //                 }
+        //             }
+        //         } 
+        //     }
+        //  }
+
+        //  =============================test=================================
+
+
+        //勾勾1
+        .accordion {
+            .contentBx {
+                .content.active {
+                    @include m() {
+                        height: 150px;
+                        padding: 10px;
+                    }
                 }
             }
         }
-     }
 
 
-    //勾勾2
-    .accordion{
+        //勾勾2
+        .accordion {
 
-        .check-box2{
+            .check-box2 {
 
-            .contentBx{
+                .contentBx {
 
-                .content.active{
+                    .content.active {
 
-                    @include m(){
-                        height: 80px;
-                        padding: 10px;
+                        @include m() {
+                            height: 80px;
+                            padding: 10px;
+                        }
                     }
                 }
-            } 
+            }
         }
-     } 
 
 
-    //  日期
-     .accordion{
+        //  日期
+        .accordion {
 
-        .search-day{
+            .search-day {
 
-            .contentBx{
+                .contentBx {
 
-                .content.active{
+                    .content.active {
 
-                    @include m(){
-                        height: 230px;
-                        padding: 10px;
+                        @include m() {
+                            height: 230px;
+                            padding: 10px;
+                        }
+                    }
+
+
+                }
+            }
+
+
+
+        }
+
+
+        //  價錢
+        .accordion {
+
+            .search-price {
+
+                .contentBx {
+
+                    .content.active {
+
+                        @include m() {
+                            height: 30px;
+                            padding: 10px;
+                        }
                     }
                 }
-
-
-            } 
+            }
         }
-        
-
-
-     } 
-
-
-     //  價錢
-    .accordion{
-
-        .search-price{
-
-            .contentBx{
-
-                .content.active{
-
-                    @include m(){
-                        height: 30px;
-                        padding: 10px;
-                    }
-                }
-            } 
-        }
-     }
 
 
     }
@@ -571,12 +570,12 @@
 
 
 
-    .accordion{
-        .contentBx.active{
-            .label{
-                &::before{
-                    @include m(){
-                         content: "-";
+    .accordion {
+        .contentBx.active {
+            .label {
+                &::before {
+                    @include m() {
+                        content: "-";
 
                     }
                 }
@@ -584,17 +583,17 @@
         }
     }
 
-    .search{
+    .search {
 
-        .accordion{
+        .accordion {
 
-            .check-box{
+            .check-box {
 
-                .contentBx.active{
-                    .label{
-                        &::before{
-                            @include m(){
-                                 content: "-";
+                .contentBx.active {
+                    .label {
+                        &::before {
+                            @include m() {
+                                content: "-";
                             }
                         }
                     }
@@ -605,10 +604,10 @@
         }
 
     }
-    
-    
+
+
     // ----------------------article-----------------------------------//
-    .top-column{
+    .top-column {
         border: 1px solid #000;
         background-color: #ECECEB;
         padding: 5px;
@@ -616,208 +615,225 @@
         margin-top: 30px;
         // min-width: 864px;
     }
-    
-    
-    .big-area{
-        ul{
+
+
+    .big-area {
+        ul {
             // outline: 2px solid blue;
             width: 100%;
-            
-            
-            li{
+
+
+            li {
                 display: flex;
                 margin-top: 20px;
                 width: 100%;
                 justify-content: space-between;
 
-                    @include m(){
-                        flex-direction: column
-                    }
-    
-                .jpg{
+                @include m() {
+                    flex-direction: column
+                }
+
+                .jpg {
                     border: 1px solid #000;
                     flex-grow: 1;
                     width: 70%;
 
-                        @include m(){
-                            width: 100%;
-                            border-radius: 10px 10px 0 0;
-                            outline: 1px solid #000;
-                            border: 0px;
-                        }
-                    img{
+                    @include m() {
+                        width: 100%;
+                        border-radius: 10px 10px 0 0;
+                        outline: 1px solid #000;
+                        border: 0px;
+                    }
+
+                    img {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
 
-                            @include m(){
-                                border-radius: 10px 10px 0 0;
-                                width: 100%;
-                            }
+                        @include m() {
+                            border-radius: 10px 10px 0 0;
+                            width: 100%;
+                        }
                     }
                 }
-    
-                .word{
+
+                .word {
                     background-color: white;
                     padding: 10px;
-                    border-radius: 0,5px,5px,0;
+                    border-radius: 0, 5px, 5px, 0;
                     border: 1px solid #000;
                     // flex-basis: 60%;
                     flex-basis: 100%;
                     // width: 50%;
 
-                        @include m(){
-                            border-radius: 0 0 10px 10px;
-                            outline:  1px solid #000;
-                            border: 0px;
+                    @include m() {
+                        border-radius: 0 0 10px 10px;
+                        outline: 1px solid #000;
+                        border: 0px;
 
-                        }
-                
-                    p{
+                    }
+
+                    .p-content{
+                        width: 100%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 3;
+                        box-sizing: border-box;
+
                         font-size: $paragraph-s;
                         margin-bottom: 30px;
                     }
 
-                    .rwd-star{
+                    .rwd-star {
                         display: none;
-                        
-                            @include m(){
-                                display: block;
-                                display: flex;
-                                align-items: center;
-                                justify-content: space-between;
-                                margin-bottom: 10px;
-                            }
 
-                        a{
-                            @include m(){
+                        @include m() {
+                            display: block;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-bottom: 10px;
+                        }
+
+                        a {
+                            @include m() {
                                 text-decoration: none;
                                 color: #fff;
                                 display: block;
                             }
                         }
 
-                        button{
-                            @include m(){
+                        button {
+                            @include m() {
                                 padding: 0 20px;
                             }
-                        }        
+                        }
                     }
 
-                    .rwd-both{
+                    .rwd-both {
                         display: none;
 
-                            @include m(){
-                                display: block;
-                                display: flex;
-                                justify-content: space-between;
-                            }
+                        @include m() {
+                            display: block;
+                            display: flex;
+                            justify-content: space-between;
+                        }
 
-                        .follow{
-                            @include m(){
+                        .follow {
+                            @include m() {
                                 font-size: $paragraph;
                             }
                         }
 
-                        .rwd-price{
-                            @include m(){
+                        .rwd-price {
+                            @include m() {
                                 font-size: $paragraph;
                                 font-weight: bolder;
                             }
                         }
                     }
-                
+
                 }
-                
+
             }
         }
     }
-    
-    
-    
-    
-    .title-h{
+
+
+
+
+    .title-h {
         display: flex;
         justify-content: space-between;
         margin-bottom: 30px;
-    
-        .heart-btn{
+
+        .heart-btn {
             padding-top: 5px;
             border: none;
             background-color: transparent;
             cursor: pointer;
-              
+
         }
     }
-    
-    .s-heart{
+
+    .s-heart {
         // fill: currentColor;
         // color: $primary;
         // fill: rgba(255, 0, 0, 0.5);
         // fill: transparent;
         // stroke: none;
     }
-    
-    .star-p{
+
+    .star-p {
         display: flex;
         justify-content: space-between;
         font-size: $paragraph-s;
         clear: both;
 
-            @include m(){
-                display: none;
-            }
-    
-        .price{
+        @include m() {
+            display: none;
+        }
+
+        .price {
             text-align: center;
             line-height: 34px;
             font-size: $paragraph;
         }
     }
-    
-    .only-btn{
+
+    .only-btn {
         display: flex;
         justify-content: space-between;
         margin-bottom: 30px;
 
-            @include m(){
-                display: none;
-            }
-    
-        .p-targ{
+        @include m() {
+            display: none;
+        }
+
+        .p-targ {
+            height: 24px;
             border: 1px solid #000;
             font-size: $paragraph-s;
             padding: 3px;
         }
-    
-        a{
+
+        .p-targ1 {
+            // border: 1px solid #000;
+            height: 32px;
+            font-size: $paragraph-s;
+            padding: 3px;
+        }
+
+        a {
             text-decoration: none;
             color: #fff;
             display: block;
         }
 
-        button{
+        button {
             padding: 0 20px;
         }
 
 
     }
-    
-    .page{
-        
+
+    .page {
+
         margin-top: 30px;
-    
-        ul{
+
+        ul {
             // outline: 1px solid yellow;
             display: flex;
             justify-content: center;
 
-                @include m(){
-                    justify-content: center;
-                }
-    
-            li{
-                a{
+            @include m() {
+                justify-content: center;
+            }
+
+            li {
+                a {
                     display: block;
                     font-size: $paragraph;
                     width: 50px;
@@ -847,12 +863,8 @@
 
 // ------------------------------RWD------------------------------ //
 
-@media screen and (max-width:414px) {
+@media screen and (max-width:414px) {}
 
-
-
-
-}
 //     .product{
 //         display: none;
 //     }
@@ -887,7 +899,7 @@
 //             border-radius: 5px;
 //             display: flex;
 //             margin-bottom: 30px;
-    
+
 //             .search-bar{
 //                 height: 30px;
 //                 border: none;
@@ -895,16 +907,16 @@
 //                 // background-repeat: no-repeat;
 //                 // background-position: right;
 //                 // background-size: auto;
-                
+
 //             }
-    
+
 //             .search-btn{
 //                 margin-left: 5px;
 //                 height: 32px;
 //                 border: none;
 //                 background-color: white;
 //                 cursor: pointer;
-            
+
 //             }
 //         }
 //     }
@@ -915,7 +927,7 @@
 //         margin: 10px;
 //         padding: 10px;
 
-        
+
 //     .check-box2{
 //         // background-color: white;
 //     }
@@ -928,7 +940,7 @@
 //         font-size: 14px;
 //         font-family: Arial, sans-serif;
 //       }
-      
+
 //       .calendar-header {
 //         display: flex;
 //         justify-content: space-between;
@@ -936,32 +948,32 @@
 //         background-color: #eee;
 //         padding: 10px;
 //       }
-      
+
 //       .calendar-header-item {
 //         cursor: pointer;
 //       }
-      
+
 //       .calendar-body {
 //         border: 1px solid #ccc;
 //         padding: 10px;
 //       }
-      
+
 //       .calendar-weekdays {
 //         display: flex;
 //         justify-content: space-between;
 //         margin-bottom: 10px;
 //       }
-      
+
 //       .calendar-weekday {
 //         width: calc(100% / 7);
 //         text-align: center;
 //       }
-      
+
 //       .calendar-days {
 //         display: flex;
 //         flex-wrap: wrap;
 //       }
-      
+
 //       .calendar-day {
 //         width: calc(100% / 7);
 //         height: 30px;
@@ -970,15 +982,15 @@
 //         align-items: center;
 //         cursor: pointer;
 //       }
-      
+
 //       .calendar-day:hover {
 //         background-color: #eee;
 //       }
-      
+
 //       .calendar-day.today {
 //         background-color: #ccc;
 //       }
-      
+
 //       .calendar-day.selected {
 //         background-color: #007bff;
 //         color: #fff;
@@ -989,7 +1001,7 @@
 
 //       //----------依價錢搜尋//----------//
 //       .search-price{
-       
+
 //         .slider {
 //             // -webkit-appearance: none;
 //             appearance: none;
@@ -1001,11 +1013,11 @@
 //             // -webkit-transition: .2s;
 //             transition: opacity .2s;
 //           }
-          
+
 //           .slider:hover {
 //             opacity: 1;
 //           }
-          
+
 //           .slider::-webkit-slider-thumb {
 //             -webkit-appearance: none;
 //             appearance: none;
@@ -1016,7 +1028,7 @@
 //             border-radius: 50%;
 //             position: relative;
 //           }
-          
+
 //           .slider::-moz-range-thumb {
 //             width: 20px;
 //             height: 20px;
@@ -1025,7 +1037,7 @@
 //             border-radius: 50%;
 //             position: relative;
 //           }
-          
+
 //           #value {
 //             width: 100%;
 //             margin-top: 10px;
@@ -1033,8 +1045,8 @@
 //             font-size: 14px;
 //             font-weight: bold;
 //           }
-          
-          
+
+
 //     }
 
 // }
@@ -1093,14 +1105,14 @@
 //         }
 
 //         .rwd-page{
-        
+
 //             margin-bottom: 30px;
-        
+
 //             ul{
 //                 // outline: 1px solid yellow;
 //                 display: flex;
 //                 justify-content: center;
-        
+
 //                 li{
 //                     a{
 //                         display: block;
@@ -1119,7 +1131,3 @@
 //         }
 //     }
 // }
-
-
-
-

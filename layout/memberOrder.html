@@ -1,26 +1,27 @@
 <!-- =================== 訂單管理 =================== -->
 <section class="box order" v-if="current_tab === 'order'">
-    <div class="block" v-for="(list, index) in orderList" :key="index">
+    <p class="noOrder" v-if="!orderExist">無訂單項目</p>
+    <div class="block" v-for="(order, index) in myOrder" :key="index">
         <div class="detail">
-            <div class="pImg"><img :src="orderIMGUrl+list.productIMG"></div>
+            <div class="pImg"><img :src="orderIMGUrl+order.ProductID+'/'+order.Banner1"></div>
             <div class="pInfo">
-                <h4>{{list.title}}</h4> <br>
-                <p>訂單編號：{{list.orderNumber}}</p>
-                <p>日期：{{list.date}}</p>
+                <h4>{{order.Name}}</h4> <br>
+                <p>訂單編號：{{order.OrderNumber}}</p>
+                <p>日期：{{order.OfferDate}}</p>
             </div>
             <div class="pPrice">
-                <h4>{{ departureStatus(list.date) }}</h4>
-                <p>NTD {{list.price}}</p>
+                <h4>{{ departureStatus(order.OfferDate) }}</h4>
+                <p>NTD {{order.Price}}</p>
                 <ul class="orderOption">
-                    <li v-if="departureStatus(list.date) === '即將出發'"><button class="cancel">取消訂單</button></li>
-                    <li v-if="departureStatus(list.date) === '已出發'"><button class="review"
-                            @click="toggleReview(list)">撰寫評論</button></li>
+                    <li v-if="departureStatus(order.OfferDate) === '即將出發'"><button class="cancel" @click="doCancel(order.OrderNumber)">取消訂單</button></li>
+                    <li v-if="departureStatus(order.OfferDate) === '已出發'"><button class="review"
+                            @click="toggleReview(order)">撰寫評論</button></li>
                     <li><button class="contact"
-                            @click="showService = true; currentOrderNumber = list.orderNumber">聯絡客服</button></li>
+                            @click="showService = true; currentOrderNumber = order.OrderNumber">聯絡客服</button></li>
                 </ul>
             </div>
         </div>
-        <div class="reviewArea" v-if="list.showReview">
+        <div class="reviewArea" v-if="order.showReview">
                 <ul class="reviewStar">
                     <li><i class="ai-star"></i></li>
                     <li><i class="ai-star"></i></li>
@@ -74,7 +75,7 @@
                 </li>
             </ul>
             <input type="button" class="submitBtn" value="送出"
-                @click="showService = false; sendEmail(); deleteContactInfo()"
+                @click="showService = false; sendEmail; deleteContactInfo"
                 :disabled="contactID == '' || contactEmail == '' || contactPhone == '' || contactText == ''">
         </form>
     </div>
