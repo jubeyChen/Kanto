@@ -1,8 +1,8 @@
 const app = Vue.createApp({
     data() {
         return {
-            //showReview: false,
             showService: false,
+            showReviewDetail: false,
             start: false,
             current_tab: 'account',
             // orderList: [],
@@ -41,12 +41,25 @@ const app = Vue.createApp({
             collectionExist: false,
             orderExist: false,
             myCollection: [],
-            myOrder: []
+            myOrder: [],
+            review: {
+                star: 0,
+                reviewText: '',
+            },
+            selectedImages: [],
+            previewImagesList: [],
+            myReview: [],
+            openReviewIndex: null
         }
     },
     computed: {
         isValidPwLength() {
             return this.pwChange.newPW.length >= 4;
+        },
+        reviewDetail() {
+            return this.myReview.filter(
+                (item) => item.OrderDetailID === this.currentOrderNumber
+            );
         }
     },
     created() {
@@ -64,6 +77,7 @@ const app = Vue.createApp({
         await this.checkSession();
         await this.getAccountInfo();
         await this.getAccountOrder();
+        await this.getReview();
         await this.getCollection();
         await this.getMemberCoupon();
         setTimeout(() => {
@@ -71,6 +85,19 @@ const app = Vue.createApp({
         }, 200);
     },
     methods: {
+        closeReviewDetail(orderDetailID) {
+            this.showReviewDetail = false;
+            this.openReviewIndex = null;
+            
+            this.$nextTick(() => {
+            const reviewButton = document.getElementById(`${orderDetailID}`);
+                if (reviewButton) {
+                    const scrollPosition = reviewButton.getBoundingClientRect().top + window.pageYOffset - 230;
+                    window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+                }
+            });
+        },
+
         async checkSession() {
             await axios.post('../php/CheckSession.php')
                 .then(response => {
@@ -86,8 +113,33 @@ const app = Vue.createApp({
                     window.location.href = "loginRegister.html";
                 });
         },
-        toggleReview(list) {
-            list.showReview = !list.showReview;
+
+        toggleReview(order) {
+            order.showReview = !order.showReview;
+            this.openReviewIndex = order.OrderNumber;
+        },
+
+        async getReview() {
+            await axios.post('../php/GetReview.php', { MemberID: this.accountInfo.ID })
+                .then(response => {
+                    this.myReview = response.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('取得失敗，請您稍後再試');
+                });
+        },
+
+        toggleReviewDetail(order) {
+            order.showReviewDetail = !order.showReviewDetail;
+            this.showReviewDetail = !this.showReviewDetail;
+
+            this.currentOrderNumber = order.OrderNumber;   
+            console.log(this.currentOrderNumber);
+            window.scrollTo({
+                top: 100,
+                behavior: "smooth",
+            });
         },
 
         //點選tab鍵，右欄換相關內容
@@ -252,7 +304,8 @@ const app = Vue.createApp({
                     if (response.data !== 'no order') {
                         this.myOrder = response.data.map(item => ({
                             ...item,
-                            showReview: false
+                            showReview: false,
+                            showReviewDetail: false
                         }));
                         this.orderExist = true;
                     } else {
@@ -394,6 +447,72 @@ const app = Vue.createApp({
                         alert('取消訂單失敗，請稍後再試');
                     });
             }
+        },
+
+        reviewStar(stars) {
+            this.review.star = stars;
+        },
+
+        async doReview(order) {
+            if (this.review.star == 0) {
+                alert('請評分商品');
+            } if (this.review.reviewText == '') {
+                alert('請您撰寫評論');
+            } else {
+                const reviewData = new FormData();
+
+                this.selectedImages.forEach((image) => {
+                    reviewData.append('IMG[]', image, image.name);
+                });
+
+                // 將其他資訊附加到FormData中
+                reviewData.append('ProductID', order.ProductID);
+                reviewData.append('MemberID', this.accountInfo.ID);
+                reviewData.append('OrderDetailID', order.OrderNumber);
+                reviewData.append('Star', this.review.star);
+                reviewData.append('Text', this.review.reviewText);
+
+                await axios.post('../php/SaveReview.php', reviewData)
+                    .then(response => {
+                        console.log(response.data);
+                        if (response.data === 'done') {
+                            alert('已送出評論');
+                            this.getAccountOrder();
+                            this.getReview();
+                            this.review.star = 0;
+                            this.review.reviewText = '';
+                            this.previewImagesList = [];
+                            this.selectedImages = [];
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        alert('儲存失敗，請您稍後再試');
+                    });
+            }
+        },
+
+        previewImages(e) {
+            this.selectedImages = Array.from(e.target.files); // 将选中的文件转换为数组
+
+            if (this.selectedImages.length > 6) {
+                alert('圖片只能選取6張');
+            } else {
+                this.selectedImages.splice(6);
+                this.selectedImages.forEach((image, index) => {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        this.previewImagesList.push({
+                            id: index,
+                            name: image.name,
+                            previewUrl: reader.result,
+                        });
+                    };
+                    reader.readAsDataURL(image);
+                });
+            }
+            
+
         }
 
 
