@@ -114,12 +114,11 @@
                                 </div>
 
                                 <div class="btn">
-                                    <button class="add_shoppingcar btn-cancel-l">
+                                    <button class="add_shoppingcar btn-cancel-l" @click="addCart">
                                         加入購物車
                                     </button>
-                                    <button class="paid btn-pri-l">
-                                        <a href="./cart.html"> 立即預定</a>
-
+                                    <button class="paid btn-pri-l" @click="checkLogin">
+                                        <a href="./payment.html"> 立即預定</a>
                                     </button>
                                 </div>
                             </div>
@@ -1166,10 +1165,10 @@
 
                 <!--篩選-->
                 <div class="filter_btn">
-                    <button type="button" class="btn-sec-l first ">全部</button>
-                    <button type="button" class="btn-sec-l">只看附圖評價</button>
-                    <button type="button" class="btn-sec-l">評分:由高至低</button>
-                    <button type="button" class="btn-sec-l">評分:由低至高</button>
+                    <button type="button" class="btn-sec-l first " @click="allImage">全部</button>
+                    <button type="button" class="btn-sec-l" @click="haveImage">只看附圖評價</button>
+                    <button type="button" class="btn-sec-l" @click="highToLow">評分:由高至低</button>
+                    <button type="button" class="btn-sec-l" @click="lowToHigh">評分:由低至高</button>
                 </div>
 
                 <!--會員評價-->

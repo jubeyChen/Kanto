@@ -76,7 +76,15 @@ const app = Vue.createApp({
 
             //分頁寫法
             currentPage: 1, //當前頁數
-            itemsPerPage: 3 //每頁顯示的資料量
+            itemsPerPage: 3, //每頁顯示的資料量
+
+
+            //紀錄登入資訊
+            isSessionValid: false,
+            user: '',
+
+            //
+            planChoose: [],
         }
     },
     created() {
@@ -251,6 +259,7 @@ const app = Vue.createApp({
                 // 根据星星数从低到高排序
                 this.memberReview.sort((a, b) => {
                     return a.Star - b.Star;
+
                 });
                 this.currentPage = 1;
                 console.log(this.memberReview);
@@ -305,12 +314,107 @@ const app = Vue.createApp({
             window.scrollTo({ top: 5250, behavior: 'smooth' })
         },
 
+        //加入購物車狀態
+        addCart(e) {
+            if (this.isSessionValid == true) {
+                if (this.selectedDate == "") {
+                    alert('請選擇日期')
+                    e.preventDefault();
+                    return
+                }
+
+                // 從 localStorage 中獲取現有的資料
+                const existingData = localStorage.getItem('shoppingList');
+                let shoppingList = [];
+
+                if (existingData) {
+                    //如果localStorage已經有資料
+                    shoppingList = JSON.parse(existingData)
+                }
+
+
+                //將資料組成物件
+                const planObj = {
+                    total: this.total,
+                    selectedDate: this.selectedDate,
+                    title: this.title,
+                    count: this.count,
+                    banner: this.banner1,
+                    user: this.user,
+                    isSessionValid: this.isSessionValid
+                }
+                shoppingList.push(planObj)
+                const updatedData = JSON.stringify(shoppingList);
+                localStorage.setItem('shoppingList', updatedData);
+                console.log(shoppingList);
+
+                alert('加入購物車成功')
+
+
+            } else {
+                alert('請先進行登入')
+                //跳轉網頁
+                window.location.href = './loginRegister.html';
+                e.preventDefault();
+            }
+        },
+
+        //立即預定
+
+        checkLogin(e) {
+            if (this.isSessionValid == true) {
+                if (this.selectedDate == "") {
+                    alert('請選擇日期')
+                    e.preventDefault();
+                    return
+                }
+
+                // 從 localStorage 中獲取現有的資料
+                const existingData = localStorage.getItem('shoppingList');
+                let shoppingList = [];
+
+                if (existingData) {
+                    //如果localStorage已經有資料
+                    shoppingList = JSON.parse(existingData)
+                }
+
+
+                //將資料組成物件
+                const planObj = {
+                    total: this.total,
+                    selectedDate: this.selectedDate,
+                    title: this.title,
+                    count: this.count,
+                    banner: this.banner1,
+                    user: this.user,
+                    isSessionValid: this.isSessionValid
+                }
+                shoppingList.push(planObj)
+                const updatedData = JSON.stringify(shoppingList);
+                localStorage.setItem('shoppingList', updatedData);
+                console.log(shoppingList);
+
+
+
+            } else {
+                alert('請先進行登入')
+                //跳轉網頁
+                window.location.href = './loginRegister.html';
+                e.preventDefault();
+            }
+        }
+
+    },
+
+    //檢查是否為登入狀態
+    async mounted() {
+        let a = await globalCheck.PageCheckSession();// 測試連線
+        console.log(a);
+        this.isSessionValid = a.isSessionValid;
+        this.user = a.user;
     },
 
 
-    mounted() {
-
-    },
 
 })
 app.mount(".all");
