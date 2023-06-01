@@ -41,7 +41,7 @@ let globalCheck = Vue.createApp({
             });
             let r2 = await r.json();
 
-            return r2.isSessionValid;
+            return r2;
         }
     }
 }).mount('#navStatus');

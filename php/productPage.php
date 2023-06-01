@@ -67,13 +67,41 @@ $statement5 = $pdo->prepare($sql5);
 $statement5->bindParam(':productId', $productId, PDO::PARAM_INT);
 $statement5->execute();
 $data5 = $statement5->fetchAll();
-// 將兩個查詢組成陣列
+
+
+
+//第六個查詢
+$sql6 = "SELECT product.ID , productDetail.OfferDate
+FROM product
+JOIN productDetail ON productDetail.ProductID = product.ID
+where product.ID =:productId 
+order by productDetail.OfferDate";
+$statement6 = $pdo->prepare($sql6);
+$statement6->bindParam(':productId', $productId, PDO::PARAM_INT);
+$statement6->execute();
+$data6 = $statement6->fetchAll();
+
+
+
+//會員評論由低至高
+// $sql7 = "SELECT * FROM review
+// JOIN members on members.ID = review.MemberID
+// WHERE review.ProductID = :productId 
+// order by review.Star";
+// $statement7 = $pdo->prepare($sql7);
+// $statement7->bindParam(':productId', $productId, PDO::PARAM_INT);
+// $statement7->execute();
+// $data7 = $statement7->fetchAll();
+
+// 將查詢組成陣列
 $response = [
     'data1' => $data,
     'data2' => $data2,
     'data3' => $data3,
     'photos' => $photos,
     'member' => $data5,
+    'date' => $data6,
+    // 'lowToHigh' => $data7,
 ];
 
 // 轉 JSON

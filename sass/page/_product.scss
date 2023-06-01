@@ -45,6 +45,10 @@
         overflow-y: scroll;
         overflow-x: hidden;
 
+            @include m(){
+                overflow-y: hidden;
+            }
+
         .search-text {
 
             display: flex;
