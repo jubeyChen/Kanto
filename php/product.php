@@ -3,17 +3,14 @@
 include('Mysql.php'); //資料庫連線
 
 // 第一個查詢
-$sql = "SELECT *
-    FROM product";
-
-    // -- JOIN productIntroduction ON product.IntroductionID = productIntroduction.ID
-    // -- JOIN region ON product.RegionID = region.ID 
-    // -- WHERE product.ID  = :productId";
+$sql = "SELECT * FROM product";
 
 $statement = $pdo->prepare($sql);
 // $statement->bindParam(':productId', $productId, PDO::PARAM_INT);
 $statement->execute();
 $data = $statement->fetchAll();
+
+
 
 $a = [];
 
@@ -29,8 +26,7 @@ foreach ($data as $p) {
 
 
 // 第二個查詢
-$sql2 = "SELECT *
-    FROM productdetail
+$sql2 = "SELECT * FROM productdetail
 
     WHERE ProductID in (" . implode(',', $a) . ")";
 

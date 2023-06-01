@@ -88,16 +88,16 @@
                                             </div>
                                             <div class="content">
                                                 <label for="checkbox8">
-                                                    <input type="checkbox" id="checkbox8" value="">一日遊
+                                                    <input type="checkbox" id="checkbox8" value="1" name="typeName">一日遊
                                                 </label><br>
                                                 <label for="checkbox9">
-                                                    <input type="checkbox" id="checkbox9" value="">景點門票
+                                                    <input type="checkbox" id="checkbox9" value="2" name="typeName">景點門票
                                                 </label><br>
                                                 <label for="checkbox10">
-                                                    <input type="checkbox" id="checkbox10" value="">主題樂園
+                                                    <input type="checkbox" id="checkbox10" value="3" name="typeName">主題樂園
                                                 </label><br>
                                                 <label for="checkbox11">
-                                                    <input type="checkbox" id="checkbox11" value="">歷史景點
+                                                    <input type="checkbox" id="checkbox11" value="4" name="typeName">歷史景點
                                                 </label>
                                             </div>
                                         </div>
@@ -164,9 +164,9 @@
                 </div>
                 <div class="big-area">
                     <ul>
-                        <li v-for="item in displayItems">
+                        <li v-for="item in paginatedItems">
                             <div class="jpg">
-                                <img :src="'./image/productPage/' + item.IntroductionID + '/' + item.Image4" alt="">
+                                <img :src="'./image/productPage/product_img/' + item.P_image" alt="">
                             </div>
 
                             <div class="word">
@@ -180,7 +180,7 @@
                                     <p class="p-targ" v-if="item.UseNow">即買即用</p>
                                     <p class="p-targ1" v-else></p>
                                     <button class='btn-pri-m' class="btn-n">
-                                        <a href="./productPage.html?id=1">查看詳情</a>
+                                        <a :href="'./productPage.html?id=' + item.ID">查看詳情</a>
                                     </button>
                                 </div>
                                 <div class="star-p">
@@ -208,14 +208,17 @@
 
                 <div class="page">
                     <ul>
-                        <li><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <!-- <li><a href="">4</a></li>
-                            <li><a href="">5</a></li>
-                            <li><a href="">6</a></li> -->
+                        <li @click="goToPage(page)" v-for="page in totalPages" :key="page"><a>{{page}}</a></li>
+                        <!-- <li><a href="">2</a></li> -->
+                        <!-- <li><a href="">3</a></li> -->
                     </ul>
                 </div>
+
+                <!-- <button @click="goToPage(page)" v-for="page in totalPages" :key="page">
+                    {{ page }}
+                  </button> -->
+                  
+                  
 
             </article>
 

@@ -118,8 +118,12 @@ const RootComponent = {
             productItems: [],
             displayItems: [],
             productDetails: [],
-            productCount: 0
+            productCount: 0,
 
+            // 限制的資料數量
+            currentPage: 1,
+            perPage: 5,
+            totalPages: 0,
 
 
         };
@@ -129,7 +133,7 @@ const RootComponent = {
         axios.get('../php/product.php')
             .then((response) => {
                 //被包裝成二維陣列
-                // console.log(response)
+                console.log(response)
                 // console.log(response.data)
 
                 if (response.data && response.data.product && response.data.productdetail) {
@@ -142,6 +146,7 @@ const RootComponent = {
                         this.productDetails = response.data.productdetail
                     }
                 }
+                this.setPages()
 
             })
             .catch((error) => {
@@ -150,45 +155,99 @@ const RootComponent = {
 
         let vm = this
 
-        $("input[name='region']").on("click", function () {
+        $("input[name='region'], input[name='typeName']").on("click", function () {
 
             let regions =
                 $("input[name='region']:checked").map(function () {
                     return $(this).val()
                 }).get()
 
-            vm.productSearch(regions)
+            let typeNames =
+                $("input[name='typeName']:checked").map(function () {
+                    return $(this).val()
+                }).get()
+
+            vm.productSearch(regions, typeNames);
+
             // console.log(regions)
             // $("input[name='region']").val()
         })
 
+
+
+        // $("input[name='typeName']").on("click", function () {
+
+        //     let typeNames =
+        //         $("input[name='typeName']:checked").map(function () {
+        //             return $(this).val()
+        //         }).get()
+        //     console.log(typeNames)
+        //     // console.log(regions);
+
+        // })
+
+        // this.totalPages = Math.ceil(this.displayItems.length / this.perPage);
+
+
+
     },
+
+    computed: {
+        paginatedItems() {
+            const startIndex = (this.currentPage - 1) * this.perPage;
+            const endIndex = startIndex + this.perPage;
+            return this.displayItems.slice(startIndex, endIndex);
+        },
+    },
+
     methods: {
         numberWithCommas(value) {
             if (!value) return '';
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         },
 
-        productSearch(regions) {
+        productSearch(regions, typeNames) {
             this.displayItems = this.productItems
             if (regions && regions.length > 0) {
+                console.log(regions)
                 // this.productItems
                 // console.log(this.productItems)
                 this.displayItems = this.productItems.filter(e =>
                     regions.indexOf(e.RegionID.toString()) != -1)
-                // console.log(this.displayItems)
+            }
+
+            if (typeNames && typeNames.length > 0) {
+                console.log(typeNames)
+                // this.productItems
+                // console.log(this.productItems)
+                this.displayItems = this.displayItems.filter(e =>
+                    typeNames.indexOf(e.ProductTypeID.toString()) != -1)
             }
             this.productCount = this.displayItems.length
-        }
+
+            this.setPages()
+        },
+
+        setPages() {
+            if (this.displayItems.length == 0) {
+                this.totalPages = 0;
+                this.currentPage = 1;
+            } else {
+                this.totalPages = Math.ceil(this.displayItems.length / this.perPage);
+                this.currentPage = 1;
+            }
+        },
+
+
+
+        goToPage(page) {
+            this.currentPage = page;
+        },
+
+
+
+
 
     }
 };
 Vue.createApp(RootComponent).mount("#pdt");
-
-
-
-
-
-
-
-
