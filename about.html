@@ -2,133 +2,165 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>關於我們</title>
-    @@include('./layout/style.html')
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>關於我們</title>
+  @@include('./layout/style.html')
 </head>
 
 <body>
 
-    <!-- 以下Header區域 -->
-    @@include('./layout/header.html',{
-    about:'active'
-    })
-    <!-- 以下是top button -->
-    @@include('./layout/topBtn.html')
+  <!-- 以下Header區域 -->
+  @@include('./layout/header.html',{
+  about:'active'
+  })
+  <!-- 以下是top button -->
+  @@include('./layout/topBtn.html')
 
-    <!-- 以下可以開始編輯 -->
+  <!-- 以下可以開始編輯 -->
+
+  <div id="app">
+
+
     <img class="about_top_img" src="./image/about/about_topper.jpg" alt="">
 
 
     <div class="about_container">
 
-        <div class="about_section1">
+      <div class="about_section1">
 
-            <ul>
-                <li>
-                    <h3
-                    >關於 Kanto へ</h3
-                        >
-                </li>
-                <li>
-                    <p>
-                        我們是一家致力於為日本關東旅行者提供最好的旅遊體驗的公司，成立於2023年。我們總部位於在台灣台北，我們的團隊由一群熱情的旅遊愛好者組成，我們提供日本關東的旅遊服務，包括、酒店、旅遊活動、租車等。
-                    </p>
+        <ul>
+          <li>
+            <h3>關於 Kanto へ</h3>
+          </li>
+          <li>
+            <p>
+              我們是一家致力於為日本關東旅行者提供最好的旅遊體驗的公司，成立於2023年。我們總部位於在台灣台北，我們的團隊由一群熱情的旅遊愛好者組成，我們提供日本關東的旅遊服務，包括、酒店、旅遊活動、租車等。
+            </p>
 
-                </li>
-            </ul>
+          </li>
+        </ul>
 
-        </div>
-        <div class="about_section2">
+      </div>
+      <div class="about_section2">
 
-            <ul>
-                <li>
-                    <h3
-                    >我們的使命</h3
-                        >
-                </li>
-                <li>
-                    <p>我們是一家致力於為日本關東旅行者提供最好的旅遊體驗的公司，成立於2023年。我們總部位於在台灣台北，我們的團隊由一群熱情的旅遊愛好者組成，我們提供日本關東的旅遊服務，包括、酒店、旅遊活動、租車等。
-                    </p>
+        <ul>
+          <li>
+            <h3>我們的使命</h3>
+          </li>
+          <li>
+            <p>我們是一家致力於為日本關東旅行者提供最好的旅遊體驗的公司，成立於2023年。我們總部位於在台灣台北，我們的團隊由一群熱情的旅遊愛好者組成，我們提供日本關東的旅遊服務，包括、酒店、旅遊活動、租車等。
+            </p>
 
-                </li>
-            </ul>
+          </li>
+        </ul>
 
-        </div>
-        <div class="about_section3">
+      </div>
+      <div class="about_section3">
 
-            <div class="about_section3_wrappper">
+        <div class="about_section3_wrappper">
 
 
-                <h3
-                >我們的承諾</h3
-                    >
+          <h3>我們的承諾</h3>
 
-                <ul>
-                    <li>
-                        <div data-aos="flip-up">
-                            <img src="./image/about/about_badge.png" alt="">
-                        </div>
-                        <h3>品質承諾</h3>
-                        <P>旅遊路線和活動都會經過詳細的風險評估和安全檢測，並遵循當地法規和安全標準。</P>
-                    </li>
-                    <li>
-                        <div data-aos="flip-up">
-                            <img src="./image/about/about_customer-service.png" alt="">
-                        </div>
-                        <h3>服務承諾</h3>
-                        <P>客戶服務團隊會隨時為客戶提供專業和友善的支援，以確保旅程中獲得最佳的體驗。</P>
-                    </li>
-                    <li>
-                        <div data-aos="flip-up">
-                            <img src="./image/about/about_ecology.png" alt="">
-                        </div>
-                        <h3>環境承諾</h3>
-                        <P>我們承諾關注環境保護，並推動可持續發展的旅遊模式，並遵循當地法規和安全標準。</P>
-                    </li>
-                </ul>
-
-            </div>
+          <ul>
+            <li>
+              <div data-aos="flip-up">
+                <img src="./image/about/about_badge.png" alt="">
+              </div>
+              <h3>品質承諾</h3>
+              <P>旅遊路線和活動都會經過詳細的風險評估和安全檢測，並遵循當地法規和安全標準。</P>
+            </li>
+            <li>
+              <div data-aos="flip-up">
+                <img src="./image/about/about_customer-service.png" alt="">
+              </div>
+              <h3>服務承諾</h3>
+              <P>客戶服務團隊會隨時為客戶提供專業和友善的支援，以確保旅程中獲得最佳的體驗。</P>
+            </li>
+            <li>
+              <div data-aos="flip-up">
+                <img src="./image/about/about_ecology.png" alt="">
+              </div>
+              <h3>環境承諾</h3>
+              <P>我們承諾關注環境保護，並推動可持續發展的旅遊模式，並遵循當地法規和安全標準。</P>
+            </li>
+          </ul>
 
         </div>
 
-        <div class="about_form">
-            <h3
-            >聯絡我們</h3
-                >
-            <ul>
-                <li>
-                    <input type="text" placeholder="請輸入主題" id="aboutSubject">
-                </li>
+      </div>
 
-                <li>
-                    <input type="text" placeholder="請輸入名字" id="aboutName">
-                </li>
+      <!-- <div class="about_form">
+              <h3
+              >聯絡我們</h3
+                  >
+              <ul>
+                  <li>
+                      <input type="text" placeholder="請輸入主題" id="aboutSubject">
+                  </li>
+  
+                  <li>
+                      <input type="text" placeholder="請輸入名字" id="aboutName">
+                  </li>
+  
+                  <li>
+                      <input type="text" placeholder="請輸入電子郵箱" id="aboutEmail">
+                  </li>
+  
+                  <li>
+                      <input type="text" placeholder="請輸入手機號碼" id="aboutTel">
+                  </li>
+  
+                  <li>
+                      <textarea rows="10" cols="25" placeholder="請填留言" id="aboutTextarea"></textarea>
+                  </li>
+  
+                  <li>
+                      <form method="post" class="about_button">
+                          <input type="button" id="aboutSubmit" value="發送留言" onclick="sendEmail()">
+                          </input>
+                      </form>
+                  </li>
+  
+              </ul>
+  
+          </div> -->
+      <div class="about_form">
+        <h3>聯絡我們</h3>
+        <ul>
+          <li>
+            <input type="text" placeholder="請輸入主題" v-model="aboutSubject">
+            <div v-if="!aboutSubject && formSubmitted">請輸入主題。</div>
+          </li>
 
-                <li>
-                    <input type="text" placeholder="請輸入電子郵箱" id="aboutEmail">
-                </li>
+          <li>
+            <input type="text" placeholder="請輸入名字" v-model="aboutName">
+            <div v-if="!aboutName && formSubmitted">請輸入名字。</div>
+          </li>
 
-                <li>
-                    <input type="text" placeholder="請輸入手機號碼" id="aboutTel">
-                </li>
+          <li>
+            <input type="text" placeholder="請輸入電子郵箱" v-model="aboutEmail">
+            <div v-if="!isValidEmail">請輸入有效的電子郵件地址。</div>
+          </li>
 
-                <li>
-                    <textarea rows="10" cols="25" placeholder="請填留言" id="aboutTextarea"></textarea>
-                </li>
+          <li>
+            <input type="text" placeholder="請輸入手機號碼" v-model="aboutTel">
+            <div v-if="!isTaiwanMobileValid">請輸入有效的手機號碼。</div>
+          </li>
 
-                <li>
-                    <form method="post" class="about_button">
-                        <input type="button" id="aboutSubmit" value="發送留言" onclick="sendEmail()">
-                        </input>
-                    </form>
-                </li>
+          <li>
+            <textarea rows="10" cols="25" placeholder="請填留言" v-model="aboutTextarea"></textarea>
+          </li>
 
-            </ul>
-
-        </div>
+          <li>
+            <!-- <form method="post" class="about_button"> -->
+              <input type="button" id="aboutSubmit" value="發送留言" @click="sendEmail">
+            <!-- </form> -->
+          </li>
+        </ul>
+      </div>
 
     </div>
 
@@ -141,12 +173,79 @@
 
 
 
-    <script src=
-    "https://smtpjs.com/v3/smtp.js">
-   </script>
-   
-   
-   <script type="text/javascript">
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            aboutSubject: '',
+            aboutName: '',
+            aboutEmail: '',
+            aboutTel: '',
+            aboutTextarea: '',
+            isValidEmail: true,
+            isTaiwanMobileValid: true,
+            formSubmitted: false, // Track if form has been submitted
+          };
+        },
+        methods: {
+          checkEmailValidity() {
+            // 使用正則表達式檢查email地址的有效性
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            this.isValidEmail = regex.test(this.aboutEmail);
+          },
+          validateTaiwanMobile() {
+            let mobileRegex = /^09\d{8}$/;
+            this.isTaiwanMobileValid = mobileRegex.test(this.aboutTel);
+          },
+          submitForm() {
+            // Perform form submission tasks
+            // Set formSubmitted to true to show error messages if any
+            this.formSubmitted = true;
+          },
+
+          sendEmail() {
+            let subject = this.aboutSubject;
+            let isName = this.aboutName;
+            let phone = this.aboutTel;
+            let email = this.aboutEmail;
+            let body = this.aboutTextarea;
+
+            if(){
+              
+            }
+
+            Email.send({
+              SecureToken: "adf84833-cc46-45a2-850a-092ac2f86858",
+              To: 'kantoasuka1@gmail.com',
+              From: "kantoasuka1@gmail.com",
+              Subject: subject,
+              Body: "Name: " + isName + "<br>Email: " + email + "<br>Phone: " + phone + "<br><br>" + body
+            }).then(function (message) {
+              alert("您的留言已送出");
+            });
+
+            // Set formSubmitted to true after sending email
+            this.formSubmitted = true;
+          },
+
+        },
+
+        watch: {
+          aboutEmail() {
+            this.checkEmailValidity();
+          },
+          aboutTel() {
+            this.validateTaiwanMobile();
+          }
+        },
+      }).mount('#app');
+    </script>
+
+
+    <!-- <script type="text/javascript">
    
    function sendEmail() {
     let subject = document.getElementById("aboutSubject").value;
@@ -170,7 +269,15 @@
         return;
     }
 
-    // All validations passed, proceed with sending the email
+    function validateEmail(email) {
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
+    function validateTaiwanMobile(phone) {
+        let mobileRegex = /^09\d{8}$/;
+        return mobileRegex.test(phone);
+    }
     Email.send({
         SecureToken: "adf84833-cc46-45a2-850a-092ac2f86858",
         To: 'kantoasuka1@gmail.com',
@@ -182,41 +289,7 @@
     });
 }
 
-function validateEmail(email) {
-    // Email validation regular expression
-    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function validateTaiwanMobile(phone) {
-    // Taiwan mobile number validation regular expression
-    let mobileRegex = /^09\d{8}$/;
-    return mobileRegex.test(phone);
-}
-
-   
-//     function sendEmail() {
-//     let subject = document.getElementById("aboutSubject").value;
-//     let isName = document.getElementById("aboutName").value;
-//     let phone = document.getElementById("aboutTel").value;
-//     let email = document.getElementById("aboutEmail").value;
-//     let body = document.getElementById("aboutTextarea").value;
-   
-   
-//      Email.send({
-//       SecureToken : "d8f8fcac-762b-4858-956c-cc3abc40e0cc",
-//       To: 'kantoasuka1@gmail.com',
-//       From: "kantoasuka1@gmail.com",
-//       Subject: subject,
-//       Body: "Name: " + isName + "<br>Email: " + email + "<br>Phone: " + phone + "<br><br>" + body,
-   
-   
-//     })
-//     .then(function (message) {
-//       alert("您的留言已送出");
-//     });
-//    }
-   </script>
+   </script> -->
 
 </body>
 
