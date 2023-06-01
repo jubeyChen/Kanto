@@ -222,7 +222,7 @@ const app = Vue.createApp({
                     if (response.data === 'done') {
                         alert('已儲存您的大頭照');
                     } else {
-                        alert('您輸入的資料有誤，請您重試。')
+                        alert('儲存失敗，請您重試。')
                     }
                 })
                 .catch(error => {
