@@ -17,7 +17,7 @@
 <body>
     <section id="app" class="backOrder">
         <aside class="">
-            <div>
+            <div id="logo_block">
                 <img src="./image/footer/logosqure.svg" alt="logo">
             </div>
             <ul>
@@ -37,7 +37,7 @@
                         <option value="fullname">顧客姓名</option>
                     </select>
                     <input type="text" class="textStyle" placeholder="輸入關鍵字" v-model="searchText" @keyup.enter="doResearch">
-                    <input type="button" value="搜尋" class="btn-pri-m" @click="doResearch">
+                    <input type="button" value="搜尋" class="btn-pri-m" @click="doSearch">
                 </form>
             </section>
 
@@ -86,6 +86,8 @@
     <script src="js/vendors/vue.global.prod.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+    <script src="./js/checkBackSession.js"></script>
+
     <script src="./js/backOrder.js"></script>
 </body>
 </html>

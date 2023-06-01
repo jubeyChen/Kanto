@@ -44,7 +44,7 @@ const app = Vue.createApp({
 
             }
         },
-        doResearch(){
+        doSearch(){
             this.startNum = 0;
             this.currentNum = 10;
 

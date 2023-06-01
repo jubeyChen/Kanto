@@ -103,7 +103,7 @@ function getParameterByName(name, url) {
 var blogId = getParameterByName('id');
 
 // 現在你可以使用 productId 變數來進一步處理和使用該值
-console.log(blogId); // 印出 id 參數的值
+// console.log(blogId); // 印出 id 參數的值
 
 axios.get('../php/blogPage.php?id=' + blogId)
 .then(response => {
