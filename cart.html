@@ -17,7 +17,6 @@
 
 </head>
 
-
 <body>
     <!-- 以下Header區域 -->
     @@include('./layout/header.html',{
@@ -27,172 +26,133 @@
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
+    <div id="app">
 
-    <div class="cart_container">
+        <div class="cart_container">
 
-        <!-- 麵包屑 -->
-        <div class="cart_bread">
-            <ul>
-                <li>
-                    <!-- <img src="./image/cart/cart.jpg" alt="">
-                    <img src="./image/cart/form.jpg" alt="">
-                    <img src="./image/cart/done.jpg" alt=""> -->
-                    <i class="cart_icons_cart">shopping_cart</i>
-                </li>
-                <li>
-                    <i class="cart_icons_description">assignment</i>
-                </li>
-                <li>
-                    <i class="cart_icons_credit_card">credit_card</i>
-                </li>
-            </ul>
-        </div>
 
-        <div class="cart_section1">
-            <h4>購物車</h4>
-            <ul class="cart_list">
+            <!-- 麵包屑 -->
+            <div class="cart_bread">
+                <ul>
+                    <li>
+                        <i class="cart_icons_cart">shopping_cart</i>
+                    </li>
+                    <li>
+                        <i class="cart_icons_description">assignment</i>
+                    </li>
+                    <li>
+                        <i class="cart_icons_credit_card">credit_card</i>
+                    </li>
+                </ul>
+            </div>
 
-                <li>
-                    <input type="checkbox" id="aboutSelectAll">
-                </li>
-                <li>
-                    <p>全選</p>
-                </li>
-                <li class="cart_pay_btn_wrapper">
-                    <a href="payment.html">
-                        <button class="cart_pay_btn">前往付款</button>
-                    </a>
-                </li>
-            </ul>
+            <div class="cart_section1">
+                <h4>購物車</h4>
+                <ul class="cart_list">
 
-            <div class="cart_inner_section">
+                    <li>
+                        <input type="checkbox" id="aboutSelectAll">
+                    </li>
+                    <li>
+                        <p>全選</p>
+                    </li>
+                    <li class="cart_pay_btn_wrapper">
+                        <a href="payment.html">
+                            <button class="cart_pay_btn">前往付款</button>
+                        </a>
+                    </li>
+                </ul>
 
-                <div class="cart_item_list">
+                <div class="cart_inner_section">
 
                     <span class="cart_line"></span>
 
-                    <ul class="cart_pc_section1"><!-- 電腦版購物車 -->
-                        <li>
-                            <input type="checkbox" id="aboutSelectOne">
-                        </li>
-                        <li>
-                            <img src="./image/cart/item1.jpg" alt="">
-                        </li>
-                        <li>
-                            <p>富士山賞櫻一日遊（東京出發）</p>
-                            <p class="cart_text_mobile_off">2023-06-24</p>
-                        </li>
+                    <!---------------- 電腦版購物車 ---------------->
+                    <div class="cart_item_list">
+                        <ul class="cart_pc_section1" id="cart-item-list">
+                            <li v-for="(shoppinglist, index) in shoppingList" :key="index" class="cart_pic_div">
+                                <input type="checkbox" v-model="shoppinglist.selectOne" @change="selectOneChanged">
+                                <!-- <div class="cart_inner_pic"> -->
+                                    <img :src="shoppinglist.banner" alt="照片黨">
+                                <!-- </div> -->
+                                <div class="cart_inner_word">
+                                    <p>{{shoppinglist.title}}</p>
+                                    <p>{{shoppinglist.selectedDate}}</p>
+                                </div>
+                                <p>{{shoppinglist.count}}人</p>
+                                <p>NT${{shoppinglist.total}}</p>
 
-                        <li>
-                            <p>人數 X 1</p>
-                        </li>
-                        <li>
-                            <p>TWD $1500</p>
-                        </li>
-                        <li class="cart_icon_container">
-                            <i id="cartFavoriteIcon" class="cart_icons_favorite_small">favorite_border</i>
-                            <i id="cartDeleteIcon" class="cart_icons_trash_small">delete_outline</i>
-                        </li>
-                    </ul><!-- 電腦版購物車 -->
-
-
-                    <div class="cart_mobile_section1"> <!-- 手機版購物車 -->
-
-                        <div class="cart_mobile_article1">
-                            <ul>
-                                <li>
-                                    <input type="checkbox" id="aboutSelectOne">
-                                </li>
-                                <li>
-                                    <img src="./image/cart/mobile_item1.jpg" alt="">
-                                </li>
-
-                            </ul>
-                        </div>
-                        <!-- 手機版購物車 -->
-
-                        <div class="cart_mobile_article2">
-                            <ul>
-                                <li>
-                                    <p>富士山賞櫻一日遊</p>
-                                </li>
-
-                                <li>
-                                    <p>TWD $1500</p>
-                                </li>
-
-                                <li>
-                                    <p>人數 X 1</p>
-                                </li>
-                                <li class="cart_icon_container_m">
+                                <div class="cart_icon_container">
                                     <i id="cartFavoriteIcon" class="cart_icons_favorite_small">favorite_border</i>
-                                    <i id="cartDeleteIcon" class="cart_icons_trash_small">delete_outline</i>
-                                </li>
-                            </ul>
-                        </div>
-
+                                    <i id="cartDeleteIcon" class="cart_icons_trash_small"
+                                        @click="remove(product)">delete_outline</i>
+                                </div>
+                            </li>
+                        </ul>
+                        </li>
+                        </ul>
                     </div>
 
+                    </ul><!---------------- 電腦版購物車 ---------------->
+                    <span class="cart_line"></span>
+                    <!---------------- 結算 ---------------->
+                    <ul class="cart_total_price">
+                        <li>
+                            <p>總額</p>
+                        </li>
+                        <li>
+                            <div class="payment_item_price">
+                                <span>$1500</span>
+                            </div>
+                        </li>
+                    </ul><!---------------- 結算 ---------------->
                 </div>
-                <span class="cart_line"></span>
+
+                <!---------------- 購物車空的時候 ---------------->
             </div>
+            <img id="emptyCartImage" class="empty-cart-message" src="./image/about/Empty_Slate__Shopping_Cart.gif"
+                alt="">
+            <p id="emptyCartText1" class="empty-cart-message">購物車是空的，目前正被喵喵霸佔中？</p>
+            <p id="emptyCartText2" class="empty-cart-message">馬上去逛逛，挑幾個你喜歡的玩樂吧！</p>
+            <a href="product.html">
+                <button id="emptyCartBtn" class="cart_pay_btn2">前往查看</button>
+            </a>
 
-            <ul class="cart_total_price">
-                <li>
-                    <p>總額</p>
-                </li>
-                <li>
-                    <div class="payment_item_price">
-                        <span>$1500</span>
-                    </div>
-                </li>
-                </li>
-            </ul>
+            <!---------------- 推薦的地方 ---------------->
+            <div class="cart_section2">
+                <ul>
+                    <li v-for="(productinfo, index) in isProductInfo" :key="index" class="cart_pic_div">
+                        <img :src="`./image/productPage/${productinfo.ID}/phone_banner1.jpg`" alt="照片黨">
+                        <p>
+                            {{productinfo.Name}}
+                        </p>
+                        <a :href="'productpage.html?id='+productinfo.ID"><button cart_btn>查看詳情</button>
+                        </a>
+                    </li>
+                </ul>
+            </div> <!---------------- 推薦的地方 ---------------->
         </div>
-        <img id="emptyCartImage" class="empty-cart-message" src="./image/about/Empty_Slate__Shopping_Cart.gif" alt="">
-        <p id="emptyCartText1" class="empty-cart-message">購物車是空的，目前正被喵喵霸佔中？</p>
-        <p id="emptyCartText2" class="empty-cart-message">馬上去逛逛，挑幾個你喜歡的玩樂吧！</p>
-        <a href="product.html">
-            <button id="emptyCartBtn" class="cart_pay_btn2">前往查看</button>
-        </a>
-    </div>
 
+        <!-- 加東西先進 localstorage -->
+        <!-- <li>
+                <div class="cart_pic_div">
+                        <img src="./image/cart/rec2.jpg" alt="">
+                    </div>
+                    <p>鎌倉大佛&鎌倉高校前</p>
+                    <p>$1500</p>
+                    <button cart_btn onclick="click_view_detail_btn(this);">查看詳情</button>
+                </li>
+ -->
+        <!-- <p>測試按鈕 加東西進 localStorage</p>
+        <li>
+            <img src="./image/cart/rec2.jpg" alt="">
+            <p>鎌倉大佛&鎌倉高校前</p>
+            <p>2023-06-24</p>
+            <p>$1500</p>
+            <button id="view-details-btn" @click="click_view_detail_btn($event.target)">View Details</button>
+        </li> -->
 
-    <!-- 推薦的地方 -->
-    <div class="cart_section2">
-        <ul>
-            <li>
-                <div class="cart_pic_div">
-                    <img src="./image/cart/rec1.jpg" alt="">
-                </div>
-                <p>日本飯能嚕嚕米樂園門票</p>
-                <button cart_btn>查看詳情</button>
-            </li>
-            <li>
-                <div class="cart_pic_div">
-                    <img src="./image/cart/rec2.jpg" alt="">
-                </div>
-                <p>鎌倉大佛&鎌倉高校前</p>
-                <button cart_btn>查看詳情</button>
-            </li>
-            <li>
-                <div class="cart_pic_div">
-                    <img src="./image/cart/rec3.jpg" alt="">
-                </div>
-                <p>東京澀谷天空觀景臺門票</p>
-                <button cart_btn>查看詳情</button>
-            </li>
-            <li>
-                <div class="cart_pic_div">
-                    <img src="./image/cart/rec4.jpg" alt="">
-                </div>
-                <p>東京迪士尼度假區門票</p>
-                <button cart_btn>查看詳情</button>
-            </li>
-        </ul>
-    </div>
-
-    </div><!-- cart_container -->
+    </div><!-- APP -->
 
     <!-- 以下Footer區域 -->
     @@include('./layout/footer.html')
@@ -200,67 +160,49 @@
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
 
+    <script src="./js/cart.js"></script>
 
-    <script>
-
-        $(document).ready(function () {
-            // Add a click event handler to the delete icon
-            $('#cartDeleteIcon').on('click', function () {
-                // Remove the cart_inner_section element
-                $('.cart_section1').remove();
-
-                // Check if the cart is empty
-                if ($('.cart_inner_section .cart_item_list').length === 0) {
-                    // Show the empty cart message
-                    $('#emptyCartImage, #emptyCartText1, #emptyCartText2, #emptyCartBtn' ).show();
-                }
-            });
-        });
-
-
-        $(document).ready(function () {
-            // Add a click event handler to the delete icon
-            $('#cartDeleteIcon').on('click', function () {
-                // Remove the cart_inner_section element
-                $('.cart_item_list').remove();
-
-                // Check if the cart is empty
-                if ($('.cart_inner_section').length === 0) {
-                    // Show the "Your cart is empty" message
-                    $('.cart_list').after('<p>Your cart is empty</p>');
-                }
-            });
-        });
-
-
-        $(document).ready(function () {
-            // When aboutSelectAll is clicked
-            $('#aboutSelectAll').click(function () {
-                // Get the checked state of aboutSelectAll
-                var isCheckedAll = $(this).prop('checked');
-
-                // Set the checked state of aboutSelectOne to match aboutSelectAll
-                $('#aboutSelectOne').prop('checked', isCheckedAll);
-
-                // If aboutSelectAll is unchecked, uncheck itself
-                if (!isCheckedAll) {
-                    $(this).prop('checked', false);
-                }
-            });
-
-            // When aboutSelectOne is clicked
-            $('#aboutSelectOne').click(function () {
-                // Get the checked state of aboutSelectOne
-                var isCheckedOne = $(this).prop('checked');
-
-                // If aboutSelectOne is unchecked, uncheck aboutSelectAll
-                if (!isCheckedOne) {
-                    $('#aboutSelectAll').prop('checked', false);
-                }
-            });
-        });
-
-    </script>
 </body>
 
 </html>
+
+
+
+
+<!---------------- 手機版購物車 ---------------->
+<!-- <div class="cart_mobile_section1"> -->
+
+<!-- <div class="cart_mobile_article1">
+                                <ul>
+                                    <li>
+                                        <input type="checkbox" id="aboutSelectOne">
+                                    </li>
+                                    <li>
+                                        <img src="./image/cart/mobile_item1.jpg" alt="">
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+                            <div class="cart_mobile_article2">
+                                <ul>
+                                    <li>
+                                        <p>富士山賞櫻一日遊</p>
+                                    </li>
+
+                                    <li>
+                                        <p>TWD $1500</p>
+                                    </li>
+
+                                    <li>
+                                        <p>人數 X 1</p>
+                                    </li>
+                                    <li class="cart_icon_container_m">
+                                        <i id="cartFavoriteIcon" class="cart_icons_favorite_small">favorite_border</i>
+                                        <i id="cartDeleteIcon" class="cart_icons_trash_small">delete_outline</i>
+                                    </li>
+                                </ul>
+                            </div> -->
+
+<!---------------- 手機版購物車 ---------------->

@@ -37,7 +37,7 @@ let globalCheck = Vue.createApp({
 
         async PageCheckSession() {
             let r = await fetch("../php/CheckSession.php", {
-                 method: "POST"
+                method: "POST"
             });
             let r2 = await r.json();
 
