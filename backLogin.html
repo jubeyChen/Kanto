@@ -15,32 +15,29 @@
 
 </head>
 <body>
-    <section class="backLogin container">
+    <section class="backLogin container" id="app">
         <div class="login_block">
             <img src="./image/header/logo.svg" alt="" srcset="">
 
             <p class="mb-4">後台登入</p>
 
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="account" placeholder="account">
+                <input type="text" class="form-control" id="account" placeholder="account" v-model="account">
                 <label for="account">帳號</label>
             </div>
             <div class="form-floating mb-5">
-                <input type="password" class="form-control" id="password" placeholder="password">
+                <input type="password" class="form-control" id="password" placeholder="password" v-model="password">
                 <label for="password">密碼</label>
             </div>
 
-            <input type="button" value="登入" class="btn" onclick="doSubmit()">
+            <input type="button" value="登入" class="btn" @click="doLogin()">
 
         </div>
 
     </section>
     <script src="js/vendors/vue.global.prod.js"></script>
-    <script>
-        function doSubmit(){
-            window.location = 'backMember.html';
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+    <script src="./js/backLogin.js"></script>
 
 </body>
 </html>
