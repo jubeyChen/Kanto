@@ -15,6 +15,7 @@
     </style>
 </head>
 <body>
+<div id="app">    
     <section class="backMember">
         <aside class="">
             <div>
@@ -38,14 +39,15 @@
                         <option value="">電子郵件</option>
                     </select>
                     <input type="text" class="textStyle" placeholder="">
-                    <input type="submit" value="搜尋" class="btn-pri-m" onclick="dosearch()">
+                    <input type="submit" value="搜尋" class="btn-pri-m">
                 </form>
             </section>
+
 
             <table class="table table-light table-hover table-bordered table-sm">
                 <thead>
                     <tr class="table-dark">
-                        <!-- <th scope="col">排序</th> -->
+                         <!-- <th scope="col">排序</th> -->
                         <th scope="col">會員編號<span class="material-symbols-outlined">
                             unfold_more
                             </span>
@@ -57,45 +59,52 @@
                         <th scope="col">性別</th>
                         <th scope="col">電子郵件（帳號）</th>
                         <th scope="col">聯絡電話</th>
-                        <th scope="col">消費總額</th>
+                        <!-- <th scope="col">消費總額</th> -->
                         <th scope="col">會員狀態</th>
                     </tr>
-                </thead>
-                <tbody class="" id="app">
-                    <tr v-for="(item, index) in members" :key="index" :data-status="item.statusId">
-                        <!-- <th scope="row">{{ index + 1 }}</th> -->
-                        <td>{{ item.id }}</td>
-                        <td>{{ item.fullName }}</td>
-                        <td>{{ item.gender }}</td>
-                        <td>{{ item.account }}</td>
-                        <td>{{ item.phone }}</td>
-                        <td>$12500</td>
-                        <td>
-                            <div class="switch-btn" @click="switchBtn">
-                                <div class="switch-track">
-                                    <div class="off">OFF</div>
-                                    <div class="core"></div>
-                                    <div class="on">ON</div>    
+                </thead> 
+                <tbody>
+                    <!--因為v-if會強制先執行 所以另外用template虛擬標籤放v-for-->
+                    <template v-for="(item, index) in members">
+                            <!-- 0~9 >= (第一頁-1)*10 && 0~9 < (1*10) -->
+                            <!--第五筆 >= 0 && 第五筆 < 10  true -->
+                        <tr v-if="index >= (currentPage-1) * 10 && index < (currentPage*10)" :key="item.id" :data-status="item.Status">
+                            <!-- <th scope="row">{{ index + 1 }}</th> -->
+                            <td>{{ item.ID }}</td>
+                            <td>{{ item.FullName }}</td>
+                            <td>{{ item.Gender }}</td>
+                            <td>{{ item.AccountID }}</td>
+                            <td>{{ item.Phone }}</td>
+                            <!-- <td>$12500</td> -->
+                            <td>
+                                <div class="switch-btn" @click="btnSwitch(item)">
+                                    <div class="switch-track" :class="{'-off': !item.Status}">
+                                        <div class="off">OFF</div>
+                                        <div class="core"></div>
+                                        <div class="on">ON</div>    
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    </template>
+                    
                 </tbody>
             </table>
 
             <section class="page-btn">
-                <button>上一頁</button>
-                <div>10/10</div>
-                <button>下一頁</button>
+                <button @click="lastPage">上一頁</button>
+                <div>{{countOfPage}}/{{members.length}}</div>
+                <button @click="nextPageBtn">下一頁</button>
             </section>
 
         </main>
     </section>
+</div>    <!--vue-->
 
-    <script src="js/vendors/vue.global.prod.js"></script>
+    <script src="js/vendors/vue.global.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="js/backmembers.js"></script>
+    <script src="js/backMember.js"></script>
 
 
 </body>

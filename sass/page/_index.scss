@@ -121,9 +121,11 @@ a{
         }
 
     }
-    
+//第一部分  
     .index01_content{
-        @include flex-container($justify-content:space-between);
+        @include flex-container($justify-content:space-between, $wrap:nowrap
+        );
+        
         li{
             width: 360px;
             // overflow: hidden;
