@@ -7,7 +7,7 @@
     }
 }
 
-// 麵包屑
+// --------------- 麵包屑 ---------------
 .cart_bread {
     width: 80%;
     margin: 3vh auto;
@@ -48,7 +48,7 @@
     }
 }
 
-//麵包屑 ICONS
+// --------------- 麵包屑 ICONS -------------
 .cart_icons_cart,
 .cart_icons_description,
 .cart_icons_credit_card {
@@ -63,24 +63,7 @@
     color: #888888;
 }
 
-//產品列表物件
-.cart_icon_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-}
-
-.cart_icons_favorite_small,
-.cart_icons_trash_small {
-    font-family: 'Material Icons Outlined';
-    font-weight: 400;
-    font-size: 30px;
-    opacity: 1;
-    color: $fontColor;
-}
-
-//購物車
+// ------ 購物車上方
 .cart_section1 {
     width: 80%;
     background-color: $secondary;
@@ -104,57 +87,81 @@
     ;
 }
 
+// .cart_inner_pic{
+//     width: 200px;
+//     height: 200px;
+// }
+
+.cart_inner_word{
+    width: 20%;
+}
 
 //購物車加入項目
 .cart_inner_section {
-    margin-bottom: 3vh;
 
-    ul {
-        display: flex;
-        justify-content: space-around;
-
-        li:first-child {
+    .cart_item_list{
+        ul {
             display: flex;
-            align-items: center;
-        }
+            flex-direction: column;
+            justify-content: space-between;
 
-        li {
-            padding: 3vh 1vh;
 
-            P {
-                font-size: 25px;
-                color: $fontColor;
+    
+            li {
+                padding: 3vh 0;
+                width: 100%;
+                // border: 2px solid #C73E3A;
+                display: flex;
+                align-items: stretch;
+                justify-content: space-around;
+    
+                img{ width: 20%; }
+                P {
+                    font-size: 20px;
+                    color: $fontColor;
+                    @include m() {
+                        font-size: 18px;
+                    }
+                }
+                .cart_inner_word{
+                    // white-space: nowrap;
+                    // text-overflow: ellipsis;
+                    // width: 10px; /* Adjust the width according to your needs */
+                    p{
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 1;
+                    }
+                }
+                // .cart_icon_container{
+                //     align-items: stretch;
+                //     background-color: yellow;
+    
+                // }
 
-                @include m() {
-                    font-size: 18px;
                 }
             }
-
-        }
-
-        li:nth-child(4)p,
-        li:nth-child(5)p {
-            font-size: 18px;
-        }
-
-        li:last-child {
-            // align-self: flex-start;
-            cursor: pointer;
-            padding-right: 80px;
-
-            @include m() {
-                padding: 20px;
-            }
         }
     }
-
-    .cart_mobile_section1 {
-        display: none;
+    .cart_total_price {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: 0 auto;
+        span {
+            font-size: 20px;
+            padding-left: 10px;
+            color: $fontColor;
+        }
+        p {
+            font-size: 25px;
+            color: $fontColor;
+        }
     }
-
+    //   ---------- 購物車手機版  ---------
     @include m() {
-        margin-bottom: 2vh;
-
+        // margin-bottom: 2vh;
         span {
             width: 95%;
             height: 2vh;
@@ -165,7 +172,6 @@
             margin: 0 auto;
             margin-bottom: 4vh;
         }
-
         .cart_pc_section1 {
             display: none;
         }
@@ -175,7 +181,6 @@
             justify-content: space-evenly;
             margin-bottom: 20px;
         }
-
         .cart_mobile_article1 {
             width: 45%;
 
@@ -189,7 +194,6 @@
                 }
             }
         }
-
         .cart_mobile_article2 {
             width: 45%;
 
@@ -243,6 +247,22 @@
         }
 
     }
+
+
+//--------------- 購物車  收藏 刪除 按鈕----------------
+.cart_icon_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cart_icons_favorite_small,
+.cart_icons_trash_small {
+    font-family: 'Material Icons Outlined';
+    font-weight: 400;
+    font-size: 30px;
+    opacity: 1;
+    color: $fontColor;
 }
 
 #aboutSelectOne,
@@ -317,30 +337,10 @@
     border-radius: 5px;
 }
 
-.cart_total_price {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin: 0 auto;
 
-    span {
-        font-size: 20px;
-        padding-left: 10px;
-        color: $fontColor;
-    }
-
-    p {
-        font-size: 25px;
-        color: $fontColor;
-    }
-
-    // @include m(){
-
-    // }
-}
 
 .cart_section2 {
-    width: 70%;
+    width: 90%;
     margin: 8vh auto;
 
     ul {
@@ -351,21 +351,21 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-
-            .cart_pic_div {
-                overflow: hidden;
-
+            width: 80%;
+            margin: 0 20px;
                 img {
+                    width: 100%;
                     transform: scale(1);
                     opacity: 1;
                     transition: 0.5s;
                     margin-bottom: 2vh;
+                    
                 }
-            }
-
-            &:hover .cart_pic_div img {
-                transform: scale(1.05);
-                opacity: 0.8;
+                &:hover .cart_pic_div img {
+                    transform: scale(1.05);
+                    opacity: 0.8;
+                }
+    
             }
 
 
@@ -373,6 +373,11 @@
                 margin-bottom: 2vh;
                 font-size: 20px;
                 color: $fontColor;
+                overflow: hidden;
+
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
             }
 
             button {
@@ -389,9 +394,9 @@
 
             }
         }
-    }
-
-    @include m() {
-        display: none;
-    }
 }
+
+
+
+// object-fit: cover;
+// width: 300px;

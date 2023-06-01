@@ -23,15 +23,13 @@
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
+<div id="app">
 
     <div class="payment_container">
 
         <div class="cart_bread">
             <ul>
                 <li>
-                    <!-- <img src="./image/cart/cart.jpg" alt="">
-                            <img src="./image/cart/form.jpg" alt="">
-                            <img src="./image/cart/done.jpg" alt=""> -->
                     <i class="payment_icons_cart">shopping_cart</i>
                 </li>
                 <li>
@@ -50,15 +48,7 @@
                     <h4>會員人資料</h4>
                     <span class="payment_line"></span>
                     <ul>
-                        <li>
-                            <input type="text" id="payment_full_name" name="full_name" required placeholder="請輸入名字">
-                        </li>
-                        <li>
-                            <input type="email" id="payment_email" name="email" required placeholder="請輸入電子信箱">
-                        </li>
-                        <li>
-                            <input type="tel" id="phone" name="phone" required placeholder="請輸入手機號">
-                        </li>
+
                     </ul>
                 </form>
             </div>
@@ -119,29 +109,21 @@
                                 <div class="payment_cart_item">
                                     <div class="payment_item_info">
                                         <ul>
-                                            <li>
-                                                <img src="./image/payment/tokiyo5.png" alt="Product Image">
-                                            </li>
-                                            <li>
-                                                <h5>富士山賞櫻一日遊</h5>
-
-                                            </li>
-                                            <li>
-                                                <div class="payment_item_price">
-                                                    <span>$1500</span>
-                                            </li>
-                                        </ul>
-                                        <ul>
-                                            <li>
-                                                <img src="./image/payment/disney1.png" alt="Product Image">
-                                            </li>
-                                            <li>
-                                                <h5>東京迪士尼度假區門票</h5>
-
-                                            </li>
-                                            <li class="payment_item_price">
-                                                <span>$1500</span>
-                                            </li>
+                                            <ul class="cart_pc_section1">
+                                                <li v-for="(shoppinglist, index) in shoppingList" :key="index" class="cart_pic_div">
+                                                    <input type="checkbox" id="aboutSelectOne" v-model="selectOne"
+                                                        @change="selectOneChanged">
+                                                    <p>{{shoppingList.place}}</p>
+                                                    <p>{{shoppingList.src}}</p>
+                                                    <p>{{shoppingList.price}}</p>
+                                                    <img :src="`./image/productPage/${productinfo.ID}/phone_banner1.jpg`" alt="照片黨">
+                                                </li>
+                                                <li class="cart_icon_container">
+                                                    <i id="cartFavoriteIcon" class="cart_icons_favorite_small">favorite_border</i>
+                                                    <i id="cartDeleteIcon" class="cart_icons_trash_small"
+                                                        @click="remove(product)">delete_outline</i>
+                                                </li>
+                                            </ul>
                                         </ul>
                                     </div>
 
@@ -186,56 +168,15 @@
         </div>
     </div>
 
+</div>
 
     <!-- 以下Footer區域 -->
     @@include('./layout/footer.html')
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+    <script src="./js/payment.js"></script>
 
-    <script>
-        // Function to calculate the values
-        function calculateTotal() {
-            // Get all the item prices
-            let itemPrices = document.querySelectorAll('.payment_item_price span');
-
-            // Calculate the total price
-            let totalPrice = 0;
-            for (let i = 0; i < itemPrices.length; i++) {
-                totalPrice += parseFloat(itemPrices[i].textContent.slice(1));
-            }
-
-            // Get the selected coupon option
-            let couponSelect = document.getElementById('payment_coupon');
-            let selectedCoupon = couponSelect.options[couponSelect.selectedIndex].value;
-
-            // Perform the calculation based on the selected coupon
-            let discountAmount = 0;
-            if (selectedCoupon === 'coupon1') {
-                discountAmount = 500;
-            } else if (selectedCoupon === 'coupon2') {
-                discountAmount = 1000;
-            } else if (selectedCoupon === 'coupon3') {
-                discountAmount = 1500;
-            }
-
-            // Calculate the total price after the discount
-            let totalPriceAfterDiscount = totalPrice - discountAmount;
-
-            // Update the display
-            document.getElementById('payment_total_amount').textContent = '$' + totalPrice;
-            document.getElementById('payment_discount_amount').textContent = '$' + discountAmount;
-            document.getElementById('payment_total_price').textContent = '$' + totalPriceAfterDiscount;
-        }
-
-        // Call the calculateTotal function to initially calculate the values
-        calculateTotal();
-
-        // Add event listener to the coupon select element
-        document.getElementById('payment_coupon').addEventListener('change', calculateTotal);
-
-
-    </script>
 
 </body>
 
