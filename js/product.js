@@ -88,9 +88,10 @@ $(document).ready(function () {
             currentDate.setDate(selectedDate);
             // 重新顯示日曆
             showCalendar(currentDate.getFullYear(), currentDate.getMonth());
+            // 更新Vue中的selectedDate資料
+            this.selectedDate = currentDate.toISOString().substring(0, 10);
         }
-    });
-
+    }.bind(this)); // 使用bind(this)將事件處理函式綁定到Vue實例
 
 
     // 操控價錢搜尋的值
@@ -110,7 +111,7 @@ $(document).ready(function () {
 
 
 
-// vue框架
+// ------------------------------------------- vue框架 ----------------------------------------//
 
 const RootComponent = {
     data() {
@@ -120,10 +121,24 @@ const RootComponent = {
             productDetails: [],
             productCount: 0,
 
+            //地區table資料
+            region: [],
+            productInRegion: [],
+
             // 限制的資料數量
             currentPage: 1,
             perPage: 5,
             totalPages: 0,
+
+            // 關鍵字篩選
+            searchInput: '',
+
+            // 價錢篩選
+            minPrice: 0,
+            maxPrice: 3000,
+
+            selectedDate: null,  // 新增的屬性用於保存使用者點擊的日期
+
 
 
         };
@@ -145,6 +160,19 @@ const RootComponent = {
                     if (Array.isArray(response.data.productdetail)) {
                         this.productDetails = response.data.productdetail
                     }
+
+                    if (Array.isArray(response.data.region)) {
+                        this.region = response.data.region
+
+                        // console.log(this.region)
+                    }
+
+                    if (Array.isArray(response.data.productInRegion)) {
+                        this.productInRegion = response.data.productInRegion
+
+                        // console.log(this.productInRegion)
+                    }
+
                 }
                 this.setPages()
 
@@ -153,42 +181,28 @@ const RootComponent = {
                 console.log(error);
             })
 
-        let vm = this
+        let vm = this;
 
         $("input[name='region'], input[name='typeName']").on("click", function () {
+            vm.applyFilters();
+        });
 
-            let regions =
-                $("input[name='region']:checked").map(function () {
-                    return $(this).val()
-                }).get()
-
-            let typeNames =
-                $("input[name='typeName']:checked").map(function () {
-                    return $(this).val()
-                }).get()
-
-            vm.productSearch(regions, typeNames);
-
-            // console.log(regions)
-            // $("input[name='region']").val()
-        })
+        var searchInput = document.getElementById("search");
+        searchInput.addEventListener("input", function (event) {
+            vm.searchInput = event.target.value;
+            vm.applyFilters();
+        });
 
 
-
-        // $("input[name='typeName']").on("click", function () {
-
-        //     let typeNames =
-        //         $("input[name='typeName']:checked").map(function () {
-        //             return $(this).val()
-        //         }).get()
-        //     console.log(typeNames)
-        //     // console.log(regions);
-
-        // })
-
-        // this.totalPages = Math.ceil(this.displayItems.length / this.perPage);
+        //------------------ 抓出關鍵字的值---------------------
 
 
+        var searchInput = document.getElementById("search");
+        let mv = this;
+        searchInput.addEventListener("input", function (event) {
+            mv.searchInput = event.target.value;
+            // mv.keywordSearch();
+        });
 
     },
 
@@ -201,32 +215,73 @@ const RootComponent = {
     },
 
     methods: {
+
+        // 幫價錢每三位數增加一個","
+
         numberWithCommas(value) {
             if (!value) return '';
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         },
 
-        productSearch(regions, typeNames) {
-            this.displayItems = this.productItems
-            if (regions && regions.length > 0) {
-                console.log(regions)
-                // this.productItems
-                // console.log(this.productItems)
-                this.displayItems = this.productItems.filter(e =>
-                    regions.indexOf(e.RegionID.toString()) != -1)
-            }
 
-            if (typeNames && typeNames.length > 0) {
-                console.log(typeNames)
-                // this.productItems
-                // console.log(this.productItems)
+        applyFilters() {
+            let regions = $("input[name='region']:checked").map(function () {
+                return $(this).val();
+            }).get();
+
+            let typeNames = $("input[name='typeName']:checked").map(function () {
+                return $(this).val();
+            }).get();
+
+            // 價錢篩選
+            this.displayItems = this.productItems.filter(item => {
+                const price = parseFloat(item.Price);
+                return price >= parseFloat(this.minPrice) && price <= parseFloat(this.maxPrice);
+            });
+
+            // 地區篩選
+            if (regions.length > 0) {
                 this.displayItems = this.displayItems.filter(e =>
-                    typeNames.indexOf(e.ProductTypeID.toString()) != -1)
+                    regions.indexOf(e.RegionID.toString()) !== -1
+                );
             }
-            this.productCount = this.displayItems.length
 
-            this.setPages()
+            // 類別篩選
+            if (typeNames.length > 0) {
+                this.displayItems = this.displayItems.filter(e =>
+                    typeNames.indexOf(e.ProductTypeID.toString()) !== -1
+                );
+            }
+
+            // 关键字搜索
+            if (this.searchInput.trim() !== "") {
+                this.displayItems = this.displayItems.filter(item =>
+                    item.Name.includes(this.searchInput) ||
+                    item.Content.includes(this.searchInput)
+                );
+            }
+
+            // Date filtering
+            if (this.selectedDate) {
+                this.displayItems = this.displayItems.filter(item => {
+                    // Convert selectedDate to the format used by the item's date
+                    const itemDate = new Date(item.Date);
+                    const selectedDate = new Date(this.selectedDate);
+
+                    // Compare only the date portion (ignore time)
+                    itemDate.setHours(0, 0, 0, 0);
+                    selectedDate.setHours(0, 0, 0, 0);
+
+                    return itemDate.getTime() === selectedDate.getTime();
+                });
+            }
+
+            this.productCount = this.displayItems.length;
+            this.setPages();
         },
+
+
+        // -------------------------控制分頁-------------------
 
         setPages() {
             if (this.displayItems.length == 0) {
@@ -238,16 +293,11 @@ const RootComponent = {
             }
         },
 
-
-
         goToPage(page) {
             this.currentPage = page;
         },
 
-
-
-
-
     }
+
 };
 Vue.createApp(RootComponent).mount("#pdt");

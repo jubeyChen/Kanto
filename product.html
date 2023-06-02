@@ -36,9 +36,9 @@
                         <form action="post">
                             <div class="search">
                                 <div class="search-text">
-                                    <input @keyup="" type="text" class="search-bar" name="search-bar" id="search"
+                                    <input type="text" class="search-bar" v-model.lazy="searchInput" id="search"
                                         placeholder="輸入名稱">
-                                    <button class="search-btn" value="seach"><svg width="20px" height="20px"
+                                    <button class="search-btn"><svg width="20px" height="20px"
                                             xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                             <path
@@ -112,6 +112,7 @@
                                                 <h4>篩選出發日期</h4>
                                             </div>
                                             <div class="content">
+                                                
                                                 <div class="calendar">
                                                     <div class="calendar-header">
                                                         <div class="calendar-header-item prev-month">&lt;</div>
@@ -144,9 +145,8 @@
                                                 <h4>價錢 (TWD)</h4>
                                             </div>
                                             <div class="content">
-                                                <input type="range" min="0" max="9999" value="9999" class="slider"
-                                                    id="slider">
-                                                <div id="value"></div>
+                                                <input type="range" min="0" max="3000" v-model="maxPrice" class="slider" id="slider" @change="applyFilters">
+                                                <div id="value">{{ maxPrice }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -186,7 +186,6 @@
                                 <div class="star-p">
                                     <div class="star">
                                         <img src="image/product/star.png" alt="">
-                                        15k已訂閱
                                     </div>
                                     <div class="price">TWD {{numberWithCommas(item.Price)}}</div>
                                 </div>
@@ -197,7 +196,6 @@
                                     </button>
                                 </div>
                                 <div class="rwd-both">
-                                    <div class="follow">(2961)|99已訂閱</div>
                                     <div class="rwd-price">TWD 1,500</div>
                                 </div>
                             </div>
@@ -209,8 +207,6 @@
                 <div class="page">
                     <ul>
                         <li @click="goToPage(page)" v-for="page in totalPages" :key="page"><a>{{page}}</a></li>
-                        <!-- <li><a href="">2</a></li> -->
-                        <!-- <li><a href="">3</a></li> -->
                     </ul>
                 </div>
 
