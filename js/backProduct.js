@@ -38,6 +38,9 @@ const app = Vue.createApp({
                 // 執行後續處理邏輯
                 if (this.textValue == "") {
                     alert('請輸入資料')
+                    this.startNum = 0;
+                    this.sliceData();
+                    this.checkcurrentNum();
                     return;
                 }
                 else if (this.selectValue == "行程編號") {
