@@ -46,34 +46,30 @@
                 </ul>
             </div>
 
-            <div class="cart_section1">
-                <h4>購物車</h4>
-                <ul class="cart_list">
+            <div class="cart_section1" v-if="shoppingList.length !== 0">
+                <ul class="cart_list" v-if="shoppingList.length !== 0">
+                    <h4>購物車</h4>
 
-                    <li>
-                        <input type="checkbox" id="aboutSelectAll">
+                    <!-- <li>
+                        <input type="checkbox" id="aboutSelectAll" v-model="selectAll" @change="selectAllChanged">
                     </li>
                     <li>
                         <p>全選</p>
-                    </li>
-                    <li class="cart_pay_btn_wrapper">
-                        <a href="payment.html">
-                            <button class="cart_pay_btn">前往付款</button>
-                        </a>
-                    </li>
+                    </li> -->
+
                 </ul>
 
-                <div class="cart_inner_section">
+                <div class="cart_inner_section" >
 
-                    <span class="cart_line"></span>
+                    <span class="cart_line" v-if="shoppingList.length !== 0"></span>
 
                     <!---------------- 電腦版購物車 ---------------->
                     <div class="cart_item_list">
                         <ul class="cart_pc_section1" id="cart-item-list">
                             <li v-for="(shoppinglist, index) in shoppingList" :key="index" class="cart_pic_div">
-                                <input type="checkbox" v-model="shoppinglist.selectOne" @change="selectOneChanged">
+                                <!-- <input type="checkbox" v-model="shoppinglist.selectOne" @change="selectOneChanged"> -->
                                 <!-- <div class="cart_inner_pic"> -->
-                                    <img :src="shoppinglist.banner" alt="照片黨">
+                                <img :src="shoppinglist.banner" alt="照片黨">
                                 <!-- </div> -->
                                 <div class="cart_inner_word">
                                     <p>{{shoppinglist.title}}</p>
@@ -81,42 +77,48 @@
                                 </div>
                                 <p>{{shoppinglist.count}}人</p>
                                 <p>NT${{shoppinglist.total}}</p>
-
                                 <div class="cart_icon_container">
                                     <i id="cartFavoriteIcon" class="cart_icons_favorite_small">favorite_border</i>
-                                    <i id="cartDeleteIcon" class="cart_icons_trash_small"
-                                        @click="remove(product)">delete_outline</i>
+                                    <i class="cart_icons_trash_small" @click="remove(index)">delete_outline</i>
                                 </div>
                             </li>
                         </ul>
                         </li>
                         </ul>
+                        <span class="cart_line" v-if="shoppingList.length !== 0"></span>
                     </div>
 
                     </ul><!---------------- 電腦版購物車 ---------------->
-                    <span class="cart_line"></span>
                     <!---------------- 結算 ---------------->
-                    <ul class="cart_total_price">
+                    <ul class="cart_total_price" v-if="shoppingList.length !== 0">
                         <li>
                             <p>總額</p>
                         </li>
                         <li>
                             <div class="payment_item_price">
-                                <span>$1500</span>
+                                <p>NT${{isTotal}}</p>
                             </div>
                         </li>
-                    </ul><!---------------- 結算 ---------------->
+                    </ul>
+                    <a href="payment.html" class="cart_pay_btn_wrapper" v-if="shoppingList.length !== 0">
+                        <button class="cart_pay_btn">前往付款</button>
+                    </a>
+                    <!---------------- 結算 ---------------->
+
                 </div>
 
-                <!---------------- 購物車空的時候 ---------------->
             </div>
-            <img id="emptyCartImage" class="empty-cart-message" src="./image/about/Empty_Slate__Shopping_Cart.gif"
-                alt="">
-            <p id="emptyCartText1" class="empty-cart-message">購物車是空的，目前正被喵喵霸佔中？</p>
-            <p id="emptyCartText2" class="empty-cart-message">馬上去逛逛，挑幾個你喜歡的玩樂吧！</p>
-            <a href="product.html">
-                <button id="emptyCartBtn" class="cart_pay_btn2">前往查看</button>
-            </a>
+            <!---------------- 購物車空的時候 ---------------->
+
+            <div class="cart_when_empty" v-if="shoppingList.length === 0">
+                <img id="emptyCartImage" class="empty-cart-message" src="./image/about/Empty_Slate__Shopping_Cart.gif"
+                    alt="">
+                <p id="emptyCartText1" class="empty-cart-message">購物車是空的，目前正被喵喵霸佔中？</p>
+                <p id="emptyCartText2" class="empty-cart-message">馬上去逛逛，挑幾個你喜歡的玩樂吧！</p>
+                <a href="product.html">
+                    <button id="emptyCartBtn" class="cart_pay_btn2">前往查看</button>
+                </a>
+            </div>
 
             <!---------------- 推薦的地方 ---------------->
             <div class="cart_section2">

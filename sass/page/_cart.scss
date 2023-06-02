@@ -148,7 +148,7 @@
         display: flex;
         justify-content: space-between;
         width: 90%;
-        margin: 0 auto;
+        margin: 3vh auto;
         span {
             font-size: 20px;
             padding-left: 10px;
@@ -272,9 +272,14 @@
 }
 
 
-//刪除按鈕
+// <!---------------- 購物車空的時候 ---------------->
+
+.cart_when_empty{
+    width: 80%;
+    margin: 0 auto;
+}
 #emptyCartBtn{
-    display: none;
+    // display: none;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -282,31 +287,38 @@
     border-radius: 5px;
 }
 .empty-cart-message {
-    display: none;
+    // display: none;
     text-align: center;
     color: $fontColor;
     font-size: 30px;
 }
 
 #emptyCartImage {
-    display: none;
+    // display: none;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
 }
 
 //付款按鈕
+
+.cart_pay_btn_wrapper {
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the end (right) */
+    align-items: center; /* Centers items vertically */
+}
 .cart_pay_btn {
     border: 0;
     line-height: 40px;
     padding: 0 4vh;
+    margin-right: 3vh;
     text-align: center;
     font-size: 16px;
     letter-spacing: 1px;
     background-color: #C73E3A;
     color: #fff;
     cursor: pointer;
-
+    
 }
 //前往商品按鈕
 .cart_pay_btn2{
@@ -336,6 +348,8 @@
 .cart_pay_btn {
     border-radius: 5px;
 }
+
+
 
 
 

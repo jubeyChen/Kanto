@@ -23,152 +23,150 @@
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
-<div id="app">
+    <div id="app">
 
-    <div class="payment_container">
+        <div class="payment_container">
 
-        <div class="cart_bread">
-            <ul>
-                <li>
-                    <i class="payment_icons_cart">shopping_cart</i>
-                </li>
-                <li>
-                    <i class="payment_icons_description">assignment</i>
-                </li>
-                <li>
-                    <i class="payment_icons_credit_card">credit_card</i>
-                </li>
-            </ul>
-        </div>
-
-        <div class="payment_left">
-
-            <div class="payment_section1">
-                <form action="process_payment.php" method="post">
-                    <h4>會員人資料</h4>
-                    <span class="payment_line"></span>
-                    <ul>
-
-                    </ul>
-                </form>
+            <div class="cart_bread">
+                <ul>
+                    <li>
+                        <i class="payment_icons_cart">shopping_cart</i>
+                    </li>
+                    <li>
+                        <i class="payment_icons_description">assignment</i>
+                    </li>
+                    <li>
+                        <i class="payment_icons_credit_card">credit_card</i>
+                    </li>
+                </ul>
             </div>
 
-            <div class="payment_section1">
-                <h4>付款方式</h4>
-                <span class="payment_line"></span>
-                <form action="process_payment.php" method="post">
-                    <ul>
-                        <li>
-                            <input type="text" id="payment_card_number" name="card_number" required placeholder="信用卡卡號">
-                        </li>
-                        <li>
-                            <input type="text" id="payment_expiry_date" name="expiry_date" required placeholder="有效期限">
-                        </li>
-                        <li>
-                            <input type="text" id="cvv" name="cvv" required placeholder="CVC">
-                        </li>
-                    </ul>
-                </form>
-            </div>
-            <div class="payment_section3">
-                <form action="process_payment.php" method="post">
-                    <h4>電子發票</h4>
+            <div class="payment_left">
+
+                <div class="payment_section1">
+                    <form action="process_payment.php" method="post">
+                        <h4>會員人資料</h4>
+                        <span class="payment_line"></span>
+                        <ul>
+
+                        </ul>
+                    </form>
+                </div>
+
+                <div class="payment_section1">
+                    <h4>付款方式</h4>
                     <span class="payment_line"></span>
-                    <ul>
-                        <li>
-                            <input type="radio" id="payment_option1" name="choices" value="option1">
-                            <label for="option1">電子信箱</label>
-                        </li>
-                        <li>
-                            <input id="payment_email" name="billing_address" required placeholder="電子信箱"></input>
-                        </li>
-                        <li>
-                            <input type="radio" id="payment_option1" name="choices" value="option1">
-                            <label for="option1">郵寄地址</label>
-                        </li>
-                        <li>
-                            <textarea lock id="payment_shipping_address" name="shipping_address" required
-                                placeholder="郵寄地址"></textarea>
-                        </li>
-                    </ul>
-                </form>
+                    <form action="process_payment.php" method="post">
+                        <ul>
+                            <li>
+                                <input type="text" id="payment_card_number" name="card_number" required
+                                    placeholder="信用卡卡號">
+                            </li>
+                            <li>
+                                <input type="text" id="payment_expiry_date" name="expiry_date" required
+                                    placeholder="有效期限">
+                            </li>
+                            <li>
+                                <input type="text" id="cvv" name="cvv" required placeholder="CVC">
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+                <div class="payment_section3">
+                    <form action="process_payment.php" method="post">
+                        <h4>電子發票</h4>
+                        <span class="payment_line"></span>
+                        <ul>
+                            <li>
+                                <input type="radio" id="payment_option1" name="choices" value="option1">
+                                <label for="option1">電子信箱</label>
+                            </li>
+                            <li>
+                                <input id="payment_email" name="billing_address" required placeholder="電子信箱"></input>
+                            </li>
+                            <li>
+                                <input type="radio" id="payment_option1" name="choices" value="option1">
+                                <label for="option1">郵寄地址</label>
+                            </li>
+                            <li>
+                                <textarea lock id="payment_shipping_address" name="shipping_address" required
+                                    placeholder="郵寄地址"></textarea>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
             </div>
-        </div>
 
-        <!-- right side of the page -->
-        <div class="payment_right">
+            <!-- right side of the page -->
+            <div class="payment_right">
 
-            <div class="payment_side">
-                <form action="process_payment.php" method="post">
-                    <h4>項目</h4>
-                    <span class="payment_line"></span>
-                    <ul>
-                        <li>
-                            <div class="payment_side_inner">
+                <div class="payment_side">
+                    <form action="process_payment.php" method="post">
+                        <h4>項目</h4>
+                        <span class="payment_line"></span>
+                        <ul>
+                            <li>
+                                <div class="payment_side_inner">
 
-                                <div class="payment_cart_item">
                                     <div class="payment_item_info">
-                                        <ul>
-                                            <ul class="cart_pc_section1">
-                                                <li v-for="(shoppinglist, index) in shoppingList" :key="index" class="cart_pic_div">
-                                                    <input type="checkbox" id="aboutSelectOne" v-model="selectOne"
-                                                        @change="selectOneChanged">
-                                                    <p>{{shoppingList.place}}</p>
-                                                    <p>{{shoppingList.src}}</p>
-                                                    <p>{{shoppingList.price}}</p>
-                                                    <img :src="`./image/productPage/${productinfo.ID}/phone_banner1.jpg`" alt="照片黨">
-                                                </li>
-                                                <li class="cart_icon_container">
-                                                    <i id="cartFavoriteIcon" class="cart_icons_favorite_small">favorite_border</i>
-                                                    <i id="cartDeleteIcon" class="cart_icons_trash_small"
-                                                        @click="remove(product)">delete_outline</i>
-                                                </li>
-                                            </ul>
+                                        <ul class="" id="">
+                                            <li v-for="(shoppinglist, index) in shoppingList" :key="index"
+                                                class="payment_inner_pic">
+                                                <img :src="shoppinglist.banner" alt="照片黨">
+                                                <div class="payment_inner_word">
+                                                    <p>{{shoppinglist.title}}</p>
+                                                    <p>{{shoppinglist.selectedDate}}</p>
+                                                </div>
+                                                <div class="payment_inner_word2">
+
+                                                    <p>{{shoppinglist.count}}人</p>
+                                                    <p>NT${{shoppinglist.total}}</p>
+                                                </div>
+                                            </li>
                                         </ul>
                                     </div>
 
-                                </div>
-                        </li>
-                        <li class="payment_select">
-                            <select id="payment_coupon" name="請選擇優惠卷">
-                                <option value="" disabled selected>請選擇優惠卷</option>
-                                <option value="coupon1">Coupon 1</option>
-                                <option value="coupon2">Coupon 2</option>
-                                <option value="coupon3">Coupon 3</option>
-                            </select>
-                        </li>
+                            </li>
+                            <li class="payment_select">
+                                <select id="payment_coupon" name="請選擇優惠卷">
+                                    <option value="" disabled selected>請選擇優惠卷</option>
+                                    <option value="coupon1">Coupon 1</option>
+                                    <option value="coupon2">Coupon 2</option>
+                                    <option value="coupon3">Coupon 3</option>
+                                </select>
+                            </li>
 
-                        <span class="payment_line"></span>
+                            <span class="payment_line"></span>
 
-                        <li class="payment_price_selection">
-                            <label for="payment_total_amount">金額</label>
-                            <span id="payment_total_amount"></span>
-                        </li>
+                            <li class="payment_price_selection">
+                                <label for="payment_total_amount">金額</label>
+                                <p>NT${{isTotal}}</p>
+                            </li>
 
-                        <li class="payment_price_selection">
-                            <label for="payment_discount_amount">折扣金額</label>
-                            <span id="payment_discount_amount"></span>
-                        </li>
+                            <li class="payment_price_selection">
+                                <label for="payment_discount_amount">折扣金額</label>
+                                <p>NT${{isDisscount}}</p>
+                            </li>
 
-                        <span class="payment_line"></span>
+                            <span class="payment_line"></span>
 
-                        <li class="payment_price_selection">
-                            <label for="payment_total_price">折扣後總價</label>
-                            <span id="payment_total_price"></span>
-                        </li>
+                            <li class="payment_price_selection">
+                                <label for="payment_total_price">折扣後總價</label>
+                                <p>NT${{isSubTotal}}</p>
+                            </li>
 
-                        <li>
-                            <a href="done.html">
-                                <input type="button" value="立即付款" src="done.html">
-                            </a>
-                        </li>
-                    </ul>
-                </form>
+                            <li>
+                                <a href="done.html">
+                                    <input type="button" value="立即付款" src="done.html">
+                                </a>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
 
     <!-- 以下Footer區域 -->
     @@include('./layout/footer.html')

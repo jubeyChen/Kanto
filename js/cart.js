@@ -4,34 +4,51 @@ const app = Vue.createApp({
             isSessionValid: '',
             isProductInfo: [],
             shoppingList: [],
+            isTotal: 0,
+            selectAll: false, // Add selectAll property
+
         };
     },
     created(){
         this.shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
         console.log(this.shoppingList);
+
+        this.calculateTotal(); // Call the method to calculate the initial total
+
     },
     methods: {
 
-        // click_view_detail_btn(btn) {
-        //     // console.log(btn);
-        //     // Get data from the button
-        //     let pic_src = 'pictures'
-        //     let place_string = 'place'
-        //     let date_string = 'date'
-        //     let price_string = 'price'
+        remove(index) {
+            // Remove the item at the specified index from the shoppingList array
+            this.shoppingList.splice(index, 1);
+          
+            // Recalculate the total
+            this.calculateTotal();
+          },
 
-        //     let item_clicked = {
-        //       src: pic_src,
-        //       place: place_string,
-        //       date: date_string,
-        //       price: price_string,
-        //     };
-      
-        //     // // Update the shopping list data in local storage
-        //     localStorage.setItem('shoppingList', JSON.stringify(item_clicked));
+          // selectOneChanged() {
+          //   // Check if all individual checkboxes are checked
+          //   this.selectAll = this.shoppingList.every((shoppinglist) => shoppinglist.selectOne);
+          
+          //   // Recalculate the total
+          //   this.calculateTotal();
+          // },
+          
+          // selectAllChanged() {
+          //   this.shoppingList.forEach((shoppinglist) => {
+          //     shoppinglist.selectOne = this.selectAll;
+          //   });
+          // },
+          
+          calculateTotal() {
+            this.isTotal = this.shoppingList.reduce((total, shoppinglist) => {
+              return total + Number(shoppinglist.total);
+            }, 0);
+          
+            // Update the total in local storage
+            localStorage.setItem('shoppingList', JSON.stringify(this.shoppingList));
+          },
 
-        //   },
-        
         async getProductInfo() {
             await axios.post('../php/getProductInfo.php')
                 .then(response => {
@@ -44,24 +61,21 @@ const app = Vue.createApp({
                     window.location.href = "loginRegister.html";
                 });
         },
-        // clearData() {
-        //     // Remove data from local storage
-        //     localStorage.removeItem('shoppingList');
-        // },
+        clearData() {
+            // Remove data from local storage
+            localStorage.removeItem('shoppingList');
+        },
     },
     async mounted(){
         let a  = await globalCheck.PageCheckSession();
         this.isSessionValid = a;
+        console. log (this.isSessionValid);
 
-        // console.log(this.isSessionValid);
-        // if (this.isSessionValid === false ){
-        //     window.location.href= "../dist/loginRegister.html"
-        // }
+        if (this.isSessionValid === false ){
+            window.location.href= "../dist/loginRegister.html"
+        }
         await this.getProductInfo();        
-
     },
-    // 輸入直到 local storage
-
  
 });
 app.mount('#app');
@@ -129,3 +143,23 @@ app.mount('#app');
         //     // test reading
         //     // refresh();
         // }
+
+                // click_view_detail_btn(btn) {
+        //     // console.log(btn);
+        //     // Get data from the button
+        //     let pic_src = 'pictures'
+        //     let place_string = 'place'
+        //     let date_string = 'date'
+        //     let price_string = 'price'
+
+        //     let item_clicked = {
+        //       src: pic_src,
+        //       place: place_string,
+        //       date: date_string,
+        //       price: price_string,
+        //     };
+      
+        //     // // Update the shopping list data in local storage
+        //     localStorage.setItem('shoppingList', JSON.stringify(item_clicked));
+
+        //   },

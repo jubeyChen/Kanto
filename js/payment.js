@@ -1,60 +1,49 @@
 const app = Vue.createApp({
     data() {
-        return {
-            couponInfo: [],
-            user: '',
-            // AccountID: userObject.AccountID,
-            // FullName: userObject.FullName,
-            // Phone: userObject.Phone
-          
-        };
+      return {
+        isSessionValid: '',
+        shoppingList: [],
+        isTotal: 0, // Define isTotal as a data property and initialize it to 0
+        isDisscount: '100',
+        isSubTotal: '',
+      };
     },
-
+    created() {
+      this.shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+    //   console.log(this.shoppingList);
+  
+      this.calculateTotal();
+      this.calculateSubTotal();
+    },
+  
     methods: {
-        async getCouponInfo() {
-            await axios.post('../php/GetMemberCoupon.php')
-                .then(response => {
-                    this.couponInfo = response.data;
-                    console.log(this.couponInfo[0]);
-                })
-                .catch(error => {
-                    console.error('Error retrieving coupon info:', error);
-                  });
-        },
-        async getAccountInfo() {
-            await axios.post('../php/GetAccountInfo.php', { user: this.user })
-                .then(response => {
-                    this.accountInfo.ID = response.data[0].ID;
-                    this.accountInfo.AccountID = response.data[0].AccountID;
-                    if (response.data[0].FullName === null || response.data[0].FullName === undefined) {
-                        this.accountInfo.FullName = null;
-                    }
-                    this.accountInfo.FullName = response.data[0].FullName;
-                    if (response.data[0].Gender === null || response.data[0].Gender === undefined) {
-                        this.accountInfo.Gender = 'none';
-                    } else {
-                        this.accountInfo.Gender = response.data[0].Gender;
-                    }
-                    this.accountInfo.Phone = response.data[0].Phone;
-                })
-                .catch(error => {
-                    console.log(error);
-                    window.location.href = "loginRegister.html";
-                });
-        },
-
-
+      calculateTotal() {
+        this.isTotal = this.shoppingList.reduce((total, shoppinglist) => {
+          return total + Number(shoppinglist.total);
+        }, 0);
+  
+        localStorage.setItem('shoppingList', JSON.stringify(this.shoppingList));
+      },
+  
+      calculateSubTotal() {
+        this.isSubTotal = this.isTotal - this.isDisscount;
+      },
     },
-
+  
     async mounted() {
-        await this.getCouponInfo();
+        let a  = await globalCheck.PageCheckSession();
+        this.isSessionValid = a;
+
+        console.log(this.isSessionValid);
+        if (this.isSessionValid === false ){
+            window.location.href= "../dist/loginRegister.html"
+        }
+        // await this.getProductInfo();        
     },
-
-});
-app.mount('#app');
-
-
-
+  });
+  
+  app.mount('#app');
+  
 
 // // Function to calculate the values
 // function calculateTotal() {
