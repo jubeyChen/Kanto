@@ -32,17 +32,18 @@
                 <li><a href="backBlog.html" class="btn-pri-l">專欄管理</a></li>
             </ul>
         </aside>
-        <main class="">
+        <main class="" id="app">
             <h2>行程管理</h2>
             <section class="select-block">
                 <form action="post">
-                    <select name="title" id="title">
+                    <!-- {{selectValue}} -->
+                    <select name="title" id="title" v-model="selectValue">
                         <option value="">選擇項目</option>
-                        <option value="">行程編號</option>
-                        <option value="">行程名稱</option>
+                        <option value="行程編號">行程編號</option>
+                        <option value="行程名稱">行程名稱</option>
                     </select>
-                    <input type="text" class="textStyle" placeholder="">
-                    <input type="submit" value="搜尋" class="btn-pri-m">
+                    <input type="text" class="textStyle" placeholder="" v-model="textValue">
+                    <input type="button" value="搜尋" class="btn-pri-m" @click="searchBtn">
                 </form>
 
                 <section class="edit-block">
@@ -75,27 +76,28 @@
                         <th scope="col">查看細節</th>
                     </tr>
                 </thead>
-                <tbody class="" id="app">
-                    <tr v-for="(item, index) in products" :key="index">
+                <tbody class="">
+                    <tr v-for="(item, index) in  sliceProducts" :key="index">
                         <th scope="row">
                             <input type="checkbox">
                         </th>
                         <td>{{ item.ID }}</td>
                         <td>{{ item.Name }}</td>
-                        <td>{{ item.RegionName
-                            }}</td>
+                        <td>{{ item.RegionName}}</td>
                         <td>{{ item.TypeName }}</td>
                         <td>
-                            <button @click="checkDetail">查看</button>
+                            <button @click="checkDetail"><a :href="`./backProductDetail.html?id=${item.ID}`"
+                                    class="backProductDetail_btn">查看</a></button>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
             <section class="page-btn">
-                <button>上一頁</button>
-                <div>10/10</div>
-                <button>下一頁</button>
+                <!-- {{startNum}} -->
+                <button @click="reducePage">上一頁</button>
+                <div>{{currentNum}}/{{products.length}}</div>
+                <button @click="addPage">下一頁</button>
             </section>
 
         </main>
@@ -103,14 +105,11 @@
 
     <script src="js/vendors/vue.global.prod.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
-        integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./js/backProduct.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
     <script src="./js/checkBackSession.js"></script>
 
-
+    <script src="./js/backProduct.js"></script>
 
 </body>
 
