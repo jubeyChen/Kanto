@@ -29,6 +29,7 @@
 
             <div class="cart_bread">
                 <ul>
+
                     <li>
                         <i class="payment_icons_cart">shopping_cart</i>
                     </li>
@@ -48,7 +49,21 @@
                         <h4>會員人資料</h4>
                         <span class="payment_line"></span>
                         <ul>
-
+                            <!-- <li v-for="(isaccountinfo, index) in isAccountInfo" :key="index">
+                                <p id="payment_full_name" >{{FullName}} </p>
+                                <p id="payment_email">{{AccountID}} </p>
+                                <p id="phone">{{Phone}} </p>
+        
+                            </li> -->
+                            <li>
+                                <input type="text" id="payment_full_name" name="full_name" required placeholder="請輸入名字">
+                            </li>
+                            <li>
+                                <input type="email" id="payment_email" name="email" required placeholder="請輸入電子信箱">
+                            </li>
+                            <li>
+                                <input type="tel" id="phone" name="phone" required placeholder="請輸入手機號">
+                            </li>
                         </ul>
                     </form>
                 </div>
@@ -145,7 +160,7 @@
 
                             <li class="payment_price_selection">
                                 <label for="payment_discount_amount">折扣金額</label>
-                                <p>NT${{isDisscount}}</p>
+                                <p>NT${{isDiscount}}</p>
                             </li>
 
                             <span class="payment_line"></span>
@@ -173,6 +188,7 @@
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+    
     <script src="./js/payment.js"></script>
 
 

@@ -26,20 +26,6 @@ const app = Vue.createApp({
             this.calculateTotal();
           },
 
-          // selectOneChanged() {
-          //   // Check if all individual checkboxes are checked
-          //   this.selectAll = this.shoppingList.every((shoppinglist) => shoppinglist.selectOne);
-          
-          //   // Recalculate the total
-          //   this.calculateTotal();
-          // },
-          
-          // selectAllChanged() {
-          //   this.shoppingList.forEach((shoppinglist) => {
-          //     shoppinglist.selectOne = this.selectAll;
-          //   });
-          // },
-          
           calculateTotal() {
             this.isTotal = this.shoppingList.reduce((total, shoppinglist) => {
               return total + Number(shoppinglist.total);
@@ -54,13 +40,9 @@ const app = Vue.createApp({
                 .then(response => {
                    this.isProductInfo = response.data;
                     console.log(this.isProductInfo[0]);
-
                 })
-                .catch(error => {
-                    console.log(error);
-                    window.location.href = "loginRegister.html";
-                });
         },
+
         clearData() {
             // Remove data from local storage
             localStorage.removeItem('shoppingList');
@@ -80,6 +62,22 @@ const app = Vue.createApp({
 });
 app.mount('#app');
 
+
+
+
+          // selectOneChanged() {
+          //   // Check if all individual checkboxes are checked
+          //   this.selectAll = this.shoppingList.every((shoppinglist) => shoppinglist.selectOne);
+          
+          //   // Recalculate the total
+          //   this.calculateTotal();
+          // },
+          
+          // selectAllChanged() {
+          //   this.shoppingList.forEach((shoppinglist) => {
+          //     shoppinglist.selectOne = this.selectAll;
+          //   });
+          // },
 
         // function refresh() {
         //     // 1. read LS
