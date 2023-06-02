@@ -22,65 +22,79 @@
         <img src="image/foodBlog/banner3.jpg" alt="">
     </div>
 
-<div id="app">
-    <!--搜尋button-->
-    <section class="food_sec0 container">
-        <ul>
-            <li><a href="#" class="btn-sec-l" :class="{'-active': selectCity === '東京都'}" @click="selectCity = '東京都'">東京都</a></li>
-            <li><a href="#" class="btn-sec-l" :class="{'-active': selectCity === '神奈川縣'}" @click="selectCity = '神奈川縣'">神奈川縣</a></li>
+    <div id="app">
+        <!--搜尋button-->
+        <section class="food_sec0 container">
+            <ul>
+                <li v-for="(item,index) in Region" :key="index"><a href="#" class="btn-sec-l"
+                        :class="{ '-active': activeIndex === index }" @click.prevent="handleClick(index)">{{item}}</a>
+                </li>
+                <!-- <li><a href="#" class="btn-sec-l" :class="{'-active': selectCity === '東京都'}" @click="selectCity = '東京都'">東京都</a></li> -->
+                <!-- <li><a href="#" class="btn-sec-l" :class="{'-active': selectCity === '神奈川縣'}" @click="selectCity = '神奈川縣'">神奈川縣</a></li>
             <li><a href="#" class="btn-sec-l">千葉縣</a></li>
             <li><a href="#" class="btn-sec-l">埼玉縣</a></li>
             <li><a href="#" class="btn-sec-l">群馬縣</a></li>
             <li><a href="#" class="btn-sec-l">栃木縣</a></li>
-            <li><a href="#" class="btn-sec-l">茨城縣</a></li>
-        </ul>
-    </section>
+            <li><a href="#" class="btn-sec-l">茨城縣</a></li> -->
+            </ul>
+        </section>
 
 
 
-    <!-- 東京介紹 -->
-    <section class="container food_sec1" v-for="(city,index) in filterCity" :key="index">
-        <div class="event_inner">
-            <h2>{{city.title}}</h2>
-            <h3>{{city.titleE}}</h3>
-        </div>
-        <div class="main-event">
-            <div class="main-pic">
-                <img :src="img + city.img1" >
+        <!-- 東京介紹 -->
+        <section class="container food_sec1" v-if="city">
+            <div class="event_inner">
+                <h2>{{city.title}}</h2>
+                <h3>{{city.titleE}}</h3>
             </div>
-            <div class="main-text">
-                <p>{{city.content1}}</p>
+            <div class="main-event">
+                <div class="main-pic">
+                    <img :src="img + city.img1">
+                </div>
+                <div class="main-text">
+                    <p>{{city.content1}}</p>
+                </div>
             </div>
-        </div>
-        <div class="main-event2">
-            <div class="main-text">
-                <p>{{city.content2}}</p>
-            </div>
-            <div class="main-pic">
-                <img :src="img + city.img2">
-            </div>
-            
-        </div>
-    </section>
-    <!-- 餐廳介紹 -->
-    <section class="food_sec2 container">
-        <ul>
-            <li>
-                <div class="img_back">
-                    <img src="image/foodBlog/event1.jpg" alt="">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1619.861490581995!2d139.772767!3d35.708434!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c20769da7dd%3A0x732adfa1c37bc164!2sGenpin%20Ueno!5e0!3m2!1szh-TW!2sus!4v1683807915924!5m2!1szh-TW!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="food_map1"></iframe>
+            <div class="main-event2">
+                <div class="main-text">
+                    <p>{{city.content2}}</p>
+                </div>
+                <div class="main-pic">
+                    <img :src="img + city.img2">
                 </div>
 
-                <div class="food_text">
-                    <div class="text_box">
-                        <p>日本人氣河豚餐廳 | 河豚料理名店・玄品河豚</p>
-                        <p>地址：台東區上野2-1-6 1F-4F</p>
-                        <p>如何抵達：<br>JR御徒町站步行3分鐘 , 地下鐵銀座線上野廣小路站步行1分鐘</p>
+            </div>
+            <div class="rwd-main-event2">
+                <div class="main-pic">
+                    <img :src="img + city.img2">
+                </div>
+                <div class="main-text">
+                    <p>{{city.content2}}</p>
+                </div>
+
+            </div>
+        </section>
+        <!-- 餐廳介紹 -->
+        <section class="food_sec2 container">
+            <ul>
+                <li v-for="(foodBox,index) in paginatedActivities" :key="index">
+                    <div class="img_back">
+                        <img :src="img + foodBox.Image">
+                        <iframe :src=foodBox.MapUrl width="600" height="450" style="border:0;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade" :id="'food_map'+index"
+                            :class="{'open':foodBox.show_map === true}"></iframe>
                     </div>
-                    <div class="map" id="map1">MAP</div>
-                </div>
-            </li>
-            <li>
+
+                    <div class="food_text">
+                        <div class="text_box">
+                            <p v-if="foodBox.Title">{{foodBox.Title}}</p>
+                            <p>{{foodBox.Address}}</p>
+                            <p>如何抵達：<br>{{foodBox.Content}}</p>
+                        </div>
+                        <div class="map" :id="'map'+index" @click="foodBox.show_map = !foodBox.show_map">MAP</div>
+                    </div>
+                </li>
+                <!-- <li>
                 <div class="img_back">
                     <img src="image/foodBlog/event2.jpg" alt="">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1620.1607153936377!2d139.702814!3d35.693707!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cd9945a8f43%3A0x9f5080e961d66a2d!2sNikuya%20no%20Daidokoro!5e0!3m2!1szh-TW!2sus!4v1683811154194!5m2!1szh-TW!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="food_map2"></iframe>
@@ -157,30 +171,34 @@
 
                     <div class="map6" id="map1">MAP</div>
                 </div>
-            </li>
-        </ul>
-    </section>
-    <!--分頁按鈕-->
-    <section class="container food-sec4">
-        <div class="btn">
-            <a href="#" class="btn-pri-l">1</a>
-            <a href="#" class="btn-pri-l">2</a>
-            <a href="#" class="btn-pri-l">3</a>
-            <a href="#" class="btn-pri-l">4</a>
-            <a href="#" class="btn-pri-l">5</a>
-            <a href="#" class="btn-pri-l">></a>
-        </div>
-    </section>
+            </li> -->
+            </ul>
+        </section>
+        <!--分頁按鈕-->
+        <section class="container food-sec4">
+            <div class="btn">
+                <a href="#" class="btn-pri-l" v-for="page in totalPages" :key="page" @click.prevent="goToPage(page)">
+                    {{page}}</a>
+                <!-- <a href="#" class="btn-pri-l">1</a>
+                <a href="#" class="btn-pri-l">2</a>
+                <a href="#" class="btn-pri-l">3</a>
+                <a href="#" class="btn-pri-l">4</a>
+                <a href="#" class="btn-pri-l">5</a>
+                <a href="#" class="btn-pri-l">></a> -->
+            </div>
+        </section>
 
-    <section class="container phone_food-sec4">
-        <div class="btn">
-            <a href="#" class="btn-pri-l">1</a>
-            <a href="#" class="btn-pri-l">2</a>
-            <a href="#" class="btn-pri-l">3</a>
-            <a href="#" class="btn-pri-l">></a>
-        </div>
-    </section>
-</div>
+        <section class="container phone_food-sec4">
+            <div class="btn">
+                <a href="#" class="btn-pri-l" v-for="page in totalPages" :key="page" @click.prevent="goToPage(page)">
+                    {{page}}</a>
+                <!-- <a href="#" class="btn-pri-l">1</a>
+                <a href="#" class="btn-pri-l">2</a>
+                <a href="#" class="btn-pri-l">3</a>
+                <a href="#" class="btn-pri-l">></a> -->
+            </div>
+        </section>
+    </div>
 
     <!-- 以下Footer區域 -->
     @@include('./layout/footer.html')
@@ -191,26 +209,27 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./js/foodBlog.js"></script>
 <script>
-    $(function(){
-        $(".map").click(function(){
-            $("#food_map1").toggleClass('open');
-        });
-        $(".map2").click(function(){
-            $("#food_map2").toggleClass('open');
-        });
-        $(".map3").click(function(){
-            $("#food_map3").toggleClass('open');
-        });
-        $(".map4").click(function(){
-            $("#food_map4").toggleClass('open');
-        });
-        $(".map5").click(function(){
-            $("#food_map5").toggleClass('open');
-        });
-        $(".map6").click(function(){
-            $("#food_map6").toggleClass('open');
-        });
-    })
- 
+    // $(function () {
+    //     $(".map").click(function () {
+    //         $("#food_map1").toggleClass('open');
+    //     });
+    //     $(".map2").click(function () {
+    //         $("#food_map2").toggleClass('open');
+    //     });
+    //     $(".map3").click(function () {
+    //         $("#food_map3").toggleClass('open');
+    //     });
+    //     $(".map4").click(function () {
+    //         $("#food_map4").toggleClass('open');
+    //     });
+    //     $(".map5").click(function () {
+    //         $("#food_map5").toggleClass('open');
+    //     });
+    //     $(".map6").click(function () {
+    //         $("#food_map6").toggleClass('open');
+    //     });
+    // })
+
 </script>
+
 </html>
