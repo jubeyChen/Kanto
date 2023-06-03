@@ -112,7 +112,6 @@
                                                 <h4>篩選出發日期</h4>
                                             </div>
                                             <div class="content">
-                                                
                                                 <div class="calendar">
                                                     <div class="calendar-header">
                                                         <div class="calendar-header-item prev-month">&lt;</div>
@@ -166,7 +165,7 @@
                     <ul>
                         <li v-for="item in paginatedItems">
                             <div class="jpg">
-                                <img :src="'./image/productPage/product_img/' + item.P_image" alt="">
+                                <img :src="'./image/productPage/'+ item.ID + '/' + item.Banner1" alt="">
                             </div>
 
                             <div class="word">
@@ -209,10 +208,6 @@
                         <li @click="goToPage(page)" v-for="page in totalPages" :key="page"><a>{{page}}</a></li>
                     </ul>
                 </div>
-
-                <!-- <button @click="goToPage(page)" v-for="page in totalPages" :key="page">
-                    {{ page }}
-                  </button> -->
                   
                   
 
