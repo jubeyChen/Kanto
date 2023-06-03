@@ -7,15 +7,12 @@ const app = Vue.createApp({
       isTotal: 0, // Define isTotal as a data property and initialize it to 0
       isDiscount: '',
       isSubTotal: [],
-      isAccountInfo: '',
-      user: '',
-      accountInfo: {
-        ID: '',
-        AccountID: '',
-        Phone: '',
-        FullName: '',
-      },
-      isCouponInfo: '',
+      accountInfo: '',
+      accountID:'',
+      fullName:'',
+      phone:'',
+      couponID: '',
+      selectedCoupon: ''
     };
   },
   created() {
@@ -28,39 +25,41 @@ const app = Vue.createApp({
   },
 
   methods: {
-
+    
     async getAccountInfo() {
       await axios.post('../php/getAccPayment.php')
         .then(response => {
           this.isAccountInfo = response.data;
           console.log(this.isAccountInfo);
-        })
-
+  
+          // 读取二维数组的值
+          if (Array.isArray(this.isAccountInfo) && this.isAccountInfo.length > 0) {
+            const accountInfo = this.isAccountInfo[0];
+            this.accountId = accountInfo.AccountID;
+            this.fullName = accountInfo.FullName;
+            this.phone = accountInfo.Phone;  
+          }
+        });
     },
 
-    // async getAccountInfo() {
-    //   await axios.post('../php/GetAccountInfo.php', { user: this.user })
-    //       .then(response => {
-    //           this.accountInfo.ID = response.data[0].ID;
-    //           this.accountInfo.AccountID = response.data[0].AccountID;
-    //           this.accountInfo.Phone = response.data[0].Phone;
-    //           this.accountInfo.Phone = response.data[0].FullName;
-    //           console.log(this.user);
-    //       })
-    // .catch(error => {
-    //     console.log(error);
-    //     window.location.href = "loginRegister.html";
-    // });
-    // },
-
-    // async getCouponInfo() {
-    //   await axios.post('../php/getCouponForPayment.php.php')
-    //   .then(response => {
-    //     this.isCouponInfo = response.data;
-    //     console.log(this.isCouponInfo);
-    //   })
-    // },
-
+    async getMemberCoupon() {
+      await axios.post('../php/getCouponForPayment.php')
+        .then(response => {
+          this.isCoupon = response.data;
+          console.log(this.isCoupon);
+    
+          if (Array.isArray(this.isCoupon) && this.isCoupon.length > 0) {
+            this.couponID = this.isCoupon[0].CouponID;
+            this.selectedCoupon = `coupon${this.couponID}`;
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+    ,
+    
+    
     calculateTotal() {
       this.isTotal = this.shoppingList.reduce((total, shoppinglist) => {
         return total + Number(shoppinglist.total);
@@ -85,6 +84,7 @@ const app = Vue.createApp({
     //     window.location.href= "../dist/loginRegister.html"
     // }
     await this.getAccountInfo();
+    await this.getMemberCoupon();
     // await this.getCouponInfo();
     
   },

@@ -58,11 +58,9 @@ const app = Vue.createApp({
         }
         await this.getProductInfo();        
     },
- 
+
 });
 app.mount('#app');
-
-
 
 
           // selectOneChanged() {

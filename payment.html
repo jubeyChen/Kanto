@@ -49,20 +49,17 @@
                         <h4>會員人資料</h4>
                         <span class="payment_line"></span>
                         <ul>
-                            <!-- <li v-for="(isaccountinfo, index) in isAccountInfo" :key="index">
-                                <p id="payment_full_name" >{{FullName}} </p>
-                                <p id="payment_email">{{AccountID}} </p>
-                                <p id="phone">{{Phone}} </p>
-        
-                            </li> -->
                             <li>
-                                <input type="text" id="payment_full_name" name="full_name" required placeholder="請輸入名字">
+                                <p>帳戶</p>
+                                <input type="text" id="payment_full_name" v-model="accountId" >
                             </li>
                             <li>
-                                <input type="email" id="payment_email" name="email" required placeholder="請輸入電子信箱">
+                                <p>全名</p>
+                                <input type="email" id="payment_email" v-model="fullName" >
                             </li>
                             <li>
-                                <input type="tel" id="phone" name="phone" required placeholder="請輸入手機號">
+                                <p>電話</p>
+                                <input type="tel" id="phone" name="phone" v-model="phone">
                             </li>
                         </ul>
                     </form>
@@ -92,21 +89,21 @@
                         <h4>電子發票</h4>
                         <span class="payment_line"></span>
                         <ul>
-                            <li>
+                            <!-- <li>
                                 <input type="radio" id="payment_option1" name="choices" value="option1">
                                 <label for="option1">電子信箱</label>
-                            </li>
+                            </li> -->
                             <li>
                                 <input id="payment_email" name="billing_address" required placeholder="電子信箱"></input>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <input type="radio" id="payment_option1" name="choices" value="option1">
                                 <label for="option1">郵寄地址</label>
                             </li>
                             <li>
                                 <textarea lock id="payment_shipping_address" name="shipping_address" required
                                     placeholder="郵寄地址"></textarea>
-                            </li>
+                            </li> -->
                         </ul>
                     </form>
                 </div>
@@ -143,12 +140,12 @@
 
                             </li>
                             <li class="payment_select">
-                                <select id="payment_coupon" name="請選擇優惠卷">
+                                <select id="payment_coupon" name="請選擇優惠卷" v-model="selectedCoupon">
                                     <option value="" disabled selected>請選擇優惠卷</option>
-                                    <option value="coupon1">Coupon 1</option>
-                                    <option value="coupon2">Coupon 2</option>
-                                    <option value="coupon3">Coupon 3</option>
-                                </select>
+                                    <option value="coupon1" v-if="couponID === 1">Coupon 1</option>
+                                    <option value="coupon2" v-if="couponID === 2">Coupon 2</option>
+                                    <option value="coupon3" v-if="couponID === 3">Coupon 3</option>
+                                </select>   
                             </li>
 
                             <span class="payment_line"></span>
