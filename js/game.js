@@ -53,29 +53,6 @@
 //   }
 
 
-// //  function stopAnimation() {
-// //   if (document.getElementById(`result`)) {
-// //     const num = Math.floor(Math.random() * 10);
-// //     document.getElementById(`result`).classList.remove('is-play');
-// //     document.getElementById(`result`).style.transform = `translateY(${-num * 10}%)`;
-// //     document.getElementsByClassName('cont_principal')[num].style.display = 'block';
-// //     document.getElementsByClassName('coupon')[num].style.display = 'block';
-
-// //     if (prevCartTop) {
-// //         prevCartTop.style.display = 'none';
-// //       }
-// //       prevCartTop = document.getElementsByClassName('cont_principal')[num];
-// //       prevCartTop.style.display = 'block';
-// //       coupon = document.getElementsByClassName('coupon')[num];
-// //       coupon.style.display = 'block';
-// //     // if (prevCartTop1) {
-// //     //   prevCartTop1.style.display = 'none';
-// //     // }
-// //     // prevCartTop1 = document.getElementsByClassName('coupon')[num];
-// //     // prevCartTop1.style.display = 'block';
-// //   }
-
-
 
 // }
 
@@ -137,20 +114,33 @@ Vue.createApp({
       resultId: "result",
       resultTransform: "none",
       gameWrapperVisible: false,
-      prevCartTopVisible: false,
-      couponVisible: false,
-      prevCartTopRef: null,
-      couponRef: null,
       c: 0,
-      openSlider: false
+      openSlider: false,
+      autoPlay: false,
+      img: "image/productPage/product_img/",
+      prevCartTop: null,
+      coupon: null,
+      gameWrapper: null,
+      num: null,
+      showModal: false,
+
     }
   },
   methods: {
+
     openTheSlider() {
       this.openSlider = true;
+      $('html,body').animate({ scrollTop: '250px' }, 1000);
+      return false;
     },
     closeSlider() {
       this.openSlider = false;
+    },
+    play() {
+      this.autoPlay = true;
+    },
+    stopPlay() {
+      this.autoPlay = false;
     },
     async getGame() {
       await axios.post('../php/game.php')
@@ -166,60 +156,85 @@ Vue.createApp({
     startAnimation() {
       this.resultVisible = true;
       this.resultTransform = "none";
-      this.gameWrapperVisible = false;
-      this.prevCartTopVisible = false;
-      this.couponVisible = false;
+      this.gameWrapperVisible = false; // 將 gameWrapperVisible 設置為 true
+      // this.couponRef= false;
+      if(this.$refs.prevCartTop[this.num]&&this.$refs.coupon[this.num]){
+        this.$refs.prevCartTop[this.num].style.display = "none";
+        this.$refs.coupon[this.num].style.display = "none";
+      }
+      $('html,body').animate({ scrollTop: '250px' }, 1000);
+      return false;
+    
     },
     stopAnimation() {
-      const num = Math.floor(Math.random() * 4);
+      // console.log("dddd");
+      this.num = Math.floor(Math.random() * 10);
       this.resultVisible = false;
       this.gameWrapperVisible = true;
-      this.resultTransform = `translateY(${-num * 25}%)`;
-      this.$refs.prevCartTop[num].style.display = "block";
-      this.$refs.coupon[0].style.display = "block";
-
-      if (this.prevCartTopRef) {
+      this.resultTransform = `translateY(${-this.num * 10}%)`;
+      this.$refs.prevCartTop[this.num].style.display = "block";
+      this.$refs.coupon[this.num].style.display = "block";
+      if (this.prevCartTopRef&&this.couponRef) {
         this.prevCartTopRef.style.display = "none";
+        this.couponRef.style.display = "none";
       }
-      this.prevCartTopRef = this.$refs.prevCartTop[num];
+      this.prevCartTopRef = this.$refs.prevCartTop[this.num];
       this.prevCartTopRef.style.display = "block";
       this.prevCartTopRef.classList.add("down2");
-      this.couponRef = this.$refs.coupon[0];
+      this.couponRef = this.$refs.coupon[this.num];
       this.couponRef.style.display = "block";
       this.couponRef.classList.add("down");
-    },
-    funv() { },
-    openClose() {
-      const elements = this.$refs.prevCartTop;
+      $('html,body').animate({ scrollTop: '460px' }, 1000);
+      return false;
 
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].style.display = this.c % 2 === 0 ? "none" : "block";
-      }
 
-      this.c++;
+
     },
-    copyText() {
-      const range = document.createRange();
-      const texts = this.$refs.text;
-      range.selectNode(texts);
-      const selection = window.getSelection();
-      selection.removeAllRanges();
-      selection.addRange(range);
-      document.execCommand("copy");
-      selection.removeAllRanges();
+    toggleModal() {
+      this.showModal = !this.showModal;
+    },
+    // openClose() {
+    //   const elements = this.$refs.prevCartTop;
+
+    //   for (let i = 0; i < elements.length; i++) {
+    //     elements[i].style.display = this.c % 2 === 0 ? "cont_modal cont_modal_active" : "cont_modal";
+    //   }
+
+    //   this.c++;
+    //   console.log('aaa');
+    //   // this.contModal = this.$refs.cont_modal;
+    // },
+    copyText(code) {
+    
+
+      navigator.clipboard.writeText(code)
+        .then(() => {
+          console.log('文字已複製到剪貼簿');
+        })
+        .catch((error) => {
+          console.error('複製失敗:', error);
+        });
     }
 
   },
   mounted() {
-    const elements = this.$refs.prevCartTop;
+    // const elements = this.$refs.prevCartTop;
 
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].style.display = "block";
-    }
+    // for (let i = 0; i < elements.length; i++) {
+    //   elements[i].style.display = "block";
+    // }
 
+    this.prevCartTop = document.getElementsByClassName('cont_principal')[0];
+    this.coupon = document.getElementsByClassName('coupon')[0];
+    this.gameWrapper = document.querySelector('#game_wapper');
   },
   computed: {
-
+    modalClasses() {
+      return {
+        'cont_modal': true,
+        'cont_modal_active': !this.showModal
+      };
+    }
   },
   async mounted() {
     await this.getGame();

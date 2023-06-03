@@ -1274,8 +1274,10 @@ div.product_inner_phone {
                     height: 100%;
 
                     img {
-                        // height: 100%;
                         width: 100%;
+                        object-fit: cover;
+                        height: 414px;
+                        display: block;
                     }
                 }
             }

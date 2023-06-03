@@ -135,6 +135,20 @@
             </div> <!---------------- 推薦的地方 ---------------->
         </div>
 
+    </div><!-- APP -->
+
+    <!-- 以下Footer區域 -->
+    @@include('./layout/footer.html')
+
+    <!-- 以下共用外接js區域 -->
+    @@include('./layout/js.html')
+
+    <script src="./js/cart.js"></script>
+
+</body>
+
+</html>
+
         <!-- 加東西先進 localstorage -->
         <!-- <li>
                 <div class="cart_pic_div">
@@ -153,23 +167,6 @@
             <p>$1500</p>
             <button id="view-details-btn" @click="click_view_detail_btn($event.target)">View Details</button>
         </li> -->
-
-    </div><!-- APP -->
-
-    <!-- 以下Footer區域 -->
-    @@include('./layout/footer.html')
-
-    <!-- 以下共用外接js區域 -->
-    @@include('./layout/js.html')
-
-    <script src="./js/cart.js"></script>
-
-</body>
-
-</html>
-
-
-
 
 <!---------------- 手機版購物車 ---------------->
 <!-- <div class="cart_mobile_section1"> -->

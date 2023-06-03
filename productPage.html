@@ -539,8 +539,8 @@
                             <p class="total">總價</p>
                             <h4>NT$<span>{{total}}</span> </h4>
                             <div class="btn">
-                                <button type="button" class="btn-cancel-l">加入購物車</button>
-                                <button type="button" class="btn-pri-l">
+                                <button type="button" class="btn-cancel-l" @click="addCart">加入購物車</button>
+                                <button type="button" class="btn-pri-l" @click="checkLogin">
                                     <a href="./cart.html">立即預定</a>
                                 </button>
                             </div>
@@ -625,13 +625,13 @@
                 <div class="swiper myPhoneSwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img :src="phone_banner1" alt="">
+                            <img :src="banner1" alt="">
                         </div>
                         <div class="swiper-slide">
-                            <img :src="phone_banner2" alt="">
+                            <img :src="banner2" alt="">
                         </div>
                         <div class="swiper-slide">
-                            <img :src="phone_banner3" alt="">
+                            <img :src="banner3" alt="">
                         </div>
                     </div>
                     <!-- <div class="left_btn">
@@ -974,10 +974,10 @@
                 </div>
                 <div class="btn">
                     <div class="addcart">
-                        <button type="button" class="btn-cancel-l">加入購物車</button>
+                        <button type="button" class="btn-cancel-l" @click="addCart">加入購物車</button>
                     </div>
                     <div class="buy">
-                        <button type="button" class="btn-pri-l">
+                        <button type="button" class="btn-pri-l" @click="checkLogin">
                             <a href="./cart.html">立即預定</a>
                         </button>
                     </div>

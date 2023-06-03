@@ -29,6 +29,7 @@
 
             <div class="cart_bread">
                 <ul>
+
                     <li>
                         <i class="payment_icons_cart">shopping_cart</i>
                     </li>
@@ -48,7 +49,18 @@
                         <h4>會員人資料</h4>
                         <span class="payment_line"></span>
                         <ul>
-
+                            <li>
+                                <p>帳戶</p>
+                                <input type="text" id="payment_full_name" v-model="accountId" >
+                            </li>
+                            <li>
+                                <p>全名</p>
+                                <input type="email" id="payment_email" v-model="fullName" >
+                            </li>
+                            <li>
+                                <p>電話</p>
+                                <input type="tel" id="phone" name="phone" v-model="phone">
+                            </li>
                         </ul>
                     </form>
                 </div>
@@ -77,21 +89,21 @@
                         <h4>電子發票</h4>
                         <span class="payment_line"></span>
                         <ul>
-                            <li>
+                            <!-- <li>
                                 <input type="radio" id="payment_option1" name="choices" value="option1">
                                 <label for="option1">電子信箱</label>
-                            </li>
+                            </li> -->
                             <li>
                                 <input id="payment_email" name="billing_address" required placeholder="電子信箱"></input>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <input type="radio" id="payment_option1" name="choices" value="option1">
                                 <label for="option1">郵寄地址</label>
                             </li>
                             <li>
                                 <textarea lock id="payment_shipping_address" name="shipping_address" required
                                     placeholder="郵寄地址"></textarea>
-                            </li>
+                            </li> -->
                         </ul>
                     </form>
                 </div>
@@ -128,12 +140,12 @@
 
                             </li>
                             <li class="payment_select">
-                                <select id="payment_coupon" name="請選擇優惠卷">
+                                <select id="payment_coupon" name="請選擇優惠卷" v-model="selectedCoupon">
                                     <option value="" disabled selected>請選擇優惠卷</option>
-                                    <option value="coupon1">Coupon 1</option>
-                                    <option value="coupon2">Coupon 2</option>
-                                    <option value="coupon3">Coupon 3</option>
-                                </select>
+                                    <option value="coupon1" v-if="couponID === 1">Coupon 1</option>
+                                    <option value="coupon2" v-if="couponID === 2">Coupon 2</option>
+                                    <option value="coupon3" v-if="couponID === 3">Coupon 3</option>
+                                </select>   
                             </li>
 
                             <span class="payment_line"></span>
@@ -145,7 +157,7 @@
 
                             <li class="payment_price_selection">
                                 <label for="payment_discount_amount">折扣金額</label>
-                                <p>NT${{isDisscount}}</p>
+                                <p>NT${{isDiscount}}</p>
                             </li>
 
                             <span class="payment_line"></span>
@@ -173,6 +185,7 @@
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
+    
     <script src="./js/payment.js"></script>
 
 

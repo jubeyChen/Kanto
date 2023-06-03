@@ -38,7 +38,7 @@
                 <div class="btn" id="game_btn" @click="openTheSlider">用拉霸機來決定旅程</div>
             </div>
 
-            <div class="game_btn_rwd">
+            <div class="game_btn_rwd" @click="openTheSlider">
                 <div class="btn" id="game_btn_rwd">用拉霸機來決定旅程</div>
             </div>
 
@@ -88,7 +88,7 @@
 
         <!-- 拉霸機 -->
         <div class="game_container_slider" :class="{'open': openSlider == true}">
-            <div class="game_wapper" id="game_wapper">
+            <div class="game_wapper" id="game_wapper" :class="{'on': gameWrapperVisible}">
                 <span class="lightbox-close" @click="closeSlider">&times;</span>
                 <div class="title">
                     <h2>讓拉霸機決定你的行程</h2>
@@ -99,11 +99,12 @@
                     <div class="results">
 
                         <div class="result">
-                            <div class="result-txt " id="result">
-                                <div class="result-item">富士山一日遊</div>
-                                <div class="result-item">東京澀谷天空</div>
+                            <div class="result-txt " id="result" :class="{'is-play': resultVisible == true}"
+                                :style="{ transform: resultTransform }">
+                                <div class="result-item" v-for="(items,index) in game" :key="index">{{items.Name}}</div>
+                                <!-- <div class="result-item">東京澀谷天空</div>
                                 <div class="result-item">東京迪士尼度假區門票</div>
-                                <div class="result-item">日本飯能嚕嚕米樂園</div>
+                                <div class="result-item">日本飯能嚕嚕米樂園</div> -->
                                 <!-- <div class="result-item">富士山一日遊5</div>
                                 <div class="result-item">富士山一日遊6</div>
                                 <div class="result-item">富士山一日遊7</div>
@@ -113,18 +114,21 @@
                             </div>
                         </div>
                         <!-- game-gtn -->
-                        <div class="btn-start" id="btn-start" onclick="startAnimation()">START</div>
-                        <div class="btn-stop" id="btn-stop" onclick="stopAnimation()">STOP</div>
+                        <!-- 原js -->
+                        <!-- <div class="btn-start" id="btn-start" onclick="startAnimation()">START</div> -->
+                        <!-- <div class="btn-stop" id="btn-stop" onclick="stopAnimation()">STOP</div> -->
+                        <div class="btn-start" id="btn-start" @click="startAnimation">START</div>
+                        <div class="btn-stop" id="btn-stop" @click="stopAnimation">STOP</div>
                         <!-- rwd-gamebtn -->
-                        <div class="btn-start-rwd" id="btn-start" onclick="startAnimation()">START</div>
-                        <div class="btn-stop-rwd" id="btn-stop" onclick="stopAnimation()">STOP</div>
+                        <div class="btn-start-rwd" id="btn-start" @click="startAnimation">START</div>
+                        <div class="btn-stop-rwd" id="btn-stop" @click="stopAnimation">STOP</div>
                         <!-- 卡片 -->
-                        <div class="cont_principal">
+                        <div class="cont_principal" v-for="(item,index) in game" :key="index" ref="prevCartTop">
                             <div class="cont_central">
-                                <div class="cont_modal cont_modal_active">
+                                <div :class="modalClasses">
                                     <div class="cont_photo">
                                         <div class="cont_img_back">
-                                            <img src="./image/game/game_card1.jpg" alt="" />
+                                            <img :src="img + item.P_image" />
                                         </div>
                                     </div>
                                     <div class="cont_text_ingredients">
@@ -132,7 +136,7 @@
 
                                             <div class="cont_tabs">
 
-                                                <p>富士山一日遊</p>
+                                                <p>{{item.Name}}</p>
                                             </div>
 
                                             <div class="cont_text_det_preparation">
@@ -140,11 +144,10 @@
                                                 <div class="cont_text_det_preparation">
 
                                                     <div class="cont_info_preparation">
-                                                        <p>參加富士山及周邊地區的經典一日遊，迎接日本的春季！前往東京最好的春季景點。
-                                                        </p>
+                                                        <p>{{item.Content}}</p>
                                                     </div>
 
-                                                    <a href="./productPage.html">查看詳情</a>
+                                                    <a :href="`./productPage.html?id=${item.ID}`">查看詳情</a>
 
                                                 </div>
 
@@ -156,16 +159,15 @@
                                             </div>
 
                                         </div>
-                                        <div class="cont_btn_open_dets">
-                                            <a href="#e" onclick="open_close()"><i
-                                                    class="material-icons">&#xE314;</i></a>
+                                        <div class="cont_btn_open_dets" @click="toggleModal">
+                                            <a href="#e"><i class="material-icons">&#xE314;</i></a>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="cont_principal">
+                        <!-- <div class="cont_principal">
                             <div class="cont_central">
                                 <div class="cont_modal cont_modal_active">
                                     <div class="cont_photo">
@@ -305,13 +307,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- 優惠捲 -->
-                        <div class="coupon">
+                        <div class="coupon" v-for="(coupon,index) in game" ref="coupon">
                             <div class="coupon_box">
                                 <p>COUPON</p>
-                                <div class="text" id="text">22345</div>
-                                <button id="coupon_btn">複製</button>
+                                <div class="text" id="text">{{coupon.CouponCode}}</div>
+                                <button id="coupon_btn" @click="copyText(coupon.CouponCode)">複製</button>
                                 <p>請至會員中心兌換</p>
                                 <div class="obj">
                                     <span></span>
@@ -341,31 +343,31 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
-        $(function () {
-            // $("#game_btn").click(function () {
-            //     $(".game_container_slider").toggleClass('open');
-            // });
-            // $("#game_btn_rwd").click(function () {
-            //     $(".game_container_slider").toggleClass('open');
-            // });
+        // $(function () {
+        //     // $("#game_btn").click(function () {
+        //     //     $(".game_container_slider").toggleClass('open');
+        //     // });
+        //     // $("#game_btn_rwd").click(function () {
+        //     //     $(".game_container_slider").toggleClass('open');
+        //     // });
 
 
-            // $(".lightbox-close").click(function () {
-            //     $(".game_container_slider").toggleClass('open');
-            // });
-            $('#game_btn').click(function () {
-                $('html,body').animate({ scrollTop: '250px' }, 1000);
-                return false;
-            });
-            $('#btn-stop').click(function () {
-                $('html,body').animate({ scrollTop: '460px' }, 1000);
-                return false;
-            });
-            $('#btn-start').click(function () {
-                $('html,body').animate({ scrollTop: '250px' }, 1000);
-                return false;
-            });
-        })
+        //     // $(".lightbox-close").click(function () {
+        //     //     $(".game_container_slider").toggleClass('open');
+        //     // });
+        //     // $('#game_btn').click(function () {
+        //     //     $('html,body').animate({ scrollTop: '250px' }, 1000);
+        //     //     return false;
+        //     // });
+        //     // $('#btn-stop').click(function () {
+        //     //     $('html,body').animate({ scrollTop: '460px' }, 1000);
+        //     //     return false;
+        //     // });
+        //     // $('#btn-start').click(function () {
+        //     //     $('html,body').animate({ scrollTop: '250px' }, 1000);
+        //     //     return false;
+        //     // });
+        // })
 
 
         var swiper = new Swiper(".mySwiper", {
