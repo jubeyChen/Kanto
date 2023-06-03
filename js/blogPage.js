@@ -100,7 +100,7 @@ function getParameterByName(name, url) {
 }
 
 // 使用 getParameterByName 函式來獲取 URL 中的 id 參數值
-var blogId = getParameterByName('id');
+let blogId = getParameterByName('id');
 
 // 現在你可以使用 productId 變數來進一步處理和使用該值
 // console.log(blogId); // 印出 id 參數的值
@@ -142,6 +142,46 @@ axios.get('../php/blogPage.php?id=' + blogId)
         document.querySelectorAll('.event .content p')[k].innerHTML = response.data[k + 1][5];
     }
     
+})
+.catch(error => {
+    console.log(error);
+});
+
+/* ========== 取得3個亂數 ========== */
+
+function getRandomNumbers(min, max, count, avoidNumber) {
+    const numbers = [];
+    while (numbers.length < count) {
+        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        if (!numbers.includes(randomNumber) && randomNumber !== avoidNumber) {
+        numbers.push(randomNumber);
+        }
+    }
+    return numbers;
+}
+
+let min = 1;
+let max = 10;
+const count = 3;
+let avoidNumber = parseInt(blogId);
+
+const randomNumbers = getRandomNumbers(min, max, count, avoidNumber);
+console.log(randomNumbers);
+
+/* ========== 推薦景點 ========== */
+
+axios.get('../php/GetRandomBlog.php', { params: { randomNumbers } })
+.then(response => {
+
+    console.log(response.data);
+
+    for(let i = 0; i < response.data.length; i++){
+        document.querySelectorAll('.blogpage_another_event .title')[i].innerHTML = response.data[i].Title;
+        document.querySelectorAll('.blogpage_another_event img')[i].src = './image/blog/' + response.data[i].ID + '/banner1.jpg';
+        document.querySelectorAll('.blogpage_another_event p')[i].innerHTML = response.data[i].Content;
+        document.querySelectorAll('.blogpage_another_event a')[i].href = 'blogPage.html?id=' + response.data[i].ID;
+    }
+
 })
 .catch(error => {
     console.log(error);

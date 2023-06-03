@@ -708,7 +708,9 @@ div.blogpage_another_event {
 
                 img {
                     width: 100%;
+                    height: 250px;
                     display: block;
+                    object-fit: cover;
                 }
             }
 
@@ -716,6 +718,11 @@ div.blogpage_another_event {
                 p{
                     margin-top: 10px;
                     font-size: 20px;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
                     @include m{
                         font-size: 16px;
                     }
