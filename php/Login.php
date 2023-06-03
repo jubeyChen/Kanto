@@ -25,11 +25,22 @@ $statement->execute();
 //抓出全部且依照順序封裝成一個二維陣列
 $data2 = $statement->fetchAll();
 
+foreach($data2 as $index => $row){
+//     echo "狀態";
+//     echo $row["Status"];  
+    $a = $row["Status"];  
+    }
+
 //將二維陣列取出顯示其值
 if(count($data2) > 0){
-session_start();
-$_SESSION['memberID'] = $id; //記錄到session
-echo '登入成功';
+   if($a == 1){
+   session_start();
+   $_SESSION['memberID'] = $id; //記錄到session
+   echo '登入成功';
+   } else{
+      echo 'locked';
+   }
+
 } else{
    echo '登入失敗';
    }

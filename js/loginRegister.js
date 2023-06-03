@@ -50,7 +50,10 @@ Vue.createApp({
                     if (response.data === '登入成功') {
                         alert('登入成功');
                         window.location.href = '../dist/product.html';
-                    } else {
+                    } else if (response.data === 'locked'){
+                        alert('您的帳號已被鎖定，請洽客服為您協助，謝謝。');
+                    }
+                    else {
                         alert('帳號或密碼有誤，請重新輸入');
                         this.email = '';
                         this.pw = '';

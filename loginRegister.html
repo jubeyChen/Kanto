@@ -29,22 +29,7 @@
                                 :class="{ active: activeBtn === 'register'}">註冊</button></li>
                     </ul>
 
-                    <!-- Login區域 -->
-                    <!-- <div class="login tabContent" v-if="current_tab === 'login'">
-                        <form @submit="submitForm" action="../php/Login.php" method="post">
-                            <label for="loginID">帳號</label>
-                            <input type="email" id="loginID" name="loginID" class="textStyle" placeholder="請輸入電子信箱"
-                                v-model="email" required>
-                            <div v-if="!isValidEmail" class="errorMsg">請輸入有效的電子郵件地址。</div>
-                            <label for="loginPW">密碼</label>
-                            <input type="password" id="loginPW" name="loginPW" class="textStyle" placeholder="請輸入密碼"
-                                required>
-                            <p @click="showForget = true;">忘記密碼</p>
-                            <button type="submit" :disabled="!isValidEmail">登入</button>
-                        </form>
-                    </div> -->
-
-                    <!-- 測試PHP --- 登入  -->
+                    <!-- Login區域  -->
                     <div class="login tabContent" v-if="current_tab === 'login'">
                         <label for="loginID">帳號</label>
                         <input type="email" id="loginID" class="textStyle" placeholder="請輸入電子信箱" v-model="email">
@@ -55,26 +40,8 @@
                         <input type="button" class="loginBtn" :disabled="!isValidEmail" value="登入" @click="doLogin()">
                     </div>
 
-                    <!-- Register區域 -->
-                    <!-- <div class="register tabContent" v-if="current_tab === 'register'">
-                        <form @submit="submitForm" action="../php/Register.php" method="post">
-                            <label for="registerID">註冊帳號</label>
-                            <input type="email" id="registerID" name="registerID" class="textStyle"
-                                placeholder="請輸入電子信箱" v-model="email" required>
-                            <div v-if="!isValidEmail" class="errorMsg">請輸入有效的電子郵件地址。</div>
-                            <label for="registerPW">密碼</label>
-                            <input type="password" id="registerPW" name="registerPW" class="textStyle"
-                                placeholder="請輸入密碼" v-model="pw" required>
-                            <div v-if="!isValidPwLength" class="errorMsg">密碼至少需要4個字元。</div>
-                            <label for="confirmPW">再次確認密碼</label>
-                            <input type="password" id="confirmPW" class="textStyle" placeholder="請再次輸入密碼"
-                                v-model.lazy="pwCheck" required>
-                            <div v-if="!isPasswordMatch" class="errorMsg">您再次輸入的密碼有誤</div>
-                            <button type="submit" :disabled="!isValidEmail || !isPasswordMatch">註冊</button>
-                        </form>
-                    </div> -->
 
-                    <!-- 測試PHP --- 註冊  -->
+                    <!-- Register區域  -->
                     <div class="register tabContent" v-if="current_tab === 'register'">
                         <label for="registerID">註冊帳號</label>
                         <input type="email" id="registerID" class="textStyle" placeholder="請輸入電子信箱" v-model="email" @keyup="checkUnique()">
@@ -92,30 +59,8 @@
                 </div>
             </div>
 
-            <!-- 忘記密碼區域 -->
-            <!-- <div class="forget wrapper" v-if="showForget">
-                <div class="reset container" v-show="!showDone">
-                    <span @click="showForget = false"><i class="ai-cross"></i></span>
-                    <form method="post">
-                        <h3>重設密碼</h3>
-                        <label for="forgetID">請輸入您註冊Kanto的電子信箱，我們會發送重設密碼的信件至您的信箱。</label>
-                        <input type="email" id="forgetID" class="textStyle" placeholder="請輸入您註冊的電子信箱"
-                            v-model="forgetEmail">
-                        <input type="button" class="submitBtn" value="送出" :disabled="forgetEmail === ''"
-                            @click="showDone = true; sendEmail()">
-                    </form>
-                </div>
 
-                <div class="done container" v-show="showDone">
-                    <form action="">
-                        <h3>已傳送重置密碼的電子郵件</h3>
-                        <p>已將電子郵件傳送至您輸入的電子信箱帳號，請依照電子郵件中的指示重置密碼。</p>
-                        <button type="button" @click="showForget = false; showDone = false">完成</button>
-                    </form>
-                </div>
-            </div> -->
-
-            <!-- 測試PHP --- 忘記密碼  -->
+            <!-- 測試PHP --- 忘記密碼區域  -->
             <div class="forget wrapper" v-if="showForget">
                 <div class="reset container" v-show="!showDone">
                     <span @click="showForget = false"><i class="ai-cross"></i></span>
@@ -146,8 +91,8 @@
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
-    <script src="js/loginRegister.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="js/loginRegister.js"></script>
 
 </body>
 

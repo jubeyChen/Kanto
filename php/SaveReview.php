@@ -3,6 +3,7 @@
 include('Mysql.php'); //資料庫連線
 
 header('Content-Type: application/json');
+ini_set("display_errors", "On");
 
 $ProductID = htmlspecialchars($_POST['ProductID']);
 $MemberID = htmlspecialchars($_POST['MemberID']);
@@ -31,8 +32,8 @@ if(isset($_FILES["IMG"])){
         //Server上的暫存檔路徑含檔名
        $filePath_Temp = $fileTmpName_arr[$i];
 
-        // $path = "../dist/image/productPage/".$ProductID."/reviewPhoto/"; //放上server的路徑
-      $path = $ServerRoot."/Kanto/dist/image/productPage/".$ProductID."/reviewPhoto/"; //本機端的路徑
+        $path = "../dist/image/productPage/".$ProductID."/reviewPhoto/"; //放上server的路徑
+    //   $path = $ServerRoot."/Kanto/dist/image/productPage/".$ProductID."/reviewPhoto/"; //本機端的路徑
       if (!is_dir($path)) {
        mkdir($path, 0777, true);
      }
@@ -87,7 +88,7 @@ $affectedRow = $statement->execute();
 
 if($affectedRow > 0){
 
-    $sql2 = "UPDATE mydb.orderDetail SET Reviewed = 1 WHERE ID = ?";
+    $sql2 = "UPDATE orderDetail SET Reviewed = 1 WHERE ID = ?";
     $statement2 = $pdo->prepare($sql2);
     $statement2->bindParam(1, $OrderDetailID);
     $affectedRow2 = $statement2->execute();
@@ -95,7 +96,6 @@ if($affectedRow > 0){
     if($affectedRow2 > 0){
         echo "done";
     }
-
        }else{
               echo "fail";
        }

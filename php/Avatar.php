@@ -5,6 +5,7 @@ include('Mysql.php'); //資料庫連線
 // 確保 Content-Type 是 application/json
 header('Content-Type: application/json');
 
+ini_set("display_errors", "On");
 //上傳照片的使用者ID
 $id = $_POST["ID"];
 
@@ -22,8 +23,8 @@ if($_FILES["Avatar"]["error"] > 0){
     //Web根目錄真實路徑
     $ServerRoot = $_SERVER["DOCUMENT_ROOT"];
 
-    // $path = "../dist/image/member/".$id."/avatar/"; // 放到server上使用
-    $path = $ServerRoot."/Kanto/dist/image/member/".$id."/avatar/"; //本機端的路徑
+    $path = "../dist/image/member/".$id."/avatar/"; // 放到server上使用
+    // $path = $ServerRoot."/Kanto/dist/image/member/".$id."/avatar/"; //本機端的路徑
     if (!is_dir($path)) {
     mkdir($path, 0777, true);
     }

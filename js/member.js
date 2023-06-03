@@ -429,8 +429,7 @@ const app = Vue.createApp({
         },
 
         async doCancel(orderDetailID) {
-            confirm('確定要取消訂單嗎?');
-            if (confirm) {
+            if (confirm('確定要取消訂單嗎?') === true) {
                 const cancelData = {
                     orderDetailID: orderDetailID
                 }
@@ -456,9 +455,15 @@ const app = Vue.createApp({
         async doReview(order) {
             if (this.review.star == 0) {
                 alert('請評分商品');
-            } if (this.review.reviewText == '') {
+                return;
+            }
+            
+            if (this.review.reviewText == '') {
                 alert('請您撰寫評論');
-            } else {
+                return;
+            }
+            
+            if(this.review.star !== 0 && this.review.reviewText !== '') {
                 const reviewData = new FormData();
 
                 this.selectedImages.forEach((image) => {
@@ -498,7 +503,7 @@ const app = Vue.createApp({
             if (this.selectedImages.length > 6) {
                 alert('圖片只能選取6張');
             } else {
-                this.selectedImages.splice(6);
+                // this.selectedImages.splice(6);
                 this.selectedImages.forEach((image, index) => {
                     const reader = new FileReader();
                     reader.onload = () => {
