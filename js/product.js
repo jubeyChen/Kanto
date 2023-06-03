@@ -122,10 +122,6 @@ const RootComponent = {
             productDetails: [],
             productCount: 0,
 
-            //地區table資料
-            region: [],
-            productInRegion: [],
-
             // 限制的資料數量
             currentPage: 1,
             perPage: 5,
@@ -161,18 +157,13 @@ const RootComponent = {
                     if (Array.isArray(response.data.productdetail)) {
                         this.productDetails = response.data.productdetail
                     }
+                    if (Array.isArray(response.data.aaa)) {
+                        this.AAA = response.data.aaa
 
-                    if (Array.isArray(response.data.region)) {
-                        this.region = response.data.region
 
-                        // console.log(this.region)
                     }
 
-                    if (Array.isArray(response.data.productInRegion)) {
-                        this.productInRegion = response.data.productInRegion
 
-                        // console.log(this.productInRegion)
-                    }
 
                 }
                 this.setPages()
