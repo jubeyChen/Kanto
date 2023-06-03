@@ -2,7 +2,7 @@
 
 include('Mysql.php'); //資料庫連線
 
-$sql = "SELECT g.ID, c.ID, c.CouponName, c.CouponCode, p.ID, p.Name, p.Content FROM game g
+$sql = "SELECT g.ID, c.ID, c.CouponName, c.CouponCode, p.ID, p.Name, p.Content, p.P_image FROM game g
 join coupon c on g.CouponID = c.ID
 join product p on g.ProductID = p.ID";
 
