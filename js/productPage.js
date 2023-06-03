@@ -14,9 +14,6 @@ const app = Vue.createApp({
             banner1: '',
             banner2: '',
             banner3: '',
-            phone_banner1: '',
-            phone_banner2: '',
-            phone_banner3: '',
             eventContent: '',
             event_pic1: '',
             event_pic2: '',
@@ -144,9 +141,6 @@ const app = Vue.createApp({
                     this.banner1 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner1']}`;
                     this.banner2 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner2']}`;
                     this.banner3 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner3']}`;
-                    this.phone_banner1 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner1_m']}`;
-                    this.phone_banner2 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner2_m']}`;
-                    this.phone_banner3 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Banner3_m']}`;
                     this.eventContent = response.data.data1[0]['Content'];
                     this.event_pic1 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image1']}`;
                     this.event_pic2 = `./image/productPage/${response.data.data1[0]['IntroductionID']}/${response.data.data1[0]['Image2']}`;
