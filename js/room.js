@@ -135,7 +135,7 @@ const app = Vue.createApp({
 
 
 
-
+    //按鈕  
     let btns = document.getElementsByClassName("btn-sec-l");
     for (let i = 0; i < btns.length; i++) {
       btns[i].addEventListener("click", function (e) {
