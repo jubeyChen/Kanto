@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <script src="https://unpkg.com/akar-icons-fonts"></script>
     @@include('./layout/style.html')
 </head>
+
 <body>
     <!-- 以下Header區域 -->
     @@include('./layout/header.html',{
@@ -18,164 +20,76 @@
 
     <!-- 以下可以開始編輯 -->
 
-<section class="roomBlog-banner">
-            <!-- <div class="banner-text">
+    <section class="roomBlog-banner">
+        <!-- <div class="banner-text">
                 <h2>讓我們去旅行吧</h2>
                 <h4>撐過這艱辛的課程</h4>
                 <h4>各位該好好放鬆了!</h4>
             </div> -->
-</section>
+    </section>
 
-<section class="place container ">
+    <div id="rbg">
+        
+        <section class="place container ">
             <ul>
-                <li><a href="" class="btn-sec-l">東京都</a></li>
-                <li><a href="#" class="btn-sec-l">神奈川縣</a></li>
-                <li><a href="#" class="btn-sec-l">千葉縣</a></li>
-                <li><a href="#" class="btn-sec-l">埼玉縣</a></li>
-                <li><a href="#" class="btn-sec-l">群馬縣</a></li>
-                <li><a href="#" class="btn-sec-l">栃木縣</a></li>
-                <li><a href="#" class="btn-sec-l">茨城縣</a></li>
+                <li><a  class="btn-sec-l" id="region" value="1" @click="handleClick">東京都</a></li>
+                <li><a  class="btn-sec-l" id="region" value="2" @click="handleClick">神奈川縣</a></li>
+                <li><a  class="btn-sec-l" id="region" value="5" @click="handleClick">千葉縣</a></li>
+                <li><a  class="btn-sec-l" id="region" value="3" @click="handleClick">埼玉縣</a></li>
+                <li><a  class="btn-sec-l" id="region" value="6" @click="handleClick">群馬縣</a></li>
+                <li><a  class="btn-sec-l" id="region" value="7" @click="handleClick">栃木縣</a></li>
+                <li><a  class="btn-sec-l" id="region" value="4" @click="handleClick">茨城縣</a></li>
             </ul>
-</section>
+        </section>
 
-<section class="roomBlogTop container">
-    <div class="top_pics">
-        <div class="image_switch">
-            <img class="image active" src="image/roomBlog/mid3.jpg" alt="" data-index="0">
-            <img class="image" src="image/roomBlog/mid4.jpg" alt="" data-index="1">
-            <img class="image" src="image/roomBlog/mid5.jpg" alt="" data-index="2">
-            <img class="image" src="image/roomBlog/mid6.jpg" alt="" data-index="3">
-        </div>
-
-        <img class="top_right" src="image/roomBlog/mid2.png" alt="">
-    
-    </div>    
-        <h1>東京都</h1>
-</section>
-
-
-<section class="roomBlog container">
-    <!-- <div class="main-room"> -->
-        <ul  class="main-room">
-            <li>
-                <div class="box">
-                    <div class="room">
-                        <img src="image//roomBlog/room4.jpg" alt="">
-                        <iframe class="map" id="map-1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2040.7942878052295!2d139.7814487899872!3d35.712467345022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188e983719a743%3A0x5e0afc004b49296b!2z5pel5pys44CSMTEwLTAwMTUgVG9reW8sIFRhaXRvIENpdHksIEhpZ2FzaGl1ZW5vLCA1LWNoxY1tZeKIkjXiiJI2IOODm-ODhuODq-ODnuOCpOOCueODhuOCpOOCuuS4iumHjuOCpOODvOOCueODiA!5e0!3m2!1szh-TW!2stw!4v1684231271856!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <div class="words">
-                        <h4>上野 EAST</h4>
-                        <i class="ai-check-in" data-map="map-1"></i>
-                        <p><strong>聯繫方式:</strong></p>
-                        <p>TEL:0766-340-010</p>
-                        <p>MAIL:info435@mystays.com</p>
-                        <p><strong>評價:</strong></p>
-                        <p>適合與朋友同行｡ 地點靠近逛街區而且前往火車站很方便｡</p>
-                        
-                    </div>
+        <section class="roomBlogTop container">
+            <div class="top_pics">
+                <div class="image_switch">
+                    <img class="image active" src="image/roomBlog/mid3.jpg" alt="" data-index="0">
+                    <img class="image" src="image/roomBlog/mid4.jpg" alt="" data-index="1">
+                    <img class="image" src="image/roomBlog/mid5.jpg" alt="" data-index="2">
+                    <img class="image" src="image/roomBlog/mid6.jpg" alt="" data-index="3">
                 </div>
-            </li>
-            <li>
-                <div class="box">
-                    <div class="room">
-                        <img src="image//roomBlog/room5.jpg" alt="">
-                        <iframe class="map" id="map-2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d809.9251985637251!2d139.79032116963305!3d35.708979887252724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188eb8d8f9c89d%3A0xae78601812de57f7!2sAgora%20Place%20Tokyo%20Asakusa!5e0!3m2!1szh-TW!2stw!4v1684248113144!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <div class="words">
-                        <h4>東京淺草集市廣場</h4>
-                        <i class="ai-check-in" data-map="map-2"></i>
-                        <p><strong>聯繫方式:</strong></p>
-                        <p>TEL:0123-020-553</p>
-                        <p>MAIL:info493@skotobuki.com</p>
-                        <p><strong>評價:</strong></p>
-                        <p>好的精品飯店｡ 地點靠近車站而且前往逛街區很方便｡</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="box">
-                    <div class="room">
-                        <img src="image//roomBlog/room1.png" alt="">
-                        <iframe class="map" id="map-3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3223.8539952918104!2d139.1171099077958!3d36.09704700932793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601ec60c81ec7f8d%3A0xdb23108fb661bd8c!2s967%20Ido%2C%20Nagatoro%2C%20Chichibu%20District%2C%20Saitama%20369-1312%E6%97%A5%E6%9C%AC!5e0!3m2!1szh-TW!2stw!4v1684250096013!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <div class="words">
-                        <h4>Hotel 871</h4>
-                        <i class="ai-check-in" data-map="map-3"></i>
-                        <p><strong>聯繫方式:</strong></p>
-                        <p>TEL:0789-000-010</p>
-                        <p>MAIL:info789@satoyama.com</p>
-                        <p><strong>評價:</strong></p>
-                        <p>以在都會區來說，空氣清新環境清幽舒適。</p>
 
-                    </div>
-                </div>                
-            </li>
-            <li>
-                <div class="box">
-                    <div class="room">
-                        <img src="image//roomBlog/room7.jpg" alt="">
-                        <iframe class="map" id="map-4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.6098337088124!2d139.6905666763928!3d35.68660792967767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cd3045b98f3%3A0x5f5f6283b8da0b62!2z5paw5a6_6I-v55ub6aCT6aOv5bqXIOacrOmkqA!5e0!3m2!1szh-TW!2stw!4v1684250537187!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <div class="words">
-                        <h4>新宿華盛頓主飯店</h4>
-                        <i class="ai-check-in" data-map="map-4"></i>
-                        <p><strong>聯繫方式:</strong></p>
-                        <p>TEL:0325-088-010</p>
-                        <p>MAIL:info2106@shinjuku.com</p>
-                        <p><strong>評價:</strong></p>
-                        <p>房間舒適溫馨，地點靠近車站，適合與親友同行。</p>
-                        
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="box">
-                    <div class="room">
-                        <img src="image//roomBlog/room6 .jpg" alt="">
-                        <iframe class="map" id="map-5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.944098151554!2d139.7716690763941!3d35.727593327424756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188e7fbd3bc35b%3A0xb2f6f85870035edd!2sHotel%20Mystays%20Nippori!5e0!3m2!1szh-TW!2stw!4v1684250988171!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <div class="words">
-                        <h4>日暮里</h4>
-                        <i class="ai-check-in" data-map="map-5"></i>
-                        <p><strong>聯繫方式:</strong></p>
-                        <p>TEL:0789-060-271</p>
-                        <p>MAIL:info659@nippori.com</p>
-                        <p><strong>評價:</strong></p>
-                        <p>房間舒適，設備俱全，適合親友共同旅行。</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="box">
-                    <div class="room">
-                        <img src="image//roomBlog/room2.png" alt="">
-                        <iframe class="map" id="map-6" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.6621477958815!2d139.77176857639367!3d35.7099307283959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188e9fb4d0c059%3A0x204614cf56565767!2zNC1jaMWNbWUtOS0xNSBVZW5vLCBUYWl0byBDaXR5LCBUb2t5byAxMTAtMDAwNeaXpeacrA!5e0!3m2!1szh-TW!2stw!4v1684251443448!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <div class="words">
-                        <h4>Ueno Hotel</h4>
-                        <i class="ai-check-in" data-map="map-6"></i>
-                        <p><strong>聯繫方式:</strong></p>
-                        <p>TEL:0456-001-010</p>
-                        <p>MAIL:info789@surhfl.com</p>
-                        <p><strong>評價:</strong></p>
-                        <p>空間廣闊舒服，地點便捷靠近車站及逛街區。</p>
-                    </div>
-                </div>
-            </li>
-        </ul>
-</section>
+                <img class="top_right" src="image/roomBlog/mid2.png" alt="">
 
-    <!--分頁按鈕-->
-<section class="container pagebtn">
-    <div class="btn">
-        <a href="#" class="btn-pri-l">1</a>
-        <a href="#" class="btn-pri-l">2</a>
-        <a href="#" class="btn-pri-l">3</a>
-        <a href="#" class="btn-pri-l pc_only">4</a>
-        <a href="#" class="btn-pri-l pc_only">5</a>
-        <a href="#" class="btn-pri-l">></a>
+            </div>
+            <h1>{{selectedRegionName}}</h1>
+        </section>
+
+
+        <section class="roomBlog container">
+            <!-- <div class="main-room"> -->
+            <ul class="main-room">
+                <li v-for="item in paginatedRoomBlogs">
+                    <div class="box">
+                        <div class="room">
+                            <img :src="'./image/roomBlog/' + item.Image" alt="">
+                            <iframe class="map" :id="'map-' + item.ID" :src="item.MapUrl" width="600" height="450" style="border:0;"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="words">
+                            <h4>{{item.Title}}</h4>
+                            <i class="ai-check-in" @click="toggleMap('map-' + item.ID)" :data-map="'map-' + item.ID"></i>
+                            <p><strong>聯繫方式:</strong></p>
+                            <p>{{item.Phone}}</p>
+                            <p>MAIL:{{item.Email}}</p>
+                            <p><strong>評價:</strong></p>
+                            <p>{{item.Review}}</p>
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!--分頁按鈕-->
+        <section class="container pagebtn">
+            <div class="btn">
+                <a class="btn-pri-l" @click="changePage(page)" v-for="page in totalPages" :key="page">{{page}}</a>
+            </div>
+        </section>
     </div>
-</section>
 
 
     <!-- 以下Footer區域 -->

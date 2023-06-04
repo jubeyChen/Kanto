@@ -179,6 +179,8 @@ const RootComponent = {
             vm.applyFilters();
         });
 
+        //------------------ 抓出關鍵字的值---------------------
+
         var searchInput = document.getElementById("search");
         searchInput.addEventListener("input", function (event) {
             vm.searchInput = event.target.value;
@@ -186,15 +188,10 @@ const RootComponent = {
         });
 
 
-        //------------------ 抓出關鍵字的值---------------------
 
 
-        var searchInput = document.getElementById("search");
-        // let mv = this;
-        searchInput.addEventListener("input", function (event) {
-            vm.searchInput = event.target.value;
-            // mv.keywordSearch();
-        });
+
+
 
         // 選擇日期
         document.querySelector('.calendar-days').addEventListener('click', (event) => {
