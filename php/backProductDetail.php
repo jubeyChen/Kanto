@@ -22,23 +22,15 @@ $statement->execute();
 $data = $statement->fetchAll();
 
 //第二個搜尋 
-$sql2 = "SELECT * FROM blogBlock
-WHERE blogBlock.BlogID = :productId ";
+// $sql2 = "SELECT * FROM blogBlock
+// WHERE blogBlock.BlogID = :productId ";
 
-$statement2 = $pdo->prepare($sql2);
-$statement2->bindParam(':productId', $productId, PDO::PARAM_INT);
-$statement2->execute();
-$data2 = $statement2->fetchAll();
+// $statement2 = $pdo->prepare($sql2);
+// $statement2->bindParam(':productId', $productId, PDO::PARAM_INT);
+// $statement2->execute();
+// $data2 = $statement2->fetchAll();
 
-//第三個搜尋
-$sql3 = "SELECT members.FullName,review.Star,review.Text FROM review
-JOIN members on members.ID = review.MemberID
-WHERE review.ProductID = :productId ";
 
-$statement3 = $pdo->prepare($sql3);
-$statement3->bindParam(':productId', $productId, PDO::PARAM_INT);
-$statement3->execute();
-$data3 = $statement3->fetchAll();
 
 
 //第四個搜尋
@@ -52,8 +44,7 @@ $data4 = $statement4->fetchAll();
 
 $response = [
     'product' => $data,
-    'blogBlock' => $data2,
-    'review' => $data3,
+    // 'blogBlock' => $data2,
     'productSchedule' => $data4
 ];
 

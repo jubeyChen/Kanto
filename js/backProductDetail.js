@@ -5,7 +5,6 @@ const app = Vue.createApp({
             editable: false,
             name: '',
             status: 'show',
-            region: 'kanagawa',
             price: '',
             date: '2023/6/21',
 
@@ -25,10 +24,6 @@ const app = Vue.createApp({
             desImg2: '',
             desImg3: '',
 
-            //手機封面照
-            phoneImg1: '',
-            phoneImg2: '',
-            phoneImg3: '',
 
             //方案詳情
             plan_Img1: '',
@@ -63,12 +58,7 @@ const app = Vue.createApp({
             introImg1: '',
             introImg2: '',
             introImg3: '',
-            comment: [
-                { name: 'Jeff', time: '2021-1-19 14:23', star: 5, content: '建議到日本自由行的人可以選擇這樣的行程，可以省很多時間，這次的導遊Zoey很親切，用中、英文導覽, 當天很幸運，因爲天氣很好，可以看到富士山的全貌，還有抹茶體驗哦，很值得推薦的行程' },
-                { name: '阿花', time: '2021-1-19 14:23', star: 5, content: 'Jacky 導遊人特別和善親切，幫我們團員拍照又講解重點，淺顯易懂，還會把集合時間跟聯絡方式一上車就讓我們知道， 相當安心。很幸運天氣很好，整天看得到富士山, 當天很幸運，因爲天氣很好，可以看到富士山的全貌，還有抹茶體驗哦，很值得推薦的行程' },
-                { name: '小明', time: '2021-1-19 14:23', star: 5, content: '這次旅程非常幸運，全日都可以看到富士山，導遊小姐也很用心，會提供一些tips，令我們玩得更盡興。 相當安心。很幸運天氣很好，整天看得到富士山, 當天很幸運，因爲天氣很好，可以看到富士山的全貌，還有抹茶體驗哦，很值得推薦的行程' },
-            ],
-            review: [],
+            introImg4: '',
             isShown: false,
         }
     },
@@ -76,13 +66,110 @@ const app = Vue.createApp({
         this.getData();
     },
     methods: {
-        switchBtn(e) {
-            $(e.target).closest('tr').find('.switch-track').toggleClass('-off');
+        //傳遞所有資料到php
+        updateData() {
+
+            //整理要傳送到後端的資料
+            let updateData = {
+                //行程標題
+                name: this.name,
+
+                //區域
+                region: this.region,
+
+                //行程類別
+                typeName: this.typeName,
+
+                //價格
+                price: this.price,
+
+                //行程日期
+                date: this.date,
+
+                //行程簡介
+                Content1: this.Content1,
+                Content2: this.Content2,
+                Content3: this.Content3,
+
+                //封面照片
+                desImg1: this.desImg1,
+                desImg2: this.desImg2,
+                desImg3: this.desImg3,
+
+                //方案詳情照片
+                plan_Img1: this.plan_Img1,
+                plan_Img2: this.plan_Img2,
+                plan_Img3: this.plan_Img3,
+                plan_Img4: this.plan_Img4,
+
+                //行程名稱
+                plan_title1: this.plan_title1,
+                plan_title2: this.plan_title2,
+                plan_title3: this.plan_title3,
+                plan_title4: this.plan_title4,
+
+                //行程時間
+                plan_time1: this.plan_time1,
+                plan_time2: this.plan_time2,
+                plan_time3: this.plan_time3,
+                plan_time4: this.plan_time4,
+
+                //行程地點
+                plan_ContentTitle1: this.plan_ContentTitle1,
+                plan_ContentTitle2: this.plan_ContentTitle2,
+                plan_ContentTitle3: this.plan_ContentTitle3,
+                plan_ContentTitle4: this.plan_ContentTitle4,
+
+                //行程簡介
+                plan_content1: this.plan_content1,
+                plan_content2: this.plan_content2,
+                plan_content3: this.plan_content3,
+                plan_content4: this.plan_content4,
+
+                //活動介紹
+                intro: this.intro,
+
+                //活動介紹照片
+                introImg1: this.introImg1,
+                introImg2: this.introImg2,
+                introImg3: this.introImg3,
+                introImg4: this.introImg4,
+
+            }
+            console.log(updateData);
+
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return "";
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+            var productId = getParameterByName('id');
+
+            let checkUpdate = confirm('是否進行更新?');
+            if (checkUpdate) {
+                axios.post('../php/backProductDetailUpdate.php?id=' + productId, updateData)
+                    .then((response) => {
+                        console.log(response.data);
+                        //更新完重新load重新讓$字號進去
+                        this.getData();
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            } else {
+                return
+            }
+
+            this.editable = false;
         },
-        showComment() {
-            console.log('aaa');
-            return isShown = true;
-        },
+
+        // showComment() {
+        //     return isShown = true;
+        // },
         backPage() {
             history.back();
         },
@@ -100,7 +187,8 @@ const app = Vue.createApp({
 
             // 使用 getParameterByName 函数来获取 URL 中的 id 参数值
             var productId = getParameterByName('id');
-            console.log(productId); // 输出 id 参数的值
+            // 输出 id 参数的值
+            // console.log(productId);
 
             //撈資料
             const vm = this;
@@ -112,29 +200,30 @@ const app = Vue.createApp({
                     vm.name = response.data.product[0].Name;
 
                     //行程地區
-                    vm.region = response.data.product[0].RegionName
+                    vm.region = response.data.product[0].RegionID;
                     //行程價格
                     vm.price = '$' + response.data.product[0].Price;
 
 
                     //行程類別
-                    vm.typeName = response.data.product[0].TypeName;
+                    vm.typeName = response.data.product[0].ProductTypeID;
+
                     //行程簡介
                     vm.Content1 = response.data.product[0].Content1;
                     vm.Content2 = response.data.product[0].Content2;
                     vm.Content3 = response.data.product[0].Content3;
-                    vm.desImg1 = `./image/productPage/${response.data.product[0].ID}/${response.data.product[0].Banner1}`
-                    vm.desImg2 = `./image/productPage/${response.data.product[0].ID}/${response.data.product[0].Banner2}`
-                    vm.desImg3 = `./image/productPage/${response.data.product[0].ID}/${response.data.product[0].Banner3}`
-                    vm.phoneImg1 = `./image/productPage/${response.data.product[0].ID}/${response.data.product[0].Banner1_m}`
-                    vm.phoneImg2 = `./image/productPage/${response.data.product[0].ID}/${response.data.product[0].Banner2_m}`
-                    vm.phoneImg3 = `./image/productPage/${response.data.product[0].ID}/${response.data.product[0].Banner3_m}`
+                    vm.desImg1 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Banner1}`
+                    vm.desImg2 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Banner2}`
+                    vm.desImg3 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Banner3}`
+                    vm.phoneImg1 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Banner1_m}`
+                    vm.phoneImg2 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Banner2_m}`
+                    vm.phoneImg3 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Banner3_m}`
 
                     //方案詳情圖片
-                    vm.plan_Img1 = `./image/productPage/${response.data.product[0].ID}/${response.data.productSchedule[0].Image}`
-                    vm.plan_Img2 = `./image/productPage/${response.data.product[0].ID}/${response.data.productSchedule[1].Image}`
-                    vm.plan_Img3 = `./image/productPage/${response.data.product[0].ID}/${response.data.productSchedule[2].Image}`
-                    vm.plan_Img4 = `./image/productPage/${response.data.product[0].ID}/${response.data.productSchedule[3].Image}`
+                    vm.plan_Img1 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.productSchedule[0].Image}`
+                    vm.plan_Img2 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.productSchedule[1].Image}`
+                    vm.plan_Img3 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.productSchedule[2].Image}`
+                    vm.plan_Img4 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.productSchedule[3].Image}`
 
                     //方案詳情-行程名稱
                     vm.plan_title1 = response.data.productSchedule[0].ScheduleTitle;
@@ -162,18 +251,118 @@ const app = Vue.createApp({
                     vm.intro = response.data.product[0].Content
 
                     //活動介紹圖片
-                    vm.introImg1 = `./image/productPage/${response.data.product[0].ID}/${response.data.product[0].Image1}`
-                    vm.introImg2 = `./image/productPage/${response.data.product[0].ID}/${response.data.product[0].Image2}`
-                    vm.introImg3 = `./image/productPage/${response.data.product[0].ID}/${response.data.product[0].Image3}`
-                    vm.introImg4 = `./image/productPage/${response.data.product[0].ID}/${response.data.product[0].Image4}`
+                    vm.introImg1 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Image1}`
+                    vm.introImg2 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Image2}`
+                    vm.introImg3 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Image3}`
+                    vm.introImg4 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Image4}`
 
-                    //評鑑
-                    vm.review = response.data.review
-                    console.log(vm.review);
                 })
                 .catch(function (error) {
                     console.log(error);
                 })
+        },
+
+
+        //封面照片1
+        handledesImg1(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.desImg1 = reader.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        //封面照片2
+        handledesImg2(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.desImg2 = reader.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        //封面照片3
+        handledesImg3(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.desImg3 = reader.result;
+            };
+            reader.readAsDataURL(file);
+        },
+
+        //方案詳情照片
+        handlePlanImg1(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.plan_Img1 = reader.result;
+            };
+            reader.readAsDataURL(file);
+        },
+
+        handlePlanImg2(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.plan_Img2 = reader.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        handlePlanImg3(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.plan_Img3 = reader.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        handlePlanImg4(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.plan_Img4 = reader.result;
+            };
+            reader.readAsDataURL(file);
+        },
+
+
+
+        //活動介紹照片
+        handleintroImg1(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.introImg1 = reader.result;
+            };
+            reader.readAsDataURL(file);
+        },
+
+        handleintroImg2(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.introImg2 = reader.result;
+            };
+            reader.readAsDataURL(file);
+        },
+
+        handleintroImg3(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.introImg3 = reader.result;
+            };
+            reader.readAsDataURL(file);
+        },
+
+        handleintroImg4(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.introImg4 = reader.result;
+            };
+            reader.readAsDataURL(file);
         }
     }
 });
