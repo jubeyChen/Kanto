@@ -16,6 +16,7 @@ const app = Vue.createApp({
         this.calculateTotal(); // Call the method to calculate the initial total
 
     },
+
     methods: {
 
         remove(index) {
@@ -28,18 +29,19 @@ const app = Vue.createApp({
 
           calculateTotal() {
             this.isTotal = this.shoppingList.reduce((total, shoppinglist) => {
-              return total + Number(shoppinglist.total);
+              return total + Number(shoppinglist.total.replace(',', ''));
             }, 0);
           
             // Update the total in local storage
             localStorage.setItem('shoppingList', JSON.stringify(this.shoppingList));
           },
+          
 
         async getProductInfo() {
             await axios.post('../php/getProductInfo.php')
                 .then(response => {
                    this.isProductInfo = response.data;
-                    console.log(this.isProductInfo[0]);
+                    // console.log(this.isProductInfo[0]);
                 })
         },
 
@@ -63,19 +65,7 @@ const app = Vue.createApp({
 app.mount('#app');
 
 
-          // selectOneChanged() {
-          //   // Check if all individual checkboxes are checked
-          //   this.selectAll = this.shoppingList.every((shoppinglist) => shoppinglist.selectOne);
-          
-          //   // Recalculate the total
-          //   this.calculateTotal();
-          // },
-          
-          // selectAllChanged() {
-          //   this.shoppingList.forEach((shoppinglist) => {
-          //     shoppinglist.selectOne = this.selectAll;
-          //   });
-          // },
+
 
         // function refresh() {
         //     // 1. read LS

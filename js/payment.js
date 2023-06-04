@@ -4,16 +4,20 @@ const app = Vue.createApp({
     return {
       isSessionValid: '',
       shoppingList: [],
+
+      couponID: '',
+      selectedCoupon: '',
+      isCoupon: [],// 初始化為空陣列
+
       isTotal: 0, // Define isTotal as a data property and initialize it to 0
-      isDiscount: '',
-      isSubTotal: [],
+      couponName: '',
+      isSubTotal: '',
+
       accountInfo: '',
       accountID:'',
       fullName:'',
       phone:'',
-      couponID: '',
-      selectedCoupon: '',
-      isCoupon: [],// 初始化為空陣列
+
     };
   },
   created() {
@@ -44,7 +48,7 @@ const app = Vue.createApp({
     },
 
     async getMemberCoupon() {
-      await axios.post('../php/getCouponForPayment.php')
+      await axios.post('../php/getCouponNameForPayment.php')
         .then(response => {
           this.isCoupon = response.data;
           console.log(this.isCoupon);
@@ -52,12 +56,29 @@ const app = Vue.createApp({
         .catch(error => {
           console.error(error);
         });
-    }    
-    ,
+    },
+
+    getCouponName(couponID) {
+      const selectedCoupon = this.isCoupon.find(coupon => coupon.CouponID === couponID);
+      if (selectedCoupon) {
+        return selectedCoupon.CouponName;
+      }
+      return '';
+    },
+  
+
+    getDiscountAmount(couponID) {
+      const selectedCoupon = this.isCoupon.find(coupon => coupon.CouponID === couponID);
+      if (selectedCoupon) {
+        return selectedCoupon.Discount;
+      }
+      return 0;
+    },
+  
     
     calculateTotal() {
       this.isTotal = this.shoppingList.reduce((total, shoppinglist) => {
-        return total + Number(shoppinglist.total);
+        return total + Number(shoppinglist.total.replace(',', ''));
       }, 0);
 
       console.log(this.isTotal); // Changed: Added this line to log the value of isTotal
@@ -66,9 +87,25 @@ const app = Vue.createApp({
     },
 
     calculateSubTotal() {
-      this.isSubTotal = this.isTotal - this.isDiscount;
-    },
+      const discountAmount = this.getDiscountAmount(this.selectedCoupon);
+      if (discountAmount !== 0) {
+        this.isSubTotal = this.isTotal * ( discountAmount);
+        console.log(this.isTotal);
+        console.log(discountAmount);
+      } else {
+        this.isSubTotal = this.isTotal;
+      }
+    }
+    
   },
+
+  watch: {
+    selectedCoupon: {
+      handler: 'calculateSubTotal',
+      immediate: true
+    }
+  },
+  
 
   async mounted() {
     let a = await globalCheck.PageCheckSession();
@@ -80,7 +117,6 @@ const app = Vue.createApp({
     // }
     await this.getAccountInfo();
     await this.getMemberCoupon();
-    // await this.getCouponInfo();
     
   },
 });
