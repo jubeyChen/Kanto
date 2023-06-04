@@ -118,7 +118,6 @@ Vue.createApp({
             axios.post('../php/Forget.php', forgetData)
                 .then(response => {
                     if (response.data === 'yes') {
-                        alert('有這個帳號');
                         this.showDone = true;
                         Email.send({
                             SecureToken: "adf84833-cc46-45a2-850a-092ac2f86858",

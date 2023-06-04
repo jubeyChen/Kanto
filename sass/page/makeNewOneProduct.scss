@@ -1,0 +1,137 @@
+.makeNew {
+    padding: 10px 30px;
+}
+
+.makeNewIMG {
+    @include flex-container(row, wrap, flex-start);
+
+
+    .inner_img_block {
+        @include flex-container(column);
+        flex-basis: 25%;
+        margin-right: 10px;
+
+        .imgDiv {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    label.inputFile {
+        background-color: #E9ECEF;
+        border: 1px solid rgb(197, 197, 197);
+        color: #212529;
+        width: 90%;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 5px 0
+    }
+}
+
+.makeNewPlan {
+    padding: 10px 30px;
+
+    section {
+
+        .contentBlock {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .inner_img_block {
+            @include flex-container(column);
+            flex-basis: 24%;
+
+            .imgDiv {
+                width: 100%;
+                height: 200px;
+                margin-bottom: 10px;
+
+                img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+        label.inputFile {
+            background-color: #E9ECEF;
+            border: 1px solid rgb(197, 197, 197);
+            color: #212529;
+            width: 90%;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 5px 0
+        }
+    }
+
+
+}
+
+.activity_block {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+
+    .makeNewActivity {
+        padding: 10px 30px;
+
+        section {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+
+            .inner_img_block {
+                flex-basis: 24%;
+                text-align: center;
+
+                .imgDiv {
+                    width: 100%;
+                    height: 200px;
+                    margin-bottom: 10px;
+
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+
+            label.inputFile {
+                background-color: #E9ECEF;
+                border: 1px solid rgb(197, 197, 197);
+                color: #212529;
+                width: 90%;
+                text-align: center;
+                cursor: pointer;
+                border-radius: 5px;
+                padding: 5px 0
+            }
+        }
+
+    }
+}

@@ -50,48 +50,59 @@
             <!-- ========== 行程內容 ========== -->
             <section class="content_block">
                 <p>行程內容</p>
-                <div class="row" style="padding: 10px 30px;">
+                <div class="row makeNew">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">行程名稱</span>
-                        <input type="text" class="form-control"  v-model="product.name"
-                            aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" v-model="product.name">
                     </div>
 
+                    <!-- 行程地區 -->
                     <div class="input-group mb-3 col">
                         <span class="input-group-text" id="region">行程地區</span>
-                        <select id="region" class="form-select" v-model="product.region">
-                            <option selected>東京都</option>
-                            <option>神奈川縣</option>
-                            <option>千葉縣</option>
-                            <option>埼玉縣</option>
-                            <option>群馬縣</option>
-                            <option>栃木縣</option>
-                            <option>茨城縣</option>
-                            <option>山梨縣</option>
+                        <select id="region" class="form-select" :value="product.region" @change="updateRegion">
+                            <option value="1">東京都</option>
+                            <option value="2">神奈川縣</option>
+                            <option value="3">埼玉縣</option>
+                            <option value="4">茨城縣</option>
+                            <option value="5">千葉縣</option>
+                            <option value="6">群馬縣</option>
+                            <option value="7">栃木縣</option>
                         </select>
                     </div>
 
+                    <!-- 行程類別 -->
                     <div class="input-group mb-3 col">
                         <span class="input-group-text" id="type">行程類別</span>
-                        <select id="type" class="form-select" v-model="product.productType">
-                            <option selected>一日遊</option>
-                            <option>景點門票</option>
-                            <option>主題樂園</option>
-                            <option>歷史景點</option>
+                        <select id="type" class="form-select" :value="product.productType" @change="updateType">
+                            <option value="1">一日遊</option>
+                            <option value="2">景點門票</option>
+                            <option value="3">主題樂園</option>
+                            <option value="4">歷史景點</option>
                         </select>
                     </div>
 
+                    <!-- 行程價格 -->
                     <div class="input-group mb-3 col">
                         <span class="input-group-text" id="basic-addon1">行程價格</span>
-                        <input type="text" class="form-control" v-model="product.price">
+                        <input type="number" min="1" class="form-control" v-model="product.price">
+                    </div>
+
+                    <!-- 行程日期 -->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">行程日期</span>
+                        <!-- <input type="text" class="form-control" v-model="productDetail.offerDate"> -->
+                        <input type="date" class="form-control" v-model="selectedDate">
+                        <input type="button" value="選擇" class="btn btn-secondary" @click="saveDate">
                     </div>
 
                     <div class="input-group mb-3">
-                        <span class="input-group-text">行程日期</span>
-                        <input type="text" class="form-control" v-model="productDetail.offerDate">
+                        <ul>
+                            <li v-for="(date, index) in selectedDates" :key="index">{{ date }}</li>
+                        </ul>
                     </div>
 
 
+                    <!-- ProductIntroduction -->
                     <div class="input-group mb-3">
                         <span class="input-group-text">行程簡介 1</span>
                         <input type="text" class="form-control" v-model="productIntroduction.content1">
@@ -107,37 +118,32 @@
                         <input type="text" class="form-control" v-model="productIntroduction.content3">
                     </div>
 
+                    <!-- 行程Banner -->
                     <div class="input-group mb-3">
                         <span class="input-group-text">封面照片</span>
                         <input type="text" class="form-control" disabled>
                     </div>
 
-                    <section class="img_block">
+                    <section class="makeNewIMG">
                         <div class="inner_img_block">
-                            <img class="img-thumbnail">
-                            <button>新增<span class="material-symbols-outlined">
-                                    add_circle
-                                </span>
-                            </button>
+                            <div class="img-thumbnail imgDiv"><img v-if="previewBanner1" :src="product.Banner1"></div>
+                            <label for="banner1" class="inputFile">照片上傳</label>
+                            <input type="file" id="banner1" accept="image/*" style="display: none;"
+                                @change="uploadBanner1">
                         </div>
-
                         <div class="inner_img_block">
-                            <img class="img-thumbnail">
-                            <button>新增<span class="material-symbols-outlined">
-                                    add_circle
-                                </span>
-                            </button>
+                            <div class="img-thumbnail imgDiv"><img v-if="previewBanner2" :src="product.Banner2"></div>
+                            <label for="banner2" class="inputFile">照片上傳</label>
+                            <input type="file" id="banner2" accept="image/*" style="display: none;"
+                                @change="uploadBanner2">
                         </div>
-
                         <div class="inner_img_block">
-                            <img class="img-thumbnail">
-                            <button>新增<span class="material-symbols-outlined">
-                                    add_circle
-                                </span>
-                            </button>
+                            <div class="img-thumbnail imgDiv"><img v-if="previewBanner3" :src="product.Banner3"></div>
+                            <label for="banner3" class="inputFile">照片上傳</label>
+                            <input type="file" id="banner3" accept="image/*" style="display: none;"
+                                @change="uploadBanner3">
                         </div>
                     </section>
-
                 </div>
 
             </section>
@@ -146,78 +152,221 @@
             <section class="plan_block">
 
                 <p>方案詳情</p>
-                <div class="">
+                <div class="makeNewPlan">
 
-                    <!-- ========== 方案詳情 v-for ========== -->
-                    <template v-for="(item, index) in plan" :key="index">
-                        <section class="mb-3">
-
-                            <div class="outer-img">
-                                <img :src="item.img" class="img-thumbnail" alt="">
-                                <button v-show="editable">新增<span class="material-symbols-outlined">
-                                        add_circle
-                                    </span>
-                                </button>
-
+                    <div class="plan_block_inner">
+                        <section class="mb-5">
+                            <div class="inner_img_block">
+                                <div class="img-thumbnail imgDiv"><img v-if="previewPlanImage1" :src="productSchedule1.image"></div>
+                                <label for="planImage1" class="inputFile">照片上傳</label>
+                                <input type="file" id="planImage1" accept="image/*" style="display: none;"
+                                    @change="uploadPlanImage1">
                             </div>
 
-                            <section class="content_block col-7">
+                            <div class="contentBlock col-8">
+                                <!-- Times -->
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">行程名稱</span>
-                                    <input type="text" class="form-control" :readonly="!editable" v-model="item.title"
-                                        aria-label="Username" aria-describedby="basic-addon1">
+                                    <span class="input-group-text">行程時間</span>
+                                    <input type="text" class="form-control" v-model="productSchedule1.times">
                                 </div>
 
+                                <!-- ScheduleTitle -->
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">行程時間</span>
-                                    <input type="text" class="form-control" :readonly="!editable" v-model="item.time"
-                                        aria-label="Username" aria-describedby="basic-addon1">
+                                    <span class="input-group-text">行程名稱</span>
+                                    <select class="form-select" :value="productSchedule1.scheduleTitle"
+                                        @change="updateTitle1">
+                                        <option value="去程">去程</option>
+                                        <option value="景點/體驗">景點/體驗</option>
+                                        <option value="回程">回程</option>
+                                    </select>
                                 </div>
 
+                                <!-- ContentTitle -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程地點</span>
+                                    <input type="text" class="form-control" v-model="productSchedule1.contentTitle">
+                                </div>
+
+                                <!-- Content -->
                                 <div class="input-group">
                                     <span class="input-group-text">行程簡介</span>
-                                    <textarea class="form-control" v-model="item.description" :readonly="!editable"
-                                        rows="3" aria-label="With textarea"></textarea>
+                                    <textarea class="form-control" rows="3" maxlength="200" v-model="productSchedule1.content"></textarea>
                                 </div>
-                            </section>
-
+                            </div>
                         </section>
 
-                    </template>
+                        <section class="mb-5">
+                            <div class="inner_img_block">
+                                <div class="img-thumbnail imgDiv"><img v-if="previewPlanImage2" :src="productSchedule2.image"></div>
+                                <label for="planImage2" class="inputFile">照片上傳</label>
+                                <input type="file" id="planImage2" accept="image/*" style="display: none;" @change="uploadPlanImage2">
+                            </div>
+                        
+                            <div class="contentBlock col-8">
+                                <!-- Times -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程時間</span>
+                                    <input type="text" class="form-control" v-model="productSchedule2.times">
+                                </div>
+                        
+                                <!-- ScheduleTitle -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程名稱</span>
+                                    <select class="form-select" :value="productSchedule2.scheduleTitle" @change="updateTitle2">
+                                        <option value="去程">去程</option>
+                                        <option value="景點/體驗">景點/體驗</option>
+                                        <option value="回程">回程</option>
+                                    </select>
+                                </div>
+                        
+                                <!-- ContentTitle -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程地點</span>
+                                    <input type="text" class="form-control" v-model="productSchedule2.contentTitle">
+                                </div>
+                        
+                                <!-- Content -->
+                                <div class="input-group">
+                                    <span class="input-group-text">行程簡介</span>
+                                    <textarea class="form-control" rows="3" maxlength="200" v-model="productSchedule2.content"></textarea>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="mb-5">
+                            <div class="inner_img_block">
+                                <div class="img-thumbnail imgDiv"><img v-if="previewPlanImage3" :src="productSchedule3.image"></div>
+                                <label for="planImage3" class="inputFile">照片上傳</label>
+                                <input type="file" id="planImage3" accept="image/*" style="display: none;" @change="uploadPlanImage3">
+                            </div>
+                        
+                            <div class="contentBlock col-8">
+                                <!-- Times -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程時間</span>
+                                    <input type="text" class="form-control" v-model="productSchedule3.times">
+                                </div>
+                        
+                                <!-- ScheduleTitle -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程名稱</span>
+                                    <select class="form-select" :value="productSchedule3.scheduleTitle" @change="updateTitle3">
+                                        <option value="去程">去程</option>
+                                        <option value="景點/體驗">景點/體驗</option>
+                                        <option value="回程">回程</option>
+                                    </select>
+                                </div>
+                        
+                                <!-- ContentTitle -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程地點</span>
+                                    <input type="text" class="form-control" v-model="productSchedule3.contentTitle">
+                                </div>
+                        
+                                <!-- Content -->
+                                <div class="input-group">
+                                    <span class="input-group-text">行程簡介</span>
+                                    <textarea class="form-control" rows="3" maxlength="200" v-model="productSchedule3.content"></textarea>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="mb-5">
+                            <div class="inner_img_block">
+                                <div class="img-thumbnail imgDiv"><img v-if="previewPlanImage4" :src="productSchedule4.image"></div>
+                                <label for="planImage4" class="inputFile">照片上傳</label>
+                                <input type="file" id="planImage4" accept="image/*" style="display: none;" @change="uploadPlanImage4">
+                            </div>
+                        
+                            <div class="contentBlock col-8">
+                                <!-- Times -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程時間</span>
+                                    <input type="text" class="form-control" v-model="productSchedule4.times">
+                                </div>
+                        
+                                <!-- ScheduleTitle -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程名稱</span>
+                                    <select class="form-select" :value="productSchedule4.scheduleTitle" @change="updateTitle4">
+                                        <option value="去程">去程</option>
+                                        <option value="景點/體驗">景點/體驗</option>
+                                        <option value="回程">回程</option>
+                                    </select>
+                                </div>
+                        
+                                <!-- ContentTitle -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程地點</span>
+                                    <input type="text" class="form-control" v-model="productSchedule4.contentTitle">
+                                </div>
+                        
+                                <!-- Content -->
+                                <div class="input-group">
+                                    <span class="input-group-text">行程簡介</span>
+                                    <textarea class="form-control" rows="3" maxlength="200" v-model="productSchedule4.content"></textarea>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
 
                 </div>
 
             </section>
 
             <!-- ========== 活動介紹 ========== -->
-            <section class="intro_block">
+            <section class="activity_block">
+
                 <p>活動介紹</p>
-                <form action="#" class="row">
+                <div class="makeNewActivity">
+
+                    <!-- ========== 行程活動介紹  ========== -->
                     <div class="input-group mb-3">
-                        <span class="input-group-text">行程簡介</span>
-                        <textarea class="form-control" v-model="intro" :readonly="!editable" rows="3"
-                            aria-label="With textarea"></textarea>
+                        <span class="input-group-text">活動介紹</span>
+                        <textarea class="form-control" rows="3" v-model="product.content"></textarea>
                     </div>
 
-                    <section class="img_block">
-                        <div class="inner_img_block" v-for="(item, index) in contentImg" :key="index">
-                            <img :src="item" class="img-thumbnail" alt="">
-                            <button v-show="editable">新增<span class="material-symbols-outlined">
-                                    add_circle
-                                </span>
-                            </button>
+                    <section class="mb-3">
+
+                        <div class="inner_img_block">
+                            <div class="img-thumbnail imgDiv"><img v-if="previewImage1" :src="product.image1"></div>
+                            <label for="image1" class="inputFile">照片上傳</label>
+                            <input type="file" id="image1" accept="image/*" style="display: none;"
+                                @change="uploadImage1">
                         </div>
+
+                        <div class="inner_img_block">
+                            <div class="img-thumbnail imgDiv"><img v-if="previewImage2" :src="product.image2"></div>
+                            <label for="image2" class="inputFile">照片上傳</label>
+                            <input type="file" id="image2" accept="image/*" style="display: none;"
+                                @change="uploadImage2">
+                        </div>
+
+                        <div class="inner_img_block">
+                            <div class="img-thumbnail imgDiv"><img v-if="previewImage3" :src="product.image3"></div>
+                            <label for="image3" class="inputFile">照片上傳</label>
+                            <input type="file" id="image3" accept="image/*" style="display: none;"
+                                @change="uploadImage3">
+                        </div>
+
+                        <div class="inner_img_block">
+                            <div class="img-thumbnail imgDiv"><img v-if="previewImage4" :src="product.image4"></div>
+                            <label for="image4" class="inputFile">照片上傳</label>
+                            <input type="file" id="image4" accept="image/*" style="display: none;"
+                                @change="uploadImage4">
+                        </div>
+
                     </section>
 
-                </form>
+                </div>
+
             </section>
 
             <!-- ========== 下排按鈕 ========== -->
             <section class="lower-btn-block">
 
                 <section class="edit-block">
-                    <button id="cancel-btn">取消</button>
-                    <button id="confirm-btn">儲存</button>
+                    <button id="confirm-btn" @click="doSave">儲存</button>
                 </section>
 
             </section>
