@@ -12,7 +12,8 @@ const app = Vue.createApp({
       fullName:'',
       phone:'',
       couponID: '',
-      selectedCoupon: ''
+      selectedCoupon: '',
+      isCoupon: [],// 初始化為空陣列
     };
   },
   created() {
@@ -47,18 +48,12 @@ const app = Vue.createApp({
         .then(response => {
           this.isCoupon = response.data;
           console.log(this.isCoupon);
-    
-          if (Array.isArray(this.isCoupon) && this.isCoupon.length > 0) {
-            this.couponID = this.isCoupon[0].CouponID;
-            this.selectedCoupon = `coupon${this.couponID}`;
-          }
         })
         .catch(error => {
           console.error(error);
         });
-    }
+    }    
     ,
-    
     
     calculateTotal() {
       this.isTotal = this.shoppingList.reduce((total, shoppinglist) => {
