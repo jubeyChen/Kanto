@@ -1,22 +1,10 @@
-const ham = document.getElementById("ham");
-const cross = document.getElementById("cross");
-const menulist = document.querySelector(".nav-bar");
-
-ham.addEventListener("click", () => {
-    menulist.classList.toggle("-openlist");
-    ham.classList.add("-close");
-    cross.classList.add("-open");
-});
-cross.addEventListener("click", () => {
-    menulist.classList.toggle("-openlist");
-    ham.classList.remove("-close");
-    cross.classList.remove("-open");
-});
-
 let globalCheck = Vue.createApp({
     data() {
         return {
             isSessionValid: false,
+            ham: '',
+            cross: '',
+            menulist: ''
         }
     },
     created() {
@@ -42,23 +30,21 @@ let globalCheck = Vue.createApp({
             let r2 = await r.json();
 
             return r2;
+        },
+
+        openHam() {
+            this.ham = document.getElementById("ham");
+            this.cross = document.getElementById("cross");
+            this.menulist = document.querySelector(".nav-bar");
+            this.menulist.classList.toggle("-openlist");
+            this.ham.classList.add("-close");
+            this.cross.classList.add("-open");
+        },
+
+        closeHam() {
+            this.menulist.classList.toggle("-openlist");
+            this.ham.classList.remove("-close");
+            this.cross.classList.remove("-open");
         }
     }
 }).mount('#navStatus');
-
-
-
-
-// 選單收合=============
-// $(document).ready(function(){
-//     $("#ham").click(function(){
-//             $(".nav-bar").toggleClass("-openlist");
-//             $("#ham").toggleClass("-close");
-//             $("#cross").toggleClass("-open");
-//     });
-//     $("#cross").click(function(){
-//             $(".nav-bar").toggleClass("-openlist");
-//             $("#ham").removeClass("-close");
-//             $("#cross").removeClass("-open");
-//     })
-//});
