@@ -68,10 +68,8 @@ const app = Vue.createApp({
     methods: {
         //傳遞所有資料到php
         async updateData() {
-            await this.saveImage();
 
-            
-            this.saveImg();
+
             //整理要傳送到後端的資料 文字內容更新
             let updateData = {
                 //行程標題
@@ -94,16 +92,6 @@ const app = Vue.createApp({
                 Content2: this.Content2,
                 Content3: this.Content3,
 
-                //封面照片
-                // desImg1: this.desImg1,
-                // desImg2: this.desImg2,
-                // desImg3: this.desImg3,
-
-                //方案詳情照片
-                // plan_Img1: this.plan_Img1,
-                // plan_Img2: this.plan_Img2,
-                // plan_Img3: this.plan_Img3,
-                // plan_Img4: this.plan_Img4,
 
                 //行程名稱
                 plan_title1: this.plan_title1,
@@ -132,11 +120,6 @@ const app = Vue.createApp({
                 //活動介紹
                 intro: this.intro,
 
-                //活動介紹照片
-                // introImg1: this.introImg1,
-                // introImg2: this.introImg2,
-                // introImg3: this.introImg3,
-                // introImg4: this.introImg4,
 
             }
             console.log(updateData);
@@ -160,14 +143,21 @@ const app = Vue.createApp({
                 axios.post('../php/backProductDetailUpdate.php?id=' + productId, updateData)
                     .then((response) => {
                         console.log(response.data);
-                        //更新完重新load重新讓$字號進去
-                        this.getData();
+                        return this.saveImage();
+                    })
+                    .then(() => {
+                        return this.savePlanImg();
+                    })
+                    .then(() => {
+                        window.onload = () => {
+                            this.getData(); // 在所有圖片載入完成後重新渲染畫面
+                        };
                     })
                     .catch((error) => {
                         console.log(error);
-                    })
+                    });
             } else {
-                return
+                return;
             }
 
             this.editable = false;
@@ -177,10 +167,6 @@ const app = Vue.createApp({
             history.back();
         },
 
-        //新增照片
-        saveImg() {
-
-        },
 
         //撈取資料
         getData() {
@@ -204,6 +190,7 @@ const app = Vue.createApp({
             axios.get('../php/backProductDetail.php?id=' + productId)
                 .then(function (response) {
                     console.log(response.data);
+                    console.log("更新成功");
 
                     //行程名稱
                     vm.name = response.data.product[0].Name;
@@ -378,15 +365,24 @@ const app = Vue.createApp({
         },
 
         async saveImage() {
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return "";
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+            var productId = getParameterByName('id');
+
+
             const imageData = new FormData();
             imageData.append('desImg1', document.getElementById('desImg1').files[0]);
             imageData.append('desImg2', document.getElementById('desImg2').files[0]);
             imageData.append('desImg3', document.getElementById('desImg3').files[0]);
 
-            imageData.append('plan_Img1', document.getElementById('plan_Img1').files[0]);
-            imageData.append('plan_Img2', document.getElementById('plan_Img2').files[0]);
-            imageData.append('plan_Img3', document.getElementById('plan_Img3').files[0]);
-            imageData.append('plan_Img4', document.getElementById('plan_Img4').files[0]);
+
 
             imageData.append('introImg1', document.getElementById('introImg1').files[0]);
             imageData.append('introImg2', document.getElementById('introImg2').files[0]);
@@ -394,21 +390,44 @@ const app = Vue.createApp({
             imageData.append('introImg4', document.getElementById('introImg4').files[0]);
 
 
-            await axios.post('../php/detailSaveImg.php', imageData)
+            await axios.post('../php/detailSaveImg.php?id=' + productId, imageData)
                 .then(response => {
-                    if (response.data === 'done') {
-                        console.log('image已儲存!');
-
-                    } else {
-                        alert('Image儲存失敗');
-                    }
-
+                    // console.log(response.data);
                 })
                 .catch(error => {
                     console.log(error);
                     alert('連線失敗，請稍後重試');
                 });
         },
+
+        async savePlanImg() {
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return "";
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+            var productId = getParameterByName('id');
+
+
+            const imageData2 = new FormData();
+            imageData2.append('plan_Img1', document.getElementById('plan_Img1').files[0]);
+            imageData2.append('plan_Img2', document.getElementById('plan_Img2').files[0]);
+            imageData2.append('plan_Img3', document.getElementById('plan_Img3').files[0]);
+            imageData2.append('plan_Img4', document.getElementById('plan_Img4').files[0]);
+
+            await axios.post('../php/detailSavePlanImg.php?id=' + productId, imageData2)
+                .then(response => {
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('連線失敗，請稍後重試');
+                });
+        }
 
     }
 });
