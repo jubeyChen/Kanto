@@ -63,10 +63,8 @@ const app = Vue.createApp({
     mounted(){
         axios.get('../php/backOrder.php')
             .then(response => {
-                for(let i = 0; i < response.data.length; i++){
-                    this.orders.push(response.data[i]);
-                }
-                // console.log(this.orders);
+                //console.log(response.data);
+                this.orders = response.data;
 
                 this.sortedOrders = this.orders;
                 this.doSlice();

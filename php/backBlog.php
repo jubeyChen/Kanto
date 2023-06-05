@@ -2,9 +2,9 @@
 
 include('Mysql.php'); //資料庫連線
 
-$sql = "SELECT g.ID, c.ID, c.CouponName, c.CouponCode, p.ID as pID, p.Name, p.Content, p.Banner1 FROM game g
-join coupon c on g.CouponID = c.ID
-join product p on g.ProductID = p.ID";
+$sql = "SELECT b.ID, b.Title, b.CreatedTime, r.RegionName FROM blog b
+join region r on b.RegionID = r.ID
+order by b.ID";
 
 //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
 

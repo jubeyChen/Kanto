@@ -3,14 +3,13 @@
 include('Mysql.php'); //資料庫連線
 
 // 第一個查詢 (所有product table的資料)
-$sql = "SELECT * FROM roomblog";
+$sql = "SELECT * FROM roomBlog";
 
 $statement = $pdo->prepare($sql);
 $statement->execute();
 $data = $statement->fetchAll();
 
-var_dump($data);
-
+// var_dump($data);
 
 // 將查詢組成陣列
 
