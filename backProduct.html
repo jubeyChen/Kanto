@@ -35,7 +35,7 @@
         <main class="" id="app">
             <h2>行程管理</h2>
             <section class="select-block">
-                <form action="post">
+                <div class="form">
                     <!-- {{selectValue}} -->
                     <select name="title" id="title" v-model="selectValue">
                         <option value="">選擇項目</option>
@@ -44,7 +44,7 @@
                     </select>
                     <input type="text" class="textStyle" placeholder="" v-model="textValue">
                     <input type="button" value="搜尋" class="btn-pri-m" @click="searchBtn">
-                </form>
+                </div>
 
                 <section class="edit-block">
                     <button>刪除<span class="material-symbols-outlined">

@@ -30,15 +30,15 @@
         <main class="">
             <h2>訂單管理</h2>
             <section class="select-block">
-                <form action="post">
+                <div class="form">
                     <select name="title" id="title" v-model="searchType">
                         <option value="" selected>選擇項目</option>
                         <option value="id">訂單編號</option>
                         <option value="fullname">顧客姓名</option>
                     </select>
-                    <input type="text" class="textStyle" placeholder="輸入關鍵字" v-model="searchText" @keyup.enter="doResearch">
+                    <input type="text" class="textStyle" placeholder="輸入關鍵字" v-model="searchText" @keyup.prevent.enter="doSearch">
                     <input type="button" value="搜尋" class="btn-pri-m" @click="doSearch">
-                </form>
+                </div>
             </section>
 
             <table class="table table-light table-hover table-bordered table-sm">

@@ -36,7 +36,7 @@
 
         .select-block{
             margin-top: 20px;
-            form{
+            .form{
                 @include flex-container(row, nowrap, flex-start);
                 font-size: 16px;
 
