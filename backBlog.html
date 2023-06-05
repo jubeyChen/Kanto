@@ -99,14 +99,14 @@
 
             <section class="page-btn">
                 <button @click="backStartNum">上一頁</button>
-                <div>{{currentNum}}/{{backBlog.length}}</div>
+                <div>{{currentNum}}/{{sortedBlog.length}}</div>
                 <button @click="addStartNum">下一頁</button>
             </section>
 
         </main>
     </section>
 
-    <script src="js/vendors/vue.global.prod.js"></script>
+    <script src="js/vendors/vue.global.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
     <script src="./js/checkBackSession.js"></script>
