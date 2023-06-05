@@ -23,12 +23,23 @@ Vue.createApp({
             // 每頁數量*頁數 /總數量    16/16
             // 當總數量<10(每頁數量) 或 最後一頁(當前頁面=總頁面)時 當前數量=總會員數
             
-            const allmembers = this.member.length
-            if(allmembers <= this.countOfPage || this.currentPage === this.totalPages){
-                this.currentNum = allmembers
-            }else if(allmembers > 10 || allmembers % this.countOfPage !== 0){
-                this.currentNum = this.currentNum + (allmembers % this.countOfPage)
+            const allMembers = this.members.length
+
+            if(allMembers <= 10 || this.currentPage === this.totalPages){
+                return this.currentNum = allMembers;
+            }else if(allMembers > 10){
+                return this.currentNum = this.currentPage * 10;
             };
+
+            // const allmembers = this.members.length //member + s
+            // if(allmembers <= this.countOfPage || this.currentPage === this.totalPages){
+            //     this.currentNum = allmembers
+            // }else if(allmembers > 10 || allmembers % this.countOfPage !== 0){ // || what for?
+            //     this.currentNum = this.currentNum + (allmembers % this.countOfPage)
+            // };
+
+            //20筆的狀況呢？
+
             // 當總數量大於10 且總數量除每頁數量會有餘數時(不等於0)  當前數量就 = 頁數*每頁數量 
             // else if(this.members.length > this.countOfPage && this.currentPage === this.totalPages)
             //     {
@@ -81,14 +92,14 @@ Vue.createApp({
             if(this.currentPage > 1 ){
                 this.currentPage = this.currentPage - 1
             }
-            currentNumber();
+            this.currentNumber();
         },
         nextPageBtn(){
             if(this.currentPage <  this.totalPages) //|| this.members.length <= (currentPage*10))
             {
                 this.currentPage = this.currentPage + 1
             }
-            currentNumber();
+            this.currentNumber();
         }
     },
     async mounted(){

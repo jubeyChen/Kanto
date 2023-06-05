@@ -161,7 +161,7 @@ function getRandomNumbers(min, max, count, avoidNumber) {
 }
 
 let min = 1;
-let max = 10;
+let max = 11;
 const count = 3;
 let avoidNumber = parseInt(blogId);
 
