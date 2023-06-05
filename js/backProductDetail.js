@@ -67,9 +67,12 @@ const app = Vue.createApp({
     },
     methods: {
         //傳遞所有資料到php
-        updateData() {
+        async updateData() {
+            await this.saveImage();
 
-            //整理要傳送到後端的資料
+            
+            this.saveImg();
+            //整理要傳送到後端的資料 文字內容更新
             let updateData = {
                 //行程標題
                 name: this.name,
@@ -92,15 +95,15 @@ const app = Vue.createApp({
                 Content3: this.Content3,
 
                 //封面照片
-                desImg1: this.desImg1,
-                desImg2: this.desImg2,
-                desImg3: this.desImg3,
+                // desImg1: this.desImg1,
+                // desImg2: this.desImg2,
+                // desImg3: this.desImg3,
 
                 //方案詳情照片
-                plan_Img1: this.plan_Img1,
-                plan_Img2: this.plan_Img2,
-                plan_Img3: this.plan_Img3,
-                plan_Img4: this.plan_Img4,
+                // plan_Img1: this.plan_Img1,
+                // plan_Img2: this.plan_Img2,
+                // plan_Img3: this.plan_Img3,
+                // plan_Img4: this.plan_Img4,
 
                 //行程名稱
                 plan_title1: this.plan_title1,
@@ -130,14 +133,15 @@ const app = Vue.createApp({
                 intro: this.intro,
 
                 //活動介紹照片
-                introImg1: this.introImg1,
-                introImg2: this.introImg2,
-                introImg3: this.introImg3,
-                introImg4: this.introImg4,
+                // introImg1: this.introImg1,
+                // introImg2: this.introImg2,
+                // introImg3: this.introImg3,
+                // introImg4: this.introImg4,
 
             }
             console.log(updateData);
 
+            //帶入id
             function getParameterByName(name, url) {
                 if (!url) url = window.location.href;
                 name = name.replace(/[\[\]]/g, "\\$&");
@@ -149,6 +153,8 @@ const app = Vue.createApp({
             }
             var productId = getParameterByName('id');
 
+
+            //檢查確認是否更新 確認後再將資料丟入後端
             let checkUpdate = confirm('是否進行更新?');
             if (checkUpdate) {
                 axios.post('../php/backProductDetailUpdate.php?id=' + productId, updateData)
@@ -167,13 +173,16 @@ const app = Vue.createApp({
             this.editable = false;
         },
 
-        // showComment() {
-        //     return isShown = true;
-        // },
         backPage() {
             history.back();
         },
 
+        //新增照片
+        saveImg() {
+
+        },
+
+        //撈取資料
         getData() {
             function getParameterByName(name, url) {
                 if (!url) url = window.location.href;
@@ -262,108 +271,145 @@ const app = Vue.createApp({
                 })
         },
 
-
-        //封面照片1
-        handledesImg1(event) {
-            const file = event.target.files[0];
+        //更新封面照片
+        updatedesImg1(e) {
+            const file = e.target.files.item(0);
             const reader = new FileReader();
-            reader.onload = () => {
-                this.desImg1 = reader.result;
-            };
-            reader.readAsDataURL(file);
-        },
-        //封面照片2
-        handledesImg2(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            reader.onload = () => {
-                this.desImg2 = reader.result;
-            };
-            reader.readAsDataURL(file);
-        },
-        //封面照片3
-        handledesImg3(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            reader.onload = () => {
-                this.desImg3 = reader.result;
-            };
+            reader.addEventListener('load', (e) => {
+                this.desImg1 = e.target.result;
+            });
             reader.readAsDataURL(file);
         },
 
-        //方案詳情照片
-        handlePlanImg1(event) {
-            const file = event.target.files[0];
+
+        updatedesImg2(e) {
+            const file = e.target.files.item(0);
             const reader = new FileReader();
-            reader.onload = () => {
-                this.plan_Img1 = reader.result;
-            };
+            reader.addEventListener('load', (e) => {
+                this.desImg2 = e.target.result;
+            });
             reader.readAsDataURL(file);
         },
 
-        handlePlanImg2(event) {
-            const file = event.target.files[0];
+        updatedesImg3(e) {
+            const file = e.target.files.item(0);
             const reader = new FileReader();
-            reader.onload = () => {
-                this.plan_Img2 = reader.result;
-            };
-            reader.readAsDataURL(file);
-        },
-        handlePlanImg3(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            reader.onload = () => {
-                this.plan_Img3 = reader.result;
-            };
-            reader.readAsDataURL(file);
-        },
-        handlePlanImg4(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            reader.onload = () => {
-                this.plan_Img4 = reader.result;
-            };
+            reader.addEventListener('load', (e) => {
+                this.desImg3 = e.target.result;
+            });
             reader.readAsDataURL(file);
         },
 
 
 
-        //活動介紹照片
-        handleintroImg1(event) {
-            const file = event.target.files[0];
+        //方案詳情圖片
+        updatePlanImg1(e) {
+            const file = e.target.files.item(0);
             const reader = new FileReader();
-            reader.onload = () => {
-                this.introImg1 = reader.result;
-            };
+            reader.addEventListener('load', (e) => {
+                this.plan_Img1 = e.target.result;
+            });
             reader.readAsDataURL(file);
         },
 
-        handleintroImg2(event) {
-            const file = event.target.files[0];
+        updatePlanImg2(e) {
+            const file = e.target.files.item(0);
             const reader = new FileReader();
-            reader.onload = () => {
-                this.introImg2 = reader.result;
-            };
+            reader.addEventListener('load', (e) => {
+                this.plan_Img2 = e.target.result;
+            });
             reader.readAsDataURL(file);
         },
 
-        handleintroImg3(event) {
-            const file = event.target.files[0];
+        updatePlanImg3(e) {
+            const file = e.target.files.item(0);
             const reader = new FileReader();
-            reader.onload = () => {
-                this.introImg3 = reader.result;
-            };
+            reader.addEventListener('load', (e) => {
+                this.plan_Img3 = e.target.result;
+            });
             reader.readAsDataURL(file);
         },
 
-        handleintroImg4(event) {
-            const file = event.target.files[0];
+        updatePlanImg4(e) {
+            const file = e.target.files.item(0);
             const reader = new FileReader();
-            reader.onload = () => {
-                this.introImg4 = reader.result;
-            };
+            reader.addEventListener('load', (e) => {
+                this.plan_Img4 = e.target.result;
+            });
             reader.readAsDataURL(file);
-        }
+        },
+
+        //更新活動介紹照片
+        updateIntroImg1(e) {
+            const file = e.target.files.item(0);
+            const reader = new FileReader();
+            reader.addEventListener('load', (e) => {
+                this.introImg1 = e.target.result;
+            });
+            reader.readAsDataURL(file);
+        },
+
+
+        updateIntroImg2(e) {
+            const file = e.target.files.item(0);
+            const reader = new FileReader();
+            reader.addEventListener('load', (e) => {
+                this.introImg2 = e.target.result;
+            });
+            reader.readAsDataURL(file);
+        },
+
+        updateIntroImg3(e) {
+            const file = e.target.files.item(0);
+            const reader = new FileReader();
+            reader.addEventListener('load', (e) => {
+                this.introImg3 = e.target.result;
+            });
+            reader.readAsDataURL(file);
+        },
+
+        updateIntroImg4(e) {
+            const file = e.target.files.item(0);
+            const reader = new FileReader();
+            reader.addEventListener('load', (e) => {
+                this.introImg4 = e.target.result;
+            });
+            reader.readAsDataURL(file);
+        },
+
+        async saveImage() {
+            const imageData = new FormData();
+            imageData.append('desImg1', document.getElementById('desImg1').files[0]);
+            imageData.append('desImg2', document.getElementById('desImg2').files[0]);
+            imageData.append('desImg3', document.getElementById('desImg3').files[0]);
+
+            imageData.append('plan_Img1', document.getElementById('plan_Img1').files[0]);
+            imageData.append('plan_Img2', document.getElementById('plan_Img2').files[0]);
+            imageData.append('plan_Img3', document.getElementById('plan_Img3').files[0]);
+            imageData.append('plan_Img4', document.getElementById('plan_Img4').files[0]);
+
+            imageData.append('introImg1', document.getElementById('introImg1').files[0]);
+            imageData.append('introImg2', document.getElementById('introImg2').files[0]);
+            imageData.append('introImg3', document.getElementById('introImg3').files[0]);
+            imageData.append('introImg4', document.getElementById('introImg4').files[0]);
+
+
+            await axios.post('../php/detailSaveImg.php', imageData)
+                .then(response => {
+                    if (response.data === 'done') {
+                        console.log('image已儲存!');
+
+                    } else {
+                        alert('Image儲存失敗');
+                    }
+
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('連線失敗，請稍後重試');
+                });
+        },
+
     }
 });
 

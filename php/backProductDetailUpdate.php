@@ -10,7 +10,6 @@ $data = json_decode($data, true);
 
 
 
-
 $name = $data['name'];
 //行程地區
 $region = $data['region'];
@@ -27,13 +26,7 @@ $Content3 = $data['Content3'];
 
 //活動介紹
 $intro = $data['intro'];
-$introImg1 = $data['introImg1'];
-$introImg2 = $data['introImg2'];
-$introImg3 = $data['introImg3'];
-$introImg4 = $data['introImg4'];
 $productId = $_GET['id'];
-
-
 
 
 //第一個搜尋
@@ -70,10 +63,7 @@ $result = $stmt->execute($params);
 
 
 //第二個搜尋
-$plan_Img1 = $data['plan_Img1'];
-$plan_Img2 = $data['plan_Img2'];
-$plan_Img3 = $data['plan_Img3'];
-$plan_Img4 = $data['plan_Img4'];
+
 
 //行程名稱
 $plan_title1 = $data['plan_title1'];
