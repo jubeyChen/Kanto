@@ -29,6 +29,9 @@ const app = Vue.createApp({
         checkDetail(){
             location.href='backBlogDetail.html'
         },
+        createNew(){
+            location.href='makeNewBlog.html'
+        },
         doSlice(){
             this.slicedBlog = this.sortedBlog.slice(this.startNum, this.startNum + 10);
         },

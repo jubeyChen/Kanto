@@ -1,0 +1,281 @@
+.backBlogDetail{
+    margin: 50px auto;
+    padding-bottom: 100px;
+    height: auto;
+    width: 90%;
+    @include flex-container(row, nowrap, space-between, flex-start);
+
+    /* ========== 側邊欄 ========== */
+    aside{
+        margin-right: 0;
+        width: 20%;
+
+        div{
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        ul{
+            text-align: center;
+            padding-left: 0;
+
+            li{
+                margin-bottom: 5px;
+            }
+
+            a{
+                text-decoration: none;
+                &:hover{
+                    color: #fff;
+                }
+            }
+        }
+    
+    }
+
+    /* ========== 主欄位 ========== */
+    main{
+        width: 80%;
+        min-height: 100vh;
+
+        /* ========== 上排按鈕 ========== */
+        .select-block{
+            margin: 20px auto;
+
+            @include flex-container(row, nowrap, space-between);
+
+
+            button{
+                background-color: $secondary;
+                color: $fontColor;
+                font-size: $paragraph-s;
+                border: none;
+                border-radius: $borderRadius;
+                box-sizing: border-box;
+                padding: 5px 30px 5px 10px;
+                width: 80px;
+                
+                span{
+                    position: absolute;
+                    margin: auto;
+                }
+
+            }
+
+            .edit-block{
+                button{
+                    margin-left: 10px;
+                }
+
+                #edit-btn{
+                    color: #fff;
+                    background-color: $primary;
+                }
+            }
+        }
+
+        /* ========== 通用 p & form ========== */
+        p{
+            font-size: $paragraph;
+            background-color: #000;
+            color: #fff;
+            box-sizing: border-box;
+            padding: 15px 20px;
+            border-radius: $borderRadius $borderRadius 0 0;
+        }
+
+        form{
+            box-sizing: border-box;
+            padding: 10px 30px;
+
+        }
+
+        /* ========== 專欄內容 ========== */
+        .content_block{
+            background-color: #fff;
+            border-radius: $borderRadius;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+
+            .img_block{
+                @include flex-container(row, wrap, flex-start);
+
+                .inner_img_block{
+                    @include flex-container(column);
+                    max-width: 25%;
+                    flex-basis: 25%;
+                    margin-right: 10px;
+                    .imgDiv {
+                        width: 100%;
+                        height: 200px;
+                        margin-bottom: 10px;
+    
+                        img {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            margin-bottom: 20px;
+                        }
+                    }
+                    // img{
+                    //     display: block;
+                    //     width: 100%;
+                    //     height: 200px;
+                    //     object-fit: cover;
+                    // }        
+                    
+                    // button{
+                    //     background-color: $secondary;
+                    //     color: $fontColor;
+                    //     font-size: $paragraph-s;
+                    //     border: none;
+                    //     border-radius: $borderRadius;
+                    //     box-sizing: border-box;
+                    //     padding: 5px 30px 5px 10px;
+                    //     margin-top: 20px;
+
+                    //     width: 80px;
+                        
+                    //     span{
+                    //         position: absolute;
+                    //         margin: auto;
+                    //     }
+        
+                    // }    
+
+                }
+                label.inputFile {
+                    background-color: #E9ECEF;
+                    border: 1px solid rgb(197, 197, 197);
+                    color: #212529;
+                    width: 90%;
+                    text-align: center;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    padding: 5px 0;
+                    
+                    
+                }
+    
+            }
+        }
+
+        /* ========== 方案詳情 ========== */
+        .plan_block{
+            background-color: #fff;
+            border-radius: $borderRadius;
+            margin-bottom: 20px;
+            .makeNewBlog {
+                padding: 10px 30px;
+            
+                section {
+            
+                    .contentBlock {
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: nowrap;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+            
+                    .inner_img_block {
+                        @include flex-container(column);
+                        flex-basis: 24%;
+            
+                        .imgDiv {
+                            width: 100%;
+                            height: 200px;
+                            margin-bottom: 10px;
+            
+                            img {
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+            
+                                margin-bottom: 20px;
+                            }
+                        }
+                    }
+            
+                    label.inputFile {
+                        background-color: #E9ECEF;
+                        border: 1px solid rgb(197, 197, 197);
+                        color: #212529;
+                        width: 90%;
+                        text-align: center;
+                        cursor: pointer;
+                        border-radius: 5px;
+                        padding: 5px 0
+                    }
+                }
+            
+            
+            }
+            // section{
+            //     @include flex-container(row, nowrap, space-between, flex-start);
+
+            //     .outer-img{
+            //         box-sizing: border-box;
+            //         margin-right: 20px;
+            //         @include flex-container(column, nowrap, space-between, center);
+            //         flex-basis: 35%;
+            //         img{
+            //             display: block;
+            //             height: 200px;
+            //             // height: auto;
+            //             width: 100%;
+    
+            //         }
+            //         label.inputFile {
+            //             background-color: #E9ECEF;
+            //             border: 1px solid rgb(197, 197, 197);
+            //             color: #212529;
+            //             width: 90%;
+            //             text-align: center;
+            //             cursor: pointer;
+            //             border-radius: 5px;
+            //             padding: 5px 0;
+            //             margin-top: 10px;
+            //         }
+                    
+
+            //     }
+
+            //     .content-block{
+            //         @include flex-container(column, nowrap, space-between, center);
+
+            //     }
+    
+            // }
+
+        }
+
+        /* ========== 下排按鈕 ========== */
+        .lower-btn-block{
+
+            margin: 20px auto;
+            @include flex-container(row, nowrap, flex-end);
+
+            button{
+                background-color: $secondary;
+                color: $fontColor;
+                font-size: $paragraph-s;
+                border: none;
+                border-radius: $borderRadius;
+                box-sizing: border-box;
+                padding: 5px 10px;
+                width: 80px;
+            }
+
+            #confirm-btn{
+                color: #fff;
+                background-color: $primary;
+                margin-left: 20px;
+            }
+        }
+
+    }
+
+}

@@ -110,7 +110,7 @@
                         height: 200px;
                         object-fit: cover;
                     }        
-
+                    
                     button{
                         background-color: $secondary;
                         color: $fontColor;
@@ -130,6 +130,16 @@
         
                     }    
 
+                }
+                label.inputFile {
+                    background-color: #E9ECEF;
+                    border: 1px solid rgb(197, 197, 197);
+                    color: #212529;
+                    width: 90%;
+                    text-align: center;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    padding: 5px 0
                 }
     
             }
