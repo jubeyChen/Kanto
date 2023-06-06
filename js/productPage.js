@@ -332,6 +332,7 @@ const app = Vue.createApp({
 
                 //將資料組成物件
                 const planObj = {
+                    productID: this.productID,
                     total: this.total,
                     selectedDate: this.selectedDate,
                     title: this.title,

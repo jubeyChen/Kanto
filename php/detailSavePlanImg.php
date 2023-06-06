@@ -97,6 +97,32 @@ ECHO $originalImage2;
 ECHO $originalImage3;
 ECHO $originalImage4;
 
+    // 檢查並執行檔案上傳和更新
+    if (isset($_FILES['plan_Img1']) && $_FILES['plan_Img1']["error"] == 0) {
+        move_uploaded_file($filePath_Temp1, $path . $newFileName1);
+    } else {
+        $newFileName1 = $originalFileName1;
+    }
+
+    if (isset($_FILES['plan_Img2']) && $_FILES['plan_Img2']["error"] == 0) {
+        move_uploaded_file($filePath_Temp2, $path . $newFileName2);
+    } else {
+        $newFileName2 = $originalFileName2;
+    }
+
+    if (isset($_FILES['plan_Img3']) && $_FILES['plan_Img3']["error"] == 0) {
+        move_uploaded_file($filePath_Temp3, $path . $newFileName3);
+    } else {
+        $newFileName3 = $originalFileName3;
+    }
+
+    if (isset($_FILES['plan_Img4']) && $_FILES['plan_Img4']["error"] == 0) {
+        move_uploaded_file($filePath_Temp4, $path . $newFileName4);
+    } else {
+        $newFileName4 = $originalFileName4;
+    }
+
+
 //第一個更新
  $sql ="UPDATE productSchedule
       SET Image = ?
