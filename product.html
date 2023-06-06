@@ -38,7 +38,7 @@
                                 <div class="search-text">
                                     <input type="text" class="search-bar" v-model.lazy="searchInput" id="search"
                                         placeholder="輸入名稱">
-                                    <button class="search-btn"><svg width="20px" height="20px"
+                                        <button class="search-btn"><svg width="20px" height="20px"
                                             xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                             <path
@@ -171,8 +171,9 @@
                             <div class="word">
                                 <div class="title-h">
                                     <h3>{{item.Name}}</h3>
-                                    <button class="heart-btn"><i class="fa-regular fa-heart"
-                                            style="color: #000000; font-size: 2em;"></i></button>
+                                    <button class="heart-btn" :class="{ 'heart-btn-red': isHearted }" @click="toggleHeart">
+                                        <i class="fa-regular fa-heart" :style="{ color: isHearted ? '#ff0000' : '#000000', fontSize: '2em' }"></i>
+                                    </button>
                                 </div>
                                 <p class="p-content">{{item.Content}}</p>
                                 <div class="only-btn">
@@ -184,7 +185,13 @@
                                 </div>
                                 <div class="star-p">
                                     <div class="star">
-                                        <img src="image/product/star.png" alt="">
+                                        <ul>
+                                            <li v-if="item.AverageStar >= 1 || item.AverageStar == 0"><i class="fa-solid fa-star"style="color: yellow; line-height: 1px; fontSize: 1.5em"></i></li>
+                                            <li v-if="item.AverageStar >= 2"><i class="fa-solid fa-star"style="color: yellow; line-height: 1px; fontSize: 1.5em"></i></li>
+                                            <li v-if="item.AverageStar >= 3"><i class="fa-solid fa-star"style="color: yellow; line-height: 1px; fontSize: 1.5em"></i></li>
+                                            <li v-if="item.AverageStar >= 4"><i class="fa-solid fa-star"style="color: yellow; line-height: 1px; fontSize: 1.5em"></i></li>
+                                            <li v-if="item.AverageStar >= 5"><i class="fa-solid fa-star"style="color: yellow; line-height: 1px; fontSize: 1.5em"></i></li>
+                                        </ul>
                                     </div>
                                     <div class="price">TWD {{numberWithCommas(item.Price)}}</div>
                                 </div>

@@ -340,6 +340,7 @@ const app = Vue.createApp({
                     if (response.data !== '沒有收藏') {
                         this.myCollection = response.data;
                         this.collectionExist = true;
+                        console.log(this.myCollection)
                     } else {
                         this.collectionExist = false;
                         console.log('no collection');

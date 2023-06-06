@@ -134,13 +134,19 @@ const RootComponent = {
             minPrice: 0,
             maxPrice: 3000,
 
-            selectedDate: null,  // 新增的屬性用於保存使用者點擊的日期
+            // 新增的屬性用於保存使用者點擊的日期
+            selectedDate: null,
+            // 星星平均值
+            averageStar: [],
+            // 愛心初始狀態為未按下
+            isHearted: false
 
 
 
         };
     },
-    mounted() {
+    async mounted() {
+        
 
         axios.get('../php/product.php')
             .then((response) => {
@@ -159,8 +165,10 @@ const RootComponent = {
                     }
                     if (Array.isArray(response.data.aaa)) {
                         this.AAA = response.data.aaa
+                    }
 
-
+                    if (Array.isArray(response.data.averageStar)) {
+                        this.averageStar = response.data.averageStar
                     }
 
 
@@ -172,6 +180,28 @@ const RootComponent = {
             .catch((error) => {
                 console.log(error);
             })
+
+
+        axios.get('../php/averageStar.php')
+            .then(response => {
+
+                if (Array.isArray(response.data.averageStar)) {
+                    this.averageStar = response.data.averageStar
+                    console.log(this.averageStar)
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+        //檢查是否為登入狀態
+
+        let a = await globalCheck.PageCheckSession();// 測試連線
+        console.log(a);
+        this.isSessionValid = a.isSessionValid;
+        this.user = a.user;
+
+
 
         let vm = this;
 
@@ -223,6 +253,8 @@ const RootComponent = {
             const endIndex = startIndex + this.perPage;
             return this.displayItems.slice(startIndex, endIndex);
         },
+
+        
     },
 
     methods: {
@@ -298,7 +330,11 @@ const RootComponent = {
             this.setPages();
         },
 
-        // findIndex()
+        // -------------------------控制愛心顏色-------------------
+        toggleHeart() {
+            this.isHearted = !this.isHearted;
+        },
+
         // -------------------------控制分頁-------------------
 
         setPages() {
@@ -313,6 +349,24 @@ const RootComponent = {
 
         goToPage(page) {
             this.currentPage = page;
+        },
+
+        // -------------------------得到已收藏資料-------------------
+        async getCollection() {
+            await axios.post('../php/GetCollection.php', { memberID: this.accountInfo.ID })
+                .then(response => {
+                    if (response.data !== '沒有收藏') {
+                        this.myCollection = response.data;
+                        this.collectionExist = true;
+                    } else {
+                        this.collectionExist = false;
+                        console.log('no collection');
+                    }
+
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         },
 
     }

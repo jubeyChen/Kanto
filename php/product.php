@@ -24,6 +24,26 @@ $data2 = $statement2->fetchAll();
 // -------------------------------------------------------------------------------------------
 
 
+$sql3 = "SELECT t.ProductID, t.AverageStar, p.* FROM
+        (SELECT ProductID, AVG(Star) AS AverageStar FROM review GROUP BY ProductID) AS t
+        INNER JOIN product AS p ON t.ProductID = p.ID";
+
+$statement3 = $pdo->prepare($sql3);
+$statement3->execute();
+$data3 = $statement3->fetchAll();
+
+// 將 averageStarData 中的 AverageStar 按照 product.ID 加入 productData
+foreach ($data as &$product) {
+    $product['AverageStar'] = null; // 預設值為 null
+
+    foreach ($data3 as $averageStar) {
+        if ($averageStar['ProductID'] === $product['ID']) {
+            $product['AverageStar'] = $averageStar['AverageStar'];
+            break;
+        }
+    }
+}
+
 
 
 // 將兩個查詢組成陣列
@@ -31,6 +51,7 @@ $data2 = $statement2->fetchAll();
 $response = [
     'product' => $data,
     'productdetail' => $data2,
+    'averageStar' => $data3,
 ];
 
 // 轉 JSON
