@@ -51,8 +51,51 @@ if( $_FILES['plan_Img1']['error'] >0 || $_FILES['plan_Img2']['error'] >0 || $_FI
 
 
 //撈取原始圖片檔案名稱
+$originalsql_1 = "SELECT *
+FROM productSchedule
+WHERE productID = ?
+LIMIT 1";
+$originalstatement = $pdo->prepare($originalsql_1);
+$originalstatement->bindParam(1, $productId);
+$originalstatement->execute();
+$row = $originalstatement->fetch(PDO::FETCH_ASSOC);
+$originalImage1 = $row['Image'];
 
 
+$originalsql_2 = "SELECT *
+FROM productSchedule
+WHERE productID = ?
+LIMIT 1 OFFSET 1";
+$originalstatement2 = $pdo->prepare($originalsql_2);
+$originalstatement2->bindParam(1, $productId);
+$originalstatement2->execute();
+$row = $originalstatement2->fetch(PDO::FETCH_ASSOC);
+$originalImage2 = $row['Image'];
+
+$originalsql_3 = "SELECT *
+FROM productSchedule
+WHERE productID = ?
+LIMIT 1 OFFSET 2";
+$originalstatement3 = $pdo->prepare($originalsql_3);
+$originalstatement3->bindParam(1, $productId);
+$originalstatement3->execute();
+$row = $originalstatement3->fetch(PDO::FETCH_ASSOC);
+$originalImage3 = $row['Image'];
+
+$originalsql_4 = "SELECT *
+FROM productSchedule
+WHERE productID = ?
+LIMIT 1 OFFSET 3";
+$originalstatement4 = $pdo->prepare($originalsql_4);
+$originalstatement4->bindParam(1, $productId);
+$originalstatement4->execute();
+$row = $originalstatement4->fetch(PDO::FETCH_ASSOC);
+$originalImage4 = $row['Image'];
+
+ECHO $originalImage1;
+ECHO $originalImage2;
+ECHO $originalImage3;
+ECHO $originalImage4;
 
 //第一個更新
  $sql ="UPDATE productSchedule
