@@ -134,10 +134,19 @@ const app = Vue.createApp({
             order.showReviewDetail = !order.showReviewDetail;
             this.showReviewDetail = !this.showReviewDetail;
 
-            this.currentOrderNumber = order.OrderNumber;   
-            console.log(this.currentOrderNumber);
+            this.currentOrderNumber = order.OrderNumber;  
             window.scrollTo({
-                top: 100,
+                top: 0,
+                behavior: "smooth",
+            });
+        },
+
+        serviceScroll(order) {
+            this.showService = true;
+            this.currentOrderNumber = order.OrderNumber;
+            
+            window.scrollTo({
+                top: 0,
                 behavior: "smooth",
             });
         },

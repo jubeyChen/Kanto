@@ -19,7 +19,7 @@
                             @click="toggleReview(order)">撰寫評論</button></li>
                     <li v-if="order.Reviewed === 1"><button @click="toggleReviewDetail(order)" ref="reviewButton" :id="order.OrderNumber">查看評論</button></li>
                     <li><button class="contact"
-                            @click="showService = true; currentOrderNumber = order.OrderNumber">聯絡客服</button></li>
+                            @click="serviceScroll(order)">聯絡客服</button></li>
                 </ul>
             </div>
         </div>

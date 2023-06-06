@@ -436,7 +436,11 @@
 
                             @include m() {
                                 display: inline-block;
-                                margin-left: 30%;
+                                margin-left: 35%;
+                            }
+
+                            @media all and (max-width: 390px) {
+                                margin-left: 28%;
                             }
                         }
 
@@ -817,7 +821,7 @@
             height: 100vh;
             top: 0;
             z-index: 1000;
-            padding: 50px 0 150px;
+            padding: 200px 0 150px;
         }
 
         .reviewDetail {
@@ -830,7 +834,7 @@
 
             @include m() {
                 width: 90%;
-                padding: 30px 0;
+                padding: 30px 10px;
             }
 
             span {
