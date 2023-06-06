@@ -139,9 +139,8 @@
                 p {
                     margin: 1vh;
                 }
-                img{
 
-                }
+                img {}
 
             }
 
@@ -258,8 +257,9 @@
         }
 
         ul {
-            display:flex;
-            li{
+            display: flex;
+
+            li {
                 width: 90%;
             }
         }
@@ -282,14 +282,3 @@
     cursor: pointer;
     border-radius: 5px;
 }
-
-// #about_first_name,
-// #about_last_name,
-// #about_email,
-// #about_tel {
-
-// }
-
-// #about_textarea {
-
-// }
