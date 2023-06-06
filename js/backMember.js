@@ -27,7 +27,7 @@ Vue.createApp({
 
             if(allMembers <= 10 || this.currentPage === this.totalPages){
                 return this.currentNum = allMembers;
-            }else if(allMembers > 10){
+            }else{
                 return this.currentNum = this.currentPage * 10;
             };
 
