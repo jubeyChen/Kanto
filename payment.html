@@ -11,6 +11,11 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <style>
+        .payment_error {
+          color: red;
+        }
+        </style>
 </head>
 
 
@@ -71,16 +76,17 @@
                     <form action="process_payment.php" method="post">
                         <ul>
                             <li>
-                                <input type="text" id="payment_card_number" name="card_number" required
-                                    placeholder="信用卡卡號">
-                            </li>
-                            <li>
-                                <input type="text" id="payment_expiry_date" name="expiry_date" required
-                                    placeholder="有效期限">
-                            </li>
-                            <li>
-                                <input type="text" id="cvv" name="cvv" required placeholder="CVC">
-                            </li>
+                                <input type="text" id="payment_card_number" name="card_number" required placeholder="信用卡卡號" v-model="creditCardNumber">
+                                <span v-if="creditCardError" class="payment_error">信用卡卡號有誤</span>
+                              </li>
+                              <li>
+                                <input type="text" id="payment_expiry_date" name="expiry_date" required placeholder="有效期限" v-model="expiryDate">
+                                <span v-if="expiryDateError" class="payment_error">過期日有誤</span>
+                              </li>
+                              <li>
+                                <input type="text" id="cvv" name="cvv" required placeholder="CVC" v-model="cvc">
+                                <span v-if="cvcError" class="payment_error">安全碼有誤</span>
+                              </li>
                         </ul>
                     </form>
                 </div>
@@ -94,8 +100,9 @@
                                 <label for="option1">電子信箱</label>
                             </li> -->
                             <li>
-                                <input id="payment_email" name="billing_address" required placeholder="電子信箱"></input>
-                            </li>
+                                <input type="email" id="payment_email" name="billing_address" required placeholder="電子信箱" v-model="email">
+                                <span v-if="emailError" class="payment_error">電子信箱有誤</span> <!-- Added: Error message for email -->
+                            </li>                        
                             <!-- <li>
                                 <input type="radio" id="payment_option1" name="choices" value="option1">
                                 <label for="option1">郵寄地址</label>
@@ -175,8 +182,8 @@
 
                             <li>
                                 <a href="done.html">
-                                    <input type="button" value="立即付款" src="done.html">
-                                </a>
+                                    <input type="button" value="立即付款"  @click="validateCreditCard" :disabled="hasErrors || isAnyInputEmpty">
+                                  </a>                            
                             </li>
                         </ul>
                     </form>

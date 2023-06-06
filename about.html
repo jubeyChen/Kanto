@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <title>關於我們</title>
   @@include('./layout/style.html')
 </head>
@@ -92,41 +93,6 @@
 
       </div>
 
-      <!-- <div class="about_form">
-              <h3
-              >聯絡我們</h3
-                  >
-              <ul>
-                  <li>
-                      <input type="text" placeholder="請輸入主題" id="aboutSubject">
-                  </li>
-  
-                  <li>
-                      <input type="text" placeholder="請輸入名字" id="aboutName">
-                  </li>
-  
-                  <li>
-                      <input type="text" placeholder="請輸入電子郵箱" id="aboutEmail">
-                  </li>
-  
-                  <li>
-                      <input type="text" placeholder="請輸入手機號碼" id="aboutTel">
-                  </li>
-  
-                  <li>
-                      <textarea rows="10" cols="25" placeholder="請填留言" id="aboutTextarea"></textarea>
-                  </li>
-  
-                  <li>
-                      <form method="post" class="about_button">
-                          <input type="button" id="aboutSubmit" value="發送留言" onclick="sendEmail()">
-                          </input>
-                      </form>
-                  </li>
-  
-              </ul>
-  
-          </div> -->
       <div class="about_form">
         <h3>聯絡我們</h3>
         <ul>
@@ -156,7 +122,7 @@
 
           <li>
             <!-- <form method="post" class="about_button"> -->
-              <input type="button" id="aboutSubmit" value="發送留言" @click="sendEmail">
+            <input type="button" id="aboutSubmit" value="發送留言" @click="sendEmail">
             <!-- </form> -->
           </li>
         </ul>
@@ -173,119 +139,12 @@
 
 
 
-    <script src="https://smtpjs.com/v3/smtp.js">
-    </script>
-
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/about.js"></script>
     <script>
-      Vue.createApp({
-        data() {
-          return {
-            aboutSubject: '',
-            aboutName: '',
-            aboutEmail: '',
-            aboutTel: '',
-            aboutTextarea: '',
-            isValidEmail: true,
-            isTaiwanMobileValid: true,
-            formSubmitted: false, // Track if form has been submitted
-          };
-        },
-        methods: {
-          checkEmailValidity() {
-            // 使用正則表達式檢查email地址的有效性
-            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            this.isValidEmail = regex.test(this.aboutEmail);
-          },
-          validateTaiwanMobile() {
-            let mobileRegex = /^09\d{8}$/;
-            this.isTaiwanMobileValid = mobileRegex.test(this.aboutTel);
-          },
-          submitForm() {
-            // Perform form submission tasks
-            // Set formSubmitted to true to show error messages if any
-            this.formSubmitted = true;
-          },
-
-          sendEmail() {
-            let subject = this.aboutSubject;
-            let isName = this.aboutName;
-            let phone = this.aboutTel;
-            let email = this.aboutEmail;
-            let body = this.aboutTextarea;
-
-            Email.send({
-              SecureToken: "adf84833-cc46-45a2-850a-092ac2f86858",
-              To: 'kantoasuka1@gmail.com',
-              From: "kantoasuka1@gmail.com",
-              Subject: subject,
-              Body: "Name: " + isName + "<br>Email: " + email + "<br>Phone: " + phone + "<br><br>" + body
-            }).then(function (message) {
-              alert("您的留言已送出");
-            });
-
-            // Set formSubmitted to true after sending email
-            this.formSubmitted = true;
-          },
-
-        },
-
-        watch: {
-          aboutEmail() {
-            this.checkEmailValidity();
-          },
-          aboutTel() {
-            this.validateTaiwanMobile();
-          }
-        },
-      }).mount('#app');
+      AOS.init();
     </script>
-
-
-    <!-- <script type="text/javascript">
-   
-   function sendEmail() {
-    let subject = document.getElementById("aboutSubject").value;
-    let isName = document.getElementById("aboutName").value;
-    let phone = document.getElementById("aboutTel").value;
-    let email = document.getElementById("aboutEmail").value;
-    let body = document.getElementById("aboutTextarea").value;
-
-    if (subject === "" || isName === "") {
-        alert("主題或名字不能為空白");
-        return;
-    }
-
-    if (!validateEmail(email)) {
-        alert("電子郵箱格式不正確");
-        return;
-    }
-
-    if (!validateTaiwanMobile(phone)) {
-        alert("手機號碼格式不正確");
-        return;
-    }
-
-    function validateEmail(email) {
-        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-    
-    function validateTaiwanMobile(phone) {
-        let mobileRegex = /^09\d{8}$/;
-        return mobileRegex.test(phone);
-    }
-    Email.send({
-        SecureToken: "adf84833-cc46-45a2-850a-092ac2f86858",
-        To: 'kantoasuka1@gmail.com',
-        From: "kantoasuka1@gmail.com",
-        Subject: subject,
-        Body: "Name: " + isName + "<br>Email: " + email + "<br>Phone: " + phone + "<br><br>" + body
-    }).then(function (message) {
-        alert("您的留言已送出");
-    });
-}
-
-   </script> -->
 
 </body>
 
