@@ -13,8 +13,7 @@ $sql = "SELECT * FROM product
 JOIN region on region.ID = product.RegionID
 JOIN productIntroduction on productIntroduction.ID = product.IntroductionID
 JOIN productType ON product.ProductTypeID = productType.ID
-WHERE product.ID = :productId 
-ORDER BY product.ID";
+WHERE product.ID = :productId";
 
 $statement = $pdo->prepare($sql);
 $statement->bindParam(':productId', $productId, PDO::PARAM_INT);

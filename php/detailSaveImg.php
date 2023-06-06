@@ -111,8 +111,8 @@
 include('Mysql.php'); // 資料庫連線
 $productId = $_GET['id'];
 
-//取得檔案副檔名
-function getExtensionName($filePath){
+// 取得檔案副檔名
+function getExtensionName($filePath) {
     $path_parts = pathinfo($filePath);
     return $path_parts["extension"];
 }
@@ -191,54 +191,54 @@ if ($_FILES['desImg1']["error"] > 0 || $_FILES['desImg2']["error"] > 0 || $_FILE
     } else {
         $newFileName1 = $originalFileName1;
     }
-    
+
     if (isset($_FILES['desImg2']) && $_FILES['desImg2']["error"] == 0) {
         move_uploaded_file($filePath_Temp2, $path . $newFileName2);
     } else {
         $newFileName2 = $originalFileName2;
     }
-    
+
     if (isset($_FILES['desImg3']) && $_FILES['desImg3']["error"] == 0) {
         move_uploaded_file($filePath_Temp3, $path . $newFileName3);
     } else {
         $newFileName3 = $originalFileName3;
     }
-    
+
     if (isset($_FILES['introImg1']) && $_FILES['introImg1']["error"] == 0) {
         move_uploaded_file($filePath_Temp4, $path . $newFileName4);
     } else {
         $newFileName4 = $originalFileName4;
     }
-    
+
     if (isset($_FILES['introImg2']) && $_FILES['introImg2']["error"] == 0) {
         move_uploaded_file($filePath_Temp5, $path . $newFileName5);
     } else {
         $newFileName5 = $originalFileName5;
     }
-    
+
     if (isset($_FILES['introImg3']) && $_FILES['introImg3']["error"] == 0) {
         move_uploaded_file($filePath_Temp6, $path . $newFileName6);
     } else {
         $newFileName6 = $originalFileName6;
     }
-    
+
     if (isset($_FILES['introImg4']) && $_FILES['introImg4']["error"] == 0) {
         move_uploaded_file($filePath_Temp7, $path . $newFileName7);
     } else {
         $newFileName7 = $originalFileName7;
     }
 
-    $sql = "UPDATE product SET Banner1 = ?, Banner2 = ?, Banner3 = ?, Image1 = ?, Image2 = ?, Image3 = ?, Image4 = ? WHERE ID = ?";
-    $statement = $pdo->prepare($sql);
-    $statement->bindParam(1, $newFileName1);
-    $statement->bindParam(2, $newFileName2);
-    $statement->bindParam(3, $newFileName3);
-    $statement->bindParam(4, $newFileName4);
-    $statement->bindParam(5, $newFileName5);
-    $statement->bindParam(6, $newFileName6);
-    $statement->bindParam(7, $newFileName7);
-    $statement->bindParam(8, $productId);
-    $affectedRow = $statement->execute();
+    $sqlUpdate = "UPDATE product SET Banner1 = ?, Banner2 = ?, Banner3 = ?, Image1 = ?, Image2 = ?, Image3 = ?, Image4 = ? WHERE ID = ?";
+    $statementUpdate = $pdo->prepare($sqlUpdate);
+    $statementUpdate->bindParam(1, $newFileName1);
+    $statementUpdate->bindParam(2, $newFileName2);
+    $statementUpdate->bindParam(3, $newFileName3);
+    $statementUpdate->bindParam(4, $newFileName4);
+    $statementUpdate->bindParam(5, $newFileName5);
+    $statementUpdate->bindParam(6, $newFileName6);
+    $statementUpdate->bindParam(7, $newFileName7);
+    $statementUpdate->bindParam(8, $productId);
+    $affectedRow = $statementUpdate->execute();
 
     if ($affectedRow > 0) {
         echo "done";

@@ -208,18 +208,16 @@ const app = Vue.createApp({
                     vm.Content1 = response.data.product[0].Content1;
                     vm.Content2 = response.data.product[0].Content2;
                     vm.Content3 = response.data.product[0].Content3;
-                    vm.desImg1 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Banner1}`
-                    vm.desImg2 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Banner2}`
-                    vm.desImg3 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Banner3}`
-                    vm.phoneImg1 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Banner1_m}`
-                    vm.phoneImg2 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Banner2_m}`
-                    vm.phoneImg3 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Banner3_m}`
+                    vm.desImg1 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Banner1}`
+                    vm.desImg2 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Banner2}`
+                    vm.desImg3 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Banner3}`
+
 
                     //方案詳情圖片
-                    vm.plan_Img1 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.productSchedule[0].Image}`
-                    vm.plan_Img2 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.productSchedule[1].Image}`
-                    vm.plan_Img3 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.productSchedule[2].Image}`
-                    vm.plan_Img4 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.productSchedule[3].Image}`
+                    vm.plan_Img1 = `./image/productPage/${response.data.product[0][0]}/${response.data.productSchedule[0].Image}`
+                    vm.plan_Img2 = `./image/productPage/${response.data.product[0][0]}/${response.data.productSchedule[1].Image}`
+                    vm.plan_Img3 = `./image/productPage/${response.data.product[0][0]}/${response.data.productSchedule[2].Image}`
+                    vm.plan_Img4 = `./image/productPage/${response.data.product[0][0]}/${response.data.productSchedule[3].Image}`
 
                     //方案詳情-行程名稱
                     vm.plan_title1 = response.data.productSchedule[0].ScheduleTitle;
@@ -247,10 +245,10 @@ const app = Vue.createApp({
                     vm.intro = response.data.product[0].Content
 
                     //活動介紹圖片
-                    vm.introImg1 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Image1}`
-                    vm.introImg2 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Image2}`
-                    vm.introImg3 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Image3}`
-                    vm.introImg4 = `./image/productPage/${response.data.product[0].IntroductionID}/${response.data.product[0].Image4}`
+                    vm.introImg1 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Image1}`
+                    vm.introImg2 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Image2}`
+                    vm.introImg3 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Image3}`
+                    vm.introImg4 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Image4}`
 
                 })
                 .catch(function (error) {
