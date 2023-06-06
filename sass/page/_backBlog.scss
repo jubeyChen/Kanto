@@ -38,7 +38,7 @@
             margin-top: 20px;
             @include flex-container(row, nowrap, space-between);
 
-            form{
+            .form{
                 @include flex-container(row, nowrap, flex-start);
                 font-size: 16px;
 

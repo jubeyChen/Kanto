@@ -74,11 +74,11 @@
                         <select id="region" class="form-select" :disabled="!editable" v-model="region">
                             <option value="1">東京</option>
                             <option value="2">神奈川</option>
-                            <option value="3">千葉</option>
-                            <option value="4">埼玉</option>
-                            <option value="5">群馬</option>
-                            <option value="6">栃木</option>
-                            <option value="7">茨城</option>
+                            <option value="3">埼玉</option>
+                            <option value="4">茨城</option>
+                            <option value="5">千葉</option>
+                            <option value="6">群馬</option>
+                            <option value="7">栃木</option>
                         </select>
                     </div>
 
@@ -126,21 +126,21 @@
                     <section class="img_block">
                         <div class="inner_img_block">
                             <img :src="desImg1" class="img-thumbnail" alt="">
-                            <label for="inputFile" class="inputFile" v-show="editable">檔案上傳</label>
-                            <input type="file" id="inputFile" @change="handledesImg1($event)" accept="image/*"
+                            <label for="desImg1" class="inputFile" v-show="editable">檔案上傳</label>
+                            <input type="file" id="desImg1" accept="image/*" @change="updatedesImg1"
                                 style="display: none;">
                         </div>
                         <div class="inner_img_block">
                             <img :src="desImg2" class="img-thumbnail" alt="">
 
-                            <label for="inputFile2" class="inputFile" v-show="editable">檔案上傳</label>
-                            <input type="file" id="inputFile2" @change="handledesImg2($event)" accept="image/*"
+                            <label for="desImg2" class="inputFile" v-show="editable">檔案上傳</label>
+                            <input type="file" id="desImg2" accept="image/*" @change="updatedesImg2"
                                 style="display: none;">
                         </div>
                         <div class="inner_img_block">
                             <img :src="desImg3" class="img-thumbnail" alt="">
-                            <label for="inputFile3" class="inputFile" v-show="editable">檔案上傳</label>
-                            <input type="file" id="inputFile3" @change="handledesImg3($event)" accept="image/*"
+                            <label for="desImg3" class="inputFile" v-show="editable">檔案上傳</label>
+                            <input type="file" id="desImg3" accept="image/*" @change="updatedesImg3"
                                 style="display: none;">
                         </div>
                     </section>
@@ -165,7 +165,7 @@
                         <div class="outer-img">
                             <img :src="plan_Img1 " class="img-thumbnail" alt="">
                             <label for="plan_Img1" class="inputFile" v-show="editable">檔案上傳</label>
-                            <input type="file" id="plan_Img1" @change="handlePlanImg1($event)" style="display: none;">
+                            <input type="file" id="plan_Img1" @change="updatePlanImg1" style="display: none;">
                         </div>
 
                         <section class="content_block col-7">
@@ -200,7 +200,7 @@
                         <div class="outer-img">
                             <img :src="plan_Img2 " class="img-thumbnail" alt="">
                             <label for="plan_Img2" class="inputFile" v-show="editable">檔案上傳</label>
-                            <input type="file" id="plan_Img2" @change="handlePlanImg2($event)" style="display: none;">
+                            <input type="file" id="plan_Img2" @change="updatePlanImg2" style="display: none;">
 
                         </div>
 
@@ -236,7 +236,7 @@
                         <div class="outer-img">
                             <img :src="plan_Img3" class="img-thumbnail" alt="">
                             <label for="plan_Img3" class="inputFile" v-show="editable">檔案上傳</label>
-                            <input type="file" id="plan_Img3" @change="handlePlanImg3($event)" style="display: none;">
+                            <input type="file" id="plan_Img3" @change="updatePlanImg3" style="display: none;">
 
                         </div>
 
@@ -272,7 +272,7 @@
                         <div class="outer-img">
                             <img :src="plan_Img4" class="img-thumbnail" alt="">
                             <label for="plan_Img4" class="inputFile" v-show="editable">檔案上傳</label>
-                            <input type="file" id="plan_Img4" @change="handlePlanImg4($event)" style="display: none;">
+                            <input type="file" id="plan_Img4" @change="updatePlanImg4" style="display: none;">
 
                         </div>
 
@@ -319,23 +319,24 @@
                     <section class="img_block">
                         <div class="inner_img_block">
                             <img :src="introImg1" class="img-thumbnail" alt="">
-                            <label for="introImg" class="inputFile" v-show="editable">檔案上傳</label>
-                            <input type="file" id="introImg" @change="handleintroImg1($event)" style="display: none;">
+                            <label for="introImg1" class="inputFile" v-show="editable">檔案上傳</label>
+                            <input type="file" id="introImg1" name="introImg1" @change="updateIntroImg1"
+                                style="display: none;">
                         </div>
                         <div class="inner_img_block">
                             <img :src="introImg2" class="img-thumbnail" alt="">
                             <label for="introImg2" class="inputFile" v-show="editable">檔案上傳</label>
-                            <input type="file" id="introImg2" @change="handleintroImg2($event)" style="display: none;">
+                            <input type="file" id="introImg2" @change="updateIntroImg2" style="display: none;">
                         </div>
                         <div class="inner_img_block">
                             <img :src="introImg3" class="img-thumbnail" alt="">
                             <label for="introImg3" class="inputFile" v-show="editable">檔案上傳</label>
-                            <input type="file" id="introImg3" @change="handleintroImg3($event)" style="display: none;">
+                            <input type="file" id="introImg3" style="display: none;" @change="updateIntroImg3">
                         </div>
                         <div class="inner_img_block">
                             <img :src="introImg4" class="img-thumbnail" alt="">
                             <label for="introImg4" class="inputFile" v-show="editable">檔案上傳</label>
-                            <input type="file" id="introImg4" @change="handleintroImg4($event)" style="display: none;">
+                            <input type="file" id="introImg4" style="display: none;" @change="updateIntroImg4">
                         </div>
                     </section>
 

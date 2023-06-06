@@ -116,8 +116,7 @@ Vue.createApp({
       gameWrapperVisible: false,
       c: 0,
       openSlider: false,
-      autoPlay: false,
-      img: "image/productPage/product_img/",
+      img: "image/productPage/",
       prevCartTop: null,
       coupon: null,
       gameWrapper: null,
@@ -130,17 +129,15 @@ Vue.createApp({
 
     openTheSlider() {
       this.openSlider = true;
-      $('html,body').animate({ scrollTop: '250px' }, 1000);
-      return false;
+      if(window.innerWidth > 414 ){
+        $('html,body').animate({ scrollTop: '250px' }, 1000);
+      }
+      
+      // return false;
+      
     },
     closeSlider() {
       this.openSlider = false;
-    },
-    play() {
-      this.autoPlay = true;
-    },
-    stopPlay() {
-      this.autoPlay = false;
     },
     async getGame() {
       await axios.post('../php/game.php')
@@ -162,7 +159,10 @@ Vue.createApp({
         this.$refs.prevCartTop[this.num].style.display = "none";
         this.$refs.coupon[this.num].style.display = "none";
       }
-      $('html,body').animate({ scrollTop: '250px' }, 1000);
+      if(window.innerWidth > 414 ){
+        $('html,body').animate({ scrollTop: '250px' }, 1000);
+      }
+      
       return false;
     
     },
@@ -184,7 +184,10 @@ Vue.createApp({
       this.couponRef = this.$refs.coupon[this.num];
       this.couponRef.style.display = "block";
       this.couponRef.classList.add("down");
-      $('html,body').animate({ scrollTop: '460px' }, 1000);
+      if(window.innerWidth > 414 ){
+        $('html,body').animate({ scrollTop: '460px' }, 1000);
+      }
+      
       return false;
 
 
@@ -217,17 +220,6 @@ Vue.createApp({
     }
 
   },
-  mounted() {
-    // const elements = this.$refs.prevCartTop;
-
-    // for (let i = 0; i < elements.length; i++) {
-    //   elements[i].style.display = "block";
-    // }
-
-    this.prevCartTop = document.getElementsByClassName('cont_principal')[0];
-    this.coupon = document.getElementsByClassName('coupon')[0];
-    this.gameWrapper = document.querySelector('#game_wapper');
-  },
   computed: {
     modalClasses() {
       return {
@@ -238,5 +230,8 @@ Vue.createApp({
   },
   async mounted() {
     await this.getGame();
+    this.prevCartTop = document.getElementsByClassName('cont_principal')[0];
+    this.coupon = document.getElementsByClassName('coupon')[0];
+    this.gameWrapper = document.querySelector('#game_wapper');
   }
 }).mount("#app");

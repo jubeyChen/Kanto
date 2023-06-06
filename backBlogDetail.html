@@ -63,19 +63,19 @@
                         <input type="text" class="form-control" :readonly="!editable" v-model="name">
                     </div>
 
-                    <div class="input-group mb-3 col">
+                    <!-- <div class="input-group mb-3 col">
                         <span class="input-group-text">專欄狀態</span>
                         <select class="form-select" :disabled="!editable">
                             <option selected>顯示</option>
                             <option>隱藏</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">專欄地區</span>
                         <select class="form-select" :disabled="!editable">
-                            <option>東京都</option>
-                            <option selected>神奈川縣</option>
+                            <option selected>東京都</option>
+                            <option>神奈川縣</option>
                             <option>千葉縣</option>
                             <option>埼玉縣</option>
                             <option>群馬縣</option>
@@ -176,12 +176,12 @@
                     status: 'show',
                     region: 'kanagawa',
                     intro: `東京出發，展開富士山朝聖之旅
-一次玩遍超人氣景點！
-富士山五合目近距離觀看富士山！
-河口湖音樂盒之森美術館
-沉浸於跨越時代的音樂世界。
-走進富士山下的湧泉仙境──忍野八海
-盡覽秀麗景觀並感受聖泉能量。`,
+                            一次玩遍超人氣景點！
+                            富士山五合目近距離觀看富士山！
+                            河口湖音樂盒之森美術館
+                            沉浸於跨越時代的音樂世界。
+                            走進富士山下的湧泉仙境──忍野八海
+                            盡覽秀麗景觀並感受聖泉能量。`,
                     coverImg: ['image/blogPage/banner.png', 'image/blogPage/title.png'],
                     plan: [
                         {time: '08:10', title: '出發', description: '新宿中心大廈', img: 'image/blogPage/event1.png'},

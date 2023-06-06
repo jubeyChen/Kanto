@@ -157,6 +157,7 @@ const RootComponent = {
                 if (response.data && response.data.product && response.data.productdetail) {
                     if (Array.isArray(response.data.product)) {
                         this.productItems = response.data.product
+                        console.log(this.productItems);
                         this.displayItems = this.productItems
                         this.productCount = this.productItems.length
                     }

@@ -8,7 +8,9 @@
     <title>首頁</title>
     @@include('./layout/style.html')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css"
+        integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://unpkg.com/akar-icons-fonts"></script>
 </head>
 
@@ -19,16 +21,15 @@
     @@include('./layout/topBtn.html')
 
     <!-- 以下可以開始編輯 -->
- 
-    <!--影片banner=================================-->
 
+    <!--影片banner=================================-->
     <div class="video_case">
         <div class="banner">
             <video autoplay muted loop data-src="image/index/small.mp4" style="width:100%" object-fit="cover">
-                <source src="image/index/small.mp4" type="video/mp4"> 
+                <source src="image/index/small.mp4" type="video/mp4">
                 <!-- <source src="movie.ogg" type="video/ogg"> -->
             </video>
-        </div> 
+        </div>
     </div>
 
     <section class="index01_title container">
@@ -36,168 +37,144 @@
             <h1>Tours,<br>
                 Tickets <br>
                 and Activities</h1>
-        </div>  
-        <div class="info">      
+        </div>
+        <div class="info">
             <h4>關東地區融合了現代與傳統</h4>
-            <h4>自然、文化、豐富的美食和娛樂</h4>    
-            <h4>跟著Kanto へ遊關東</h4>    
-            <h4>帶你探索五感體驗的豐富旅程!</h4>    
+            <h4>自然、文化、豐富的美食和娛樂</h4>
+            <h4>跟著Kanto へ遊關東</h4>
+            <h4>帶你探索五感體驗的豐富旅程!</h4>
         </div>
     </section>
-    <!-- 第二部分 行程 -->    
-    <section class="index01 container ">
+    <!-- 第二部分 行程 -->
+    <div id="indexVueContent">
+        <section class="index01 container ">
 
-        <!--飛機-->
-        <div id="plane-set">
-            <section id="scrollArea">
-                <svg width="1165" height="2862" viewBox="0 0 1165 2862" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M109.001 334C-4.4977 777.5 1072.5 808 1097.5 1194.5C1097.5 1635 109.001 1690 109.001 2009C109.001 2196 991.501 2467.5 856.501 2861.5" stroke="#B0B0B0" stroke-width="2" stroke-dasharray="10 10"/>
-                </svg>
-            </section>
-            <div id="airplane">
-                <img src="https://www.jal.com/ja/sustainability/soraiku/steamschool/assets/img/airplane.svg" alt="">
-            </div>    
-        </div>
-
-
-        <ul class="index01_content">
-            <li>
-                <p class="hashtag">2023年全新開幕</p>
-                <div class="mask">
-                    <img src="image/index/index01.jpg" alt="">
+            <!--飛機-->
+            <div id="plane-set">
+                <section id="scrollArea">
+                    <svg width="1165" height="2862" viewBox="0 0 1165 2862" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M109.001 334C-4.4977 777.5 1072.5 808 1097.5 1194.5C1097.5 1635 109.001 1690 109.001 2009C109.001 2196 991.501 2467.5 856.501 2861.5"
+                            stroke="#B0B0B0" stroke-width="2" stroke-dasharray="10 10" />
+                    </svg>
+                </section>
+                <div id="airplane">
+                    <img src="https://www.jal.com/ja/sustainability/soraiku/steamschool/assets/img/airplane.svg" alt="">
                 </div>
-                <span class='tag-m'>東京</span>
-                <a href="productPage.html"><h4>華納兄弟哈利波特影城門票</h4></a>
-                <p>踏入倫敦華納兄弟哈利波特影城，親身體驗電影幕後製作的神奇魔法!</p>
-                <a href="productPage.html" class="more">查看詳情</a>
-            </li>
-            <li>
-                <p  class="hashtag">文化體驗 美照留紀念</p>
-                <div class="mask">
-                    <img src="image/index/index02.jpg" alt="">
-                </div>
-                <span class='tag-m'>淺草</span>
-                <a href="productPage.html"><h4>和裝工房雅和服/浴衣體驗</h4></a>
-                <p>提供不同種類的日本傳統和服供您選擇，享受無憂體驗。</p>
-                <a href="productPage.html"  class="more">查看詳情</a>
-            </li>
-            <li>
-                <p  class="hashtag">單日無限搭乘 美景饗宴</p>
-                <div class="mask">
-                    <img src="image/index/index03.jpg" alt="">
-                </div>
-                <span class='tag-m'>埼玉</span>
-                <a href="productPage.html"><h4>西武鐵道一日遊券 全線暢遊</h4></a>
-                <p>專為外籍旅客設計的優惠車票，搭乘西武線，體驗日本四季美景和文化！</p>
-                <a href="productPage.html" class="more">查看詳情</a>
-            </li>
-        </ul>
-        <a href="product.html" class="btn-pri-l"> View More</a>
-    </section>
-
-    <!-- 第二部分 住宿 -->
-    <section class="index02 wrapper">
-        <div class="bgcblock"></div>
-        <div class="index02_swiper owl-carousel owl-theme" >
-            <img src="image/index/index04.jpg" alt="">
-            <img src="image/index/index05.jpg" alt="">
-            <img src="image/index/index06.jpg" alt="">
-            <img src="image/index/index07.jpg" alt="">
-            <img src="image/index/index08.jpg" alt="">
-        </div>        
-    </section>
-    <section>
-        <div class="index02_title container">
-            <div class="topic">
-                <h1>Stay</h1>
-            </div>  
-            <div class="info">      
-                <h4>精選推薦<br>
-                    優惠的價格方案  優良的住宿體驗
-                </h4>
             </div>
-            <a href="roomBlog.html" class="btn-pri-l"> View More</a>
-        </div>    
-    </section>
-    <!-- 第三部分 美食 -->
-    <section class="index03 container">
-        <div class="gallery">
-            <img src="image/index/index09.jpg" class="img09" alt="">
-            <img src="image/index/index10.jpg" class="img10" alt="">
-            <img src="image/index/index11.jpg" class="img11" alt="">
-            <img src="image/index/index12.jpg" class="img12" alt=""><br>
-            <img src="image/index/index13.jpg" class="img13" alt="">
-            <img src="image/index/index14.jpg" class="img14" alt="">
-            <div class="index03_title" class="extrawidth">
-                <h1>Gourmet</h1>
-                <a href="foodBlog.html" class="btn-pri-l">View More</a>
-            </div><br>
-            <img src="image/index/index15.jpg" class="img15" alt="">
-            <img src="image/index/index16.jpg" class="img16" alt="">
-            <img src="image/index/index17.jpg" class="img17" alt="">
-            <img src="image/index/index18.jpg" class="img18" alt="">
-        </div>
-    </section>
-    <!-- 第四部分 旅遊專欄 -->
-    <section class="index04 container">
-        <h1>Travel Articles</h1>
-        <ul>
-            <li>
-                <span class="tag-m">神奈川縣</span>
-                <a href="blogPage.html"><img src="image/index/index19.jpg" alt=""></a>
-                <a href="blogPage.html"><h4>橫濱 </h4></a>
-                <p>施放於山下公園前海上的「Sparkling 花火」，兩天內將以不同順序施放。還有港中船的遊行、公園內的橫濱老舖、集結世界美食的活動等，各式活動等您來體驗。</p>
-            </li>
-            <li>
-                <span class="tag-m">栃木縣</span>
-                <a href="blogPage.html"><img src="image/index/index20.jpg" alt=""></a>
-                <a href="blogPage.html"><h4>日光東照宮一日遊</h4></a>
-                <p>日本最華麗的世界遺產日光東照宮，欣賞輝煌的建築和雕塑，參觀伊呂波坂、中禪寺湖和華嚴瀑布等日光的其他熱門景點！</p>
-            </li>
-            <li>
-                <span class="tag-m">山梨縣</span>
-                <a href="blogPage.html"><img src="image/index/index21.jpg" alt=""></a>
-                <a href="blogPage.html"><h4>富士山一日遊</h4></a>
-                <p>參加富士山及周邊地區的經典一日遊，迎接日本的春季！前往東京最好的春季景點。</p>
-            </li>
-            <li>
-                <span class="tag-m">東京都</span>
-                <a href="blogPage.html"><img src="image/index/index22.jpg" alt=""></a>
-                <a href="blogPage.html"><h4>東京澀谷天空</h4></a>
-                <p>東京澀谷新地標｜Shibuya Sky展望台絕美白天夜景。</p>
-            </li>
-        </ul>
-        <a href="blog.html" class="btn-pri-l">View More</a>
-    </section>
 
-<!-- 第五部分 地圖-天氣-匯率 -->        
-<!-- --vue-================ -->
-<div id="mapApp"> 
-    <section class="index05_wrapper">    
-        <div class="index05 container">
-            <h1>Map &</h1>
-            <h1 class="line2">Information</h1>
 
-            <!-- v-for 再子迴圈跑照片  v-show 設定當current === key時顯現   -->
-            <!-- v-bind 綁img變換照片資料 -->
-            <!-- span  v.html 讓語法不被顯現 -->
-            <!-- {{area.title}} 顯示js中的title資料 -->
+            <ul class="index01_content">
+                <li v-for="(product,key) in products">
+                    <!-- <p class="hashtag">2023年全新開幕</p> -->
+                    <div class="mask">
+                        <img :src="`./image/productPage/${product.ID}/${product.Banner1}`" alt="">
+                    </div>
+                    <span class='tag-m'>{{product.RegionName}}</span>
+                    <a :href="`productPage.html?id=${product.ID}`">
+                        <h4>{{product.Name}}</h4>
+                    </a>
+                    <p>{{product.Content}}</p>
+                    <a href="productPage.html?id=3" class="more">查看詳情</a>
+                </li>
+            </ul>
+            <a href="product.html" class="btn-pri-l"> View More</a>
+        </section>
 
-            <div class="mapinfo">
-                <div class="index05_info" v-show="current_show === key" v-for="(area,key)  in all_area ">
-                    <img v-for="(img,key) in area.img" :src="img" alt="">
-                    <h4><strong>{{area.title}}</strong> <span v-html="area.content"></span> </h4>
+
+
+        <!-- 第二部分 住宿 -->
+
+        <section class="index02 wrapper">
+            <div class="bgcblock"></div>
+            <div class="index02_swiper owl-carousel owl-theme">
+                <img v-for="(room, key) in roomPics" :src="`./image/roomBlog/` + room.Image" alt="">
+            </div>
+        </section>
+        <section>
+            <div class="index02_title container">
+                <div class="topic">
+                    <h1>Stay</h1>
                 </div>
+                <div class="info">
+                    <h4>精選推薦<br>
+                        優惠的價格方案 優良的住宿體驗
+                    </h4>
+                </div>
+                <a href="roomBlog.html" class="btn-pri-l"> View More</a>
+            </div>
+        </section>
 
-                <div class="mapsvg ">
-                    <svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    viewBox="0 0 595.3 635" style="enable-background:new 0 0 595.3 635;" xml:space="preserve">
-                    <g>
-                        <!--mouseover="show('gunma') 代入methods中的函式-->
-                        <!-- class="{'-active' : current_show === 'gunma'}"   
+        <!-- 第三部分 美食 -->
+        <section class="index03 container">
+            <div class="gallery">
+                <img src="image/index/index09.jpg" class="img09" alt="">
+                <img src="image/index/index10.jpg" class="img10" alt="">
+                <img src="image/index/index11.jpg" class="img11" alt="">
+                <img src="image/index/index12.jpg" class="img12" alt=""><br>
+                <img src="image/index/index13.jpg" class="img13" alt="">
+                <img src="image/index/index14.jpg" class="img14" alt="">
+                <div class="index03_title" class="extrawidth">
+                    <h1>Gourmet</h1>
+                    <a href="foodBlog.html" class="btn-pri-l">View More</a>
+                </div><br>
+                <img src="image/index/index15.jpg" class="img15" alt="">
+                <img src="image/index/index16.jpg" class="img16" alt="">
+                <img src="image/index/index17.jpg" class="img17" alt="">
+                <img src="image/index/index18.jpg" class="img18" alt="">
+            </div>
+        </section>
+        <!-- 第四部分 旅遊專欄 -->
+
+        <section class="index04 container">
+            <h1>Travel Articles</h1>
+            <ul>
+                <li v-for="(article, key) in articles">
+                    <span class="tag-m">{{article.RegionName}}</span>
+                    <a :href="`blogPage.html?id=${article.ID}`">
+                        <!-- image\blog\1\banner1.jpg -->
+                        <img :src="`./image/blog/${article.ID}/${article.Image1}`" alt=""></a>
+                    <a :href="`blogPage.html?id=${article.ID}`">
+                        <h4>{{article.Title}}</h4>
+                    </a>
+                    <p>{{article.Content}}</p>
+                </li>
+            </ul>
+            <a href="blog.html" class="btn-pri-l">View More</a>
+        </section>
+    </div> <!--vue-->
+
+    <!-- 第五部分 地圖-天氣-匯率 -->
+    <!-- --vue-================ -->
+    <div id="mapApp">
+        <section class="index05_wrapper">
+            <div class="index05 container">
+                <h1>Map &</h1>
+                <h1 class="line2">Information</h1>
+
+                <!-- v-for 再子迴圈跑照片  v-show 設定當current === key時顯現   -->
+                <!-- v-bind 綁img變換照片資料 -->
+                <!-- span  v.html 讓語法不被顯現 -->
+                <!-- {{area.title}} 顯示js中的title資料 -->
+
+                <div class="mapinfo">
+                    <div class="index05_info" v-show="current_show === key" v-for="(area,key)  in all_area ">
+                        <img v-for="(img,key) in area.img" :src="img" alt="">
+                        <h4><strong>{{area.title}}</strong> <span v-html="area.content"></span> </h4>
+                    </div>
+
+                    <div class="mapsvg ">
+                        <svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 595.3 635"
+                            style="enable-background:new 0 0 595.3 635;" xml:space="preserve">
+                            <g>
+                                <!--mouseover="show('gunma') 代入methods中的函式-->
+                                <!-- class="{'-active' : current_show === 'gunma'}"   
                             在 current_show === 'gunma' 的時候 代入-active 這個class-->
 
-                        <path data-name="gunma" id="gunma" @mouseover="show('gunma')" :class="{'-active' : current_show === 'gunma'}" class="st0" d="M243.7,112.4l0.3,1c-0.8,1.3-1.7,1.4-3.1,2.1c-2.8,1.4,0.5,5-3.4,5c-1,0-0.8-0.1-0.6,0.9
+                                <path data-name="gunma" id="gunma" @mouseover="show('gunma')"
+                                    :class="{'-active' : current_show === 'gunma'}" class="st0" d="M243.7,112.4l0.3,1c-0.8,1.3-1.7,1.4-3.1,2.1c-2.8,1.4,0.5,5-3.4,5c-1,0-0.8-0.1-0.6,0.9
                                         
                             c0.2,0.9,0,2.4-0.3,3.2c-0.1,0.3-2.1,1.8-1,2.1c0.9,0.7,1.6,0.3,2.4,1.4c0.8,1,1.5,1.3,2.8,1.5c0.8,0.1,1.3,0.9,2.1,0.9
                             c0.9,0,3,0,3.4,1.2c0.3,0.9-1.1,1.9-1.7,2.2c-1.1,0.6-0.9,1.1-0.8,2.1c0.2,1-1.2,1.7-1.9,1.7c-0.6,0-0.7,0.5-1.3,0.7
@@ -266,9 +243,10 @@
                             c-0.2,0.2-0.6,0.5-0.8,0.5c0,0.7,0.8,0.8,1.2,1.2c0.2,0.2,0.2,0.5,0.3,0.8c0.2,0.5,0.6,0.4,1,0.4c0.4,0,0.9-0.5,1.3-0.4
                             c0.3,0.9,1.3-0.1,1.6-0.4c1.1-1.3,1.4-1.7,2.7-0.5c1.1,1.1,1.9,1.1,3.4,1c0.8,0.1,1.3,1,2,1.3c0.6,0.2,1.5-0.1,2.1-0.1
                             c1.5,0,2.1,0.4,3.7,0c2.5-0.6,2.2,1.3,3.7,2.6c0.4,0.3,2.2-0.5,2.8-0.5c1.6-0.1,1.6,0.4,2.8,1l1.1,0.7L243.7,112.4L243.7,112.4
-                            L243.7,112.4z"/>
+                            L243.7,112.4z" />
 
-                        <path data-name="ibaraki" id="ibaraki" :class="{'-active' : current_show === 'ibaraki'}" class="st0" @mouseover="show('ibaraki')"   d="M316.6,307.6l0.5-1.7l1.9-1.9c1.2,0.9,2.6,2.3,2.9,3c0.5,1.2,1.2,3.9,1.3,5.2c0.1,1.6,1.8,2.6,2.7,3.9
+                                <path data-name="ibaraki" id="ibaraki" :class="{'-active' : current_show === 'ibaraki'}"
+                                    class="st0" @mouseover="show('ibaraki')" d="M316.6,307.6l0.5-1.7l1.9-1.9c1.2,0.9,2.6,2.3,2.9,3c0.5,1.2,1.2,3.9,1.3,5.2c0.1,1.6,1.8,2.6,2.7,3.9
                             c1.8,2.7,2.9,3.4,5.5,5.2c0.9,0.6,2.1,1.4,2.6,2.4c0.4,0.7,1.2,2.4,2,2.7c0.4,0.2,1.3,3.7,1.6,4.4c1.5,2.8,3.4,3.2,5.9,4.7
                             c2.1,1.3,2.9,3.8,3.7,6.1c0.3,0.9,1.9,1.8,3.2,2.5c0.6,0.3,1.1,0.6,1.4,0.8c2,1.4,5.1,5.5,7.6,5.4c1.4-0.1,2.5-0.9,4-0.2
                             c1.1,0.5,1.8,1.7,2.8,2.4c3.8,2.8,6.2,3,10.9,3.7c1.9,0.3,5.6,2.2,6.9,3.7c1.4,1.6,1.9,3.8,3.5,5.4c2.9,3,8.4-2.5,10.9-3.3
@@ -319,9 +297,10 @@
                             c-1.7,0.8-3.6,2.3-5.2,3.5c-1.6,1.2-2.3-0.3-3.1-1.4c-0.5-0.6-1.8,0-2.4,0.2c-0.5,2-1.5,0.8-2.8,1.1l-1,1l0,0l1,2
                             c-0.1,1.1-0.3,2.1-0.4,3.2c-0.1,1.2,0.6,2.4,0.7,3.6l0.1,1c0.4,0.4,0.7,0.7,1,1.1c0.8,1,1.2,2.3,2,3.2c0.2,0.3,0.4,1.1,0.6,1.5
                             c0.4,0.9,0.9,1.8,1.6,2.6c0.7,0.7,1.2,1.3,1.2,2.3c0.1,1.2,0,2.5,0.2,3.7c0.1,1.1,1.8,1.1,2.7,1.4c1.3,0.5,2.4,1.6,3.9,1.9
-                            C315.9,310.3,315.2,308.3,316.6,307.6L316.6,307.6L316.6,307.6z"/>
+                            C315.9,310.3,315.2,308.3,316.6,307.6L316.6,307.6L316.6,307.6z" />
 
-                        <path data-name="saitama" id="saitama" :class="{'-active' : current_show === 'saitama'}" class="st0"  @mouseover="show('saitama')" d="M295.1,280.2l1.2,0.5c0.4,0.1,0.7-0.3,1.1-0.3c0.5,0,0.4,0.9,0.6,1.2c0.2,0.2,0.5,0.2,0.7,0.3
+                                <path data-name="saitama" id="saitama" :class="{'-active' : current_show === 'saitama'}"
+                                    class="st0" @mouseover="show('saitama')" d="M295.1,280.2l1.2,0.5c0.4,0.1,0.7-0.3,1.1-0.3c0.5,0,0.4,0.9,0.6,1.2c0.2,0.2,0.5,0.2,0.7,0.3
                             c0.3,0.1,0.5,0.2,0.8,0.4l0,0l1,2c-0.1,1.1-0.3,2.1-0.4,3.2c-0.1,1.2,0.6,2.4,0.7,3.6l0.1,1c0.4,0.4,0.7,0.7,1,1.1
                             c0.8,1,1.2,2.3,2,3.2c0.2,0.3,0.4,1.1,0.6,1.5c0.4,0.9,0.9,1.8,1.6,2.6c0.7,0.7,1.2,1.3,1.2,2.3c0.1,1.2,0,2.5,0.2,3.7
                             c0.1,1.1,1.8,1.1,2.7,1.4c1.3,0.5,2.4,1.6,3.9,1.9c1.9,0.4,1.3-1.7,2.7-2.3l0,0l1,3.1c0,0.7,0,1.4,0.6,1.9c1,0.8,0.7,2,2,2.9
@@ -366,9 +345,10 @@
                             c2.6,0.2,4.1-1.4,6.4-1.8c2.2-0.4,3.5,0.5,5.5,1c3.6,0.9,9.1,6.4,11.7,9c3.6,3.6,7.9,2.6,12.7,1.8c2.9-0.5,3.8,0.5,6.3-0.9
                             c1.9-1,3.7-0.6,5.7-1.3c2.7-0.9,4.4-3.3,7-0.2c1.4,1.6,2.1,3.2,3.7,4.3l0.4-1.3c0.4-0.5,0.7-1.4,1.5-1.5c1-0.1,2,0.8,3,0.1
                             c1-0.8-0.1-1.7,0.2-2.9c0.2-0.2,0.3-0.4,0.6-0.4c0.4-0.1,0.5,0.6,0.7,0.8C294.3,280.1,294.8,280.1,295.1,280.2L295.1,280.2
-                            L295.1,280.2z"/>
+                            L295.1,280.2z" />
 
-                        <path data-name="tochigi" id="tochigi" :class="{'-active' : current_show === 'tochigi'}"  class="st0" @mouseover="show('tochigi')" d="M295.1,280.2l1.2,0.5c0.4,0.1,0.7-0.3,1.1-0.3c0.5,0,0.4,0.9,0.6,1.2c0.2,0.2,0.5,0.2,0.7,0.3
+                                <path data-name="tochigi" id="tochigi" :class="{'-active' : current_show === 'tochigi'}"
+                                    class="st0" @mouseover="show('tochigi')" d="M295.1,280.2l1.2,0.5c0.4,0.1,0.7-0.3,1.1-0.3c0.5,0,0.4,0.9,0.6,1.2c0.2,0.2,0.5,0.2,0.7,0.3
                             c0.3,0.1,0.5,0.2,0.8,0.4l0,0l1-1c1.3-0.3,2.3,0.9,2.8-1.1c0.5-0.2,1.9-0.8,2.4-0.2c0.8,1,1.5,2.6,3.1,1.4c1.5-1.1,3.5-2.6,5.2-3.5
                             c1.2-0.5,2.3-1.6,3.6-2.2l6.2-2.8c2.2-1,2.5-3.4,3-5.4c0.2-0.6,0.4-1.2,0.7-1.7c0.5-1,2.1-1.6,1.6-3.1c-0.4-1.1-0.4-1.7-0.4-2.9
                             c0-0.7-0.6-1.6,0.1-2.1c1-0.7,0.9-2.2,1.8-2.5c0.4-0.1,0.8,0.2,1.2,0.2c0.5,0,1.2-0.7,1.6-1c0.6-0.4,1.8-2.1,1.8-0.5
@@ -420,9 +400,10 @@
                             c0.6,0.1,2-0.4,2.6-0.7c0.5-0.3,1-1.4,1.5-0.9c-0.1,0,0.4,0.3,0.5,0.3c0.7,0.2,1.9-0.3,2.3,0.7c0.2,0.4,1,0.8,0.8,1.2
                             c-0.3,0.6-1.1,0.7-1.1,1.6c0,1.1,0.5,1.7,1,2.6c0.2,0.7,0.8,0.8,1,1.6c0.1,0.3,0,1.3,0.5,1.2c1.2-0.4,1.2-1.4,2,0.3
                             c0.3,0.7,0.8,0.8,0.8,1.7c0,0.5,0,1.3,0.5,1.4c0.3,0.1,0.7-0.2,0.9,0.1c0.3,0.3,0,0.8,0.4,1.3c0.5,0.5-0.1,0.7-0.5,1L295.1,280.2
-                            L295.1,280.2L295.1,280.2z"/>
+                            L295.1,280.2L295.1,280.2z" />
 
-                        <path data-name="chiba" id="chiba" :class="{'-active' : current_show === 'chiba'}" class="st0" @mouseover="show('chiba')" d="M496.1,369.4c-0.2,0.4,0.3,2.1,0.4,2.6c0.5,2,1.2,4,2.2,5.9c1.6,2.4,4.1,5.1,6.6,6.4c1.4,0.7,6.1,2.7,6.6,4.2
+                                <path data-name="chiba" id="chiba" :class="{'-active' : current_show === 'chiba'}"
+                                    class="st0" @mouseover="show('chiba')" d="M496.1,369.4c-0.2,0.4,0.3,2.1,0.4,2.6c0.5,2,1.2,4,2.2,5.9c1.6,2.4,4.1,5.1,6.6,6.4c1.4,0.7,6.1,2.7,6.6,4.2
                             c0.1,0,0.1,0.2,0.2,0.2c2.2,2,6.5,3.4,9.3,2c0.7-0.4,1.2-1.4,2-1.6c1.5-0.3,1.5,1.9,2.4,2.1c0.2,0.4,0.5,1.5,0.4,2
                             c-0.4,1.6,0.5,1.3-0.7,2.7c-0.8,0.9,0.5,1.8,0,2.4c-0.3,0.4-1,0.8-1,1.3c0,0.5,1,1.7,0.6,2.1c-0.4,0.3-7.2-2.5-6.5-4.3
                             c-1.3-1.7-5.4,0.4-7,0.7c-1.3,0.7-3.1,0.8-4.5,1.4c-1.2,0.5-2.5,1.9-3.9,1.9c-0.8,0-1.3-0.2-2.1,0.2c-1.1,0.6-1.7,2-2.6,0.5
@@ -475,9 +456,10 @@
                             c0.1-0.7-0.3-1.3-0.9-1.7c-0.8-0.5-2-2.8-1.7-3.8c0.3-1,1.4-0.8,1.9-1.6c0.3-0.3,0.3-0.9,0.3-1.4c0.1-0.6,0.4-1.2,0.7-1.7l1.8-2.4
                             c2.2,1.4,4.1,4.4,6.5,5.4c1.1,0.5,2.7,0.9,3.5,1.8c0.9,1,1.8,1.5,2.9,1.7c0.1,0.3,0.5,0.6,0.6,1c0.1,0.4,0.2,1.5,0.7,1.5
                             c1.1,0.2,0.9,1.5,1.7,1.5c0.8,0,2.3,1,2.9,1.6c0.5,0.9,1.2,1.8,1.6,2.8c0.2,0.5,1,2.5,1.7,3.3l0.6,3c1.4,0.6,2.9,0.7,4.2,1.1
-                            c4.3,1.2,8.3,2,11.4,5.4C495.6,368.8,495.8,369.1,496.1,369.4L496.1,369.4L496.1,369.4z"/>
+                            c4.3,1.2,8.3,2,11.4,5.4C495.6,368.8,495.8,369.1,496.1,369.4L496.1,369.4L496.1,369.4z" />
 
-                        <path data-name="tokyo" id="tokyo" :class="{'-active' : current_show === 'tokyo'}" class="st0" @mouseover="show('tokyo')" d="M319.9,425l2.5-1.7l2.7-2l1.1,2.4l0.5,1l-1.8,0.1l-2.4,1.8l-2.6-1.2L319.9,425L319.9,425z M319.7,424.6
+                                <path data-name="tokyo" id="tokyo" :class="{'-active' : current_show === 'tokyo'}"
+                                    class="st0" @mouseover="show('tokyo')" d="M319.9,425l2.5-1.7l2.7-2l1.1,2.4l0.5,1l-1.8,0.1l-2.4,1.8l-2.6-1.2L319.9,425L319.9,425z M319.7,424.6
                             c1.9-1.1,2.7-1.8,5.1-3.6l-1.6-1l-2.3,1.5l-1.5,2.1v0.6L319.7,424.6L319.7,424.6z M157.8,363.3l0-2.3c0.5-0.3,1-1.4,1.6-1.6
                             c0.2-0.9,1.1-1,1.7-1.2c1.4-0.4,2.2-2.5,3.7-1.5c0.7,0.5,1.4-0.1,2.1-0.3c0.3-0.1,0.7,0.1,1.1,0c0.4-0.1,0.9-0.7,1.1-0.9
                             c0.3-0.5,0.9-1.6,1-2.2c1.6-0.4,2.3-0.7,3.5,0.8c0.7,0.8,1.9,1.3,2.7,2.2c0.8,0.9,1.4,1.2,2.4,1.5c1.3,0.4,2.6,3.1,3.9,1
@@ -522,9 +504,12 @@
                             l-2.9-0.2l0,0l-0.7-0.7l-3.9-3.1c-1.2-0.9-2.6-0.2-3.6-0.9c-0.9-0.1-1.1-0.8-2.3-0.8c-1.3,0-2-0.7-3-1.3l-5.7-3.7
                             c-1.4-0.9-1.4-1.9-2.3-3.1c-0.8-0.9-2.4-3.2-2.4-4.4c-0.1-0.7-1.4-0.8-1.9-1c-0.9-0.3-0.9-1.3-1.1-2c-0.5-1.8-1.7-2.2-1-4.1
                             c0.4-1.2-0.5-1.6-1-2.6c-0.8-1.5-1.7-2.1-1.8-3.9c0-0.7,0.5-1.3,0.3-2c-0.2-0.9-0.7-0.9-0.5-2c0.4-2.9-0.2-0.8-2-1.8
-                            c-0.9-0.4-0.8-1.7-1.5-2.4C157.9,365.4,158.4,364.6,157.8,363.3L157.8,363.3L157.8,363.3z"/>
+                            c-0.9-0.4-0.8-1.7-1.5-2.4C157.9,365.4,158.4,364.6,157.8,363.3L157.8,363.3L157.8,363.3z" />
 
-                        <path data-name="kanagawa" id="kanagawa" :class="{'-active' : current_show === 'kanagawa'}" class="st0" @mouseover="show('kanagawa')" d="M296.9,456.1c0-0.4-0.1-0.8-0.2-1.3l4-1.6l0.5,1.6l-1.8,1.2l0.4,0.5l1.6-1l1,1.5l-1,1.2l-4.3-1.8L296.9,456.1
+                                <path data-name="kanagawa" id="kanagawa"
+                                    :class="{'-active' : current_show === 'kanagawa'}" class="st0"
+                                    @mouseover="show('kanagawa')"
+                                    d="M296.9,456.1c0-0.4-0.1-0.8-0.2-1.3l4-1.6l0.5,1.6l-1.8,1.2l0.4,0.5l1.6-1l1,1.5l-1,1.2l-4.3-1.8L296.9,456.1
                             L296.9,456.1z M302.2,451.3l11.9-6.1l3.1,0.2l0.4,1.1l-3.9,2.1l-0.5-0.7l-0.4,0.3l0.5,0.7l-2.8,1.2l-0.8-1l-1,0.4l1.5,2.4l-6.1,3.3
                             l-1.9-3.4L302.2,451.3L302.2,451.3z M285.2,533c-0.4-0.2-0.6-0.5-0.6-1c0.2-0.1,0.3-0.4,0.7-0.3c0.5,0.2,1,0.2,1.6,0.3
                             c0.2,0,1.4,0.3,1.3,0.5c0.4,0.4,1.2,1.4,0,0.9c-0.4-0.2-0.6-0.2-1-0.2c-0.5,0-0.9-0.1-1.4-0.1L285.2,533L285.2,533z M307.5,437
@@ -582,102 +567,59 @@
                             c-1.3-1.9,0.2-4.2,2.3-3.8c1.1,0.2-0.3-1.2,1-1.5c1.2-0.3,0.5-1.2,0.7-1.9c0.8-1.5,2-0.7,3.2-0.6c0.5,0,0.9,0.6,1.4,0.8
                             c0.3,0.1,1.3,0.1,1.5,0.3c2,0.2,1.8,1.9,3.3,2.7c0.6,0.3,1.1,0.2,1.7,0.3c0.7,0.1,1.4,1.1,2.4,1.2l2.3,0.1c1.4,0.1,1.9,1,3.3,1
                             c1.3,0.1,1.3,1.4,2.3,1.9c0.9,1,2.7,2.9,4,3.3c1,0.3,2.6,0.3,3,1.6c0.5,1.5,1.1,4.9,2.3,5.8c1.4,1.1,4.1,0.6,4.8,2.4
-                            c-0.4,0.3-1.2,1-1.2,1.6c-0.1,1,0.8,2,1.9,1.7c0.5-0.1,0.9-0.2,1.2-0.7c0.3-0.4,0.8-1.1,1.3-1.1L307.5,437L307.5,437L307.5,437z"/>   
-                        </g>
-                    </svg>
-                </div> <!---mapsvg-->
-            </div><!---mapinfo-->
-        </div> <!--container-->
-    </section>
-</div> <!--vue-->
-
-<!-- -天氣========== -->
-<div id="weatherApp">
-<section class="index06_wrapper">
-    <div class="index06 container">
-        <div class="index06_title">
-            <h2>2023</h2>
-            <!-- <p>26th April</p> -->
-        </div>
-        <div class="weather">
-            <ul class="day" v-for="(day,key) in days">
-                <li><p>{{ day.date }}</p></li>
-                <li><img :src="day.icon" alt="weatherIcon" ></li>
-                <li>{{ day.min_temp }}&#176C</li>
-                <li>|</li>
-                <li>{{ day.max_temp }}&#176C</li>
-            </ul>
-            <!-- <ul class="day">
-                <li><p>{{ data }}</p></li>
-                <li><i class="ai-cloud Wicon"></i></li>
-                <li>22</li>
-                <li>|</li>
-                <li>25</li>
-            </ul>
-            <ul class="day">
-                <li><p>THU</p></li>
-                <li><i class="ai-sun"></i></li>
-                <li>22</li>
-                <li>|</li>
-                <li>25</li>
-            </ul>
-            <ul class="day">
-                <li><p>WED</p></li>
-                <li><i class="ai-sun Wicon"></i></li>
-                <li>22</li>
-                <li>|</li>
-                <li>25</li>
-            </ul>
-            <ul class="day">
-                <li><p>THU</p></li>
-                <li><i class="ai-air Wicon"></i></li>
-                <li>22</li>
-                <li>|</li>
-                <li>25</li>
-            </ul> -->
-            <!-- <ul class="day">
-                <li><p>FRI</p></li>
-                <li><i class="ai-sun Wicon"></i></li>
-                <li>22</li>
-                <li>|</li>
-                <li>25</li>
-            </ul>
-            <ul class="day">
-                <li><p>SAT</p></li>
-                <li><i class="ai-sun Wicon"></i></li>
-                <li>22</li>
-                <li>|</li>
-                <li>25</li>
-            </ul> -->
-            <!-- <p class="c">°C</p> -->
-        </div>
-        
-    </div>
-</section>
-</div> <!--vue-->
-<!-- 匯率================ -->
-<div id="exchangeApp">
-    <section class="index07_wrapper">
-        <div class="index07 container">
-            <div class="index07_title">
-                <i class="ai-arrow-cycle"></i>
-                <h2>Exchange Rate</h2>
+                            c-0.4,0.3-1.2,1-1.2,1.6c-0.1,1,0.8,2,1.9,1.7c0.5-0.1,0.9-0.2,1.2-0.7c0.3-0.4,0.8-1.1,1.3-1.1L307.5,437L307.5,437L307.5,437z" />
+                            </g>
+                        </svg>
+                    </div> <!---mapsvg-->
+                </div><!---mapinfo-->
+            </div> <!--container-->
+        </section>
+    </div> <!--vue-->
+    <!-- -天氣========== -->
+    <div id="weatherApp">
+        <section class="index06_wrapper">
+            <div class="index06 container">
+                <div class="index06_title">
+                    <h2>2023</h2>
+                    <!-- <p>26th April</p> -->
+                </div>
+                <div class="weather">
+                    <ul class="day" v-for="(day,key) in days">
+                        <li>
+                            <p>{{ day.date }}</p>
+                        </li>
+                        <li><img :src="day.icon" alt="weatherIcon"></li>
+                        <li>{{ day.min_temp }}&#176C</li>
+                        <li>|</li>
+                        <li>{{ day.max_temp }}&#176C</li>
+                    </ul>
+                </div>
             </div>
-            <table>
-                <tr>
-                    <!-- <td>USD</td> -->
-                    <td>TWD</td>
-                    <td>JPY</td>
-                </tr>
-                <tr>
-                    <!-- <td>1</td> -->
-                    <td><input type="text" placeholder="NT$"  v-model="twd"></td>
-                    <td><input type="text" v-model="jpy"></td>
-                </tr>
-            </table>
-        </div>    
-    </section>
-</div>
+        </section>
+    </div> <!--vue-->
+    <!-- 匯率================ -->
+    <div id="exchangeApp">
+        <section class="index07_wrapper">
+            <div class="index07 container">
+                <div class="index07_title">
+                    <i class="ai-arrow-cycle"></i>
+                    <h2>Exchange Rate</h2>
+                </div>
+                <table>
+                    <tr>
+                        <!-- <td>USD</td> -->
+                        <td>TWD</td>
+                        <td>JPY</td>
+                    </tr>
+                    <tr>
+                        <!-- <td>1</td> -->
+                        <td><input type="text" placeholder="NT$" v-model="twd"></td>
+                        <td><input type="text" v-model="jpy"></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </div> <!--vue-->
 
     <!-- 以下Footer區域 -->
     @@include('./layout/footer.html')
@@ -686,12 +628,13 @@
     @@include('./layout/js.html')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/index.js"></script>
-    <script src="js/index_exchange_rate.js"></script>
-    <script src="js/index_weather.js"></script>
+
     <script>
-        window.addEventListener('scroll', function(e){
+        window.addEventListener('scroll', function (e) {
 
             const path = document.querySelector('path');
             const length = path.getTotalLength();
@@ -713,13 +656,13 @@
             let y = Math.abs(myPoint.y - prePoint.y);
             let rotateDeg = Math.atan(y / x) * (180 / Math.PI);
 
-            if(rotateDeg < 0){
+            if (rotateDeg < 0) {
                 rotateDeg += 180;
             }
 
             const airplane = document.getElementById('airplane');
 
-            if(top < windowH && progress <= 1){                
+            if (top < windowH && progress <= 1) {
                 airplane.setAttribute('style', `opacity: 1; transform: translate(${pathX}px, ${pathY}px) rotate(${rotateDeg}deg)`);
                 scrollArea.setAttribute('style', `opacity: 1; height: ${pathY + 32}px`);
             }

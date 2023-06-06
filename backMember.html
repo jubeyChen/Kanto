@@ -31,7 +31,7 @@
         <main class="">
             <h2>會員管理</h2>
             <section class="select-block">
-                <form action="post">
+                <div class="form">
                     <select name="title" id="title">
                         <option value="">選擇項目</option>
                         <option value="">會員編號</option>
@@ -39,8 +39,8 @@
                         <option value="">電子郵件</option>
                     </select>
                     <input type="text" class="textStyle" placeholder="">
-                    <input type="submit" value="搜尋" class="btn-pri-m">
-                </form>
+                    <input type="button" value="搜尋" class="btn-pri-m">
+                </div>
             </section>
 
 
@@ -68,7 +68,8 @@
                     <template v-for="(item, index) in members">
                             <!-- 0~9 >= (第一頁-1)*10 && 0~9 < (1*10) -->
                             <!--第五筆 >= 0 && 第五筆 < 10  true -->
-                        <tr v-if="index >= (currentPage-1) * 10 && index < (currentPage*10)" :key="item.id" :data-status="item.Status">
+                        <tr v-if="index >= (currentPage-1) * 10 && index < (currentPage*10)" 
+                            :key="item.id" :data-status="item.Status">
                             <!-- <th scope="row">{{ index + 1 }}</th> -->
                             <td>{{ item.ID }}</td>
                             <td>{{ item.FullName }}</td>
@@ -92,8 +93,8 @@
             </table>
 
             <section class="page-btn">
-                <button @click="lastPage">上一頁</button>
-                <div>{{countOfPage}}/{{members.length}}</div>
+                <button @click="lastPageBtn">上一頁</button>
+                <div>{{ currentNum }}/{{members.length}}</div>
                 <button @click="nextPageBtn">下一頁</button>
             </section>
 
