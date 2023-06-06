@@ -600,6 +600,7 @@
                     flex-basis: 100%;
                     // width: 50%;
 
+
                     @include m() {
                         border-radius: 0 0 10px 10px;
                         outline: 1px solid #000;
@@ -706,6 +707,14 @@
             text-align: center;
             line-height: 34px;
             font-size: $paragraph;
+        }
+
+        .star{
+
+            ul{
+                display: flex;
+            }
+
         }
     }
 
