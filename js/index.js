@@ -1,3 +1,4 @@
+//住宿輪播套件
 $(function(){
     $('.owl-carousel').owlCarousel({
         loop:true,
@@ -58,21 +59,6 @@ let indexContent = Vue.createApp({
         
     }
 }); indexContent.mount("#indexVueContent") 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -168,7 +154,7 @@ let weatherapp = Vue.createApp({
             ],
         }
     },
-    mounted: function(){
+    // mounted: function(){
     //     //在這裡先設定this的變數 才會是vue中的this
     //     const self = this
     //     //發送請求 次數有限記得註解
@@ -214,7 +200,7 @@ let weatherapp = Vue.createApp({
     //                 }
     //                 console.log(self.days);
     //     })
-    }
+    // }
 }); weatherapp.mount("#weatherApp");
 
 
