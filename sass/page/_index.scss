@@ -475,14 +475,13 @@ a.backProductDetail_btn {
 
     }
 
-
-
     h1 {
         margin-bottom: 20px;
 
         @include m() {
             margin-bottom: 40px;
             font-size: $h2;
+            letter-spacing: 0;
         }
     }
 }
@@ -581,6 +580,7 @@ a.backProductDetail_btn {
     @include m() {
         h1 {
             font-size: $h2;
+            letter-spacing: 0;
         }
     }
 

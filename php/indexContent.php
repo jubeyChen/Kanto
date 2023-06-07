@@ -45,6 +45,6 @@ $response = [
 
 // 轉 JSON
 $jsonData = json_encode($response);
-
+// 
 echo $jsonData;
 ?>

@@ -1,111 +1,141 @@
 Vue.createApp({
-    data(){
-        return{
-            newStatus:"",
-            members:[],
-            
-            // totalPages:0,
-            currentPage:1,
-            //一頁的量
-            countOfPage:10,
-            currentNum:10
+    data() {
+        return {
+            newStatus: "",
+            members: [],  //因為搜尋型態而變動的會員資料
+            all_members: [],  //靜態的會員資料
+            currentPage: 1,
+            countOfPage: 10,    //一頁的量
+            currentNum: 10,      //當前筆數
+
+            searchKeyword: "",
+            searchType: "",
+            searchResult: [],
         }
     },
-    computed:{
+    computed: {
         //監聽 currentPage 
-        totalPages(){
-            return Math.ceil(this.members.length / this.countOfPage);
-        },
-        currentNumber(){
-            // 當前數量會有兩個情況
-            // 該頁面數量/總數量       10/16
-
-            // 每頁數量*頁數 /總數量    16/16
-            // 當總數量<10(每頁數量) 或 最後一頁(當前頁面=總頁面)時 當前數量=總會員數
-            
-            const allMembers = this.members.length
-
-            if(allMembers <= 10 || this.currentPage === this.totalPages){
-                return this.currentNum = allMembers;
-            }else{
-                return this.currentNum = this.currentPage * 10;
-            };
-
-            // const allmembers = this.members.length //member + s
-            // if(allmembers <= this.countOfPage || this.currentPage === this.totalPages){
-            //     this.currentNum = allmembers
-            // }else if(allmembers > 10 || allmembers % this.countOfPage !== 0){ // || what for?
-            //     this.currentNum = this.currentNum + (allmembers % this.countOfPage)
-            // };
-
-            //20筆的狀況呢？
-
-            // 當總數量大於10 且總數量除每頁數量會有餘數時(不等於0)  當前數量就 = 頁數*每頁數量 
-            // else if(this.members.length > this.countOfPage && this.currentPage === this.totalPages)
-            //     {
-            //     this.currentNum = this.currentNum + (this.members.length%this.countOfPage)
-            // };
+        totalPages() {
+            return Math.ceil(this.all_members.length / this.countOfPage);
         }
     },
-
-    methods:{
-        async GetMembers(){
+    methods: {
+        async GetMembers() {
             // 抓取會員資料
             await axios.get('../php/backmembers.php')
-            .then(response => {
-                this.members = response.data;
-                // console.log(this.members);
-            })
-        },    
+                .then(response => {
+                    this.members = response.data;
+                    this.all_members = response.data;
+                    console.log(this.members);
+                })
+        },
         // 按鈕切換狀態
-        btnSwitch(item){
-            item.Status = !item.Status;
+        btnSwitch(item) {
+            item.Status = !item.Status
 
-            if(item.Status === false){
+            if (item.Status === false) {
                 this.newStatus = 0
-            }else{
+            } else {
                 this.newStatus = 1
             }
 
             const UpdateMember = {
                 itemStatus: this.newStatus,
-                itemId:item.ID
+                itemId: item.ID
             }
             // console.log(UpdateMember);
 
             axios.post("../php/UpdateMember.php", UpdateMember)
-            .then(response => {
-                // console.log(response.data);
-                if(response.data === '關閉'){
-                    alert("您已關閉會員" + item.ID + "狀態");
-                }else{
-                    alert("您已啟用會員" + item.ID + "狀態");
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            });
+                .then(response => {
+                    // console.log(response.data);
+                    if (response.data === '關閉') {
+                        alert("您已關閉會員" + item.ID + "狀態");
+                    } else {
+                        alert("您已啟用會員" + item.ID + "狀態");
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         },
-
+        currentNumber() {
+            // 當前數量會有兩個情況
+            // 該頁面數量/總數量       10/16
+            // 每頁數量*頁數 /總數量    16/16
+            const allMembers = this.all_members.length
+            // 當會員總數量<=10 或 最後一頁(當前頁面=總頁面)時 當前數量=總會員數
+            if (allMembers <= 10 || this.currentPage === this.totalPages) {
+                this.currentNum = this.members.length;
+            } else {
+                // 當員總數量>10  則當前數量=頁數*10(總筆數)
+                this.currentNum = this.currentPage * 10;
+            };
+        },
         // 上一頁(現在頁數>1時才能按 ) 一頁10筆資料/總人數 下一頁(現在項目<總頁數[全部項目數量/每頁有幾項])
-        lastPageBtn(){
-            if(this.currentPage > 1 ){
+        lastPageBtn() {
+            if (this.currentPage > 1) {
                 this.currentPage = this.currentPage - 1
             }
             this.currentNumber();
         },
-        nextPageBtn(){
-            if(this.currentPage <  this.totalPages) //|| this.members.length <= (currentPage*10))
+        nextPageBtn() {
+            if (this.currentPage < this.totalPages) //|| this.members.length <= (currentPage*10))
             {
                 this.currentPage = this.currentPage + 1
             }
             this.currentNumber();
+        },
+        reverseList() {
+            // console.log("aaa")
+            this.members = this.members.reverse();
+            // this.currentNumber();
+        },
+        dosearch() {
+            // console.log(this.searchType);
+            let keyword = this.searchKeyword;
+            switch (this.searchType) {
+                // case 'all':
+                //     if(keyword == ""){
+                //         this.members = this.all_members;
+                //     }
+                // break;
+                case 'ID':
+                    keyword = parseInt(keyword);
+                    if (!isNaN(keyword)) {
+                        this.members = this.all_members.filter(members => members.ID === keyword)
+                        return this.currentNum = this.members.length
+                    } else {
+                        alert("請輸入正確關鍵字");
+                    }
+                    break;
+                case 'FullName':
+                    // console.log(this.members[0].FullName.toString());
+                    // console.log(this.all_members)
+
+                    console.log(this.all_members);
+
+                    this.members = this.all_members.filter(members => members.FullName && members.FullName.toString().includes(keyword));
+                    this.currentNum = this.members.length
+                    break;
+
+                case 'AccountID':
+                    this.members = this.all_members.filter(members => members.AccountID.toLowerCase().includes(keyword.toLowerCase()))
+                    this.currentNum = this.members.length
+                    break;
+
+                default:
+                    this.members = this.all_members;
+                    this.currentNumber();
+                    break;
+            }
         }
     },
-    async mounted(){
+    async mounted() {
         await this.GetMembers();
         await this.btnSwitch();
         await this.sendStatus();
         await this.currentNumber();
+        await this.reverseList();
+        await this.dosearch();
     }
 }).mount('#app');

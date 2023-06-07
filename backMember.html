@@ -32,14 +32,16 @@
             <h2>會員管理</h2>
             <section class="select-block">
                 <div class="form">
-                    <select name="title" id="title">
-                        <option value="">選擇項目</option>
-                        <option value="">會員編號</option>
-                        <option value="">會員姓名</option>
-                        <option value="">電子郵件</option>
+
+                    <select name="title" id="title" v-model="searchType">
+                        <option value="" selected  >選擇項目</option>
+                        <option value="ID">會員編號</option>
+                        <option value="FullName">會員姓名</option>
+                        <option value="AccountID">電子郵件</option>
                     </select>
-                    <input type="text" class="textStyle" placeholder="">
-                    <input type="button" value="搜尋" class="btn-pri-m">
+                    <input type="search" class="textStyle" v-model.lazy.trim="searchKeyword" @keyup.prevent.enter="dosearch" placeholder="輸入關鍵字">
+                    <input type="button" value="搜尋" class="btn-pri-m"
+                    @click="dosearch">
                 </div>
             </section>
 
@@ -48,11 +50,12 @@
                 <thead>
                     <tr class="table-dark">
                          <!-- <th scope="col">排序</th> -->
-                        <th scope="col">會員編號<span class="material-symbols-outlined">
+                        <th scope="col">會員編號<span class="material-symbols-outlined"
+                            @click="reverseList">
                             unfold_more
                             </span>
                         </th>
-                        <th scope="col">會員姓名<span class="material-symbols-outlined">
+                        <th scope="col">會員姓名<span class="material-symbols-outlined" @click="reverseList">
                             unfold_more
                             </span>
                         </th>
@@ -94,7 +97,7 @@
 
             <section class="page-btn">
                 <button @click="lastPageBtn">上一頁</button>
-                <div>{{ currentNum }}/{{members.length}}</div>
+                <div>{{ currentNum }}/{{all_members.length}}</div>
                 <button @click="nextPageBtn">下一頁</button>
             </section>
 
