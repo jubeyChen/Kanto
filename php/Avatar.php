@@ -23,8 +23,8 @@ if($_FILES["Avatar"]["error"] > 0){
     //Web根目錄真實路徑
     $ServerRoot = $_SERVER["DOCUMENT_ROOT"];
 
-    $path = "../dist/image/member/".$id."/avatar/"; // 放到server上使用
-    // $path = $ServerRoot."/Kanto/dist/image/member/".$id."/avatar/"; //本機端的路徑
+    // $path = "../dist/image/member/".$id."/avatar/"; // 放到server上使用
+    $path = $ServerRoot."/Kanto/dist/image/member/".$id."/avatar/"; //本機端的路徑
     if (!is_dir($path)) {
     mkdir($path, 0777, true);
     }

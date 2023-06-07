@@ -32,8 +32,8 @@ if(isset($_FILES["IMG"])){
         //Server上的暫存檔路徑含檔名
        $filePath_Temp = $fileTmpName_arr[$i];
 
-        $path = "../dist/image/productPage/".$ProductID."/reviewPhoto/"; //放上server的路徑
-    //   $path = $ServerRoot."/Kanto/dist/image/productPage/".$ProductID."/reviewPhoto/"; //本機端的路徑
+        // $path = "../dist/image/productPage/".$ProductID."/reviewPhoto/"; //放上server的路徑
+      $path = $ServerRoot."/Kanto/dist/image/productPage/".$ProductID."/reviewPhoto/"; //本機端的路徑
       if (!is_dir($path)) {
        mkdir($path, 0777, true);
      }
