@@ -105,13 +105,14 @@ const app = Vue.createApp({
                 this.blog.banner1 = e.target.result;
             });
             reader.readAsDataURL(file);
-            console.log(this.image1)
+            
         },
         updateImg2(e) {
             const file = e.target.files.item(0);
             const reader = new FileReader();
             reader.addEventListener('load', (e) => {
                 this.blog.banner2 = e.target.result;
+                // console.log(this.blog.banner2);
             });
             reader.readAsDataURL(file);
         },
@@ -152,8 +153,8 @@ const app = Vue.createApp({
             
             data.append('name', this.blog.name);
             data.append('intro', this.blog.intro);
-            data.append('banner1', this.blog.banner1);
-            data.append('banner2', this.blog.banner2);
+            // data.append('banner1', document.getElementById('banner1').files[0]);
+            // data.append('banner2', document.getElementById('banner2').files[0]);
             data.append('region', this.blog.region);
             
             
@@ -161,13 +162,37 @@ const app = Vue.createApp({
                 .then(response => {
                     if (response.data) {
                         console.log('productSchedule已儲存!');
+                        console.log(response.data);
                         alert('儲存成功!');
                         this.blog.blogID = response.data;
-                        this.savePlan();
+                        // this.savePlan();
+                        // this.saveBanner();
+                        console.log(this.blog.blogID);
                         // window.location.href = './backProduct.html';
 
                     }
 
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('連線失敗，請稍後重試');
+                });
+        },
+        async saveBanner(){
+            const bannerData = new FormData();
+            data.append('banner1', document.getElementById('banner1').files[0]);
+            data.append('banner2', document.getElementById('banner2').files[0]);
+            data.append('blogID', this.blog.blogID);
+
+            await axios.post('../php/saveBlogBanner.php', bannerData)
+                .then(response => {
+                    if (response.data === 'done') {
+                        console.log('banner已儲存!');
+                        
+                    } else {
+                        alert('Banner儲存失敗');
+                    }
+                    
                 })
                 .catch(error => {
                     console.log(error);

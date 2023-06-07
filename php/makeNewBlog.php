@@ -4,12 +4,13 @@ include('Mysql.php');
 ini_set("display_errors", "On");
 
 
-$Name = $data['name'];
-$Intro = $data['intro'];
-$Banner1 = $data['banner1'];
-$Banner2 = $data['banner2'];
-$Region = $data['region'];
-$Display = $data['display'];
+$Name = $_POST['name'];
+$Intro = $_POST['intro'];
+$Banner1 = null;
+$Banner2 = null;
+$Region = $_POST['region'];
+$Display = 1;
+
 // $BlogImage1 = $data['blogImage1'];
 // $BlogTime1 = $data['blogTime1'];
 // $BlogTitle1 = $data['blogTitle1'];
@@ -34,8 +35,8 @@ $Display = $data['display'];
 // $sql = "INSERT INTO blog(`Name`, Content, IntroductionID, Price, Banner1, Banner2, Banner3, ProductTypeID, RegionID, Image1, Image2, Image3, Image4) 
 // VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
      
-$sql = "INSERT INTO blog( Title, Content, BannerPC, RegionID, Dispaly, Image1) 
-VALUES (?, ?, ?, ?, ?, ?);";
+$sql = "INSERT INTO blog( Title, Content, BannerPC, RegionID, Display, Image1, CreatedTime) 
+VALUES (?, ?, ?, ?, ?, ?, NOW());";
 
 
 //執行
@@ -46,6 +47,7 @@ $statement->bindParam(3, $Banner1);
 $statement->bindParam(4, $Region);
 $statement->bindParam(5, $Display);
 $statement->bindParam(6, $Banner2);
+// $statement->bindParam(7, $CreatedTime);
 $affectedRow = $statement->execute();
 
 //取得檔案副檔名
