@@ -6,8 +6,11 @@ const app = Vue.createApp({
             name: '',
             status: 'show',
             price: '',
-            date: '2023/6/21',
 
+            //行程日期
+            selectedDate: '',
+            lastSavedDate: '',
+            selectedDates: [],
             //行程簡介
             Content1: '',
             Content2: '',
@@ -66,12 +69,30 @@ const app = Vue.createApp({
         this.getData();
     },
     methods: {
+        saveDate() {
+            if (this.editable) {
+                if (this.selectedDate == "") {
+                    alert('請輸入日期')
+                    return;
+                }
+                else if (this.selectedDate == this.lastSavedDate) {
+                    alert('日期重複，請輸入其他日期')
+                    return;
+                } else {
+                    this.lastSavedDate = this.selectedDate;
+                    this.selectedDates.push(this.selectedDate);
+                }
+            }
+        },
         //傳遞所有資料到php
         async updateData() {
 
 
             //整理要傳送到後端的資料 文字內容更新
             let updateData = {
+
+                //所有日期
+                dates: this.selectedDates,
                 //行程標題
                 name: this.name,
 
@@ -84,8 +105,6 @@ const app = Vue.createApp({
                 //價格
                 price: this.price,
 
-                //行程日期
-                date: this.date,
 
                 //行程簡介
                 Content1: this.Content1,
@@ -142,7 +161,8 @@ const app = Vue.createApp({
             if (checkUpdate) {
                 axios.post('../php/backProductDetailUpdate.php?id=' + productId, updateData)
                     .then((response) => {
-                        console.log(response.data);
+                        // console.log(response.data);
+                        this.selectedDates = [];
                         return this.saveImage();
                     })
                     .then(() => {
@@ -151,6 +171,7 @@ const app = Vue.createApp({
                     .then(() => {
                         window.onload = () => {
                             this.getData(); // 在所有圖片載入完成後重新渲染畫面
+
                         };
                     })
                     .catch((error) => {
@@ -159,8 +180,9 @@ const app = Vue.createApp({
             } else {
                 return;
             }
-
+            alert('更新成功')
             this.editable = false;
+
         },
 
         backPage() {
@@ -419,7 +441,8 @@ const app = Vue.createApp({
 
             await axios.post('../php/detailSavePlanImg.php?id=' + productId, imageData2)
                 .then(response => {
-                    console.log(response.data);
+                    // console.log('更新成功');
+                    // console.log(response.data);
                 })
                 .catch(error => {
                     console.log(error);

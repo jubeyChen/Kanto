@@ -28,6 +28,33 @@ $Content3 = $data['Content3'];
 $intro = $data['intro'];
 $productId = $_GET['id'];
 
+//日期
+$dates = $data['dates'];
+
+if(!empty($dates)){
+//因為這張表有FK 所以必須要解除
+$pdo->exec('SET FOREIGN_KEY_CHECKS = 0');
+
+//日期更新
+$deleteSql = "DELETE FROM productDetail WHERE ProductID = :productId";
+$deleteStmt = $pdo->prepare($deleteSql);
+$deleteStmt->bindParam(':productId', $productId);
+$deleteStmt->execute();
+
+// 重新啟動外键约束
+$pdo->exec('SET FOREIGN_KEY_CHECKS = 1');
+
+$insertSql = "INSERT INTO productDetail(ProductID, OfferDate) VALUES (:productId, :offerDate)";
+$insertStmt = $pdo->prepare($insertSql);
+
+foreach ($dates as $date) {
+    $insertStmt->bindParam(':productId', $productId);
+    $insertStmt->bindParam(':offerDate', $date);
+    $insertStmt->execute();
+}
+}
+
+
 
 //第一個搜尋
 $sql = "UPDATE product 

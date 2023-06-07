@@ -9,6 +9,12 @@ function getExtensionName($filePath){
     return $path_parts["extension"];
 }
 
+
+
+
+
+
+
 if( $_FILES['plan_Img1']['error'] >0 || $_FILES['plan_Img2']['error'] >0 || $_FILES['plan_Img3']['error'] >0 || $_FILES['plan_Img4']['error'] >0 ){
     echo '上傳失敗';
 }else{
@@ -32,6 +38,9 @@ if( $_FILES['plan_Img1']['error'] >0 || $_FILES['plan_Img2']['error'] >0 || $_FI
           mkdir($path, 0777, true);
       }
     
+      
+
+
       $filePath1 = $path . $plan_Img1_Name;
       $filePath2 = $path . $plan_Img2_Name;
       $filePath3 = $path . $plan_Img3_Name;
@@ -42,14 +51,6 @@ if( $_FILES['plan_Img1']['error'] >0 || $_FILES['plan_Img2']['error'] >0 || $_FI
       $newFileName3 = "detail_3." . getExtensionName($filePath3);
       $newFileName4 = "detail_4." . getExtensionName($filePath4);
     
-      //將照片檔案上傳
-      move_uploaded_file($filePath_Temp1, $path . $newFileName1);
-      move_uploaded_file($filePath_Temp2, $path . $newFileName2);
-      move_uploaded_file($filePath_Temp3, $path . $newFileName3);
-      move_uploaded_file($filePath_Temp4, $path . $newFileName4);
-    
-
-
 //撈取原始圖片檔案名稱
 $originalsql_1 = "SELECT *
 FROM productSchedule
@@ -92,35 +93,36 @@ $originalstatement4->execute();
 $row = $originalstatement4->fetch(PDO::FETCH_ASSOC);
 $originalImage4 = $row['Image'];
 
-ECHO $originalImage1;
-ECHO $originalImage2;
-ECHO $originalImage3;
-ECHO $originalImage4;
 
     // 檢查並執行檔案上傳和更新
     if (isset($_FILES['plan_Img1']) && $_FILES['plan_Img1']["error"] == 0) {
         move_uploaded_file($filePath_Temp1, $path . $newFileName1);
     } else {
-        $newFileName1 = $originalFileName1;
+        $newFileName1 = $originalImage1;
     }
 
     if (isset($_FILES['plan_Img2']) && $_FILES['plan_Img2']["error"] == 0) {
         move_uploaded_file($filePath_Temp2, $path . $newFileName2);
     } else {
-        $newFileName2 = $originalFileName2;
+        $newFileName2 = $originalImage2;
     }
 
     if (isset($_FILES['plan_Img3']) && $_FILES['plan_Img3']["error"] == 0) {
         move_uploaded_file($filePath_Temp3, $path . $newFileName3);
     } else {
-        $newFileName3 = $originalFileName3;
+        $newFileName3 = $originalImage3;
     }
 
     if (isset($_FILES['plan_Img4']) && $_FILES['plan_Img4']["error"] == 0) {
         move_uploaded_file($filePath_Temp4, $path . $newFileName4);
     } else {
-        $newFileName4 = $originalFileName4;
+        $newFileName4 = $originalImage4;
     }
+
+    
+
+
+
 
 
 //第一個更新
@@ -217,6 +219,10 @@ $params4 = array(
 $affectedRow4 = $statement4->execute($params4);
 
 
-      echo '更新成功';
+    echo '更新成功';
+    echo $originalImage1;
+    echo $originalImage2;
+    echo $originalImage3;
+    echo $originalImage4;
 }
 ?>

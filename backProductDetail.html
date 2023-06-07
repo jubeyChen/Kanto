@@ -99,7 +99,15 @@
 
                     <div class="input-group mb-3">
                         <span class="input-group-text">行程日期</span>
-                        <input type="text" class="form-control" :readonly="!editable" v-model="date">
+                        <!-- <input type="text" class="form-control" :readonly="!editable" v-model="date"> -->
+                        <input type="date" class="form-control" v-model="selectedDate" :readonly="!editable">
+                        <input type="button" value="選擇" class="btn btn-secondary" @click="saveDate">
+                    </div>
+
+                    <div class="input-group mb-3" v-show="editable">
+                        <ul>
+                            <li v-for="(date, index) in selectedDates" :key="index">{{ date }}</li>
+                        </ul>
                     </div>
 
 
