@@ -45,8 +45,10 @@
         overflow-y: scroll;
         overflow-x: hidden;
 
-            @include m(){
+            @include m() {
                 overflow-y: hidden;
+                overflow-x: hidden;
+                height: auto;
             }
 
         .search-text {
@@ -56,6 +58,10 @@
             
             @include m() {
                 display: none;
+            }
+
+            @include m(){
+                
             }
 
             .search-bar {
@@ -630,21 +636,14 @@
                             align-items: center;
                             justify-content: space-between;
                             margin-bottom: 10px;
-                        }
 
-                        a {
-                            @include m() {
-                                text-decoration: none;
-                                color: #fff;
-                                display: block;
+
+                            ul{
+                                display: flex;
                             }
                         }
 
-                        button {
-                            @include m() {
-                                padding: 0 20px;
-                            }
-                        }
+                        
                     }
 
                     .rwd-both {
@@ -654,6 +653,21 @@
                             display: block;
                             display: flex;
                             justify-content: space-between;
+                            align-items: flex-end;
+
+                            a {
+                                @include m() {
+                                    text-decoration: none;
+                                    color: #fff;
+                                    display: block;
+                                }
+                            }
+    
+                            button {
+                                @include m() {
+                                    padding: 0 20px;
+                                }
+                            }
                         }
 
                         .follow {

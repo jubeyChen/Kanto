@@ -36,9 +36,8 @@
     }
     ul{
         display: flex;
-        justify-content: center;
-        margin-top: 30px;
-        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 50px 0;
 
         
 
@@ -46,10 +45,10 @@
             // margin-top:;
             justify-content: unset;
             overflow-x: scroll;
-            white-space:nowrap;
+            white-space: nowrap;
         };
         li{
-            margin-right: 20px;
+            margin-right: 10px;
         }
     }
 }    

@@ -171,9 +171,11 @@
                             <div class="word">
                                 <div class="title-h">
                                     <h3>{{item.Name}}</h3>
-                                    <button class="heart-btn" :class="{ 'heart-btn-red': isHearted }" @click="toggleHeart">
-                                        <i class="fa-regular fa-heart" :style="{ color: isHearted ? '#ff0000' : '#000000', fontSize: '2em' }"></i>
+                                    <button class="heart-btn" style="outline: none;" @click="toggleFavorite(item)">
+                                        <i v-if="item.isHearted" class="fa fa-heart fa-solid" style="color: red; font-size: 2em;"></i>
+                                        <i v-else class="fa fa-heart fa-regular" style="font-size: 2em;"></i>
                                     </button>
+                                      
                                 </div>
                                 <p class="p-content">{{item.Content}}</p>
                                 <div class="only-btn">
@@ -196,13 +198,21 @@
                                     <div class="price">TWD {{numberWithCommas(item.Price)}}</div>
                                 </div>
                                 <div class="rwd-star">
-                                    <img src="image/product/star.png" alt="">
-                                    <button class='btn-pri-m' class="btn-n">
-                                        <a href="./productPage.html">查看詳情</a>
-                                    </button>
+                                    <div class="star">
+                                        <ul>
+                                            <li v-if="item.AverageStar >= 1 || item.AverageStar == 0"><i class="fa-solid fa-star"style="color: yellow; line-height: 1px; fontSize: 1.5em"></i></li>
+                                            <li v-if="item.AverageStar >= 2"><i class="fa-solid fa-star"style="color: yellow; line-height: 1px; fontSize: 1.5em"></i></li>
+                                            <li v-if="item.AverageStar >= 3"><i class="fa-solid fa-star"style="color: yellow; line-height: 1px; fontSize: 1.5em"></i></li>
+                                            <li v-if="item.AverageStar >= 4"><i class="fa-solid fa-star"style="color: yellow; line-height: 1px; fontSize: 1.5em"></i></li>
+                                            <li v-if="item.AverageStar >= 5"><i class="fa-solid fa-star"style="color: yellow; line-height: 1px; fontSize: 1.5em"></i></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="rwd-both">
                                     <div class="rwd-price">TWD 1,500</div>
+                                    <button class='btn-pri-m' class="btn-n">
+                                        <a :href="'./productPage.html?id=' + item.ID">查看詳情</a>
+                                    </button>
                                 </div>
                             </div>
                         </li>

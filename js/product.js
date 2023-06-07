@@ -73,30 +73,6 @@ $(document).ready(function () {
         showCalendar(currentDate.getFullYear(), currentDate.getMonth());
     });
 
-    // 選擇日期
-    // calendarDays.addEventListener('click', (event) => {
-    //     // 判斷點擊的是否為日期
-    //     if (event.target.classList.contains('calendar-day')) {
-    //         // datep(event, currentDate);
-    //         // 獲取選中的日期
-    //         let selectedDate = event.target.innerText;
-    //         // 將選中的日期轉換為符合 OfferDate 格式的日期字串
-    //         const year = currentDate.getFullYear();
-    //         const month = currentDate.getMonth() + 1; // 月份從0開始，所以要加1
-    //         const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${selectedDate.toString().padStart(2, '0')}`;
-
-    //         console.log(formattedDate);
-    //         console.log(selectedDate);
-    //         // 設置選中的日期
-    //         currentDate.setDate(selectedDate);
-    //         // 重新顯示日曆
-    //         showCalendar(currentDate.getFullYear(), currentDate.getMonth(), currentMonth, calendarDays);
-    //         // RootComponent.methods.setSelectedDate(currentDate);
-    //     }
-
-
-    // });
-
 
     // 操控價錢搜尋的值
 
@@ -139,14 +115,25 @@ const RootComponent = {
             // 星星平均值
             averageStar: [],
             // 愛心初始狀態為未按下
-            isHearted: false
+            isHearted: false,
+            //接會員收藏的資料
+            collections: [],
 
+            //接會員基本資料的資料
+            accountInfo: {
+                ID: '',
+                AccountID: '',
+                Avatar: '',
+                FullName: '',
+                Gender: '',
+                Phone: '',
+            },
 
 
         };
     },
     async mounted() {
-        
+
 
         axios.get('../php/product.php')
             .then((response) => {
@@ -168,11 +155,16 @@ const RootComponent = {
                         this.AAA = response.data.aaa
                     }
 
+                    if (Array.isArray(response.data.collections)) {
+                        this.collections = response.data.collections
+                    }
+
                     if (Array.isArray(response.data.averageStar)) {
                         this.averageStar = response.data.averageStar
                     }
 
-
+                    // console.log('collections:', this.collections);
+                    // console.log('displayItems:', this.displayItems);
 
                 }
                 this.setPages()
@@ -183,17 +175,32 @@ const RootComponent = {
             })
 
 
-        axios.get('../php/averageStar.php')
-            .then(response => {
 
-                if (Array.isArray(response.data.averageStar)) {
-                    this.averageStar = response.data.averageStar
-                    console.log(this.averageStar)
-                }
-            })
-            .catch(error => {
-                console.log(error);
+        // 在 mounted 钩子函数中添加事件监听器
+        const accordion = document.getElementsByClassName("contentBx");
+
+        for (let i = 0; i < accordion.length; i++) {
+            accordion[i].addEventListener("click", function () {
+                console.log("aaaaa");
+                this.classList.toggle("active");
             });
+        }
+
+        const labels = document.getElementsByClassName("label");
+
+        for (let i = 0; i < labels.length; i++) {
+            const label = labels[i];
+            const content = label.nextElementSibling;
+
+            label.addEventListener("click", function () {
+                content.classList.toggle("active");
+            });
+        }
+
+
+
+
+
 
         //檢查是否為登入狀態
 
@@ -201,6 +208,10 @@ const RootComponent = {
         console.log(a);
         this.isSessionValid = a.isSessionValid;
         this.user = a.user;
+
+        this.checkMatchingItems();
+        this.getAccountInfo();
+
 
 
 
@@ -217,8 +228,6 @@ const RootComponent = {
             vm.searchInput = event.target.value;
             vm.applyFilters();
         });
-
-
 
 
 
@@ -246,19 +255,28 @@ const RootComponent = {
                 vm.applyFilters();
             }
         });
+
     },
 
+
     computed: {
+
         paginatedItems() {
             const startIndex = (this.currentPage - 1) * this.perPage;
             const endIndex = startIndex + this.perPage;
             return this.displayItems.slice(startIndex, endIndex);
         },
 
-        
+
+
+
+
+
     },
 
     methods: {
+
+
         // 幫價錢每三位數增加一個","
 
         numberWithCommas(value) {
@@ -331,10 +349,123 @@ const RootComponent = {
             this.setPages();
         },
 
-        // -------------------------控制愛心顏色-------------------
-        toggleHeart() {
-            this.isHearted = !this.isHearted;
+
+        //-------------------------渲染網頁已收藏愛心-------------------
+
+
+        checkMatchingItems() {
+            console.log('collections:', this.collections);
+            console.log('displayItems:', this.displayItems);
+
+            const matchedItems = this.displayItems.filter(item => {
+                const matchingItem = this.collections.find(collection => collection.ProductID === item.ID || collection[1] === item.ID);
+                return matchingItem !== undefined;
+            });
+
+            if (matchedItems.length > 0) {
+                console.log('匹配的項目：', matchedItems);
+                this.displayItems.forEach(item => {
+                    const matchingItem = matchedItems.find(matchedItem => matchedItem.ID === item.ID);
+                    item.isHearted = matchingItem !== undefined;
+                });
+            } else {
+                console.log('找不到匹配的項目');
+                this.displayItems.forEach(item => {
+                    item.isHearted = false;
+                });
+            }
         },
+
+
+        //-------------------------取得會員資料-------------------
+
+        async getAccountInfo() {
+            await axios.post('../php/GetAccountInfo.php', { user: this.user })
+                .then(response => {
+                    this.accountInfo.ID = response.data[0].ID;
+                    this.accountInfo.AccountID = response.data[0].AccountID;
+                    this.accountInfo.Avatar = response.data[0].Avatar;
+                    if (response.data[0].FullName === null || response.data[0].FullName === undefined) {
+                        this.accountInfo.FullName = null;
+                    }
+                    this.accountInfo.FullName = response.data[0].FullName;
+                    if (response.data[0].Gender === null || response.data[0].Gender === undefined) {
+                        this.accountInfo.Gender = 'none';
+                    } else {
+                        this.accountInfo.Gender = response.data[0].Gender;
+                    }
+
+                    this.accountInfo.Phone = response.data[0].Phone;
+
+                    console.log(this.accountInfo)
+                })
+                .catch(error => {
+                    console.log(error);
+                    window.location.href = "loginRegister.html";
+                });
+        },
+
+
+        //-------------------------新增、刪除收藏資料&切換愛心圖片-------------------
+        toggleFavorite(item) {
+            if (item.isHearted) {
+                this.removeFromFavorites(item);
+            } else {
+                this.addToFavorites(item);
+            }
+        },
+
+        //新增收藏
+        addToFavorites(item) {
+            const productID = item.ID;
+            console.log(productID)
+            const memberID = this.accountInfo.ID;
+            console.log(memberID)
+
+
+            axios.
+                post('../php/addCollection.php', { productID, memberID })
+                .then(response => {
+                    if (response.data === 'done') {
+                        console.log(response.data)
+                        item.isHearted = true; // 更新項目的 isHearted 屬性
+                    } else {
+                        alert('新增收藏失敗');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('新增收藏失敗，請重試。');
+                });
+        },
+
+        //移除收藏
+        removeFromFavorites(item) {
+            // console.log(item)
+            const productID = item.ID;
+            console.log(productID)
+            const memberID = this.accountInfo.ID;
+            console.log(memberID)
+
+
+            axios
+                .post('../php/RemoveCollection.php', { productID, memberID })
+                .then(response => {
+                    if (response.data === 'done') {
+                        item.isHearted = false; // 更新項目的 isHearted 屬性
+                    } else {
+                        alert('刪除收藏失敗');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('刪除收藏失敗，請重試。');
+                });
+        },
+
+
+
+
 
         // -------------------------控制分頁-------------------
 
@@ -352,23 +483,7 @@ const RootComponent = {
             this.currentPage = page;
         },
 
-        // -------------------------得到已收藏資料-------------------
-        async getCollection() {
-            await axios.post('../php/GetCollection.php', { memberID: this.accountInfo.ID })
-                .then(response => {
-                    if (response.data !== '沒有收藏') {
-                        this.myCollection = response.data;
-                        this.collectionExist = true;
-                    } else {
-                        this.collectionExist = false;
-                        console.log('no collection');
-                    }
 
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        },
 
     }
 
