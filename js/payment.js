@@ -3,11 +3,13 @@ const app = Vue.createApp({
     return {
       //登入
       isSessionValid: '',
-      //取值
+      user:'',
+      //取account值
       accountInfo: '',
       accountID: '',
       fullName: '',
       phone: '',
+      memId: '',
       //local storage
       shoppingList: [],
       //計算
@@ -17,7 +19,6 @@ const app = Vue.createApp({
       isTotal: 0,
       couponName: '',
       isSubTotal: '',
-
       //信用卡
       creditCardNumber: '',
       expiryDate: '',
@@ -28,6 +29,7 @@ const app = Vue.createApp({
       //email
       email: '',
       emailError: ''
+
     };
   },
   created() {
@@ -56,7 +58,62 @@ const app = Vue.createApp({
     }
   },
   methods: {
-    //信用卡填寫錯誤運算
+
+  //   async saveOfferDate() {
+  //     const dateData = new FormData();
+  //     dateData.append('ProductID', this.product.productID);
+  //     dateData.append('OfferDate', JSON.stringify(this.selectedDates));
+
+  //     await axios.post('../php/saveOfferDate.php', dateData)
+  //         .then(response => {
+  //             if (response.data === 'done') {
+  //                 console.log('productSchedule已儲存!');
+  //                 alert('儲存成功!');
+  //                 window.location.href = './backProduct.html';
+
+  //             } else {
+  //                 alert('productSchedule儲存失敗');
+  //             }
+
+  //         })
+  //         .catch(error => {
+  //             console.log(error);
+  //             alert('連線失敗，請稍後重試');
+  //         });
+  // },
+
+  async saveData() {
+    const orderData = new FormData();
+    orderData.append('MemberID', this.memId);
+    orderData.append('ShoppingList', JSON.stringify(this.shoppingList));
+  
+    console.log(this.memId);
+  
+    try {
+      const response = await axios.post('../php/saveOrderDetail.php', orderData);
+      if (response.data === 'done') {
+        console.log('Order saved!');
+        alert('Order saved successfully!');
+        window.location.href = './done.html';
+      } else {
+        alert('Failed to save order');
+      }
+    } catch (error) {
+      console.log(error);
+      alert('Connection failed, please try again later');
+    }
+  }
+  ,
+  
+
+  async getProductID(){
+    for (let i = 0; i < this.shoppingList.length; i++) {
+      console.log(this.shoppingList[i].productID);
+    }
+      },
+
+
+    //--------------  信用卡邏輯運算
     validateCreditCardNumber(creditCardNumber) {
       const creditCardNumberRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/;
       return creditCardNumberRegex.test(creditCardNumber) ? '' : '信用卡卡號有誤';
@@ -78,11 +135,17 @@ const app = Vue.createApp({
       this.expiryDateError = this.validateExpiryDate(this.expiryDate);
       this.cvcError = this.validateCVC(this.cvc);
       this.emailError = this.validateEmail(this.email);
-
-      if (!this.creditCardError && !this.expiryDateError && !this.cvcError && !this.emailError) {
-        window.location.href = 'done.html';
+    
+      if (
+        !this.creditCardError &&
+        !this.expiryDateError &&
+        !this.cvcError &&
+        !this.emailError
+      ) {
+        this.saveData();
       }
     },
+    
     //database 取得帳戶
     async getAccountInfo() {
       const response = await axios.post('../php/getAccPayment.php');
@@ -94,6 +157,8 @@ const app = Vue.createApp({
         this.accountId = accountInfo.AccountID;
         this.fullName = accountInfo.FullName;
         this.phone = accountInfo.Phone;
+        this.memId = accountInfo.ID;
+        // console.log(this.memId);
       }
     },
     //取的優惠碼
@@ -114,8 +179,8 @@ const app = Vue.createApp({
       const selectedCoupon = this.isCoupon.find(coupon => coupon.CouponID === couponID);
       return selectedCoupon ? selectedCoupon.Discount : 0;
     },
-   //信用卡運算
 
+    //--------------------信用卡運算--------------
     calculateTotal() {
       this.isTotal = this.shoppingList.reduce((total, shoppinglist) => {
         return total + Number(shoppinglist.total.replace(',', ''));
@@ -151,11 +216,98 @@ const app = Vue.createApp({
   },
   async mounted() {
     let a = await globalCheck.PageCheckSession();
-    this.isSessionValid = a;
+    this.isSessionValid = a.isSessionValid;
+    this.user = a.user;
     console.log(this.isSessionValid);
-    await this.getAccountInfo();
-    await this.getMemberCoupon();
+    
+    this.getAccountInfo()
+      .then(() => {
+        return this.getMemberCoupon();
+      })
+      .then(() => {
+        return this.getProductID();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 });
 
 app.mount('#app');
+
+
+
+// async doSave() {
+//   // 获取会员ID和产品ID
+//   // const memId = await this.getMemberId(); // 使用await等待异步获取会员ID
+//   const productId = await this.getProductId(); // 使用await等待异步获取产品ID
+
+//   // 创建包含会员ID和产品ID的对象
+//   const productInfo = {
+//     memId: this.memId,
+//     productId: productId
+//   };
+//   console.log(productInfo);
+
+//   // 发送数据到后端PHP
+//   await this.sendDataToPHP(productInfo); // 使用await等待异步发送数据到后端
+// },
+// // async getMemberId() {
+// //   // 获取会员ID的逻辑，例如从元素中获取值
+// //   const memberIdElement = document.getElementById('paymentMemId');
+// //   return memberIdElement.value;
+// // },
+
+// // async getProductId() {
+// //   // 获取产品ID的逻辑，例如从元素中获取值
+// //   const productIdElement = document.getElementById('paymentProductId');
+// //   // console.log(productIdElement.innerHTML);
+// //   return productIdElement.innerHTML;
+// // },
+
+
+    // async doSave() {
+    //   // 获取会员ID和产品ID
+    //   // const memId = await this.getMemberId(); // 使用await等待异步获取会员ID
+    //   // const productId = await this.getProductId(); // 使用await等待异步获取产品ID
+
+    //   // 创建包含会员ID和产品ID的对象
+    //   const productInfo = {
+    //     memId: this.memId,
+    //     productId: productId
+    //   };
+    //   console.log(productInfo);
+
+    //   // 发送数据到后端PHP
+    //   await this.sendDataToPHP(productInfo); // 使用await等待异步发送数据到后端
+    // },
+    // async getMemberId() {
+    //   // 获取会员ID的逻辑，例如从元素中获取值
+    //   const memberIdElement = document.getElementById('paymentMemId');
+    //   return memberIdElement.value;
+    // },
+
+    // async getProductId() {
+    //   // 获取产品ID的逻辑，例如从元素中获取值
+    //   const productIdElement = document.getElementById('paymentProductId');
+    //   // console.log(productIdElement.innerHTML);
+    //   return productIdElement.innerHTML;
+    // },
+
+    // async sendDataToPHP(data) {
+    //   // 发送数据到后端PHP的URL
+    //   const url = '../php/saveOrderDetail.php';
+    //   // 发送POST请求
+    //   try {
+    //     const response = await axios.post(url, data); // 使用await等待异步POST请求的响应
+    //     // 处理响应结果
+    //     console.log(response.data);
+    //   } catch (error) {
+    //     // 处理错误
+    //     console.error(error);
+    //   }
+    // },
+    // getPID(){
+    //   console.log(this.shoppingList);
+      
+    // },

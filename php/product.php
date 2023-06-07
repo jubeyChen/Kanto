@@ -21,7 +21,7 @@ $statement2->execute();
 $data2 = $statement2->fetchAll();
 
 
-// -------------------------------------------------------------------------------------------
+// 第三個查詢 (把平均星星加入$data的資料)------------------------------------------------------------------
 
 
 $sql3 = "SELECT t.ProductID, t.AverageStar, p.* FROM
@@ -43,15 +43,33 @@ foreach ($data as &$product) {
         }
     }
 }
+session_start();
+
+$memberId = "";
+// 检查会话中是否存在已登录的用户信息
+if (isset($_SESSION['memberID'])) {
+    $memberId = $_SESSION['memberID'];
+}
+
+// 第四個查詢 (取得會員已收藏的商品ID)------------------------------------------------------------------
 
 
+$sql4 = "select C.ProductID from collection as C
+join members as M on C.MemberID = M.ID
+where M.AccountID = :memID";
 
-// 將兩個查詢組成陣列
+$statement4 = $pdo->prepare($sql4);
+$statement4->bindParam(':memID',$memberId);
+$statement4->execute();
+$data4 = $statement4->fetchAll();
+
+// 將四個查詢組成陣列
 
 $response = [
     'product' => $data,
     'productdetail' => $data2,
     'averageStar' => $data3,
+    'collections' => $data4
 ];
 
 // 轉 JSON
