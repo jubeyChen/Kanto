@@ -26,8 +26,9 @@ const app = Vue.createApp({
                 alert('取得失敗，請您稍後再試');
               });
         },
-        checkDetail(){
-            location.href='backBlogDetail.html'
+        checkDetail(e){
+            let id = e.target.getAttribute('data-id')
+            location.href= 'backBlogDetail.html?id=' + id
         },
         createNew(){
             location.href='makeNewBlog.html'
