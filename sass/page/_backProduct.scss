@@ -1,65 +1,68 @@
-.backProduct{
+.backProduct {
     margin: 50px auto;
     height: auto;
     width: 90%;
     @include flex-container(row, nowrap, space-between, flex-start);
 
-    aside{
+    aside {
         margin-right: 0;
         width: 20%;
 
-        div{
+        div {
             margin-bottom: 20px;
             text-align: center;
         }
 
-        ul{
+        ul {
             text-align: center;
             padding-left: 0;
 
-            li{
+            li {
                 margin-bottom: 5px;
             }
 
-            a{
+            a {
                 text-decoration: none;
-                &:hover{
+
+                &:hover {
                     color: #fff;
                 }
             }
         }
-    
+
     }
 
-    main{
+    main {
         width: 80%;
 
-        .select-block{
+        .select-block {
             margin-top: 20px;
             @include flex-container(row, nowrap, space-between);
 
-            .form{
+            .form {
                 @include flex-container(row, nowrap, flex-start);
                 font-size: 16px;
 
-                select{
+                select {
                     border: 8px solid #fff;
                     width: auto;
                     box-sizing: border-box;
                     padding: 0 5px;
 
                 }
-                input[type='text']{
+
+                input[type='text'] {
                     margin: 0 5px;
                 }
-                .btn-pri-m{
+
+                .btn-pri-m {
                     border: none;
                     line-height: 1.2;
                 }
             }
 
-            .edit-block{
-                button{
+            .edit-block {
+                button {
                     background-color: $secondary;
                     color: $fontColor;
                     font-size: $paragraph-s;
@@ -69,40 +72,40 @@
                     padding: 5px 30px 5px 10px;
                     width: 80px;
 
-                    a{
+                    a {
                         text-decoration: none;
                         color: $fontColor;
                     }
-                    
-                    span{
+
+                    span {
                         position: absolute;
                         margin: auto;
                     }
-    
+
                 }
             }
         }
 
-        table{
+        table {
             margin-top: 20px;
             font-size: 16px;
             color: $fontColor;
             text-align: center;
 
-            th{
+            th {
                 vertical-align: middle;
 
-                span{
+                span {
                     position: absolute;
                     margin: auto;
                     cursor: pointer;
                 }
             }
-            
-            td{
+
+            td {
                 vertical-align: middle;
 
-                button{
+                button {
                     background-color: $secondary;
                     color: $fontColor;
                     font-size: $paragraph-s;
@@ -111,15 +114,16 @@
                     box-sizing: border-box;
                     padding: 0 10px;    
                     height: 25px;
+                    padding: 0;
                 }
-    
+
             }
         }
 
-        .page-btn{
+        .page-btn {
             @include flex-container(row, nowrap, flex-start);
 
-            button{
+            button {
                 background-color: $secondary;
                 color: $fontColor;
                 font-size: $paragraph-s;
@@ -129,7 +133,7 @@
                 padding: 5px 10px;
             }
 
-            div{
+            div {
                 margin: 0 10px;
                 font-size: $paragraph-s;
             }

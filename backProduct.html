@@ -47,13 +47,13 @@
                 </div>
 
                 <section class="edit-block">
-                    <button>刪除<span class="material-symbols-outlined">
+                    <!-- <button>刪除<span class="material-symbols-outlined">
                             delete
                         </span>
-                    </button>
+                    </button> -->
                     <button><a href="makeNewOneProduct.html">新增<span class="material-symbols-outlined">
-                        add_circle
-                    </span></a> </button>
+                                add_circle
+                            </span></a> </button>
                 </section>
 
             </section>
@@ -61,12 +61,12 @@
             <table class="table table-light table-hover table-bordered table-sm">
                 <thead>
                     <tr class="table-dark">
-                        <th scope="col">選取</th>
-                        <th scope="col">行程編號<span class="material-symbols-outlined">
+                        <!-- <th scope="col">選取</th> -->
+                        <th scope="col">行程編號<span class="material-symbols-outlined" @click="reverse">
                                 unfold_more
                             </span>
                         </th>
-                        <th scope="col">行程名稱<span class="material-symbols-outlined">
+                        <th scope="col">行程名稱<span class="material-symbols-outlined" @click="reverse">
                                 unfold_more
                             </span>
                         </th>
@@ -77,9 +77,9 @@
                 </thead>
                 <tbody class="">
                     <tr v-for="(item, index) in  sliceProducts" :key="index">
-                        <th scope="row">
+                        <!-- <th scope="row">
                             <input type="checkbox">
-                        </th>
+                        </th> -->
                         <td>{{ item.ID }}</td>
                         <td>{{ item.Name }}</td>
                         <td>{{ item.RegionName}}</td>

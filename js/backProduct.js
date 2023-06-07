@@ -14,6 +14,9 @@ const app = Vue.createApp({
         this.getData();
     },
     methods: {
+        reverse() {
+            this.sliceProducts.reverse();
+        },
         getData() {
             const vm = this; // 保留 Vue 实例的引用
             return new Promise((resolve, reject) => {
@@ -25,6 +28,7 @@ const app = Vue.createApp({
 
                         // 先让 sliceProducts 进行初始化筛选
                         vm.sliceData();
+                        vm.checkcurrentNum();
                         resolve(); // 请求成功后解析 Promise
                     })
                     .catch(function (error) {

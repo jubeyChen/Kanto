@@ -276,6 +276,7 @@ const app = Vue.createApp({
                 .catch(function (error) {
                     console.log(error);
                 })
+
         },
 
         //更新封面照片
@@ -448,6 +449,36 @@ const app = Vue.createApp({
                     console.log(error);
                     alert('連線失敗，請稍後重試');
                 });
+        },
+
+
+        //刪除資料表
+        deleteProduct() {
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return "";
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+            var productId = getParameterByName('id');
+
+            let checkDelete = confirm('確定執行刪除?')
+            if (checkDelete) {
+                axios.get('../php/deleteProduct.php?id=' + productId)
+                    .then(response => {
+                        console.log(response.data);
+                        alert('刪除成功')
+                        window.location.href = '../dist/backProduct.html';
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        alert('連線失敗，請稍後重試');
+                    });
+            }
+
         }
 
     }
