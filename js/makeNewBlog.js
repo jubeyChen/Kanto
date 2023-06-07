@@ -22,7 +22,9 @@ const app = Vue.createApp({
                 intro: '',
                 banner1: '',
                 region: '',
-                banner2: ''
+                display: 1,
+                banner2: '',
+                CreatedTime: ''
                 
             },
             //專欄名稱
@@ -146,13 +148,34 @@ const app = Vue.createApp({
             reader.readAsDataURL(file);
         },
         async updateData(){
-            let data = new FormData();
+            const data = new FormData();
             
             data.append('name', this.blog.name);
             data.append('intro', this.blog.intro);
             data.append('banner1', this.blog.banner1);
             data.append('banner2', this.blog.banner2);
             data.append('region', this.blog.region);
+            
+            
+            await axios.post('../php/makeNewBlog.php', data)
+                .then(response => {
+                    if (response.data) {
+                        console.log('productSchedule已儲存!');
+                        alert('儲存成功!');
+                        this.blog.blogID = response.data;
+                        this.savePlan();
+                        // window.location.href = './backProduct.html';
+
+                    }
+
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('連線失敗，請稍後重試');
+                });
+        },
+        async savePlan(){
+            const planData = new FormData();
             data.append('blogImage1', this.blogSchedule1.image);
             data.append('blogTime1', this.blogSchedule1.time);
             data.append('blogTitle1', this.blogSchedule1.title);
@@ -169,15 +192,15 @@ const app = Vue.createApp({
             data.append('blogTime4', this.blogSchedule4.time);
             data.append('blogTitle4', this.blogSchedule4.title);
             data.append('blogDescription4', this.blogSchedule4.description);
-            
-            await axios.post('../php/makeNewBlog.php', data)
-                .then(response => {
-                    if (response.data) {
-                        console.log('productSchedule已儲存!');
-                        alert('儲存成功!');
-                        this.blog.blogID = response.data;
-                        // window.location.href = './backProduct.html';
+            data.append('blogID', this.blog.blogID);
 
+            await axios.post('../php/saveBlogPlan.php', planData)
+                .then(response => {
+                    if (response.data === 'done') {
+                        console.log('productSchedule已儲存!');
+
+                    } else {
+                        alert('productSchedule儲存失敗');
                     }
 
                 })
