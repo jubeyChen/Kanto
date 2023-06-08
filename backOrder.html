@@ -33,8 +33,8 @@
                 <div class="form">
                     <select name="title" id="title" v-model="searchType">
                         <option value="" selected>選擇項目</option>
-                        <option value="id">訂單編號</option>
-                        <option value="fullname">顧客姓名</option>
+                        <option value="ID">訂單編號</option>
+                        <option value="FullName">顧客姓名</option>
                     </select>
                     <input type="text" class="textStyle" placeholder="輸入關鍵字" v-model="searchText" @keyup.prevent.enter="doSearch">
                     <input type="button" value="搜尋" class="btn-pri-m" @click="doSearch">
@@ -62,13 +62,13 @@
                 <tbody class="">
                     <tr v-for="(item, index) in slicedOrders" :key="index">
                         <th scope="row">{{ index + 1 }}</th>
-                        <td>{{ item.id }}</td>
-                        <td>{{ item.fullname }}</td>
-                        <td>{{ item.timestamp }}</td>
-                        <td>${{ item.total }}</td>
-                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.ID }}</td>
+                        <td>{{ item.FullName }}</td>
+                        <td>{{ item.Timestamp }}</td>
+                        <td>${{ item.Total }}</td>
+                        <td>{{ item.Quantity }}</td>
                         <td>
-                            <button @click="checkDetail" :data-id="item.id">查看</button>
+                            <button @click="checkDetail" :data-id="item.ID">查看</button>
                         </td>
                     </tr>
                 </tbody>

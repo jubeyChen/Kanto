@@ -1,10 +1,10 @@
 const app = Vue.createApp({
     data(){
         return{
-            id: '',
-            fullname: '',
-            timestamp: '',
-            total: 0,
+            ID: '',
+            FullName: '',
+            Timestamp: '',
+            Total: 0,
             orderDetail: []
         }
     },
@@ -24,18 +24,20 @@ const app = Vue.createApp({
         
         // 現在你可以使用 productId 變數來進一步處理和使用該值
         // console.log(orderId); // 印出 id 參數的值
+
+        console.log(typeof(this.Total));
         
         axios.get('../php/backOrderDetail.php?id=' + orderId)
             .then(response => {
                 console.log(response);
                 for(let i = 0; i < response.data.length; i++){
                     this.orderDetail.push(response.data[i]);
-                    this.total += parseInt(response.data[i].total);
+                    this.Total += parseInt(response.data[i].Total);
                 }
 
-                this.id = response.data[0].id;
-                this.fullname = response.data[0].fullname;
-                this.timestamp = response.data[0].timestamp;
+                this.ID = response.data[0].ID;
+                this.FullName = response.data[0].FullName;
+                this.Timestamp = response.data[0].Timestamp;
 
             })
             .catch(error => {

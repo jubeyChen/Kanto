@@ -6,13 +6,20 @@ header('Content-Type: application/json');
 
 $orderId = $_GET['id'];
 
-$sql = 'SELECT o.id, m.fullname, o.timestamp, d.id, p.name, d.quantity, p.price, d.quantity * p.price total, pd.OfferDate, d.IsCanceled FROM orders o
-        join orderDetail d on o.id = d.orderid
-        join members m on o.memberid = m.id
-        join product p on d.productid = p.id
-        join productdetail pd on pd.id = d.productdetailid
-        where o.id = :orderId;
+$sql = 'SELECT o.ID, m.FullName, o.Timestamp, d.ID, p.Name, d.Quantity, p.Price, d.Quantity * p.Price Total, pd.OfferDate, d.IsCanceled FROM orders o
+        join orderDetail d on o.ID = d.OrderID
+        join members m on o.MemberID = m.ID
+        join product p on d.ProductID = p.ID
+        join productDetail pd on pd.ID = d.ProductdetailID
+        where o.ID = :orderId;
         ';
+// $sql = 'SELECT o.id, m.fullname, o.timestamp, d.id, p.name, d.quantity, p.price, d.quantity * p.price total, pd.offerdate, d.iscanceled FROM orders o
+//         join orderDetail d on o.id = d.orderid
+//         join members m on o.memberid = m.id
+//         join product p on d.productid = p.id
+//         join productdetail pd on pd.id = d.productdetailid
+//         where o.id = :orderId;
+//         ';
 
 $statement = $pdo->prepare($sql);
 $statement->bindParam(':orderId', $orderId);

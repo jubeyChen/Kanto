@@ -49,7 +49,7 @@ const app = Vue.createApp({
             this.currentNum = 10;
 
             this.sortedOrders = this.orders.filter(e => e[this.searchType].toString().includes(this.searchText));
-            // console.log(this.orders)
+            // console.log(this.orders[0][this.searchType])
             this.doSlice();
             this.checkCurrentNum();
         },

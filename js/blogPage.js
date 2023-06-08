@@ -111,7 +111,7 @@ axios.get('../php/blogPage.php?id=' + blogId)
     //console.log(response.data);
 
     /* ========== 串接標題 ========== */
-    document.querySelector('.content h2').innerHTML = response.data[0].title;
+    document.querySelector('.content h2').innerHTML = response.data[0].Title;
     document.querySelector('.content h4').innerHTML = response.data[0][2];
 
     /* ========== 串接 banner 照片 ========== */

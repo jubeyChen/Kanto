@@ -44,21 +44,21 @@
 
             <!-- ========== 訂單詳情 ========== -->
             <section class="content_block">
-                <p>訂單編號 {{ id }}</p>
+                <p>訂單編號 {{ ID }}</p>
                 <form action="#" class="row">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">顧客姓名</span>
-                        <input type="text" class="form-control" readonly v-model="fullname">
+                        <input type="text" class="form-control" readonly v-model="FullName">
                     </div>
 
                     <div class="input-group mb-3 col">
                         <span class="input-group-text" id="basic-addon1">成立時間</span>
-                        <input type="text" class="form-control" readonly v-model="timestamp">
+                        <input type="text" class="form-control" readonly v-model="Timestamp">
                     </div>
 
                     <div class="input-group mb-3 col">
                         <span class="input-group-text" id="basic-addon1">商品總額</span>
-                        <input type="text" class="form-control" readonly v-model="total">
+                        <input type="text" class="form-control" readonly v-model="Total">
                     </div>
     
                 </form>
@@ -66,22 +66,22 @@
             </section>
 
             <!-- ========== 訂單明細 ========== -->
-            <section class="content_block" v-for="(item, index) in orderDetail" :key="item.id">
+            <section class="content_block" v-for="(item, index) in orderDetail" :key="item.ID">
                 <p>訂單明細 {{ index + 1 }}</p>
                 <form action="#" class="row">
                     <div class="input-group mb-3">
                         <span class="input-group-text">購買行程</span>
-                        <input type="text" class="form-control" readonly v-model="item.name">
+                        <input type="text" class="form-control" readonly v-model="item.Name">
                     </div>
 
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">購買數量</span>
-                        <input type="text" class="form-control" readonly v-model="item.quantity">
+                        <input type="text" class="form-control" readonly v-model="item.Quantity">
                     </div>
 
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">商品價格</span>
-                        <input type="text" class="form-control" readonly v-model="item.price">
+                        <input type="text" class="form-control" readonly v-model="item.Price">
                     </div>
 
                     <div class="input-group mb-3 col">
