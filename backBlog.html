@@ -75,7 +75,7 @@
                 <tbody class="" >
                     <tr v-for="(item, index) in slicedBlog" :key="index">
                         <th scope="row">
-                            <input type="checkbox">
+                            <input type="checkbox" :value="item.ID">
                         </th>
                         <td>{{ item.ID }}</td>
                         <td>{{ item.Title }}</td>

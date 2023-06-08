@@ -99,14 +99,14 @@
                         </div> -->
 
                         <div class="inner_img_block">
-                            <div class="img-thumbnail imgDiv"><img :src="blog.banner1"></div>
+                            <div class="img-thumbnail imgDiv"><img v-if="blog.banner1 !== ''" :src="blog.banner1"></div>
                             <label for="banner1" class="inputFile">照片上傳</label>
                             <input type="file" id="banner1" accept="image/*" style="display: none;"
                                 @change="updateImg1">
                         </div>
 
                         <div class="inner_img_block">
-                            <div class="img-thumbnail imgDiv"><img :src="blog.banner2"></div>
+                            <div class="img-thumbnail imgDiv"><img v-if="blog.banner2 !== ''" :src="blog.banner2"></div>
                             <label for="banner2" class="inputFile">照片上傳</label>
                             <input type="file" id="banner2" accept="image/*" style="display: none;"
                                 @change="updateImg2">
@@ -128,7 +128,7 @@
                         <!-- 方案詳情1 -->
                         <section class="mb-5">
                             <div class="inner_img_block">
-                                <div class="img-thumbnail imgDiv"><img :src="blogSchedule1.image"></div>
+                                <div class="img-thumbnail imgDiv"><img v-if="blogSchedule1.image !== ''" :src="blogSchedule1.image"></div>
                                 <label for="blogImg1" class="inputFile">照片上傳</label>
                                 <input type="file" id="blogImg1" accept="image/*" style="display: none;"
                                     @change="updateImg3">
@@ -158,7 +158,7 @@
                         <!-- 方案詳情2 -->
                         <section class="mb-5">
                             <div class="inner_img_block">
-                                <div class="img-thumbnail imgDiv"><img :src="blogSchedule2.image"></div>
+                                <div class="img-thumbnail imgDiv"><img v-if="blogSchedule2.image !== ''" :src="blogSchedule2.image"></div>
                                 <label for="blogImg2" class="inputFile">照片上傳</label>
                                 <input type="file" id="blogImg2" accept="image/*" style="display: none;"
                                     @change="updateImg4">
@@ -188,7 +188,7 @@
                         <!-- 方案詳情3 -->
                         <section class="mb-5">
                             <div class="inner_img_block">
-                                <div class="img-thumbnail imgDiv"><img :src="blogSchedule3.image"></div>
+                                <div class="img-thumbnail imgDiv"><img v-if="blogSchedule3.image !== ''" :src="blogSchedule3.image"></div>
                                 <label for="blogImg3" class="inputFile">照片上傳</label>
                                 <input type="file" id="blogImg3" accept="image/*" style="display: none;"
                                     @change="updateImg5">
@@ -218,7 +218,7 @@
                         <!-- 方案詳情4 -->
                         <section class="mb-5">
                             <div class="inner_img_block">
-                                <div class="img-thumbnail imgDiv"><img :src="blogSchedule4.image"></div>
+                                <div class="img-thumbnail imgDiv"><img v-if="blogSchedule4.image !== ''" :src="blogSchedule4.image"></div>
                                 <label for="blogImg4" class="inputFile">照片上傳</label>
                                 <input type="file" id="blogImg4" accept="image/*" style="display: none;"
                                     @change="updateImg6">
