@@ -213,6 +213,7 @@ const app = Vue.createApp({
                     alert('連線失敗，請稍後重試');
                 });
             }
+            location.href = 'backBlog.html';
             
         },
         async saveBanner(){
