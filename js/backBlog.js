@@ -9,6 +9,7 @@ const app = Vue.createApp({
             searchType: '',
             searchText: '',
             Checked: []
+           
         }
     },
     methods: {
@@ -74,23 +75,24 @@ const app = Vue.createApp({
         },
         //刪除資料表
         deleteBlog() {
-            console.log(this.slicedBlog[0].ID)
-            let checkbox = document.querySelectorAll('.slice:checked');
-            console.log(checkbox);
-            for (let i = 0; i < checkbox.length; i++) {
-                this.Checked.push(checkbox[i].value);
-                // console.log(checkbox[i].value);
-            }
-            console.log(this.Checked);
+            // console.log(this.slicedBlog[0].ID)
+            // let checkbox = document.querySelectorAll('.slice:checked');
+            // console.log(checkbox);
+
+            // console.log(this.delete_array);
+            // for (let i = 0; i < checkbox.length; i++) {
+            //     this.Checked.push(checkbox[i].value);
+            //     // console.log(checkbox[i].value);
+            // }
+            // console.log(this.Checked);
             let checkedData = new FormData();
-            checkedData.append('data', JSON.stringify(this.Checked))
-            ;
+            checkedData.append('data', JSON.stringify(this.Checked));
             console.log(checkedData);
 
 
             let checkDelete = confirm('確定執行刪除?')
             if (checkDelete) {
-                axios.post('../php/deleteBlog.php', checkedData )
+                axios.post('../php/deleteBlog.php', checkedData)
                     .then(response => {
                         console.log(response.data);
                         // alert('刪除成功')
