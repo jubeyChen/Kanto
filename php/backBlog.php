@@ -2,6 +2,8 @@
 
 include('Mysql.php'); //資料庫連線
 
+
+
 $sql = "SELECT b.ID, b.Title, b.CreatedTime, r.RegionName FROM blog b
 join region r on b.RegionID = r.ID
 order by b.ID";
