@@ -160,14 +160,12 @@ const app = Vue.createApp({
             
             await axios.post('../php/makeNewBlog.php', data)
                 .then(response => {
-                    if (response.data) {
+                    if (response.data !== 'fail') {
                         console.log('productSchedule已儲存!');
-                        console.log(response.data);
                         alert('儲存成功!');
                         this.blog.blogID = response.data;
-                        // this.savePlan();
-                        // this.saveBanner();
-                        console.log(this.blog.blogID);
+                        this.savePlan();
+                        this.saveBanner();
                         // window.location.href = './backProduct.html';
 
                     }
@@ -180,18 +178,19 @@ const app = Vue.createApp({
         },
         async saveBanner(){
             const bannerData = new FormData();
-            data.append('banner1', document.getElementById('banner1').files[0]);
-            data.append('banner2', document.getElementById('banner2').files[0]);
-            data.append('blogID', this.blog.blogID);
+            bannerData.append('banner1', document.getElementById('banner1').files[0]);
+            bannerData.append('banner2', document.getElementById('banner2').files[0]);
+            bannerData.append('blogID', this.blog.blogID);
 
             await axios.post('../php/saveBlogBanner.php', bannerData)
                 .then(response => {
-                    if (response.data === 'done') {
-                        console.log('banner已儲存!');
+                    console.log(response.data);
+                    // if (response.data === 'done') {
+                    //     console.log('banner已儲存!');
                         
-                    } else {
-                        alert('Banner儲存失敗');
-                    }
+                    // } else {
+                    //     alert('Banner儲存失敗');
+                    // }
                     
                 })
                 .catch(error => {
@@ -201,23 +200,23 @@ const app = Vue.createApp({
         },
         async savePlan(){
             const planData = new FormData();
-            data.append('blogImage1', this.blogSchedule1.image);
-            data.append('blogTime1', this.blogSchedule1.time);
-            data.append('blogTitle1', this.blogSchedule1.title);
-            data.append('blogDescription1', this.blogSchedule1.description);
-            data.append('blogImage2', this.blogSchedule2.image);
-            data.append('blogTime2', this.blogSchedule2.time);
-            data.append('blogTitle2', this.blogSchedule2.title);
-            data.append('blogDescription2', this.blogSchedule2.description);
-            data.append('blogImage3', this.blogSchedule3.image);
-            data.append('blogTime3', this.blogSchedule3.time);
-            data.append('blogTitle3', this.blogSchedule3.title);
-            data.append('blogDescription3', this.blogSchedule3.description);
-            data.append('blogImage4', this.blogSchedule4.image);
-            data.append('blogTime4', this.blogSchedule4.time);
-            data.append('blogTitle4', this.blogSchedule4.title);
-            data.append('blogDescription4', this.blogSchedule4.description);
-            data.append('blogID', this.blog.blogID);
+            planData.append('blogImg1', document.getElementById('blogImg1').files[0]);
+            planData.append('blogTime1', this.blogSchedule1.time);
+            planData.append('blogTitle1', this.blogSchedule1.title);
+            planData.append('blogDescription1', this.blogSchedule1.description);
+            planData.append('blogImg2', document.getElementById('blogImg2').files[0]);
+            planData.append('blogTime2', this.blogSchedule2.time);
+            planData.append('blogTitle2', this.blogSchedule2.title);
+            planData.append('blogDescription2', this.blogSchedule2.description);
+            planData.append('blogImg3', document.getElementById('blogImg3').files[0]);
+            planData.append('blogTime3', this.blogSchedule3.time);
+            planData.append('blogTitle3', this.blogSchedule3.title);
+            planData.append('blogDescription3', this.blogSchedule3.description);
+            planData.append('blogImg4', document.getElementById('blogImg4').files[0]);
+            planData.append('blogTime4', this.blogSchedule4.time);
+            planData.append('blogTitle4', this.blogSchedule4.title);
+            planData.append('blogDescription4', this.blogSchedule4.description);
+            planData.append('blogID', this.blog.blogID);
 
             await axios.post('../php/saveBlogPlan.php', planData)
                 .then(response => {

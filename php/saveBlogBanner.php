@@ -12,7 +12,7 @@ function getExtensionName($filePath){
        return $path_parts["extension"];
 }
 
-if($_FILES["banner1"]["error"] > 0 || $_FILES["banner2"]["error"]){
+if($_FILES["banner1"]["error"] > 0 || $_FILES["banner2"]["error"] > 0){
               echo "上傳失敗: 錯誤代碼Banner1: ".$_FILES["banner1"]["error"]." / 錯誤代碼Banner2:".$_FILES["banner2"]["error"];
        }else{
        //取得上傳的檔案資訊=======================================
@@ -32,8 +32,8 @@ if($_FILES["banner1"]["error"] > 0 || $_FILES["banner2"]["error"]){
        //Web根目錄真實路徑
               $ServerRoot = $_SERVER["DOCUMENT_ROOT"];
 
-              // $path = "../dist/image/productPage/".$ProductID."/"; // 放到server上使用
-              $path = $ServerRoot."/Kanto/dist/image/blogPage/".$BlogID."/"; //本機端的路徑
+              // $path = "../dist/image/blog/".$BlogID."/"; // 放到server上使用
+              $path = $ServerRoot."/Kanto/dist/image/blog/".$BlogID."/"; //本機端的路徑
               if (!is_dir($path)) {
                      mkdir($path, 0777, true);
               }
@@ -56,19 +56,8 @@ if($_FILES["banner1"]["error"] > 0 || $_FILES["banner2"]["error"]){
               move_uploaded_file($filePath_Temp2, $newFilePath2);
              
 
-              //顯示檔案資訊
-              // echo "banner1存放位置：".$newFilePath1;
-              // echo "<br/>";
-              // echo "banner2存放位置：".$newFilePath2;
-              // echo "<br/>";
-              // echo "banner3存放位置：".$newFilePath3;
 
-              // echo $newFileName1;
-              // echo $newFileName2;
-              // echo $newFileName3;
-              // echo $productID;
-
-              $sql = "UPDATE product SET banner1 = ?, banner2 = ? WHERE ID = ?";
+              $sql = "UPDATE blog SET BannerPC = ?, Image1 = ? WHERE ID = ?";
               $statement = $pdo->prepare($sql);
               $statement->bindParam(1, $newFileName1);
               $statement->bindParam(2, $newFileName2);
