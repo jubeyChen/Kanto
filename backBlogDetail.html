@@ -57,7 +57,7 @@
             <!-- ========== 專欄內容 ========== -->
             <section class="content_block">
                 <p>專欄內容</p>
-                <form action="#" class="row">
+                <form class="row">
                     <div class="input-group mb-3">
                         <span class="input-group-text">專欄名稱</span>
                         <input type="text" class="form-control" :readonly="!editable" v-model="name">
@@ -73,15 +73,14 @@
 
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">專欄地區</span>
-                        <select class="form-select" :disabled="!editable">
-                            <option selected>東京都</option>
-                            <option>神奈川縣</option>
-                            <option>千葉縣</option>
-                            <option>埼玉縣</option>
-                            <option>群馬縣</option>
-                            <option>栃木縣</option>
-                            <option>茨城縣</option>
-                            <option>山梨縣</option>
+                        <select class="form-select" :disabled="!editable" v-model="region">
+                            <option value="1">東京</option>
+                            <option value="2">神奈川</option>
+                            <option value="3">埼玉</option>
+                            <option value="4">茨城</option>
+                            <option value="5">千葉</option>
+                            <option value="6">群馬</option>
+                            <option value="7">栃木</option>
                         </select>
                     </div>
 
@@ -92,20 +91,24 @@
 
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="photo">封面照片</label>
-                        <input type="file" class="form-control" id="photo" :disabled="!editable">
+                        <input type="file" class="form-control" id="photo" :disabled="!editable" >
                     </div>
 
                     <section class="img_block">
-                        <div class="inner_img_block" v-for="(item, index) in coverImg" :key="index" >
-                            <img :src="item" class="img-thumbnail" alt="">
-                            <button v-show="editable">新增<span class="material-symbols-outlined">
-                                add_circle
+                        <div class="inner_img_block">
+                            <img :src="desImg1" class="img-thumbnail" alt="">
+                            <label v-show="editable" for="desImg1" class="inputFile">照片上傳</label>
+                            <input type="file" id="desImg1" accept="image/*" @change="updatedesImg1" style="display: none;"> 
+                        </div>
+                        
+                        <div class="inner_img_block">
+                            <img :src="desImg2" class="img-thumbnail" alt="">
+                            <label v-show="editable" for="desImg2" class="inputFile">照片上傳</label>
                                 </span>
-                            </button>    
+                                <input type="file" id="desImg2" accept="image/*" @change="updatedesImg2" style="display: none;"> 
                         </div>
                     </section>
     
-                </form>
 
             </section>
 
@@ -113,38 +116,128 @@
             <section class="plan_block">
 
                 <p>方案詳情</p>
-                <form action="#" class="row">
+
 
                     <!-- ========== 方案詳情 v-for ========== -->
-                    <template v-for="(item, index) in plan" :key="index">
-                        <section class="mb-4">
+                        <!-- 方案詳情1 -->
+                        <section class="mb-5">
                             <div class="outer-img">
-                                <img :src="item.img" class="img-thumbnail" alt="">
-                                <button v-show="editable">新增<span class="material-symbols-outlined">
-                                    add_circle
-                                    </span>
-                                </button>        
+                                <img :src="plan_Img1" class="img-thumbnail" alt="">
+                                <label v-show="editable" for="plan_Img1" class="inputFile">照片上傳</label>
+                                <input type="file" id="plan_Img1" @change="updatePlanImg1" style="display: none;"> 
                             </div>
-    
-                            <section class="content-block col-7">
+
+                            <div class="content-block col-7">
+                                <!-- Times -->
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">行程名稱</span>
-                                    <input type="text" class="form-control" :readonly="!editable" v-model="item.title">
+                                    <input type="text" class="form-control" :readonly="!editable" v-model="plan_TimeTitle1">
                                 </div>
-            
+
+                                <!-- ScheduleTitle -->
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">行程時間</span>
-                                    <input type="text" class="form-control" :readonly="!editable" v-model="item.time">
+                                    <input type="text" class="form-control" :readonly="!editable" v-model="plan_Times1">
                                 </div>
-            
+
+                                <!-- Content -->
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">行程簡介</span>
-                                    <textarea class="form-control" v-model="item.description" :readonly="!editable" rows="3"></textarea>
+                                    <textarea class="form-control" :readonly="!editable" rows="3"
+                                        v-model="plan_Content1"></textarea>
                                 </div>
-                            </section>
-    
+                            </div>
                         </section>
-                    </template>
+
+                        <!-- 方案詳情2 -->
+                        <section class="mb-5">
+                            <div class="outer-img">
+                                <img :src="plan_Img2" class="img-thumbnail" alt="">
+                                <label v-show="editable" for="plan_Img2" class="inputFile">照片上傳</label>             
+                                <input type="file" id="plan_Img2" @change="updatePlanImg2" style="display: none;">   
+                            </div>
+
+                            <div class="content-block col-7">
+                                <!-- Times -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程名稱</span>
+                                    <input type="text" class="form-control" :readonly="!editable" v-model="plan_TimeTitle2">
+                                </div>
+
+                                <!-- ScheduleTitle -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程時間</span>
+                                    <input type="text" class="form-control" :readonly="!editable" v-model="plan_Times2">
+                                </div>
+
+                                <!-- Content -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程簡介</span>
+                                    <textarea class="form-control" :readonly="!editable" rows="3"
+                                        v-model="plan_Content2"></textarea>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 方案詳情3 -->
+                        <section class="mb-5">
+                            <div class="outer-img">
+                                <img :src="plan_Img3" class="img-thumbnail" alt="">
+                                <label v-show="editable" for="PlanImg3" class="inputFile">照片上傳</label>                              
+                                <input type="file" id="PlanImg3" @change="updatePlanImg3" style="display: none;">      
+                            </div>
+
+                            <div class="content-block col-7">
+                                <!-- Times -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程名稱</span>
+                                    <input type="text" class="form-control" :readonly="!editable" v-model="plan_TimeTitle3">
+                                </div>
+
+                                <!-- ScheduleTitle -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程時間</span>
+                                    <input type="text" class="form-control" :readonly="!editable" v-model="plan_Times3">
+                                </div>
+
+                                <!-- Content -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程簡介</span>
+                                    <textarea class="form-control" :readonly="!editable" rows="3"
+                                        v-model="plan_Content3"></textarea>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 方案詳情4 -->
+                        <section class="mb-5">
+                            <div class="outer-img">
+                                <img :src="plan_Img4" class="img-thumbnail" alt="">
+                                <label v-show="editable" for="PlanImg4" class="inputFile">照片上傳</label>                            
+                                <input type="file" id="PlanImg4" @change="updatePlanImg4" style="display: none;">     
+                            </div>
+
+                            <div class="content-block col-7">
+                                <!-- Times -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程名稱</span>
+                                    <input type="text" class="form-control" :readonly="!editable" v-model="plan_TimeTitle4">
+                                </div>
+
+                                <!-- ScheduleTitle -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程時間</span>
+                                    <input type="text" class="form-control" :readonly="!editable" v-model="plan_Times4">
+                                </div>
+
+                                <!-- Content -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">行程簡介</span>
+                                    <textarea class="form-control" :readonly="!editable" rows="3"
+                                        v-model="plan_Content4"></textarea>
+                                </div>
+                            </div>
+                        </section>
 
                 </form>
 
@@ -155,7 +248,7 @@
 
                 <section class="edit-block">
                     <button id="cancel-btn" @click="editable = false">取消</button>
-                    <button id="confirm-btn" @click="editable = false">儲存</button>
+                    <button id="confirm-btn" @click="updateData">儲存</button>
                 </section>
     
             </section>
@@ -168,42 +261,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
     <script src="./js/checkBackSession.js"></script>
-    <script>
-        const app = Vue.createApp({
-            data(){
-                return{
-                    name: '富士山賞櫻一日遊',
-                    status: 'show',
-                    region: 'kanagawa',
-                    intro: `東京出發，展開富士山朝聖之旅
-                            一次玩遍超人氣景點！
-                            富士山五合目近距離觀看富士山！
-                            河口湖音樂盒之森美術館
-                            沉浸於跨越時代的音樂世界。
-                            走進富士山下的湧泉仙境──忍野八海
-                            盡覽秀麗景觀並感受聖泉能量。`,
-                    coverImg: ['image/blogPage/banner.png', 'image/blogPage/title.png'],
-                    plan: [
-                        {time: '08:10', title: '出發', description: '新宿中心大廈', img: 'image/blogPage/event1.png'},
-                        {time: '10:20', title: '富士山五合目', description: `五合目位於海拔 2305 公尺的山腰被周圍的原始森林環抱，朵朵白雲就在腳下漂浮，近距離觀看富士山！`, img: 'image/blogPage/event2.png'},
-                        {time: '12:30', title: '河口湖音樂盒之森美術館', description: '遠方的富士山的夢幻美景，與大型音樂盒演奏著經典的古典樂都很有看點。', img: 'image/blogPage/event3.png'},
-                        {time: '14:30', title: '忍野八海', description: '由八個湖泊組成，每一個湖泊都有其獨特的形態和特色，並且湖水的顏色也因地形、氣候、時間等因素而不斷變化。春天湖泊周邊開滿了櫻花，夏季水清如鏡，秋季紅葉遍布，冬季則會因雪而變得尤為神秘。每一季的景色都是不同的，都值得讓人慢慢品味。', img: 'image/blogPage/event4.png'}
-                    ],
-                    editable: false
+    <script src="./js/backBlogDetail.js"></script>
 
-                }
-            },
-            methods: {
-                backPage(){
-                    history.back();
-                }
-
-            }
-
-        });
-
-        app.mount('#app');
-
-    </script>
 </body>
 </html>
