@@ -12,8 +12,8 @@ function getExtensionName($filePath){
        return $path_parts["extension"];
 }
 
-if($_FILES["banner1"]["error"] > 0 || $_FILES["banner2"]["error"] > 0){
-              echo "上傳失敗: 錯誤代碼Banner1: ".$_FILES["banner1"]["error"]." / 錯誤代碼Banner2:".$_FILES["banner2"]["error"];
+if($_FILES["banner1"]["error"] > 0 || $_FILES["image1"]["error"] > 0){
+              echo "上傳失敗: 錯誤代碼Banner1: ".$_FILES["banner1"]["error"]." / 錯誤代碼Banner2:".$_FILES["image1"]["error"];
        }else{
        //取得上傳的檔案資訊=======================================
               $fileName1 = $_FILES["banner1"]["name"];    
@@ -21,10 +21,10 @@ if($_FILES["banner1"]["error"] > 0 || $_FILES["banner2"]["error"] > 0){
               $fileType1 = $_FILES["banner1"]["type"]; 
               $fileSize1 = $_FILES["banner1"]["size"];  
 
-              $fileName2 = $_FILES["banner2"]["name"];    
-              $filePath_Temp2 = $_FILES["banner2"]["tmp_name"];        
-              $fileType2 = $_FILES["banner2"]["type"]; 
-              $fileSize2 = $_FILES["banner2"]["size"];
+              $fileName2 = $_FILES["image1"]["name"];    
+              $filePath_Temp2 = $_FILES["image1"]["tmp_name"];        
+              $fileType2 = $_FILES["image1"]["type"]; 
+              $fileSize2 = $_FILES["image1"]["size"];
 
               
        //=======================================================
@@ -44,7 +44,7 @@ if($_FILES["banner1"]["error"] > 0 || $_FILES["banner2"]["error"] > 0){
 
               //重新命名檔案
               $newFileName1 = "banner1.".getExtensionName($filePath1);
-              $newFileName2 = "banner2.".getExtensionName($filePath2);
+              $newFileName2 = "image1.".getExtensionName($filePath2);
               
 
               $newFilePath1 = $path.$newFileName1;

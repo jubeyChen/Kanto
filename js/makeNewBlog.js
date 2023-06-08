@@ -157,8 +157,45 @@ const app = Vue.createApp({
             // data.append('banner2', document.getElementById('banner2').files[0]);
             data.append('region', this.blog.region);
             
-            
-            await axios.post('../php/makeNewBlog.php', data)
+            const banner1Input = document.getElementById('banner1');
+            const image1Input = document.getElementById('banner2');
+            const blogImage1Input = document.getElementById('blogImg1');
+            const blogImage2Input = document.getElementById('blogImg2');
+            const blogImage3Input = document.getElementById('blogImg3');
+            const blogImage4Input = document.getElementById('blogImg4');
+
+            if(this.blog.name === '' ){
+                alert('請輸入專欄名稱');
+            }else if(this.blog.region === ''){
+                alert('請輸入專欄地區');
+            }else if(this.blog.intro === ''){
+                alert('請輸入專欄內容');
+            }else if(
+                banner1Input.files.length === 0 ||
+                image1Input.files.length === 0 ||
+                blogImage1Input.files.length === 0 ||
+                blogImage2Input.files.length === 0 ||
+                blogImage3Input.files.length === 0 ||
+                blogImage4Input.files.length === 0 
+            ){
+                alert('所有照片欄位皆須上傳圖片');
+            }else if(
+                this.blogSchedule1.time === '' ||
+                this.blogSchedule1.title === '' ||
+                this.blogSchedule1.description === '' ||
+                this.blogSchedule2.time === '' ||
+                this.blogSchedule2.title === '' ||
+                this.blogSchedule2.description === '' ||
+                this.blogSchedule3.time === '' ||
+                this.blogSchedule3.title === '' ||
+                this.blogSchedule3.description === '' ||
+                this.blogSchedule4.time === '' ||
+                this.blogSchedule4.title === '' ||
+                this.blogSchedule4.description === '' 
+            ){
+                alert('所有方案詳情欄位皆須填寫');
+            }else{
+                await axios.post('../php/makeNewBlog.php', data)
                 .then(response => {
                     if (response.data !== 'fail') {
                         console.log('productSchedule已儲存!');
@@ -175,11 +212,13 @@ const app = Vue.createApp({
                     console.log(error);
                     alert('連線失敗，請稍後重試');
                 });
+            }
+            
         },
         async saveBanner(){
             const bannerData = new FormData();
             bannerData.append('banner1', document.getElementById('banner1').files[0]);
-            bannerData.append('banner2', document.getElementById('banner2').files[0]);
+            bannerData.append('image1', document.getElementById('banner2').files[0]);
             bannerData.append('blogID', this.blog.blogID);
 
             await axios.post('../php/saveBlogBanner.php', bannerData)
