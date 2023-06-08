@@ -84,7 +84,7 @@
                             <li>
                                 <input type="text" id="payment_card_number" name="card_number" required
                                     placeholder="信用卡卡號" v-model="creditCardNumber">
-                                <span v-if="creditCardError" class="payment_error">信用卡卡號有誤</span>
+                                <span v-if="creditCardError" class="payment_error">信用卡卡號有誤 For Testing Purpose 4929607239563168</span>
                             </li>
                             <li>
                                 <input type="text" id="payment_expiry_date" name="expiry_date" required
@@ -157,9 +157,9 @@
 
                             </li>
                             <li class="payment_select">
-                                <select id="payment_coupon" name="請選擇優惠卷" v-model="selectedCoupon">
+                                <select id="payment_coupon" name="請選擇優惠卷" v-model="selectedCoupon" @change="updateCoupon">
                                     <option value="" disabled selected>請選擇優惠卷</option>
-                                    <option v-for="coupon in isCoupon" :value="coupon.CouponID">
+                                    <option v-for="coupon in isCoupon" :data-id="coupon.CouponID">
                                         Coupon {{ coupon.CouponID }}
                                     </option>
                                 </select>
@@ -191,15 +191,12 @@
                             </li>
 
                             <li>
-                                <a href="done.html">
                                     <input
                                       type="button"
                                       value="立即付款"
                                       @click="validateCreditCard"
-                                      :disabled="hasErrors || isAnyInputEmpty"
                                       :style="{ backgroundColor: (hasErrors || isAnyInputEmpty) ? 'gray' : '' }"
                                     />
-                                  </a>
                             </li>
                         </ul>
                     </form>
@@ -221,3 +218,5 @@
 </body>
 
 </html>
+
+<!-- :disabled="hasErrors || isAnyInputEmpty" -->

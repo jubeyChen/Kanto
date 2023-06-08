@@ -3,7 +3,7 @@ const app = Vue.createApp({
     return {
       //登入
       isSessionValid: '',
-      user:'',
+      user: '',
       //取account值
       accountInfo: '',
       accountID: '',
@@ -19,6 +19,8 @@ const app = Vue.createApp({
       isTotal: 0,
       couponName: '',
       isSubTotal: '',
+      //選者的coupon
+      selectedCouponId:'',
       //信用卡
       creditCardNumber: '',
       expiryDate: '',
@@ -59,59 +61,43 @@ const app = Vue.createApp({
   },
   methods: {
 
-  //   async saveOfferDate() {
-  //     const dateData = new FormData();
-  //     dateData.append('ProductID', this.product.productID);
-  //     dateData.append('OfferDate', JSON.stringify(this.selectedDates));
+    updateCoupon(e) {
+      // this.isCoupon.couponID = e.target.value;
+      this.selectedCouponId = e.target.selectedOptions[0].getAttribute("data-id");
+      // console.log(this.selectedCouponId);
+      // console.log(e.target.selectedOptions[0].getAttribute("data-id"));
+  },
 
-  //     await axios.post('../php/saveOfferDate.php', dateData)
-  //         .then(response => {
-  //             if (response.data === 'done') {
-  //                 console.log('productSchedule已儲存!');
-  //                 alert('儲存成功!');
-  //                 window.location.href = './backProduct.html';
+    async saveData() {
+      const orderData = new FormData();
+      orderData.append('memId', this.memId); // Changed 'MemberID' to 'memId' to match the key in the PHP code
+      orderData.append('ShoppingList', JSON.stringify(this.shoppingList));
+      orderData.append('couponId', this.selectedCouponId);
+      // console.log(this.memId);
+      // console.log(this.shoppingList[0].productDetailId);
+      // console.log(this.isCoupon[0].CouponID);
 
-  //             } else {
-  //                 alert('productSchedule儲存失敗');
-  //             }
+      await axios.post('../php/saveOrderDetail.php', orderData) // Changed 'data' to 'orderData'
+        .then(response => {
+          console.log(response.data);
+          if (response.data) {
+            // console.log('response.data');
+            // alert('');
+            // this.productID = response.data;
+            window.location.href = './done.html';
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          alert('連線失敗，請稍後重試');
+        });
+    },
 
-  //         })
-  //         .catch(error => {
-  //             console.log(error);
-  //             alert('連線失敗，請稍後重試');
-  //         });
-  // },
-
-  async saveData() {
-    const orderData = new FormData();
-    orderData.append('MemberID', this.memId);
-    orderData.append('ShoppingList', JSON.stringify(this.shoppingList));
-  
-    console.log(this.memId);
-  
-    try {
-      const response = await axios.post('../php/saveOrderDetail.php', orderData);
-      if (response.data === 'done') {
-        console.log('Order saved!');
-        alert('Order saved successfully!');
-        window.location.href = './done.html';
-      } else {
-        alert('Failed to save order');
+    async getProductID() {
+      for (let i = 0; i < this.shoppingList.length; i++) {
+        console.log(this.shoppingList[i].productID);
       }
-    } catch (error) {
-      console.log(error);
-      alert('Connection failed, please try again later');
-    }
-  }
-  ,
-  
-
-  async getProductID(){
-    for (let i = 0; i < this.shoppingList.length; i++) {
-      console.log(this.shoppingList[i].productID);
-    }
-      },
-
+    },
 
     //--------------  信用卡邏輯運算
     validateCreditCardNumber(creditCardNumber) {
@@ -135,7 +121,7 @@ const app = Vue.createApp({
       this.expiryDateError = this.validateExpiryDate(this.expiryDate);
       this.cvcError = this.validateCVC(this.cvc);
       this.emailError = this.validateEmail(this.email);
-    
+
       if (
         !this.creditCardError &&
         !this.expiryDateError &&
@@ -145,7 +131,7 @@ const app = Vue.createApp({
         this.saveData();
       }
     },
-    
+
     //database 取得帳戶
     async getAccountInfo() {
       const response = await axios.post('../php/getAccPayment.php');
@@ -164,7 +150,8 @@ const app = Vue.createApp({
     //取的優惠碼
     async getMemberCoupon() {
       try {
-        const response = await axios.post('../php/getCouponNameForPayment.php');
+        const response = 
+        await axios.post('../php/getCouponNameForPayment.php')
         this.isCoupon = response.data;
         console.log(this.isCoupon);
       } catch (error) {
@@ -219,7 +206,7 @@ const app = Vue.createApp({
     this.isSessionValid = a.isSessionValid;
     this.user = a.user;
     console.log(this.isSessionValid);
-    
+
     this.getAccountInfo()
       .then(() => {
         return this.getMemberCoupon();
@@ -236,78 +223,3 @@ const app = Vue.createApp({
 app.mount('#app');
 
 
-
-// async doSave() {
-//   // 获取会员ID和产品ID
-//   // const memId = await this.getMemberId(); // 使用await等待异步获取会员ID
-//   const productId = await this.getProductId(); // 使用await等待异步获取产品ID
-
-//   // 创建包含会员ID和产品ID的对象
-//   const productInfo = {
-//     memId: this.memId,
-//     productId: productId
-//   };
-//   console.log(productInfo);
-
-//   // 发送数据到后端PHP
-//   await this.sendDataToPHP(productInfo); // 使用await等待异步发送数据到后端
-// },
-// // async getMemberId() {
-// //   // 获取会员ID的逻辑，例如从元素中获取值
-// //   const memberIdElement = document.getElementById('paymentMemId');
-// //   return memberIdElement.value;
-// // },
-
-// // async getProductId() {
-// //   // 获取产品ID的逻辑，例如从元素中获取值
-// //   const productIdElement = document.getElementById('paymentProductId');
-// //   // console.log(productIdElement.innerHTML);
-// //   return productIdElement.innerHTML;
-// // },
-
-
-    // async doSave() {
-    //   // 获取会员ID和产品ID
-    //   // const memId = await this.getMemberId(); // 使用await等待异步获取会员ID
-    //   // const productId = await this.getProductId(); // 使用await等待异步获取产品ID
-
-    //   // 创建包含会员ID和产品ID的对象
-    //   const productInfo = {
-    //     memId: this.memId,
-    //     productId: productId
-    //   };
-    //   console.log(productInfo);
-
-    //   // 发送数据到后端PHP
-    //   await this.sendDataToPHP(productInfo); // 使用await等待异步发送数据到后端
-    // },
-    // async getMemberId() {
-    //   // 获取会员ID的逻辑，例如从元素中获取值
-    //   const memberIdElement = document.getElementById('paymentMemId');
-    //   return memberIdElement.value;
-    // },
-
-    // async getProductId() {
-    //   // 获取产品ID的逻辑，例如从元素中获取值
-    //   const productIdElement = document.getElementById('paymentProductId');
-    //   // console.log(productIdElement.innerHTML);
-    //   return productIdElement.innerHTML;
-    // },
-
-    // async sendDataToPHP(data) {
-    //   // 发送数据到后端PHP的URL
-    //   const url = '../php/saveOrderDetail.php';
-    //   // 发送POST请求
-    //   try {
-    //     const response = await axios.post(url, data); // 使用await等待异步POST请求的响应
-    //     // 处理响应结果
-    //     console.log(response.data);
-    //   } catch (error) {
-    //     // 处理错误
-    //     console.error(error);
-    //   }
-    // },
-    // getPID(){
-    //   console.log(this.shoppingList);
-      
-    // },
