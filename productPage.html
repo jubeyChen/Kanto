@@ -92,9 +92,10 @@
                             </div>
 
                             <div class="block2">
-                                <select name="" id="eventDate" v-model="selectedDate">
+                                <select name="" id="eventDate" v-model="selectedDate" @change="updateSelectedDataId">
                                     <option value="">請選擇日期</option>
-                                    <option :value="item.OfferDate" v-for="item in eventDate">{{item.OfferDate}}
+                                    <option :value="item.OfferDate" v-for="item in eventDate" :data-id="item.ID">
+                                        {{item.OfferDate}}
                                     </option>
                                 </select>
                             </div>
@@ -678,9 +679,10 @@
                     <div class="phone_plan_choose_inner">
                         <div class="block_top">
                             <div class="block1">
-                                <select name="" id="eventDate" v-model="selectedDate">
+                                <select name="" id="eventDate" v-model="selectedDate" @change="updateSelectedDataId">
                                     <option value="">請選擇日期</option>
-                                    <option :value="item.OfferDate" v-for="item in eventDate">{{item.OfferDate}}
+                                    <option :value="item.OfferDate" v-for="item in eventDate" :data-id="item.ID">
+                                        {{item.OfferDate}}
                                     </option>
                                 </select>
                                 <!-- <button type="button" ref="phone_dateButton" class="phone_dateButton">要寫日期</button> -->

@@ -413,7 +413,7 @@ const app = Vue.createApp({
 
             await axios.post('../php/detailSaveImg.php?id=' + productId, imageData)
                 .then(response => {
-                    // console.log(response.data);
+                    console.log(response.data);
                 })
                 .catch(error => {
                     console.log(error);
@@ -443,7 +443,6 @@ const app = Vue.createApp({
             await axios.post('../php/detailSavePlanImg.php?id=' + productId, imageData2)
                 .then(response => {
                     // console.log('更新成功');
-                    // console.log(response.data);
                 })
                 .catch(error => {
                     console.log(error);

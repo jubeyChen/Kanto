@@ -8,7 +8,7 @@ const app = Vue.createApp({
             total: "",
             // date: flatpickr.formatDate(new Date(), "Y-m-d"),
             // selectedDate: flatpickr.formatDate(new Date(), "Y-m-d"),
-
+            productDetailId: [],
             productID: 0,
 
             //axios的部分
@@ -84,6 +84,8 @@ const app = Vue.createApp({
 
             //
             planChoose: [],
+
+            selectedDataId: null,
         }
     },
     created() {
@@ -110,6 +112,11 @@ const app = Vue.createApp({
     },
 
     methods: {
+        updateSelectedDataId(e) {
+            const selectedOption = e.target.selectedOptions[0];
+            this.selectedDataId = selectedOption.getAttribute('data-id')
+            console.log(this.selectedDataId);
+        },
         //撈取資料
         getData() {
             //傳遞id的值到php
@@ -137,7 +144,16 @@ const app = Vue.createApp({
             return axios.get('../php/productPage.php?id=' + productId)
                 .then((response) => {
                     //被包裝成二維陣列
+
+                    console.log(response.data);
                     console.log(response.data.data1);
+
+
+                    this.productDetailId = response.data.date.map((item) => {
+                        return item.ID;
+                    })
+                    console.log(this.productDetailId);
+
 
                     this.productID = response.data.data1[0][0];
                     this.title = response.data.data1[0]['Name'];
@@ -181,9 +197,6 @@ const app = Vue.createApp({
                     this.detail4_Content = response.data.data2[3]['Content'];
                     this.detail4_ContentTitle = response.data.data2[3]['ContentTitle'];
 
-                    this.detail5_Time = response.data.data2[4]['Times'];
-                    this.detail5_ScheduleTitle = response.data.data2[4]['ScheduleTitle'];
-
 
 
 
@@ -217,6 +230,19 @@ const app = Vue.createApp({
                     //查詢日期
                     console.log(response.data.date);
                     this.eventDate = response.data.date;
+
+
+
+
+
+                    this.detail5_Time = response.data.data2[4]['Times'];
+                    this.detail5_ScheduleTitle = response.data.data2[4]['ScheduleTitle'];
+
+
+
+
+
+
 
                 })
                 .catch((error) => {
@@ -332,6 +358,7 @@ const app = Vue.createApp({
 
                 //將資料組成物件
                 const planObj = {
+                    productDetailId: this.selectedDataId,
                     productID: this.productID,
                     total: this.total,
                     selectedDate: this.selectedDate,

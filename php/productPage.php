@@ -71,7 +71,7 @@ $data5 = $statement5->fetchAll();
 
 
 //第六個查詢
-$sql6 = "SELECT product.ID , productDetail.OfferDate
+$sql6 = "SELECT product.ID , productDetail.OfferDate ,productDetail.ID
 FROM product
 JOIN productDetail ON productDetail.ProductID = product.ID
 where product.ID =:productId 
