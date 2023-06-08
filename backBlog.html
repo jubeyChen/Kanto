@@ -42,7 +42,7 @@
                 </div>
 
                 <section class="edit-block">
-                    <button>封存<span class="material-symbols-outlined">
+                    <button @click="deleteBlog">刪除<span class="material-symbols-outlined">
                         delete
                         </span>
                     </button>
@@ -75,7 +75,7 @@
                 <tbody class="" >
                     <tr v-for="(item, index) in slicedBlog" :key="index">
                         <th scope="row">
-                            <input type="checkbox" :value="item.ID">
+                            <input class="slice" type="checkbox" :value="item.ID" >
                         </th>
                         <td>{{ item.ID }}</td>
                         <td>{{ item.Title }}</td>
