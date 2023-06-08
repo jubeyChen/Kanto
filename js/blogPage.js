@@ -108,7 +108,7 @@ let blogId = getParameterByName('id');
 axios.get('../php/blogPage.php?id=' + blogId)
 .then(response => {
 
-    console.log(response.data);
+    // console.log(response.data);
 
     /* ========== 串接標題 ========== */
     document.querySelector('.content h2').innerHTML = response.data[0].Title;

@@ -243,7 +243,7 @@ const vm = Vue.createApp({
                     if (response.data === 'done') {
                         console.log('productSchedule已儲存!');
                         alert('儲存成功!');
-                        window.location.href = './backProduct.html';
+                        // window.location.href = './backProduct.html';
 
                     } else {
                         alert('productSchedule儲存失敗');
