@@ -108,7 +108,7 @@ let blogId = getParameterByName('id');
 axios.get('../php/blogPage.php?id=' + blogId)
 .then(response => {
 
-    //console.log(response.data);
+    console.log(response.data);
 
     /* ========== 串接標題 ========== */
     document.querySelector('.content h2').innerHTML = response.data[0].Title;
@@ -131,9 +131,10 @@ axios.get('../php/blogPage.php?id=' + blogId)
     for(j = 0; j < response.data.length; j++){
         document.querySelectorAll('.aside_content')[j].firstElementChild.innerHTML = response.data[j][8];
         document.querySelectorAll('.time > p')[j].innerHTML = response.data[j][8];
+        console.log(response.data[j][7]);
 
-        document.querySelectorAll('.aside_content')[j].lastElementChild.innerHTML = response.data[j][9];
-        document.querySelectorAll('.time')[j].nextElementSibling.innerHTML = response.data[j][9];
+        document.querySelectorAll('.aside_content')[j].lastElementChild.innerHTML = response.data[j][7];
+        document.querySelectorAll('.time')[j].nextElementSibling.innerHTML = response.data[j][7];
     }
 
     /* ========== 串接內文 ========== */
@@ -166,14 +167,14 @@ const count = 3;
 let avoidNumber = parseInt(blogId);
 
 const randomNumbers = getRandomNumbers(min, max, count, avoidNumber);
-console.log(randomNumbers);
+// console.log(randomNumbers);
 
 /* ========== 推薦景點 ========== */
 
 axios.get('../php/GetRandomBlog.php', { params: { randomNumbers } })
 .then(response => {
 
-    console.log(response.data);
+    // console.log(response.data);
 
     for(let i = 0; i < response.data.length; i++){
         document.querySelectorAll('.blogpage_another_event .title')[i].innerHTML = response.data[i].Title;
