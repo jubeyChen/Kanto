@@ -23,8 +23,8 @@ let backSession = Vue.createApp({
         
     },
 
-    mounted(){
-        this.checkLoginStatus();
+    async created(){
+        await this.checkLoginStatus();
     }
 
 });
