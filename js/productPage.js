@@ -113,6 +113,7 @@ const app = Vue.createApp({
 
     methods: {
         updateSelectedDataId(e) {
+            console.log(e.target.selectedOptions[0]);
             const selectedOption = e.target.selectedOptions[0];
             this.selectedDataId = selectedOption.getAttribute('data-id')
             console.log(this.selectedDataId);
