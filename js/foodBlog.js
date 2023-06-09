@@ -87,7 +87,7 @@ Vue.createApp({
   },
   async mounted() {
     await this.getFoodBlog();
-    fetch("../image/foodBlog.json")
+    await fetch("../image/foodBlog.json")
       .then(response => response.json())
       .then(data1 => {
         this.intro = data1;
