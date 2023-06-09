@@ -36,6 +36,8 @@ const app = Vue.createApp({
   },
   created() {
     this.shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+
+    
     //localstorage
     this.calculateTotal();
     this.calculateSubTotal();
@@ -78,6 +80,11 @@ const app = Vue.createApp({
       // console.log(this.shoppingList[0].productDetailId);
       // console.log(this.isCoupon[0].CouponID);
 
+      // 將 JSON 字串轉換回普通 JavaScript 對象或陣列
+      const parsedShoppingList = JSON.parse(orderData.get('ShoppingList'));
+      // 更新 Vue 的資料屬性
+      this.shoppingList = parsedShoppingList;
+
       await axios.post('../php/saveOrderDetail.php', orderData) // Changed 'data' to 'orderData'
         .then(response => {
           console.log(response.data);
@@ -85,6 +92,7 @@ const app = Vue.createApp({
             // console.log('response.data');
             // alert('已成功購買');
             // this.productID = response.data;
+            localStorage.removeItem('shoppingList');
             window.location.href = './done.html';
           }
         })
