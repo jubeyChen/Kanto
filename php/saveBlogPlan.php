@@ -38,7 +38,7 @@ if($_FILES["blogImg1"]["error"] > 0 || $_FILES["blogImg2"]["error"] > 0 || $_FIL
        //Web根目錄真實路徑
               $ServerRoot = $_SERVER["DOCUMENT_ROOT"];
 
-              // $path = "../dist/image/productPage/".$ProductID."/"; // 放到server上使用
+              // $path = "../dist/image/blog/".$BlogID."/"; // 放到server上使用
               $path = $ServerRoot."/Kanto/dist/image/blog/".$BlogID."/"; //本機端的路徑
               if (!is_dir($path)) {
                      mkdir($path, 0777, true);

@@ -143,7 +143,7 @@ Vue.createApp({
       await axios.post('../php/game.php')
         .then(response => {
           this.game = response.data;
-          console.log(this.game)
+          // console.log(this.game)
         })
         .catch(error => {
           console.log(error);

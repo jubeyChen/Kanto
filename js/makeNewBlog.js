@@ -203,7 +203,7 @@ const app = Vue.createApp({
                         this.blog.blogID = response.data;
                         this.savePlan();
                         this.saveBanner();
-                        // window.location.href = './backProduct.html';
+                        window.location.href = './backBlog.html';
 
                     }
 
@@ -213,7 +213,7 @@ const app = Vue.createApp({
                     alert('連線失敗，請稍後重試');
                 });
             }
-            location.href = 'backBlog.html';
+            // location.href = 'backBlog.html';
             
         },
         async saveBanner(){
