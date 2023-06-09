@@ -23,11 +23,11 @@ Vue.createApp({
       await axios.post('../php/foodBlog.php')
         .then(response => {
           for (let index = 0; index < response.data.length; index++) {
-            // const element = response.data[index];
+
             response.data[index].show_map = false
           }
           this.foodBlog = response.data;
-          console.log(this.foodBlog);
+          // console.log(this.foodBlog);
 
           if (this.activeIndex !== null) {
             this.foodBlog = this.foodBlog.filter((item) => {
@@ -46,9 +46,9 @@ Vue.createApp({
     handleClick(index) {
       //這裡的activeIndex 是數字
       this.activeIndex = index;
-      console.log(this.Region[index]);
+      // console.log(this.Region[index]);
 
-      console.log(this.intro);
+      // console.log(this.intro);
       this.city = this.intro[index];
 
 
@@ -86,8 +86,8 @@ Vue.createApp({
     }
   },
   async mounted() {
-    await this.getFoodBlog();
-    await fetch("../image/foodBlog.json")
+    // await this.getFoodBlog();
+    await fetch("./image/foodBlog.json")
       .then(response => response.json())
       .then(data1 => {
         this.intro = data1;
