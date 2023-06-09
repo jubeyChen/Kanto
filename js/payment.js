@@ -19,7 +19,7 @@ const app = Vue.createApp({
       isTotal: 0,
       couponName: '',
       isSubTotal: '',
-      //選者的coupon
+      //已選者的coupon
       selectedCouponId:'',
       //信用卡
       creditCardNumber: '',
@@ -39,6 +39,7 @@ const app = Vue.createApp({
     //localstorage
     this.calculateTotal();
     this.calculateSubTotal();
+
   },
   computed: {
     //信用卡填寫錯誤運算
@@ -82,7 +83,7 @@ const app = Vue.createApp({
           console.log(response.data);
           if (response.data) {
             // console.log('response.data');
-            // alert('');
+            // alert('已成功購買');
             // this.productID = response.data;
             window.location.href = './done.html';
           }
@@ -144,7 +145,6 @@ const app = Vue.createApp({
         this.fullName = accountInfo.FullName;
         this.phone = accountInfo.Phone;
         this.memId = accountInfo.ID;
-        // console.log(this.memId);
       }
     },
     //取的優惠碼
@@ -202,10 +202,10 @@ const app = Vue.createApp({
     }
   },
   async mounted() {
-    let a = await globalCheck.PageCheckSession();
-    this.isSessionValid = a.isSessionValid;
-    this.user = a.user;
-    console.log(this.isSessionValid);
+    // let a = await globalCheck.PageCheckSession();
+    // this.isSessionValid = a.isSessionValid;
+    // this.user = a.user;
+    // console.log(this.isSessionValid);
 
     this.getAccountInfo()
       .then(() => {

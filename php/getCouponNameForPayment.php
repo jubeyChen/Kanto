@@ -7,7 +7,7 @@ session_start();
 $id = $_SESSION['memberID'];
 
 $sql = 'SELECT memberCoupon.MemberID, memberCoupon.CouponID, coupon.CouponName, members.AccountID, coupon.Discount
-FROM mydb.memberCoupon
+FROM memberCoupon
 JOIN coupon ON coupon.ID = memberCoupon.CouponID
 JOIN members ON members.ID = memberCoupon.MemberID where AccountID = ?';
 

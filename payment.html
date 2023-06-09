@@ -103,24 +103,12 @@
                         <h4>電子發票</h4>
                         <span class="payment_line"></span>
                         <ul>
-                            <!-- <li>
-                                <input type="radio" id="payment_option1" name="choices" value="option1">
-                                <label for="option1">電子信箱</label>
-                            </li> -->
                             <li>
                                 <input type="email" id="payment_email" name="billing_address" required
                                     placeholder="電子信箱" v-model="email">
                                 <span v-if="emailError" class="payment_error">電子信箱有誤</span>
-                                <!-- Added: Error message for email -->
                             </li>
-                            <!-- <li>
-                                <input type="radio" id="payment_option1" name="choices" value="option1">
-                                <label for="option1">郵寄地址</label>
-                            </li>
-                            <li>
-                                <textarea lock id="payment_shipping_address" name="shipping_address" required
-                                    placeholder="郵寄地址"></textarea>
-                            </li> -->
+
                         </ul>
                     </form>
                 </div>

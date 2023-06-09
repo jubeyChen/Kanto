@@ -6,9 +6,8 @@ session_start();
 
 $id = $_SESSION['memberID'];
 
-$sql = 'SELECT MemberID, CouponID, AccountID FROM mydb.memberCoupon
+$sql = 'SELECT MemberID, CouponID, AccountID FROM memberCoupon
 JOIN members ON members.ID = memberCoupon.MemberID where AccountID = ?';
-
 
 //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
 

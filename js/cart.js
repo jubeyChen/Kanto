@@ -14,7 +14,6 @@ const app = Vue.createApp({
         console.log(this.shoppingList);
 
         this.calculateTotal(); // Call the method to calculate the initial total
-
     },
 
     methods: {
@@ -36,7 +35,6 @@ const app = Vue.createApp({
             localStorage.setItem('shoppingList', JSON.stringify(this.shoppingList));
           },
           
-
         async getProductInfo() {
             await axios.post('../php/getProductInfo.php')
                 .then(response => {

@@ -259,6 +259,11 @@
         display: flex;
         justify-content: space-between;
 
+        @include m(){
+            display: flex;
+            flex-direction: column;
+        }
+
         li {
             display: flex;
             justify-content: center;
