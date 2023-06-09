@@ -11,7 +11,6 @@ header('Content-Type: application/json');
 
 $sql = "SELECT * FROM blog
 JOIN region on region.ID = blog.RegionID
--- JOIN blogBlock on blogBlock.ID = blog.ID
 WHERE blog.ID = :blogId";
 
 $statement = $pdo->prepare($sql);
@@ -32,7 +31,6 @@ $data4 = $statement4->fetchAll();
 
 $response = [
     'Blog' => $data,
-    // 'blogBlock' => $data2,
     'blogBlock' => $data4
 ];
 

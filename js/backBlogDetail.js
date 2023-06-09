@@ -8,6 +8,7 @@ const app = Vue.createApp({
             Blog: [],
             blogBlock: [],
             name: '',
+            Display: 1,
             status: 'show',
 
             //專欄簡介
@@ -124,21 +125,22 @@ const app = Vue.createApp({
         },
 
 
-        saveDate() {
-            if (this.editable) {
-                if (this.selectedDate == "") {
-                    alert('請輸入日期')
-                    return;
-                }
-                else if (this.selectedDate == this.lastSavedDate) {
-                    alert('日期重複，請輸入其他日期')
-                    return;
-                } else {
-                    this.lastSavedDate = this.selectedDate;
-                    this.selectedDates.push(this.selectedDate);
-                }
-            }
-        },
+        // saveDate() {
+        //     if (this.editable) {
+        //         if (this.selectedDate == "") {
+        //             alert('請輸入日期')
+        //             return;
+        //         }
+        //         else if (this.selectedDate == this.lastSavedDate) {
+        //             alert('日期重複，請輸入其他日期')
+        //             return;
+        //         } else {
+        //             this.lastSavedDate = this.selectedDate;
+        //             this.selectedDates.push(this.selectedDate);
+        //         }
+        //     }
+        // },
+
         //傳遞所有資料到php
         async updateData() {
 
@@ -197,7 +199,7 @@ const app = Vue.createApp({
                 axios.post('../php/backBlogDetailUpdate.php?id=' + blogId, updateData)
                     .then((response) => {
                         console.log(response.data);
-                        this.selectedDates = [];
+                        // this.selectedDates = [];
                         return this.saveImage();
                     })
                     .then(() => {
@@ -226,9 +228,7 @@ const app = Vue.createApp({
             history.back();
         },
 
-    },
-
-    //更新封面照片
+        //更新封面照片
     updatedesImg1(e) {
         const file = e.target.files.item(0);
         const reader = new FileReader();
@@ -288,44 +288,7 @@ const app = Vue.createApp({
         reader.readAsDataURL(file);
     },
 
-    //更新活動介紹照片
-    updateIntroImg1(e) {
-        const file = e.target.files.item(0);
-        const reader = new FileReader();
-        reader.addEventListener('load', (e) => {
-            this.introImg1 = e.target.result;
-        });
-        reader.readAsDataURL(file);
-    },
-
-
-    updateIntroImg2(e) {
-        const file = e.target.files.item(0);
-        const reader = new FileReader();
-        reader.addEventListener('load', (e) => {
-            this.introImg2 = e.target.result;
-        });
-        reader.readAsDataURL(file);
-    },
-
-    updateIntroImg3(e) {
-        const file = e.target.files.item(0);
-        const reader = new FileReader();
-        reader.addEventListener('load', (e) => {
-            this.introImg3 = e.target.result;
-        });
-        reader.readAsDataURL(file);
-    },
-
-    updateIntroImg4(e) {
-        const file = e.target.files.item(0);
-        const reader = new FileReader();
-        reader.addEventListener('load', (e) => {
-            this.introImg4 = e.target.result;
-        });
-        reader.readAsDataURL(file);
-    },
-
+    
     async saveImage() {
         function getParameterByName(name, url) {
             if (!url) url = window.location.href;
@@ -345,13 +308,13 @@ const app = Vue.createApp({
 
 
 
-        imageData.append('PlanImg1', document.getElementById('PlanImg1').files[0]);
-        imageData.append('PlanImg2', document.getElementById('PlanImg2').files[0]);
-        imageData.append('PlanImg3', document.getElementById('PlanImg3').files[0]);
-        imageData.append('PlanImg4', document.getElementById('PlanImg4').files[0]);
+        // imageData.append('PlanImg1', document.getElementById('PlanImg1').files[0]);
+        // imageData.append('PlanImg2', document.getElementById('PlanImg2').files[0]);
+        // imageData.append('PlanImg3', document.getElementById('PlanImg3').files[0]);
+        // imageData.append('PlanImg4', document.getElementById('PlanImg4').files[0]);
 
 
-        await axios.post('../php/detailSaveImg.php?id=' + blogId, imageData)
+        await axios.post('../php/saveBlogImg.php?id=' + blogId, imageData)
             .then(response => {
                 console.log(response.data);
             })
@@ -380,7 +343,7 @@ const app = Vue.createApp({
         imageData2.append('plan_Img3', document.getElementById('plan_Img3').files[0]);
         imageData2.append('plan_Img4', document.getElementById('plan_Img4').files[0]);
 
-        await axios.post('../php/detailSavePlanImg.php?id=' + blogId, imageData2)
+        await axios.post('../php/saveBlogPlanImg.php?id=' + blogId, imageData2)
             .then(response => {
                 console.log('更新成功');
                 console.log(response.data);
@@ -391,6 +354,9 @@ const app = Vue.createApp({
             });
     },
 
+    },
+
+    
     
 
 });

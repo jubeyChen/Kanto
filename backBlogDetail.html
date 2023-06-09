@@ -42,10 +42,6 @@
                 </button>
 
                 <section class="edit-block">
-                    <button id="delete-btn">刪除<span class="material-symbols-outlined">
-                        delete
-                        </span>
-                    </button>
                     <button id="edit-btn" @click="editable = true" v-show="!editable">編輯<span class="material-symbols-outlined">
                         edit
                         </span>
@@ -62,14 +58,6 @@
                         <span class="input-group-text">專欄名稱</span>
                         <input type="text" class="form-control" :readonly="!editable" v-model="name">
                     </div>
-
-                    <!-- <div class="input-group mb-3 col">
-                        <span class="input-group-text">專欄狀態</span>
-                        <select class="form-select" :disabled="!editable">
-                            <option selected>顯示</option>
-                            <option>隱藏</option>
-                        </select>
-                    </div> -->
 
                     <div class="input-group mb-3 col">
                         <span class="input-group-text">專欄地區</span>
@@ -96,7 +84,7 @@
 
                     <section class="img_block">
                         <div class="inner_img_block">
-                            <img :src="desImg1" class="img-thumbnail" alt="">
+                            <img :src="desImg1" :src="this.desImg1" class="img-thumbnail" alt="">
                             <label v-show="editable" for="desImg1" class="inputFile">照片上傳</label>
                             <input type="file" id="desImg1" accept="image/*" @change="updatedesImg1" style="display: none;"> 
                         </div>
@@ -183,8 +171,8 @@
                         <section class="mb-5">
                             <div class="outer-img">
                                 <img :src="plan_Img3" class="img-thumbnail" alt="">
-                                <label v-show="editable" for="PlanImg3" class="inputFile">照片上傳</label>                              
-                                <input type="file" id="PlanImg3" @change="updatePlanImg3" style="display: none;">      
+                                <label v-show="editable" for="plan_Img3" class="inputFile">照片上傳</label>                              
+                                <input type="file" id="plan_Img3" @change="updatePlanImg3" style="display: none;">      
                             </div>
 
                             <div class="content-block col-7">
@@ -213,8 +201,8 @@
                         <section class="mb-5">
                             <div class="outer-img">
                                 <img :src="plan_Img4" class="img-thumbnail" alt="">
-                                <label v-show="editable" for="PlanImg4" class="inputFile">照片上傳</label>                            
-                                <input type="file" id="PlanImg4" @change="updatePlanImg4" style="display: none;">     
+                                <label v-show="editable" for="plan_Img4" class="inputFile">照片上傳</label>                            
+                                <input type="file" id="plan_Img4" @change="updatePlanImg4" style="display: none;">     
                             </div>
 
                             <div class="content-block col-7">
