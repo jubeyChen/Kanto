@@ -12,9 +12,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-
-</head>
-
 </head>
 
 <body>
@@ -29,7 +26,6 @@
     <div id="app">
 
         <div class="cart_container">
-
 
             <!-- 麵包屑 -->
             <div class="cart_bread">
@@ -56,7 +52,6 @@
                     <li>
                         <p>全選</p>
                     </li> -->
-
                 </ul>
 
                 <div class="cart_inner_section" >
@@ -128,7 +123,7 @@
                         <p>
                             {{productinfo.Name}}
                         </p>
-                        <a :href="'productpage.html?id='+productinfo.ID"><button cart_btn>查看詳情</button>
+                        <a :href="'./productpage.html?id='+productinfo.ID"><button cart_btn>查看詳情</button>
                         </a>
                     </li>
                 </ul>
@@ -142,66 +137,10 @@
 
     <!-- 以下共用外接js區域 -->
     @@include('./layout/js.html')
-
     <script src="./js/cart.js"></script>
 
 </body>
 
 </html>
 
-        <!-- 加東西先進 localstorage -->
-        <!-- <li>
-                <div class="cart_pic_div">
-                        <img src="./image/cart/rec2.jpg" alt="">
-                    </div>
-                    <p>鎌倉大佛&鎌倉高校前</p>
-                    <p>$1500</p>
-                    <button cart_btn onclick="click_view_detail_btn(this);">查看詳情</button>
-                </li>
- -->
-        <!-- <p>測試按鈕 加東西進 localStorage</p>
-        <li>
-            <img src="./image/cart/rec2.jpg" alt="">
-            <p>鎌倉大佛&鎌倉高校前</p>
-            <p>2023-06-24</p>
-            <p>$1500</p>
-            <button id="view-details-btn" @click="click_view_detail_btn($event.target)">View Details</button>
-        </li> -->
-
-<!---------------- 手機版購物車 ---------------->
-<!-- <div class="cart_mobile_section1"> -->
-
-<!-- <div class="cart_mobile_article1">
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" id="aboutSelectOne">
-                                    </li>
-                                    <li>
-                                        <img src="./image/cart/mobile_item1.jpg" alt="">
-                                    </li>
-
-                                </ul>
-                            </div>
-
-
-                            <div class="cart_mobile_article2">
-                                <ul>
-                                    <li>
-                                        <p>富士山賞櫻一日遊</p>
-                                    </li>
-
-                                    <li>
-                                        <p>TWD $1500</p>
-                                    </li>
-
-                                    <li>
-                                        <p>人數 X 1</p>
-                                    </li>
-                                    <li class="cart_icon_container_m">
-                                        <i id="cartFavoriteIcon" class="cart_icons_favorite_small">favorite_border</i>
-                                        <i id="cartDeleteIcon" class="cart_icons_trash_small">delete_outline</i>
-                                    </li>
-                                </ul>
-                            </div> -->
-
-<!---------------- 手機版購物車 ---------------->
+ 

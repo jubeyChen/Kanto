@@ -67,7 +67,7 @@ const app = Vue.createApp({
       this.selectedCouponId = e.target.selectedOptions[0].getAttribute("data-id");
       // console.log(this.selectedCouponId);
       // console.log(e.target.selectedOptions[0].getAttribute("data-id"));
-  },
+    },
 
     async saveData() {
       const orderData = new FormData();
@@ -150,8 +150,8 @@ const app = Vue.createApp({
     //取的優惠碼
     async getMemberCoupon() {
       try {
-        const response = 
-        await axios.post('../php/getCouponNameForPayment.php')
+        const response =
+          await axios.post('../php/getCouponNameForPayment.php')
         this.isCoupon = response.data;
         console.log(this.isCoupon);
       } catch (error) {
@@ -206,6 +206,12 @@ const app = Vue.createApp({
     // this.isSessionValid = a.isSessionValid;
     // this.user = a.user;
     // console.log(this.isSessionValid);
+
+    // Check if the page is accessed directly
+    if (window.location.href === "https://tibamef2e.com/thd101/g7/Kanto/dist/payment.html") {
+      // Redirect to loginRegister.html
+      document.write("網頁不存在");
+    }
 
     this.getAccountInfo()
       .then(() => {
