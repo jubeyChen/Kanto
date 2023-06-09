@@ -198,6 +198,9 @@ const RootComponent = {
         }
 
 
+    
+
+
 
 
 
@@ -208,6 +211,8 @@ const RootComponent = {
         // console.log(a);
         this.isSessionValid = a.isSessionValid;
         this.user = a.user;
+ 
+
 
         this.checkMatchingItems();
         this.getAccountInfo();
@@ -431,6 +436,9 @@ const RootComponent = {
                         item.isHearted = true; // 更新項目的 isHearted 屬性
                     } else {
                         alert('新增收藏失敗');
+                        if (this.isSessionValid === false ){
+                            window.location.href= "../dist/loginRegister.html"
+                        } 
                     }
                 })
                 .catch(error => {

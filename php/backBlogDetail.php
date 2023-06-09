@@ -1,7 +1,7 @@
 <?php
 
 include('Mysql.php'); //資料庫連線
-
+ini_set("display_errors", "On");
 
 
 // 從 URL 的 id 參數中獲取 productId 值
