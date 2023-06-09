@@ -1,144 +1,146 @@
 //住宿輪播套件
-$(function(){
+$(function () {
     $('.owl-carousel').owlCarousel({
-        loop:true,
-        margin:20,
+        loop: true,
+        margin: 20,
         // nav:true,
-        autoplay:true,
-        autoplayTimeout:2000,
-        responsive:{
-        0:{
-            items:1
+        autoplay: true,
+        autoplayTimeout: 2000,
+        responsive: {
+            0: {
+                items: 1
+            },
+            500: {
+                items: 1
+            },
+            800: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            },
+            1200: {
+                items: 4
+            }
         },
-        500:{
-            items:1
-        },
-        800:{
-            items:2
-        },
-        1000:{
-            items:3
-        },
-        1200:{
-            items:4
-        }
-
-    }
-})
+        lazyLoad: true, // 啟用延遲載入
+        lazyLoadEager: 1, // 預先載入下一個圖片
+        lazyLoadEagerClass: 'owl-lazy' // 延遲載入的CSS類別
+    });
 });
 
 // =================行程資料=================
 let indexContent = Vue.createApp({
-    data(){
-        return{
-            products:[],
-            roomPics:{},
-            articles:{}
+    data() {
+        return {
+            products: [],
+            roomPics: {},
+            articles: {}
 
         }
     },
-    methods:{
-        getContent(){
+    methods: {
+        getContent() {
             axios.get("../php/indexContent.php")
-            .then(response =>{
-                // console.log(response.data.data01);
-                this.products = response.data.data01;
-                this.roomPics = response.data.data02;
-                // console.log(response.data.data02[0].Image)
-                this.articles = response.data.data03;
-                console.log(response.data);
+                .then(response => {
+                    // console.log(response.data.data01);
+                    this.products = response.data.data01;
+                    this.roomPics = response.data.data02;
+                    // console.log(response.data.data02[0].Image)
+                    this.articles = response.data.data03;
+                    console.log(response.data);
 
-            })
-            .catch(error => {
-                console.log(error);
-            });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
-    }, 
-    mounted(){
+    },
+    mounted() {
         this.getContent();
-        
+
     }
-}); indexContent.mount("#indexVueContent") 
+}); indexContent.mount("#indexVueContent")
 
 
 
 // =================地圖=================
 let mapApp = Vue.createApp({
-    data(){
-        return{
-            current_show:'tokyo',
-            all_area:{
+    data() {
+        return {
+            current_show: 'tokyo',
+            all_area: {
                 //物件中的屬性就是area
-                'gunma':{
-                    img:[
+                'gunma': {
+                    img: [
                         'image/index/index23.jpg',
                         'image/index/index25.jpg',
                         'image/index/index24.jpg'
                     ],
-                    title:'群馬',
-                    content:'大自然樂園，擁有健行步道、滑雪場以及溫泉，讓身心獲得療癒舒緩。'
+                    title: '群馬',
+                    content: '大自然樂園，擁有健行步道、滑雪場以及溫泉，讓身心獲得療癒舒緩。'
 
                 },
-                'ibaraki':{
-                    img:[
+                'ibaraki': {
+                    img: [
                         'image/index/index26.jpg',
                         'image/index/index27.jpg',
                         'image/index/index28.jpg'
                     ],
-                    title:'茨城',
-                    content:'大自然樂園，擁有健行步道、滑雪場以及溫泉，讓身心獲得療癒舒緩。'
+                    title: '茨城',
+                    content: '大自然樂園，擁有健行步道、滑雪場以及溫泉，讓身心獲得療癒舒緩。'
 
                 },
-                'saitama':{
-                    img:[
+                'saitama': {
+                    img: [
                         'image/index/index29.jpg',
                         'image/index/index30.jpg',
                         'image/index/index31.jpg'
                     ],
-                    title:'埼玉',
-                    content:'擁有江戶時代的歷史風貌，各種獨特的戶外探險活動等你來一探究竟!'
+                    title: '埼玉',
+                    content: '擁有江戶時代的歷史風貌，各種獨特的戶外探險活動等你來一探究竟!'
                 },
-                'tochigi':{
-                    img:[
+                'tochigi': {
+                    img: [
                         'image/index/index32.jpg',
                         'image/index/index33.jpg',
                         'image/index/index34.jpg'
                     ],
-                    title:'栃木',
-                    content:'壯觀的神社與佛寺景色如畫，同時享受泡湯與河川之旅。'
+                    title: '栃木',
+                    content: '壯觀的神社與佛寺景色如畫，同時享受泡湯與河川之旅。'
                 },
-                'chiba':{
-                    img:[
+                'chiba': {
+                    img: [
                         'image/index/index35.jpg',
                         'image/index/index36.jpg',
                         'image/index/index37.jpg'
                     ],
-                    title:'千葉',
-                    content:' 海灘活動到山間步行的古村，還有主題樂園及特惠商城，一應俱全。'
+                    title: '千葉',
+                    content: ' 海灘活動到山間步行的古村，還有主題樂園及特惠商城，一應俱全。'
                 },
-                'tokyo':{
-                    img:[
+                'tokyo': {
+                    img: [
                         'image/index/index38.jpg',
                         'image/index/index39.jpg',
                         'image/index/index40.jpg'
                     ],
-                    title:'東京',
-                    content:'融合了未來主義與歷史氣息的城市，擁有多元的風貌並充滿可能性。'
+                    title: '東京',
+                    content: '融合了未來主義與歷史氣息的城市，擁有多元的風貌並充滿可能性。'
                 },
-                'kanagawa':{
-                    img:[
+                'kanagawa': {
+                    img: [
                         'image/index/index41.jpg',
                         'image/index/index42.jpg',
                         'image/index/index43.jpg'
                     ],
-                    title:'神奈川',
-                    content:'海灣風景、國際港市、禪寺、自然美景...擁有國際化的魅力。'
+                    title: '神奈川',
+                    content: '海灣風景、國際港市、禪寺、自然美景...擁有國際化的魅力。'
                 },
             },
         }
     },
-    methods:{
-        show(area){
+    methods: {
+        show(area) {
             this.current_show = area
         }
     }
@@ -147,10 +149,10 @@ let mapApp = Vue.createApp({
 
 // =================天氣=================
 let weatherapp = Vue.createApp({
-    data(){
-        return{
-            days:[
-              
+    data() {
+        return {
+            days: [
+
             ],
         }
     },
@@ -164,7 +166,7 @@ let weatherapp = Vue.createApp({
     //         // console.log(data);
     //                 // console.log(response.data.list[0]);
     //                 const all_weather = response.data.list
-                    
+
     //                 for (let i = 0; i < 40; i++) {
     //                     if(i % 8 == 0){
     //                         const current = all_weather[i];
@@ -185,7 +187,7 @@ let weatherapp = Vue.createApp({
     //                         let iconId = current.weather[j].icon;
     //                         // console.log(iconId);
     //                         let icon =  "https://openweathermap.org/img/wn/" + iconId + "@2x.png";
-                            
+
     //                             // 把這串資料push進days的空陣列
     //                             self.days.push(
     //                                 {
@@ -207,21 +209,21 @@ let weatherapp = Vue.createApp({
 // =================匯率=================
 
 let exchangeapp = Vue.createApp({
-    data(){
-        return{
-            twd:1000,
-            jpyRate:0  //是數字
+    data() {
+        return {
+            twd: 1000,
+            jpyRate: 0  //是數字
         }
     },
-    computed:{
-        jpy:{
+    computed: {
+        jpy: {
             //修改twd 回傳jpy
-            get(){
-                return Number.parseFloat(Number(this.twd)/Number(this.jpyRate)).toFixed(2);
+            get() {
+                return Number.parseFloat(Number(this.twd) / Number(this.jpyRate)).toFixed(2);
             },
             //修改jpy 回傳twd
-            set(val){
-                this.twd = Number.parseFloat(Number(val)* Number(this.jpyRate)).toFixed(0);
+            set(val) {
+                this.twd = Number.parseFloat(Number(val) * Number(this.jpyRate)).toFixed(0);
             }
         }
     },
