@@ -25,11 +25,11 @@ const app = Vue.createApp({
         // 現在你可以使用 productId 變數來進一步處理和使用該值
         // console.log(orderId); // 印出 id 參數的值
 
-        console.log(typeof(this.Total));
+        // console.log(typeof(this.Total));
         
         axios.get('../php/backOrderDetail.php?id=' + orderId)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 for(let i = 0; i < response.data.length; i++){
                     this.orderDetail.push(response.data[i]);
                     this.Total += parseInt(response.data[i].Total);
