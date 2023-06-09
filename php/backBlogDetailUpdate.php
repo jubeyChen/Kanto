@@ -1,5 +1,6 @@
 <?php
 include('Mysql.php'); // 資料庫連線
+ini_set("display_errors", "On");
 
 // 取得 POST 請求的原始資料
 $data = file_get_contents('php://input');

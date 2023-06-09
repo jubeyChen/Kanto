@@ -67,14 +67,14 @@ const app = Vue.createApp({
             }
 
             // 使用 getParameterByName 函数来获取 URL 中的 id 参数值
-            var blogId = getParameterByName('id');
+            var blogID = getParameterByName('id');
             // 输出 id 参数的值
-            console.log(blogId);
+            console.log(blogID);
 
             //撈資料
             const vm = this;
 
-            axios.get('../php/backblogDetail.php?id=' + blogId)
+            axios.get('../php/backblogDetail.php?id=' + blogID)
                 .then(function (response) {
                     console.log(response.data);
                     console.log("更新成功");
@@ -190,13 +190,13 @@ const app = Vue.createApp({
                 if (!results[2]) return "";
                 return decodeURIComponent(results[2].replace(/\+/g, " "));
             }
-            var blogId = getParameterByName('id');
+            var blogID = getParameterByName('id');
 
 
             //檢查確認是否更新 確認後再將資料丟入後端
             let checkUpdate = confirm('是否進行更新?');
             if (checkUpdate) {
-                axios.post('../php/backBlogDetailUpdate.php?id=' + blogId, updateData)
+                axios.post('../php/backBlogDetailUpdate.php?id=' + blogID, updateData)
                     .then((response) => {
                         console.log(response.data);
                         // this.selectedDates = [];
@@ -299,7 +299,7 @@ const app = Vue.createApp({
             if (!results[2]) return "";
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
-        var blogId = getParameterByName('id');
+        var blogID = getParameterByName('id');
 
 
         const imageData = new FormData();
@@ -314,7 +314,7 @@ const app = Vue.createApp({
         // imageData.append('PlanImg4', document.getElementById('PlanImg4').files[0]);
 
 
-        await axios.post('../php/saveBlogImg.php?id=' + blogId, imageData)
+        await axios.post('../php/saveBlogImg.php?id=' + blogID, imageData)
             .then(response => {
                 console.log(response.data);
             })
@@ -334,7 +334,7 @@ const app = Vue.createApp({
             if (!results[2]) return "";
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
-        var blogId = getParameterByName('id');
+        var blogID = getParameterByName('id');
 
 
         const imageData2 = new FormData();
@@ -343,7 +343,7 @@ const app = Vue.createApp({
         imageData2.append('plan_Img3', document.getElementById('plan_Img3').files[0]);
         imageData2.append('plan_Img4', document.getElementById('plan_Img4').files[0]);
 
-        await axios.post('../php/saveBlogPlanImg.php?id=' + blogId, imageData2)
+        await axios.post('../php/saveBlogPlanImg.php?id=' + blogID, imageData2)
             .then(response => {
                 console.log('更新成功');
                 console.log(response.data);
