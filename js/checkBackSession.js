@@ -19,7 +19,7 @@ const backSession = Vue.createApp({
     },
 
     mounted(){
-        this.checkLoginStatus();
+        // this.checkLoginStatus();
     }
 
 });
