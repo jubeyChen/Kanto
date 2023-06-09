@@ -131,7 +131,7 @@ axios.get('../php/blogPage.php?id=' + blogId)
     for(j = 0; j < response.data.length; j++){
         document.querySelectorAll('.aside_content')[j].firstElementChild.innerHTML = response.data[j][8];
         document.querySelectorAll('.time > p')[j].innerHTML = response.data[j][8];
-        console.log(response.data[j][7]);
+        // console.log(response.data[j][7]);
 
         document.querySelectorAll('.aside_content')[j].lastElementChild.innerHTML = response.data[j][7];
         document.querySelectorAll('.time')[j].nextElementSibling.innerHTML = response.data[j][7];

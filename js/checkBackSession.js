@@ -24,4 +24,4 @@ const backSession = Vue.createApp({
 
 });
 
-// backSession.mount('#logo_block');
+backSession.mount('#logo_block');
