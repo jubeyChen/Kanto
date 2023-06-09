@@ -37,7 +37,7 @@ const app = Vue.createApp({
             await axios.post('../php/getProductInfo.php')
                 .then(response => {
                    this.isProductInfo = response.data;
-                    // console.log(this.isProductInfo[0]);
+                    console.log(this.isProductInfo[0]);
                 })
         },
 

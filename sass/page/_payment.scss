@@ -103,6 +103,14 @@
     }
 }
 
+.payment_error {
+    color: red;
+    line-height: 30px; /* 調整你希望的向下位移數值 */
+}
+.disabled-button {
+    background-color: gray;
+}
+
 .payment_section3 {
     background-color: #DFDEDE;
     width: 90%;
