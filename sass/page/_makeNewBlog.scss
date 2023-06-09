@@ -21,6 +21,11 @@
 
             li{
                 margin-bottom: 5px;
+
+                &:last-child a{
+                    background-color: $fontColor;
+                }
+
             }
 
             a{
@@ -30,6 +35,7 @@
                 }
             }
         }
+
     
     }
 

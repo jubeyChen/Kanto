@@ -454,3 +454,6 @@ const vm = Vue.createApp({
         }
     }
 }).mount('#app');
+
+// import BackStageLogOutBtn from "./component/BackStageLogOutBtn.js";
+// app.component('backStageLogOutBtn', BackStageLogOutBtn);

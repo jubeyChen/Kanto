@@ -1,3 +1,4 @@
+import BackStageLogOutBtn from "./component/BackStageLogOutBtn.js";
 Vue.createApp({
     data() {
         return {
@@ -146,4 +147,5 @@ Vue.createApp({
         await this.reverseList();
         await this.dosearch();
     }
-}).mount('#app');
+}).component('backStageLogOutBtn', BackStageLogOutBtn)
+.mount('#app');
