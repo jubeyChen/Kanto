@@ -97,8 +97,8 @@
 
             <section class="page-btn">
                 <button @click="lastPageBtn">上一頁</button>
-                <div>{{ currentNum }}/{{all_members.length}}</div>
-                <button @click="nextPageBtn">下一頁</button>
+                <div>{{ currentNum }}/{{members.length}}</div>
+                <button id="nextbtn" @click="nextPageBtn" :disabled="disableNextbtn">下一頁</button>
             </section>
 
         </main>

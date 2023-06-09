@@ -1,14 +1,16 @@
 Vue.createApp({
     data() {
         return {
-            newStatus: "",
+            newStatus: "",  //0跟1狀態
             members: [],  //因為搜尋型態而變動的會員資料
             all_members: [],  //靜態的會員資料
             currentPage: 1,
             countOfPage: 10,    //一頁的量
             currentNum: 10,      //當前筆數
 
-            searchKeyword: "",
+            disableNextbtn:false,  //先預設下一頁按鈕都可以按
+
+            searchKeyword: "", 
             searchType: "",
             searchResult: [],
         }
@@ -75,15 +77,20 @@ Vue.createApp({
         lastPageBtn() {
             if (this.currentPage > 1) {
                 this.currentPage = this.currentPage - 1
+                this.disableNextbtn = false;
+                this.currentNumber();
             }
-            this.currentNumber();
         },
         nextPageBtn() {
-            if (this.currentPage < this.totalPages) //|| this.members.length <= (currentPage*10))
+            if (this.currentPage <= this.totalPages && this.members.length > (this.currentPage*10))
             {
-                this.currentPage = this.currentPage + 1
+                this.currentPage = this.currentPage + 1;
+                this.currentNumber();
             }
-            this.currentNumber();
+            else if(this.currentPage === this.totalPages){
+                this.disableNextbtn = true;
+                this.currentNumber();
+            };
         },
         reverseList() {
             // console.log("aaa")
@@ -125,6 +132,7 @@ Vue.createApp({
 
                 default:
                     this.members = this.all_members;
+                    this.currentNum = this.all_members.length
                     this.currentNumber();
                     break;
             }
