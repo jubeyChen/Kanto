@@ -34,7 +34,7 @@ function switchImage() {
 
 
 var value = document.getElementById("region").getAttribute('value');
-console.log(value)
+// console.log(value)
 //按鈕
 // let btns = document.getElementsByClassName("btn-sec-l");
 // // let currentbtn = 0;
@@ -107,7 +107,7 @@ const app = Vue.createApp({
 
     handleClick(event) {
       this.selectedRegion = event.target.getAttribute('value');
-      console.log(this.selectedRegion)
+      // console.log(this.selectedRegion)
       this.currentPage = 1; // 在切換地區時重置分頁為第一頁
     },
     changePage(page) {
@@ -119,11 +119,11 @@ const app = Vue.createApp({
 
     axios.get('../php/roomBlog.php')
       .then(response => {
-        console.log(response)
+        // console.log(response)
         if (response.data && response.data.roomblog) {
           if (Array.isArray(response.data.roomblog)) {
             this.roomBlogs = response.data.roomblog
-            console.log(this.roomBlogs)
+            // console.log(this.roomBlogs)
           }
         }
 

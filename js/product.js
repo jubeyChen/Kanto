@@ -138,13 +138,13 @@ const RootComponent = {
         axios.get('../php/product.php')
             .then((response) => {
                 //被包裝成二維陣列
-                console.log(response)
+                // console.log(response)
                 // console.log(response.data)
 
                 if (response.data && response.data.product && response.data.productdetail) {
                     if (Array.isArray(response.data.product)) {
                         this.productItems = response.data.product
-                        console.log(this.productItems);
+                        // console.log(this.productItems);
                         this.displayItems = this.productItems
                         this.productCount = this.productItems.length
                     }
@@ -181,7 +181,7 @@ const RootComponent = {
 
         for (let i = 0; i < accordion.length; i++) {
             accordion[i].addEventListener("click", function () {
-                console.log("aaaaa");
+                // console.log("aaaaa");
                 this.classList.toggle("active");
             });
         }
@@ -205,7 +205,7 @@ const RootComponent = {
         //檢查是否為登入狀態
 
         let a = await globalCheck.PageCheckSession();// 測試連線
-        console.log(a);
+        // console.log(a);
         this.isSessionValid = a.isSessionValid;
         this.user = a.user;
 
@@ -245,8 +245,8 @@ const RootComponent = {
                 const month = currentDate.getMonth() + 1; // 月份從0開始，所以要加1
                 const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${selectedDate.toString().padStart(2, '0')}`;
 
-                console.log(formattedDate);
-                console.log(selectedDate);
+                // console.log(formattedDate);
+                // console.log(selectedDate);
                 // 設置選中的日期
                 currentDate.setDate(selectedDate);
                 // 重新顯示日曆
@@ -324,7 +324,7 @@ const RootComponent = {
             }
 
             // Date filtering
-            console.log(this.selectedDate)
+            // console.log(this.selectedDate)
             if (this.selectedDate) {
                 this.displayItems = this.displayItems.filter(item => {
                     // Find the corresponding productdetail item by ID
@@ -354,8 +354,8 @@ const RootComponent = {
 
 
         checkMatchingItems() {
-            console.log('collections:', this.collections);
-            console.log('displayItems:', this.displayItems);
+            // console.log('collections:', this.collections);
+            // console.log('displayItems:', this.displayItems);
 
             const matchedItems = this.displayItems.filter(item => {
                 const matchingItem = this.collections.find(collection => collection.ProductID === item.ID || collection[1] === item.ID);
@@ -363,7 +363,7 @@ const RootComponent = {
             });
 
             if (matchedItems.length > 0) {
-                console.log('匹配的項目：', matchedItems);
+                // console.log('匹配的項目：', matchedItems);
                 this.displayItems.forEach(item => {
                     const matchingItem = matchedItems.find(matchedItem => matchedItem.ID === item.ID);
                     item.isHearted = matchingItem !== undefined;
@@ -397,7 +397,7 @@ const RootComponent = {
 
                     this.accountInfo.Phone = response.data[0].Phone;
 
-                    console.log(this.accountInfo)
+                    // console.log(this.accountInfo)
                 })
                 .catch(error => {
                     console.log(error);
@@ -418,16 +418,16 @@ const RootComponent = {
         //新增收藏
         addToFavorites(item) {
             const productID = item.ID;
-            console.log(productID)
+            // console.log(productID)
             const memberID = this.accountInfo.ID;
-            console.log(memberID)
+            // console.log(memberID)
 
 
             axios.
                 post('../php/addCollection.php', { productID, memberID })
                 .then(response => {
                     if (response.data === 'done') {
-                        console.log(response.data)
+                        // console.log(response.data)
                         item.isHearted = true; // 更新項目的 isHearted 屬性
                     } else {
                         alert('新增收藏失敗');
@@ -443,9 +443,9 @@ const RootComponent = {
         removeFromFavorites(item) {
             // console.log(item)
             const productID = item.ID;
-            console.log(productID)
+            // console.log(productID)
             const memberID = this.accountInfo.ID;
-            console.log(memberID)
+            // console.log(memberID)
 
 
             axios
