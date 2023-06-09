@@ -141,7 +141,7 @@ const app = Vue.createApp({
 
 
             }
-            console.log(updateData);
+            // console.log(updateData);
 
             //帶入id
             function getParameterByName(name, url) {
@@ -211,8 +211,8 @@ const app = Vue.createApp({
             const vm = this;
             axios.get('../php/backProductDetail.php?id=' + productId)
                 .then(function (response) {
-                    console.log(response.data);
-                    console.log("更新成功");
+                    // console.log(response.data);
+                    // console.log("更新成功");
 
                     //行程名稱
                     vm.name = response.data.product[0].Name;
@@ -413,7 +413,7 @@ const app = Vue.createApp({
 
             await axios.post('../php/detailSaveImg.php?id=' + productId, imageData)
                 .then(response => {
-                    console.log(response.data);
+                    // console.log(response.data);
                 })
                 .catch(error => {
                     console.log(error);
@@ -468,7 +468,7 @@ const app = Vue.createApp({
             if (checkDelete) {
                 axios.get('../php/deleteProduct.php?id=' + productId)
                     .then(response => {
-                        console.log(response.data);
+                        // console.log(response.data);
                         alert('刪除成功')
                         window.location.href = '../dist/backProduct.html';
                     })

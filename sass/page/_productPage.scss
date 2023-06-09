@@ -899,6 +899,8 @@ div.product_inner {
                         margin-bottom: 10px;
 
                         div.pic {
+                            margin-right: 10px;
+
                             img {
                                 border-radius: 50%;
                                 width: 50px;
@@ -907,9 +909,7 @@ div.product_inner {
                             }
                         }
 
-                        div.member_name {
-                            margin-left: 10px;
-                        }
+
                     }
 
                     div.member_star {
@@ -2062,6 +2062,8 @@ div.phone_all_review {
                         display: flex;
 
                         div.pic {
+                            margin-right: 10px;
+
                             img {
                                 object-fit: cover;
                                 width: 50px;
@@ -2070,9 +2072,6 @@ div.phone_all_review {
                             }
                         }
 
-                        div.member_name {
-                            margin-left: 10px;
-                        }
                     }
 
                     div.member_star {

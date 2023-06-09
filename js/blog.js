@@ -44,13 +44,13 @@ const app = {
             let vm = this;
             axios.get('../php/blog.php')
                 .then(function (response) {
-                    console.log(response.data);
+                    // console.log(response.data);
 
 
                     //活動
                     vm.data = response.data;
 
-                    console.log(vm.data);
+                    // console.log(vm.data);
                     // 篩選資料放這裡
                     //需要點擊地區篩選按鈕之後，activeIndex才會有值，再往下看handleClick(index)的函式
                     if (vm.activeIndex !== null) {
@@ -75,7 +75,7 @@ const app = {
         handleClick(index) {
             //這裡的activeIndex 是數字
             this.activeIndex = index;
-            console.log(this.Region[index]);
+            // console.log(this.Region[index]);
             this.getData();
             this.currentPage = 1; // 重置當前頁數
         },
