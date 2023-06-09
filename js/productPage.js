@@ -113,10 +113,10 @@ const app = Vue.createApp({
 
     methods: {
         updateSelectedDataId(e) {
-            console.log(e.target.selectedOptions[0]);
+            // console.log(e.target.selectedOptions[0]);
             const selectedOption = e.target.selectedOptions[0];
             this.selectedDataId = selectedOption.getAttribute('data-id')
-            console.log(this.selectedDataId);
+            // console.log(this.selectedDataId);
         },
         //撈取資料
         getData() {
@@ -136,7 +136,7 @@ const app = Vue.createApp({
 
             // 現在你可以使用 productId 變數來進一步處理和使用該值
             // 例如：
-            console.log(productId); // 印出 id 參數的值
+            // console.log(productId); // 印出 id 參數的值
 
 
 
@@ -146,14 +146,14 @@ const app = Vue.createApp({
                 .then((response) => {
                     //被包裝成二維陣列
 
-                    console.log(response.data);
-                    console.log(response.data.data1);
+                    // console.log(response.data);
+                    // console.log(response.data.data1);
 
 
                     this.productDetailId = response.data.date.map((item) => {
                         return item.ID;
                     })
-                    console.log(this.productDetailId);
+                    // console.log(this.productDetailId);
 
 
                     this.productID = response.data.data1[0][0];
@@ -174,7 +174,7 @@ const app = Vue.createApp({
 
 
                     //data2 是方案詳情---------------------------------------
-                    console.log(response.data.data2);
+                    // console.log(response.data.data2);
                     this.detail1_Time = response.data.data2[0]['Times'];
                     this.detail1_ScheduleTitle = response.data.data2[0]['ScheduleTitle'];
                     this.detail1_Pic = `./image/productPage/${response.data.data1[0][0]}/${response.data.data2[0]['Image']}`;
@@ -203,7 +203,7 @@ const app = Vue.createApp({
 
 
                     //照片庫----------------------------------------
-                    console.log(response.data.photos);
+                    // console.log(response.data.photos);
                     this.photos.push(...response.data.photos);
 
                     //篩選掉資料庫中是""或是null的
@@ -215,21 +215,21 @@ const app = Vue.createApp({
                             return `./image/productPage/${response.data.data1[0][0]}/reviewPhoto/${item}`
                         });
 
-                    console.log(this.photosPath);
+                    // console.log(this.photosPath);
                     //將photosPath的前4筆資料賦予到limitedPhotos
                     this.limitedPhotos = this.photosPath.slice(0, 4);
 
                     //MEMBER
                     // console.log(response.data.member);
                     this.memberReview = response.data.member;
-                    console.log(this.memberReview);
+                    // console.log(this.memberReview);
 
 
 
 
 
                     //查詢日期
-                    console.log(response.data.date);
+                    // console.log(response.data.date);
                     this.eventDate = response.data.date;
 
 
@@ -247,7 +247,7 @@ const app = Vue.createApp({
 
                 })
                 .catch((error) => {
-                    console.log(error);
+                    // console.log(error);
                 })
         },
 
@@ -262,7 +262,7 @@ const app = Vue.createApp({
                 return item.Image1 != null || item.Imgae2 != null || item.Imgae3 != null || item.Image4 != null || item.Imgae5 != null || item.Imgae6 != null
             })
             this.currentPage = 1;
-            console.log(this.memberReview);
+            // console.log(this.memberReview);
         },
         //全部評價
         allImage() {
@@ -286,7 +286,7 @@ const app = Vue.createApp({
 
                 });
                 this.currentPage = 1;
-                console.log(this.memberReview);
+                // console.log(this.memberReview);
             });
         },
 
@@ -303,7 +303,7 @@ const app = Vue.createApp({
                     return b.Star - a.Star;
                 });
                 this.currentPage = 1;
-                console.log(this.memberReview);
+                // console.log(this.memberReview);
             });
         },
 
@@ -372,7 +372,7 @@ const app = Vue.createApp({
                 shoppingList.push(planObj)
                 const updatedData = JSON.stringify(shoppingList);
                 localStorage.setItem('shoppingList', updatedData);
-                console.log(shoppingList);
+                // console.log(shoppingList);
 
                 alert('加入購物車成功')
 
@@ -419,7 +419,7 @@ const app = Vue.createApp({
                 shoppingList.push(planObj)
                 const updatedData = JSON.stringify(shoppingList);
                 localStorage.setItem('shoppingList', updatedData);
-                console.log(shoppingList);
+                // console.log(shoppingList);
 
 
 
@@ -436,7 +436,7 @@ const app = Vue.createApp({
     //檢查是否為登入狀態
     async mounted() {
         let a = await globalCheck.PageCheckSession();// 測試連線
-        console.log(a);
+        // console.log(a);
         this.isSessionValid = a.isSessionValid;
         this.user = a.user;
     },

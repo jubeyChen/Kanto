@@ -15,7 +15,8 @@ const app = Vue.createApp({
     },
     methods: {
         reverse() {
-            this.sliceProducts.reverse();
+            this.products.reverse();
+            this.sliceData();
         },
         getData() {
             const vm = this; // 保留 Vue 实例的引用
@@ -23,7 +24,7 @@ const app = Vue.createApp({
                 axios
                     .get("../php/backProducts.php")
                     .then(function (response) {
-                        console.log(response.data);
+                        // console.log(response.data);
                         vm.products = response.data; // 使用 vm.data 来设置数据
 
                         // 先让 sliceProducts 进行初始化筛选

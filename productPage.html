@@ -161,7 +161,7 @@
                                         <div class="member"
                                             v-if="item.Image1 || item.Image2 || item.Image3 || item.Image4 || item.Image5 || item.Image6">
                                             <div class="member_information">
-                                                <div class="member_pic">
+                                                <div class="member_pic" v-if="item.Avatar">
                                                     <img :src="`./image/member/${item.ID}/avatar/${item.Avatar}`"
                                                         alt="">
                                                 </div>
@@ -364,7 +364,7 @@
                             <!--會員資訊-->
                             <div class="member_block" v-for="(item,index) in paginatedActivities" :key="index">
                                 <div class="member_information">
-                                    <div class="pic">
+                                    <div class="pic" v-if="item.Avatar">
                                         <img :src="`./image/member/${item.ID}/avatar/${item.Avatar}`" alt="">
                                     </div>
 
@@ -1180,7 +1180,7 @@
                     <template v-for="item in memberReview">
                         <div class="member_block first_block">
                             <div class="member_information">
-                                <div class="pic">
+                                <div class="pic" v-if="item.Avatar">
                                     <img :src="`./image/member/${item.ID}/avatar/${item.Avatar}`" alt="">
                                 </div>
 
