@@ -62,17 +62,6 @@ const app = Vue.createApp({
             );
         }
     },
-    created() {
-        // fetch('image/order.json')
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         this.orderList = data.map(item => ({
-        //             ...item,
-        //             showReview: false
-        //         }));
-        //     });
-
-    },
     async mounted() {
         await this.checkSession();
         await this.getAccountInfo();
@@ -126,7 +115,7 @@ const app = Vue.createApp({
                 })
                 .catch(error => {
                     console.log(error);
-                    alert('取得失敗，請您稍後再試');
+                    console.log('取得Review失敗，請您稍後再試');
                 });
         },
 
@@ -179,13 +168,6 @@ const app = Vue.createApp({
             }
         },
 
-        submitForm() {
-            // 如果電子郵件地址無效，則顯示錯誤消息
-            if (!this.isValidEmail) {
-                return;
-            }
-        },
-
         checkEmailValidity() {
             // 使用正則表達式檢查email地址的有效性
             const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -201,7 +183,7 @@ const app = Vue.createApp({
 
             Email.send({
                 SecureToken: "adf84833-cc46-45a2-850a-092ac2f86858",
-                To: contactEmail,
+                To: "kantoasuka1@gmail.com",
                 From: "kantoasuka1@gmail.com",
                 Subject: '訂單詢問-訂單編號:' + orderNumber,
                 Body: `全名: ${contactID} <br><br>
@@ -319,7 +301,6 @@ const app = Vue.createApp({
                         this.orderExist = true;
                     } else {
                         this.orderExist = false;
-                        console.log('no order');
                     }
                 })
                 .catch(error => {
@@ -334,9 +315,7 @@ const app = Vue.createApp({
                         
                         this.memberCoupon = response.data;
                         this.couponExist = true;
-                    } else {
-                        console.log('no coupon');
-                    }
+                    } 
                 })
                 .catch(error => {
                     console.log(error);
@@ -349,10 +328,8 @@ const app = Vue.createApp({
                     if (response.data !== '沒有收藏') {
                         this.myCollection = response.data;
                         this.collectionExist = true;
-                        console.log(this.myCollection)
                     } else {
                         this.collectionExist = false;
-                        console.log('no collection');
                     }
                     
                 })
@@ -489,7 +466,6 @@ const app = Vue.createApp({
 
                 await axios.post('../php/SaveReview.php', reviewData)
                     .then(response => {
-                        console.log(response.data);
                         if (response.data === 'done') {
                             alert('已送出評論');
                             this.getAccountOrder();
