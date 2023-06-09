@@ -47,7 +47,7 @@ const app = Vue.createApp({
             }
         },
         changeValue(e) {
-            console.log(e);
+            // console.log(e);
             this.current_tab = e.target.value;
         }
 

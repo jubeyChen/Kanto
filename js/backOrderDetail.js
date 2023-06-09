@@ -53,4 +53,7 @@ const app = Vue.createApp({
 
 });
 
+import BackStageLogOutBtn from "./component/BackStageLogOutBtn.js";
+app.component('backStageLogOutBtn', BackStageLogOutBtn);
+
 app.mount('#app');
