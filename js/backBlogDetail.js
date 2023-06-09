@@ -92,7 +92,7 @@ const app = Vue.createApp({
 
                     //活動介紹的圖片
                     vm.desImg1 = `./image/blog/${response.data.Blog[0][0]}/${response.data.Blog[0].BannerPC}`
-                    vm.desImg2 = `./image/Blog/${response.data.Blog[0][0]}/${response.data.Blog[0].Image1}`
+                    vm.desImg2 = `./image/blog/${response.data.Blog[0][0]}/${response.data.Blog[0].Image1}`
 
 
 

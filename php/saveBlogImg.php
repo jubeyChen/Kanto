@@ -34,8 +34,8 @@ if ($_FILES['desImg1']["error"] > 0 || $_FILES['desImg2']["error"] > 0) {
 
     // Web根目錄真實路徑
     $ServerRoot = $_SERVER["DOCUMENT_ROOT"];
-    // $path = "../dist/image/productPage/".$productId."/"; // 放到server上使用
-    $path = $ServerRoot."/Kanto/dist/image/blog/".$blogID."/"; //本機端的路徑
+    $path = "../dist/image/blog/".$blogID."/"; // 放到server上使用
+    // $path = $ServerRoot."/Kanto/dist/image/blog/".$blogID."/"; //本機端的路徑
     if (!is_dir($path)) {
         mkdir($path, 0777, true);
     }
