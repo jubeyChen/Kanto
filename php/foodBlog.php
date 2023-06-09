@@ -2,7 +2,7 @@
 
 include('Mysql.php'); //資料庫連線
 
-$sql = "SELECT * FROM mydb.foodBlog
+$sql = "SELECT * FROM foodBlog
 join region on foodBlog.RegionID = region.ID";
 
 //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
