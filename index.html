@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首頁</title>
     @@include('./layout/style.html')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css"
         integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
     <script src="https://unpkg.com/akar-icons-fonts"></script>
 </head>
 
@@ -87,13 +89,17 @@
 
 
         <!-- 第二部分 住宿 -->
-
+                <!-- 輪播 -->
         <section class="index02 wrapper">
             <div class="bgcblock"></div>
-            <template class="index02_swiper owl-carousel owl-theme">
-                <img v-for="(room, key) in roomPics" :src="'./image/roomBlog/' + room.Image" alt="" loading="lazy">
-            </template>
+            <div class=" swiper mySwiper">
+                <div class="index02_swiper swiper-wrapper">
+                    <img class="swiper-slide" v-for="(room, key) in roomPics" :src="'./image/roomBlog/' + room.Image"
+                        alt="" loading="lazy">
+                </div>
+            </div>
         </section>
+                <!-- 標題 -->
         <section>
             <div class="index02_title container">
                 <div class="topic">
@@ -633,6 +639,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="js/index.js"></script>
 
     <script>
@@ -671,6 +679,35 @@
 
         });
 
+    </script>
+
+
+
+    <script>
+        //住宿照片輪播
+        let swiper = new Swiper(".mySwiper", {
+            spaceBetween: 10,
+            centeredSlides: false, 
+            loop:true,   //無限循環 
+            autoplay: {
+                delay: 1500,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                1200: {
+                    slidesPerView: 4,
+                },
+                1000: {
+                    slidesPerView: 3,
+                },
+                800: {
+                    slidesPerView: 2,
+                },
+                400: {
+                    slidesPerView: 1,
+                },
+            }
+        });
     </script>
 
 </body>

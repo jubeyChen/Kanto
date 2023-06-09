@@ -280,12 +280,33 @@ a.backProductDetail_btn {
         right: 0;
     }
 
-    .index02_swiper {
-        img {
-            height: 320px;
+    //*****輪播*************************
+
+    .swiper {
+        height: 100%;
+
+        .index02_swiper {
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            img {
+                height: 350px;
+                display: block;
+                width: 100%;
+                object-fit: cover;
+
+            }
         }
     }
 }
+    //******************************
+
 
 .index02_title {
     margin-top: 60px;

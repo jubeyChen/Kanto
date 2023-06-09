@@ -1,34 +1,3 @@
-//住宿輪播套件
-
-// $(function () {
-//     $('.owl-carousel').owlCarousel({
-//         loop: true,
-//         margin: 20,
-//         // nav:true,
-//         autoplay: true,
-//         autoplayTimeout: 2000,
-//         responsive: {
-//             0: {
-//                 items: 1
-//             },
-//             500: {
-//                 items: 1
-//             },
-//             800: {
-//                 items: 2
-//             },
-//             1000: {
-//                 items: 3
-//             },
-//             1200: {
-//                 items: 4
-//             }
-//         },
-//         lazyLoad: true, // 啟用延遲載入
-//         lazyLoadEager: 1, // 預先載入下一個圖片
-//     });
-// });
-
 // =================行程資料=================
 let indexContent = Vue.createApp({
     data() {
@@ -55,39 +24,9 @@ let indexContent = Vue.createApp({
                     console.log(error);
                 });
         }
-        //輪播套件
-        // owlCarousel(){
-        //     $('.owl-carousel').owlCarousel({
-        //         loop: true,
-        //         margin: 20,
-        //         // nav:true,
-        //         autoplay: true,
-        //         autoplayTimeout: 2000,
-        //         responsive: {
-        //             0: {
-        //                 items: 1
-        //             },
-        //             500: {
-        //                 items: 1
-        //             },
-        //             800: {
-        //                 items: 2
-        //             },
-        //             1000: {
-        //                 items: 3
-        //             },
-        //             1200: {
-        //                 items: 4
-        //             }
-        //         },
-        //         lazyLoad: true, // 啟用延遲載入
-        //         lazyLoadEager: 1, // 預先載入下一個圖片
-        //     });
-        // }
     },
     mounted() {
         this.getContent();
-        // this.owlCarousel();
     }
 }); indexContent.mount("#indexVueContent")
 
@@ -230,7 +169,7 @@ let weatherapp = Vue.createApp({
     //                 }
     //                 console.log(self.days);
     //     })
-    // }
+    }
 }); weatherapp.mount("#weatherApp");
 
 
