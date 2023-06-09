@@ -21,12 +21,12 @@
     $statement->execute();
 
     //抓出全部且依照順序封裝成一個二維陣列
-    $data = $statement->fetchAll();
-
-    if(count($data) > 0){
-        echo 'success';
+    $data2 = $statement->fetchAll();
+    
+    if(count($data2) > 0){
         session_start();
         $_SESSION["backMember"] = $account;
+        echo 'success';
 
     }else{
         echo 'fail';

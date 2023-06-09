@@ -2,7 +2,8 @@ Vue.createApp({
     data() {
         return {
             account: '',
-            password: ''
+            password: '',
+            isSessionValid: false
         }
     },
     methods: {
@@ -32,6 +33,7 @@ Vue.createApp({
             axios.post('../php/CheckBackSession.php')
                 .then(response => {
                     if (response.data.isSessionValid) {
+                        this.isSessionValid = response.data.isSessionValid;
                         window.location.href = "backMember.html";
                     }
                 })
