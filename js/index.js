@@ -17,7 +17,7 @@ let indexContent = Vue.createApp({
                     this.roomPics = response.data.data02;
                     // console.log(response.data.data02[0].Image)
                     this.articles = response.data.data03;
-                    console.log(response.data);
+                    // console.log(response.data);
 
                 })
                 .catch(error => {
