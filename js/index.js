@@ -25,7 +25,6 @@ $(function () {
         },
         lazyLoad: true, // 啟用延遲載入
         lazyLoadEager: 1, // 預先載入下一個圖片
-        lazyLoadEagerClass: 'owl-lazy' // 延遲載入的CSS類別
     });
 });
 

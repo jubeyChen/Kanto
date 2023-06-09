@@ -89,7 +89,7 @@
         <section class="index02 wrapper">
             <div class="bgcblock"></div>
             <div class="index02_swiper owl-carousel owl-theme">
-                <img v-for="(room, key) in roomPics" :src="`./image/roomBlog/` + room.Image" alt="">
+                <img v-for="(room, key) in roomPics" :src="'./image/roomBlog/' + room.Image" alt="" loading="lazy">
             </div>
         </section>
         <section>
