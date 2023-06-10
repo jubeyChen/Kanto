@@ -24,7 +24,7 @@ foreach ($checkedData as $ID){
         echo "done";
     } else {
         // 删除失败
-        echo "Failed to delete record with ID: $ID";
+        echo "Failed";
     }
 }
 

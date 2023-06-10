@@ -95,10 +95,10 @@ const app = Vue.createApp({
                 axios.post('../php/deleteBlog.php', checkedData)
                     .then(response => {
                         console.log(response.data);
-                        if(response.data == 'done'){
-                            alert('刪除成功')
+                        if(response.data === 'done'){
+                            alert('刪除成功');
                         }else{
-                            alert('刪除失敗')
+                            alert('刪除失敗');
                         }
                         
                         // window.location.href = '../dist/backBlog.html';
