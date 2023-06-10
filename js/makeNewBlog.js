@@ -157,6 +157,12 @@ const app = Vue.createApp({
             // data.append('banner2', document.getElementById('banner2').files[0]);
             data.append('region', this.blog.region);
             
+            console.log(this.blog.name);
+            console.log(this.blog.intro);
+            console.log(this.blog.region);
+            console.log("aaaaaa");
+
+
             const banner1Input = document.getElementById('banner1');
             const image1Input = document.getElementById('banner2');
             const blogImage1Input = document.getElementById('blogImg1');
@@ -197,6 +203,7 @@ const app = Vue.createApp({
             }else{
                 await axios.post('../php/makeNewBlog.php', data)
                 .then(response => {
+                    console.log(response.data);
                     if (response.data !== 'fail') {
                         console.log('productSchedule已儲存!');
                         alert('儲存成功!');

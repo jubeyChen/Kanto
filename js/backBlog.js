@@ -84,7 +84,7 @@ const app = Vue.createApp({
             //     this.Checked.push(checkbox[i].value);
             //     // console.log(checkbox[i].value);
             // }
-            // console.log(this.Checked);
+            console.log(this.Checked);
             let checkedData = new FormData();
             checkedData.append('data', JSON.stringify(this.Checked));
             console.log(checkedData);
@@ -96,7 +96,7 @@ const app = Vue.createApp({
                     .then(response => {
                         console.log(response.data);
                         // alert('刪除成功')
-                        window.location.href = '../dist/backBlog.html';
+                        // window.location.href = '../dist/backBlog.html';
                     })
                     .catch(error => {
                         console.log(error);
