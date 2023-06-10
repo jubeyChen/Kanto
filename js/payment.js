@@ -148,11 +148,11 @@ const app = Vue.createApp({
     async getAccountInfo() {
       const response = await axios.post('../php/getAccPayment.php');
       this.isAccountInfo = response.data;
-      console.log(this.isAccountInfo);
+      // console.log(this.isAccountInfo);
 
       if (Array.isArray(this.isAccountInfo) && this.isAccountInfo.length > 0) {
         const accountInfo = this.isAccountInfo[0];
-        this.accountId = accountInfo.AccountID;
+        this.accountID = accountInfo.AccountID;
         this.fullName = accountInfo.FullName;
         this.phone = accountInfo.Phone;
         this.memId = accountInfo.ID;
@@ -183,8 +183,7 @@ const app = Vue.createApp({
       this.isTotal = this.shoppingList.reduce((total, shoppinglist) => {
         return total + Number(shoppinglist.total.replace(',', ''));
       }, 0);
-
-      console.log(this.isTotal);
+      // console.log(this.isTotal);
       localStorage.setItem('shoppingList', JSON.stringify(this.shoppingList));
     },
     calculateSubTotal() {
@@ -221,7 +220,7 @@ const app = Vue.createApp({
     // Check if the page is accessed directly
     if (window.location.href === "https://tibamef2e.com/thd101/g7/Kanto/dist/payment.html") {
       // Redirect to loginRegister.html
-      document.write("網頁不存在");
+      document.body.innerHTML = "網頁不存在";
     }
 
     this.getAccountInfo()

@@ -142,6 +142,7 @@
         }
     }
 }
+
 //<!---------------- 結算 ---------------->
 
 .cart_total_price {
@@ -153,9 +154,9 @@
     p {
         font-size: 25px;
         color: $fontColor;
-
     }
 }
+
 //付款按鈕
 
 .cart_pay_btn_wrapper {
@@ -241,17 +242,6 @@
     transform: translateX(-50%);
 }
 
-// .cart_list {
-//     display: flex;
-//     align-items: center;
-//     margin: 2vh;
-// }
-
-// .cart_list li:last-child {
-//     margin-left: auto;
-//     padding-right: 2vw;
-// }
-
 //<!---------------- 推薦的地方 ---------------->
 .cart_section2 {
     width: 90%;
@@ -261,17 +251,15 @@
         display: flex;
         justify-content: space-between;
 
-        @include m(){
+        @include m() {
             display: flex;
             flex-direction: column;
 
-            li{
-
-                img{
+            li {
+                img {
                     padding-top: 20px;
                 }
             }
-
         }
 
         li {
@@ -282,9 +270,10 @@
             width: 80%;
             margin: 0 20px;
             flex-direction: column;
-          @include m{
-            margin-left: 35px;
-          }
+
+            @include m {
+                margin-left: 35px;
+            }
 
             img {
                 width: 100%;
@@ -326,93 +315,3 @@
         }
     }
 }
-
-
-//   ---------- 購物車手機版  ---------
-// @include m() {
-//     // margin-bottom: 2vh;
-//     span {
-//         width: 95%;
-//         height: 2vh;
-//         background-color: $primary;
-//         border-color: $primary;
-//         display: flex;
-//         justify-content: center;
-//         margin: 0 auto;
-//         margin-bottom: 4vh;
-//     }
-//     .cart_pc_section1 {
-//         display: none;
-//     }
-
-//     .cart_mobile_section1 {
-//         display: flex;
-//         justify-content: space-evenly;
-//         margin-bottom: 20px;
-//     }
-//     .cart_mobile_article1 {
-//         width: 45%;
-
-//         ul {
-//             li {
-//                 padding: 0;
-
-//                 img {
-//                     width: 100%;
-//                 }
-//             }
-//         }
-//     }
-//     .cart_mobile_article2 {
-//         width: 45%;
-
-//         ul {
-//             display: block;
-
-//             li {
-//                 padding: 0;
-
-//                 p {
-//                     font-size: 18px;
-//                     color: $fontColor;
-//                     padding-bottom: 10px;
-//                 }
-
-//                 i {
-//                     font-size: 15px;
-//                 }
-
-//             }
-
-//             :nth-child(2)p {
-//                 font-size: 12px;
-//             }
-
-//             :nth-child(3)p {
-//                 font-size: 12px;
-//             }
-
-//             li:nth-child(4) {
-//                 text-align: end;
-//                 padding: 0 15px 5px 0;
-//             }
-
-//             :last-child {
-//                 display: flex;
-//                 justify-content: space-between;
-//             }
-//         }
-//     }
-
-//     li:last-child {
-//         align-self: flex-end;
-//         cursor: pointer;
-//         padding-right: 80px;
-//         justify-content: center;
-
-//         @include m() {
-//             padding: 0;
-//         }
-//     }
-
-// }

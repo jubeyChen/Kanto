@@ -26,10 +26,8 @@
     <div id="app">
 
         <div class="payment_container">
-
             <div class="cart_bread">
                 <ul>
-
                     <li>
                         <i class="payment_icons_cart">shopping_cart</i>
                     </li>
@@ -42,6 +40,8 @@
                 </ul>
             </div>
 
+            <!--  --------right side of the page--------- -->
+
             <div class="payment_left">
 
                 <div class="payment_section1">
@@ -49,21 +49,17 @@
                         <h4>會員人資料</h4>
                         <span class="payment_line"></span>
                         <ul>
-                            <!-- <li>
-                                <p> ID </p>                                
-                                <input type="text" id="paymentMemId" v-model="memId">
-                            </li> -->
                             <li>
                                 <p>帳戶</p>
-                                <input type="text" id="payment_full_name" v-model="accountId">
+                                <input type="text" id="payment_full_name" v-model="accountID" readonly="readonly">
                             </li>
                             <li>
                                 <p>全名</p>
-                                <input type="email" id="payment_email" v-model="fullName">
+                                <input type="email" id="payment_email" v-model="fullName" readonly="readonly">
                             </li>
                             <li>
                                 <p>電話</p>
-                                <input type="tel" id="phone" name="phone" v-model="phone">
+                                <input type="tel" id="phone" name="phone" v-model="phone" readonly="readonly">
                             </li>
                         </ul>
                     </form>
@@ -77,7 +73,8 @@
                             <li>
                                 <input type="text" id="payment_card_number" name="card_number" required
                                     placeholder="信用卡卡號" v-model="creditCardNumber">
-                                <span v-if="creditCardError" class="payment_error">信用卡卡號有誤 <br> 測試用卡號: 4929607239563168</span>
+                                <span v-if="creditCardError" class="payment_error">信用卡卡號有誤 <br> 測試用卡號:
+                                    4929607239563168</span>
                             </li>
                             <li>
                                 <input type="text" id="payment_expiry_date" name="expiry_date" required
@@ -99,7 +96,7 @@
                             <li>
                                 <input type="email" id="payment_email" name="billing_address" required
                                     placeholder="電子信箱" v-model="email">
-                                <span v-if="emailError" class="payment_error">電子信箱有誤</span>
+                                <span v-if="emailError" class="payment_error">電子信箱有誤  <br> 測試用卡號: 123@gmail.com</span>
                             </li>
 
                         </ul>
@@ -107,7 +104,7 @@
                 </div>
             </div>
 
-            <!-- right side of the page -->
+            <!--  --------right side of the page--------- -->
             <div class="payment_right">
 
                 <div class="payment_side">
@@ -117,14 +114,13 @@
                         <ul>
                             <li>
                                 <div class="payment_side_inner">
-
                                     <div class="payment_item_info">
                                         <ul class="" id="">
                                             <li v-for="(shoppinglist, index) in shoppingList" :key="index"
                                                 class="payment_inner_pic">
                                                 <img :src="shoppinglist.banner" alt="照片黨">
                                                 <div class="payment_inner_word">
-                                                    <p >{{shoppinglist.title}}</p>
+                                                    <p>{{shoppinglist.title}}</p>
                                                     <p>{{shoppinglist.selectedDate}}</p>
                                                 </div>
                                                 <p :id="shoppinglist.productID"></p>
@@ -135,34 +131,23 @@
                                             </li>
                                         </ul>
                                     </div>
-
                             </li>
-                            <li class="payment_select">
-                                <select id="payment_coupon" name="請選擇優惠卷" v-model="selectedCoupon" @change="updateCoupon">
-                                    <option value="" disabled selected>請選擇優惠卷{{isDiscount}}</option>
-                                    <option v-for="coupon in isCoupon" :data-id="coupon.CouponID" :value="coupon.Discount">
-                                     {{ coupon.CouponName }}
-                                    </option>
-                                </select>
-
-                            </li>
-
                             <span class="payment_line"></span>
 
                             <li class="payment_price_selection">
                                 <label for="payment_total_amount">金額</label>
                                 <p>NT${{isTotal}}</p>
                             </li>
-
-                            <!-- <li class="payment_price_selection">
-                                <label for="payment_discount_name">優惠卷名稱</label>
-                                <p>{{ getCouponName(selectedCoupon) }}</p>
-                            </li> -->
-
-                            <!-- <li class="payment_price_selection">
-                                <label for="payment_discount_percentage">折扣百分比</label>
-                                <p>{{ getDiscountAmount(selectedCoupon) }}%</p>
-                              </li> -->
+                            <li class="payment_select">
+                                <select id="payment_coupon" name="請選擇優惠卷" v-model="selectedCoupon"
+                                    @change="updateCoupon">
+                                    <option value="" disabled selected>請選擇優惠卷{{isDiscount}}</option>
+                                    <option v-for="coupon in isCoupon" :data-id="coupon.CouponID"
+                                        :value="coupon.Discount">
+                                        {{ coupon.CouponName }}
+                                    </option>
+                                </select>
+                            </li>
 
                             <span class="payment_line"></span>
 
@@ -172,12 +157,8 @@
                             </li>
 
                             <li>
-                                    <input
-                                      type="button"
-                                      value="立即付款"
-                                      @click="validateCreditCard"
-                                      :style="{ backgroundColor: (hasErrors || isAnyInputEmpty) ? 'gray' : '' }"
-                                    />
+                                <input type="button" value="立即付款" @click="validateCreditCard"
+                                    :style="{ backgroundColor: (hasErrors || isAnyInputEmpty) ? 'gray' : '' }" />
                             </li>
                         </ul>
                     </form>
@@ -185,7 +166,7 @@
             </div>
         </div>
 
-    </div>
+    </div>  <!-- APP END Here -->
 
     <!-- 以下Footer區域 -->
     @@include('./layout/footer.html')
@@ -199,4 +180,3 @@
 </body>
 
 </html>
-

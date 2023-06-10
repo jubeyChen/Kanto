@@ -38,7 +38,7 @@ const app = Vue.createApp({
             await axios.post('../php/getProductInfo.php')
                 .then(response => {
                    this.isProductInfo = response.data;
-                    console.log(this.isProductInfo[0]);
+                    // console.log(this.isProductInfo[0]);
                 })
         },
 
@@ -51,7 +51,7 @@ const app = Vue.createApp({
         // console.log(a);
         this.isSessionValid = a.isSessionValid;
         // this.user= a.user;
-        console. log (this.isSessionValid);
+        // console. log (this.isSessionValid);
 
         if (this.isSessionValid === false) {
             // alert('請先登入會員，才可進入購物車');
