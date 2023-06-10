@@ -6,10 +6,11 @@ session_start();
 
 $id = $_SESSION['memberID'];
 
-$sql = 'SELECT memberCoupon.MemberID, memberCoupon.CouponID, coupon.CouponName, members.AccountID, coupon.Discount
+$sql = 'SELECT memberCoupon.MemberID, memberCoupon.CouponID, memberCoupon.IsUsed, coupon.CouponName, members.AccountID, coupon.Discount
 FROM memberCoupon
 JOIN coupon ON coupon.ID = memberCoupon.CouponID
-JOIN members ON members.ID = memberCoupon.MemberID where AccountID = ?';
+JOIN members ON members.ID = memberCoupon.MemberID
+WHERE memberCoupon.IsUsed = 0 AND members.AccountID = ?';
 
 
 //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
