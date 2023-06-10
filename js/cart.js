@@ -6,6 +6,7 @@ const app = Vue.createApp({
             isProductInfo: [],
             shoppingList: [],
             isTotal: 0,
+            // user:'',
             // selectAll: false, // Add selectAll property
         };
     },
@@ -48,11 +49,13 @@ const app = Vue.createApp({
     async mounted(){
         let a  = await globalCheck.PageCheckSession();
         // console.log(a);
-        this.isSessionValid = a;
+        this.isSessionValid = a.isSessionValid;
+        // this.user= a.user;
         console. log (this.isSessionValid);
 
         if (this.isSessionValid === false) {
-            window.location.href = "../dist/loginRegister.html";
+            // alert('請先登入會員，才可進入購物車');
+            window.location.href = "loginRegister.html";
         }          
         await this.getProductInfo();        
     },

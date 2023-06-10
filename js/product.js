@@ -198,7 +198,7 @@ const RootComponent = {
         }
 
 
-    
+
 
 
 
@@ -211,7 +211,7 @@ const RootComponent = {
         // console.log(a);
         this.isSessionValid = a.isSessionValid;
         this.user = a.user;
- 
+
 
 
         this.checkMatchingItems();
@@ -427,24 +427,25 @@ const RootComponent = {
             const memberID = this.accountInfo.ID;
             // console.log(memberID)
 
+            if (this.isSessionValid === false) {
+                alert("請先登入，才能收藏!")
+            } else {
+                axios.post('../php/addCollection.php', { productID, memberID })
+                    .then(response => {
+                        if (response.data === 'done') {
+                            // console.log(response.data)
+                            item.isHearted = true; // 更新項目的 isHearted 屬性
+                        } else {
+                            alert('新增收藏失敗');
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        alert('新增收藏失敗，請重試。');
+                    });
+            }
 
-            axios.
-                post('../php/addCollection.php', { productID, memberID })
-                .then(response => {
-                    if (response.data === 'done') {
-                        // console.log(response.data)
-                        item.isHearted = true; // 更新項目的 isHearted 屬性
-                    } else {
-                        alert('新增收藏失敗');
-                        if (this.isSessionValid === false ){
-                            window.location.href= "../dist/loginRegister.html"
-                        } 
-                    }
-                })
-                .catch(error => {
-                    console.log(error);
-                    alert('新增收藏失敗，請重試。');
-                });
+
         },
 
         //移除收藏

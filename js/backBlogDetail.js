@@ -49,13 +49,13 @@ const app = Vue.createApp({
 
         }
     },
-    mounted(){
-        this.getData();           
+    async mounted(){
+        await this.getData();           
     },
 
     methods: {
 
-        getData() {
+        async getData() {
             function getParameterByName(name, url) {
                 if (!url) url = window.location.href;
                 name = name.replace(/[\[\]]/g, "\\$&");
@@ -69,15 +69,15 @@ const app = Vue.createApp({
             // 使用 getParameterByName 函数来获取 URL 中的 id 参数值
             var blogID = getParameterByName('id');
             // 输出 id 参数的值
-            console.log(blogID);
+            // console.log(blogID);
 
             //撈資料
             const vm = this;
 
-            axios.get('../php/backblogDetail.php?id=' + blogID)
+            await axios.get('../php/backBlogDetail.php?id=' + blogID)
                 .then(function (response) {
-                    console.log(response.data);
-                    console.log("更新成功");
+                    // console.log(response.data);
+                    // console.log("更新成功");
 
 
                     //行程名稱

@@ -19,6 +19,7 @@ const app = Vue.createApp({
       isTotal: 0,
       couponName: '',
       isSubTotal: '',
+      isDiscount:'',
       //已選者的coupon
       selectedCouponId:'',
       //信用卡
@@ -31,7 +32,6 @@ const app = Vue.createApp({
       //email
       email: '',
       emailError: ''
-
     };
   },
   created() {
@@ -67,8 +67,12 @@ const app = Vue.createApp({
     updateCoupon(e) {
       // this.isCoupon.couponID = e.target.value;
       this.selectedCouponId = e.target.selectedOptions[0].getAttribute("data-id");
-      // console.log(this.selectedCouponId);
+      console.log(this.selectedCouponId);
+      console.log(this.isDiscount);
       // console.log(e.target.selectedOptions[0].getAttribute("data-id"));
+      console.log(e.target.value);
+      this.isSubTotal=e.target.value*this.isTotal;
+
     },
 
     async saveData() {
@@ -161,7 +165,7 @@ const app = Vue.createApp({
         const response =
           await axios.post('../php/getCouponNameForPayment.php')
         this.isCoupon = response.data;
-        console.log(this.isCoupon);
+        console.log(this.isCoupon[0].Discount);
       } catch (error) {
         console.error(error);
       }
@@ -186,9 +190,9 @@ const app = Vue.createApp({
     },
     calculateSubTotal() {
       const discountAmount = this.getDiscountAmount(this.selectedCoupon);
-      this.isSubTotal = discountAmount !== 0 ? this.isTotal * discountAmount : this.isTotal;
-      console.log(this.isTotal);
-      console.log(discountAmount);
+      this.isSubTotal = discountAmount !== 0 ? this.isTotal * isDiscount : this.isTotal;
+      // console.log(this.isTotal);
+      // console.log(discountAmount);
     }
   },
   watch: {
