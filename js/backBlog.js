@@ -97,7 +97,7 @@ const app = Vue.createApp({
                         console.log(response.data);
                         if(response.data === 'done'){
                             alert('刪除成功');
-                            // window.location.href = './backBlog.html';
+                            window.location.href = './backBlog.html';
                         }else{
                             alert('刪除失敗');
                         }
