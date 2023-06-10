@@ -3,10 +3,10 @@
 include('Mysql.php'); // 資料庫連線
 
 $checkedData = json_decode($_POST['data'], true);
-print_r($checkedData);
+// print_r($checkedData);
 
 foreach ($checkedData as $ID){
-    echo $ID;
+    // echo $ID;
     $sqlDeleteBlogBlock = "DELETE FROM blogBlock WHERE BlogID = :ID";
     $stmtDeleteBlogBlock = $pdo->prepare($sqlDeleteBlogBlock);
     $stmtDeleteBlogBlock->bindParam(':ID', $ID);

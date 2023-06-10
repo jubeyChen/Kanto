@@ -81,7 +81,7 @@
                     <div class="img_back">
                         <img :src="img + foodBox.Image">
                         <iframe :src=foodBox.MapUrl width="600" height="450" style="border:0;" allowfullscreen=""
-                            loading="lazy" referrerpolicy="no-referrer-when-downgrade" :id="'food_map'+index"
+                            referrerpolicy="no-referrer-when-downgrade" :id="'food_map'+index"
                             :class="{'open':foodBox.show_map === true}"></iframe>
                     </div>
 
