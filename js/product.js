@@ -325,6 +325,7 @@ const RootComponent = {
                 this.displayItems = this.displayItems.filter(item =>
                     item.Name.includes(this.searchInput) ||
                     item.Content.includes(this.searchInput)
+                    
                 );
             }
 
