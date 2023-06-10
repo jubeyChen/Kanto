@@ -16,9 +16,7 @@
 
 <body>
     <!-- 以下Header區域 -->
-    @@include('./layout/header.html',{
-    cart:'active'
-    })
+    @@include('./layout/header.html')
     <!-- 以下是top button -->
     @@include('./layout/topBtn.html')
 
@@ -74,8 +72,11 @@
     @@include('./layout/js.html')
 
 <script>
-
+  if (window.location.href === "https://tibamef2e.com/thd101/g7/Kanto/dist/done.html") {
+    document.write("網頁不存在");
+  }
 </script>
+
       
 </body>
 

@@ -4,10 +4,14 @@
     if (isset($_SESSION['backMember'])) {
         $response = [
             'isSessionValid' => true,
+            'user' => $_SESSION['backMember']
+
         ];
     } else {
         $response = [
             'isSessionValid' => false,
+            'user' => ''
+
         ];
     }
 

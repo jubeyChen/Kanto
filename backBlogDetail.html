@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-    <section class="backBlogDetail container">
+    <section class="backBlogDetail container" id="app">
         
         <!-- ========== 側邊欄 ========== -->
         <aside class="">
@@ -27,11 +27,12 @@
                 <li><a href="backOrder.html" class="btn-pri-l">訂單管理</a></li>
                 <li><a href="backProduct.html" class="btn-pri-l">行程管理</a></li>
                 <li><a href="backBlog.html" class="btn-pri-l">專欄管理</a></li>
+                <back-stage-log-out-btn></back-stage-log-out-btn>
             </ul>
         </aside>
 
         <!-- ========== 主欄位 ========== -->
-        <main class="" id="app">
+        <main class="">
             <h2>專欄管理</h2>
 
             <!-- ========== 上排按鈕 ========== -->
@@ -249,7 +250,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
     <script src="./js/checkBackSession.js"></script>
-    <script src="./js/backBlogDetail.js"></script>
+    <script src="./js/backBlogDetail.js" type="module"></script>
 
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 const app = Vue.createApp({
     data() {
         return {
@@ -5,14 +6,12 @@ const app = Vue.createApp({
             isProductInfo: [],
             shoppingList: [],
             isTotal: 0,
-            selectAll: false, // Add selectAll property
-
+            // selectAll: false, // Add selectAll property
         };
     },
     created(){
         this.shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
-        console.log(this.shoppingList);
-
+        // console.log(this.shoppingList);
         this.calculateTotal(); // Call the method to calculate the initial total
     },
 
@@ -21,7 +20,6 @@ const app = Vue.createApp({
         remove(index) {
             // Remove the item at the specified index from the shoppingList array
             this.shoppingList.splice(index, 1);
-          
             // Recalculate the total
             this.calculateTotal();
           },
@@ -39,111 +37,26 @@ const app = Vue.createApp({
             await axios.post('../php/getProductInfo.php')
                 .then(response => {
                    this.isProductInfo = response.data;
-                    // console.log(this.isProductInfo[0]);
+                    console.log(this.isProductInfo[0]);
                 })
         },
 
-        clearData() {
-            // Remove data from local storage
-            localStorage.removeItem('shoppingList');
-        },
+        // clearData() {
+        //     localStorage.removeItem('shoppingList');
+        // },
     },
     async mounted(){
         let a  = await globalCheck.PageCheckSession();
+        // console.log(a);
         this.isSessionValid = a;
         console. log (this.isSessionValid);
 
-        if (this.isSessionValid === false ){
-            window.location.href= "../dist/loginRegister.html"
-        }
+        if (this.isSessionValid === false) {
+            window.location.href = "../dist/loginRegister.html";
+        }          
         await this.getProductInfo();        
     },
 
 });
+
 app.mount('#app');
-
-
-
-
-        // function refresh() {
-        //     // 1. read LS
-        //     let LS = null;
-        //     try {
-        //         var LS = localStorage.getItem('shoppingList');
-        //         LS = JSON.parse(LS);
-        //         if (LS == null)
-        //             LS = [];
-        //     } catch {
-        //         LS = [];
-        //     }
-        //     // 2. clear the item list
-        //     let cart_item_list = document.getElementById('cart-item-list'); // get the DOM
-        //     cart_item_list.innerHTML = '';
-
-        //     // 3. paste all items from LS on item list
-        //     console.log(LS);
-        //     LS.forEach(element => {
-        //         // cart-item-list{ <li><div> <text>Taipei</text> </div></li>  }
-        //         var li = document.createElement('li');
-        //         li.setAttribute('class', 'cart_item_li');
-
-        //         var div = document.createElement('div');
-        //         var name = document.createElement('text');
-        //         name.innerHTML = element['place'] + ' ' + element['price'] + ' ' + element['src'];
-                
-        //         div.appendChild(name);
-        //         li.appendChild(div);
-
-        //         var panel = document.getElementById('cart-item-list');
-        //         panel.appendChild(li);
-        //     });
-        // }
-
-        // function click_view_detail_btn(btn) {
-        //     console.log(btn);
-        //     // localstorage 裡面是一個陣列 [item1, item2, item3, ...]
-        //     // 'shopping_list'
-
-        //     // url of picture
-        //     var pic_src = btn.parentElement.children[0].children[0].src;
-        //     var place_string = btn.parentElement.children[1].innerHTML;
-        //     var price_string = btn.parentElement.children[2].innerHTML;
-        //     var item_clicked = { 'src': pic_src, 'place': place_string, 'price': price_string }; //當按下按鈕的時候，Json object
-        //     // read LS first 如果他是
-        //     var ls = null;
-        //     try {
-        //         ls = localStorage.getItem('shoppingList');
-        //         ls = JSON.parse(ls); // 字串轉成結構（陣列）
-        //         if (ls == null)
-        //             ls = [];
-        //     } catch {
-        //         ls = [];
-        //     }
-
-        //     // add item into ls
-        //     ls.push(item_clicked); //資料往上推
-        //     localStorage.setItem('shoppingList', JSON.stringify(ls)); //資料字串化
-
-        //     // test reading
-        //     // refresh();
-        // }
-
-                // click_view_detail_btn(btn) {
-        //     // console.log(btn);
-        //     // Get data from the button
-        //     let pic_src = 'pictures'
-        //     let place_string = 'place'
-        //     let date_string = 'date'
-        //     let price_string = 'price'
-
-        //     let item_clicked = {
-        //       src: pic_src,
-        //       place: place_string,
-        //       date: date_string,
-        //       price: price_string,
-        //     };
-      
-        //     // // Update the shopping list data in local storage
-        //     localStorage.setItem('shoppingList', JSON.stringify(item_clicked));
-
-        //   },

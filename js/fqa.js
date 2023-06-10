@@ -28,19 +28,16 @@ const app = Vue.createApp({
     },
     methods: {
         accordion(e) {
-            e.target.nextElementSibling.classList.toggle('-open')
-            e.target.firstElementChild.classList.toggle('-rotate')
+            e.target.closest('.accordion-item').querySelector('.v').classList.toggle('-rotate');
+            e.target.closest('.accordion-item').querySelector('.accordion-content').classList.toggle('-open');
         },
         clearOpen(e) {
-            // console.log(e.target.closest('#app').querySelector('.accordion-content'));
             e.target.closest('#app').querySelectorAll('.accordion-content').forEach(function (item) {
-                //console.log(item.previousElementSibling.querySelector('.v'));
                 item.classList.remove('-open');
                 item.previousElementSibling.querySelector('.v').classList.remove('-rotate');
             });
         },
         changeTabName() {
-            // console.log('aaa');
             if (this.current_tab == 'order') {
                 this.current_tab_name = '訂單相關';
             } else if (this.current_tab == 'account') {
@@ -50,14 +47,14 @@ const app = Vue.createApp({
             }
         },
         changeValue(e) {
-            console.log(e);
+            // console.log(e);
             this.current_tab = e.target.value;
         }
 
     },
     async mounted() {
         let a = await globalCheck.PageCheckSession();// 測試連線
-        console.log(a);
+        // console.log(a);
 
         axios.get('../php/fqa.php')
         .then(response => {

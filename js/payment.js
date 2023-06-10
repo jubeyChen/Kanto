@@ -36,6 +36,8 @@ const app = Vue.createApp({
   },
   created() {
     this.shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+
+    
     //localstorage
     this.calculateTotal();
     this.calculateSubTotal();
@@ -67,7 +69,7 @@ const app = Vue.createApp({
       this.selectedCouponId = e.target.selectedOptions[0].getAttribute("data-id");
       // console.log(this.selectedCouponId);
       // console.log(e.target.selectedOptions[0].getAttribute("data-id"));
-  },
+    },
 
     async saveData() {
       const orderData = new FormData();
@@ -78,6 +80,11 @@ const app = Vue.createApp({
       // console.log(this.shoppingList[0].productDetailId);
       // console.log(this.isCoupon[0].CouponID);
 
+      // 將 JSON 字串轉換回普通 JavaScript 對象或陣列
+      const parsedShoppingList = JSON.parse(orderData.get('ShoppingList'));
+      // 更新 Vue 的資料屬性
+      this.shoppingList = parsedShoppingList;
+
       await axios.post('../php/saveOrderDetail.php', orderData) // Changed 'data' to 'orderData'
         .then(response => {
           console.log(response.data);
@@ -85,6 +92,7 @@ const app = Vue.createApp({
             // console.log('response.data');
             // alert('已成功購買');
             // this.productID = response.data;
+            localStorage.removeItem('shoppingList');
             window.location.href = './done.html';
           }
         })
@@ -150,8 +158,8 @@ const app = Vue.createApp({
     //取的優惠碼
     async getMemberCoupon() {
       try {
-        const response = 
-        await axios.post('../php/getCouponNameForPayment.php')
+        const response =
+          await axios.post('../php/getCouponNameForPayment.php')
         this.isCoupon = response.data;
         console.log(this.isCoupon);
       } catch (error) {
@@ -206,6 +214,12 @@ const app = Vue.createApp({
     // this.isSessionValid = a.isSessionValid;
     // this.user = a.user;
     // console.log(this.isSessionValid);
+
+    // Check if the page is accessed directly
+    if (window.location.href === "https://tibamef2e.com/thd101/g7/Kanto/dist/payment.html") {
+      // Redirect to loginRegister.html
+      document.write("網頁不存在");
+    }
 
     this.getAccountInfo()
       .then(() => {

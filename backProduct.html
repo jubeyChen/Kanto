@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <section class="backProduct">
+    <section id="app" class="backProduct">
         <aside class="">
             <div id="logo_block">
                 <img src="./image/footer/logosqure.svg" alt="logo">
@@ -30,9 +30,10 @@
                 <li><a href="backOrder.html" class="btn-pri-l">訂單管理</a></li>
                 <li><a href="backProduct.html" class="btn-pri-l">行程管理</a></li>
                 <li><a href="backBlog.html" class="btn-pri-l">專欄管理</a></li>
+                <back-stage-log-out-btn></back-stage-log-out-btn>
             </ul>
         </aside>
-        <main class="" id="app">
+        <main class="">
             <h2>行程管理</h2>
             <section class="select-block">
                 <div class="form">
@@ -108,7 +109,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
     <script src="./js/checkBackSession.js"></script>
 
-    <script src="./js/backProduct.js"></script>
+    <script src="./js/backProduct.js" type="module"></script>
 
 </body>
 

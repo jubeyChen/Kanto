@@ -157,6 +157,12 @@ const app = Vue.createApp({
             // data.append('banner2', document.getElementById('banner2').files[0]);
             data.append('region', this.blog.region);
             
+            // console.log(this.blog.name);
+            // console.log(this.blog.intro);
+            // console.log(this.blog.region);
+            // console.log("aaaaaa");
+
+
             const banner1Input = document.getElementById('banner1');
             const image1Input = document.getElementById('banner2');
             const blogImage1Input = document.getElementById('blogImg1');
@@ -197,13 +203,14 @@ const app = Vue.createApp({
             }else{
                 await axios.post('../php/makeNewBlog.php', data)
                 .then(response => {
+                    console.log(response.data);
                     if (response.data !== 'fail') {
-                        console.log('productSchedule已儲存!');
-                        alert('儲存成功!');
+                        // console.log('productSchedule已儲存!');
+
                         this.blog.blogID = response.data;
                         this.savePlan();
                         this.saveBanner();
-                        // window.location.href = './backProduct.html';
+                        
 
                     }
 
@@ -213,7 +220,7 @@ const app = Vue.createApp({
                     alert('連線失敗，請稍後重試');
                 });
             }
-            location.href = 'backBlog.html';
+            // location.href = 'backBlog.html';
             
         },
         async saveBanner(){
@@ -225,12 +232,13 @@ const app = Vue.createApp({
             await axios.post('../php/saveBlogBanner.php', bannerData)
                 .then(response => {
                     console.log(response.data);
-                    // if (response.data === 'done') {
-                    //     console.log('banner已儲存!');
-                        
-                    // } else {
-                    //     alert('Banner儲存失敗');
-                    // }
+                    if (response.data === 'done') {
+                        // console.log('banner已儲存!');
+                        alert('儲存成功');
+                        window.location.href = './backBlog.html';
+                    } else {
+                        alert('Banner儲存失敗');
+                    }
                     
                 })
                 .catch(error => {
@@ -280,5 +288,8 @@ const app = Vue.createApp({
     }
 
 });
+
+import BackStageLogOutBtn from "./component/BackStageLogOutBtn.js";
+app.component('backStageLogOutBtn', BackStageLogOutBtn);
 
 app.mount('#app');

@@ -230,16 +230,16 @@ const app = Vue.createApp({
                     vm.Content1 = response.data.product[0].Content1;
                     vm.Content2 = response.data.product[0].Content2;
                     vm.Content3 = response.data.product[0].Content3;
-                    vm.desImg1 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Banner1}`
-                    vm.desImg2 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Banner2}`
-                    vm.desImg3 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Banner3}`
+                    vm.desImg1 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Banner1}` + `?t=${Date.now()}`;
+                    vm.desImg2 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Banner2}` + `?t=${Date.now()}`;
+                    vm.desImg3 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Banner3}` + `?t=${Date.now()}`;
 
 
                     //方案詳情圖片
-                    vm.plan_Img1 = `./image/productPage/${response.data.product[0][0]}/${response.data.productSchedule[0].Image}`
-                    vm.plan_Img2 = `./image/productPage/${response.data.product[0][0]}/${response.data.productSchedule[1].Image}`
-                    vm.plan_Img3 = `./image/productPage/${response.data.product[0][0]}/${response.data.productSchedule[2].Image}`
-                    vm.plan_Img4 = `./image/productPage/${response.data.product[0][0]}/${response.data.productSchedule[3].Image}`
+                    vm.plan_Img1 = `./image/productPage/${response.data.product[0][0]}/${response.data.productSchedule[0].Image}` + `?t=${Date.now()}`;
+                    vm.plan_Img2 = `./image/productPage/${response.data.product[0][0]}/${response.data.productSchedule[1].Image}` + `?t=${Date.now()}`;
+                    vm.plan_Img3 = `./image/productPage/${response.data.product[0][0]}/${response.data.productSchedule[2].Image}` + `?t=${Date.now()}`;
+                    vm.plan_Img4 = `./image/productPage/${response.data.product[0][0]}/${response.data.productSchedule[3].Image}` + `?t=${Date.now()}`;
 
                     //方案詳情-行程名稱
                     vm.plan_title1 = response.data.productSchedule[0].ScheduleTitle;
@@ -267,10 +267,10 @@ const app = Vue.createApp({
                     vm.intro = response.data.product[0].Content
 
                     //活動介紹圖片
-                    vm.introImg1 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Image1}`
-                    vm.introImg2 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Image2}`
-                    vm.introImg3 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Image3}`
-                    vm.introImg4 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Image4}`
+                    vm.introImg1 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Image1}` + `?t=${Date.now()}`;
+                    vm.introImg2 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Image2}` + `?t=${Date.now()}`;
+                    vm.introImg3 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Image3}` + `?t=${Date.now()}`;
+                    vm.introImg4 = `./image/productPage/${response.data.product[0][0]}/${response.data.product[0].Image4}` + `?t=${Date.now()}`;
 
                 })
                 .catch(function (error) {
@@ -482,6 +482,9 @@ const app = Vue.createApp({
 
     }
 });
+
+import BackStageLogOutBtn from "./component/BackStageLogOutBtn.js";
+app.component('backStageLogOutBtn', BackStageLogOutBtn);
 
 app.mount('#app');
 

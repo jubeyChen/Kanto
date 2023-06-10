@@ -1,12 +1,15 @@
+import BackStageLogOutBtn from "./component/BackStageLogOutBtn.js";
 Vue.createApp({
     data() {
         return {
-            newStatus: "",
+            newStatus: "",  //0跟1狀態
             members: [],  //因為搜尋型態而變動的會員資料
             all_members: [],  //靜態的會員資料
             currentPage: 1,
             countOfPage: 10,    //一頁的量
             currentNum: 10,      //當前筆數
+
+            disableNextbtn: false,  //先預設下一頁按鈕都可以按
 
             searchKeyword: "",
             searchType: "",
@@ -26,42 +29,43 @@ Vue.createApp({
                 .then(response => {
                     this.members = response.data;
                     this.all_members = response.data;
-                    console.log(this.members);
+                    // console.log(this.members);
+                    // console.log(response.data)
                 })
         },
         // 按鈕切換狀態
         btnSwitch(item) {
-            item.Status = !item.Status
+            // 先確保item存在的 避免item undefined
+            if (item && 'Status' in item) {
+                item.Status = !item.Status;
+                this.newStatus = item.Status ? 1 : 0;
+                // console.log(item);
+            };
 
-            if (item.Status === false) {
-                this.newStatus = 0
-            } else {
-                this.newStatus = 1
-            }
+            if (item && 'ID' in item) {
+                const UpdateMember = {
+                    itemStatus: this.newStatus,
+                    itemId: item.ID
+                };
+                // console.log(UpdateMember);
 
-            const UpdateMember = {
-                itemStatus: this.newStatus,
-                itemId: item.ID
-            }
-            // console.log(UpdateMember);
+                axios.post("../php/UpdateMember.php", UpdateMember)
+                    .then(response => {
+                        // console.log(response.data);
+                        if (response.data === '關閉') {
+                            alert("您已關閉會員" + item.ID + "狀態");
+                        } else {
+                            alert("您已啟用會員" + item.ID + "狀態");
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            };
 
-            axios.post("../php/UpdateMember.php", UpdateMember)
-                .then(response => {
-                    // console.log(response.data);
-                    if (response.data === '關閉') {
-                        alert("您已關閉會員" + item.ID + "狀態");
-                    } else {
-                        alert("您已啟用會員" + item.ID + "狀態");
-                    }
-                })
-                .catch(error => {
-                    console.log(error);
-                });
         },
         currentNumber() {
             // 當前數量會有兩個情況
-            // 該頁面數量/總數量       10/16
-            // 每頁數量*頁數 /總數量    16/16
             const allMembers = this.all_members.length
             // 當會員總數量<=10 或 最後一頁(當前頁面=總頁面)時 當前數量=總會員數
             if (allMembers <= 10 || this.currentPage === this.totalPages) {
@@ -71,24 +75,26 @@ Vue.createApp({
                 this.currentNum = this.currentPage * 10;
             };
         },
-        // 上一頁(現在頁數>1時才能按 ) 一頁10筆資料/總人數 下一頁(現在項目<總頁數[全部項目數量/每頁有幾項])
         lastPageBtn() {
             if (this.currentPage > 1) {
                 this.currentPage = this.currentPage - 1
+                this.disableNextbtn = false;
+                this.currentNumber();
             }
-            this.currentNumber();
         },
         nextPageBtn() {
-            if (this.currentPage < this.totalPages) //|| this.members.length <= (currentPage*10))
-            {
-                this.currentPage = this.currentPage + 1
+            if (this.currentPage <= this.totalPages && this.members.length > (this.currentPage * 10)) {
+                this.currentPage = this.currentPage + 1;
+                this.currentNumber();
             }
-            this.currentNumber();
+            else if (this.currentPage === this.totalPages) {
+                this.disableNextbtn = true;
+                this.currentNumber();
+            };
         },
         reverseList() {
             // console.log("aaa")
             this.members = this.members.reverse();
-            // this.currentNumber();
         },
         dosearch() {
             // console.log(this.searchType);
@@ -112,8 +118,6 @@ Vue.createApp({
                     // console.log(this.members[0].FullName.toString());
                     // console.log(this.all_members)
 
-                    console.log(this.all_members);
-
                     this.members = this.all_members.filter(members => members.FullName && members.FullName.toString().includes(keyword));
                     this.currentNum = this.members.length
                     break;
@@ -125,17 +129,23 @@ Vue.createApp({
 
                 default:
                     this.members = this.all_members;
+                    this.currentNum = this.all_members.length
                     this.currentNumber();
                     break;
             }
         }
     },
     async mounted() {
-        await this.GetMembers();
-        await this.btnSwitch();
-        await this.sendStatus();
-        await this.currentNumber();
-        await this.reverseList();
-        await this.dosearch();
+        try {
+            await this.GetMembers();
+            this.btnSwitch();
+            this.currentNumber();
+            this.dosearch();
+        }
+        catch (error) {
+            // 處理错误
+            console.error(error);
+        }
     }
-}).mount('#app');
+}).component('backStageLogOutBtn', BackStageLogOutBtn)
+.mount('#app');

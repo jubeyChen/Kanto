@@ -184,6 +184,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .cart_icons_favorite_small,
@@ -262,14 +263,27 @@
         @include m(){
             display: flex;
             flex-direction: column;
+
+            li{
+
+                img{
+                    padding-top: 20px;
+                }
+            }
+
         }
 
         li {
             display: flex;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
             width: 80%;
             margin: 0 20px;
+            flex-direction: column;
+          @include m{
+            margin-left: 35px;
+          }
 
             img {
                 width: 100%;

@@ -1,13 +1,17 @@
-const backSession = Vue.createApp({
+let backSession = Vue.createApp({
     data() {
-        return {}
+        return {
+            isSessionValid: false
+        }
     },
+
     methods: {
-        checkLoginStatus() {
-            axios.post('../php/CheckBackSession.php')
+        async checkLoginStatus() {
+            await axios.post('../php/CheckBackSession.php')
                 .then(response => {
                     if (response.data.isSessionValid) {
-                        window.location.href = "backMember.html";
+                        this.isSessionValid = response.data.isSessionValid;
+                        // window.location.href = "backMember.html";
                     }else{
                         window.location.href = "backLogin.html";
                     }
@@ -15,11 +19,12 @@ const backSession = Vue.createApp({
                 .catch(error => {
                     console.log(error);
                 });
-        }
+        },
+        
     },
 
-    mounted(){
-        // this.checkLoginStatus();
+    async created(){
+        await this.checkLoginStatus();
     }
 
 });

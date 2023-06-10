@@ -84,7 +84,7 @@ const app = Vue.createApp({
             //     this.Checked.push(checkbox[i].value);
             //     // console.log(checkbox[i].value);
             // }
-            // console.log(this.Checked);
+            console.log(this.Checked);
             let checkedData = new FormData();
             checkedData.append('data', JSON.stringify(this.Checked));
             console.log(checkedData);
@@ -95,8 +95,14 @@ const app = Vue.createApp({
                 axios.post('../php/deleteBlog.php', checkedData)
                     .then(response => {
                         console.log(response.data);
-                        // alert('刪除成功')
-                        window.location.href = '../dist/backBlog.html';
+                        if(response.data === 'done'){
+                            alert('刪除成功');
+                            window.location.href = './backBlog.html';
+                        }else{
+                            alert('刪除失敗');
+                        }
+                        
+                        
                     })
                     .catch(error => {
                         console.log(error);
@@ -112,5 +118,8 @@ const app = Vue.createApp({
     }
 
 });
+
+import BackStageLogOutBtn from "./component/BackStageLogOutBtn.js";
+app.component('backStageLogOutBtn', BackStageLogOutBtn);
 
 app.mount('#app');
