@@ -24,7 +24,7 @@
             <section class="container" :class="{'-show':start === true}">
                 <aside>
                     <div class="avatar">
-                        <div class="img" v-if="!preview"><img v-if="accountInfo.Avatar" :src="avatarURL+accountInfo.ID+'/avatar/'+accountInfo.Avatar"></div>
+                        <div class="img" v-if="!preview"><img v-if="accountInfo.Avatar" :src="avatarURL+accountInfo.ID+'/avatar/'+accountInfo.Avatar+`?t=${Date.now()}`"></div>
                         <div class="img" v-if="preview"><img :src="accountInfo.Avatar"></div>
                         <ul class="imgOption">
                             <li>

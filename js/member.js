@@ -280,8 +280,11 @@ const app = Vue.createApp({
                     } else {
                         this.accountInfo.Gender = response.data[0].Gender;
                     }
-                    
-                    this.accountInfo.Phone = response.data[0].Phone;
+                    if (response.data[0].Phone === null || response.data[0].Phone === undefined) {
+                        this.accountInfo.Phone = null;
+                    } else {
+                        this.accountInfo.Phone = response.data[0].Phone;
+                    }
                 })
                 .catch(error => {
                     console.log(error);
