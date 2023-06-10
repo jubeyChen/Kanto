@@ -205,8 +205,8 @@ const app = Vue.createApp({
                 .then(response => {
                     console.log(response.data);
                     if (response.data !== 'fail') {
-                        console.log('productSchedule已儲存!');
-                        alert('儲存成功!');
+                        // console.log('productSchedule已儲存!');
+
                         this.blog.blogID = response.data;
                         this.savePlan();
                         this.saveBanner();
@@ -233,7 +233,7 @@ const app = Vue.createApp({
                 .then(response => {
                     console.log(response.data);
                     if (response.data === 'done') {
-                        console.log('banner已儲存!');
+                        // console.log('banner已儲存!');
                         alert('儲存成功');
                         window.location.href = './backBlog.html';
                     } else {
