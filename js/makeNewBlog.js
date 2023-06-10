@@ -157,10 +157,10 @@ const app = Vue.createApp({
             // data.append('banner2', document.getElementById('banner2').files[0]);
             data.append('region', this.blog.region);
             
-            console.log(this.blog.name);
-            console.log(this.blog.intro);
-            console.log(this.blog.region);
-            console.log("aaaaaa");
+            // console.log(this.blog.name);
+            // console.log(this.blog.intro);
+            // console.log(this.blog.region);
+            // console.log("aaaaaa");
 
 
             const banner1Input = document.getElementById('banner1');
@@ -210,7 +210,7 @@ const app = Vue.createApp({
                         this.blog.blogID = response.data;
                         this.savePlan();
                         this.saveBanner();
-                        window.location.href = './backBlog.html';
+                        
 
                     }
 
@@ -232,12 +232,12 @@ const app = Vue.createApp({
             await axios.post('../php/saveBlogBanner.php', bannerData)
                 .then(response => {
                     console.log(response.data);
-                    // if (response.data === 'done') {
-                    //     console.log('banner已儲存!');
-                        
-                    // } else {
-                    //     alert('Banner儲存失敗');
-                    // }
+                    if (response.data === 'done') {
+                        console.log('banner已儲存!');
+                        window.location.href = './backBlog.html';
+                    } else {
+                        alert('Banner儲存失敗');
+                    }
                     
                 })
                 .catch(error => {
