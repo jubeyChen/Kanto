@@ -111,6 +111,12 @@
                         </ul>
                     </div>
 
+                    <div class="input-group mb-3" v-show="!editable">
+                        <ul>
+                            <li v-for="(date, index) in allDate" :key="index">{{ date.OfferDate }}</li>
+                        </ul>
+                    </div>
+
 
                     <div class="input-group mb-3">
                         <span class="input-group-text">行程簡介1</span>

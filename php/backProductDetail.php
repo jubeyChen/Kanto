@@ -41,10 +41,20 @@ $statement4->bindParam(':productId', $productId, PDO::PARAM_INT);
 $statement4->execute();
 $data4 = $statement4->fetchAll();
 
+//第四個搜尋
+$sql5 = "SELECT OfferDate FROM productDetail
+WHERE productDetail.ProductID = :productId ";
+
+$statement5 = $pdo->prepare($sql5);
+$statement5->bindParam(':productId', $productId, PDO::PARAM_INT);
+$statement5->execute();
+$data5 = $statement5->fetchAll();
+
 $response = [
     'product' => $data,
     // 'blogBlock' => $data2,
-    'productSchedule' => $data4
+    'productSchedule' => $data4,
+    'productDetail' => $data5
 ];
 
 // 轉 JSON

@@ -139,6 +139,8 @@ const app = Vue.createApp({
                 //活動介紹
                 intro: this.intro,
 
+                //所有日期
+                allDate: []
 
             }
             // console.log(updateData);
@@ -169,10 +171,7 @@ const app = Vue.createApp({
                         return this.savePlanImg();
                     })
                     .then(() => {
-                        window.onload = () => {
-                            this.getData(); // 在所有圖片載入完成後重新渲染畫面
-
-                        };
+                        this.getData();// 在所有圖片載入完成後重新渲染畫面
                     })
                     .catch((error) => {
                         console.log(error);
@@ -213,6 +212,8 @@ const app = Vue.createApp({
                 .then(function (response) {
                     // console.log(response.data);
                     // console.log("更新成功");
+
+                    vm.allDate = response.data.productDetail;
 
                     //行程名稱
                     vm.name = response.data.product[0].Name;
