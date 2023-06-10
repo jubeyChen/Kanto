@@ -263,6 +263,14 @@
         @include m(){
             display: flex;
             flex-direction: column;
+
+            li{
+
+                img{
+                    padding-top: 20px;
+                }
+            }
+
         }
 
         li {
@@ -273,7 +281,9 @@
             width: 80%;
             margin: 0 20px;
             flex-direction: column;
-          
+          @include m{
+            margin-left: 35px;
+          }
 
             img {
                 width: 100%;
