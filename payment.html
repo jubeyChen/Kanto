@@ -139,9 +139,9 @@
                             </li>
                             <li class="payment_select">
                                 <select id="payment_coupon" name="請選擇優惠卷" v-model="selectedCoupon" @change="updateCoupon">
-                                    <option value="" disabled selected>請選擇優惠卷</option>
-                                    <option v-for="coupon in isCoupon" :data-id="coupon.CouponID">
-                                        Coupon {{ coupon.CouponID }}
+                                    <option value="" disabled selected>請選擇優惠卷{{isDiscount}}</option>
+                                    <option v-for="coupon in isCoupon" :data-id="coupon.CouponID" :value="coupon.Discount">
+                                     {{ coupon.CouponName }}
                                     </option>
                                 </select>
 
@@ -154,10 +154,10 @@
                                 <p>NT${{isTotal}}</p>
                             </li>
 
-                            <li class="payment_price_selection">
+                            <!-- <li class="payment_price_selection">
                                 <label for="payment_discount_name">優惠卷名稱</label>
                                 <p>{{ getCouponName(selectedCoupon) }}</p>
-                            </li>
+                            </li> -->
 
                             <!-- <li class="payment_price_selection">
                                 <label for="payment_discount_percentage">折扣百分比</label>
@@ -200,4 +200,3 @@
 
 </html>
 
-<!-- :disabled="hasErrors || isAnyInputEmpty" -->
