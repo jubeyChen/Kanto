@@ -42,14 +42,31 @@ $affectedRow = $statement->rowCount();
 if ($affectedRow > 0) {
   $orderID = $pdo->lastInsertId(); //取得最後一個ID: orderID
 
-  $sql2 = "INSERT INTO orderDetail (OrderID, ProductID, ProductDetailID, Quantity) VALUES (?,?,?,?)";
-  $statement2 = $pdo->prepare($sql2);
-  $statement2->bindParam(1, $orderID);
-  $statement2->bindParam(2, $ProductID);
-  $statement2->bindParam(3, $ProductDetailID);
-  $statement2->bindParam(4, $Quantity);
+  foreach ($shoppingList as $item) {
+    // 提取数组中的值
+    $productDetailId = $item['productDetailId'];
+    $productID = $item['productID'];
+    $count = $item['count'];
+    
+    $sql2 = "INSERT INTO orderDetail (OrderID, ProductID, ProductDetailID, Quantity) VALUES (?,?,?,?)";
 
-  $statement2->execute();
+    // 绑定参数并执行查询
+    $statement2 = $pdo->prepare($sql2);
+    $statement2->bindParam(1, $orderID);
+    $statement2->bindParam(2, $productID);
+    $statement2->bindParam(3, $productDetailId);
+    $statement2->bindParam(4, $count);
+    $statement2->execute();
+  }
+
+  // $sql2 = "INSERT INTO orderDetail (OrderID, ProductID, ProductDetailID, Quantity) VALUES (?,?,?,?)";
+  // $statement2 = $pdo->prepare($sql2);
+  // $statement2->bindParam(1, $orderID);
+  // $statement2->bindParam(2, $ProductID);
+  // $statement2->bindParam(3, $ProductDetailID);
+  // $statement2->bindParam(4, $Quantity);
+
+  // $statement2->execute();
 
   $affectedRow2 = $statement2->rowCount();
 

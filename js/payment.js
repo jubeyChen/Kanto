@@ -36,7 +36,6 @@ const app = Vue.createApp({
   },
   created() {
     this.shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
-
     
     //localstorage
     this.calculateTotal();
@@ -108,7 +107,7 @@ const app = Vue.createApp({
 
     async getProductID() {
       for (let i = 0; i < this.shoppingList.length; i++) {
-        console.log(this.shoppingList[i].productID);
+        // console.log(this.shoppingList[i].productID);
       }
     },
 
@@ -165,7 +164,7 @@ const app = Vue.createApp({
         const response =
           await axios.post('../php/getCouponNameForPayment.php')
         this.isCoupon = response.data;
-        console.log(this.isCoupon[0].Discount);
+        // console.log(this.isCoupon[0].Discount);
       } catch (error) {
         console.error(error);
       }
