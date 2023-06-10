@@ -234,6 +234,7 @@ const app = Vue.createApp({
                     console.log(response.data);
                     if (response.data === 'done') {
                         console.log('banner已儲存!');
+                        alert('儲存成功');
                         window.location.href = './backBlog.html';
                     } else {
                         alert('Banner儲存失敗');
