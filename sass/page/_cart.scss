@@ -236,10 +236,12 @@
 }
 
 #emptyCartImage {
-    width: 90%;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    @include m() {
+            width: 100%;
+    }
 }
 
 //<!---------------- 推薦的地方 ---------------->
