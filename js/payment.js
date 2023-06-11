@@ -212,16 +212,16 @@ const app = Vue.createApp({
     }
   },
   async mounted() {
-    // let a = await globalCheck.PageCheckSession();
-    // this.isSessionValid = a.isSessionValid;
-    // this.user = a.user;
-    // console.log(this.isSessionValid);
+    let a  = await globalCheck.PageCheckSession();
+    // console.log(a);
+    this.isSessionValid = a.isSessionValid;
+    // this.user= a.user;
+    // console. log (this.isSessionValid);
 
-    // Check if the page is accessed directly
-    if (window.location.href === "https://tibamef2e.com/thd101/g7/Kanto/dist/payment.html") {
-      // Redirect to loginRegister.html
-      document.body.innerHTML = "網頁不存在";
-    }
+    if (this.isSessionValid === false) {
+        // alert('請先登入會員，才可進入購物車');
+        window.location.href = "loginRegister.html";
+    }  
 
     this.getAccountInfo()
       .then(() => {
