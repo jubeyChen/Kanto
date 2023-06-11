@@ -3,62 +3,62 @@
 
 include('Mysql.php'); //資料庫連線
 
-// 確保 Content-Type 是 application/json
-header('Content-Type: application/json');
+header('Content-Type: application/json');   // 確保 Content-Type 是 application/json
 
-// 解析 JSON 資料
-$data = json_decode(file_get_contents('php://input'), true);
+$data = json_decode(file_get_contents('php://input'), true);   // 解析 JSON 資料
 
 // $itemStatus = $data['itemStatus'];
-function bool_to_str($val)
-{
-    if ($val === true) {
-        return 'true';
-    }
- 
-    if ($val === false) {
-        return 'false';
-    }
- 
-    return $val;
-}
+// function bool_to_str($val)
+// {
+//     if ($val === true) {
+//         return 'true';
+//     }
+//     if ($val === false) {
+//         return 'false';
+//     }
+//     return $val;
+// }
 
-// $itemStatus = bool_to_str($data['itemStatus']);
-$itemStatus = htmlspecialchars($data['itemStatus']);
-$itemId = htmlspecialchars($data['itemId']);
-//echo $_POST['itemStatus'];
-//echo $data['itemId'];
+$itemStatus = htmlspecialchars($data['itemStatus']);        //更新後的會員狀態
+$itemId = htmlspecialchars($data['itemId']);                //更新狀態的會員ID
 
+
+//查詢該會員的目前的會員狀態
+$sql = "SELECT `Status` FROM members WHERE ID = ?";
+$statement = $pdo->prepare($sql);
+$statement->bindParam(1, $itemId);
+$statement->execute(); 
+$data = $statement->fetch();          //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
+
+$memberStatus = $data["Status"];       //會員的當前狀態
 
 //更新該會員的會員狀態
-$sql = "UPDATE members SET  `Status` = ? WHERE ID = ?";
+$Sql2 = "UPDATE members SET `Status` = ? WHERE ID = ?";
+$statement2 = $pdo->prepare($Sql2);
+$statement2->bindParam(1, $itemStatus);
+$statement2->bindParam(2, $itemId);
 
-//執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
-$statement = $pdo->prepare($sql);
-$statement->bindParam(1, $itemStatus); //檢查 第一個問號
-$statement->bindParam(2, $itemId); //檢查 第一個問號
-$affectedStatus = $statement->execute();
+$affectedStatus = $statement2->execute();
 
-// 如果更新成功 查詢該會員目前狀態 回傳前端 讓前端alert
-if($affectedStatus > 0){
-    $sql2 = "SELECT `Status` From members WHERE ID = ?";
-    $statement2 = $pdo->prepare($sql2);
-    $statement2->bindParam(1, $itemId); //檢查 第一個問號
-    $statement2->execute();
-    $data2 = $statement2->fetchAll();
-    foreach($data2 as $index => $row){
-//     echo "狀態";
-//     echo $row["Status"];  
-    $a = $row["Status"];  
+
+// 如果更新成功   將狀態被關閉的會員留言刪除 回傳前端 讓前端alert
+if ($affectedStatus) {
+    if ($itemStatus == 0 && $memberStatus != 0) {                     
+        // 將狀態關閉的會員的的留言从review資料表中删除
+        $Sql3 = "DELETE FROM review WHERE memberID = ?";
+        $statement3 = $pdo->prepare($Sql3);
+        $statement3->bindParam(1, $itemId);
+        $statement3->execute();
     }
 
-    if($a == 0){
-        echo "關閉";
-    }else{
+    if($memberStatus === 0){
         echo "啟用";
+    }else{
+        echo "關閉";
     }
 
 }else{
     echo 'error'; 
 }
+
 ?>

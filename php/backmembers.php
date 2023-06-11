@@ -6,9 +6,9 @@ include('Mysql.php'); //資料庫連線
 $sql = "SELECT * FROM members";
 
 
-
 //取得數據
 $statement = $pdo->query($sql);
+
 
 //轉成二維陣列
 $data = $statement->fetchAll();

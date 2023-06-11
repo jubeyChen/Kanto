@@ -47,13 +47,13 @@ Vue.createApp({
                     itemStatus: this.newStatus,
                     itemId: item.ID
                 };
-                // console.log(UpdateMember);
+                console.log(UpdateMember);
 
                 axios.post("../php/UpdateMember.php", UpdateMember)
                     .then(response => {
                         // console.log(response.data);
-                        if (response.data === '關閉') {
-                            alert("您已關閉會員" + item.ID + "狀態");
+                        if (response.data == '關閉') {
+                            alert("您已關閉會員" + item.ID + "狀態，並刪除此會員所有留言" );
                         } else {
                             alert("您已啟用會員" + item.ID + "狀態");
                         }
