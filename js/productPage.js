@@ -158,14 +158,14 @@ const app = Vue.createApp({
 
                     this.productID = response.data.data1[0][0];
                     this.title = response.data.data1[0]['Name'];
-                    this.banner1 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Banner1']}`;
-                    this.banner2 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Banner2']}`;
-                    this.banner3 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Banner3']}`;
+                    this.banner1 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Banner1']}` + `?t=${Date.now()}`;
+                    this.banner2 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Banner2']}` + `?t=${Date.now()}`;
+                    this.banner3 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Banner3']}` + `?t=${Date.now()}`;
                     this.eventContent = response.data.data1[0]['Content'];
-                    this.event_pic1 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Image1']}`;
-                    this.event_pic2 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Image2']}`;
-                    this.event_pic3 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Image3']}`;
-                    this.event_pic4 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Image4']}`;
+                    this.event_pic1 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Image1']}` + `?t=${Date.now()}`;
+                    this.event_pic2 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Image2']}` + `?t=${Date.now()}`;
+                    this.event_pic3 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Image3']}` + `?t=${Date.now()}`;
+                    this.event_pic4 = `./image/productPage/${response.data.data1[0][0]}/${response.data.data1[0]['Image4']}` + `?t=${Date.now()}`;
                     this.Introduction1 = response.data.data1[0]['Content1'];
                     this.Introduction2 = response.data.data1[0]['Content2'];
                     this.Introduction3 = response.data.data1[0]['Content3'];
@@ -177,24 +177,24 @@ const app = Vue.createApp({
                     // console.log(response.data.data2);
                     this.detail1_Time = response.data.data2[0]['Times'];
                     this.detail1_ScheduleTitle = response.data.data2[0]['ScheduleTitle'];
-                    this.detail1_Pic = `./image/productPage/${response.data.data1[0][0]}/${response.data.data2[0]['Image']}`;
+                    this.detail1_Pic = `./image/productPage/${response.data.data1[0][0]}/${response.data.data2[0]['Image']}` + `?t=${Date.now()}`;
                     this.detail1_Content = response.data.data2[0]['Content'];
 
                     this.detail2_Time = response.data.data2[1]['Times'];
                     this.detail2_ScheduleTitle = response.data.data2[1]['ScheduleTitle'];
-                    this.detail2_Pic = `./image/productPage/${response.data.data1[0][0]}/${response.data.data2[1]['Image']}`;
+                    this.detail2_Pic = `./image/productPage/${response.data.data1[0][0]}/${response.data.data2[1]['Image']}` + `?t=${Date.now()}`;
                     this.detail2_Content = response.data.data2[1]['Content'];
                     this.detail2_ContentTitle = response.data.data2[1]['ContentTitle'];
 
                     this.detail3_Time = response.data.data2[2]['Times'];
                     this.detail3_ScheduleTitle = response.data.data2[2]['ScheduleTitle'];
-                    this.detail3_Pic = `./image/productPage/${response.data.data1[0][0]}/${response.data.data2[2]['Image']}`;
+                    this.detail3_Pic = `./image/productPage/${response.data.data1[0][0]}/${response.data.data2[2]['Image']}` + `?t=${Date.now()}`;
                     this.detail3_Content = response.data.data2[2]['Content'];
                     this.detail3_ContentTitle = response.data.data2[2]['ContentTitle'];
 
                     this.detail4_Time = response.data.data2[3]['Times'];
                     this.detail4_ScheduleTitle = response.data.data2[3]['ScheduleTitle'];
-                    this.detail4_Pic = `./image/productPage/${response.data.data1[0][0]}/${response.data.data2[3]['Image']}`;
+                    this.detail4_Pic = `./image/productPage/${response.data.data1[0][0]}/${response.data.data2[3]['Image']}` + `?t=${Date.now()}`;
                     this.detail4_Content = response.data.data2[3]['Content'];
                     this.detail4_ContentTitle = response.data.data2[3]['ContentTitle'];
 
