@@ -1,6 +1,16 @@
 .video_case {
     height: 100vh;
 
+    .arrowDown{
+        // z-index: 999;
+        width: 30px;
+        height: 70px;
+        display: block;
+        margin-left: 94%;
+        // margin-top: 30%;
+        padding-top: 40%;
+    }
+
     .banner {
         z-index: -1;
         width: 100%;
