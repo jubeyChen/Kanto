@@ -166,8 +166,12 @@
                                                         alt="">
                                                 </div>
                                                 <div class="member_wrapper">
-                                                    <div class="member_name">
+                                                    <div class="member_name" v-if="item.FullName != ''">
                                                         <p>{{item.FullName}}</p>
+                                                    </div>
+                                                    <div class="member_name"
+                                                        v-else-if="item.FullName == '' || item.FullName == null">
+                                                        <p>匿名用戶</p>
                                                     </div>
                                                     <div class="member_time">
                                                         <p>{{item.ReviewTime}}</p>

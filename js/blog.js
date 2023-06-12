@@ -35,7 +35,7 @@ const app = {
         }
     },
     created() {
-        this.getData();
+        // this.getData();
         this.handleClick(0)
     },
     methods: {
