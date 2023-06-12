@@ -180,22 +180,27 @@ const RootComponent = {
         const accordion = document.getElementsByClassName("contentBx");
 
         for (let i = 0; i < accordion.length; i++) {
-            accordion[i].addEventListener("click", function () {
-                // console.log("aaaaa");
-                this.classList.toggle("active");
-            });
+          accordion[i].addEventListener("click", function(event) {
+            event.stopPropagation(); // 停止事件的传播
+            if (!event.target.classList.contains("content")) {
+              this.classList.toggle("active");
+            }
+          });
         }
-
+        
         const labels = document.getElementsByClassName("label");
-
+        
         for (let i = 0; i < labels.length; i++) {
-            const label = labels[i];
-            const content = label.nextElementSibling;
-
-            label.addEventListener("click", function () {
-                content.classList.toggle("active");
-            });
+          const label = labels[i];
+        
+          label.addEventListener("click", function(event) {
+            const content = event.currentTarget.nextElementSibling;
+            if (!event.target.classList.contains("content")) {
+              content.classList.toggle("active");
+            }
+          });
         }
+        
 
 
 

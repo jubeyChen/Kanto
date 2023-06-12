@@ -577,6 +577,7 @@
                     border: 1px solid #000;
                     flex-grow: 1;
                     width: 70%;
+                    height: 300px;
 
                     @include m() {
                         width: 100%;
@@ -697,6 +698,14 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 30px;
+
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        box-sizing: border-box;
 
         .heart-btn {
             padding-top: 5px;
