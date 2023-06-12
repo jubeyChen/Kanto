@@ -92,13 +92,16 @@
                 padding: 0 10px;
                 box-sizing: border-box;
             }
+            P{
+                color:#888888
+            }
 
         }
     }
 }
 
 .payment_error {
-    color: red;
+    color: #C73E3A;
     line-height: 30px;
     /* 調整你希望的向下位移數值 */
 }

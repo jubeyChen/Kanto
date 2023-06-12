@@ -98,22 +98,22 @@
         <ul>
           <li>
             <input type="text" placeholder="請輸入主題" v-model="aboutSubject">
-            <div v-if="!aboutSubject && formSubmitted">請輸入主題。</div>
+            <div v-if="!aboutSubject && formSubmitted" class="about_error">請輸入主題。</div>
           </li>
 
           <li>
             <input type="text" placeholder="請輸入名字" v-model="aboutName">
-            <div v-if="!aboutName && formSubmitted">請輸入名字。</div>
+            <div v-if="!aboutName && formSubmitted" class="about_error">請輸入名字。</div>
           </li>
 
           <li>
             <input type="text" placeholder="請輸入電子郵箱" v-model="aboutEmail">
-            <div v-if="!isValidEmail">請輸入有效的電子郵件地址。</div>
+            <div v-if="!isValidEmail" class="about_error">請輸入有效的電子郵件地址。</div>
           </li>
 
           <li>
             <input type="text" placeholder="請輸入手機號碼" v-model="aboutTel">
-            <div v-if="!isTaiwanMobileValid">請輸入有效的手機號碼。</div>
+            <div v-if="!isTaiwanMobileValid" class="about_error">請輸入有效的手機號碼。</div>
           </li>
 
           <li>
