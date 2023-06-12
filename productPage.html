@@ -161,12 +161,15 @@
                                         <div class="member"
                                             v-if="item.Image1 || item.Image2 || item.Image3 || item.Image4 || item.Image5 || item.Image6">
                                             <div class="member_information">
-                                                <div class="member_pic" v-if="item.Avatar">
-                                                    <img :src="`./image/member/${item.ID}/avatar/${item.Avatar}`"
-                                                        alt="">
+                                                <div class="member_pic">
+                                                    <img v-if="item.Avatar"
+                                                        :src="`./image/member/${item.ID}/avatar/${item.Avatar}`" alt="">
+                                                    <div v-else-if="item.Avatar == '' || item.Avatar == null">
+                                                        <div class="member_circle"></div>
+                                                    </div>
                                                 </div>
                                                 <div class="member_wrapper">
-                                                    <div class="member_name" v-if="item.FullName != ''">
+                                                    <div class="member_name" v-if="item.FullName">
                                                         <p>{{item.FullName}}</p>
                                                     </div>
                                                     <div class="member_name"
@@ -368,12 +371,17 @@
                             <!--會員資訊-->
                             <div class="member_block" v-for="(item,index) in paginatedActivities" :key="index">
                                 <div class="member_information">
-                                    <div class="pic" v-if="item.Avatar">
-                                        <img :src="`./image/member/${item.ID}/avatar/${item.Avatar}`" alt="">
+                                    <div class="pic">
+                                        <img v-if="item.Avatar" :src="`./image/member/${item.ID}/avatar/${item.Avatar}`"
+                                            alt="">
+                                        <div v-else-if="item.Avatar == null || item.Avatar == ''">
+                                            <div class="member_review_circle"></div>
+                                        </div>
                                     </div>
 
                                     <div class="member_name">
-                                        <p>{{item.FullName}}</p>
+                                        <p v-if="item.FullName">{{item.FullName}}</p>
+                                        <p v-else-if="item.FullName == ''||item.FullName == null">匿名用戶</p>
                                         <p>{{item.ReviewTime}}</p>
                                     </div>
                                 </div>
@@ -825,11 +833,16 @@
                                 v-if="!item.Image1 && !item.Image2 && !item.Image3 && !item.Image4 && !item.Image5 && !item.Image6">
                                 <div class="phone_member_inner">
                                     <div class="member_pic">
-                                        <img :src="`./image/member/${item.ID}/avatar/${item.Avatar}`" alt="">
+                                        <img v-if="item.Avatar" :src="`./image/member/${item.ID}/avatar/${item.Avatar}`"
+                                            alt="">
+                                        <div v-else-if="item.Avatar == null || item.Avatar == ''">
+                                            <div class="member_pic_circle"></div>
+                                        </div>
                                     </div>
                                     <div class="member_wrapper">
                                         <div class="member_name">
-                                            <p>{{item.FullName}}</p>
+                                            <p v-if="item.FullName">{{item.FullName}}</p>
+                                            <p v-else-if="item.FullName == '' || item.FullName == null">匿名用戶</p>
                                         </div>
                                         <div class="date">
                                             <p>{{item.ReviewTime}}</p>
@@ -1184,12 +1197,17 @@
                     <template v-for="item in memberReview">
                         <div class="member_block first_block">
                             <div class="member_information">
-                                <div class="pic" v-if="item.Avatar">
-                                    <img :src="`./image/member/${item.ID}/avatar/${item.Avatar}`" alt="">
+                                <div class="pic">
+                                    <img v-if="item.Avatar" :src="`./image/member/${item.ID}/avatar/${item.Avatar}`"
+                                        alt="">
+                                    <div v-else-if="item.Avatar == '' || item.Avatar == null">
+                                        <div class="member_information_circle"></div>
+                                    </div>
                                 </div>
 
                                 <div class="member_name">
-                                    <p>{{item.FullName}}</p>
+                                    <p v-if="item.FullName">{{item.FullName}}</p>
+                                    <p v-else-if="item.FullName == null || item.FullName == ''">匿名用戶</p>
                                     <p><span>4</span>天前</p>
                                 </div>
                             </div>

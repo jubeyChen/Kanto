@@ -396,6 +396,15 @@ div.product_inner {
                                             object-fit: cover;
                                         }
 
+                                        div {
+                                            div.member_circle {
+                                                width: 50px;
+                                                height: 50px;
+                                                background-color: gray;
+                                                border-radius: 50%;
+                                            }
+                                        }
+
                                     }
                                 }
 
@@ -906,6 +915,15 @@ div.product_inner {
                                 width: 50px;
                                 height: 50px;
                                 object-fit: cover;
+                            }
+
+                            div {
+                                div.member_review_circle {
+                                    width: 50px;
+                                    height: 50px;
+                                    background-color: gray;
+                                    border-radius: 50%;
+                                }
                             }
                         }
 
@@ -1646,6 +1664,15 @@ div.product_inner_phone {
                                     width: 50px;
                                     object-fit: cover;
                                 }
+
+                                div {
+                                    div.member_pic_circle {
+                                        border-radius: 50%;
+                                        height: 50px;
+                                        width: 50px;
+                                        background-color: gray;
+                                    }
+                                }
                             }
 
                             div.member_wrapper {
@@ -2069,6 +2096,15 @@ div.phone_all_review {
                                 width: 50px;
                                 height: 50px;
                                 border-radius: 50%;
+                            }
+
+                            div {
+                                div.member_information_circle {
+                                    width: 50px;
+                                    height: 50px;
+                                    border-radius: 50%;
+                                    background-color: gray;
+                                }
                             }
                         }
 
