@@ -221,9 +221,7 @@
                 </div>
 
                 <div class="page">
-                    <ul>
-                        <li @click="goToPage(page)" v-for="page in totalPages" :key="page"><a>{{page}}</a></li>
-                    </ul>
+                        <a class="btn-pri-l" @click="goToPage(page)" v-for="page in totalPages" :key="page">{{page}}</a>
                 </div>
                   
                   

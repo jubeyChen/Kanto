@@ -699,14 +699,15 @@
         justify-content: space-between;
         margin-bottom: 30px;
 
-        width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        box-sizing: border-box;
-
+        h3{
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            box-sizing: border-box;
+        }
         .heart-btn {
             padding-top: 5px;
             border: none;
@@ -781,32 +782,15 @@
     .page {
 
         margin-top: 30px;
+        text-align: center;
 
-        ul {
-            // outline: 1px solid yellow;
-            display: flex;
-            justify-content: center;
 
-            @include m() {
-                justify-content: center;
-            }
-
-            li {
                 a {
-                    display: block;
-                    font-size: $paragraph;
-                    width: 50px;
-                    height: 50px;
+                    padding: 15px 25px;
                     text-decoration: none;
-                    text-align: center;
-                    line-height: 50px;
-                    color: white;
-                    background-color: $primary;
-                    margin-right: 10px;
-                    cursor: pointer;
-                }
+                    margin: 0 10px;
             }
-        }
+
     }
 
 
