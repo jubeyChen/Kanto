@@ -108,7 +108,7 @@ let blogId = getParameterByName('id');
 axios.get('../php/blogPage.php?id=' + blogId)
 .then(response => {
 
-    // console.log(response.data);
+    console.log(response.data);
 
     /* ========== 串接標題 ========== */
     document.querySelector('.content h2').innerHTML = response.data[0].Title;
@@ -122,7 +122,7 @@ axios.get('../php/blogPage.php?id=' + blogId)
 
     /* ========== 串接 content 照片 ========== */
     for (let m = 1; m <= 4; m++) {
-        const imageURL = `./image/blog/${response.data[0].blogID}/${response.data[0].Image}`;
+        const imageURL = `./image/blog/${response.data[0].blogID}/${response.data[m - 1].Image}`;
         document.getElementById(`content${m}`).setAttribute('src', imageURL);
         document.getElementById(`content${m}_m`).setAttribute('src', imageURL);
     }
