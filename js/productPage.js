@@ -268,8 +268,9 @@ const app = Vue.createApp({
         allImage() {
             //要將photos還原成空陣列，不然照片庫的數字會不斷增加
             this.photos = [];
-            this.getData();
-
+            this.getData().then(() => {
+                this.calculateTotal();
+            });
         },
 
 
@@ -287,7 +288,14 @@ const app = Vue.createApp({
                 });
                 this.currentPage = 1;
                 // console.log(this.memberReview);
+                this.calculateTotal();
             });
+        },
+
+        // 计算并更新 total 值
+        calculateTotal() {
+            this.total = this.price * this.count;
+            this.total = this.total.toLocaleString();
         },
 
 
@@ -298,12 +306,14 @@ const app = Vue.createApp({
                 // 在这里可以添加任何需要在获取数据后执行的代码
                 // ...
 
+
                 // 根据星星数从高到低排序
                 this.memberReview.sort((a, b) => {
                     return b.Star - a.Star;
                 });
                 this.currentPage = 1;
                 // console.log(this.memberReview);
+                this.calculateTotal();
             });
         },
 
@@ -311,24 +321,21 @@ const app = Vue.createApp({
         countAdd() {
             if (this.count < 9) {
                 this.count += 1;
-                this.total = this.price * this.count;
-                //轉成千分
-                this.total = this.total.toLocaleString();
+                this.calculateTotal();
             }
         },
         //-按鈕
         countMinus() {
             if (this.count > 1) {
                 this.count -= 1;
-                this.total = this.price * this.count;
-                this.total = this.total.toLocaleString();
+                this.calculateTotal();
             }
         },
         //清空按鈕
         clear() {
             this.count = 1;
-            this.total = this.price;
-            this.total = this.total.toLocaleString();
+            this.calculateTotal();
+            this.selectedDate = "";
             this.selectedDate = ""
             this.content = "查看可預訂的日期";
         },
