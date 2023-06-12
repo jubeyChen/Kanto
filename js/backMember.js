@@ -47,23 +47,26 @@ Vue.createApp({
                     itemStatus: this.newStatus,
                     itemId: item.ID
                 };
-                console.log(UpdateMember);
+                // console.log(UpdateMember);
 
                 axios.post("../php/UpdateMember.php", UpdateMember)
                     .then(response => {
                         // console.log(response.data);
                         if (response.data == '關閉') {
-                            alert("您已關閉會員" + item.ID + "狀態，並刪除此會員所有留言" );
+                            alert("您已關閉會員" + item.ID + "狀態，該會員目前無法登入")
                         } else {
-                            alert("您已啟用會員" + item.ID + "狀態");
+                            alert("您已啟用" + item.ID + "狀態");
                         }
                     })
+
                     .catch(error => {
                         console.log(error);
                     });
             };
 
         },
+
+
         currentNumber() {
             // 當前數量會有兩個情況
             const allMembers = this.all_members.length
@@ -148,4 +151,4 @@ Vue.createApp({
         }
     }
 }).component('backStageLogOutBtn', BackStageLogOutBtn)
-.mount('#app');
+    .mount('#app');

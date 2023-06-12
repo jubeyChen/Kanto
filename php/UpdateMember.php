@@ -44,19 +44,10 @@ $affectedStatus = $statement2->execute();
 // 如果更新成功   將狀態被關閉的會員留言刪除 回傳前端 讓前端alert
 if ($affectedStatus) {
     if ($itemStatus == 0 && $memberStatus != 0) {                     
-        // 將狀態關閉的會員的的留言从review資料表中删除
-        $Sql3 = "DELETE FROM review WHERE memberID = ?";
-        $statement3 = $pdo->prepare($Sql3);
-        $statement3->bindParam(1, $itemId);
-        $statement3->execute();
-    }
-
-    if($memberStatus === 0){
-        echo "啟用";
-    }else{
         echo "關閉";
+    }else{
+        echo "啟用";
     }
-
 }else{
     echo 'error'; 
 }
