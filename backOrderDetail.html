@@ -68,7 +68,7 @@
 
             <!-- ========== 訂單明細 ========== -->
             <section class="content_block" v-for="(item, index) in orderDetail" :key="item.ID">
-                <p>訂單明細 {{ index + 1 }}</p>
+                <p>訂單明細 {{ item.ODID }}</p>
                 <form action="#" class="row">
                     <div class="input-group mb-3">
                         <span class="input-group-text">購買行程</span>

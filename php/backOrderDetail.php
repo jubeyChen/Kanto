@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 
 $orderId = $_GET['id'];
 
-$sql = 'SELECT o.ID, m.FullName, o.Timestamp, d.ID, p.Name, d.Quantity, p.Price, d.Quantity * p.Price Total, pd.OfferDate, d.IsCanceled FROM orders o
+$sql = 'SELECT o.ID ID, m.FullName, o.Timestamp, d.ID ODID, p.Name, d.Quantity, p.Price, d.Quantity * p.Price Total, pd.OfferDate, d.IsCanceled FROM orders o
         join orderDetail d on o.ID = d.OrderID
         join members m on o.MemberID = m.ID
         join product p on d.ProductID = p.ID
